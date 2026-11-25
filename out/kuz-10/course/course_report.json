@@ -1,0 +1,52 @@
+{
+ "tasks": {
+  "schema": "kmg-tasks/0.1.0",
+  "chapter": "kuz-10",
+  "generated": 136,
+  "kept": 133,
+  "rejected": [
+   {
+    "index": 56,
+    "node_id": "kuz-10.n-206-a97d19",
+    "type": "multi",
+    "prompt": "У каких групп проницаемость задана верхней границей?",
+    "why": "символьный ответ не найден в утверждениях/формулах: «Группа IV»"
+   },
+   {
+    "index": 59,
+    "node_id": "kuz-10.n-207-a278f0",
+    "type": "multi",
+    "prompt": "Какие утверждения о легенде рисунка 10.3 верны?",
+    "why": "верный вариант не подтверждается утверждениями: «Номера 3–7 идут от 0 до 12,5 % с шагом 2,5 %»"
+   },
+   {
+    "index": 128,
+    "node_id": "kuz-10.n-221-ed1d49",
+    "type": "multi",
+    "prompt": "Какие утверждения о критическом направлении верны?",
+    "why": "верный вариант не подтверждается утверждениями: «Если предрифовые фации выше рифовых, его ищут в предрифовой »"
+   }
+  ],
+  "types": [
+   "gap",
+   "multi",
+   "order",
+   "single"
+  ],
+  "meets_tz": true,
+  "cost_usd": 0.0,
+  "cost_usd_original": 0.078956,
+  "cached": true,
+  "model": "claude-haiku-5-5",
+  "calls": 6
+ },
+ "schema": "kmg-course-report/0.1.0",
+ "chapter": "kuz-10",
+ "layer": "out/kuz-10/layer.json",
+ "steps": 56,
+ "parts": 5,
+ "size_mb": 1.68,
+ "size_ok": true,
+ "steps_without_illustration": [],
+ "seconds": 0.3
+}
