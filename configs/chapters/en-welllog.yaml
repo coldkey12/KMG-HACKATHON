@@ -1,0 +1,13 @@
+id: en-welllog
+book:
+  author: Wikipedia contributors
+  title: Wikipedia (CC BY-SA)
+  year: null
+  source_file: data/raw/en_test/en_well_logging.md
+title: Well logging
+sections: ''
+pages_pdf:
+- 101
+- 111
+language: en
+domain_pack: geology

@@ -116,8 +116,9 @@ def main(argv=None):
         print("course:", cmd)
         sys.exit(subprocess.call(shlex.split(cmd), cwd=ROOT))
     if args.cmd == "metrics":
-        from .metrics import write
+        from .metrics import write, write_csv
         print(write())
+        print(write_csv())
 
     if args.cmd == "pack-init":
         import yaml

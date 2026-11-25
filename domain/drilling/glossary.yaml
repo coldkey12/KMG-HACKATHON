@@ -1,9 +1,140 @@
-version: 0.1.0
+version: 0.2.0
 terms:
-  - {id: d-well, ru: "скважина", en: "well", prerequisite: true, def: "Узкий глубокий ствол, пробуренный в земле."}
-  - {id: d-mud, ru: "буровой раствор", en: "drilling mud", aliases: ["промывочная жидкость"], prerequisite: true, def: "Жидкость, которую прокачивают через бурильную колонну: выносит шлам, держит стенки, создаёт противодавление."}
-  - {id: d-bit, ru: "долото", en: "drill bit", prerequisite: true, def: "Инструмент на конце бурильной колонны, разрушающий породу."}
-  - {id: d-cuttings, ru: "шлам", en: "cuttings", prerequisite: true, def: "Обломки породы, выносимые раствором на поверхность."}
-  - {id: d-casing, ru: "обсадная колонна", en: "casing", prerequisite: true, def: "Стальные трубы, закрепляющие стенки скважины."}
-  - {id: d-annulus, ru: "затрубное пространство", en: "annulus", aliases: ["затруб"], prerequisite: true, def: "Кольцевой зазор между колонной и стенкой скважины."}
-  - {id: d-bhp, ru: "забойное давление", en: "bottomhole pressure", prerequisite: false, def: "Давление на забое скважины."}
+- id: d-01
+  ru: скважина
+  en: well
+  prerequisite: true
+  def: Узкий глубокий ствол, пробуренный в земле.
+- id: d-02
+  ru: буровой раствор
+  en: drilling mud / drilling fluid
+  prerequisite: true
+  def: 'Жидкость, которую прокачивают через бурильную колонну: выносит шлам, держит стенки, создаёт противодавление.'
+- id: d-03
+  ru: долото
+  en: drill bit
+  prerequisite: true
+  def: Инструмент на конце бурильной колонны, разрушающий породу.
+- id: d-04
+  ru: шлам
+  en: cuttings
+  prerequisite: true
+  def: Обломки породы, выносимые раствором на поверхность.
+- id: d-05
+  ru: обсадная колонна
+  en: casing
+  prerequisite: true
+  def: Стальные трубы, закрепляющие стенки скважины.
+- id: d-06
+  ru: затрубное пространство
+  en: annulus
+  prerequisite: true
+  def: Кольцевой зазор между колонной труб и стенкой скважины.
+- id: d-07
+  ru: бурильная колонна
+  en: drill string
+  prerequisite: true
+  def: Колонна труб от ротора до долота, через которую подаётся раствор.
+- id: d-08
+  ru: компоновка низа бурильной колонны
+  en: bottom-hole assembly
+  abbr: КНБК
+  prerequisite: false
+  def: 'Нижняя часть колонны: долото, утяжелённые трубы, двигатель, датчики.'
+- id: d-09
+  ru: забойное давление
+  en: bottomhole pressure
+  abbr: BHP
+  prerequisite: false
+  def: Давление на забое скважины.
+- id: d-10
+  ru: гидростатическое давление
+  en: hydrostatic pressure
+  prerequisite: false
+  def: 'Давление столба раствора: растёт с глубиной и плотностью.'
+- id: d-11
+  ru: пластовое (поровое) давление
+  en: pore pressure
+  prerequisite: false
+  def: Давление флюида в порах пласта.
+- id: d-12
+  ru: давление гидроразрыва
+  en: fracture pressure
+  prerequisite: false
+  def: Давление, при котором порода трескается и принимает раствор.
+- id: d-13
+  ru: эквивалентная циркуляционная плотность
+  en: equivalent circulating density
+  abbr: ЭЦП
+  prerequisite: false
+  def: Плотность, эквивалентная забойному давлению при циркуляции.
+- id: d-14
+  ru: проявление (приток)
+  en: kick
+  prerequisite: false
+  def: Поступление пластового флюида в скважину.
+- id: d-15
+  ru: открытый фонтан
+  en: blowout
+  prerequisite: false
+  def: Неуправляемый выброс флюида из скважины.
+- id: d-16
+  ru: противовыбросовое оборудование (превентор)
+  en: blowout preventer
+  abbr: ПВО
+  prerequisite: false
+  def: Устьевое оборудование для герметизации скважины.
+- id: d-17
+  ru: поглощение
+  en: lost circulation
+  prerequisite: false
+  def: Уход бурового раствора в пласт.
+- id: d-18
+  ru: прихват
+  en: stuck pipe
+  prerequisite: false
+  def: Колонна не может двигаться в скважине.
+- id: d-19
+  ru: приёмная ёмкость
+  en: mud pit
+  prerequisite: false
+  def: Ёмкость с раствором на поверхности; её объём следят для контроля скважины.
+- id: d-20
+  ru: цементирование
+  en: cementing
+  prerequisite: false
+  def: Закачка цемента в затруб для крепления колонны и разобщения пластов.
+- id: d-21
+  ru: наклонно-направленное бурение
+  en: directional drilling
+  prerequisite: false
+  def: Бурение по заданной траектории, отличной от вертикали.
+- id: d-22
+  ru: телеметрия во время бурения
+  en: measurement while drilling
+  abbr: MWD
+  prerequisite: false
+  def: Датчики в КНБК, передающие данные на поверхность при бурении.
+- id: d-23
+  ru: каротаж во время бурения
+  en: logging while drilling
+  abbr: LWD
+  prerequisite: false
+  def: Геофизические измерения прибором в КНБК во время бурения.
+- id: d-24
+  ru: механическая скорость проходки
+  en: rate of penetration
+  abbr: ROP
+  prerequisite: false
+  def: Сколько метров бурится в час.
+- id: d-25
+  ru: нагрузка на долото
+  en: weight on bit
+  abbr: WOB
+  prerequisite: false
+  def: Сила, с которой колонна давит на долото.
+- id: d-26
+  ru: глушение скважины
+  en: well kill
+  prerequisite: false
+  def: Замена флюида в стволе раствором нужной плотности для восстановления контроля.
