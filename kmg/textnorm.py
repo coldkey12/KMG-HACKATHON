@@ -35,12 +35,14 @@ def sha256_file(path) -> str:
 
 # Numbers: 0,46 | 1083 | 10³ | 4—8 | 1,2÷1,3 ; we compare canonical numeric strings.
 _SUP = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻", "0123456789-")
-_NUM = re.compile(r"(?<![\w.,])[-−]?\d+(?:[.,]\d+)?")
+_NUM = re.compile(r"(?<![\w.,])[-−]?\d+(?:[.,]\d+)?(?![DdДд]\b)")
+_LATEX_CMD = re.compile(r"\\[A-Za-z]+")
 
 
 def numbers(s: str):
     """Canonical numbers in a text: decimal comma -> dot, superscripts -> digits, leading zeros kept off."""
     s = unicodedata.normalize("NFKC", s or "").translate(_SUP)
+    s = _LATEX_CMD.sub(" ", s)  # \cdot10 -> " 10"
     out = []
     for m in _NUM.finditer(s):
         t = m.group(0).replace("−", "-").replace(",", ".")

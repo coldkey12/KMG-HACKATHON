@@ -17,7 +17,7 @@ from . import llm
 from .checks import find_quote
 from .config import ROOT, chapter as load_chapter, domain_pack
 from .structure import render_units
-from .units import segment
+from .units import segment_chapter
 
 BATCH = 15
 
@@ -45,7 +45,7 @@ def _items_text(items):
 def review(package_path, out_prefix=None):
     pkg = json.loads(Path(package_path).read_text(encoding="utf-8"))
     cfg = load_chapter(ROOT / pkg["chapter"])
-    units = segment(ROOT / cfg["book"]["source_file"], tuple(cfg["pages_pdf"]), cfg.get("start_anchor"), cfg.get("end_anchor"), cfg.get("page_offset", 0))
+    units = segment_chapter(cfg, ROOT)
     umap = {u.id: u for u in units}
     pack = domain_pack(cfg["domain_pack"])
     pack_text = _pack_text(pack)

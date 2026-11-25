@@ -349,3 +349,16 @@ def _attach_table_titles(units):
         out.append(u)
         i += 1
     return out
+
+
+def segment_chapter(cfg, root):
+    """Units of a chapter config: one page range (pages_pdf + anchors) or several (ranges: [...])."""
+    ranges = cfg.get("ranges") or [{"pages": cfg["pages_pdf"], "start_anchor": cfg.get("start_anchor"), "end_anchor": cfg.get("end_anchor")}]
+    out, seen = [], set()
+    for r in ranges:
+        for u in segment(root / cfg["book"]["source_file"], tuple(r["pages"]), r.get("start_anchor"), r.get("end_anchor"), cfg.get("page_offset", 0)):
+            if u.id in seen:
+                u.id += "-r"
+            seen.add(u.id)
+            out.append(u)
+    return out

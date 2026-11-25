@@ -14,7 +14,7 @@ from . import __version__, checks, llm
 from .config import ROOT, chapter as load_chapter, domain_pack, models
 from .route import route_node
 from .textnorm import hash6, norm, sha256_file
-from .units import segment
+from .units import segment_chapter
 
 PROMPTS = ROOT / "prompts"
 
@@ -425,6 +425,70 @@ def dispute_typo_claims(layer):
     return fixes
 
 
+def _get_by_path(node, path):
+    """'layers/mechanism[5]' or 'formulas[6]/meaning' -> the Txt dict."""
+    obj = node
+    for tok in re.findall(r"[^/\[\]]+|\[\d+\]", path):
+        obj = obj[int(tok[1:-1])] if tok.startswith("[") else obj[tok]
+    return obj
+
+
+def repair_numbers(layer, log):
+    """One cheap model pass: rewrite only the fields whose numbers are not in the node's source units."""
+    issues = [i for i in checks.check_numbers(layer) if i["level"] == "error"]
+    if not issues:
+        return []
+    nodes = {n["id"]: n for n in layer["nodes"]}
+    units = {u["id"]: u for u in layer["units"]}
+    by_node = {}
+    for i in issues:
+        w = i["where"]
+        if "/" in w:
+            nid, path = w.split("/", 1)
+        else:
+            nid, path = w.split(".c-")[0], "claim:" + w
+        by_node.setdefault(nid, {}).setdefault(path, []).append(i["msg"])
+    fixes = []
+    system = [{"type": "text", "text": "Ты редактор. Перепиши каждый фрагмент так, чтобы в нём остались только числа, которые есть в исходном тексте автора. Лишнее число убери или замени словами без числа (например, «в 1930-х» → как у автора «в 30-х годах 20-го века»; нумерацию шагов убери). Смысл, термины и длину сохрани. Ответ — только JSON: {\"fixes\": {\"<path>\": \"новый текст\"}}"}]
+    for nid, paths in by_node.items():
+        n = nodes.get(nid)
+        if not n:
+            continue
+        src_ids = set(n["source_units"]) | {c["unit_id"] for c in n["claims"]}
+        src = "\n\n".join(units[u]["text"] for u in src_ids if u in units)
+        items = {}
+        for path in paths:
+            if path.startswith("claim:"):
+                c = next((c for c in n["claims"] if c["id"] == path[6:]), None)
+                if c:
+                    items[path] = c["text"]
+            else:
+                try:
+                    items[path] = _get_by_path(n, path)["text"]
+                except (KeyError, IndexError, TypeError):
+                    pass
+        if not items:
+            continue
+        user = "ИСХОДНЫЙ ТЕКСТ АВТОРА:\n%s\n\nФРАГМЕНТЫ (path → текст; ошибки: %s):\n%s" % (
+            src, json.dumps(paths, ensure_ascii=False), json.dumps(items, ensure_ascii=False, indent=1))
+        try:
+            r = llm.call("repair", system, user, log_path=log, tag="numfix:" + nid)
+            out = llm.parse_json(r["text"]).get("fixes", {})
+        except Exception as e:
+            fixes.append({"node": nid, "what": "починка чисел не удалась: %s" % e})
+            continue
+        for path, txt in out.items():
+            if path not in items or not isinstance(txt, str):
+                continue
+            if path.startswith("claim:"):
+                c = next(c for c in n["claims"] if c["id"] == path[6:])
+                c["text"] = txt
+            else:
+                _get_by_path(n, path)["text"] = txt
+            fixes.append({"node": nid, "path": path, "what": "число вне источника убрано моделью-редактором"})
+    return fixes
+
+
 def fix_unit_ids(layer):
     """Model typos in unit ids (e.g. a dropped character): map to the closest existing id of the node's units."""
     ids = [u["id"] for u in layer["units"]]
@@ -532,7 +596,7 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=8):
     run_dir.mkdir(parents=True, exist_ok=True)
     log = run_dir / "llm_calls.jsonl"
     src = ROOT / cfg["book"]["source_file"]
-    units = segment(src, tuple(cfg["pages_pdf"]), cfg.get("start_anchor"), cfg.get("end_anchor"), cfg.get("page_offset", 0))
+    units = segment_chapter(cfg, ROOT)
     pack = domain_pack(cfg["domain_pack"])
     pack_text = render_pack(pack)
     chapter_text = render_units(units)
@@ -596,6 +660,7 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=8):
     }
     autofixes += fix_unit_ids(layer)
     autofixes += fix_numbers(layer)
+    autofixes += repair_numbers(layer, log)
     autofixes += dispute_typo_claims(layer)
     classify_questions(layer)
     from . import overrides

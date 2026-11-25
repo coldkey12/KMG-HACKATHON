@@ -1,0 +1,41 @@
+[
+ {
+  "chapter": "bas-xxiii",
+  "nodes": 78,
+  "claims": 565,
+  "cost_usd": 2.1302,
+  "cost_per_node": 0.0273,
+  "manual_minutes": 0.0,
+  "manual_min_per_node": 0.0,
+  "manual_share_nodes": 0.0,
+  "machine_seconds": 24.8,
+  "checks_passed": true,
+  "open_questions": 40
+ },
+ {
+  "chapter": "kuz-10",
+  "nodes": 56,
+  "claims": 463,
+  "cost_usd": 1.5594,
+  "cost_per_node": 0.0278,
+  "manual_minutes": 0.0,
+  "manual_min_per_node": 0.0,
+  "manual_share_nodes": 0.0,
+  "machine_seconds": 9.5,
+  "checks_passed": true,
+  "open_questions": 10
+ },
+ {
+  "chapter": "lat-v",
+  "nodes": 69,
+  "claims": 636,
+  "cost_usd": 2.1185,
+  "cost_per_node": 0.0307,
+  "manual_minutes": 0.0,
+  "manual_min_per_node": 0.0,
+  "manual_share_nodes": 0.0,
+  "machine_seconds": 8.4,
+  "checks_passed": true,
+  "open_questions": 59
+ }
+]

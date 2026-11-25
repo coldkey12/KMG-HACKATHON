@@ -39,9 +39,9 @@ def main(argv=None):
     args = ap.parse_args(argv)
 
     if args.cmd == "units":
-        from .units import segment
+        from .units import segment_chapter
         cfg = chapter(args.chapter)
-        us = segment(ROOT / cfg["book"]["source_file"], tuple(cfg["pages_pdf"]), cfg.get("start_anchor"), cfg.get("end_anchor"), cfg.get("page_offset", 0))
+        us = segment_chapter(cfg, ROOT)
         print(len(us), dict(Counter(u.kind for u in us)))
         return
     if args.cmd == "build":
@@ -106,9 +106,9 @@ def main(argv=None):
         import yaml
         from . import llm
         from .structure import render_units
-        from .units import segment
+        from .units import segment_chapter
         cfg = chapter(args.chapter)
-        us = segment(ROOT / cfg["book"]["source_file"], tuple(cfg["pages_pdf"]), cfg.get("start_anchor"), cfg.get("end_anchor"), cfg.get("page_offset", 0))
+        us = segment_chapter(cfg, ROOT)
         sysb = [{"type": "text", "text": (ROOT / "prompts" / "pack_init.md").read_text(encoding="utf-8")},
                 {"type": "text", "text": "ГЛАВА:\n\n" + render_units(us)}]
         r = llm.call("pack", sysb, "Верни только JSON черновика пакета.", log_path=ROOT / "runs" / cfg["id"] / "pack_calls.jsonl", tag="pack-init")

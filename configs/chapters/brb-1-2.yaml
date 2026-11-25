@@ -1,0 +1,14 @@
+# Контрольная глава, двойник Кузнецова.
+id: brb-1-2
+book:
+  author: "Барабошкин Е. Ю."
+  title: "Практическая седиментология (терригенные коллектора)"
+  year: 2007
+  source_file: data/raw/books_md/ctrl_baraboshkin_b.md
+title: "Дельты"
+sections: "§1.2"
+pages_pdf: [30, 44]
+start_anchor: "## 1.2 Дельты"
+end_anchor: "## 1.3 Озерные обстановки"
+language: ru
+domain_pack: geology

@@ -1,0 +1,105 @@
+{
+ "layer": "out/bas-xxiii/layer.json",
+ "ideas_in_scope": 8,
+ "score": 0.75,
+ "cost_usd": 0.004523,
+ "ideas": [
+  {
+   "block": "key_definitions",
+   "text": "Определение: Упругий запас жидкости (None). ΔV_з = β* V0 Δp.",
+   "where": "Глава XXIII   ",
+   "verdict": "yes",
+   "claims": [
+    "n-475-e20d95.c-17cd20",
+    "n-475-e20d95.c-1e4acd",
+    "n-475-9f8dd3.c-1e4acd",
+    "n-476-30bb03.c-ffa3d2"
+   ],
+   "note": ""
+  },
+  {
+   "block": "key_definitions",
+   "text": "Определение: Коэффициент упругоемкости пласта β* (bulk compressibility (formation compressibility)). β* = mβ_ж + β_с.",
+   "where": "Глава XXIII   ",
+   "verdict": "yes",
+   "claims": [
+    "n-476-30bb03.c-b2542f",
+    "n-475-e20d95.c-13018e",
+    "n-475-e20d95.c-e2d9a2",
+    "n-476-30bb03.c-13018e"
+   ],
+   "note": ""
+  },
+  {
+   "block": "key_definitions",
+   "text": "Определение: Коэффициент пьезопроводности (hydraulic diffusivity). κ = k/(μβ*), размерность L²/T.",
+   "where": "Глава XXIII   ",
+   "verdict": "yes",
+   "claims": [
+    "n-480-b6113a.c-fe5530",
+    "n-496-1b01a5.c-6c452c",
+    "n-498-573ed7.c-fe5530",
+    "n-480-551f3d.c-27b495",
+    "n-475-e20d95.c-27b495",
+    "n-492-6ed81d.c-d1ab40"
+   ],
+   "note": ""
+  },
+  {
+   "block": "empirical_correlations_and_parameters",
+   "text": "Параметр: Коэффициент пьезопроводности κ = κ = k/(μβ*), типовые значения 0,1–5 м²/с. Область: Упругий режим однофазной фильтрации. ",
+   "where": "Глава XXIII   ",
+   "verdict": "yes",
+   "claims": [
+    "n-480-551f3d.c-0f87bb",
+    "n-474-f05555.c-8cec5e"
+   ],
+   "note": ""
+  },
+  {
+   "block": "named_methods_and_models",
+   "text": "Метод: {\"name\": \"Уравнение пьезопроводности\", \"type\": \"equation\", \"chapter\": \"Глава XXIII\", \"description\": \"∂p/∂t = κΔp, κ = k/(μβ*), β* = mβ_ж + β_с.\", \"canonical_status\": \"industry_standard\", \"note\": null}",
+   "where": "Глава XXIII   ",
+   "verdict": "yes",
+   "claims": [
+    "n-480-b6113a.c-0a69a2",
+    "n-480-b6113a.c-fe5530",
+    "n-480-b6113a.c-a124de",
+    "n-476-30bb03.c-b2542f",
+    "n-479-abb043.c-7c7d7b",
+    "n-481-8caf17.c-418154"
+   ],
+   "note": ""
+  },
+  {
+   "block": "named_methods_and_models",
+   "text": "Метод: {\"name\": \"Метод последовательной смены стационарных состояний (ПССС)\", \"type\": \"workflow\", \"chapter\": \"Глава XXIV\", \"description\": \"Разбиение на возмущённую/невозмущённую области; l(t) = √(2κt) для галереи, R(t) = √(r_c²+4κt) для скважины.\", \"canonical_status\": \"school_specific\", \"note\": \"Метод Чарного, широко используется в российской практике.\"}",
+   "where": "Глава XXIV   ",
+   "verdict": "yes",
+   "claims": [
+    "n-496-1b01a5.c-0cafa2",
+    "n-498-573ed7.c-1cee17",
+    "n-494-cf6094.c-ddb67a",
+    "n-494-3d3699.c-b06e13",
+    "n-494-3d3699.c-0bbf93"
+   ],
+   "note": ""
+  },
+  {
+   "block": "named_methods_and_models",
+   "text": "Метод: {\"name\": \"Метод А.М. Пирвердяна\", \"type\": \"workflow\", \"chapter\": \"Глава XXIV\", \"description\": \"Параболический профиль давления в возмущённой зоне; l(t) = √(6κt) для галереи при Q=const.\", \"canonical_status\": \"school_specific\", \"note\": null}",
+   "where": "Глава XXIV   ",
+   "verdict": "no",
+   "claims": [],
+   "note": "В слое нет метода Пирвердяна: отсутствуют параболический профиль давления в возмущённой зоне, l(t)=√(6κt) и упоминание автора метода. Есть только линейный профиль (n-496-989cb6, n-497-afe122), который относится к методу ПССС."
+  },
+  {
+   "block": "named_methods_and_models",
+   "text": "Метод: {\"name\": \"Метод интегральных соотношений Баренблатта\", \"type\": \"workflow\", \"chapter\": \"Глава XXIV\", \"description\": \"Многочлен по степеням координаты, коэффициенты из интегральных соотношений; R(t)=√(r_c²+12κt).\", \"canonical_status\": \"school_specific\", \"note\": null}",
+   "where": "Глава XXIV   ",
+   "verdict": "no",
+   "claims": [],
+   "note": "В слое нет метода интегральных соотношений Баренблатта: отсутствуют многочлен по координате, его коэффициенты из интегральных соотношений и радиус R(t)=√(r_c²+12κt)."
+  }
+ ]
+}
