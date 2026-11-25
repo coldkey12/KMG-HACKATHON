@@ -6,6 +6,7 @@
 """
 import argparse
 import json
+import re
 import shutil
 import sys
 import time
@@ -48,6 +49,64 @@ def _media(layer_path):
     return media_src, media
 
 
+def _inline_md(s):
+    s = escape(s)
+    s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
+    s = re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", s)
+    return s
+
+
+def md_html(md, title):
+    """Minimal Markdown -> standalone HTML (headings, pipe tables, lists, paragraphs) so the video passport opens as
+    a readable page from the course, offline."""
+    out, para, i = [], [], 0
+    lines = md.splitlines()
+
+    def flush():
+        if para:
+            out.append("<p>%s</p>" % _inline_md(" ".join(para)))
+            del para[:]
+    while i < len(lines):
+        ln = lines[i].rstrip()
+        if ln.startswith("|"):
+            flush()
+            rows = []
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{2,}:?", c) for c in cells if c):
+                    rows.append(cells)
+                i += 1
+            html = "".join("<tr>%s</tr>" % "".join("<%s>%s</%s>" % ("th" if r == 0 else "td", _inline_md(c), "th" if r == 0 else "td")
+                                                   for c in row) for r, row in enumerate(rows))
+            out.append('<div class="tw"><table>%s</table></div>' % html)
+            continue
+        m = re.match(r"(#{1,4})\s+(.*)", ln)
+        if m:
+            flush()
+            out.append("<h%d>%s</h%d>" % (len(m.group(1)), _inline_md(m.group(2)), len(m.group(1))))
+        elif re.match(r"\s*[-*]\s+", ln):
+            flush()
+            items = []
+            while i < len(lines) and re.match(r"\s*[-*]\s+", lines[i]):
+                items.append("<li>%s</li>" % _inline_md(re.sub(r"^\s*[-*]\s+", "", lines[i])))
+                i += 1
+            out.append("<ul>%s</ul>" % "".join(items))
+            continue
+        elif not ln.strip():
+            flush()
+        else:
+            para.append(ln.strip())
+        i += 1
+    flush()
+    css = ("body{font:17px/1.6 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;max-width:980px;margin:0 auto;padding:16px;"
+           "color:#1B1F24;background:#fff}@media(prefers-color-scheme:dark){body{color:#E6E9EE;background:#0F1216}th{background:#242A33!important}}"
+           ".tw{overflow-x:auto}table{border-collapse:collapse;font-size:16px}th,td{border:1px solid #8A939F;padding:4px 8px;text-align:left;vertical-align:top}"
+           "th{background:#EBEEF2}code{font-size:16px}a{color:#3B4CCA}")
+    return ('<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            "<title>%s</title><style>%s</style></head><body><p><a href=\"javascript:history.back()\">← Назад к курсу</a></p>%s</body></html>"
+            % (escape(title), css, "\n".join(out)))
+
+
 def _write_app(out, title):
     (out / "assets").mkdir(parents=True, exist_ok=True)
     for f in APP_FILES:
@@ -61,7 +120,7 @@ def _decor(view, pack, out):
     Returns the illustration records of the photos (organizers' format)."""
     shutil.rmtree(out / "assets" / "photos", ignore_errors=True)
     style = illus.load_style(pack)
-    view["style"] = {"school": style.get("school"), "source": style.get("source"),
+    view["style"] = {"school": style.get("school"), "source": style.get("source"), "provenance": style.get("provenance") or {},
                      "groups": [{"id": g, "title": t, "items": [{"key": k, "ru": e.get("ru") or k, "color": e["color"]}
                                                                 for k, e in (style.get(g) or {}).items()]}
                                 for g, t in illus.GROUPS if style.get(g)]}
@@ -71,11 +130,13 @@ def _decor(view, pack, out):
     used = {}
 
     def put(p):
+        small = p.get("file_small") if p.get("file_small") and (pdir / p["file_small"]).exists() else None
         if p["file"] not in used:
             (out / "assets" / "photos").mkdir(parents=True, exist_ok=True)
-            shutil.copy(pdir / p["file"], out / "assets" / "photos" / p["file"])
+            for f in filter(None, (p["file"], small)):
+                shutil.copy(pdir / f, out / "assets" / "photos" / f)
             used[p["file"]] = "assets/photos/" + p["file"]
-        return illus.photo_public(p, used[p["file"]])
+        return illus.photo_public(p, used[p["file"]], "assets/photos/" + small if small else None)
 
     first_of = {}
     for s in view["steps"]:
@@ -103,7 +164,8 @@ def _illustrations_doc(view, out, photo_recs):
     for s in view["steps"]:
         for r in s["illustrations"]:
             (out / r["file"]).write_text('<?xml version="1.0" encoding="UTF-8"?>\n' + r["svg"], encoding="utf-8")
-            items.append({k: v for k, v in r.items() if k != "svg"})
+            items.append({k: v for k, v in r.items() if k not in ("svg", "spec")})
+            del r["svg"]
         items += illus.media_items(s)
     items += photo_recs
     for it in items:
@@ -145,9 +207,21 @@ def build(layer_path, out=None, with_tasks=True):
         for m in ms:
             dst = out / "media" / m["dir"]
             dst.mkdir(parents=True, exist_ok=True)
-            for k in ("mp4", "scene", "audio", "subtitles", "subtitles_vtt", "passport"):
+            # only what the course uses: video (subtitles are burnt in), the interactive scene and its voice track;
+            # the passport is converted to a readable page
+            for k in ("mp4", "scene", "audio"):
                 if m.get(k) and (media_src / m["dir"] / m[k]).exists():
                     shutil.copy(media_src / m["dir"] / m[k], dst / m[k])
+                elif k == "scene":
+                    m["scene"] = None   # no scene file -> the step shows no scene box
+            pmd = media_src / m["dir"] / (m.get("passport") or "passport.md")
+            if pmd.exists() and pmd.suffix == ".md":
+                (dst / "passport.html").write_text(md_html(pmd.read_text(encoding="utf-8"), "Паспорт ролика: " + (m.get("title") or "")), encoding="utf-8")
+                m["passport"] = "passport.html"
+            else:
+                m["passport"] = None
+            m.pop("subtitles_vtt", None)
+            m.pop("subtitles", None)
     idoc = _illustrations_doc(view, out, photo_recs)
     (out / "illustrations.json").write_text(json.dumps(idoc, ensure_ascii=False, indent=1), encoding="utf-8")
     ierr = tasks_mod.schema_errors(idoc, "illustration.schema.json")

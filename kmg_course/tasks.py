@@ -173,6 +173,10 @@ def validate(layer, raw_tasks, pack_terms):
         t = dict(t, type=ty)
         if not n:
             why = "нет такого узла"
+        elif not isinstance(t.get("prompt"), str) or not t["prompt"].strip():
+            why = "нет формулировки задания"
+        elif not isinstance(t.get("explanation"), str) or not t["explanation"].strip():
+            why = "нет пояснения к ответу"
         elif ty not in TYPES:
             why = "неизвестный тип %r" % ty
         else:

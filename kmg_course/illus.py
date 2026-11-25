@@ -22,20 +22,23 @@ PAD = 12
 LINE = 26
 FONT = 20
 
+# Diagram boxes are neutral (grey / white / black): meaning is carried by the label and the border style, never by a
+# colour that the legend reserves for rocks, fluids or curves. Only the provenance badge takes its colour from the
+# styleguide.
+FONTS = "font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif"
 STYLE = (
     "<style>"
-    ".i-in{fill:var(--quote-soft,#E8EEF9);stroke:var(--quote,#2F4E9E)}"
-    ".i-out{fill:var(--ok-soft,#E4F4EA);stroke:var(--ok,#1C7A45)}"
-    ".i-node{fill:var(--primary-soft,#E8F0FE);stroke:var(--primary,#0B5CD5)}"
-    ".i-warn{fill:var(--warn-soft,#FCE8E6);stroke:var(--warn,#B3261E)}"
-    ".it{fill:var(--ink,#1B1F24);font-size:20px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}"
-    ".ih{fill:var(--muted,#55606E);font-size:19px;font-weight:700;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}"
-    ".il{fill:var(--muted,#55606E);font-size:19px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}"
-    ".ia{stroke:var(--muted,#55606E);stroke-width:2}.iah{fill:var(--muted,#55606E)}"
-    ".ib{fill:var(--surface-2,#F1F3F6);stroke:var(--line,#D5DAE1)}"
-    ".ibt{fill:var(--muted,#55606E);font-size:19px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}"
-    ".isw{stroke:var(--line,#D5DAE1);stroke-width:1.5}"
-    "</style>")
+    ".i-in{fill:#F3F4F6;stroke:#6B7280;stroke-width:1.5}"
+    ".i-out{fill:#FFFFFF;stroke:#111827;stroke-width:2.5}"
+    ".i-node{fill:#E5E7EB;stroke:#374151;stroke-width:1.5}"
+    ".i-warn{fill:#FFFFFF;stroke:#374151;stroke-width:2;stroke-dasharray:7 5}"
+    ".it{fill:#111827;font-size:20px;%s}"
+    ".ih{fill:#4B5563;font-size:19px;font-weight:700;%s}"
+    ".il{fill:#4B5563;font-size:19px;%s}"
+    ".ia{stroke:#4B5563;stroke-width:2}.iah{fill:#4B5563}"
+    ".ibt{fill:#FFFFFF;font-size:19px;font-weight:700;%s}"
+    ".isw{stroke:#6B7280;stroke-width:1.5}"
+    "</style>") % (FONTS, FONTS, FONTS, FONTS)
 
 
 def _wrap(text, width_chars):
@@ -53,11 +56,21 @@ def _wrap(text, width_chars):
 
 
 class Canvas:
+    """Draws the standalone SVG file and records the same diagram as a list of rows (`spec`), which the course app
+    renders as HTML boxes: the text then reflows with the page and never shrinks below the body size."""
+
     def __init__(self):
         self.parts = []
+        self.spec = []
         self.y = PAD
 
+    def head(self, text):
+        self.spec.append({"k": "head", "t": text})
+        self.parts.append('<text class="ih" x="%d" y="%d">%s</text>' % (PAD, self.y + 20, escape(text)))
+        self.y += 32
+
     def box(self, text, cls, head=None, x=PAD, w=W - 2 * PAD):
+        self.spec.append({"k": "box", "c": cls[2:], "h": head, "t": text})
         chars = int((w - 2 * PAD) / (FONT * 0.55))
         lines = _wrap(text, chars)
         h = PAD * 2 + LINE * len(lines) + (LINE if head else 0)
@@ -74,6 +87,7 @@ class Canvas:
         return y0, h
 
     def swatch(self, color, text):
+        self.spec.append({"k": "sw", "color": color, "t": text})
         y0 = self.y
         self.parts.append('<rect class="isw" x="%d" y="%d" width="44" height="28" rx="4" fill="%s"/>' % (PAD, y0, escape(color)))
         lines = _wrap(text, int((W - 3 * PAD - 44) / (FONT * 0.55)))
@@ -84,6 +98,7 @@ class Canvas:
         self.y = y0 + max(28, LINE * len(lines)) + 10
 
     def arrow(self, label=None):
+        self.spec.append({"k": "arrow", "t": label})
         x = W // 2
         y0 = self.y + 4
         y1 = self.y + 30
@@ -96,12 +111,12 @@ class Canvas:
     def gap(self, h=10):
         self.y += h
 
-    def svg(self, title, provenance="схема"):
+    def svg(self, title, provenance="схема", pcolor="#8E44AD"):
         self.y += PAD
-        # provenance badge on the image itself (TZ: «метка происхождения на кадре»)
-        bw = 22 + int(len(provenance) * 11)
-        badge = ('<rect class="ib" x="%d" y="%d" width="%d" height="28" rx="4"/>'
-                 '<text class="ibt" x="%d" y="%d">%s</text>') % (W - bw - PAD, self.y, bw, W - bw - PAD + 10, self.y + 21, escape(provenance))
+        # provenance badge on the image itself (TZ: «метка происхождения на кадре»), colour from the styleguide
+        bw = 24 + int(len(provenance) * 11)
+        badge = ('<rect x="%d" y="%d" width="%d" height="28" rx="4" fill="%s"/>'
+                 '<text class="ibt" x="%d" y="%d">%s</text>') % (W - bw - PAD, self.y, bw, escape(pcolor), W - bw - PAD + 12, self.y + 21, escape(provenance))
         h = self.y + 36
         return ('<svg viewBox="0 0 %d %d" role="img" aria-label="%s" xmlns="http://www.w3.org/2000/svg">'
                 '<title>%s</title>%s%s%s</svg>') % (W, h, escape(title), escape(title), STYLE, "".join(self.parts), badge)
@@ -139,7 +154,7 @@ def data_flow(step):
         c.gap(6)
     alt = "Схема шага «%s»: что на входе, что получаем и где правило ломается." % step["title"]
     used = (d.get("inputs") or [])[:3] + (d.get("outputs") or [])[:3] + (d.get("breaks") or [])[:2]
-    return {"svg": c.svg(alt), "alt": alt, "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+    return {"canvas": c, "alt": alt, "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
             "frame_class": "B", "origin": "code_from_data", "label": "схема", "claim_ids": _claims_of(used),
             "source": "блок «Что это значит для данных» этого шага"}
 
@@ -154,7 +169,7 @@ def mistake_pair(step):
         c.arrow("на самом деле")
         c.box(m["right"]["t"], "i-out", head="Как в книге")
     alt = "Схема шага «%s»: частая ошибка и как правильно." % step["title"]
-    return {"svg": c.svg(alt), "alt": alt, "caption": "Частая ошибка и поправка по книге.",
+    return {"canvas": c, "alt": alt, "caption": "Частая ошибка и поправка по книге.",
             "frame_class": "B", "origin": "code_from_data", "label": "схема",
             "claim_ids": _claims_of([m["wrong"], m.get("right")] if m.get("right") else [m["wrong"]]),
             "source": "блок «Частая ошибка» этого шага"}
@@ -170,7 +185,7 @@ def claim_chain(step):
             c.arrow()
         c.box(s["text"], "i-in" if s["kind"] == "наблюдение" else "i-out", head="%s · стр. %d" % (s["kind"], s["page"]))
     alt = "Схема шага «%s»: опорные утверждения по порядку." % step["title"]
-    return {"svg": c.svg(alt), "alt": alt, "caption": "Опорные утверждения шага: наблюдения и выводы автора.",
+    return {"canvas": c, "alt": alt, "caption": "Опорные утверждения шага: наблюдения и выводы автора.",
             "frame_class": "B", "origin": "code_from_data", "label": "схема", "claim_ids": [s["id"] for s in src],
             "source": "утверждения узла со страницами книги"}
 
@@ -268,12 +283,11 @@ def colour_key(step, style):
         if g != last:
             if last:
                 c.gap(4)
-            c.parts.append('<text class="ih" x="%d" y="%d">%s</text>' % (PAD, c.y + 20, escape(names[g])))
-            c.y += 32
+            c.head(names[g])
             last = g
         c.swatch(e["color"], e.get("ru") or k)
     alt = "Условные цвета шага «%s»: %s." % (step["title"], ", ".join(e.get("ru") or k for _, k, e in found[:10]))
-    return {"svg": c.svg(alt), "alt": alt,
+    return {"canvas": c, "alt": alt,
             "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (%s)." % (style.get("school") or "легенда"),
             "frame_class": "A", "origin": "code_from_data", "label": "схема", "claim_ids": [],
             "source": style.get("source")}
@@ -283,16 +297,23 @@ def illustrations(step, style=None):
     """Step illustrations: one diagram from the step's own data (first that applies) + a colour key if the step
     names ≥2 rocks / fluids / curves of the styleguide."""
     out = []
-    for f in (data_flow, mistake_pair, claim_chain):
+    # the block of the step page the diagram belongs to (shown next to the text it lays out)
+    for f, block in ((data_flow, "data"), (mistake_pair, "mistake"), (claim_chain, "figures")):
         r = f(step)
         if r:
+            r["block"] = block
             out.append(r)
             break
     if style:
         r = colour_key(step, style)
         if r:
+            r["block"] = "figures"
             out.append(r)
+    pcolors = (style or {}).get("provenance") or {}
     for i, r in enumerate(out):
+        c = r.pop("canvas")
+        r["svg"] = c.svg(r["alt"], r["label"], pcolors.get(r["label"], "#8E44AD"))
+        r["spec"] = c.spec
         r["id"] = "%s.i%d" % (step["id"], i + 1)
         r["step_id"] = step["id"]
         r["node_id"] = step["id"]
@@ -343,8 +364,9 @@ def assign_photos(photos, parts, steps):
     return {"cover": cover, "parts": parts_map, "final": final}
 
 
-def photo_public(p, url):
+def photo_public(p, url, url_small=None):
     caption = p.get("caption_ru") or ""
-    credit = "Фото: %s, %s, %s" % (p["author"], p["license"], p.get("source") or "")
-    return {"src": url, "alt": p.get("alt_ru") or caption, "caption": caption, "credit": credit.strip(", "),
+    author = re.sub(r"\s*\(https?://[^)]*\)", "", p["author"]).strip()
+    credit = "Фото: %s, %s, %s" % (author, p["license"], p.get("source") or "")
+    return {"src": url, "src_small": url_small, "alt": p.get("alt_ru") or caption, "caption": caption, "credit": credit.strip(", "),
             "source_url": p["source_url"], "license_url": p.get("license_url"), "width": p.get("width"), "height": p.get("height")}
