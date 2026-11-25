@@ -47,8 +47,9 @@ def _system(prompt, pack_text, chapter_text, scenes):
 
 def _item_line(it, byid):
     t = it["type"]
+    node = (" узел %s;" % it["node_id"]) if it.get("node_id") else ""
     if t == "claim":
-        return "[%s] claim (%s, стр. %s): %s\n   цитата автора: «%s»" % (it["id"], it.get("kind"), it.get("page_pdf"), it["text"], it.get("quote") or "")
+        return "[%s] claim (%s;%s стр. %s): %s\n   цитата автора: «%s»" % (it["id"], it.get("kind"), node, it.get("page_pdf"), it["text"], it.get("quote") or "")
     if t == "analogy":
         return "[%s] analogy: %s\n   где ломается: %s" % (it["id"], it["text"], it.get("breaks_where") or "—")
     if t == "script_line":
