@@ -39,7 +39,18 @@ def build(layer_path, out=None, with_tasks=True):
         report["tasks"] = rep
     view["tasks"] = task_list
 
+    # media built by `kmg_course video` for this chapter: <layer dir>/media/<node>/manifest.json
+    media_src = layer_path.parent / "media"
+    media = {}
+    if media_src.exists():
+        for mf in sorted(media_src.glob("*/manifest.json")):
+            m = json.loads(mf.read_text(encoding="utf-8"))
+            media.setdefault(m["node_id"], []).append(dict(m, dir=mf.parent.name))
+    for s in view["steps"]:
+        s["media"] = media.get(s["id"], [])
+
     if out.exists():
+        shutil.rmtree(out / "media", ignore_errors=True)
         for sub in ("assets", "data"):
             shutil.rmtree(out / sub, ignore_errors=True)
     (out / "assets").mkdir(parents=True, exist_ok=True)
@@ -48,9 +59,17 @@ def build(layer_path, out=None, with_tasks=True):
     shutil.copy(STATIC / "style.css", out / "assets" / "style.css")
     html = (STATIC / "index.html").read_text(encoding="utf-8").replace("{{TITLE}}", view["chapter"]["title"])
     (out / "index.html").write_text(html, encoding="utf-8")
+    for node_id, ms in media.items():
+        for m in ms:
+            dst = out / "media" / m["dir"]
+            dst.mkdir(parents=True, exist_ok=True)
+            for k in ("mp4", "scene", "audio", "subtitles", "subtitles_vtt", "passport"):
+                if m.get(k) and (media_src / m["dir"] / m[k]).exists():
+                    shutil.copy(media_src / m["dir"] / m[k], dst / m[k])
     (out / "data" / "course.js").write_text("window.COURSE = " + json.dumps(view, ensure_ascii=False) + ";\n", encoding="utf-8")
 
-    size_mb = sum(f.stat().st_size for f in out.rglob("*") if f.is_file()) / 1e6
+    # TZ: «курс без видео — не больше 30 МБ на главу» → video files are not counted
+    size_mb = sum(f.stat().st_size for f in out.rglob("*") if f.is_file() and f.suffix != ".mp4") / 1e6
     steps = view["steps"]
     no_illus = [s["id"] for s in steps if not s["illustrations"]]
     report.update({
@@ -69,7 +88,33 @@ def main(argv=None):
     b.add_argument("layer")
     b.add_argument("--out", default=None)
     b.add_argument("--no-tasks", action="store_true")
+    v = sub.add_parser("video")
+    v.add_argument("layer")
+    v.add_argument("node_id")
+    v.add_argument("--format", choices=["short", "long"], default="short")
+    v.add_argument("--template", default=None, help="шаблон сцены; по умолчанию format.scene_template узла")
+    v.add_argument("--out", default=None)
+    v.add_argument("--new-script", action="store_true", help="переписать сценарий, даже если факты узла не менялись")
+    cv = sub.add_parser("coverage")
+    cv.add_argument("layers", nargs="+")
+    cv.add_argument("--registry", default=str(ROOT / "scenes" / "registry.json"))
     args = ap.parse_args(argv)
+    if args.cmd == "coverage":
+        from .video import coverage
+        coverage.write_registry(args.registry)
+        for lp in args.layers:
+            res, out = coverage.report(lp)
+            print(json.dumps({"chapter": res["chapter"], "video_nodes": res["video_nodes"], "covered": res["covered"],
+                              "report": str(out)}, ensure_ascii=False))
+        return
+    if args.cmd == "video":
+        from .video import build as vb
+        out, pj = vb.build(args.layer, args.node_id, args.format, args.template, args.out, new_script=args.new_script)
+        m = pj["measurements"]
+        print(json.dumps({"out": str(out), "duration_s": pj["duration_s"], "wpm": m["wpm"], "lufs": m["lufs"],
+                          "voice": m["voice"], "fallback_used": m["fallback_used"], "script_cost_usd": m["script_cost_usd"],
+                          "invariants_ok": all(i["ok"] for i in m["invariants"])}, ensure_ascii=False))
+        return
     if args.cmd == "build":
         out, rep = build(args.layer, args.out, with_tasks=not args.no_tasks)
         t = rep.get("tasks") or {}

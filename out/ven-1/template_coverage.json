@@ -1,0 +1,679 @@
+{
+ "chapter": "ven-1",
+ "templates": [
+  "log_panel_decision",
+  "pressure_diffusion"
+ ],
+ "video_nodes": 49,
+ "covered": 6,
+ "rows": [
+  {
+   "order": 2,
+   "node_id": "ven-1.n-009-cd5c46",
+   "title": "Порог начинается с экономики",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 3,
+   "node_id": "ven-1.n-009-fd03f0",
+   "title": "От продуктивности к пороговой проницаемости",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 4,
+   "node_id": "ven-1.n-010-89fe48",
+   "title": "Порог условен и зависит от района",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/None не из М/Ф"
+   ]
+  },
+  {
+   "order": 6,
+   "node_id": "ven-1.n-010-92d3a4",
+   "title": "Пороги для показаний приборов",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 7,
+   "node_id": "ven-1.n-010-30ebb5",
+   "title": "Отсечка по кривым пористости",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 9,
+   "node_id": "ven-1.n-011-35b8f2",
+   "title": "Аномалия СП и глинистость пласта",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 12,
+   "node_id": "ven-1.n-012-1e063d",
+   "title": "Относительная амплитуда СП вместо абсолютной",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 18,
+   "node_id": "ven-1.n-013-ad5734",
+   "title": "Относительная амплитуда гамма-метода",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 20,
+   "node_id": "ven-1.n-013-8b76db",
+   "title": "Когда гамма-метод обманывает: минералы",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 21,
+   "node_id": "ven-1.n-014-611875",
+   "title": "Радиоактивность, которая обманывает: геохимия и разработка",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 23,
+   "node_id": "ven-1.n-014-6df0d2",
+   "title": "ЯМР видит подвижный флюид напрямую",
+   "format": "short",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 27,
+   "node_id": "ven-1.n-020-3bdfae",
+   "title": "Зачем оценивать характер насыщения сразу",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/None не из М/Ф"
+   ]
+  },
+  {
+   "order": 28,
+   "node_id": "ven-1.n-020-f3aa31",
+   "title": "Сопротивление против порога продуктивности",
+   "format": "short",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Пр не из М/Ф"
+   ]
+  },
+  {
+   "order": 29,
+   "node_id": "ven-1.n-020-f3aa31-b",
+   "title": "Плотные прослои искажают сопротивление",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 30,
+   "node_id": "ven-1.n-020-d81088",
+   "title": "Глубокое проникновение портит оценку пласта",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 33,
+   "node_id": "ven-1.n-020-073c57-b",
+   "title": "Когда в породе течёт только нефть",
+   "format": "short",
+   "router_template": "нужен новый",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 34,
+   "node_id": "ven-1.n-021-bb6612",
+   "title": "От порога насыщения к порогу сопротивления",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 35,
+   "node_id": "ven-1.n-021-fe55cb",
+   "title": "Глинистые коллекторы: СП против отношения сопротивлений",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 36,
+   "node_id": "ven-1.n-022-00ad86",
+   "title": "Карбонаты: сопротивление против пористости",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 37,
+   "node_id": "ven-1.n-022-00ad86-b",
+   "title": "Ложный отскок при глубоком проникновении",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 38,
+   "node_id": "ven-1.n-022-000e24",
+   "title": "Совмещаем кривые: где сопротивление поднимается",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 39,
+   "node_id": "ven-1.n-022-cd10af",
+   "title": "Повторные замеры сопротивления во времени",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 40,
+   "node_id": "ven-1.n-022-367847",
+   "title": "Нейтронные замеры во времени показывают коллектор",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 42,
+   "node_id": "ven-1.n-022-6ad224",
+   "title": "Нефть и пресная вода неразличимы",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 43,
+   "node_id": "ven-1.n-023-ddf410",
+   "title": "Когда и как часто делать повторные замеры",
+   "format": "interactive",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/Пр не из М/Ф"
+   ]
+  },
+  {
+   "order": 45,
+   "node_id": "ven-1.n-023-d46a83",
+   "title": "Подготовка повторных замеров и декремент λ",
+   "format": "interactive",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 46,
+   "node_id": "ven-1.n-023-469d8a",
+   "title": "Прямая по парам замеров пластов",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 47,
+   "node_id": "ven-1.n-023-559ca9",
+   "title": "Полоса ±2σ: изменился ли пласт",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 48,
+   "node_id": "ven-1.n-024-ce17d5",
+   "title": "Знак изменения показаний подсказывает флюид",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 49,
+   "node_id": "ven-1.n-024-790992",
+   "title": "Время расформирования и порог пористости",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 50,
+   "node_id": "ven-1.n-024-790992-b",
+   "title": "ИНМ-КВ: флюид у скважины за один замер",
+   "format": "short",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 51,
+   "node_id": "ven-1.n-024-745214",
+   "title": "Низкочастотная акустика за обсадной трубой",
+   "format": "short",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 52,
+   "node_id": "ven-1.n-025-6344c5",
+   "title": "Газометрия: следы нефти в растворе",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 53,
+   "node_id": "ven-1.n-025-04ec52",
+   "title": "Испытатели пластов: проверка пласта в скважине",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 54,
+   "node_id": "ven-1.n-025-5e0045",
+   "title": "Испытание портит время и режим бурения",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 56,
+   "node_id": "ven-1.n-025-a539a3-b",
+   "title": "Тонкий пласт на диаграмме выглядит иначе",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 58,
+   "node_id": "ven-1.n-025-7d4a1e",
+   "title": "Тончайшее переслаивание считают расчётом",
+   "format": "interactive",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 59,
+   "node_id": "ven-1.n-025-036084",
+   "title": "Толщина коллектора по площади аномалии СП",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 60,
+   "node_id": "ven-1.n-026-6279d5",
+   "title": "Почему граница нефть–вода размыта",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 61,
+   "node_id": "ven-1.n-027-3cf341",
+   "title": "Где проводят ВНК внутри переходной зоны",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 62,
+   "node_id": "ven-1.n-027-0651a2",
+   "title": "Как найти ВНК по сопротивлению",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 63,
+   "node_id": "ven-1.n-027-bb0c82",
+   "title": "Ложный водонефтяной контакт из-за фильтрата",
+   "format": "long_video",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 64,
+   "node_id": "ven-1.n-028-a7cc10",
+   "title": "Когда контакты ищут нейтронами",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 65,
+   "node_id": "ven-1.n-028-55670b",
+   "title": "Порог по нейтронам: выбор между двумя ошибками",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 68,
+   "node_id": "ven-1.n-029-3970ae",
+   "title": "Поправки λ за глину и пористость",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 69,
+   "node_id": "ven-1.n-029-97efeb",
+   "title": "Газ в пласте меняет показания нейтронов",
+   "format": "short",
+   "router_template": "нужен новый",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 70,
+   "node_id": "ven-1.n-029-862402",
+   "title": "Замер в работающей и остановленной скважине",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 71,
+   "node_id": "ven-1.n-029-40dcc5",
+   "title": "Газовые пласты и ГЖК по нейтронам",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 73,
+   "node_id": "ven-1.n-030-fed4cd",
+   "title": "Когда хватает двухмерного сопоставления",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/Пр не из М/Ф"
+   ]
+  }
+ ]
+}

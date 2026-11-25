@@ -4,3 +4,12 @@ version: 0.1.0
 roles:
   tasks: {provider: anthropic, model: claude-haiku-5-5, effort: medium, max_tokens: 64000, external: true,
           purpose: "задания по утверждениям узлов (ключи затем проверяются без модели)"}
+  script: {provider: anthropic, model: claude-sonnet-5-5, effort: medium, max_tokens: 16000, external: true,
+           purpose: "закадровый текст ролика по утверждениям узла (каждая фраза → id утверждений; проверяется без модели)"}
+tts:
+  primary:  {provider: microsoft-edge-online, voice: ru-RU-SvetlanaNeural, external: true, sends: "только текст сценария"}
+  fallback: [{provider: elevenlabs, voice: multilingual_v2, external: true, when: "есть ELEVENLABS_API_KEY"},
+             {provider: microsoft-edge-online, voice: ru-RU-DmitryNeural, external: true}]
+render:
+  browser: {tool: "Microsoft Edge (headless, Playwright)", external: false}
+  encoder: {tool: "FFmpeg (libx264, AAC, loudnorm −16 LUFS)", external: false}

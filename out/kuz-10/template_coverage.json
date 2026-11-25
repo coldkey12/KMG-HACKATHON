@@ -1,0 +1,556 @@
+{
+ "chapter": "kuz-10",
+ "templates": [
+  "log_panel_decision",
+  "pressure_diffusion"
+ ],
+ "video_nodes": 40,
+ "covered": 5,
+ "rows": [
+  {
+   "order": 1,
+   "node_id": "kuz-10.n-200-f60108",
+   "title": "Почему рифы так ценны",
+   "format": "short",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/None не из М/Ф"
+   ]
+  },
+  {
+   "order": 3,
+   "node_id": "kuz-10.n-200-ad2985",
+   "title": "Биостром: постройка-пласт без холма",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 4,
+   "node_id": "kuz-10.n-200-ad2985-b",
+   "title": "Биогерм: холм ниже прибоя",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 5,
+   "node_id": "kuz-10.n-201-78a465",
+   "title": "Риф: растёт быстрее соседей",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 6,
+   "node_id": "kuz-10.n-201-55813e",
+   "title": "Три рифовые постройки: пласт, холм и риф",
+   "format": "short",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 11,
+   "node_id": "kuz-10.n-203-247e09",
+   "title": "Почему породы в рифе лежат зонами",
+   "format": "short",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 14,
+   "node_id": "kuz-10.n-204-e1ef9b",
+   "title": "Рифовая система — половина атолла",
+   "format": "short",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 15,
+   "node_id": "kuz-10.n-204-dd7194",
+   "title": "Первичные поры: «придавленный стог»",
+   "format": "short",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 17,
+   "node_id": "kuz-10.n-205-d6a682",
+   "title": "Первичные поры не сохраняются",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 18,
+   "node_id": "kuz-10.n-205-1fcb0e",
+   "title": "Каверны и карст: пустоты, созданные водой",
+   "format": "short",
+   "router_template": "pressure_diffusion",
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 19,
+   "node_id": "kuz-10.n-205-1fcb0e-b",
+   "title": "Скважина, попавшая в карстовую пещеру",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 20,
+   "node_id": "kuz-10.n-205-5f6f07",
+   "title": "Поры между кристаллами",
+   "format": "short",
+   "router_template": "pressure_diffusion",
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 21,
+   "node_id": "kuz-10.n-205-3e48d1",
+   "title": "Лучшие коллекторы зависят от типа рифа",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 22,
+   "node_id": "kuz-10.n-205-424524",
+   "title": "Риф Рейнбоу А: как устроен пример",
+   "format": "interactive",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 25,
+   "node_id": "kuz-10.n-207-fcc16d",
+   "title": "Лучший коллектор рифа — на его краю",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 26,
+   "node_id": "kuz-10.n-207-9dada6",
+   "title": "Трещины на краю рифа дают высокие дебиты",
+   "format": "short",
+   "router_template": "нужен новый",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 27,
+   "node_id": "kuz-10.n-207-d32692",
+   "title": "Тенгиз: где в атолле лучшие коллекторы",
+   "format": "interactive",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 28,
+   "node_id": "kuz-10.n-209-85f007",
+   "title": "Карачаганак: разные возрасты, разные коллекторы",
+   "format": "interactive",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 29,
+   "node_id": "kuz-10.n-209-bbc1f2",
+   "title": "Асимметричные системы: зоны смещаются",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 30,
+   "node_id": "kuz-10.n-209-a3009c",
+   "title": "Риф не однороден по высоте",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 31,
+   "node_id": "kuz-10.n-209-fd9106",
+   "title": "Риф то под водой, то остров",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 32,
+   "node_id": "kuz-10.n-214-561eba",
+   "title": "Вторая причина слоистости рифа",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/None не из М/Ф"
+   ]
+  },
+  {
+   "order": 34,
+   "node_id": "kuz-10.n-214-bd33c8",
+   "title": "Плотные пачки, связанные трещинами",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 35,
+   "node_id": "kuz-10.n-214-59bda0",
+   "title": "Как флюид движется внутри рифа",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 36,
+   "node_id": "kuz-10.n-216-59ea55",
+   "title": "Где в рифе лучше течёт флюид",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 37,
+   "node_id": "kuz-10.n-216-b21ee1",
+   "title": "Что накрывает риф сверху",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 38,
+   "node_id": "kuz-10.n-216-b3c2dd",
+   "title": "Ловушка — замкнутый объём над рифом",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/None не из М/Ф"
+   ]
+  },
+  {
+   "order": 39,
+   "node_id": "kuz-10.n-217-9cff1e",
+   "title": "Что замыкает ловушку в рифе",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": "log_panel_decision",
+   "state_model": "Синтетическая скважина: породы — строки таблицы признаков книги, которые цитирует узел, между коллекторами — глина. Каждая кривая — уровень из ячейки таблицы (минимальные → средние → максимальные; диаметр — меньше/равен/больше номинального), «То же» = ячейка выше, «—» = нет данных. Решение: строки, неразличимые по первой кривой, и кривые, которые их различают, вычисляются из той же таблицы.",
+   "why_not": []
+  },
+  {
+   "order": 40,
+   "node_id": "kuz-10.n-218-2b039e",
+   "title": "Высота рифовой ловушки: от чего она зависит",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 43,
+   "node_id": "kuz-10.n-218-c2611f",
+   "title": "Тектоника поднимает и сдвигает ловушку",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 45,
+   "node_id": "kuz-10.n-219-690194",
+   "title": "Когда ловушку создаёт тектоника, а не риф",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 47,
+   "node_id": "kuz-10.n-219-02fda4",
+   "title": "Залежи в рифах под антиклиналью",
+   "format": "short",
+   "router_template": "feature_matching",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 48,
+   "node_id": "kuz-10.n-219-d0f2d9",
+   "title": "Какой высоты может быть залежь в рифе",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 49,
+   "node_id": "kuz-10.n-220-126ba6",
+   "title": "Тип рифа определяет, как его разведывать",
+   "format": "interactive",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 50,
+   "node_id": "kuz-10.n-220-323bdb",
+   "title": "Группа 1: первая скважина в центр купола",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 51,
+   "node_id": "kuz-10.n-220-10c264",
+   "title": "Группа 2: столовые рифы и атоллы — край",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 52,
+   "node_id": "kuz-10.n-221-67fd73",
+   "title": "Рифовые системы: разведка сдвигается к фронту",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 53,
+   "node_id": "kuz-10.n-221-ed1d49",
+   "title": "Самое слабое место ловушки",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Пр не из М/Ф"
+   ]
+  },
+  {
+   "order": 54,
+   "node_id": "kuz-10.n-221-6be56e",
+   "title": "Объём массивной залежи — в её своде",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 55,
+   "node_id": "kuz-10.n-222-44a115",
+   "title": "Сетка скважин: объём важнее площади",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/П не из М/Ф"
+   ]
+  }
+ ]
+}

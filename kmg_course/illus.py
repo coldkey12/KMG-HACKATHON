@@ -9,8 +9,8 @@ from xml.sax.saxutils import escape
 
 W = 360
 PAD = 12
-LINE = 21
-FONT = 16
+LINE = 24
+FONT = 19
 
 
 def _wrap(text, width_chars):
@@ -64,9 +64,9 @@ class Canvas:
     def svg(self, title, provenance="схема"):
         self.y += PAD
         # provenance badge on the image itself (TZ: «метка происхождения на кадре»)
-        badge = ('<rect class="ib" x="%d" y="%d" width="64" height="20" rx="4"/>'
-                 '<text class="ibt" x="%d" y="%d">%s</text>') % (W - 72, self.y, W - 66, self.y + 14, escape(provenance))
-        h = self.y + 28
+        badge = ('<rect class="ib" x="%d" y="%d" width="84" height="24" rx="4"/>'
+                 '<text class="ibt" x="%d" y="%d">%s</text>') % (W - 92, self.y, W - 84, self.y + 18, escape(provenance))
+        h = self.y + 32
         return ('<svg viewBox="0 0 %d %d" role="img" aria-label="%s" xmlns="http://www.w3.org/2000/svg">'
                 '<title>%s</title>%s%s</svg>') % (W, h, escape(title), escape(title), "".join(self.parts), badge)
 

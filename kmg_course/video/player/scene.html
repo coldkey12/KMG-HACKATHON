@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+  html,body{margin:0;background:{{BG}};color:#E4EBE8;font-family:system-ui,"Segoe UI",Arial,sans-serif;font-size:17px}
+  .stage{max-width:{{MAXW}}px;margin:0 auto;padding:8px}
+  canvas{display:block;width:100%;height:auto;border-radius:10px;cursor:pointer}
+  .ctl{display:flex;gap:10px;align-items:center;margin:10px 0}
+  button{font:inherit;font-weight:600;min-height:44px;padding:6px 16px;border-radius:8px;border:1px solid #5CC4BE;background:#5CC4BE;color:#0B1A19;cursor:pointer}
+  button:focus-visible,input:focus-visible{outline:3px solid #5CC4BE;outline-offset:2px}
+  input[type=range]{flex:1;min-height:44px}
+  .src{font-size:16px;color:#A9B8F2;border-left:3px solid #A9B8F2;padding:4px 10px;margin:6px 0}
+  body.record .ctl,body.record #more{display:none}
+  body.record .stage{padding:0;max-width:none}
+  body.record canvas{border-radius:0}
+</style>
+</head>
+<body class="{{MODE}}">
+<div class="stage">
+  <canvas id="cv" role="img" aria-label="{{ALT}}"></canvas>
+  <div class="ctl"><button id="play" type="button">Смотреть</button>
+    <input id="seek" type="range" min="0" step="0.01" value="0" aria-label="Время сцены"></div>
+  <div id="more" aria-live="polite"></div>
+  <audio id="voice" src="{{AUDIO}}" preload="auto"></audio>
+</div>
+<script>window.SCENE = {{SCENE}};</script>
+<script>{{TEMPLATE_JS}}</script>
+<script>{{PLAYER_JS}}</script>
+</body>
+</html>

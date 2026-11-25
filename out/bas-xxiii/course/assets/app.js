@@ -218,6 +218,24 @@
     var sections = [];
     function add(key, content) { if (content && content.length) sections.push([key, content]); }
 
+    titles.media = "Ролик и интерактивная сцена";
+    add("media", (s.media || []).map(function (m) {
+      var base = "media/" + m.dir + "/", portrait = m.format === "short";
+      var v = el("video", { controls: true, playsinline: true, preload: "metadata", src: base + m.mp4, "class": "vid" + (portrait ? " portrait" : ""),
+        "aria-label": "Ролик: " + (m.title || s.title) });
+      if (m.subtitles_vtt) v.appendChild(el("track", { kind: "subtitles", srclang: "ru", label: "Русские субтитры", src: base + m.subtitles_vtt, "default": true }));
+      var frame = null;
+      var det = el("details", { "class": "scene-box" }, [el("summary", { text: "Интерактивная сцена: та же модель, пауза на предсказание, источники по нажатию" })]);
+      det.addEventListener("toggle", function () {
+        if (det.open && !frame) {
+          frame = el("iframe", { src: base + m.scene, title: "Интерактивная сцена: " + (m.title || s.title), "class": "scene-frame" + (portrait ? " portrait" : "") });
+          det.appendChild(frame);
+        }
+      });
+      return el("div", { "class": "media-item" }, [v,
+        el("p", { "class": "small muted" }, ["Ролик собран конвейером из утверждений этого шага (" + (portrait ? "шортс 9:16" : "разбор 16:9") + ", " + Math.round(m.duration_s) + " с). ",
+          el("a", { href: base + m.passport, target: "_blank", rel: "noopener", text: "Паспорт ролика" })]), det]);
+    }));
     add("summary", B.summary.map(function (p) { return para(p, terms); }));
     var how = [];
     B.how.forEach(function (h) { how.push(el("p", { "class": "sub", text: h.sub })); h.items.forEach(function (p) { how.push(para(p, terms)); }); });

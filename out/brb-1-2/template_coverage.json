@@ -1,0 +1,383 @@
+{
+ "chapter": "brb-1-2",
+ "templates": [
+  "log_panel_decision",
+  "pressure_diffusion"
+ ],
+ "video_nodes": 27,
+ "covered": 2,
+ "rows": [
+  {
+   "order": 3,
+   "node_id": "brb-1-2.n-031-d79373",
+   "title": "Три типа дельт по фронту",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 4,
+   "node_id": "brb-1-2.n-031-8383ee",
+   "title": "Наступление и отступание моря в разрезе",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 5,
+   "node_id": "brb-1-2.n-031-e5b4d1",
+   "title": "Депоцентр и повторяющиеся циклы",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 8,
+   "node_id": "brb-1-2.n-032-a33430",
+   "title": "Фронт дельты: снизу глина, сверху песок",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 10,
+   "node_id": "brb-1-2.n-034-31ed40",
+   "title": "Как заполняется внутридельтовый залив",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 11,
+   "node_id": "brb-1-2.n-035-816d5b",
+   "title": "Намывные валы: песок от наводнений",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 12,
+   "node_id": "brb-1-2.n-035-2b1ff1",
+   "title": "Конус выноса промоины: похож на турбидит",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 13,
+   "node_id": "brb-1-2.n-035-135c5a",
+   "title": "Устьевой бар: разрез, крупнеющий вверх",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 14,
+   "node_id": "brb-1-2.n-035-eb990d",
+   "title": "Каналы промоин и волновые отмели",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 15,
+   "node_id": "brb-1-2.n-036-10069d",
+   "title": "Как узнать песчаник дельтового рукава",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/None не из М/Ф"
+   ]
+  },
+  {
+   "order": 16,
+   "node_id": "brb-1-2.n-037-9107ce",
+   "title": "Авульсия: рукав бросают, он зарастает",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 17,
+   "node_id": "brb-1-2.n-036-22af0d",
+   "title": "Разбор разреза древнего речного рукава",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": "log_panel_decision",
+   "state_model": "Синтетическая скважина: породы — строки таблицы признаков книги, которые цитирует узел, между коллекторами — глина. Каждая кривая — уровень из ячейки таблицы (минимальные → средние → максимальные; диаметр — меньше/равен/больше номинального), «То же» = ячейка выше, «—» = нет данных. Решение: строки, неразличимые по первой кривой, и кривые, которые их различают, вычисляются из той же таблицы.",
+   "why_not": []
+  },
+  {
+   "order": 19,
+   "node_id": "brb-1-2.n-039-dd576c",
+   "title": "Короткая жизнь рукава — узкие песчаники",
+   "format": "interactive",
+   "router_template": "growth_timeline",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 20,
+   "node_id": "brb-1-2.n-039-9e3c08",
+   "title": "Фронт речной дельты: снизу вверх",
+   "format": "long_video",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 21,
+   "node_id": "brb-1-2.n-039-9e3c08-b",
+   "title": "Паводковые песчаные слои фронта",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 22,
+   "node_id": "brb-1-2.n-039-1a5949",
+   "title": "Как отмирание дельты видно на фронте",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 25,
+   "node_id": "brb-1-2.n-040-901b96",
+   "title": "Фронт волновой дельты: признаки разреза",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 26,
+   "node_id": "brb-1-2.n-040-62c87a",
+   "title": "Ровный берег волновой дельты в плане",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 27,
+   "node_id": "brb-1-2.n-041-a9e07f",
+   "title": "Волны стирают часть разреза дельты",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 28,
+   "node_id": "brb-1-2.n-041-240d37",
+   "title": "Приливные рукава: воронки, а не змейки",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 29,
+   "node_id": "brb-1-2.n-041-233f3a",
+   "title": "Внутренние дельты и приливные гряды",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 30,
+   "node_id": "brb-1-2.n-042-84ea6b",
+   "title": "Разрез приливного рукава: как его узнать",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 31,
+   "node_id": "brb-1-2.n-042-f1a0e6",
+   "title": "Разрез приливного рукава в Лидни",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": "log_panel_decision",
+   "state_model": "Синтетическая скважина: породы — строки таблицы признаков книги, которые цитирует узел, между коллекторами — глина. Каждая кривая — уровень из ячейки таблицы (минимальные → средние → максимальные; диаметр — меньше/равен/больше номинального), «То же» = ячейка выше, «—» = нет данных. Решение: строки, неразличимые по первой кривой, и кривые, которые их различают, вычисляются из той же таблицы.",
+   "why_not": []
+  },
+  {
+   "order": 32,
+   "node_id": "brb-1-2.n-043-e99053",
+   "title": "Как протоки смещаются и какой бывает песок",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 33,
+   "node_id": "brb-1-2.n-043-47c5e3",
+   "title": "Межпротоковые области зависят от климата",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 34,
+   "node_id": "brb-1-2.n-044-f7014b",
+   "title": "Фронт приливной дельты: радиальные гряды",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 35,
+   "node_id": "brb-1-2.n-044-d480e7",
+   "title": "Что остаётся от приливной дельты",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/Р не из М/Ф"
+   ]
+  }
+ ]
+}

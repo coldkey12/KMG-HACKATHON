@@ -1,0 +1,604 @@
+{
+ "chapter": "lat-v",
+ "templates": [
+  "log_panel_decision",
+  "pressure_diffusion"
+ ],
+ "video_nodes": 43,
+ "covered": 3,
+ "rows": [
+  {
+   "order": 1,
+   "node_id": "lat-v.n-090-46f1de",
+   "title": "Что извлекают из каротажа скважины",
+   "format": "interactive",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/None не из М/Ф"
+   ]
+  },
+  {
+   "order": 4,
+   "node_id": "lat-v.n-091-caea18",
+   "title": "Коллекторы по форме пустот",
+   "format": "interactive",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 7,
+   "node_id": "lat-v.n-090-3102d0",
+   "title": "Диаметр скважины как признак породы",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 8,
+   "node_id": "lat-v.n-090-6c1318",
+   "title": "Водоотдача — главный показатель раствора",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 9,
+   "node_id": "lat-v.n-090-740ea6",
+   "title": "Тяжёлый раствор давит фильтрат вглубь",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 11,
+   "node_id": "lat-v.n-091-5004b9",
+   "title": "Фильтрат как пластовая вода: оценка продуктивности",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 12,
+   "node_id": "lat-v.n-091-ea5d79",
+   "title": "Бурение на воде теряет информацию",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 15,
+   "node_id": "lat-v.n-092-c50520",
+   "title": "СП и ГМ: две разные глинистости",
+   "format": "interactive",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 16,
+   "node_id": "lat-v.n-092-6e097d",
+   "title": "Продуктивность: сопротивление плюс пористость",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 17,
+   "node_id": "lat-v.n-092-205177",
+   "title": "Метод говорит больше, чем его группа",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 19,
+   "node_id": "lat-v.n-092-50da42",
+   "title": "Разрез строят в два шага",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 22,
+   "node_id": "lat-v.n-093-7c9e6b",
+   "title": "Карбонаты, сульфаты и соли по признакам",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": "log_panel_decision",
+   "state_model": "Синтетическая скважина: породы — строки таблицы признаков книги, которые цитирует узел, между коллекторами — глина. Каждая кривая — уровень из ячейки таблицы (минимальные → средние → максимальные; диаметр — меньше/равен/больше номинального), «То же» = ячейка выше, «—» = нет данных. Решение: строки, неразличимые по первой кривой, и кривые, которые их различают, вычисляются из той же таблицы.",
+   "why_not": []
+  },
+  {
+   "order": 25,
+   "node_id": "lat-v.n-095-92e46b",
+   "title": "Практикум: литологическая колонка по диаграммам",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 27,
+   "node_id": "lat-v.n-096-6933f2",
+   "title": "Прямые признаки при хорошем растворе",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: мало проверенных утверждений по строкам таблицы",
+    "pressure_diffusion: тип трудности Р/Пр не из М/Ф"
+   ]
+  },
+  {
+   "order": 28,
+   "node_id": "lat-v.n-096-f6edfb",
+   "title": "Плохой раствор стирает признаки коллектора",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 29,
+   "node_id": "lat-v.n-096-9a10eb",
+   "title": "Направление проникновения по МБК и БК",
+   "format": "interactive",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Пр не из М/Ф"
+   ]
+  },
+  {
+   "order": 30,
+   "node_id": "lat-v.n-096-6fe626",
+   "title": "Нет градиента — ещё не неколлектор",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 31,
+   "node_id": "lat-v.n-096-5d7d5c",
+   "title": "Ловить коллектор во времени",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 34,
+   "node_id": "lat-v.n-097-292e70",
+   "title": "Как вычислить критическую проницаемость",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 35,
+   "node_id": "lat-v.n-097-b19536",
+   "title": "Переносим порог на каротажные кривые",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 37,
+   "node_id": "lat-v.n-104-0fe4a2",
+   "title": "Практикум: пороги по времени и плотности",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 39,
+   "node_id": "lat-v.n-097-d47c52",
+   "title": "Чистый коллектор: хватает одного сопротивления",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: мало проверенных утверждений по строкам таблицы",
+    "pressure_diffusion: тип трудности Н/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 40,
+   "node_id": "lat-v.n-097-c6fdd8",
+   "title": "Три способа сравнить сопротивление и пористость",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 41,
+   "node_id": "lat-v.n-097-822db8",
+   "title": "Как устроена палетка ρп–kп",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 42,
+   "node_id": "lat-v.n-098-3239ae",
+   "title": "Границы нефти, смеси и воды на графике",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 43,
+   "node_id": "lat-v.n-098-edce90",
+   "title": "Точка на палетке: нефть, вода или порода",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 46,
+   "node_id": "lat-v.n-099-3ccb17",
+   "title": "Три режима течения по фазовым проницаемостям",
+   "format": "long_video",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 47,
+   "node_id": "lat-v.n-099-876c24",
+   "title": "Шкала Pн: нефть, неопределённость, вода",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 48,
+   "node_id": "lat-v.n-099-f3b880",
+   "title": "Пороги Pн определяют, что даст пласт",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/None не из М/Ф"
+   ]
+  },
+  {
+   "order": 49,
+   "node_id": "lat-v.n-100-363af1",
+   "title": "Свои пороги для каждого класса коллекторов",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 51,
+   "node_id": "lat-v.n-100-bfd6c1",
+   "title": "Практикум: определить, чем насыщен коллектор",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 53,
+   "node_id": "lat-v.n-100-23b483",
+   "title": "Пласт на контакте: считаем до ВНК",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 54,
+   "node_id": "lat-v.n-101-283519",
+   "title": "ВНК внутри переходной зоны",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 55,
+   "node_id": "lat-v.n-101-ab530e",
+   "title": "ГНК по повторным нейтронным замерам",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 56,
+   "node_id": "lat-v.n-101-e2377b",
+   "title": "Вычитаем прослои неколлектора",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Р",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Р/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 57,
+   "node_id": "lat-v.n-101-e2377b-b",
+   "title": "Тонкие слои не видны: считаем пачку целиком",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 58,
+   "node_id": "lat-v.n-102-5baa8d",
+   "title": "Доля глины в пачке по сопротивлению",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 60,
+   "node_id": "lat-v.n-102-e34db1",
+   "title": "Глинистые и плотные прослои вместе",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 63,
+   "node_id": "lat-v.n-105-4fb739",
+   "title": "Почему карбонаты труднее терригенных",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 64,
+   "node_id": "lat-v.n-107-abc009",
+   "title": "Нормализация: наложить сопротивление на пористость",
+   "format": "interactive",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Пр не из М/Ф"
+   ]
+  },
+  {
+   "order": 66,
+   "node_id": "lat-v.n-107-5b7f99",
+   "title": "Пример 54: ВНК и толщина через нормализацию",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/П не из М/Ф"
+   ]
+  },
+  {
+   "order": 67,
+   "node_id": "lat-v.n-107-2c71c2",
+   "title": "Граничная пористость зависит от пор",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 69,
+   "node_id": "lat-v.n-108-afcc56",
+   "title": "Практикум: карбонатные коллекторы",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Р не из М/Ф"
+   ]
+  }
+ ]
+}

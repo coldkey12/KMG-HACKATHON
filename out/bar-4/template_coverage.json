@@ -1,0 +1,566 @@
+{
+ "chapter": "bar-4",
+ "templates": [
+  "log_panel_decision",
+  "pressure_diffusion"
+ ],
+ "video_nodes": 45,
+ "covered": 25,
+ "rows": [
+  {
+   "order": 1,
+   "node_id": "bar-4.n-038-1c1369",
+   "title": "Что такое нестационарная фильтрация",
+   "format": "short",
+   "router_template": "pressure_diffusion",
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 2,
+   "node_id": "bar-4.n-039-589339",
+   "title": "Уравнение пьезопроводности: давление как тепло",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 4,
+   "node_id": "bar-4.n-039-fd0ace",
+   "title": "Граничные условия, меняющиеся во времени",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 5,
+   "node_id": "bar-4.n-039-3f0852",
+   "title": "Одно решение только при заданных условиях",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 7,
+   "node_id": "bar-4.n-040-7f88e8",
+   "title": "Одномерный пласт: отсчёт давления от стационара",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 8,
+   "node_id": "bar-4.n-040-35d7d5",
+   "title": "Преобразование Лапласа: как перейти к изображению",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 9,
+   "node_id": "bar-4.n-040-50711e",
+   "title": "Решение задачи в изображениях Лапласа",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 10,
+   "node_id": "bar-4.n-040-453fe6",
+   "title": "Мгновенный скачок давления на галерее",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 11,
+   "node_id": "bar-4.n-040-4b2f4a",
+   "title": "Ряд для малых времён",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 12,
+   "node_id": "bar-4.n-041-f8aa68",
+   "title": "Пока возмущение не дошло до края",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 13,
+   "node_id": "bar-4.n-041-e008d9",
+   "title": "Любой режим из суммы простых скачков",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 14,
+   "node_id": "bar-4.n-041-9a5038",
+   "title": "Большие времена: решение в виде затухающих членов",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 15,
+   "node_id": "bar-4.n-041-1ffeae",
+   "title": "Сколько времени пласт выходит на стационар",
+   "format": "interactive",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 16,
+   "node_id": "bar-4.n-041-4dcf34",
+   "title": "От долей секунды до десятилетий",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 17,
+   "node_id": "bar-4.n-042-68a3b8",
+   "title": "Разные части системы — разные часы",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 18,
+   "node_id": "bar-4.n-042-304385",
+   "title": "Приток к скважине в круглом пласте",
+   "format": "interactive",
+   "router_template": "growth_timeline",
+   "difficulty": "П",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 19,
+   "node_id": "bar-4.n-042-73ba55",
+   "title": "Решение через функции Бесселя",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 20,
+   "node_id": "bar-4.n-042-51e938",
+   "title": "Скважина с постоянным дебитом",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 21,
+   "node_id": "bar-4.n-043-afc2a1",
+   "title": "Промежуточная асимптотика: скважина мала, пласт велик",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 22,
+   "node_id": "bar-4.n-043-5ffae9",
+   "title": "Радиус скважины не влияет на давление вдали",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 23,
+   "node_id": "bar-4.n-043-c2fcfd",
+   "title": "Давление на скважине зависит от логарифма времени",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 24,
+   "node_id": "bar-4.n-043-1e85ac",
+   "title": "Идея испытаний: толкнуть пласт и слушать",
+   "format": "short",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 25,
+   "node_id": "bar-4.n-044-e1d70e",
+   "title": "Кривая восстановления давления (КВД)",
+   "format": "short",
+   "router_template": "tool_in_well",
+   "difficulty": "И",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности И/Пр не из М/Ф"
+   ]
+  },
+  {
+   "order": 26,
+   "node_id": "bar-4.n-044-454e51",
+   "title": "Что берут из наклона и отрезка прямой",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 27,
+   "node_id": "bar-4.n-044-7f24a5",
+   "title": "Почему радиус скважины «кажущийся»",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 28,
+   "node_id": "bar-4.n-044-7f24a5-b",
+   "title": "Гидропрослушивание: как найти пьезопроводность между скважинами",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/И не из М/Ф"
+   ]
+  },
+  {
+   "order": 29,
+   "node_id": "bar-4.n-045-703100",
+   "title": "Когда прямого участка на КВД нет",
+   "format": "interactive",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Н/В не из М/Ф"
+   ]
+  },
+  {
+   "order": 30,
+   "node_id": "bar-4.n-045-42e32b",
+   "title": "Обработка КВД при любом изменении дебита",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 31,
+   "node_id": "bar-4.n-045-298c11",
+   "title": "Функция ψ — паспорт пласта",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "М",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 32,
+   "node_id": "bar-4.n-046-5b8dd6",
+   "title": "ψ для однородного бесконечного пласта",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 34,
+   "node_id": "bar-4.n-046-5dabaf",
+   "title": "Две зоны вокруг скважины",
+   "format": "interactive",
+   "router_template": "log_panel_decision",
+   "difficulty": "П",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности П/Н не из М/Ф"
+   ]
+  },
+  {
+   "order": 35,
+   "node_id": "bar-4.n-047-0091e1",
+   "title": "Что даёт КВД: загрязнение и трещины",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "Пр",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности Пр/Р не из М/Ф"
+   ]
+  },
+  {
+   "order": 36,
+   "node_id": "bar-4.n-047-71245b",
+   "title": "Зачем нужны приближённые решения",
+   "format": "short",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 37,
+   "node_id": "bar-4.n-047-783935",
+   "title": "Зона возмущения: за ней пласт «не знает»",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 38,
+   "node_id": "bar-4.n-048-ba5a5a",
+   "title": "Суть метода интегральных соотношений",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 39,
+   "node_id": "bar-4.n-048-746903",
+   "title": "Давление в зоне возмущения — многочлен",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 40,
+   "node_id": "bar-4.n-048-f2956b",
+   "title": "Неизвестные и условия на краю зоны",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 41,
+   "node_id": "bar-4.n-048-2bb233",
+   "title": "Интегральные соотношения для галереи",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Ф",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 42,
+   "node_id": "bar-4.n-049-602c04",
+   "title": "Первое приближение: зона растёт как √t",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 43,
+   "node_id": "bar-4.n-049-740568",
+   "title": "Второе приближение почти точно",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 44,
+   "node_id": "bar-4.n-049-4944df",
+   "title": "Третье приближение и сравнение с точным решением",
+   "format": "interactive",
+   "router_template": "нужен новый",
+   "difficulty": "Н",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: нет признака видеоёмкости из time_change"
+   ]
+  },
+  {
+   "order": 45,
+   "node_id": "bar-4.n-050-e1cf4e",
+   "title": "Скважина с постоянным дебитом: приближённое решение",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 46,
+   "node_id": "bar-4.n-050-f39e42",
+   "title": "Нулевое и первое приближения для скважины",
+   "format": "interactive",
+   "router_template": "pressure_diffusion",
+   "difficulty": "Ф",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 47,
+   "node_id": "bar-4.n-050-d96221",
+   "title": "Ограниченный пласт: возмущение дошло до контура",
+   "format": "interactive",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  },
+  {
+   "order": 48,
+   "node_id": "bar-4.n-051-e62663",
+   "title": "Экспоненциальный выход давления на стационар",
+   "format": "interactive",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
+  }
+ ]
+}

@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Почему давление выравнивается долго</title>
+<style>
+  html,body{margin:0;background:#101614;color:#E4EBE8;font-family:system-ui,"Segoe UI",Arial,sans-serif;font-size:17px}
+  .stage{max-width:430px;margin:0 auto;padding:8px}
+  canvas{display:block;width:100%;height:auto;border-radius:10px;cursor:pointer}
+  .ctl{display:flex;gap:10px;align-items:center;margin:10px 0}
+  button{font:inherit;font-weight:600;min-height:44px;padding:6px 16px;border-radius:8px;border:1px solid #5CC4BE;background:#5CC4BE;color:#0B1A19;cursor:pointer}
+  button:focus-visible,input:focus-visible{outline:3px solid #5CC4BE;outline-offset:2px}
+  input[type=range]{flex:1;min-height:44px}
+  .src{font-size:16px;color:#A9B8F2;border-left:3px solid #A9B8F2;padding:4px 10px;margin:6px 0}
+  body.record .ctl,body.record #more{display:none}
+  body.record .stage{padding:0;max-width:none}
+  body.record canvas{border-radius:0}
+</style>
+</head>
+<body class="interactive">
+<div class="stage">
+  <canvas id="cv" role="img" aria-label="Сцена «Почему давление выравнивается долго»: D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика."></canvas>
+  <div class="ctl"><button id="play" type="button">Смотреть</button>
+    <input id="seek" type="range" min="0" step="0.01" value="0" aria-label="Время сцены"></div>
+  <div id="more" aria-live="polite"></div>
+  <audio id="voice" src="voice.mp3" preload="auto"></audio>
+</div>
+<script>window.SCENE = {"spec": {"schema": "kmg-scene-spec/0.1.0", "template": "pressure_diffusion", "format": "short", "frame_class": "B", "node_id": "bas-xxiii.n-475-e20d95", "chapter": "bas-xxiii", "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.", "objects": ["пласт-коллектор между непроницаемыми породами (разрез)", "скважина на левом краю", "заливка: понижение давления в пласте", "график понижения давления вдоль пласта", "график положения границы возмущённой зоны во времени", "датчик давления в пласте"], "params": {"kappa": 0.1335, "sound_speed": 0.85, "front_level": 0.1, "front_u": 1.1631, "t_max": 1.0, "gauge_x": 0.4}, "params_note": "Безразмерные единицы: длина пласта на экране = 1, время сцены = 1. κ подобрано так, чтобы к концу сцены граница возмущённой зоны дошла до ~85 % экрана. front_u: erfc(1,1631) = 0,1.", "assumptions": ["одномерная задача: пласт однородный, бесконечный, давление меняется только с расстоянием от скважины", "на скважине давление мгновенно понижается и дальше постоянно", "граница возмущённой зоны условно — место, где понижение давления составляет 10 % от понижения на скважине", "единицы условные: показан характер процесса, а не конкретный пласт"], "labels": {"layer": "пласт", "well": "скважина", "shading": "понижение давления", "x_axis": "расстояние от скважины →", "y_axis": "понижение давления", "curve_model": "расчёт по уравнению", "curve_wrong": "резкий фронт — неверно", "t_axis": "время →", "front_axis": "граница зоны", "front_model": "расчёт: всё медленнее", "front_wrong": "равномерно, как звук — неверно", "gauge": "датчик в пласте", "gauge_axis": "показание датчика", "time": "время"}, "exaggeration": "Не в масштабе: время и расстояние условные", "school": "русская (ГОСТ-подобная) — указывать в кадре", "palette": {"sand": "#F2D98B", "shale": "#7F8C8D", "limestone": "#9FD3C7", "dolomite": "#C7B8E0", "anhydrite": "#E6A0C4", "salt": "#FFFFFF", "fluid_gas": "#E8C547", "fluid_oil": "#7A4E2D", "fluid_water": "#3C7DD9", "fluid_filtrate": "#8FC1E8", "fluid_fresh": "#8FC1E8", "curve_res": "#9FB3C8", "curve_sp": "#C0392B", "curve_cal": "#16A085", "curve_gr": "#27AE60", "curve_nn": "#2980B9"}, "colors": {"sand": "#F2D98B", "shale": "#7F8C8D"}}, "timeline": {"beats": [{"id": "b01", "slot": "hook", "text": "Скважину открыли, а давление в пласте на удалении почти не меняется. Почему так долго?", "on_screen": "Почему давление не выравнивается сразу?", "claim_ids": [], "start": 0.0, "end": 7.233, "voice_start": 0.25, "voice_end": 6.883, "voice_dur": 6.633, "words": [{"w": "Скважину", "start": 0.091, "dur": 0.557}, {"w": "открыли", "start": 0.648, "dur": 0.477}, {"w": "а", "start": 1.25, "dur": 0.102}, {"w": "давление", "start": 1.352, "dur": 0.386}, {"w": "в", "start": 1.739, "dur": 0.057}, {"w": "пласте", "start": 1.795, "dur": 0.318}, {"w": "на", "start": 2.114, "dur": 0.091}, {"w": "удалении", "start": 2.205, "dur": 0.511}, {"w": "почти", "start": 2.716, "dur": 0.352}, {"w": "не", "start": 3.068, "dur": 0.08}, {"w": "меняется", "start": 3.148, "dur": 0.693}, {"w": "Почему", "start": 4.648, "dur": 0.432}, {"w": "так", "start": 5.08, "dur": 0.216}, {"w": "долго", "start": 5.295, "dur": 0.489}], "display_words": ["Скважину", "открыли,", "а", "давление", "в", "пласте", "на", "удалении", "почти", "не", "меняется.", "Почему", "так", "долго?"], "state": {"view": "intro", "t0": 0, "t1": 0, "provenance": "Симуляция: расчёт по уравнению"}, "mp3": "C:\\Users\\toigo\\Documents\\KMG-HACKATHON\\cache\\tts\\25a4c254e9517a54ca50ee26.mp3", "claims": []}, {"id": "b02", "slot": "misconception", "text": "Многие думают, что давление меняется во всём пласте сразу, как только открыли скважину.", "on_screen": "Мгновенно во всём пласте — неверно", "claim_ids": [], "start": 7.233, "end": 13.549, "voice_start": 7.483, "voice_end": 13.199, "voice_dur": 5.716, "words": [{"w": "Многие", "start": 0.091, "dur": 0.511}, {"w": "думают", "start": 0.602, "dur": 0.42}, {"w": "что", "start": 1.205, "dur": 0.182}, {"w": "давление", "start": 1.386, "dur": 0.432}, {"w": "меняется", "start": 1.818, "dur": 0.386}, {"w": "во", "start": 2.205, "dur": 0.068}, {"w": "всём", "start": 2.273, "dur": 0.239}, {"w": "пласте", "start": 2.511, "dur": 0.307}, {"w": "сразу", "start": 2.818, "dur": 0.409}, {"w": "как", "start": 3.5, "dur": 0.182}, {"w": "только", "start": 3.682, "dur": 0.307}, {"w": "открыли", "start": 3.989, "dur": 0.341}, {"w": "скважину", "start": 4.33, "dur": 0.534}], "display_words": ["Многие", "думают,", "что", "давление", "меняется", "во", "всём", "пласте", "сразу,", "как", "только", "открыли", "скважину."], "state": {"view": "wrong", "t0": 0, "t1": 1, "showSound": true, "showFront": true, "provenance": "Схема неверной картины + симуляция"}, "mp3": "C:\\Users\\toigo\\Documents\\KMG-HACKATHON\\cache\\tts\\6569b85ae89b5317c7529fde.mp3", "claims": []}, {"id": "b03", "slot": "prediction", "text": "Как, по-вашему, снижение давления будет двигаться от скважины вглубь пласта?", "on_screen": "Подумайте…", "claim_ids": [], "start": 13.549, "end": 20.074, "voice_start": 13.799, "voice_end": 18.774, "voice_dur": 4.975, "words": [{"w": "Как", "start": 0.091, "dur": 0.409}, {"w": "по-вашему", "start": 0.58, "dur": 0.58}, {"w": "снижение", "start": 1.284, "dur": 0.489}, {"w": "давления", "start": 1.773, "dur": 0.432}, {"w": "будет", "start": 2.205, "dur": 0.227}, {"w": "двигаться", "start": 2.432, "dur": 0.432}, {"w": "от", "start": 2.864, "dur": 0.125}, {"w": "скважины", "start": 2.989, "dur": 0.42}, {"w": "вглубь", "start": 3.409, "dur": 0.307}, {"w": "пласта", "start": 3.716, "dur": 0.477}], "display_words": ["Как,", "по-вашему,", "снижение", "давления", "будет", "двигаться", "от", "скважины", "вглубь", "пласта?"], "state": {"view": "intro", "t0": 0, "t1": 0, "provenance": "Симуляция: расчёт по уравнению"}, "mp3": "C:\\Users\\toigo\\Documents\\KMG-HACKATHON\\cache\\tts\\1f8ae30fb53905ba148ef89c.mp3", "claims": []}, {"id": "b04", "slot": "reveal", "text": "Перераспределение давления занимает время. Это заметно после пуска скважины или смены темпа отбора.", "on_screen": "Плавное расползание давления", "claim_ids": ["bas-xxiii.n-475-e20d95.c-9aee67"], "start": 20.074, "end": 27.983, "voice_start": 20.324, "voice_end": 27.633, "voice_dur": 7.309, "words": [{"w": "Перераспределение", "start": 0.091, "dur": 0.875}, {"w": "давления", "start": 0.966, "dur": 0.477}, {"w": "занимает", "start": 1.443, "dur": 0.477}, {"w": "время", "start": 1.92, "dur": 0.523}, {"w": "Это", "start": 3.261, "dur": 0.239}, {"w": "заметно", "start": 3.5, "dur": 0.432}, {"w": "после", "start": 3.932, "dur": 0.273}, {"w": "пуска", "start": 4.205, "dur": 0.273}, {"w": "скважины", "start": 4.477, "dur": 0.511}, {"w": "или", "start": 4.989, "dur": 0.193}, {"w": "смены", "start": 5.182, "dur": 0.375}, {"w": "темпа", "start": 5.557, "dur": 0.352}, {"w": "отбора", "start": 5.909, "dur": 0.591}], "display_words": ["Перераспределение", "давления", "занимает", "время.", "Это", "заметно", "после", "пуска", "скважины", "или", "смены", "темпа", "отбора."], "state": {"view": "model", "t0": 0, "t1": 1, "showFront": true, "provenance": "Симуляция: расчёт по уравнению"}, "mp3": "C:\\Users\\toigo\\Documents\\KMG-HACKATHON\\cache\\tts\\f9b9330afb532cfb1a418c21.mp3", "claims": [{"id": "bas-xxiii.n-475-e20d95.c-9aee67", "page": 475, "quote": "Характерная особенность проявления упругого режима в процессе разработки нефтяных месторождений проявляется в длительности во времени процесса перераспределения пластового давления после начала работы скважины или изменения темпа отбора жидкости из скважины."}]}, {"id": "b05", "slot": "explain", "text": "Причина — вязкость жидкости. При фильтрации в пласте возникают очень большие силы сопротивления.", "on_screen": "Вязкость тормозит процесс", "claim_ids": ["bas-xxiii.n-475-e20d95.c-728c8d"], "start": 27.983, "end": 35.848, "voice_start": 28.233, "voice_end": 35.498, "voice_dur": 7.265, "words": [{"w": "Причина", "start": 0.091, "dur": 0.58}, {"w": "вязкость", "start": 0.784, "dur": 0.477}, {"w": "жидкости", "start": 1.261, "dur": 0.648}, {"w": "При", "start": 2.693, "dur": 0.17}, {"w": "фильтрации", "start": 2.864, "dur": 0.602}, {"w": "в", "start": 3.466, "dur": 0.057}, {"w": "пласте", "start": 3.523, "dur": 0.352}, {"w": "возникают", "start": 3.875, "dur": 0.58}, {"w": "очень", "start": 4.455, "dur": 0.307}, {"w": "большие", "start": 4.761, "dur": 0.386}, {"w": "силы", "start": 5.148, "dur": 0.284}, {"w": "сопротивления", "start": 5.432, "dur": 0.977}], "display_words": ["Причина —", "вязкость", "жидкости.", "При", "фильтрации", "в", "пласте", "возникают", "очень", "большие", "силы", "сопротивления."], "state": {"view": "compare", "t0": 1, "t1": 1, "showFront": true, "showSound": true, "provenance": "Схема неверной картины + симуляция"}, "mp3": "C:\\Users\\toigo\\Documents\\KMG-HACKATHON\\cache\\tts\\b06c57edf75283a5ce21c515.mp3", "claims": [{"id": "bas-xxiii.n-475-e20d95.c-728c8d", "page": 475, "quote": "Это связано с тем, что при фильтрации вязкой жидкости в пласте возникают очень большие силы сопротивления."}]}, {"id": "b06", "slot": "explain", "text": "Чем выше проницаемость, тем быстрее процессы. Чем выше вязкость и упругость, тем медленнее.", "on_screen": "Что ускоряет, что замедляет", "claim_ids": ["bas-xxiii.n-475-e20d95.c-bbaf63", "bas-xxiii.n-475-e20d95.c-51928d"], "start": 35.848, "end": 43.801, "voice_start": 36.098, "voice_end": 43.451, "voice_dur": 7.353, "words": [{"w": "Чем", "start": 0.091, "dur": 0.295}, {"w": "выше", "start": 0.386, "dur": 0.25}, {"w": "проницаемость", "start": 0.636, "dur": 0.807}, {"w": "тем", "start": 1.682, "dur": 0.193}, {"w": "быстрее", "start": 1.875, "dur": 0.409}, {"w": "процессы", "start": 2.284, "dur": 0.625}, {"w": "Чем", "start": 3.716, "dur": 0.284}, {"w": "выше", "start": 4.0, "dur": 0.239}, {"w": "вязкость", "start": 4.239, "dur": 0.466}, {"w": "и", "start": 4.705, "dur": 0.091}, {"w": "упругость", "start": 4.795, "dur": 0.557}, {"w": "тем", "start": 5.557, "dur": 0.216}, {"w": "медленнее", "start": 5.773, "dur": 0.761}], "display_words": ["Чем", "выше", "проницаемость,", "тем", "быстрее", "процессы.", "Чем", "выше", "вязкость", "и", "упругость,", "тем", "медленнее."], "state": {"view": "compare", "t0": 1, "t1": 1, "showFront": true, "showSound": true, "provenance": "Схема неверной картины + симуляция"}, "mp3": "C:\\Users\\toigo\\Documents\\KMG-HACKATHON\\cache\\tts\\3c7480bd4ce4e4579c7b6d87.mp3", "claims": [{"id": "bas-xxiii.n-475-e20d95.c-bbaf63", "page": 475, "quote": "Неустановившиеся процессы протекают тем быстрее, чем больше коэффициент проницаемости"}, {"id": "bas-xxiii.n-475-e20d95.c-51928d", "page": 475, "quote": "и тем медленнее, чем больше вязкость жидкости $\\mu$ и коэффициенты объемной упругости жидкости $\\beta_\\text{ж}$ и твердого скелета пласта $\\beta_\\text{с}$."}]}, {"id": "b07", "slot": "data", "text": "Такую скорость перераспределения давления описывает коэффициент пьезопроводности пласта.", "on_screen": "Датчик: плавный рост с запаздыванием", "claim_ids": ["bas-xxiii.n-475-e20d95.c-05c02f"], "start": 43.801, "end": 49.834, "voice_start": 44.051, "voice_end": 49.484, "voice_dur": 5.433, "words": [{"w": "Такую", "start": 0.091, "dur": 0.364}, {"w": "скорость", "start": 0.455, "dur": 0.409}, {"w": "перераспределения", "start": 0.864, "dur": 0.75}, {"w": "давления", "start": 1.614, "dur": 0.602}, {"w": "описывает", "start": 2.216, "dur": 0.523}, {"w": "коэффициент", "start": 2.739, "dur": 0.67}, {"w": "пьезопроводности", "start": 3.409, "dur": 0.773}, {"w": "пласта", "start": 4.182, "dur": 0.477}], "display_words": ["Такую", "скорость", "перераспределения", "давления", "описывает", "коэффициент", "пьезопроводности", "пласта."], "state": {"view": "gauge", "t0": 0, "t1": 1, "showGauge": true, "provenance": "Симуляция: расчёт по уравнению"}, "mp3": "C:\\Users\\toigo\\Documents\\KMG-HACKATHON\\cache\\tts\\39539a27d9595aa6de302d73.mp3", "claims": [{"id": "bas-xxiii.n-475-e20d95.c-05c02f", "page": 480, "quote": "характеризующий скорость перераспределения пластового давления при неустановившейся фильтрации упругой жидкости"}]}, {"id": "b08", "slot": "transfer", "text": "Где ещё изменение распространяется медленно и плавно, как нагрев стержня с одного конца?", "on_screen": "Где ещё так бывает?", "claim_ids": [], "start": 49.834, "end": 57.313, "voice_start": 50.084, "voice_end": 55.713, "voice_dur": 5.629, "words": [{"w": "Где", "start": 0.091, "dur": 0.307}, {"w": "ещё", "start": 0.398, "dur": 0.239}, {"w": "изменение", "start": 0.636, "dur": 0.523}, {"w": "распространяется", "start": 1.159, "dur": 0.727}, {"w": "медленно", "start": 1.886, "dur": 0.432}, {"w": "и", "start": 2.318, "dur": 0.057}, {"w": "плавно", "start": 2.375, "dur": 0.398}, {"w": "как", "start": 3.045, "dur": 0.159}, {"w": "нагрев", "start": 3.205, "dur": 0.33}, {"w": "стержня", "start": 3.534, "dur": 0.455}, {"w": "с", "start": 3.989, "dur": 0.057}, {"w": "одного", "start": 4.045, "dur": 0.307}, {"w": "конца", "start": 4.352, "dur": 0.489}], "display_words": ["Где", "ещё", "изменение", "распространяется", "медленно", "и", "плавно,", "как", "нагрев", "стержня", "с", "одного", "конца?"], "state": {"view": "gauge", "t0": 1, "t1": 1, "showGauge": true, "provenance": "Симуляция: расчёт по уравнению"}, "mp3": "C:\\Users\\toigo\\Documents\\KMG-HACKATHON\\cache\\tts\\cf789c32903e2dd007db2879.mp3", "claims": []}], "duration": 57.313}, "format": {"w": 1080, "h": 1920}, "style": {"colors": {"bg": "#101614", "ink": "#E9F0ED", "muted": "#9CABA5", "paper": "#F5F1E6", "accent": "#5CC4BE", "chipBg": "#22302C", "chipFg": "#CFE3DE", "warnBg": "#3A2220", "warnFg": "#F08C80", "pressureRGB": "232,162,56", "curve": "#7FB8F0", "steel": "#B9C2C6", "sand": "#F2D98B", "shale": "#7F8C8D"}}, "labels": {"provenance": "Симуляция: расчёт по уравнению", "exaggeration": "Не в масштабе: время и расстояние условные"}, "mode": "interactive"};</script>
+<script>/* Template pressure_diffusion — class B (process computed from a model).
+   State model: dimensionless pressure drop D(x,t) = erfc(x / (2·√(κ·t))) — the exact solution of the
+   piezoconductivity (heat-type) equation ∂p/∂t = κ ∂²p/∂x² for a sudden constant drop at the well (x = 0).
+   Everything drawn — the shading in the layer, the profile curve, the front position, the gauge reading —
+   is computed from this one function, so picture and graphs cannot disagree.
+   The "like sound" picture (constant-speed sharp front) is drawn only when the spec asks for it, always
+   crossed out and labelled as wrong.
+   state: {view, t0, t1, showSound, showProfile, showFront, showGauge, provenance} */
+(function () {
+  "use strict";
+  function erf(x) { // Abramowitz–Stegun 7.1.26, |error| < 1.5e-7
+    var s = x < 0 ? -1 : 1; x = Math.abs(x);
+    var t = 1 / (1 + 0.3275911 * x);
+    var y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+    return s * y;
+  }
+  function model(spec) {
+    var k = spec.params.kappa, c = spec.params.sound_speed, lvl = spec.params.front_level;
+    var u = spec.params.front_u; // erfc(u) = front_level
+    return {
+      D: function (x, t) { return t <= 0 ? (x <= 0 ? 1 : 0) : 1 - erf(x / (2 * Math.sqrt(k * t))); },
+      front: function (t) { return t <= 0 ? 0 : 2 * u * Math.sqrt(k * t); },
+      sound: function (t) { return c * t; },
+      level: lvl
+    };
+  }
+
+  function axes(ctx, b, g, xl, yl) {
+    var C = g.C, U = g.U;
+    ctx.strokeStyle = C.muted; ctx.lineWidth = 3 * U;
+    ctx.beginPath(); ctx.moveTo(b.x, b.y); ctx.lineTo(b.x, b.y + b.h); ctx.lineTo(b.x + b.w, b.y + b.h); ctx.stroke();
+    ctx.fillStyle = C.muted; ctx.font = "500 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillText(xl, b.x + b.w - ctx.measureText(xl).width, b.y + b.h + 40 * U);
+    ctx.save(); ctx.translate(b.x - 18 * U, b.y + b.h); ctx.rotate(-Math.PI / 2); ctx.fillText(yl, 0, 0); ctx.restore();
+  }
+  function crossOut(ctx, x, y, s, g) {
+    ctx.strokeStyle = g.C.warnFg; ctx.lineWidth = 6 * g.U;
+    ctx.beginPath(); ctx.moveTo(x - s, y - s); ctx.lineTo(x + s, y + s); ctx.moveTo(x + s, y - s); ctx.lineTo(x - s, y + s); ctx.stroke();
+  }
+
+  function draw(ctx, box, st, spec, g) {
+    var C = g.C, U = g.U, m = model(spec), t = st.tSim || 0;
+    var gap = 26 * U;
+    var h1 = box.h * 0.30, h2 = box.h * 0.36, h3 = box.h - h1 - h2 - 2 * gap;
+    var sec = { x: box.x, y: box.y, w: box.w, h: h1 };
+    var prof = { x: box.x + 60 * U, y: sec.y + h1 + gap + 20 * U, w: box.w - 70 * U, h: h2 - 70 * U };
+    var low = { x: box.x + 60 * U, y: prof.y + h2 + gap, w: box.w - 70 * U, h: h3 - 70 * U };
+
+    /* 1. cross-section of the layer: rock above/below, reservoir band, well at x = 0 */
+    var band = { x: sec.x, y: sec.y + h1 * 0.28, w: sec.w, h: h1 * 0.44 };
+    ctx.fillStyle = C.shale; ctx.fillRect(sec.x, sec.y, sec.w, h1);
+    ctx.fillStyle = C.sand; ctx.fillRect(band.x, band.y, band.w, band.h);
+    var wellX = band.x + 34 * U, x0 = wellX + 18 * U, xw = band.x + band.w - x0;
+    var N = 160;
+    for (var i = 0; i < N; i++) {
+      var xr = i / N, d = m.D(xr, t);
+      if (d < 0.01) continue;
+      ctx.fillStyle = "rgba(" + C.pressureRGB + "," + (0.85 * d).toFixed(3) + ")";
+      ctx.fillRect(x0 + xr * xw, band.y, xw / N + 1, band.h);
+    }
+    ctx.fillStyle = C.steel; ctx.fillRect(wellX, sec.y, 18 * U, h1);
+    ctx.fillStyle = C.ink; ctx.font = "600 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillText(spec.labels.layer, band.x + 70 * U, band.y + band.h - 18 * U);
+    ctx.fillText(spec.labels.well, wellX + 26 * U, sec.y + 36 * U);
+    if (st.showSound) {
+      var xs = x0 + Math.min(1, m.sound(t)) * xw;
+      ctx.setLineDash([16 * U, 12 * U]); ctx.strokeStyle = C.warnFg; ctx.lineWidth = 5 * U;
+      ctx.beginPath(); ctx.moveTo(xs, band.y - 10 * U); ctx.lineTo(xs, band.y + band.h + 10 * U); ctx.stroke(); ctx.setLineDash([]);
+    }
+    // legend for the shading
+    ctx.fillStyle = "rgba(" + C.pressureRGB + ",0.85)"; ctx.fillRect(sec.x + sec.w - 300 * U, sec.y + h1 - 46 * U, 30 * U, 30 * U);
+    ctx.fillStyle = C.paper; ctx.font = "500 " + 26 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillText(spec.labels.shading, sec.x + sec.w - 260 * U, sec.y + h1 - 22 * U);
+
+    /* 2. profile: pressure drop along the layer at the current moment */
+    axes(ctx, prof, g, spec.labels.x_axis, spec.labels.y_axis);
+    ctx.strokeStyle = "rgb(" + C.pressureRGB + ")"; ctx.lineWidth = 7 * U; ctx.beginPath();
+    for (var j = 0; j <= 200; j++) {
+      var xx = j / 200, yy = m.D(xx, t);
+      var px = prof.x + xx * prof.w, py = prof.y + prof.h - yy * prof.h * 0.92;
+      if (j) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+    }
+    ctx.stroke();
+    ctx.fillStyle = "rgb(" + C.pressureRGB + ")"; ctx.font = "600 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillText(spec.labels.curve_model, prof.x + 16 * U, prof.y - 8 * U);
+    if (st.showSound) {
+      var s = Math.min(1, m.sound(t));
+      ctx.setLineDash([16 * U, 12 * U]); ctx.strokeStyle = C.warnFg; ctx.lineWidth = 5 * U; ctx.beginPath();
+      ctx.moveTo(prof.x, prof.y + prof.h * 0.08); ctx.lineTo(prof.x + s * prof.w, prof.y + prof.h * 0.08);
+      ctx.lineTo(prof.x + s * prof.w, prof.y + prof.h); ctx.lineTo(prof.x + prof.w, prof.y + prof.h); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = C.warnFg; ctx.fillText(spec.labels.curve_wrong, prof.x + prof.w * 0.5, prof.y - 8 * U);
+      crossOut(ctx, prof.x + s * prof.w, prof.y + prof.h * 0.55, 26 * U, g);
+    }
+
+    /* 3a. front position vs time: √t (computed) vs straight line ("like sound", crossed out) */
+    if (st.showFront) {
+      axes(ctx, low, g, spec.labels.t_axis, spec.labels.front_axis);
+      var T = spec.params.t_max;
+      ctx.strokeStyle = "rgb(" + C.pressureRGB + ")"; ctx.lineWidth = 7 * U; ctx.beginPath();
+      for (var k2 = 0; k2 <= 120; k2++) {
+        var tt = T * k2 / 120, f = Math.min(1, m.front(tt));
+        var qx = low.x + (tt / T) * low.w, qy = low.y + low.h - f * low.h;
+        if (k2) ctx.lineTo(qx, qy); else ctx.moveTo(qx, qy);
+      }
+      ctx.stroke();
+      ctx.fillStyle = "rgb(" + C.pressureRGB + ")"; ctx.beginPath();
+      ctx.arc(low.x + (t / T) * low.w, low.y + low.h - Math.min(1, m.front(t)) * low.h, 11 * U, 0, 7); ctx.fill();
+      if (st.showSound) {
+        ctx.setLineDash([16 * U, 12 * U]); ctx.strokeStyle = C.warnFg; ctx.lineWidth = 5 * U; ctx.beginPath();
+        ctx.moveTo(low.x, low.y + low.h); ctx.lineTo(low.x + low.w, low.y + low.h - Math.min(1, m.sound(T)) * low.h); ctx.stroke(); ctx.setLineDash([]);
+      }
+      ctx.font = "600 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillStyle = "rgb(" + C.pressureRGB + ")"; ctx.fillText(spec.labels.front_model, low.x + 16 * U, low.y + 30 * U);
+      if (st.showSound) { ctx.fillStyle = C.warnFg; ctx.fillText(spec.labels.front_wrong, low.x + 16 * U, low.y + 70 * U); }
+    }
+    /* 3b. what a gauge in the layer records: the same D(x,t) read at one point */
+    if (st.showGauge) {
+      var xg = spec.params.gauge_x;
+      axes(ctx, low, g, spec.labels.t_axis, spec.labels.gauge_axis);
+      var T2 = spec.params.t_max;
+      ctx.strokeStyle = C.curve; ctx.lineWidth = 7 * U; ctx.beginPath();
+      for (var k3 = 0; k3 <= 120; k3++) {
+        var t3 = T2 * k3 / 120; if (t3 > t) break;
+        var gy = low.y + low.h - m.D(xg, t3) * low.h * 0.92, gx = low.x + (t3 / T2) * low.w;
+        if (k3) ctx.lineTo(gx, gy); else ctx.moveTo(gx, gy);
+      }
+      ctx.stroke();
+      ctx.fillStyle = C.curve; ctx.font = "600 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillText(spec.labels.gauge, low.x + 16 * U, low.y + 30 * U);
+      // gauge marker in the layer
+      var gxl = x0 + xg * xw;
+      ctx.beginPath(); ctx.arc(gxl, band.y + band.h / 2, 14 * U, 0, 7); ctx.fillStyle = C.curve; ctx.fill();
+    }
+    // time counter (dimensionless)
+    ctx.fillStyle = C.muted; ctx.font = "500 " + 28 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillText(spec.labels.time + " " + t.toFixed(2), sec.x + sec.w - 220 * U, sec.y + 34 * U);
+  }
+
+  // invariants the pre-render check evaluates on sampled states (physics checklist):
+  function invariants(spec) {
+    var m = model(spec), out = [], ts = [0.05, 0.2, 0.5, 1];
+    // 1. pressure drop is largest at the well and never increases away from it (flow from high to low pressure)
+    var mono = ts.every(function (t) { var prev = 2; for (var x = 0; x <= 1; x += 0.02) { var d = m.D(x, t); if (d > prev + 1e-9) return false; prev = d; } return true; });
+    out.push({ id: "monotone_profile", ok: mono, text: "понижение давления максимально у скважины и убывает вглубь пласта (поток от высокого давления к низкому)" });
+    // 2. disturbance only grows with time at every point (no oscillation: not a wave)
+    var grow = [0.1, 0.3, 0.6].every(function (x) { var prev = -1; return ts.every(function (t) { var d = m.D(x, t); var ok = d >= prev - 1e-9; prev = d; return ok; }); });
+    out.push({ id: "no_oscillation", ok: grow, text: "в каждой точке понижение давления только растёт со временем — колебаний, как у волны, нет" });
+    // 3. front slows down: displacement in equal time steps decreases
+    var d1 = m.front(0.25) - m.front(0), d2 = m.front(0.5) - m.front(0.25), d3 = m.front(1) - m.front(0.75);
+    out.push({ id: "front_slows", ok: d1 > d2 && d2 > d3, text: "граница возмущённой зоны движется всё медленнее (∝ √t), а не с постоянной скоростью" });
+    return out;
+  }
+
+  window.TEMPLATES = window.TEMPLATES || {};
+  window.TEMPLATES.pressure_diffusion = { draw: draw, invariants: invariants };
+})();
+</script>
+<script>/* Scene player: draws a scene spec at time t on one canvas.
+   Same code for the interactive in the course (mode=interactive) and for recording video frames (mode=record).
+   window.SCENE = {spec, timeline, format:{w,h}, style, labels}; templates register in window.TEMPLATES. */
+(function () {
+  "use strict";
+  var S = window.SCENE, T = window.TEMPLATES[S.spec.template];
+  var W = S.format.w, H = S.format.h, portrait = H > W;
+  var cv = document.getElementById("cv"); cv.width = W; cv.height = H;
+  var ctx = cv.getContext("2d");
+  var C = S.style.colors;
+  var U = W / 1080; // unit: 1 at 1080 px width (portrait) — fonts scale with frame
+  if (!portrait) U = H / 1080;
+
+  function beatAt(t) {
+    var bs = S.timeline.beats;
+    for (var i = 0; i < bs.length; i++) if (t < bs[i].end) return bs[i];
+    return bs[bs.length - 1];
+  }
+  function lerp(a, b, p) { return a + (b - a) * p; }
+  function stateAt(t) {
+    var b = beatAt(t), st = Object.assign({}, b.state);
+    var p = Math.max(0, Math.min(1, (t - b.start) / Math.max(0.001, b.end - b.start)));
+    p = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // ease
+    if (st.t0 != null) st.tSim = lerp(st.t0, st.t1 != null ? st.t1 : st.t0, p);
+    st.progress = p; st.beat = b;
+    return st;
+  }
+
+  function wrap(text, maxW, font) {
+    ctx.font = font; var words = String(text).split(/\s+/), lines = [], cur = "";
+    words.forEach(function (w) { var t = cur ? cur + " " + w : w; if (ctx.measureText(t).width > maxW && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur); return lines;
+  }
+  function chip(x, y, text, fg, bg) {
+    ctx.font = "600 " + (26 * U) + "px Segoe UI, Arial, sans-serif";
+    var w = ctx.measureText(text).width + 28 * U, h = 46 * U;
+    ctx.fillStyle = bg; roundRect(x, y, w, h, 10 * U); ctx.fill();
+    ctx.fillStyle = fg; ctx.textBaseline = "middle"; ctx.fillText(text, x + 14 * U, y + h / 2); ctx.textBaseline = "alphabetic";
+    return w;
+  }
+  function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+
+  /* subtitles: chunks of ≤8 words timed by word boundaries of the voice */
+  function subtitleAt(t, b) {
+    var ws = b.words || [];
+    if (!ws.length) return b.text;
+    var rel = t - b.voice_start, idx = 0;
+    for (var i = 0; i < ws.length; i++) if (ws[i].start <= rel) idx = i;
+    var chunk = Math.floor(idx / 8) * 8;
+    // show the script's own words (with punctuation) when they align one-to-one with the voice's words
+    var shown = b.display_words && b.display_words.length === ws.length ? b.display_words : ws.map(function (w) { return w.w; });
+    return shown.slice(chunk, chunk + 8).join(" ");
+  }
+
+  function draw(t) {
+    var st = stateAt(t), b = st.beat;
+    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    var pad = 48 * U;
+    // layout boxes
+    var L = portrait
+      ? { top: { x: pad, y: 40 * U, w: W - 2 * pad, h: 70 * U }, head: { x: pad, y: 140 * U, w: W - 2 * pad, h: 250 * U },
+          scene: { x: pad, y: 420 * U, w: W - 2 * pad, h: 1120 * U }, sub: { x: pad, y: 1580 * U, w: W - 2 * pad, h: 260 * U } }
+      : T.layout === "wide"
+        ? { top: { x: pad, y: 24 * U, w: W - 2 * pad, h: 56 * U }, head: { x: pad, y: 70 * U, w: W - 2 * pad, h: 90 * U },
+            scene: { x: pad, y: 190 * U, w: W - 2 * pad, h: 700 * U }, sub: { x: pad * 4, y: 920 * U, w: W - 8 * pad, h: 140 * U } }
+        : { top: { x: pad, y: 30 * U, w: W - 2 * pad, h: 60 * U }, head: { x: pad, y: 110 * U, w: 640 * U, h: 700 * U },
+            scene: { x: 760 * U, y: 110 * U, w: W - 760 * U - pad, h: 760 * U }, sub: { x: pad, y: 900 * U, w: W - 2 * pad, h: 150 * U } };
+    // template scene
+    T.draw(ctx, L.scene, st, S.spec, { C: C, U: U, roundRect: roundRect, wrap: wrap, chip: chip, portrait: portrait });
+    // provenance + exaggeration chips (on every frame)
+    var x = L.top.x, y = L.top.y;
+    x += chip(x, y, st.provenance || S.labels.provenance, C.chipFg, C.chipBg) + 12 * U;
+    if (S.labels.exaggeration) {
+      ctx.font = "600 " + (26 * U) + "px Segoe UI, Arial, sans-serif";
+      if (x + ctx.measureText(S.labels.exaggeration).width + 28 * U > L.top.x + L.top.w) { x = L.top.x; y += 54 * U; }
+      chip(x, y, S.labels.exaggeration, C.warnFg, C.warnBg);
+    }
+    // headline (on-screen words ≤ 7–8)
+    if (b.on_screen) {
+      var wide = !portrait && T.layout === "wide";
+      var f = "700 " + (portrait ? 64 : wide ? 50 : 56) * U + "px Segoe UI, Arial, sans-serif";
+      var ls = wrap(b.on_screen, L.head.w, f); ctx.fillStyle = b.slot === "misconception" ? C.warnFg : C.ink;
+      ls.slice(0, wide ? 1 : 3).forEach(function (ln, i) { ctx.fillText(ln, L.head.x, L.head.y + (i + 1) * (wide ? 60 : 78) * U); });
+    }
+    if (b.slot === "prediction" && t > b.voice_end) {
+      ctx.fillStyle = C.accent; ctx.font = "600 " + 40 * U + "px Segoe UI, Arial, sans-serif";
+      var py = portrait ? L.head.y + 250 * U : (T.layout === "wide" ? L.head.y + 60 * U : L.head.y + 330 * U);
+      var px = T.layout === "wide" && !portrait ? L.head.x + L.head.w - 260 * U : L.head.x;
+      ctx.fillText("Подумайте…", px, py);
+    }
+    // subtitles in the safe zone
+    var sub = subtitleAt(t, b);
+    if (sub && t <= b.voice_end + 0.2) {
+      var sf = "500 " + (portrait ? 44 : 40) * U + "px Segoe UI, Arial, sans-serif";
+      var sl = wrap(sub, L.sub.w - 40 * U, sf);
+      var bh = sl.length * 58 * U + 30 * U;
+      ctx.fillStyle = "rgba(0,0,0,0.62)"; roundRect(L.sub.x, L.sub.y, L.sub.w, bh, 14 * U); ctx.fill();
+      ctx.fillStyle = "#FFFFFF"; ctx.font = sf;
+      sl.forEach(function (ln, i) { ctx.fillText(ln, L.sub.x + 20 * U, L.sub.y + 50 * U + i * 58 * U); });
+    }
+  }
+
+  window.renderAt = function (t) { draw(t); return true; };
+  window.frameData = function (t) { draw(t); return cv.toDataURL("image/png"); };
+
+  if (S.mode !== "interactive") { draw(0); return; }
+
+  /* ---------- interactive mode (course) ---------- */
+  var audio = document.getElementById("voice"), t = 0, playing = false, waitPred = null, last = null;
+  var btn = document.getElementById("play"), bar = document.getElementById("seek"), more = document.getElementById("more");
+  bar.max = S.timeline.duration;
+  function setT(v) { t = Math.max(0, Math.min(S.timeline.duration, v)); bar.value = t; draw(t); showInfo(); }
+  function showInfo() {
+    var b = beatAt(t);
+    more.textContent = "";
+    if (!b.claims || !b.claims.length) return;
+    b.claims.forEach(function (c) {
+      var d = document.createElement("div"); d.className = "src";
+      d.textContent = "стр. " + c.page + " — «" + c.quote + "»"; more.appendChild(d);
+    });
+  }
+  function tick(ts) {
+    if (!playing) return;
+    if (audio && !audio.paused) t = audio.currentTime; else if (last != null) t += (ts - last) / 1000;
+    last = ts;
+    var b = beatAt(t);
+    if (b.slot === "prediction" && t >= b.end - 0.05 && waitPred !== b.id) {
+      waitPred = b.id; pause(); btn.textContent = "Показать ответ"; return;
+    }
+    if (t >= S.timeline.duration) { pause(); setT(S.timeline.duration); return; }
+    bar.value = t; draw(t); showInfo();
+    requestAnimationFrame(tick);
+  }
+  function play() { playing = true; last = null; btn.textContent = "Пауза"; if (audio) { audio.currentTime = t; audio.play().catch(function () {}); } requestAnimationFrame(tick); }
+  function pause() { playing = false; btn.textContent = "Смотреть"; if (audio) audio.pause(); }
+  btn.addEventListener("click", function () { if (playing) pause(); else { if (t >= S.timeline.duration - 0.05) setT(0); play(); } });
+  bar.addEventListener("input", function () { pause(); setT(parseFloat(bar.value)); });
+  cv.addEventListener("click", function () { btn.click(); });
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setT(reduce ? S.timeline.duration : 0);
+})();
+</script>
+</body>
+</html>

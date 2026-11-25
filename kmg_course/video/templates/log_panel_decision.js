@@ -1,0 +1,143 @@
+/* Template log_panel_decision — class A (drawn by code from a book table).
+   spec.panel (computed in Python from the node's feature table):
+     columns [{id,label,kind}], intervals [{name,lith,fluid,values{col:0..1|null},words{col:text},top,bottom}],
+     focus [interval idx], primary col id, discriminating [col ids].
+   Every curve value is a cell of the book table; nothing is invented between cells except a short linear ramp
+   at bed boundaries. state: {view, tracks, t0,t1, focus, column, wrong, marks, decision, provenance} */
+(function () {
+  "use strict";
+  var LITH = { clay: "shale", sand: "sand", limestone: "limestone", anhydrite: "anhydrite", salt: "salt", other: "muted" };
+  var CURVE = { res: "resistivity_deep", sp: "SP", cal: "caliper", gr: "GR", nn: "neutron" };
+
+  function draw(ctx, box, st, spec, g) {
+    var C = g.C, U = g.U, P = spec.panel, cols = P.columns, iv = P.intervals;
+    var pal = spec.palette || {};
+    var showDecision = !!st.decision, panelW = showDecision ? 520 * U : 0;
+    var axisW = 70 * U, colW = 170 * U, gapW = 14 * U;
+    var nT = cols.length, trW = (box.w - axisW - colW - panelW - gapW * (nT + 2)) / nT;
+    var top = box.y + 70 * U, h = box.h - 90 * U;
+    var D = iv.length ? iv[iv.length - 1].bottom : 1;
+    function Y(d) { return top + (d / D) * h; }
+    var visible = st.view === "primary" ? 1 : Math.min(nT, 1 + Math.floor((st.tSim == null ? 1 : st.tSim) * (nT - 1) + 1e-6));
+    var partial = st.view === "primary" ? 1 : ((st.tSim == null ? 1 : st.tSim) * (nT - 1)) % 1;
+    if (visible >= nT) partial = 1;
+
+    // depth axis (depth increases downward)
+    ctx.strokeStyle = C.muted; ctx.lineWidth = 3 * U;
+    ctx.beginPath(); ctx.moveTo(box.x + axisW - 10 * U, top); ctx.lineTo(box.x + axisW - 10 * U, top + h); ctx.stroke();
+    ctx.save(); ctx.translate(box.x + 30 * U, top + h / 2); ctx.rotate(-Math.PI / 2);
+    ctx.fillStyle = C.muted; ctx.font = "500 " + 28 * U + "px Segoe UI, Arial, sans-serif"; ctx.textAlign = "center";
+    ctx.fillText(spec.labels.depth, 0, 0); ctx.restore();
+
+    // lithology column
+    var cx = box.x + axisW;
+    ctx.fillStyle = C.ink; ctx.font = "600 " + 28 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillText(spec.labels.column, cx, top - 20 * U);
+    iv.forEach(function (it, i) {
+      var y0 = Y(it.top), y1 = Y(it.bottom);
+      ctx.fillStyle = st.column ? (pal[LITH[it.lith] || "muted"] || C.muted) : "#3A4643";
+      ctx.fillRect(cx, y0, colW, y1 - y0);
+      ctx.strokeStyle = C.bg; ctx.lineWidth = 2 * U; ctx.strokeRect(cx, y0, colW, y1 - y0);
+      if (st.column && it.fluid && pal["fluid_" + it.fluid]) {
+        ctx.fillStyle = pal["fluid_" + it.fluid]; ctx.beginPath(); ctx.arc(cx + colW - 22 * U, (y0 + y1) / 2, 12 * U, 0, 7); ctx.fill();
+      }
+      if (!st.column && P.focus.indexOf(i) >= 0) {
+        ctx.fillStyle = C.ink; ctx.font = "700 " + 40 * U + "px Segoe UI, Arial, sans-serif";
+        ctx.fillText(spec.labels.hidden, cx + colW / 2 - 10 * U, (y0 + y1) / 2 + 14 * U);
+      }
+    });
+
+    // focus bands across the tracks
+    var tx0 = cx + colW + gapW, txEnd = tx0 + nT * (trW + gapW) - gapW;
+    if (st.focus) P.focus.forEach(function (i) {
+      var it = iv[i]; ctx.fillStyle = "rgba(92,196,190,0.16)";
+      ctx.fillRect(cx, Y(it.top), txEnd - cx, Y(it.bottom) - Y(it.top));
+      ctx.strokeStyle = C.accent; ctx.lineWidth = 3 * U; ctx.strokeRect(cx, Y(it.top), txEnd - cx, Y(it.bottom) - Y(it.top));
+    });
+
+    // tracks
+    for (var k = 0; k < nT; k++) {
+      var col = cols[k], x = tx0 + k * (trW + gapW);
+      ctx.strokeStyle = C.chipBg; ctx.lineWidth = 2 * U; ctx.strokeRect(x, top, trW, h);
+      ctx.fillStyle = C.ink; ctx.font = "600 " + 26 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillText(col.label, x + 6 * U, top - 44 * U);
+      ctx.fillStyle = C.muted; ctx.font = "500 " + 22 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillText(col.kind === "diameter" ? "уже ← ном. → шире" : "мин ← → макс", x + 6 * U, top - 16 * U);
+      if (k >= visible) continue;
+      var frac = k === visible - 1 ? partial : 1;
+      ctx.strokeStyle = pal["curve_" + col.id] || C.curve; ctx.lineWidth = 5 * U; ctx.beginPath();
+      var started = false, dMax = D * frac;
+      iv.forEach(function (it, i) {
+        var v = it.values[col.id];
+        var ramp = (it.bottom - it.top) * 0.08;
+        [[it.top + ramp, v], [it.bottom - ramp, v]].forEach(function (pt) {
+          if (pt[0] > dMax) return;
+          if (pt[1] == null) { started = false; return; }
+          var px = x + (0.08 + 0.84 * pt[1]) * trW, py = Y(pt[0]);
+          if (!started) { ctx.moveTo(px, py); started = true; } else ctx.lineTo(px, py);
+        });
+      });
+      ctx.stroke();
+      // gaps "no data": dashed grey
+      iv.forEach(function (it) {
+        if (it.values[col.id] != null || it.top > dMax) return;
+        ctx.setLineDash([8 * U, 8 * U]); ctx.strokeStyle = C.muted; ctx.lineWidth = 2 * U;
+        ctx.beginPath(); ctx.moveTo(x + trW / 2, Y(it.top)); ctx.lineTo(x + trW / 2, Y(Math.min(it.bottom, dMax))); ctx.stroke(); ctx.setLineDash([]);
+      });
+      if (st.marks && frac >= 1 && k > 0) {
+        var disc = P.discriminating.indexOf(col.id) >= 0;
+        ctx.fillStyle = disc ? "#86C98C" : C.muted; ctx.font = "700 " + 24 * U + "px Segoe UI, Arial, sans-serif";
+        ctx.fillText(disc ? "✓ " + spec.labels.differs : "= " + spec.labels.same, x + 6 * U, top + h + 30 * U);
+      }
+    }
+    if (st.marks) {
+      ctx.fillStyle = C.muted; ctx.font = "700 " + 24 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillText("= " + spec.labels.same, tx0 + 6 * U, top + h + 30 * U);
+    }
+    if (st.wrong) {
+      var f0 = iv[P.focus[0]], yy = (Y(f0.top) + Y(f0.bottom)) / 2;
+      ctx.fillStyle = C.warnBg; g.roundRect(tx0 + trW + 30 * U, yy - 34 * U, 520 * U, 68 * U, 10 * U); ctx.fill();
+      ctx.fillStyle = C.warnFg; ctx.font = "700 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillText("✗ " + spec.labels.wrong_tag, tx0 + trW + 46 * U, yy + 10 * U);
+    }
+
+    // decision panel: features (table words) -> conclusion
+    if (showDecision) {
+      var px0 = txEnd + 2 * gapW, py = top;
+      ctx.fillStyle = C.chipBg; g.roundRect(px0, top - 60 * U, panelW - gapW, h + 60 * U, 12 * U); ctx.fill();
+      ctx.fillStyle = C.ink; ctx.font = "700 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillText(spec.labels.decision, px0 + 18 * U, top - 18 * U);
+      P.focus.forEach(function (i) {
+        var it = iv[i]; py += 20 * U;
+        ctx.fillStyle = C.accent; ctx.font = "700 " + 28 * U + "px Segoe UI, Arial, sans-serif";
+        ctx.fillText(st.column ? it.name : "интервал " + (i + 1), px0 + 18 * U, py += 30 * U);
+        ctx.font = "500 " + 24 * U + "px Segoe UI, Arial, sans-serif";
+        cols.forEach(function (c) {
+          var w = it.words[c.id]; if (!w) return;
+          var disc = P.discriminating.indexOf(c.id) >= 0;
+          ctx.fillStyle = disc ? C.ink : C.muted;
+          ctx.fillText((disc ? "▸ " : "  ") + c.label + ": " + w, px0 + 18 * U, py += 32 * U);
+        });
+        py += 10 * U;
+      });
+    }
+  }
+
+  function invariants(spec) {
+    var P = spec.panel, iv = P.intervals, out = [];
+    out.push({ id: "depth_down", ok: iv.every(function (it, i) { return it.bottom > it.top && (!i || it.top >= iv[i - 1].bottom - 1e-9); }),
+      text: "глубина растёт вниз, пласты идут по порядку без перекрытий" });
+    var byName = {}; var same = iv.every(function (it) { var k = JSON.stringify(it.values); if (byName[it.name] && byName[it.name] !== k) return false; byName[it.name] = k; return true; });
+    out.push({ id: "same_rock_same_reading", ok: same, text: "одна и та же порода даёт одинаковые показания во всех своих интервалах (кривые из одной таблицы)" });
+    var f = P.focus.map(function (i) { return iv[i]; });
+    out.push({ id: "focus_ambiguous", ok: f.length >= 2 && f.every(function (it) { return it.values[P.primary] === f[0].values[P.primary]; }),
+      text: "подсвеченные интервалы неразличимы по первой кривой (это и есть вопрос ролика)" });
+    out.push({ id: "discriminators_real", ok: P.discriminating.length > 0 && P.discriminating.every(function (c) {
+      var vs = f.map(function (it) { return it.values[c]; }); return vs.every(function (v) { return v != null; }) && vs.some(function (v) { return v !== vs[0]; }); }),
+      text: "кривые с меткой «различает» действительно дают разные уровни у подсвеченных интервалов" });
+    return out;
+  }
+
+  window.TEMPLATES = window.TEMPLATES || {};
+  window.TEMPLATES.log_panel_decision = { draw: draw, invariants: invariants, layout: "wide" };
+})();
