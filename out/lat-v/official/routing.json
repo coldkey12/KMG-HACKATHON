@@ -1,0 +1,1178 @@
+{
+ "chapter": "lat-v",
+ "routes": [
+  {
+   "node_id": "lat-v.n-090-46f1de",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 2,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "tool_in_well",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности И; критерии видеоёмкости: time_change, invisible_visible.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-090-cdc869",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности И; критерии видеоёмкости: invisible_visible.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-091-cfd6d5",
+   "format": "карточки",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "узел в основном из определений → карточки. Тип трудности Р; критерии видеоёмкости: нет.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-091-caea18",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "geometry_3d",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-091-ca11b3",
+   "format": "текст",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности Р; критерии видеоёмкости: counterintuitive.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-090-8911d0",
+   "format": "текст",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности Н; критерии видеоёмкости: cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-090-3102d0",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Р; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-090-6c1318",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности М; критерии видеоёмкости: invisible_visible, cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-090-740ea6",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности М; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-091-eb6d6e",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-091-5004b9",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Н; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-091-ea5d79",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Н; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-091-a9239a",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-091-30158a",
+   "format": "текст",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности И; критерии видеоёмкости: counterintuitive.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-092-c50520",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "tool_in_well",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности И; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-092-6e097d",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-092-205177",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 2,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Н; критерии видеоёмкости: time_change, invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-092-9205d8",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Пр; критерии видеоёмкости: нет.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-092-50da42",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-092-02e7d0",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Н; критерии видеоёмкости: counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-092-fe1183",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Р; критерии видеоёмкости: counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-093-7c9e6b",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Р; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-092-fe1183-b",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-095-2b3dbb",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Н; критерии видеоёмкости: cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-095-92e46b",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-096-b66f36",
+   "format": "карточки",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "узел в основном из определений → карточки. Тип трудности Р; критерии видеоёмкости: counterintuitive.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-096-6933f2",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Р; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-096-f6edfb",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Н; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-096-9a10eb",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "tool_in_well",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности И; критерии видеоёмкости: invisible_visible, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-096-6fe626",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Н; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-096-5d7d5c",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 2,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "growth_timeline",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности В; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-096-0c3050",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Пр; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-096-7d6389",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-097-292e70",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-097-b19536",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-097-f87e38",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-104-0fe4a2",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: invisible_visible, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-097-5899cb",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Ф; критерии видеоёмкости: invisible_visible.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-097-d47c52",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Н; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-097-c6fdd8",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-097-822db8",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-098-3239ae",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-098-edce90",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-098-3acb3f",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Пр; критерии видеоёмкости: нет.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-099-56653d",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 2,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Н; критерии видеоёмкости: time_change.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-099-3ccb17",
+   "format": "длинное видео",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "решение на данных по рисунку/примеру и ≥3 критерия видеоёмкости → разбор 16:9 с синхронными видами. Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-099-876c24",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-099-f3b880",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-100-363af1",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-100-700af3",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Пр; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-100-bfd6c1",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-100-f776cc",
+   "format": "текст",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности П; критерии видеоёмкости: нет.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-100-23b483",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: invisible_visible, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-101-283519",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-101-ab530e",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 2,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности В; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-101-e2377b",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Р; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-101-e2377b-b",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-102-5baa8d",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-102-0f2868",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-102-e34db1",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Н; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-102-34141a",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Пр; критерии видеоёмкости: invisible_visible.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-104-8686c7",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Пр; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-105-4fb739",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Н; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-107-abc009",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": "tool_in_well",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности И; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-107-d15d8b",
+   "format": "текст",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности Н; критерии видеоёмкости: нет.",
+   "data_decision": false
+  },
+  {
+   "node_id": "lat-v.n-107-5b7f99",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: invisible_visible, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-107-2c71c2",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Н; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-107-1791ce",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Пр; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "lat-v.n-108-afcc56",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": "log_panel_decision",
+   "template_needed": false,
+   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Пр; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": true
+  }
+ ]
+}

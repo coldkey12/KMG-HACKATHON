@@ -1,0 +1,3515 @@
+{
+ "chapter": "bas-xxiii",
+ "rows": [
+  {
+   "unit_id": "u-474-982551",
+   "kind": "heading",
+   "page_pdf": 474,
+   "excerpt": "Глава XXIII",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-474-d92566",
+   "kind": "heading",
+   "page_pdf": 474,
+   "excerpt": "НЕУСТАНОВИВШЕЕСЯ ДВИЖЕНИЕ УПРУГОЙ ЖИДКОСТИ В УПРУГОМ ПЛАСТЕ",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-474-e95feb",
+   "kind": "heading",
+   "page_pdf": 474,
+   "excerpt": "§1. Упругий режим пласта и его характерные особенности",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-474-d10c22",
+   "kind": "paragraph",
+   "page_pdf": 474,
+   "excerpt": "При разработке и эксплуатации месторождений углеводородного сырья в пластах часто возникают неустановившиеся",
+   "node_ids": [
+    "bas-xxiii.n-474-d10c22",
+    "bas-xxiii.n-474-d10c22-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-474-f05555",
+   "kind": "paragraph",
+   "page_pdf": 474,
+   "excerpt": "Математическая модель, которая будет сформулирована далее, учитывает проявление упругих сил в однофазном",
+   "node_ids": [
+    "bas-xxiii.n-474-f05555"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-474-b6f56a",
+   "kind": "paragraph",
+   "page_pdf": 474,
+   "excerpt": "При пуске скважины в эксплуатацию в условиях упругого режима движение жидкости начинается",
+   "node_ids": [
+    "bas-xxiii.n-474-d10c22-b",
+    "bas-xxiii.n-478-4cc09f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-474-eacc1d",
+   "kind": "paragraph",
+   "page_pdf": 474,
+   "excerpt": "В некоторых случаях приток жидкости к забоям скважин поддерживается и напором воды,",
+   "node_ids": [
+    "bas-xxiii.n-474-eacc1d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-475-e20d95",
+   "kind": "paragraph",
+   "page_pdf": 475,
+   "excerpt": "Характерная особенность проявления упругого режима в процессе разработки нефтяных месторождений проявляется в",
+   "node_ids": [
+    "bas-xxiii.n-475-e20d95",
+    "bas-xxiii.n-478-4cc09f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-475-052a3f",
+   "kind": "paragraph",
+   "page_pdf": 475,
+   "excerpt": "Первыми исследователями, разрабатывавшими теорию упругого режима в 30-х годах 20-го века, были",
+   "node_ids": [
+    "bas-xxiii.n-475-052a3f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-475-0449fa",
+   "kind": "heading",
+   "page_pdf": 475,
+   "excerpt": "§2. Подсчет упругого запаса жидкости в пласте",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-475-a98103",
+   "kind": "paragraph",
+   "page_pdf": 475,
+   "excerpt": "Под упругим запасом жидкости в пласте понимают количество жидкости, которое можно извлечь",
+   "node_ids": [
+    "bas-xxiii.n-475-a98103"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-475-9f8dd3",
+   "kind": "paragraph",
+   "page_pdf": 475,
+   "excerpt": "Упругий запас жидкости в пласте можно подсчитать следующим образом. Выделим мысленно элемент",
+   "node_ids": [
+    "bas-xxiii.n-475-9f8dd3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-32ecea",
+   "kind": "formula",
+   "page_pdf": 476,
+   "excerpt": "- beta_{ text{ж}} V_{0 text{ж}} Delta p = Delta V_{ text{ж}} quad",
+   "node_ids": [
+    "bas-xxiii.n-475-9f8dd3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-e17829",
+   "kind": "paragraph",
+   "page_pdf": 476,
+   "excerpt": "Для дальнейшего использования этих формул необходимо внести некоторые уточнения. При определении формулы",
+   "node_ids": [
+    "bas-xxiii.n-476-e17829",
+    "bas-xxiii.n-478-4cc09f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-8ae6d7",
+   "kind": "formula",
+   "page_pdf": 476,
+   "excerpt": "Delta V_{ text{з}} = beta_{ text{ж}} V_{0 text{ж}} Delta p + beta_{",
+   "node_ids": [
+    "bas-xxiii.n-476-e17829"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-d135ab",
+   "kind": "paragraph",
+   "page_pdf": 476,
+   "excerpt": "Учтем, что начальный объем жидкости, насыщающей элемент объема пласта V_0 , равен",
+   "node_ids": [
+    "bas-xxiii.n-476-d135ab"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-aa46a8",
+   "kind": "formula",
+   "page_pdf": 476,
+   "excerpt": "V_{0 text{ж}} = m V_0, quad (23.2)",
+   "node_ids": [
+    "bas-xxiii.n-476-d135ab"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-f59f3d",
+   "kind": "paragraph",
+   "page_pdf": 476,
+   "excerpt": "m – пористость пласта.",
+   "node_ids": [
+    "bas-xxiii.n-476-d135ab"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-3516f6",
+   "kind": "paragraph",
+   "page_pdf": 476,
+   "excerpt": "Тогда формулу (23.1) с учетом равенства (23.2) можно переписать в следующем виде:",
+   "node_ids": [
+    "bas-xxiii.n-476-d135ab"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-771172",
+   "kind": "formula",
+   "page_pdf": 476,
+   "excerpt": "Delta V_{ text{з}} = (m beta_{ text{ж}} + beta_{ text{с}}) V_0 Delta",
+   "node_ids": [
+    "bas-xxiii.n-476-d135ab",
+    "bas-xxiii.n-476-30bb03"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-30bb03",
+   "kind": "paragraph",
+   "page_pdf": 476,
+   "excerpt": "или",
+   "node_ids": [
+    "bas-xxiii.n-476-30bb03"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-ffa3d2",
+   "kind": "formula",
+   "page_pdf": 476,
+   "excerpt": "Delta V_{ text{з}} = beta^ V_0 Delta p, quad (23.4)",
+   "node_ids": [
+    "bas-xxiii.n-476-30bb03"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-c9a8de",
+   "kind": "paragraph",
+   "page_pdf": 476,
+   "excerpt": "где",
+   "node_ids": [
+    "bas-xxiii.n-476-30bb03"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-b2542f",
+   "kind": "formula",
+   "page_pdf": 476,
+   "excerpt": "beta^ = m beta_{ text{ж}} + beta_{ text{с}}. quad (23.5)",
+   "node_ids": [
+    "bas-xxiii.n-476-30bb03"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-7cc38b",
+   "kind": "paragraph",
+   "page_pdf": 476,
+   "excerpt": "Коэффициент beta^ называется коэффициентом упругоемкости пласта. Из формулы (23.4) следует, что коэффициент",
+   "node_ids": [
+    "bas-xxiii.n-476-30bb03"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-ffd768",
+   "kind": "formula",
+   "page_pdf": 476,
+   "excerpt": "beta^ = frac{ Delta V_{ text{з}}}{V_0 Delta p}.",
+   "node_ids": [
+    "bas-xxiii.n-476-30bb03"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-476-30999c",
+   "kind": "paragraph",
+   "page_pdf": 476,
+   "excerpt": "Если формулы (23.3) или (23.4) относить к разрабатываемому в условиях замкнуто-упругого режима",
+   "node_ids": [
+    "bas-xxiii.n-476-30999c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-716f44",
+   "kind": "formula",
+   "page_pdf": 477,
+   "excerpt": "Delta p = p_ kappa - bar{p}, quad (23.6)",
+   "node_ids": [
+    "bas-xxiii.n-476-30999c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-9d1691",
+   "kind": "paragraph",
+   "page_pdf": 477,
+   "excerpt": "где p_ kappa – начальное пластовое давление; bar{p} – средневзвешенное по объему",
+   "node_ids": [
+    "bas-xxiii.n-476-30999c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-eaa29a",
+   "kind": "paragraph",
+   "page_pdf": 477,
+   "excerpt": "Вычислить средневзвешенное пластовое давление bar{p} можно, если известна геометрия возмущенной части пласта",
+   "node_ids": [
+    "bas-xxiii.n-476-30999c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-8060ac",
+   "kind": "paragraph",
+   "page_pdf": 477,
+   "excerpt": "Дифференцируя равенство (23.4), получим",
+   "node_ids": [
+    "bas-xxiii.n-477-8060ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-4d00f6",
+   "kind": "formula",
+   "page_pdf": 477,
+   "excerpt": "d( Delta V_3) = beta^ d[V_0(t) Delta p].",
+   "node_ids": [
+    "bas-xxiii.n-477-8060ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-917ec4",
+   "kind": "paragraph",
+   "page_pdf": 477,
+   "excerpt": "С другой стороны, изменение упругого запаса жидкости в пласте за время dt",
+   "node_ids": [
+    "bas-xxiii.n-477-8060ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-686c7d",
+   "kind": "formula",
+   "page_pdf": 477,
+   "excerpt": "d( Delta V_3) = Q(t) dt,",
+   "node_ids": [
+    "bas-xxiii.n-477-8060ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-dbdba3",
+   "kind": "paragraph",
+   "page_pdf": 477,
+   "excerpt": "где Q(t) – дебит всех скважин, эксплуатирующих данную нефтяную залежь.",
+   "node_ids": [
+    "bas-xxiii.n-477-8060ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-71fac3",
+   "kind": "paragraph",
+   "page_pdf": 477,
+   "excerpt": "Приравняв правые части двух последних равенств, получим дифференциальное уравнение истощения нефтяной залежи",
+   "node_ids": [
+    "bas-xxiii.n-477-8060ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-00cf57",
+   "kind": "formula",
+   "page_pdf": 477,
+   "excerpt": "beta^ d[V_0(t) Delta p] = Q(t) dt. quad (23.7)",
+   "node_ids": [
+    "bas-xxiii.n-477-8060ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-c4d919",
+   "kind": "paragraph",
+   "page_pdf": 477,
+   "excerpt": "Полученное соотношение далее будет использоваться при построении приближенных решений теории упругого режима.",
+   "node_ids": [
+    "bas-xxiii.n-477-8060ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-477-cff84e",
+   "kind": "heading",
+   "page_pdf": 477,
+   "excerpt": "§3. Математическая модель неустановившейся фильтрации упругой жидкости в упругой пористой среде",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-477-c7007e",
+   "kind": "paragraph",
+   "page_pdf": 477,
+   "excerpt": "Изучение гидродинамики упругого режима фильтрации имеет важнейшее значение как для теории, так",
+   "node_ids": [
+    "bas-xxiii.n-477-c7007e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-c73118",
+   "kind": "paragraph",
+   "page_pdf": 478,
+   "excerpt": "Для вывода основных дифференциальных уравнений фильтрации упругой жидкости в упругой пористой среде",
+   "node_ids": [
+    "bas-xxiii.n-478-c73118"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-70bd01",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "frac{ partial m rho}{ partial t} + text{div } rho bar{w} =",
+   "node_ids": [
+    "bas-xxiii.n-478-c73118"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-6df6fb",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "bar{w} = - frac{k}{ mu}( text{grad } p + rho bar{f}), quad",
+   "node_ids": [
+    "bas-xxiii.n-478-c73118"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-2c8af8",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "rho = rho(p), m = m(p), k = k(p), mu = mu(p),",
+   "node_ids": [
+    "bas-xxiii.n-478-c73118"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-f10753",
+   "kind": "paragraph",
+   "page_pdf": 478,
+   "excerpt": "которая после пренебрежения массовыми силами и введения обобщенной функции Лейбензона, преобразуется к",
+   "node_ids": [
+    "bas-xxiii.n-478-f10753",
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-b4983d",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "frac{ partial m rho}{ partial t} - Delta P = 0,",
+   "node_ids": [
+    "bas-xxiii.n-478-f10753"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-559d95",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "rho bar{w} = - text{grad } P,",
+   "node_ids": [
+    "bas-xxiii.n-478-f10753"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-c09b58",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "rho = rho(p), m = m(p), k = k(p), mu = mu(p),",
+   "node_ids": [
+    "bas-xxiii.n-478-f10753"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-1077dd",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "P = int frac{k(p)}{ mu(p)} rho(p) , dp.",
+   "node_ids": [
+    "bas-xxiii.n-478-f10753"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-4cc09f",
+   "kind": "paragraph",
+   "page_pdf": 478,
+   "excerpt": "В качестве уравнений состояния среды и жидкости воспользуемся уравнениями состояния упругой жидкости",
+   "node_ids": [
+    "bas-xxiii.n-478-4cc09f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-197fed",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "rho = rho_0 [1 + beta_ infty (p - p_0)], quad (23.10)",
+   "node_ids": [
+    "bas-xxiii.n-478-4cc09f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-0eeaa8",
+   "kind": "formula",
+   "page_pdf": 478,
+   "excerpt": "m = m_0 + beta_c (p - p_0). quad (23.11)",
+   "node_ids": [
+    "bas-xxiii.n-478-4cc09f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-478-80aa63",
+   "kind": "paragraph",
+   "page_pdf": 478,
+   "excerpt": "Для проницаемости и вязкости примем k = text{const} и mu = text{const}",
+   "node_ids": [
+    "bas-xxiii.n-478-80aa63",
+    "bas-xxiii.n-479-e3dd4b",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-00e20a",
+   "kind": "heading",
+   "page_pdf": 479,
+   "excerpt": "§4. Вывод дифференциального уравнения фильтрации упругой жидкости в упругой пористой среде по",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-479-e3dd4b",
+   "kind": "paragraph",
+   "page_pdf": 479,
+   "excerpt": "Обратимся теперь к математической модели неустановившегося движения упругого флюида, подчиняющегося закону Дарси,",
+   "node_ids": [
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-b4983d",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "frac{ partial m rho}{ partial t} - Delta P = 0,",
+   "node_ids": [
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-8066fd",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "rho dot{w} = - text{grad } P,",
+   "node_ids": [
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-b12df6",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "rho = rho_0[1 + beta_ infty(p - p_0)],",
+   "node_ids": [
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-3d36ad",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "m = m_0 + beta_c(p - p_0),",
+   "node_ids": [
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-8a66e1",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "k = text{const}, mu = text{const},",
+   "node_ids": [
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-b4493f",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "P = frac{k}{ mu} int rho , dp.",
+   "node_ids": [
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-9d0847",
+   "kind": "paragraph",
+   "page_pdf": 479,
+   "excerpt": "Понятно, что все уравнения системы определяют математическую модель, но для постановки и",
+   "node_ids": [
+    "bas-xxiii.n-479-e3dd4b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-eb237c",
+   "kind": "paragraph",
+   "page_pdf": 479,
+   "excerpt": "Подставив в него функцию Лейбензона, получим",
+   "node_ids": [
+    "bas-xxiii.n-479-eb237c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-1e820f",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "frac{ partial(m rho)}{ partial t} = frac{k}{ mu} Delta int rho ,",
+   "node_ids": [
+    "bas-xxiii.n-479-eb237c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-abb043",
+   "kind": "paragraph",
+   "page_pdf": 479,
+   "excerpt": "Теперь преобразуем выражение в левой части уравнения (23.12), для чего используем уравнения",
+   "node_ids": [
+    "bas-xxiii.n-479-abb043"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-ced750",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "rho = rho_0[1 + beta_ infty(p - p_0)], quad m = m_0",
+   "node_ids": [
+    "bas-xxiii.n-479-abb043"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-b2eb1f",
+   "kind": "paragraph",
+   "page_pdf": 479,
+   "excerpt": "и вычислим произведение m rho",
+   "node_ids": [
+    "bas-xxiii.n-479-abb043"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-4394ea",
+   "kind": "formula",
+   "page_pdf": 479,
+   "excerpt": "m rho = m_0 rho_0 + (m_0 rho_0 beta_ infty + rho_0",
+   "node_ids": [
+    "bas-xxiii.n-479-abb043"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-479-c00733",
+   "kind": "paragraph",
+   "page_pdf": 479,
+   "excerpt": "Последним слагаемым в правой части полученного выражения ввиду его малости по сравнению",
+   "node_ids": [
+    "bas-xxiii.n-479-abb043"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-04d2ff",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "(напомним, что для нефтей beta_ text{ж} изменяется в диапазоне от 7 cdot10^{-10}",
+   "node_ids": [
+    "bas-xxiii.n-479-abb043",
+    "bas-xxiii.n-480-ef2409"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-ef2409",
+   "kind": "formula",
+   "page_pdf": 480,
+   "excerpt": "m rho = m_0 rho_0 left[ 1 + beta^ (p - p_0)/m_0",
+   "node_ids": [
+    "bas-xxiii.n-480-ef2409"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-fa10a2",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "откуда после дифференцирования выражения по времени t находим",
+   "node_ids": [
+    "bas-xxiii.n-480-ef2409"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-7f8c75",
+   "kind": "formula",
+   "page_pdf": 480,
+   "excerpt": "frac{ partial(m rho)}{ partial t} = rho_0 beta^ frac{ partial p}{ partial",
+   "node_ids": [
+    "bas-xxiii.n-480-ef2409"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-00c9ed",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "Теперь преобразуем правую часть равенства (23.12)",
+   "node_ids": [
+    "bas-xxiii.n-480-00c9ed"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-a0e955",
+   "kind": "formula",
+   "page_pdf": 480,
+   "excerpt": "frac{k}{ mu} Delta left( int rho dp right).",
+   "node_ids": [
+    "bas-xxiii.n-480-00c9ed"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-6eb3df",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "Подставив под знак интеграла уравнение состояния упругой жидкости (23.10), получим",
+   "node_ids": [
+    "bas-xxiii.n-480-00c9ed"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-d049ff",
+   "kind": "formula",
+   "page_pdf": 480,
+   "excerpt": "frac{k}{ mu} Delta left( int rho dp right) = frac{k}{ mu} Delta",
+   "node_ids": [
+    "bas-xxiii.n-480-00c9ed"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-82199a",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "но снова учитывая, что жидкость слабосжимаемая и коэффициент beta_ text{ж} мал, пренебрежем",
+   "node_ids": [
+    "bas-xxiii.n-480-00c9ed"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-f965b6",
+   "kind": "formula",
+   "page_pdf": 480,
+   "excerpt": "frac{k}{ mu} Delta left( int rho dp right) = frac{k}{ mu} rho_0",
+   "node_ids": [
+    "bas-xxiii.n-480-00c9ed"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-b6113a",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "Подставив (23.13) и (23.15) в исходное дифференциальное уравнение (23.12), получим дифференциальное уравнение",
+   "node_ids": [
+    "bas-xxiii.n-480-b6113a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-0a69a2",
+   "kind": "formula",
+   "page_pdf": 480,
+   "excerpt": "beta^ frac{ partial p}{ partial t} = frac{k}{ mu} Delta p, quad",
+   "node_ids": [
+    "bas-xxiii.n-480-b6113a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-3308a5",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "или в декартовой системе координат",
+   "node_ids": [
+    "bas-xxiii.n-480-b6113a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-a124de",
+   "kind": "formula",
+   "page_pdf": 480,
+   "excerpt": "frac{ partial p}{ partial t} = kappa left( frac{ partial^2 p}{ partial",
+   "node_ids": [
+    "bas-xxiii.n-480-b6113a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-99159c",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "где введено обозначение",
+   "node_ids": [
+    "bas-xxiii.n-480-b6113a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-fe5530",
+   "kind": "formula",
+   "page_pdf": 480,
+   "excerpt": "kappa = k / ( mu beta^ ). quad (23.18)",
+   "node_ids": [
+    "bas-xxiii.n-480-b6113a",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-4a9872",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "Уравнение (23.16) – основное дифференциальное уравнение теории упругого режима фильтрации. По предложению",
+   "node_ids": [
+    "bas-xxiii.n-480-b6113a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-480-551f3d",
+   "kind": "paragraph",
+   "page_pdf": 480,
+   "excerpt": "Коэффициент kappa , характеризующий скорость перераспределения пластового давления при неустановившейся фильтрации упругой",
+   "node_ids": [
+    "bas-xxiii.n-480-551f3d",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-481-22ca41",
+   "kind": "paragraph",
+   "page_pdf": 481,
+   "excerpt": "Размерность коэффициента пьезопроводности kappa можно установить из (23.18):",
+   "node_ids": [
+    "bas-xxiii.n-480-551f3d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-481-f409d9",
+   "kind": "formula",
+   "page_pdf": 481,
+   "excerpt": "[ kappa] = frac{h}{[ mu][ beta^ ]} = frac{L^2}{L^{-1}MT^{-1}LM^{-1}T^2} = frac{L^2}{T},",
+   "node_ids": [
+    "bas-xxiii.n-480-551f3d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-481-3aa9d9",
+   "kind": "paragraph",
+   "page_pdf": 481,
+   "excerpt": "где L , M , T – соответственно, размерности длины, массы и",
+   "node_ids": [
+    "bas-xxiii.n-480-551f3d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-481-8caf17",
+   "kind": "paragraph",
+   "page_pdf": 481,
+   "excerpt": "Отметим, что уравнение пьезопроводности (23.16) применимо только для слабосжимаемой упругой жидкости, для",
+   "node_ids": [
+    "bas-xxiii.n-478-4cc09f",
+    "bas-xxiii.n-479-abb043",
+    "bas-xxiii.n-481-8caf17",
+    "bas-xxiii.n-484-2747e1",
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-481-f42813",
+   "kind": "heading",
+   "page_pdf": 481,
+   "excerpt": "§5. Одномерные фильтрационные потоки упругой жидкости. Точные решения уравнения пьезопроводности. Основная формула",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-481-169f3d",
+   "kind": "paragraph",
+   "page_pdf": 481,
+   "excerpt": "Рассмотрим наиболее простые точные решения уравнения пьезопроводности (23.16) для одномерных потоков.",
+   "node_ids": [
+    "bas-xxiii.n-481-169f3d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-481-7d4d98",
+   "kind": "heading",
+   "page_pdf": 481,
+   "excerpt": "5.1. Прямолинейно-параллельный фильтрационный поток упругой жидкости",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-481-fb0bc0",
+   "kind": "paragraph",
+   "page_pdf": 481,
+   "excerpt": "Случай 1. Приток к галерее, на которой поддерживается постоянное давление. Пусть в",
+   "node_ids": [
+    "bas-xxiii.n-481-169f3d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-481-d1b555",
+   "kind": "paragraph",
+   "page_pdf": 481,
+   "excerpt": "При этих условиях в упругом (деформируемом) пласте образуется неустановившийся прямолинейно-параллельный поток упругой",
+   "node_ids": [
+    "bas-xxiii.n-481-169f3d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-481-09cbfd",
+   "kind": "formula",
+   "page_pdf": 481,
+   "excerpt": "frac{ partial p}{ partial t} = kappa frac{ partial^2 p}{ partial x^2},",
+   "node_ids": [
+    "bas-xxiii.n-481-169f3d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-585528",
+   "kind": "paragraph",
+   "page_pdf": 482,
+   "excerpt": "Начальные и граничные условия, сформулированные выше и записанные в виде математических соотношений,",
+   "node_ids": [
+    "bas-xxiii.n-482-585528"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-a50995",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "p(x, t) = p_ kappa quad text{при} quad t = 0;",
+   "node_ids": [
+    "bas-xxiii.n-482-585528"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-7dd9cd",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "p(x, t) = p_ tau quad text{при} quad x = 0, quad",
+   "node_ids": [
+    "bas-xxiii.n-482-585528"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-ac35d7",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "p(x, t) = p_ kappa quad text{при} quad x = infty, quad",
+   "node_ids": [
+    "bas-xxiii.n-482-585528"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-a2023f",
+   "kind": "paragraph",
+   "page_pdf": 482,
+   "excerpt": "Задача заключается в определении дебита галереи Q(t) и давления в любой точке",
+   "node_ids": [
+    "bas-xxiii.n-482-585528"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-f79472",
+   "kind": "paragraph",
+   "page_pdf": 482,
+   "excerpt": "Используя анализ размерностей, покажем, что поставленная задача автомодельна, т. е. из аргументов,",
+   "node_ids": [
+    "bas-xxiii.n-482-f79472"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-14b95e",
+   "kind": "paragraph",
+   "page_pdf": 482,
+   "excerpt": "Обозначим через P = (p - p_ tau)/(p_ kappa - p_ tau)",
+   "node_ids": [
+    "bas-xxiii.n-482-f79472",
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-ae8364",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "P = f(x, t, kappa).",
+   "node_ids": [
+    "bas-xxiii.n-482-f79472"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-85af70",
+   "kind": "paragraph",
+   "page_pdf": 482,
+   "excerpt": "Размерности этих аргументов следующие: [x] = L , [t] = T ,",
+   "node_ids": [
+    "bas-xxiii.n-482-f79472",
+    "bas-xxiii.n-492-6ed81d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-49db31",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "P = 0 quad text{при} quad u = 0,",
+   "node_ids": [
+    "bas-xxiii.n-482-f79472"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-f8909e",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "P = 1 quad text{при} quad u = infty. tag{23.21}",
+   "node_ids": [
+    "bas-xxiii.n-482-f79472"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-f51828",
+   "kind": "paragraph",
+   "page_pdf": 482,
+   "excerpt": "В силу линейности дифференциального уравнения (23.19) для безразмерного давления P имеем такое",
+   "node_ids": [
+    "bas-xxiii.n-482-f51828"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-f8392e",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "frac{ partial P}{ partial t} = kappa frac{ partial^2 P}{ partial x^2}.",
+   "node_ids": [
+    "bas-xxiii.n-482-f51828"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-601866",
+   "kind": "paragraph",
+   "page_pdf": 482,
+   "excerpt": "Используя правило дифференцирования сложных функций, частные производные по координате и времени можно",
+   "node_ids": [
+    "bas-xxiii.n-482-f51828"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-5e3ad8",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "frac{ partial P}{ partial x} = frac{dP}{du} frac{ partial u}{ partial x}",
+   "node_ids": [
+    "bas-xxiii.n-482-f51828"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-cd4499",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "frac{ partial P}{ partial t} = frac{dP}{du} frac{ partial u}{ partial t}",
+   "node_ids": [
+    "bas-xxiii.n-482-f51828"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-482-bd7cff",
+   "kind": "formula",
+   "page_pdf": 482,
+   "excerpt": "frac{ partial^2 P}{ partial x^2} = frac{ partial}{ partial x} left( frac{",
+   "node_ids": [
+    "bas-xxiii.n-482-f51828"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-d71994",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "Подставляя найденные значения производных в уравнение (23.22), получим обыкновенное дифференциальное уравнение",
+   "node_ids": [
+    "bas-xxiii.n-482-f51828"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-8bd662",
+   "kind": "formula",
+   "page_pdf": 483,
+   "excerpt": "frac{d^2P}{du^2} + 2u frac{dP}{du} = 0, quad (23.23)",
+   "node_ids": [
+    "bas-xxiii.n-482-f51828"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-ec9759",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "которое должно быть решено при условиях (23.21). Для решения уравнения (23.23) обозначим",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-fdca02",
+   "kind": "formula",
+   "page_pdf": 483,
+   "excerpt": "frac{d xi}{du} + 2u xi = 0. quad (23.24)",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-f08e83",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "Разделив переменные в (23.24), будем иметь",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-703bb8",
+   "kind": "formula",
+   "page_pdf": 483,
+   "excerpt": "frac{d xi}{ xi} = -2udu",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-04c48a",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "и далее, проинтегрировав, получим",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-bfa3fe",
+   "kind": "formula",
+   "page_pdf": 483,
+   "excerpt": "ln xi = -u^2 + ln C_1,",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-15c196",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "потенцируя которое, найдем",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-6a249c",
+   "kind": "formula",
+   "page_pdf": 483,
+   "excerpt": "xi = frac{dP}{du} = C_1 e^{-u^2}, quad (23.25)",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-65193b",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "где C_1 – постоянная интегрирования.",
+   "node_ids": [
+    "bas-xxiii.n-483-ec9759"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-c6ef7c",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "Проинтегрировав (23.25) с учетом первого из условий (23.21), получим:",
+   "node_ids": [
+    "bas-xxiii.n-483-c6ef7c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-98ded6",
+   "kind": "formula",
+   "page_pdf": 483,
+   "excerpt": "P = C_1 int_0^u e^{-u^2} du.",
+   "node_ids": [
+    "bas-xxiii.n-483-c6ef7c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-f62eb4",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "Вторым условием (23.20) воспользуемся для нахождения константы интегрирования C_1 . Устремим переменный",
+   "node_ids": [
+    "bas-xxiii.n-483-c6ef7c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-9a8e1a",
+   "kind": "formula",
+   "page_pdf": 483,
+   "excerpt": "1 = C_1 int_0^ infty e^{-u^2} du.",
+   "node_ids": [
+    "bas-xxiii.n-483-c6ef7c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-27ad1d",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "Из интегрального исчисления известно, что int_0^ infty e^{-u^2} du = sqrt{ pi}/2",
+   "node_ids": [
+    "bas-xxiii.n-483-c6ef7c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-e4e3b4",
+   "kind": "formula",
+   "page_pdf": 483,
+   "excerpt": "P = frac{2}{ sqrt{ pi}} int_0^{ frac{x}{2 sqrt{ pi}}} e^{-u^2} du. quad",
+   "node_ids": [
+    "bas-xxiii.n-483-c6ef7c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-483-c01ba8",
+   "kind": "paragraph",
+   "page_pdf": 483,
+   "excerpt": "Интеграл (23.26) называется интегралом вероятности, является табулированной функцией, изменяющейся в пределах от",
+   "node_ids": [
+    "bas-xxiii.n-483-c01ba8",
+    "bas-xxiii.n-483-c6ef7c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-f737d4",
+   "kind": "formula",
+   "page_pdf": 484,
+   "excerpt": "frac{2}{ sqrt{ pi}} int_0^{ frac{x}{2 sqrt{ kappa t}}} e^{-u^2} du = operatorname{erf}",
+   "node_ids": [
+    "bas-xxiii.n-483-c01ba8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-428aef",
+   "kind": "paragraph",
+   "page_pdf": 484,
+   "excerpt": "Таким образом, P = operatorname{erf} left( frac{x}{2 sqrt{ kappa t}} right) ,",
+   "node_ids": [
+    "bas-xxiii.n-483-c01ba8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-03cb83",
+   "kind": "formula",
+   "page_pdf": 484,
+   "excerpt": "p = p_{ mathrm{r}} + (p_{ mathrm{k}} - p_{ mathrm{r}}) operatorname{erf} left(",
+   "node_ids": [
+    "bas-xxiii.n-483-c01ba8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-e730b5",
+   "kind": "paragraph",
+   "page_pdf": 484,
+   "excerpt": "Типичные кривые распределения давления в различные моменты времени в неустановившемся прямолинейно-параллельном потоке",
+   "node_ids": [
+    "bas-xxiii.n-483-c01ba8",
+    "bas-xxiii.n-484-2747e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-ec72e4",
+   "kind": "figure",
+   "page_pdf": 484,
+   "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ График",
+   "node_ids": [
+    "bas-xxiii.n-483-c01ba8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-9b67fa",
+   "kind": "figure",
+   "page_pdf": 484,
+   "excerpt": "Рис. 23.1. Кривые распределения давления в различные моменты времени в неустановившемся прямолинейно-параллельном",
+   "node_ids": [
+    "bas-xxiii.n-483-c01ba8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-2747e1",
+   "kind": "paragraph",
+   "page_pdf": 484,
+   "excerpt": "Найдем дебит галереи Q . Будем считать положительным дебит, отбираемый из галереи",
+   "node_ids": [
+    "bas-xxiii.n-484-2747e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-50df7e",
+   "kind": "formula",
+   "page_pdf": 484,
+   "excerpt": "w = frac{k}{ mu} left( frac{ partial p}{ partial x} right)_{x=0}, quad",
+   "node_ids": [
+    "bas-xxiii.n-484-2747e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-be76a4",
+   "kind": "paragraph",
+   "page_pdf": 484,
+   "excerpt": "где B, h – соответственно, ширина и толщина пласта. Продифференцировав выражение (23.27),",
+   "node_ids": [
+    "bas-xxiii.n-484-2747e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-1e5fa3",
+   "kind": "formula",
+   "page_pdf": 484,
+   "excerpt": "left( frac{ partial p}{ partial x} right)_{x=0} = (p_{ mathrm{k}} - p_{",
+   "node_ids": [
+    "bas-xxiii.n-484-2747e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-55c785",
+   "kind": "paragraph",
+   "page_pdf": 484,
+   "excerpt": "Дебит галереи в любой момент времени найдем, подставив значение градиента давления partial",
+   "node_ids": [
+    "bas-xxiii.n-484-2747e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-484-9bcebe",
+   "kind": "formula",
+   "page_pdf": 484,
+   "excerpt": "Q = frac{k}{ mu} frac{p_{ mathrm{k}} - p_{ mathrm{r}}}{ sqrt{ pi kappa",
+   "node_ids": [
+    "bas-xxiii.n-484-2747e1",
+    "bas-xxiii.n-497-afe122"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-31f1fd",
+   "kind": "paragraph",
+   "page_pdf": 485,
+   "excerpt": "Из формулы (23.30) следует, что дебит галереи убывает с течением времени, как",
+   "node_ids": [
+    "bas-xxiii.n-484-2747e1",
+    "bas-xxiii.n-485-2a49f0"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-2a49f0",
+   "kind": "paragraph",
+   "page_pdf": 485,
+   "excerpt": "Накопленная к моменту t добыча (объем добытой нефти) V_{доб} определяется по формуле",
+   "node_ids": [
+    "bas-xxiii.n-485-2a49f0"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-bb9023",
+   "kind": "formula",
+   "page_pdf": 485,
+   "excerpt": "V_{доб} = int_0^t Q(t)dt = frac{k(p_к - p_г)Bh}{ mu sqrt{ pi kappa",
+   "node_ids": [
+    "bas-xxiii.n-485-2a49f0"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-60056f",
+   "kind": "paragraph",
+   "page_pdf": 485,
+   "excerpt": "т.е. сразу после начала отбора из галереи она быстро возрастает, а в",
+   "node_ids": [
+    "bas-xxiii.n-485-2a49f0"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-3f7cba",
+   "kind": "paragraph",
+   "page_pdf": 485,
+   "excerpt": "Случай 2. Приток к галерее, на которой поддерживается постоянный дебит. Пусть в",
+   "node_ids": [
+    "bas-xxiii.n-485-3f7cba"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-46e10a",
+   "kind": "paragraph",
+   "page_pdf": 485,
+   "excerpt": "Математически задача заключается в интегрировании того же уравнения (23.22), но с иными",
+   "node_ids": [
+    "bas-xxiii.n-485-3f7cba"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-b440aa",
+   "kind": "formula",
+   "page_pdf": 485,
+   "excerpt": "begin{aligned} p(x, t) &= p_к quad text{при} quad t = 0; w(x,",
+   "node_ids": [
+    "bas-xxiii.n-485-3f7cba"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-0f5bfd",
+   "kind": "paragraph",
+   "page_pdf": 485,
+   "excerpt": "Первое условие, как и в первом случае, задает распределение давления в пласте",
+   "node_ids": [
+    "bas-xxiii.n-485-3f7cba"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-6fd4fc",
+   "kind": "paragraph",
+   "page_pdf": 485,
+   "excerpt": "Для интегрирования уравнения пьезопроводности в данном случае умножим обе части уравнения (23.22)",
+   "node_ids": [
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-485-76517f",
+   "kind": "figure",
+   "page_pdf": 485,
+   "excerpt": "Рис. 23.2. Зависимости дебита и добычи жидкости от времени после пуска галереи",
+   "node_ids": [
+    "bas-xxiii.n-485-2a49f0",
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-48fc8c",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "frac{k}{ mu} frac{ partial^2 p}{ partial x partial t} = frac{k}{ mu}",
+   "node_ids": [
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-215c9a",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "откуда, поменяв порядок вычисления производных, получим:",
+   "node_ids": [
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-3aeb83",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "frac{ partial}{ partial t} left( frac{k}{ mu} frac{ partial p}{ partial x}",
+   "node_ids": [
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-54947a",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "Так как",
+   "node_ids": [
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-6d869b",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "frac{k}{ mu} frac{ partial p}{ partial x} = w(x, t),",
+   "node_ids": [
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-901688",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "то уравнение (23.32) можно переписать в виде",
+   "node_ids": [
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-f44f07",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "frac{ partial w(x, t)}{ partial t} = kappa frac{ partial^2 w(x, t)}{",
+   "node_ids": [
+    "bas-xxiii.n-485-6fd4fc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-b90484",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "Уравнение (23.33) по форме также совпадает с уравнением теплопроводности (23.22). Следовательно, решением",
+   "node_ids": [
+    "bas-xxiii.n-486-b90484"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-406a68",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "w = C_1 operatorname{erf} left( frac{x}{2 sqrt{ kappa t}} right) + C_2.",
+   "node_ids": [
+    "bas-xxiii.n-486-b90484"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-20f08b",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "При этом следует иметь в виду, что начальное и граничное условия для",
+   "node_ids": [
+    "bas-xxiii.n-486-b90484"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-99dcd8",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "w(x, 0) = 0, quad w(0, t) = w_1.",
+   "node_ids": [
+    "bas-xxiii.n-486-b90484"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-cda204",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "Используя эти условия, найдем константы интегрирования.",
+   "node_ids": [
+    "bas-xxiii.n-486-b90484"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-ff3538",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "При t = 0 из (23.34) следует",
+   "node_ids": [
+    "bas-xxiii.n-486-ff3538"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-37bf4a",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "0 = C_1 frac{2}{ sqrt{ pi}} int_0^ infty e^{-u^2} du + C_2.",
+   "node_ids": [
+    "bas-xxiii.n-486-ff3538"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-547c0d",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "Так как int_0^ infty e^{-u^2} du = sqrt{ pi}/2 , получаем",
+   "node_ids": [
+    "bas-xxiii.n-486-ff3538"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-5baa68",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "0 = C_1 + C_2.",
+   "node_ids": [
+    "bas-xxiii.n-486-ff3538"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-b1c65a",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "Второе условие, при x = 0 , дает",
+   "node_ids": [
+    "bas-xxiii.n-486-ff3538"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-5e63b3",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "w_1 = C_1 frac{2}{ sqrt{ pi}} int_0^0 e^{-u^2} du + C_2.",
+   "node_ids": [
+    "bas-xxiii.n-486-ff3538"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-391f79",
+   "kind": "paragraph",
+   "page_pdf": 486,
+   "excerpt": "Из этих двух равенств имеем C_2 = w_1 , C_1 = -w_1",
+   "node_ids": [
+    "bas-xxiii.n-486-ff3538"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-486-c1ccff",
+   "kind": "formula",
+   "page_pdf": 486,
+   "excerpt": "w(x, t) = w_1 left[ 1 - operatorname{erf} left( frac{x}{2 sqrt{ kappa",
+   "node_ids": [
+    "bas-xxiii.n-486-ff3538"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-c90a81",
+   "kind": "paragraph",
+   "page_pdf": 487,
+   "excerpt": "Чтобы найти распределение давления в потоке, необходимо проинтегрировать уравнение (23.35) по x",
+   "node_ids": [
+    "bas-xxiii.n-487-c90a81"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-e858d6",
+   "kind": "formula",
+   "page_pdf": 487,
+   "excerpt": "frac{k}{ mu} int_0^x frac{ partial p}{ partial x} dx = w_1 int_0^x",
+   "node_ids": [
+    "bas-xxiii.n-487-c90a81"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-95176f",
+   "kind": "paragraph",
+   "page_pdf": 487,
+   "excerpt": "Выполнив интегрирование, получаем",
+   "node_ids": [
+    "bas-xxiii.n-487-c90a81"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-c53e62",
+   "kind": "formula",
+   "page_pdf": 487,
+   "excerpt": "p(x, t) - p(0, t) = frac{ mu}{k} w_1 x - frac{",
+   "node_ids": [
+    "bas-xxiii.n-487-c90a81"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-963c1e",
+   "kind": "paragraph",
+   "page_pdf": 487,
+   "excerpt": "Последнее слагаемое в (23.36) интегрируется по частям",
+   "node_ids": [
+    "bas-xxiii.n-487-c90a81"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-8a8ac5",
+   "kind": "formula",
+   "page_pdf": 487,
+   "excerpt": "begin{aligned} frac{ mu}{k} frac{2}{ sqrt{ pi}} w_1 int_0^x left( int_0^{x/2 sqrt{ kappa",
+   "node_ids": [
+    "bas-xxiii.n-487-c90a81"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-7272d4",
+   "kind": "paragraph",
+   "page_pdf": 487,
+   "excerpt": "Поэтому уравнение (23.36) можно записать в виде",
+   "node_ids": [
+    "bas-xxiii.n-487-7272d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-5d053f",
+   "kind": "formula",
+   "page_pdf": 487,
+   "excerpt": "p(x, t) - p(0, t) = frac{ mu w_1}{k} x left[ 1",
+   "node_ids": [
+    "bas-xxiii.n-487-7272d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-9d9500",
+   "kind": "paragraph",
+   "page_pdf": 487,
+   "excerpt": "С учетом того, что p(0, t) есть давление на галерее, т.е. p(0,",
+   "node_ids": [
+    "bas-xxiii.n-487-7272d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-860f94",
+   "kind": "formula",
+   "page_pdf": 487,
+   "excerpt": "p(x, t) = p_ text{r} + frac{ mu w_1}{k} left[ x left(",
+   "node_ids": [
+    "bas-xxiii.n-487-7272d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-487-fa0070",
+   "kind": "paragraph",
+   "page_pdf": 487,
+   "excerpt": "Чтобы найти закон изменения давления на галерее p_ text{r}(t) , подставим в",
+   "node_ids": [
+    "bas-xxiii.n-487-fa0070"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-c588e7",
+   "kind": "formula",
+   "page_pdf": 488,
+   "excerpt": "p_{ mathrm{r}}(t) = p_{ mathrm{k}} - frac{2 mu w_1}{k sqrt{ pi}} sqrt{kt}",
+   "node_ids": [
+    "bas-xxiii.n-487-fa0070"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-30bb03",
+   "kind": "paragraph",
+   "page_pdf": 488,
+   "excerpt": "или",
+   "node_ids": [
+    "bas-xxiii.n-487-fa0070"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-3d8a62",
+   "kind": "formula",
+   "page_pdf": 488,
+   "excerpt": "p_{ mathrm{r}}(t) = p_{ mathrm{k}} - frac{Q mu}{Bh} frac{2}{k} frac{ sqrt{kt}}{ sqrt{",
+   "node_ids": [
+    "bas-xxiii.n-487-fa0070"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-bfc887",
+   "kind": "paragraph",
+   "page_pdf": 488,
+   "excerpt": "Нетрудно видеть, что решение (23.39) при очень больших значениях времени теряет физический",
+   "node_ids": [
+    "bas-xxiii.n-488-bfc887"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-f0d1e0",
+   "kind": "heading",
+   "page_pdf": 488,
+   "excerpt": "5.2. Плоскорадиальный фильтрационный поток упругой жидкости. Основная формула теории упругого режима фильтрации",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-488-ad0466",
+   "kind": "paragraph",
+   "page_pdf": 488,
+   "excerpt": "Пусть в неограниченном горизонтальном пласте постоянной толщины h имеется добывающая скважина «нулевого»",
+   "node_ids": [
+    "bas-xxiii.n-488-ad0466"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-cf44db",
+   "kind": "paragraph",
+   "page_pdf": 488,
+   "excerpt": "Распределение давления в пласте (в любой его точке в любой момент времени)",
+   "node_ids": [
+    "bas-xxiii.n-488-ad0466",
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-c60363",
+   "kind": "formula",
+   "page_pdf": 488,
+   "excerpt": "frac{ partial p}{ partial t} = kappa left( frac{ partial^2 p}{ partial",
+   "node_ids": [
+    "bas-xxiii.n-488-ad0466"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-34569d",
+   "kind": "paragraph",
+   "page_pdf": 488,
+   "excerpt": "Начальные и граничные условия задачи следующие:",
+   "node_ids": [
+    "bas-xxiii.n-488-34569d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-abd5e6",
+   "kind": "formula",
+   "page_pdf": 488,
+   "excerpt": "p(r, t) = p_{ mathrm{k}} quad text{при } t = 0,",
+   "node_ids": [
+    "bas-xxiii.n-488-34569d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-08b54a",
+   "kind": "formula",
+   "page_pdf": 488,
+   "excerpt": "p(r, t) = p_{ mathrm{k}} quad text{при } t > 0 text{",
+   "node_ids": [
+    "bas-xxiii.n-488-34569d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-36093f",
+   "kind": "formula",
+   "page_pdf": 488,
+   "excerpt": "Q = frac{2 pi kh}{ mu} left( r frac{ partial p}{ partial",
+   "node_ids": [
+    "bas-xxiii.n-488-34569d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-488-84ae87",
+   "kind": "paragraph",
+   "page_pdf": 488,
+   "excerpt": "Первое условие означает, что до момента времени t = 0 во всем",
+   "node_ids": [
+    "bas-xxiii.n-488-34569d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-ae035a",
+   "kind": "paragraph",
+   "page_pdf": 489,
+   "excerpt": "Последнее условие запишем в виде",
+   "node_ids": [
+    "bas-xxiii.n-488-34569d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-67d8cf",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "left( r frac{ partial p}{ partial r} right)_{r=0} = frac{Q_0 mu}{2 pi",
+   "node_ids": [
+    "bas-xxiii.n-488-34569d",
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-5cbca3",
+   "kind": "paragraph",
+   "page_pdf": 489,
+   "excerpt": "Так же, как в предыдущем случае, проведем анализ размерностей. Искомое распределение давления",
+   "node_ids": [
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-97011b",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "[r] = L, [t] = T, [ kappa] = L^2 T^{-1}, [p_",
+   "node_ids": [
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-8ad293",
+   "kind": "paragraph",
+   "page_pdf": 489,
+   "excerpt": "где [p] – размерность давления. Из этого следует, что давление, приведенное к",
+   "node_ids": [
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-e1f4f8",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "P = f left( xi, frac{Q_0 mu}{2 pi k h p_ kappa}",
+   "node_ids": [
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-cee895",
+   "kind": "paragraph",
+   "page_pdf": 489,
+   "excerpt": "Таким образом, задача автомодельна, и уравнение (23.40) можно свести к обыкновенному дифференциальному",
+   "node_ids": [
+    "bas-xxiii.n-489-5cbca3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-552976",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "frac{ partial P}{ partial t} = - frac{dP}{d xi} frac{ xi}{2t}, quad",
+   "node_ids": [
+    "bas-xxiii.n-489-552976"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-9c37e8",
+   "kind": "paragraph",
+   "page_pdf": 489,
+   "excerpt": "Подставив полученные выражения в уравнение (23.40), получим обыкновенное дифференциальное уравнение",
+   "node_ids": [
+    "bas-xxiii.n-489-552976"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-9a5a11",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "frac{d^2 P}{d xi^2} + left( frac{1}{ xi} + 2 xi right) frac{dP}{d",
+   "node_ids": [
+    "bas-xxiii.n-489-552976"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-b8f70d",
+   "kind": "paragraph",
+   "page_pdf": 489,
+   "excerpt": "которое нужно проинтегрировать при условиях, полученных из (23.41) преобразованием к безразмерному виду,",
+   "node_ids": [
+    "bas-xxiii.n-489-552976"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-00a03b",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "P( xi) = 1 quad text{при } xi to infty,",
+   "node_ids": [
+    "bas-xxiii.n-489-552976"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-fa4f90",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "left( xi frac{dP}{d xi} right)_{ xi=0} = frac{Q_0 mu}{2 pi k h",
+   "node_ids": [
+    "bas-xxiii.n-489-552976"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-2ebe17",
+   "kind": "paragraph",
+   "page_pdf": 489,
+   "excerpt": "Воспользуемся подстановкой",
+   "node_ids": [
+    "bas-xxiii.n-489-2ebe17"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-86f9e5",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "frac{dP}{d xi} = v",
+   "node_ids": [
+    "bas-xxiii.n-489-2ebe17"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-17e620",
+   "kind": "paragraph",
+   "page_pdf": 489,
+   "excerpt": "и из уравнения (23.44) получим",
+   "node_ids": [
+    "bas-xxiii.n-489-2ebe17"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-489-f45746",
+   "kind": "formula",
+   "page_pdf": 489,
+   "excerpt": "frac{dv}{d xi} + left( frac{1}{ xi} + 2 xi right) v =",
+   "node_ids": [
+    "bas-xxiii.n-489-2ebe17"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-30bb03",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "или",
+   "node_ids": [
+    "bas-xxiii.n-489-2ebe17"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-a7dcd8",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "frac{d xi}{ xi} + frac{dv}{v} = -2 xi d xi. quad (23.46)",
+   "node_ids": [
+    "bas-xxiii.n-489-2ebe17"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-113c15",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "Проинтегрировав (23.46), получим",
+   "node_ids": [
+    "bas-xxiii.n-490-113c15"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-098deb",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "ln xi + ln v = - xi^2 + ln C_1, quad",
+   "node_ids": [
+    "bas-xxiii.n-490-113c15"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-65193b",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "где C_1 – постоянная интегрирования.",
+   "node_ids": [
+    "bas-xxiii.n-490-113c15"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-1dfbe0",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "Потенцируя (23.47), найдем:",
+   "node_ids": [
+    "bas-xxiii.n-490-113c15"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-d96b8d",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "v = frac{dP}{d xi} = C_1 frac{e^{- xi^2}}{ xi}. quad (23.48)",
+   "node_ids": [
+    "bas-xxiii.n-490-113c15"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-fb1047",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "Проинтегрируем (23.48) в пределах от xi до бесконечности, учтя первое из условий",
+   "node_ids": [
+    "bas-xxiii.n-490-113c15",
+    "bas-xxiii.n-490-8fe2be"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-61e180",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "P( xi) = -C_1 int_{ xi}^{ infty} frac{e^{- xi^2}}{ xi} d xi",
+   "node_ids": [
+    "bas-xxiii.n-490-113c15"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-8fe2be",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "Умножая равенство (23.49) на xi , устремляя xi to 0 и используя",
+   "node_ids": [
+    "bas-xxiii.n-490-8fe2be"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-914406",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "C_1 = frac{Q_0 mu}{2 pi k h p_ kappa}.",
+   "node_ids": [
+    "bas-xxiii.n-490-8fe2be"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-9c9ac0",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "Тогда (23.49) преобразуется к виду",
+   "node_ids": [
+    "bas-xxiii.n-490-8fe2be"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-aa256b",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "P( xi) = 1 - frac{Q_0 mu}{2 pi k h p_ kappa}",
+   "node_ids": [
+    "bas-xxiii.n-490-8fe2be",
+    "bas-xxiii.n-490-11588f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-11588f",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "Интеграл в последней формуле легко свести к табличному подстановкой",
+   "node_ids": [
+    "bas-xxiii.n-490-11588f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-447c04",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "u = xi^2 = frac{r^2}{4 kappa t}, quad frac{d xi}{ xi} =",
+   "node_ids": [
+    "bas-xxiii.n-490-11588f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-f29d17",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "Перейдя также от безразмерного давления P к размерному p = P p_",
+   "node_ids": [
+    "bas-xxiii.n-490-11588f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-043778",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "p(r, t) = p_ kappa - frac{Q_0 mu}{2 pi k h} int_{r^2/(4",
+   "node_ids": [
+    "bas-xxiii.n-490-11588f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-719304",
+   "kind": "paragraph",
+   "page_pdf": 490,
+   "excerpt": "Интеграл в формуле (23.51) называется интегральной показательной функцией, которая табулирована и имеет",
+   "node_ids": [
+    "bas-xxiii.n-490-719304"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-490-f8cc48",
+   "kind": "formula",
+   "page_pdf": 490,
+   "excerpt": "- text{Ei} left( - frac{r^2}{4 kappa t} right) = int_{r^2/(4 kappa t)}",
+   "node_ids": [
+    "bas-xxiii.n-490-719304"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-48b76d",
+   "kind": "paragraph",
+   "page_pdf": 491,
+   "excerpt": "Таким образом, давление в любой точке плоскорадиального потока в условиях упругого режима",
+   "node_ids": [
+    "bas-xxiii.n-490-719304"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-82c3d7",
+   "kind": "formula",
+   "page_pdf": 491,
+   "excerpt": "p(r, t) = p_ kappa - frac{Q_0 mu}{4 pi k h} left[",
+   "node_ids": [
+    "bas-xxiii.n-490-719304"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-a8bb0c",
+   "kind": "paragraph",
+   "page_pdf": 491,
+   "excerpt": "Формула (23.52) получила название основной формулы теории упругого режима фильтрации. Она имеет",
+   "node_ids": [
+    "bas-xxiii.n-490-719304"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-0da6d4",
+   "kind": "paragraph",
+   "page_pdf": 491,
+   "excerpt": "Интегральную показательную функцию можно представить в виде ряда",
+   "node_ids": [
+    "bas-xxiii.n-491-0da6d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-b3d9d8",
+   "kind": "formula",
+   "page_pdf": 491,
+   "excerpt": "- text{Ei} (- x) = ln frac{1}{x} - gamma + sum_{n=1}^{ infty}",
+   "node_ids": [
+    "bas-xxiii.n-491-0da6d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-a08d25",
+   "kind": "paragraph",
+   "page_pdf": 491,
+   "excerpt": "который сходится при всех значениях x ( 0 < x < infty",
+   "node_ids": [
+    "bas-xxiii.n-491-0da6d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-ab6880",
+   "kind": "paragraph",
+   "page_pdf": 491,
+   "excerpt": "При изменении аргумента x от 0 до infty функция - text{Ei} (-",
+   "node_ids": [
+    "bas-xxiii.n-491-0da6d4",
+    "bas-xxiii.n-491-ab6880"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-bf460d",
+   "kind": "formula",
+   "page_pdf": 491,
+   "excerpt": "- text{Ei} (- x) = ln frac{1}{x} - 0,5772.",
+   "node_ids": [
+    "bas-xxiii.n-491-ab6880"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-1da89e",
+   "kind": "paragraph",
+   "page_pdf": 491,
+   "excerpt": "При этом погрешность не превосходит:",
+   "node_ids": [
+    "bas-xxiii.n-491-ab6880"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-420c96",
+   "kind": "formula",
+   "page_pdf": 491,
+   "excerpt": "0,25 %, quad text{если } x = frac{r^2}{4 kappa t} leq 0,01;",
+   "node_ids": [
+    "bas-xxiii.n-491-ab6880"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-f303c4",
+   "kind": "formula",
+   "page_pdf": 491,
+   "excerpt": "5,7 %, quad text{если } x leq 0,1;",
+   "node_ids": [
+    "bas-xxiii.n-491-ab6880"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-95f6c7",
+   "kind": "formula",
+   "page_pdf": 491,
+   "excerpt": "9,7 %, quad text{если } x leq 0,14.",
+   "node_ids": [
+    "bas-xxiii.n-491-ab6880"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-a72839",
+   "kind": "paragraph",
+   "page_pdf": 491,
+   "excerpt": "Следовательно, для значений r^2/(4 kappa t) leq 1 давление можно определять по",
+   "node_ids": [
+    "bas-xxiii.n-491-ab6880"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-60e477",
+   "kind": "formula",
+   "page_pdf": 491,
+   "excerpt": "p(r, t) = p_ kappa - frac{Q_0 mu}{4 pi k h} left(",
+   "node_ids": [
+    "bas-xxiii.n-491-ab6880"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-e96cc1",
+   "kind": "figure",
+   "page_pdf": 491,
+   "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ Оси:",
+   "node_ids": [
+    "bas-xxiii.n-491-0da6d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-491-c1e078",
+   "kind": "figure",
+   "page_pdf": 491,
+   "excerpt": "Рис. 23.3. График интегральной показательной функции",
+   "node_ids": [
+    "bas-xxiii.n-491-0da6d4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-a4bb1c",
+   "kind": "paragraph",
+   "page_pdf": 492,
+   "excerpt": "Из (23.52) находим, что расход жидкости через любую цилиндрическую поверхность радиусом r",
+   "node_ids": [
+    "bas-xxiii.n-492-a4bb1c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-555c23",
+   "kind": "formula",
+   "page_pdf": 492,
+   "excerpt": "Q(r, t) = frac{k}{ mu} frac{ partial p}{ partial r} 2 pi",
+   "node_ids": [
+    "bas-xxiii.n-492-a4bb1c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-9306fc",
+   "kind": "formula",
+   "page_pdf": 492,
+   "excerpt": "w = frac{Q_0}{2 pi rh} e^{-r^2/4 kappa t}. quad (23.55)",
+   "node_ids": [
+    "bas-xxiii.n-492-a4bb1c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-9d4e65",
+   "kind": "paragraph",
+   "page_pdf": 492,
+   "excerpt": "Из последней формулы следует, что стационарная скорость w_{ text{стац}} = Q_0/(2 pi",
+   "node_ids": [
+    "bas-xxiii.n-492-a4bb1c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-6ed81d",
+   "kind": "paragraph",
+   "page_pdf": 492,
+   "excerpt": "При теоретическом исследовании неустановившихся процессов перераспределения пластового давления удобно пользоваться безразмерными параметрами",
+   "node_ids": [
+    "bas-xxiii.n-492-6ed81d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-c6808b",
+   "kind": "formula",
+   "page_pdf": 492,
+   "excerpt": "f_0 = frac{ kappa t}{r_c^2}, quad F_0 = frac{ kappa t}{R_k^2}. quad",
+   "node_ids": [
+    "bas-xxiii.n-492-6ed81d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-eabfc9",
+   "kind": "paragraph",
+   "page_pdf": 492,
+   "excerpt": "В зависимости от специфики решаемой задачи удобно пользоваться тем или другим из",
+   "node_ids": [
+    "bas-xxiii.n-492-6ed81d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-7947f0",
+   "kind": "paragraph",
+   "page_pdf": 492,
+   "excerpt": "Строго говоря, основная формула теории упругого режима (23.52) справедлива лишь для случая",
+   "node_ids": [
+    "bas-xxiii.n-492-7947f0"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-4316ce",
+   "kind": "paragraph",
+   "page_pdf": 492,
+   "excerpt": "Для оценки влияния конечности радиуса возмущающей скважины r_c на результаты расчетов давления",
+   "node_ids": [
+    "bas-xxiii.n-492-7947f0"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-cc38be",
+   "kind": "paragraph",
+   "page_pdf": 492,
+   "excerpt": "Оценим практическое значение этой погрешности. Допустим, что kappa = 1 м ^2",
+   "node_ids": [
+    "bas-xxiii.n-492-7947f0"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-492-cd532d",
+   "kind": "formula",
+   "page_pdf": 492,
+   "excerpt": "t = f_0 frac{r_c^2}{ kappa} = 100 frac{0,1^2}{1} = 1 с. Следовательно,",
+   "node_ids": [
+    "bas-xxiii.n-492-7947f0",
+    "bas-xxiii.n-492-cd532d",
+    "bas-xxiii.n-492-cd532d-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-493-6b0073",
+   "kind": "figure",
+   "page_pdf": 493,
+   "excerpt": "Рис. 23.4. Пьезометрические кривые при пуске скважины с постоянным дебитом Q₀; rc",
+   "node_ids": [
+    "bas-xxiii.n-492-6ed81d",
+    "bas-xxiii.n-492-cd532d-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-493-8df594",
+   "kind": "paragraph",
+   "page_pdf": 493,
+   "excerpt": "Из этой формулы следует, что градиент давления для значений r, удовлетворяющих неравенству",
+   "node_ids": [
+    "bas-xxiii.n-492-cd532d-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-494-60be5d",
+   "kind": "heading",
+   "page_pdf": 494,
+   "excerpt": "Глава XXIV",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-494-acb938",
+   "kind": "heading",
+   "page_pdf": 494,
+   "excerpt": "ПРИБЛИЖЕННЫЕ МЕТОДЫ РЕШЕНИЯ ЗАДАЧ ТЕОРИИ УПРУГОГО РЕЖИМА",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-494-36b29c",
+   "kind": "paragraph",
+   "page_pdf": 494,
+   "excerpt": "Как было показано в предыдущей главе, решения краевых задач неустановившейся фильтрации упругой",
+   "node_ids": [
+    "bas-xxiii.n-494-36b29c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-494-8dcb9a",
+   "kind": "heading",
+   "page_pdf": 494,
+   "excerpt": "§1. Метод последовательной смены стационарных состояний",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-494-3d3699",
+   "kind": "paragraph",
+   "page_pdf": 494,
+   "excerpt": "Одним из наиболее простых по своей идее приближенных методов решения задач теории",
+   "node_ids": [
+    "bas-xxiii.n-494-3d3699",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-494-cf6094",
+   "kind": "paragraph",
+   "page_pdf": 494,
+   "excerpt": "В каждый момент времени весь пласт условно разделяется на две области –",
+   "node_ids": [
+    "bas-xxiii.n-494-cf6094",
+    "bas-xxiii.n-498-573ed7",
+    "bas-xxiii.n-499-7ef37e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-e32e84",
+   "kind": "paragraph",
+   "page_pdf": 495,
+   "excerpt": "Разделение фильтрационного потока на две области – возмущенную и невозмущенную – вызывает",
+   "node_ids": [
+    "bas-xxiii.n-495-e32e84",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-a86d75",
+   "kind": "paragraph",
+   "page_pdf": 495,
+   "excerpt": "Рассмотрим теперь расчет неустановившихся одномерных потоков упругой жидкости при помощи метода ПССС.",
+   "node_ids": [
+    "bas-xxiii.n-495-a86d75"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-a9703b",
+   "kind": "paragraph",
+   "page_pdf": 495,
+   "excerpt": "Прямолинейно-параллельный неустановившийся фильтрационный поток упругой жидкости.",
+   "node_ids": [
+    "bas-xxiii.n-495-a86d75"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-606ad8",
+   "kind": "paragraph",
+   "page_pdf": 495,
+   "excerpt": "Случай 1. Приток к галерее, на которой поддерживается постоянный дебит Q .",
+   "node_ids": [
+    "bas-xxiii.n-495-a86d75"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-2606da",
+   "kind": "paragraph",
+   "page_pdf": 495,
+   "excerpt": "К моменту времени t после пуска галереи граница возмущенной области распространится на",
+   "node_ids": [
+    "bas-xxiii.n-495-a86d75"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-42f1f8",
+   "kind": "formula",
+   "page_pdf": 495,
+   "excerpt": "p(x, t) = p_к - frac{Q mu}{kBh} (l(t) - x), quad 0",
+   "node_ids": [
+    "bas-xxiii.n-495-a86d75"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-8d3f5e",
+   "kind": "paragraph",
+   "page_pdf": 495,
+   "excerpt": "Требуется найти закон перемещения во времени внешней границы возмущенной области l(t) .",
+   "node_ids": [
+    "bas-xxiii.n-495-a86d75"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-39a04d",
+   "kind": "paragraph",
+   "page_pdf": 495,
+   "excerpt": "Воспользуемся соотношением (23.7), которое выражает условие того, что количество добытой продукции за",
+   "node_ids": [
+    "bas-xxiii.n-495-39a04d",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-0b0c86",
+   "kind": "formula",
+   "page_pdf": 495,
+   "excerpt": "Qdt = beta^ d[V(t) Delta p], quad (24.2)",
+   "node_ids": [
+    "bas-xxiii.n-495-39a04d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-2ffe36",
+   "kind": "paragraph",
+   "page_pdf": 495,
+   "excerpt": "где V(t) – объем возмущенной зоны пласта,",
+   "node_ids": [
+    "bas-xxiii.n-495-39a04d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-59273c",
+   "kind": "formula",
+   "page_pdf": 495,
+   "excerpt": "V(t) = Bh l(t); quad (24.3)",
+   "node_ids": [
+    "bas-xxiii.n-495-39a04d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-d4d985",
+   "kind": "formula",
+   "page_pdf": 495,
+   "excerpt": "Delta p = p_к - bar{p} = p_к - frac{p_к + p_г}{2}",
+   "node_ids": [
+    "bas-xxiii.n-495-39a04d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-50e5c6",
+   "kind": "figure",
+   "page_pdf": 495,
+   "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ Оси:",
+   "node_ids": [
+    "bas-xxiii.n-495-a86d75"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-495-3a036b",
+   "kind": "figure",
+   "page_pdf": 495,
+   "excerpt": "Рис. 24.1. Кривые распределения давления в прямолинейно-параллельном потоке по методу ПССС",
+   "node_ids": [
+    "bas-xxiii.n-495-a86d75"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-22da9c",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "Приняв во внимание, что p(x, t) = p_{ mathrm{r}}(t) при x =",
+   "node_ids": [
+    "bas-xxiii.n-496-22da9c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-dc8cb6",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "Q = frac{k}{ mu} frac{p_{ mathrm{k}} - p_{ mathrm{r}}}{l(t)} Bh,",
+   "node_ids": [
+    "bas-xxiii.n-496-22da9c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-0d9ffb",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "откуда",
+   "node_ids": [
+    "bas-xxiii.n-496-22da9c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-1cf417",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "frac{Q mu l(t)}{2kBh} = frac{p_{ mathrm{k}} - p_{ mathrm{r}}}{2}. quad (24.5.)",
+   "node_ids": [
+    "bas-xxiii.n-496-22da9c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-d757fb",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "Подставив равенства (24.3)–(24.5) в соотношение (24.2), получим",
+   "node_ids": [
+    "bas-xxiii.n-496-22da9c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-610def",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "Q = beta^ frac{d}{dt} left( Bhl frac{Q mu l}{2kBh} right),",
+   "node_ids": [
+    "bas-xxiii.n-496-22da9c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-1b01a5",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "или, так как Q = text{const} ,",
+   "node_ids": [
+    "bas-xxiii.n-496-1b01a5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-a33660",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "2Q = frac{ beta^ mu}{k} Q frac{d}{dt} (l^2),",
+   "node_ids": [
+    "bas-xxiii.n-496-1b01a5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-a22d73",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "откуда следует",
+   "node_ids": [
+    "bas-xxiii.n-496-1b01a5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-6c452c",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "2 kappa dt = dl^2 quad ( kappa = k/( mu beta^",
+   "node_ids": [
+    "bas-xxiii.n-496-1b01a5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-16967d",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "Проинтегрируем полученное соотношение и найдем",
+   "node_ids": [
+    "bas-xxiii.n-496-1b01a5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-0cafa2",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "l(t) = sqrt{2 kappa t}. quad (24.6)",
+   "node_ids": [
+    "bas-xxiii.n-496-1b01a5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-989cb6",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "Следовательно, формула для распределения давления в пласте (24.1) будет иметь вид",
+   "node_ids": [
+    "bas-xxiii.n-496-989cb6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-85fb5c",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "p(x, t) = p_{ mathrm{k}} - frac{Q mu}{kBh} ( sqrt{2 kappa t}",
+   "node_ids": [
+    "bas-xxiii.n-496-989cb6",
+    "bas-xxiii.n-496-1b01a5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-f0fde2",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "p(x, t) = p_{ mathrm{k}}, quad x > sqrt{2 kappa t}.",
+   "node_ids": [
+    "bas-xxiii.n-496-989cb6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-0dd229",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "Значения депрессии p_{ mathrm{k}} - p_{ mathrm{r}} по приближенной формуле (24.7) значительно",
+   "node_ids": [
+    "bas-xxiii.n-496-989cb6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-5ffcc9",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "Случай 2. Приток к галерее, на которой поддерживается постоянное забойное давление p_{",
+   "node_ids": [
+    "bas-xxiii.n-496-5ffcc9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-e66574",
+   "kind": "paragraph",
+   "page_pdf": 496,
+   "excerpt": "Дебит галереи в условиях установившегося движения, очевидно, можно выразить следующим образом:",
+   "node_ids": [
+    "bas-xxiii.n-496-5ffcc9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-496-d1a34d",
+   "kind": "formula",
+   "page_pdf": 496,
+   "excerpt": "Q(t) = frac{k(p_{ mathrm{k}} - p_{ mathrm{r}})}{ mu l(t)} Bh = frac{k}{",
+   "node_ids": [
+    "bas-xxiii.n-496-5ffcc9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-e62dd2",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "Задача решается аналогично предыдущему случаю с той лишь разницей, что в уравнение",
+   "node_ids": [
+    "bas-xxiii.n-497-e62dd2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-a0e182",
+   "kind": "formula",
+   "page_pdf": 497,
+   "excerpt": "V(t) = B h l(t),",
+   "node_ids": [
+    "bas-xxiii.n-497-e62dd2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-2761c6",
+   "kind": "formula",
+   "page_pdf": 497,
+   "excerpt": "Delta p = p_ kappa - bar{p} = p_ kappa - frac{p_",
+   "node_ids": [
+    "bas-xxiii.n-497-e62dd2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-9ea951",
+   "kind": "formula",
+   "page_pdf": 497,
+   "excerpt": "Q(t) = frac{k(p_ kappa - p_ tau)}{ mu l(t)} Bh.",
+   "node_ids": [
+    "bas-xxiii.n-497-e62dd2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-8c1f68",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "Таким образом, в результате получим",
+   "node_ids": [
+    "bas-xxiii.n-497-e62dd2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-36ef32",
+   "kind": "formula",
+   "page_pdf": 497,
+   "excerpt": "frac{k(p_ kappa - p_ tau)}{ mu l(t)} Bh dt = beta^ d",
+   "node_ids": [
+    "bas-xxiii.n-497-e62dd2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-5e3112",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "Проведя арифметические преобразования в этом соотношении, и выполнив интегрирование, найдем закон движения",
+   "node_ids": [
+    "bas-xxiii.n-497-e62dd2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-10f0f5",
+   "kind": "formula",
+   "page_pdf": 497,
+   "excerpt": "l(t) = 2 sqrt{ kappa t}.",
+   "node_ids": [
+    "bas-xxiii.n-497-e62dd2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-afe122",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "Следовательно, распределение давления в возмущенной зоне пласта определяется соотношением",
+   "node_ids": [
+    "bas-xxiii.n-497-afe122"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-3080a5",
+   "kind": "formula",
+   "page_pdf": 497,
+   "excerpt": "p(x, t) = p_ kappa - (p_ kappa - p_ tau) left(",
+   "node_ids": [
+    "bas-xxiii.n-497-afe122"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-83d04a",
+   "kind": "formula",
+   "page_pdf": 497,
+   "excerpt": "p(x, t) = p_ kappa, quad x > 2 sqrt{ kappa t},",
+   "node_ids": [
+    "bas-xxiii.n-497-afe122"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-d52a6e",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "а дебит галереи – соотношением",
+   "node_ids": [
+    "bas-xxiii.n-497-afe122"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-e376ee",
+   "kind": "formula",
+   "page_pdf": 497,
+   "excerpt": "Q(t) = frac{k(p_ kappa - p_ tau)}{ mu 2 sqrt{ kappa t}}",
+   "node_ids": [
+    "bas-xxiii.n-497-afe122"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-962d65",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "Погрешность расчета дебита галереи по приближенной формуле (24.8) по сравнению с расчетами",
+   "node_ids": [
+    "bas-xxiii.n-497-afe122"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-73643c",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "Плоскорадиальный неустановившийся фильтрационный поток упругой жидкости.",
+   "node_ids": [
+    "bas-xxiii.n-497-73643c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-0af42d",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "Случай 1. Приток к скважине, на которой поддерживается постоянный дебит Q .",
+   "node_ids": [
+    "bas-xxiii.n-497-73643c",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-497-18e0a9",
+   "kind": "paragraph",
+   "page_pdf": 497,
+   "excerpt": "В соответствии с методом ПССС принимаем, что через время t после пуска",
+   "node_ids": [
+    "bas-xxiii.n-497-73643c",
+    "bas-xxiii.n-498-573ed7",
+    "bas-xxiii.n-499-7ef37e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-341d22",
+   "kind": "formula",
+   "page_pdf": 498,
+   "excerpt": "p(r, t) = p_ kappa - frac{Q mu}{2 pi kh} ln frac{R(t)}{r}.",
+   "node_ids": [
+    "bas-xxiii.n-497-73643c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-53f4cc",
+   "kind": "figure",
+   "page_pdf": 498,
+   "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ Тип",
+   "node_ids": [
+    "bas-xxiii.n-498-8a86fa"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-7f73c3",
+   "kind": "figure",
+   "page_pdf": 498,
+   "excerpt": "Рис. 24.2. Кривые распределения давления в плоскорадиальном потоке в разные моменты времени",
+   "node_ids": [
+    "bas-xxiii.n-498-8a86fa"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-bac85b",
+   "kind": "paragraph",
+   "page_pdf": 498,
+   "excerpt": "В остальной части пласта сохраняется начальное пластовое давление p_ kappa .",
+   "node_ids": [
+    "bas-xxiii.n-497-73643c",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-554b89",
+   "kind": "paragraph",
+   "page_pdf": 498,
+   "excerpt": "Требуется найти закон движения границы возмущенной области R(t) .",
+   "node_ids": [
+    "bas-xxiii.n-497-73643c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-8a86fa",
+   "kind": "paragraph",
+   "page_pdf": 498,
+   "excerpt": "Кривые распределения давления в разные моменты времени в таком потоке приведены на",
+   "node_ids": [
+    "bas-xxiii.n-498-8a86fa"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-015e3c",
+   "kind": "formula",
+   "page_pdf": 498,
+   "excerpt": "Q = frac{2 pi kh(p_ kappa - p_c(t))}{ mu ln(R(t)/r_c)}. quad (24.11)",
+   "node_ids": [
+    "bas-xxiii.n-498-8a86fa"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-43e8d2",
+   "kind": "paragraph",
+   "page_pdf": 498,
+   "excerpt": "Размеры возмущенной области найдем из уравнения материального баланса (24.2) при",
+   "node_ids": [
+    "bas-xxiii.n-498-43e8d2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-fe8045",
+   "kind": "formula",
+   "page_pdf": 498,
+   "excerpt": "V(t) = pi(R^2(t) - r_c^2)h, quad Delta p = p_ kappa -",
+   "node_ids": [
+    "bas-xxiii.n-498-43e8d2",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-2765f2",
+   "kind": "paragraph",
+   "page_pdf": 498,
+   "excerpt": "Средневзвешенное пластовое давление bar{p} в установившемся плоскорадиальном потоке (см. гл. XX, §3)",
+   "node_ids": [
+    "bas-xxiii.n-498-43e8d2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-2cd82a",
+   "kind": "formula",
+   "page_pdf": 498,
+   "excerpt": "bar{p} = p_ kappa - frac{p_ kappa - p_c}{2 ln(R(t)/r_c)},",
+   "node_ids": [
+    "bas-xxiii.n-498-43e8d2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-2c6abb",
+   "kind": "paragraph",
+   "page_pdf": 498,
+   "excerpt": "откуда, учитывая (24.11), находим",
+   "node_ids": [
+    "bas-xxiii.n-498-43e8d2"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-6c55c1",
+   "kind": "formula",
+   "page_pdf": 498,
+   "excerpt": "Delta p = p_ kappa - bar{p} = frac{p_ kappa - p_c}{2",
+   "node_ids": [
+    "bas-xxiii.n-498-43e8d2",
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-573ed7",
+   "kind": "paragraph",
+   "page_pdf": 498,
+   "excerpt": "Закон движения границы возмущенной области R(t) найдем, подставив выражения (24.12) и (24.13)",
+   "node_ids": [
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-6045b2",
+   "kind": "formula",
+   "page_pdf": 498,
+   "excerpt": "4 kappa dt = d(R^2(t) - r_c^2),",
+   "node_ids": [
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-9eb668",
+   "kind": "paragraph",
+   "page_pdf": 498,
+   "excerpt": "откуда после интегрирования в пределах от 0 до t и от r_c",
+   "node_ids": [
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-498-1cee17",
+   "kind": "formula",
+   "page_pdf": 498,
+   "excerpt": "R(t) = sqrt{r_c^2 + 4 kappa t}. quad (24.14)",
+   "node_ids": [
+    "bas-xxiii.n-498-573ed7"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-e8979c",
+   "kind": "paragraph",
+   "page_pdf": 499,
+   "excerpt": "Тогда из равенства (24.10) можно определить давление в любой точке пласта в",
+   "node_ids": [
+    "bas-xxiii.n-499-e8979c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-296632",
+   "kind": "formula",
+   "page_pdf": 499,
+   "excerpt": "p(r, t) = p_ kappa - frac{Q mu}{2 pi kh} ln frac{",
+   "node_ids": [
+    "bas-xxiii.n-499-e8979c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-25209c",
+   "kind": "formula",
+   "page_pdf": 499,
+   "excerpt": "p(r, t) = p_ kappa, quad r > sqrt{r_c^2 + 4 kappa",
+   "node_ids": [
+    "bas-xxiii.n-499-e8979c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-8b9da9",
+   "kind": "paragraph",
+   "page_pdf": 499,
+   "excerpt": "Депрессия в момент времени t :",
+   "node_ids": [
+    "bas-xxiii.n-499-e8979c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-96260b",
+   "kind": "formula",
+   "page_pdf": 499,
+   "excerpt": "Delta p_c equiv p_ kappa - p_c(t) = frac{Q mu}{2 pi kh}",
+   "node_ids": [
+    "bas-xxiii.n-499-e8979c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-d68aa1",
+   "kind": "paragraph",
+   "page_pdf": 499,
+   "excerpt": "Сравнивая (24.16) с депрессией, определенной по точной формуле (23.52), можно убедиться, что",
+   "node_ids": [
+    "bas-xxiii.n-499-e8979c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-4e9699",
+   "kind": "paragraph",
+   "page_pdf": 499,
+   "excerpt": "Случай 2. Приток к скважине, на которой поддерживается постоянное давление p_c =",
+   "node_ids": [
+    "bas-xxiii.n-499-4e9699"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-478b27",
+   "kind": "paragraph",
+   "page_pdf": 499,
+   "excerpt": "Дебит скважины определяется по формуле Дюпюи (24.11) при p_c = text{const} .",
+   "node_ids": [
+    "bas-xxiii.n-499-4e9699"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-022cc2",
+   "kind": "paragraph",
+   "page_pdf": 499,
+   "excerpt": "Сравнение с результатами точных расчетов, выполненных К.А.Царевичем и И.Ф.Курановым, показывает, что погрешность",
+   "node_ids": [
+    "bas-xxiii.n-499-4e9699"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-7ef37e",
+   "kind": "paragraph",
+   "page_pdf": 499,
+   "excerpt": "Заметим, что как в случае линейной, так и радиальной фильтрации в точке",
+   "node_ids": [
+    "bas-xxiii.n-499-7ef37e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-d72dc1",
+   "kind": "figure",
+   "page_pdf": 499,
+   "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ -",
+   "node_ids": [
+    "bas-xxiii.n-499-4e9699"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-499-da1b5c",
+   "kind": "figure",
+   "page_pdf": 499,
+   "excerpt": "Рис. 24.3. Зависимость безразмерного радиуса возмущенной области R(t)/r_c от безразмерного времени f_0",
+   "node_ids": [
+    "bas-xxiii.n-499-4e9699",
+    "bas-xxiii.n-499-7ef37e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-500-c08cd6",
+   "kind": "paragraph",
+   "page_pdf": 500,
+   "excerpt": "Распределение давления в области фильтрации, получаемое по методу ПССС, является довольно грубым",
+   "node_ids": [
+    "bas-xxiii.n-498-573ed7",
+    "bas-xxiii.n-499-7ef37e"
+   ],
+   "reason": null
+  }
+ ]
+}

@@ -1,0 +1,1718 @@
+{
+ "chapter": "bar-4",
+ "rows": [
+  {
+   "unit_id": "u-038-a764d9",
+   "kind": "heading",
+   "page_pdf": 38,
+   "excerpt": "§ 4. Нестационарное движение однородной сжимаемой жидкости. Линейная теория ^1",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-038-1c1369",
+   "kind": "paragraph",
+   "page_pdf": 38,
+   "excerpt": "Постановка основных задач. Простейший и наиболее изученный случай нестационарной фильтрации — движение",
+   "node_ids": [
+    "bar-4.n-038-1c1369"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-038-ff507b",
+   "kind": "paragraph",
+   "page_pdf": 38,
+   "excerpt": "^1 См. также [47, 6, 12, 44].",
+   "node_ids": [
+    "bar-4.n-038-1c1369"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-589339",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "родной слабосжимаемой жидкости в упруго деформируемом пласте. Это движение (см. § 1.4)",
+   "node_ids": [
+    "bar-4.n-038-1c1369",
+    "bar-4.n-039-589339"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-b654f4",
+   "kind": "formula",
+   "page_pdf": 39,
+   "excerpt": "partial p/ partial t = varkappa ( partial^2 p/ partial x^2 +",
+   "node_ids": [
+    "bar-4.n-039-589339"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-2d535f",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "по форме совпадающим с классическим уравнением теплопроводности.",
+   "node_ids": [
+    "bar-4.n-039-589339"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-60b150",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "Область, в которой ищется распределение давления в жидкости, та же, что рассматривалась",
+   "node_ids": [
+    "bar-4.n-039-60b150"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-fd0ace",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "Граничные условия в задачах линейной нестационарной фильтрации задаются на границах того же",
+   "node_ids": [
+    "bar-4.n-039-60b150",
+    "bar-4.n-039-fd0ace"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-9846fe",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "Все принятые обычно варианты граничных условий укладываются в общую форму",
+   "node_ids": [
+    "bar-4.n-039-fd0ace"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-82b1e2",
+   "kind": "formula",
+   "page_pdf": 39,
+   "excerpt": "(ap + b partial p/ partial n) = f(x, y, z, t),",
+   "node_ids": [
+    "bar-4.n-039-fd0ace"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-3f0852",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "Из общей теории уравнения теплопроводности известно, что если на границе области задано",
+   "node_ids": [
+    "bar-4.n-039-3f0852"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-1cb1a6",
+   "kind": "formula",
+   "page_pdf": 39,
+   "excerpt": "p(x, y, z, 0) = varphi(x, y, z), quad ( text{II.85})",
+   "node_ids": [
+    "bar-4.n-039-3f0852"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-23896b",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "то существует единственное распределение давления p(x, y, z, t) , удовлетворяющее уравнению",
+   "node_ids": [
+    "bar-4.n-039-3f0852"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-11b87b",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "Хорошо разработанная техника решения уравнения теплопроводности (см., например, [40]) применима и к",
+   "node_ids": [
+    "bar-4.n-039-11b87b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-039-d0afdd",
+   "kind": "paragraph",
+   "page_pdf": 39,
+   "excerpt": "В типичных условиях нефтяного или газового месторождения или водоносного пласта толщина пласта",
+   "node_ids": [
+    "bar-4.n-039-11b87b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-7f88e8",
+   "kind": "paragraph",
+   "page_pdf": 40,
+   "excerpt": "Плоскопараллельное одномерное движение. Пусть скорость течения параллельна оси x не зависит от",
+   "node_ids": [
+    "bar-4.n-040-7f88e8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-b5936b",
+   "kind": "formula",
+   "page_pdf": 40,
+   "excerpt": "partial p / partial t = varkappa partial^2 p / partial x^2",
+   "node_ids": [
+    "bar-4.n-040-7f88e8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-fcbe94",
+   "kind": "paragraph",
+   "page_pdf": 40,
+   "excerpt": "Наиболее интересны случаи, для которых в начальный момент времени движение в пласте",
+   "node_ids": [
+    "bar-4.n-040-7f88e8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-35d7d5",
+   "kind": "paragraph",
+   "page_pdf": 40,
+   "excerpt": "Пусть при x=L (на контуре питания) давление сохраняет постоянное значение, равное начальному,",
+   "node_ids": [
+    "bar-4.n-039-60b150",
+    "bar-4.n-040-35d7d5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-ad752f",
+   "kind": "formula",
+   "page_pdf": 40,
+   "excerpt": "L {P(x, t) } = bar{P}(x, sigma) = int_0^ infty e^{-t sigma}",
+   "node_ids": [
+    "bar-4.n-040-35d7d5"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-50711e",
+   "kind": "paragraph",
+   "page_pdf": 40,
+   "excerpt": "Для bar{P} получим задачу",
+   "node_ids": [
+    "bar-4.n-040-50711e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-c066e2",
+   "kind": "formula",
+   "page_pdf": 40,
+   "excerpt": "d^2 bar{P} / dx^2 - nu^2 bar{P} = 0; quad begin{array}{l} bar{P}(0)",
+   "node_ids": [
+    "bar-4.n-040-50711e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-abae5d",
+   "kind": "paragraph",
+   "page_pdf": 40,
+   "excerpt": "имеющую решение",
+   "node_ids": [
+    "bar-4.n-040-50711e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-94cfc9",
+   "kind": "formula",
+   "page_pdf": 40,
+   "excerpt": "bar{P} = F( sigma) operatorname{sh}[(L-x) nu] / operatorname{sh}(L nu). tag{II.89}",
+   "node_ids": [
+    "bar-4.n-040-50711e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-453fe6",
+   "kind": "paragraph",
+   "page_pdf": 40,
+   "excerpt": "Чтобы перейти от изображения к функции P(x, t) , предположим вначале, что",
+   "node_ids": [
+    "bar-4.n-040-453fe6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-2ff464",
+   "kind": "formula",
+   "page_pdf": 40,
+   "excerpt": "bar{P} = (p^0/ sigma) operatorname{sh}[(L-x) nu] / operatorname{sh}(L nu). tag{II.90}",
+   "node_ids": [
+    "bar-4.n-040-453fe6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-4b2f4a",
+   "kind": "paragraph",
+   "page_pdf": 40,
+   "excerpt": "Рассмотрим асимптотику решений при малых временах, чему, согласно теории преобразования Лапласа, соответствуют",
+   "node_ids": [
+    "bar-4.n-040-4b2f4a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-8d25a2",
+   "kind": "formula",
+   "page_pdf": 40,
+   "excerpt": "bar{P}(x, sigma) = (p^0/ sigma) left { sum_{n=0}^ infty exp(- nu(x+2Ln)) -",
+   "node_ids": [
+    "bar-4.n-040-4b2f4a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-d72240",
+   "kind": "paragraph",
+   "page_pdf": 40,
+   "excerpt": "Производя почленное обращение ряда (II.91), с помощью формул обращения, выведенных, например, в",
+   "node_ids": [
+    "bar-4.n-040-4b2f4a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-040-f7d159",
+   "kind": "formula",
+   "page_pdf": 40,
+   "excerpt": "P(x, t) = P^0 sum_{n=0}^ infty { operatorname{erfc}[(2Ln+x)/2 sqrt{ varkappa t}] -",
+   "node_ids": [
+    "bar-4.n-040-4b2f4a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-f8aa68",
+   "kind": "paragraph",
+   "page_pdf": 41,
+   "excerpt": "Ряд (II.92) сходится при всех t и x . Рассмотрим вначале асимптотику",
+   "node_ids": [
+    "bar-4.n-041-f8aa68"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-df53e1",
+   "kind": "formula",
+   "page_pdf": 41,
+   "excerpt": "P(x, t) = p^0 text{erfc} [x/2 sqrt{ varkappa t}]. tag{II.93}",
+   "node_ids": [
+    "bar-4.n-041-f8aa68"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-dc558e",
+   "kind": "paragraph",
+   "page_pdf": 41,
+   "excerpt": "Полученное решение (II.93) имеет двоякий смысл. С одной стороны, оно списывает распределение",
+   "node_ids": [
+    "bar-4.n-041-f8aa68"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-e008d9",
+   "kind": "paragraph",
+   "page_pdf": 41,
+   "excerpt": "В силу линейности уравнения (II.86) решение для случая произвольного вида функции P(0,",
+   "node_ids": [
+    "bar-4.n-041-e008d9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-34e78f",
+   "kind": "formula",
+   "page_pdf": 41,
+   "excerpt": "P(x, t) = int_0^t (df( tau)/d tau) P_1(x, t - tau) d",
+   "node_ids": [
+    "bar-4.n-041-e008d9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-9725e7",
+   "kind": "paragraph",
+   "page_pdf": 41,
+   "excerpt": "где P_1(x, t) — решение (II.92) или (II.93) для случая скачкообразного изменения",
+   "node_ids": [
+    "bar-4.n-041-e008d9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-9a5038",
+   "kind": "paragraph",
+   "page_pdf": 41,
+   "excerpt": "Рассмотрим теперь противоположную асимптотику t gg L^2/ varkappa . В этом случае",
+   "node_ids": [
+    "bar-4.n-041-9a5038"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-d7daf9",
+   "kind": "formula",
+   "page_pdf": 41,
+   "excerpt": "Phi(t) = sum_k text{Res}_{ sigma_k} [F( sigma) e^{ sigma t}], tag{II.95}",
+   "node_ids": [
+    "bar-4.n-041-9a5038"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-fc75c7",
+   "kind": "paragraph",
+   "page_pdf": 41,
+   "excerpt": "где сумма вычетов берется по всем особым точкам sigma_k функции F( sigma)",
+   "node_ids": [
+    "bar-4.n-041-9a5038"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-8ef973",
+   "kind": "formula",
+   "page_pdf": 41,
+   "excerpt": "P_1(x, t) = p^0 (1 - x/L) - 2p^0/ pi^{-1} sin[ pi",
+   "node_ids": [
+    "bar-4.n-041-9a5038"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-1ffeae",
+   "kind": "paragraph",
+   "page_pdf": 41,
+   "excerpt": "Из формулы (II. 96) видно, что приближение к стационарному линейному распределению давления",
+   "node_ids": [
+    "bar-4.n-041-1ffeae"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-dfb546",
+   "kind": "formula",
+   "page_pdf": 41,
+   "excerpt": "tau approx L^2 varkappa^{-1} pi^{-2}. tag{II.97}",
+   "node_ids": [
+    "bar-4.n-041-1ffeae"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-041-4dcf34",
+   "kind": "paragraph",
+   "page_pdf": 41,
+   "excerpt": "Для типичных условий фильтрации маловязкой нефти или воды в коллекторах с высокой",
+   "node_ids": [
+    "bar-4.n-041-4dcf34"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-085dc0",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "10⁴ см²/с. Тогда из (II.97) следует, что характерное время переходных процессов в",
+   "node_ids": [
+    "bar-4.n-041-4dcf34"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-68a3b8",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "В практических задачах часто приходится рассматривать нестационарные процессы в сложных системах, в",
+   "node_ids": [
+    "bar-4.n-042-68a3b8"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-304385",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "Плоскорадиальное движение. Рассмотрим одномерное осесимметричное (плоскорадиальное) нестационарное течение, соответствующее нестационарному притоку к",
+   "node_ids": [
+    "bar-4.n-042-304385"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-89fce5",
+   "kind": "formula",
+   "page_pdf": 42,
+   "excerpt": "partial p/ partial t = (x/r) partial [r partial p/ partial r]/",
+   "node_ids": [
+    "bar-4.n-042-304385"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-48f450",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "удовлетворяющее начальному условию",
+   "node_ids": [
+    "bar-4.n-042-304385"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-75336c",
+   "kind": "formula",
+   "page_pdf": 42,
+   "excerpt": "p(r, 0) = f(r) tag{II.99}",
+   "node_ids": [
+    "bar-4.n-042-304385"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-05514b",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "и граничным условиям при r = ρ и r = R.",
+   "node_ids": [
+    "bar-4.n-042-304385"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-568a14",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "Как и выше, в силу линейности уравнения (II.98) можно подразумевать под p",
+   "node_ids": [
+    "bar-4.n-042-304385",
+    "bar-4.n-042-73ba55"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-73ba55",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "Переходя в уравнении (II.98) к изображениям по Лапласу, получаем",
+   "node_ids": [
+    "bar-4.n-042-73ba55"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-e08f29",
+   "kind": "formula",
+   "page_pdf": 42,
+   "excerpt": "r^{-1} d [r overline{dp}(r, sigma)/dr]/dr = nu^2 overline{P}(r, sigma), quad nu^2 =",
+   "node_ids": [
+    "bar-4.n-042-73ba55"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-519da0",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "общее решение которого имеет вид",
+   "node_ids": [
+    "bar-4.n-042-73ba55"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-e009e8",
+   "kind": "formula",
+   "page_pdf": 42,
+   "excerpt": "overline{P}(r, sigma) = C_1 I_0(r nu) + C_2 K_0(r nu). tag{II.101}",
+   "node_ids": [
+    "bar-4.n-042-73ba55"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-320963",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "где I₀ и K₀ — модифицированные функции Бесселя от мнимого аргумента нулевого",
+   "node_ids": [
+    "bar-4.n-042-73ba55"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-51e938",
+   "kind": "paragraph",
+   "page_pdf": 42,
+   "excerpt": "Будем искать решения для случая, когда на скважине задается постоянный дебит при",
+   "node_ids": [
+    "bar-4.n-042-51e938"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-f0aedb",
+   "kind": "formula",
+   "page_pdf": 42,
+   "excerpt": "(2 pi k/ mu) (r partial p/ partial r) = -q =",
+   "node_ids": [
+    "bar-4.n-042-51e938"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-042-f78187",
+   "kind": "formula",
+   "page_pdf": 42,
+   "excerpt": "( partial p/ partial r)_{r= rho} = -q mu/2 pi k rho",
+   "node_ids": [
+    "bar-4.n-042-51e938"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-9bab60",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "Удовлетворяя граничным условиям, получим из (II.101) и (II.102)",
+   "node_ids": [
+    "bar-4.n-042-51e938"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-869ca7",
+   "kind": "formula",
+   "page_pdf": 43,
+   "excerpt": "begin{array}{l} bar{P}(r sigma) = (p^ / rho nu sigma)[K_0(R nu)I_0(r nu) -",
+   "node_ids": [
+    "bar-4.n-042-51e938"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-afc2a1",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "Радиус скважины rho обычно равен 10 см или менее. Если расстояние между",
+   "node_ids": [
+    "bar-4.n-043-afc2a1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-1d84f7",
+   "kind": "formula",
+   "page_pdf": 43,
+   "excerpt": "rho/ sqrt{ pi t} ll 1 ll R/ sqrt{ pi t},",
+   "node_ids": [
+    "bar-4.n-043-afc2a1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-a50b83",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "что позволяет упростить выражение (II.103), полагая rho sqrt{ sigma/ pi} ll 1",
+   "node_ids": [
+    "bar-4.n-043-afc2a1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-9e10a4",
+   "kind": "formula",
+   "page_pdf": 43,
+   "excerpt": "begin{array}{l} I_0(z) approx e^z (2 pi z)^{-1/2}, quad K_0(z) approx e^{-z} (",
+   "node_ids": [
+    "bar-4.n-043-afc2a1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-a27d96",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "где C = 0,7772 — постоянная Эйлера.",
+   "node_ids": [
+    "bar-4.n-043-afc2a1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-5ffae9",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "Тогда из (II.103) получим",
+   "node_ids": [
+    "bar-4.n-043-5ffae9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-aa174a",
+   "kind": "formula",
+   "page_pdf": 43,
+   "excerpt": "bar{P}(r, sigma) = -p sigma^{-1} K_0(r nu). tag{II.105}",
+   "node_ids": [
+    "bar-4.n-043-5ffae9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-1dfc28",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "В частности, для давления в скважине",
+   "node_ids": [
+    "bar-4.n-043-5ffae9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-eefe32",
+   "kind": "formula",
+   "page_pdf": 43,
+   "excerpt": "bar{P}( rho, sigma) = p^ sigma^{-1} ln( gamma rho nu). tag{II.106}",
+   "node_ids": [
+    "bar-4.n-043-5ffae9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-c2fcfd",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "Отметим важное обстоятельство: соотношение (II.105) не содержит радиус скважины rho . Это",
+   "node_ids": [
+    "bar-4.n-043-5ffae9",
+    "bar-4.n-043-c2fcfd"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-4ca68d",
+   "kind": "formula",
+   "page_pdf": 43,
+   "excerpt": "p(r, t) = 2^{-1} p^ E_i (-r^2/4 pi t). tag{II.107}",
+   "node_ids": [
+    "bar-4.n-043-c2fcfd"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-15c932",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "Для давления на скважине с помощью асимптотического выражения E_i (-x) = ln",
+   "node_ids": [
+    "bar-4.n-043-c2fcfd"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-af7d33",
+   "kind": "formula",
+   "page_pdf": 43,
+   "excerpt": "p( rho, t) = -q_ mu (4 pi k)^{-1} ln( gamma rho^2/4",
+   "node_ids": [
+    "bar-4.n-043-c2fcfd"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-870b6b",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "где Q — полный дебит скважины ( q — дебит на единицу",
+   "node_ids": [
+    "bar-4.n-043-c2fcfd"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-043-1e85ac",
+   "kind": "paragraph",
+   "page_pdf": 43,
+   "excerpt": "Определение параметров пласта. Общий принцип исследования пластов при нестационарном течении заключается в",
+   "node_ids": [
+    "bar-4.n-043-1e85ac"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-044-e1d70e",
+   "kind": "paragraph",
+   "page_pdf": 44,
+   "excerpt": "Самым простым и наиболее употребительным способом создания нестационарного течения является временная остановка",
+   "node_ids": [
+    "bar-4.n-044-e1d70e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-044-454e51",
+   "kind": "paragraph",
+   "page_pdf": 44,
+   "excerpt": "Пусть уравнение асимптоты есть p = A ln t + B .",
+   "node_ids": [
+    "bar-4.n-044-454e51"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-044-7f24a5",
+   "kind": "paragraph",
+   "page_pdf": 44,
+   "excerpt": "Следует учитывать, то радиус скважины в формуле для притока обычно не равен",
+   "node_ids": [
+    "bar-4.n-044-7f24a5",
+    "bar-4.n-044-7f24a5-b",
+    "bar-4.n-047-0091e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-044-14ba27",
+   "kind": "paragraph",
+   "page_pdf": 44,
+   "excerpt": "Для определения пьезопроводности пласта методом гидропродолжения, если дебит возмущающей скважины изменяется скачком,",
+   "node_ids": [
+    "bar-4.n-044-7f24a5-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-044-b5a39d",
+   "kind": "figure",
+   "page_pdf": 44,
+   "excerpt": "РИС. 5. Кривая восстановления давления",
+   "node_ids": [
+    "bar-4.n-044-e1d70e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-044-3f8e7b",
+   "kind": "formula",
+   "page_pdf": 44,
+   "excerpt": "Delta p = p(r, t) - p(r, 0) = = - Q",
+   "node_ids": [
+    "bar-4.n-044-7f24a5-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-044-b8fc16",
+   "kind": "figure",
+   "page_pdf": 44,
+   "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ Оси:",
+   "node_ids": [
+    "bar-4.n-044-e1d70e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-044-43983d",
+   "kind": "paragraph",
+   "page_pdf": 44,
+   "excerpt": "где Delta p — изменение давления в реагирующей скважине; Q — изменение",
+   "node_ids": [
+    "bar-4.n-044-7f24a5-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-045-703100",
+   "kind": "paragraph",
+   "page_pdf": 45,
+   "excerpt": "Приведенные примеры решения обратных задач для определения параметров пласта ограничены условиями, при",
+   "node_ids": [
+    "bar-4.n-045-703100"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-045-42e32b",
+   "kind": "paragraph",
+   "page_pdf": 45,
+   "excerpt": "Один из наиболее общих методов обработки кривых восстановления давления был предложен в",
+   "node_ids": [
+    "bar-4.n-045-42e32b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-045-8c9ffe",
+   "kind": "paragraph",
+   "page_pdf": 45,
+   "excerpt": "Рассмотрим пласт произвольной конфигурации, в котором при t = 0 начинает эксплуатироваться",
+   "node_ids": [
+    "bar-4.n-045-42e32b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-045-4e01ff",
+   "kind": "formula",
+   "page_pdf": 45,
+   "excerpt": "nabla^2 bar{P} = bar{ sigma} P / pi. quad ( text{II.110})",
+   "node_ids": [
+    "bar-4.n-045-42e32b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-045-298c11",
+   "kind": "paragraph",
+   "page_pdf": 45,
+   "excerpt": "На непроницаемых участках границы справедливо условие partial bar{P} / partial n =",
+   "node_ids": [
+    "bar-4.n-045-298c11"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-aeaeb4",
+   "kind": "formula",
+   "page_pdf": 46,
+   "excerpt": "begin{array}{l} Q ( sigma) = 2 pi (k h / mu) rho",
+   "node_ids": [
+    "bar-4.n-045-298c11"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-88fa21",
+   "kind": "paragraph",
+   "page_pdf": 46,
+   "excerpt": "Из формулы (II.111) следует, что отношение",
+   "node_ids": [
+    "bar-4.n-045-298c11"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-84477b",
+   "kind": "formula",
+   "page_pdf": 46,
+   "excerpt": "psi ( sigma) = bar {P} _ {1} ( sigma) / bar",
+   "node_ids": [
+    "bar-4.n-045-298c11"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-5b8dd6",
+   "kind": "paragraph",
+   "page_pdf": 46,
+   "excerpt": "зависит только от вида функции U , но не от режима эксплуатации",
+   "node_ids": [
+    "bar-4.n-045-298c11",
+    "bar-4.n-046-5b8dd6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-528aa8",
+   "kind": "formula",
+   "page_pdf": 46,
+   "excerpt": "U = K _ {0} (r nu) / K _ {0} (",
+   "node_ids": [
+    "bar-4.n-046-5b8dd6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-0d9ffb",
+   "kind": "paragraph",
+   "page_pdf": 46,
+   "excerpt": "откуда",
+   "node_ids": [
+    "bar-4.n-046-5b8dd6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-77dd26",
+   "kind": "formula",
+   "page_pdf": 46,
+   "excerpt": "psi ( sigma) = (2 pi k h rho partial U /",
+   "node_ids": [
+    "bar-4.n-046-5b8dd6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-6ecc56",
+   "kind": "paragraph",
+   "page_pdf": 46,
+   "excerpt": "При практическом построении преобразований Лапласа от функций p_1(t) и q(t) удобно перейти",
+   "node_ids": [
+    "bar-4.n-046-6ecc56"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-0336b8",
+   "kind": "paragraph",
+   "page_pdf": 46,
+   "excerpt": "Поэтому, учитывая порядок varkappa и rho , видим, что значения rho sqrt{",
+   "node_ids": [
+    "bar-4.n-046-6ecc56"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-ff97eb",
+   "kind": "formula",
+   "page_pdf": 46,
+   "excerpt": "begin{array}{l} Psi ( tau) = Psi ( sigma) = - mu (2",
+   "node_ids": [
+    "bar-4.n-046-6ecc56"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-85c3c1",
+   "kind": "paragraph",
+   "page_pdf": 46,
+   "excerpt": "Параметры пласта — коэффициенты в формуле (II.115) — определяются по графику Psi",
+   "node_ids": [
+    "bar-4.n-046-6ecc56"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-5dabaf",
+   "kind": "paragraph",
+   "page_pdf": 46,
+   "excerpt": "Описанный общий подход позволяет получать методом восстановления давления некоторые параметры неоднородного пласта.",
+   "node_ids": [
+    "bar-4.n-046-5dabaf"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-68e2be",
+   "kind": "paragraph",
+   "page_pdf": 46,
+   "excerpt": "Рассмотрим пример. Пусть скважина радиусом rho расположена в центре круговой зоны радиуса",
+   "node_ids": [
+    "bar-4.n-046-5dabaf",
+    "bar-4.n-047-0091e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-046-298363",
+   "kind": "formula",
+   "page_pdf": 46,
+   "excerpt": "Psi ( tau) = mu (4 pi k _ {2} h) ^",
+   "node_ids": [
+    "bar-4.n-046-5dabaf"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-047-34047f",
+   "kind": "paragraph",
+   "page_pdf": 47,
+   "excerpt": "где эквивалентный радиус скважины rho^ тот же, что и для стационарного притока",
+   "node_ids": [
+    "bar-4.n-046-5dabaf"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-047-1ca9f2",
+   "kind": "formula",
+   "page_pdf": 47,
+   "excerpt": "rho^ = R ( rho/R)^ gamma = rho ( rho/R)^{ gamma-1}, quad",
+   "node_ids": [
+    "bar-4.n-046-5dabaf"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-047-0091e1",
+   "kind": "paragraph",
+   "page_pdf": 47,
+   "excerpt": "Сравнивая формулы (II.115) и (II.116), видим, что формула (II.117) описывает преобразованную кривую",
+   "node_ids": [
+    "bar-4.n-047-0091e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-047-8a7d05",
+   "kind": "paragraph",
+   "page_pdf": 47,
+   "excerpt": "Описанный метод обработки кривых восстановления давления можно использовать и для определения других",
+   "node_ids": [
+    "bar-4.n-047-0091e1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-047-71245b",
+   "kind": "paragraph",
+   "page_pdf": 47,
+   "excerpt": "Метод интегральных соотношений. Хорошо разработанная теория уравнений математической физики позволяет получить в",
+   "node_ids": [
+    "bar-4.n-047-71245b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-047-eeeda3",
+   "kind": "paragraph",
+   "page_pdf": 47,
+   "excerpt": "Возможность успешного применения приближенных методов в теории нестационарной фильтрации связана со следующими",
+   "node_ids": [
+    "bar-4.n-047-71245b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-047-783935",
+   "kind": "paragraph",
+   "page_pdf": 47,
+   "excerpt": "В ряде приближенных методов используется понятие области влияния или области возмущения, вне",
+   "node_ids": [
+    "bar-4.n-047-783935"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-ba5a5a",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "Сущность его заключается в том, что исходное дифференциальное уравнение (II.86) или (II.98)",
+   "node_ids": [
+    "bar-4.n-048-ba5a5a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-6460e6",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "int_{L_1(t)}^{L_2(t)} partial p / partial t f_i(x, t) dx = varkappa int_{L_1(t)}^{L_2(t)}",
+   "node_ids": [
+    "bar-4.n-048-ba5a5a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-468e01",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "где f_i(x, t) , i = 0, 1, dots, n образуют полную",
+   "node_ids": [
+    "bar-4.n-048-ba5a5a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-746903",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "Рассмотрим задачу о возмущении первоначального стационарного движения в пласте. Возьмем простейшую систему",
+   "node_ids": [
+    "bar-4.n-048-746903"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-4f017f",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "1, x, x^2, dots, x^n, dots",
+   "node_ids": [
+    "bar-4.n-048-746903"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-b06313",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "Пусть в момент t = 0 происходит отбор жидкости из пласта с",
+   "node_ids": [
+    "bar-4.n-048-746903"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-3a92ff",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "p(x, 0) = P + Gx. tag{II.119}",
+   "node_ids": [
+    "bar-4.n-048-746903"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-1231f8",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "Будем искать приближенное решение задачи в виде многочлена",
+   "node_ids": [
+    "bar-4.n-048-746903"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-7615a6",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "begin{array}{l} p(x, t) = P_0(t) + P_1(t) x/l + dots + P_n(t)",
+   "node_ids": [
+    "bar-4.n-048-746903"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-f2956b",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "В таком виде задача имеет n + 2 неизвестных: P_i(t) и l(t)",
+   "node_ids": [
+    "bar-4.n-048-746903",
+    "bar-4.n-048-f2956b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-eb0721",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "partial p(l, t)/ partial x = partial^2 p(l, t)/ partial x^2 =",
+   "node_ids": [
+    "bar-4.n-048-f2956b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-7e1816",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "Выбор наилучшего приближенного метода расчета p(x, t) связан с тем, насколько удачно",
+   "node_ids": [
+    "bar-4.n-048-f2956b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-2bb233",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "В рассматриваемом случае",
+   "node_ids": [
+    "bar-4.n-048-2bb233"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-bf5919",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "p(0, t) = p_1, quad p(x, 0) = p_0 = 0. tag{II.121}",
+   "node_ids": [
+    "bar-4.n-048-2bb233"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-c27149",
+   "kind": "paragraph",
+   "page_pdf": 48,
+   "excerpt": "Используя интегрирование по частям и теорему о дифференцировании определенного интеграла, приведем систему",
+   "node_ids": [
+    "bar-4.n-048-2bb233"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-d1428f",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "frac{d}{dt} int_0^l p dx = - varkappa left( frac{ partial p}{ partial",
+   "node_ids": [
+    "bar-4.n-048-2bb233"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-e61823",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "frac{d}{dt} int_0^l p x dx = varkappa p(0, t), tag{II.123}",
+   "node_ids": [
+    "bar-4.n-048-2bb233"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-048-72ecd5",
+   "kind": "formula",
+   "page_pdf": 48,
+   "excerpt": "frac{d}{dt} int_0^{l(t)} p x^k dx = varkappa k(k-1) int_0^{l(t)} p x^{k-2} dx,",
+   "node_ids": [
+    "bar-4.n-048-2bb233"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-5807b1",
+   "kind": "figure",
+   "page_pdf": 49,
+   "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ Оси:",
+   "node_ids": [
+    "bar-4.n-049-4944df"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-05dd79",
+   "kind": "figure",
+   "page_pdf": 49,
+   "excerpt": "РИС. 6. К задаче о нестационарном притоке к галерее:",
+   "node_ids": [
+    "bar-4.n-039-60b150",
+    "bar-4.n-049-4944df"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-bbbbf6",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "0 — нулевое приближение; 1 — первое приближение; 2 — точное решение",
+   "node_ids": [
+    "bar-4.n-049-4944df"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-a6be50",
+   "kind": "figure",
+   "page_pdf": 49,
+   "excerpt": "РИС. 7. Зависимость безразмерного давления от безразмерной координаты для осемиметричного течения.",
+   "node_ids": [
+    "bar-4.n-050-f39e42"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-ebfcee",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "Решения: 1 — приближенное; 2 — точное",
+   "node_ids": [
+    "bar-4.n-050-f39e42"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-602c04",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "При n = 1 из (II.122) следует",
+   "node_ids": [
+    "bar-4.n-049-602c04"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-8bdaf2",
+   "kind": "formula",
+   "page_pdf": 49,
+   "excerpt": "l = 2 sqrt{ varkappa t}, quad u(0, t) = -k (",
+   "node_ids": [
+    "bar-4.n-049-602c04"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-33cf58",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "Напомним, что при точном решении по формуле (II.93) получим",
+   "node_ids": [
+    "bar-4.n-049-602c04"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-d29c0f",
+   "kind": "formula",
+   "page_pdf": 49,
+   "excerpt": "u_0(0, t) = k (p_1 - p_0) / mu sqrt{ pi varkappa",
+   "node_ids": [
+    "bar-4.n-049-602c04"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-a0fb73",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "Заметим, что решение для n = 1 совпадает с тем, которое получается",
+   "node_ids": [
+    "bar-4.n-049-602c04"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-740568",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "Для второго приближения ( n = 2 ) используем снова соотношение (II.122)",
+   "node_ids": [
+    "bar-4.n-049-740568"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-8d557f",
+   "kind": "formula",
+   "page_pdf": 49,
+   "excerpt": "( partial p / partial x)_{x=l=0} = 0, tag{II.127}",
+   "node_ids": [
+    "bar-4.n-049-740568"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-e13ac2",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "что дает",
+   "node_ids": [
+    "bar-4.n-049-740568"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-7bbdf1",
+   "kind": "formula",
+   "page_pdf": 49,
+   "excerpt": "p(x, t) = p_1 (1 - x/l)^2, quad l^2 = 12 varkappa",
+   "node_ids": [
+    "bar-4.n-049-740568"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-373e9d",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "Для скорости фильтрации при x = 0 получим",
+   "node_ids": [
+    "bar-4.n-049-740568"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-d0fb20",
+   "kind": "formula",
+   "page_pdf": 49,
+   "excerpt": "u(0, t) = k (p_1 - p_0) / sqrt{3 varkappa t}, tag{II.129}",
+   "node_ids": [
+    "bar-4.n-049-740568"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-29773c",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "что близко к точному решению (II.126). Если во втором приближении вместо (II.127)",
+   "node_ids": [
+    "bar-4.n-049-740568"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-4944df",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "Если для третьего приближения ( n = 3 ) использовать соотношения (II.122),",
+   "node_ids": [
+    "bar-4.n-049-4944df"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-20a2aa",
+   "kind": "formula",
+   "page_pdf": 49,
+   "excerpt": "p(x, t) = p_1 (1 - 0,583 zeta + 0,107 zeta^2 +",
+   "node_ids": [
+    "bar-4.n-049-4944df"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-049-94fa73",
+   "kind": "paragraph",
+   "page_pdf": 49,
+   "excerpt": "На рис. 6 приведено сопоставление полученных приближенных решений с точными. При построении",
+   "node_ids": [
+    "bar-4.n-049-4944df"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-e1cf4e",
+   "kind": "paragraph",
+   "page_pdf": 50,
+   "excerpt": "Рассмотрим без подробных выкладок осемимметричную задачу о пуске скважин с заданным дебитом",
+   "node_ids": [
+    "bar-4.n-050-e1cf4e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-83bf3f",
+   "kind": "formula",
+   "page_pdf": 50,
+   "excerpt": "p (r, t) = q ln (r/l) + P_0 + P_1 (r/l)",
+   "node_ids": [
+    "bar-4.n-050-e1cf4e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-a37981",
+   "kind": "paragraph",
+   "page_pdf": 50,
+   "excerpt": "где l(t) — переменный радиус зоны возмущения. Система интегральных соотношений имеет вид",
+   "node_ids": [
+    "bar-4.n-050-e1cf4e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-e3533e",
+   "kind": "formula",
+   "page_pdf": 50,
+   "excerpt": "frac{d}{dt} int_0^{l(t)} r p (r, t) dr = - varkappa q, tag{II.132}",
+   "node_ids": [
+    "bar-4.n-050-e1cf4e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-72d680",
+   "kind": "formula",
+   "page_pdf": 50,
+   "excerpt": "frac{d}{dt} int_0^{l(t)} r^{k+1} p (r, t) dr = varkappa k^2 int_0^{l(t)} p",
+   "node_ids": [
+    "bar-4.n-050-e1cf4e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-f39e42",
+   "kind": "paragraph",
+   "page_pdf": 50,
+   "excerpt": "В нулевом приближении ( P_0 = P_1 = dots = 0 )",
+   "node_ids": [
+    "bar-4.n-050-f39e42",
+    "bar-4.n-050-e1cf4e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-f0dead",
+   "kind": "formula",
+   "page_pdf": 50,
+   "excerpt": "l = 2 sqrt{ varkappa t}, quad p_0 (r, t) = q",
+   "node_ids": [
+    "bar-4.n-050-f39e42"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-071980",
+   "kind": "paragraph",
+   "page_pdf": 50,
+   "excerpt": "С использованием уравнений (II.132), (II.133) и условий непрерывности p и partial p/",
+   "node_ids": [
+    "bar-4.n-050-f39e42"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-7a29fe",
+   "kind": "formula",
+   "page_pdf": 50,
+   "excerpt": "l = sqrt{12 varkappa t}, quad p = q ln (r/ sqrt{12",
+   "node_ids": [
+    "bar-4.n-050-f39e42"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-d74db0",
+   "kind": "paragraph",
+   "page_pdf": 50,
+   "excerpt": "При сопоставлении приближенных решений 1 с точным 2 (рис. 7) имеем, что",
+   "node_ids": [
+    "bar-4.n-050-f39e42"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-d96221",
+   "kind": "paragraph",
+   "page_pdf": 50,
+   "excerpt": "Метод интегральных соотношений позволяет с удовлетворительной точностью получить простые приближенные решения задач",
+   "node_ids": [
+    "bar-4.n-050-d96221"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-5f286b",
+   "kind": "paragraph",
+   "page_pdf": 50,
+   "excerpt": "Рассмотрим круговой пласт радиуса R, на контуре которого поддерживается постоянное давление, равное",
+   "node_ids": [
+    "bar-4.n-050-d96221",
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-938891",
+   "kind": "formula",
+   "page_pdf": 50,
+   "excerpt": "p (R, t) = 0. tag{II.136}",
+   "node_ids": [
+    "bar-4.n-050-d96221"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-124d3d",
+   "kind": "paragraph",
+   "page_pdf": 50,
+   "excerpt": "Используя снова первое приближение разложения (II.131) и полагая l(t) equiv R ,",
+   "node_ids": [
+    "bar-4.n-050-d96221",
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-050-22b025",
+   "kind": "formula",
+   "page_pdf": 50,
+   "excerpt": "p (r, t) = q ln (r/R) + P_0 (t) (1 -",
+   "node_ids": [
+    "bar-4.n-050-d96221",
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-051-e62663",
+   "kind": "paragraph",
+   "page_pdf": 51,
+   "excerpt": "Тогда из первого интегрального соотношения (II.132) получим",
+   "node_ids": [
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-051-cfb416",
+   "kind": "formula",
+   "page_pdf": 51,
+   "excerpt": "frac{d}{dt} int_0^R p(r, t) r dr = frac{1}{6} R^2 frac{dP_0}{dt} = -",
+   "node_ids": [
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-051-99d2db",
+   "kind": "paragraph",
+   "page_pdf": 51,
+   "excerpt": "Уравнение (II.138) следует решить при условии непрерывности давления при t cong t_1",
+   "node_ids": [
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-051-bf22fa",
+   "kind": "formula",
+   "page_pdf": 51,
+   "excerpt": "P_0(t) = -q exp[-6 varkappa(t-t_1)/R^2]. quad text{(II.139)}",
+   "node_ids": [
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-051-b96dd3",
+   "kind": "paragraph",
+   "page_pdf": 51,
+   "excerpt": "Таким образом, будем иметь приближенное выражение для распределения давления",
+   "node_ids": [
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-051-0ee967",
+   "kind": "formula",
+   "page_pdf": 51,
+   "excerpt": "p(r, t) = q ln(r/R) - q(1-r/R) exp[-6 varkappa(t-t_1)/R^2]. quad text{(II.140)}",
+   "node_ids": [
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-051-be31bd",
+   "kind": "paragraph",
+   "page_pdf": 51,
+   "excerpt": "Как видно, распределение давления экспоненциально стремится к стационарному.",
+   "node_ids": [
+    "bar-4.n-051-e62663"
+   ],
+   "reason": null
+  }
+ ]
+}
