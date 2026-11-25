@@ -292,7 +292,10 @@
     var toc = el("nav", { "class": "toc", "aria-label": "Оглавление шага" });
     sections.forEach(function (x) { toc.appendChild(el("a", { href: "#b-" + x[0], "data-anchor": "b-" + x[0], text: titles[x[0]] })); });
     if (tl.length) toc.appendChild(el("a", { href: "#b-tasks", "data-anchor": "b-tasks", text: "Проверь себя" }));
-    head.push(toc);
+    // collapsed on phones (long list of chips pushes the text below the fold), open on wider screens
+    var tocBox = el("details", { "class": "tocbox", open: window.matchMedia("(min-width: 760px)").matches }, [
+      el("summary", { text: "Оглавление шага (" + toc.childNodes.length + ")" }), toc]);
+    head.push(tocBox);
     var body = sections.map(function (x) { return block(x[0], titles[x[0]], x[1]); });
     if (tl.length) body.push(block("tasks", "Проверь себя", tl.map(taskView)));
     var prev = steps[s.idx - 1], next = steps[s.idx + 1];

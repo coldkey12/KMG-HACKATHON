@@ -32,7 +32,14 @@
      Data (quotes) stays verbatim; this only changes how it is drawn. */
   var TEX = { "\\rightarrow": "→", "\\to": "→", "\\infty": "∞", "\\approx": "≈", "\\leq": "≤", "\\geq": "≥", "\\le": "≤", "\\ge": "≥",
     "\\Delta": "Δ", "\\rho": "ρ", "\\delta": "δ", "\\mu": "μ", "\\pi": "π", "\\eta": "η", "\\alpha": "α", "\\beta": "β", "\\gamma": "γ",
-    "\\varphi": "φ", "\\phi": "φ", "\\sigma": "σ", "\\lambda": "λ", "\\kappa": "κ", "\\chi": "χ", "\\cdot": "·", "\\times": "×", "\\%": "%", "\\,": " ", "\\;": " " };
+    "\\varphi": "φ", "\\phi": "φ", "\\sigma": "σ", "\\lambda": "λ", "\\kappa": "κ", "\\chi": "χ", "\\cdot": "·", "\\times": "×", "\\%": "%", "\\,": " ", "\\;": " ",
+    "\\tau": "τ", "\\xi": "ξ", "\\theta": "θ", "\\omega": "ω", "\\nu": "ν", "\\zeta": "ζ", "\\epsilon": "ε", "\\varepsilon": "ε", "\\psi": "ψ",
+    "\\Phi": "Φ", "\\Psi": "Ψ", "\\Omega": "Ω", "\\Sigma": "Σ", "\\Gamma": "Γ", "\\Lambda": "Λ", "\\Pi": "Π", "\\Theta": "Θ",
+    "\\partial": "∂", "\\int": "∫", "\\sum": "Σ", "\\nabla": "∇", "\\pm": "±", "\\neq": "≠", "\\ne": "≠", "\\ll": "≪", "\\gg": "≫",
+    "\\propto": "∝", "\\sim": "~", "\\prime": "′", "\\dots": "…", "\\ldots": "…", "\\cdots": "⋯", "\\leqslant": "≤", "\\geqslant": "≥",
+    "\\ln": "ln", "\\lg": "lg", "\\log": "log", "\\exp": "exp", "\\sin": "sin", "\\cos": "cos", "\\max": "max", "\\min": "min", "\\lim": "lim",
+    "\\quad": "  ", "\\qquad": "   ", "\\!": "", "\\:": " ", "\\ ": " ", "\\bigl": "", "\\bigr": "", "\\Bigl": "", "\\Bigr": "", "\\big": "", "\\Big": "",
+    "\\{": "{", "\\}": "}" };
   function texFrag(src) {
     var frag = document.createDocumentFragment();
     var re = /\$\$?([^$]+)\$\$?|\\\(\s*(.+?)\s*\\\)/g, last = 0, m;
@@ -52,7 +59,7 @@
       while (i < s.length && s[i] !== "}") out.appendChild(atom());
       i++; return out;
     }
-    function arg() { while (s[i] === " ") i++; if (s[i] === "{") return group(); var c = s[i++] || ""; return document.createTextNode(c); }
+    function arg() { while (s[i] === " ") i++; if (s[i] === "{") return group(); if (s[i] === "\\") return atom(); var c = s[i++] || ""; return document.createTextNode(c); }
     function atom() {
       var c = s[i];
       if (c === "{") return group();
@@ -66,6 +73,11 @@
         if (name === "sqrt") { var r = el("span", { "class": "sqrt" }); r.appendChild(document.createTextNode("√")); var b = el("span", { "class": "rad" }); b.appendChild(arg()); r.appendChild(b); return r; }
         if (name === "text" || name === "mathrm" || name === "operatorname" || name === "mathit" || name === "mathbf") return arg();
         if (name === "left" || name === "right") return document.createTextNode("");
+        if (name === "bar" || name === "overline" || name === "widehat" || name === "hat" || name === "tilde") {
+          var ov = el("span", { "class": name === "bar" || name === "overline" ? "ovl" : "" }); ov.appendChild(arg()); return ov;
+        }
+        if (name === "begin" || name === "end") { arg(); return document.createTextNode(name === "end" ? "" : " "); }
+        if (name === "\\") return el("br");
         var sym = TEX["\\" + name];
         return document.createTextNode(sym != null ? sym : (name.length === 1 ? name : ""));
       }
@@ -292,7 +304,10 @@
     var toc = el("nav", { "class": "toc", "aria-label": "Оглавление шага" });
     sections.forEach(function (x) { toc.appendChild(el("a", { href: "#b-" + x[0], "data-anchor": "b-" + x[0], text: titles[x[0]] })); });
     if (tl.length) toc.appendChild(el("a", { href: "#b-tasks", "data-anchor": "b-tasks", text: "Проверь себя" }));
-    head.push(toc);
+    // collapsed on phones (long list of chips pushes the text below the fold), open on wider screens
+    var tocBox = el("details", { "class": "tocbox", open: window.matchMedia("(min-width: 760px)").matches }, [
+      el("summary", { text: "Оглавление шага (" + toc.childNodes.length + ")" }), toc]);
+    head.push(tocBox);
     var body = sections.map(function (x) { return block(x[0], titles[x[0]], x[1]); });
     if (tl.length) body.push(block("tasks", "Проверь себя", tl.map(taskView)));
     var prev = steps[s.idx - 1], next = steps[s.idx + 1];

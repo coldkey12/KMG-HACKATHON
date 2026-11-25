@@ -208,7 +208,17 @@ def validate(layer, raw_tasks, pack_terms):
                 if _norm(str(t["answer"])) not in _norm(ntext):
                     why = "ответ пропуска не встречается в тексте шага"
             elif ty in ("single", "multi"):
+                formulas = " ".join(f["latex"] + " " + " ".join(v["symbol"] for v in f.get("variables", []))
+                                    for f in n.get("formulas", []))
                 for ct in _correct_texts(t):
+                    # symbolic / numeric option ("β", "0,6%", "∂p/∂t"): word overlap is meaningless —
+                    # require the option itself to appear in the cited claims, their quotes or the node's formulas
+                    if len(_stems(ct)) < 2:
+                        hay = _norm(support + " " + formulas).replace(" ", "")
+                        if _norm(ct).replace(" ", "") not in hay:
+                            why = "символьный ответ не найден в утверждениях/формулах: «%s»" % ct[:60]
+                            break
+                        continue
                     if _overlap(ct, support) < 0.5:
                         why = "верный вариант не подтверждается утверждениями: «%s»" % ct[:60]
                         break
