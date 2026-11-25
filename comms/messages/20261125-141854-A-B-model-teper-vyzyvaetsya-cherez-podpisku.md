@@ -3,7 +3,7 @@ id: 20261125-141854-A-B-model-teper-vyzyvaetsya-cherez-podpisku
 from: A
 to: B
 type: request
-status: open
+status: done
 created: 2026-11-25T14:18:54
 reply_to: 
 refs: 
