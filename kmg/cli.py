@@ -1,6 +1,7 @@
 """Command line: python -m kmg <command> ...
 
   units  <chapter.yaml>            — нарезать главу на единицы (без модели), вывести сводку
+  init-chapter <id> <md> <first-last> [--start S] [--end E] [--pack geology] — создать configs/chapters/<id>.yaml
   run    <chapter.yaml> [--affected]  — ОДНА КОМАНДА: глава → слой → курс B (если прописан в config/pipeline.yaml)
   build  <chapter.yaml> [--nodes N] — глава → учебный слой (out/<id>/layer.json) + проверки
   metrics                           — сводка метрик по всем главам (out/metrics.md)
@@ -8,6 +9,7 @@
   check  <layer.json>               — машинные проверки слоя, отчёт рядом (checks.md)
   check-text <layer.json> <items.json> — проверки текста курса/заданий/сценариев агента B
   review <package.json>             — модуль проверки чужого пакета: замечания со страницей и исправлением
+  review-tasks <tasks.json> <chapter.yaml> — проверка ключей заданий B модулем review (по умолчанию Haiku: KMG_REVIEW_MODEL)
   review-eval <remarks.json> <key.json> — замер на наборе с закладками (находки, ложные тревоги)
   bookmarks <layer.json> <out_dir>  — собрать свой набор с закладками из проверенного слоя
   keycheck <layer.json>             — полнота слоя против идей из анализа книги организаторов (если есть в конфиге)
@@ -30,9 +32,13 @@ def main(argv=None):
     b = sub.add_parser("build"); b.add_argument("chapter"); b.add_argument("--nodes", type=int, default=None); b.add_argument("--out", default=None)
     c = sub.add_parser("check"); c.add_argument("layer")
     r = sub.add_parser("run"); r.add_argument("chapter"); r.add_argument("--affected", action="store_true", help="пересобрать у B только узлы, затронутые правками overrides")
+    ic = sub.add_parser("init-chapter"); ic.add_argument("id"); ic.add_argument("md"); ic.add_argument("pages")
+    ic.add_argument("--start", default=None); ic.add_argument("--end", default=None); ic.add_argument("--pack", default="geology")
+    ic.add_argument("--title", default=""); ic.add_argument("--author", default=""); ic.add_argument("--book", default=""); ic.add_argument("--lang", default="ru")
     sub.add_parser("metrics")
     sub.add_parser("manifest")
     e = sub.add_parser("review"); e.add_argument("package"); e.add_argument("--out", default=None)
+    rt = sub.add_parser("review-tasks"); rt.add_argument("tasks"); rt.add_argument("chapter")
     f = sub.add_parser("review-eval"); f.add_argument("remarks"); f.add_argument("key")
     g = sub.add_parser("bookmarks"); g.add_argument("layer"); g.add_argument("out_dir")
     k = sub.add_parser("keycheck"); k.add_argument("layer")
@@ -131,3 +137,43 @@ def main(argv=None):
     if args.cmd == "manifest":
         from .manifest import write as mw
         print(mw())
+
+    if args.cmd == "review-tasks":
+        import os
+        from .review import review, tasks_to_package
+        os.environ.setdefault("KMG_REVIEW_MODEL", "claude-haiku-5-5")
+        os.environ.setdefault("KMG_REVIEW_EFFORT", "high")
+        pkg = tasks_to_package(args.tasks, args.chapter)
+        pp = Path(args.tasks).with_name("tasks_review_package.json")
+        pp.write_text(json.dumps(pkg, ensure_ascii=False, indent=1), encoding="utf-8")
+        out = review(pp)
+        print("tasks:", len(pkg["items"]), "remarks:", len(out["remarks"]), "$", out["cost_usd"], "→", pp.with_suffix(".remarks.md"))
+
+    if args.cmd == "init-chapter":
+        import yaml
+        rngs = []
+        for part in args.pages.split(","):
+            a, b = part.split("-")
+            rngs.append([int(a), int(b)])
+        cfg = {"id": args.id, "book": {"author": args.author, "title": args.book, "year": None, "source_file": args.md},
+               "title": args.title or args.id, "sections": "", "pages_pdf": [rngs[0][0], rngs[-1][1]],
+               "language": args.lang, "domain_pack": args.pack}
+        if len(rngs) > 1:
+            cfg["ranges"] = [{"pages": r} for r in rngs]
+            if args.start:
+                cfg["ranges"][0]["start_anchor"] = args.start
+            if args.end:
+                cfg["ranges"][-1]["end_anchor"] = args.end
+        else:
+            if args.start:
+                cfg["start_anchor"] = args.start
+            if args.end:
+                cfg["end_anchor"] = args.end
+        out = ROOT / "configs" / "chapters" / ("%s.yaml" % args.id)
+        out.write_text(yaml.safe_dump(cfg, allow_unicode=True, sort_keys=False), encoding="utf-8")
+        from .units import segment_chapter
+        us = segment_chapter(cfg, ROOT)
+        print(out, "|", len(us), "единиц:", dict(Counter(u.kind for u in us)))
+        if us:
+            print("первая:", us[0].text[:100].replace("\n", " "))
+            print("последняя:", us[-1].text[:100].replace("\n", " "))

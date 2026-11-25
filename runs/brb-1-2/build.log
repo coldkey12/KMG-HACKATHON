@@ -1,4 +1,3 @@
-{"llm_calls": 36, "cached_calls": 0, "cost_usd_this_run": 0.9273, "cost_usd_if_uncached": 0.9273, "cost_usd_per_node": 0.0265, "usage": {"input_tokens": 142051, "output_tokens": 801023, "cache_creation_input_tokens": 36273, "cache_read_input_tokens": 659600}, "seconds": 729.3, "nodes": 35, "units": 75, "claims": 292, "manual_minutes": 0.0}
+{"llm_calls": 83, "cached_calls": 66, "cost_usd_this_run": 0.0117, "cost_usd_if_uncached": 0.9806, "cost_usd_per_node": 0.028, "usage": {"input_tokens": 222503, "output_tokens": 849959, "cache_creation_input_tokens": 33993, "cache_read_input_tokens": 620840}, "seconds": 31.8, "nodes": 35, "units": 54, "claims": 319, "manual_minutes": 0.0}
 {"contract": {"errors": 0, "warnings": 0}, "coverage": {"errors": 0, "warnings": 0}, "quote": {"errors": 0, "warnings": 0}, "numbers": {"errors": 0, "warnings": 0}, "term_order": {"errors": 0, "warnings": 58}}
 passed: True
-EXIT 0

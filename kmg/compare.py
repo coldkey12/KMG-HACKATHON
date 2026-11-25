@@ -30,21 +30,14 @@ def covered(sw, quotes_w, thr=0.5):
 
 
 def sentence_coverage(layer):
+    """Share of author sentences (chapter-wide) that some claim quote of any node covers."""
+    from .refine import chapter_gaps, _SENT as S, KINDS, _words
     units = {u["id"]: u for u in layer["units"]}
-    tot = cov = 0
-    for n in layer["nodes"]:
-        qs = [words(c["quote"]) for c in n["claims"]]
-        for uid in n["source_units"]:
-            u = units[uid]
-            if not u.get("author_text", True) or u["kind"] in ("heading", "problems_header", "table", "formula"):
-                continue
-            for s in _SENT.split(u["text"]):
-                sw = words(s)
-                if len(sw) < 4:
-                    continue
-                tot += 1
-                cov += covered(sw, qs)
-    return round(cov / max(1, tot), 3), tot
+    held = {uid for n in layer["nodes"] for uid in n["source_units"]}
+    tot = sum(1 for uid in held if uid in units and units[uid].get("author_text", True) and units[uid]["kind"] in KINDS
+              for s in S.split(units[uid]["text"]) if len(_words(s)) >= 4)
+    gaps = sum(len(v) for v in chapter_gaps(layer, units).values())
+    return round(1 - gaps / max(1, tot), 3), tot
 
 
 def base_recall(base, var):

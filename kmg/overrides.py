@@ -51,6 +51,8 @@ def apply(layer, edits):
                 q = qs[e["question"]]
                 q["answer"] = e.get("answer", "")
                 q["status"] = e.get("status", "answered")
+                if e.get("answered_by"):
+                    q["answer"] = "[%s] %s" % (e["answered_by"], q["answer"])
                 for cid in q.get("claim_ids", []):
                     n, c = claims[cid]
                     if e.get("claims_status"):
@@ -62,6 +64,13 @@ def apply(layer, edits):
                 if isinstance(parent, dict) and "by" in parent:
                     parent["by"] = "human"
                 affected.add(n["id"])
+            elif "add_typo" in e:
+                t = dict(e["add_typo"])
+                t.setdefault("id", "%s.t-ov-%s" % (layer["chapter"]["id"], e.get("id")))
+                t.setdefault("page", next((u["page"] for u in layer["units"] if u["id"] == t["unit_id"]), 0))
+                t.update(by=e.get("by", "human"), confidence=t.get("confidence", "high"), needs_scan_check=t.get("needs_scan_check", False))
+                layer["typos"].append(t)
+                affected |= {n["id"] for n in layer["nodes"] if t["unit_id"] in n["source_units"]}
             elif "typo" in e:
                 typos[e["typo"]].update(e.get("set", {}))
                 typos[e["typo"]]["by"] = "human"

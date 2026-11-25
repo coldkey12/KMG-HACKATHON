@@ -65,7 +65,18 @@ def _running_headers(path):
             t = raw.strip()
             if 0 < len(t) <= 80 and not t.startswith(("#", "|", "<!--", "$", "\\", "-")):
                 c[t] += 1
-    return {t for t, n in c.items() if n >= 3 and t.isupper() and not t.startswith("━") and not t.endswith(".")}
+    caps = {t for t, n in c.items() if n >= 3 and t.isupper() and not t.startswith("━") and not t.endswith(".")}
+    # page furniture: a short line repeated >=5 times that sits next to a page marker in >=60% of occurrences
+    near = Counter()
+    lines = open(path, encoding="utf-8").read().splitlines()
+    marks = [i for i, l in enumerate(lines) if PAGE_RE.match(l)]
+    for i in marks:
+        for j in range(max(0, i - 3), min(len(lines), i + 4)):
+            t = lines[j].strip()
+            if t and c.get(t, 0) >= 5:
+                near[t] += 1
+    furniture = {t for t, k in near.items() if k >= 0.6 * c[t] and not t.startswith(("━", "#", "|", "$", "\\")) and 6 <= len(t) <= 80}
+    return caps | furniture
 
 
 _PAGE_NO_RE = re.compile(r"^\s*\d{1,4}\s*$")

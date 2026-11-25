@@ -124,12 +124,21 @@ def make_node(pn, plan, pack_text, chapter_text, log):
 
 # ---------------- assembly ----------------
 
+def _s(v):
+    return v if isinstance(v, str) else ("" if v is None or isinstance(v, (dict, list, bool)) else str(v))
+
+
+def _sid(v):
+    return v if isinstance(v, str) and v else None
+
+
 def _txt(x, by="model", default_hyp=False):
     if x is None:
         return None
-    if isinstance(x, str):
-        return {"text": x, "by": by, "claims": [], "hypothesis": default_hyp}
-    return {"text": x.get("text", ""), "by": by, "claims": x.get("claims", []) or [],
+    if not isinstance(x, dict):
+        return {"text": _s(x), "by": by, "claims": [], "hypothesis": default_hyp}
+    cl = x.get("claims")
+    return {"text": _s(x.get("text")), "by": by, "claims": [c for c in cl if isinstance(c, str)] if isinstance(cl, list) else [],
             "hypothesis": bool(x.get("hypothesis", default_hyp))}
 
 
@@ -166,6 +175,112 @@ def _fix_quote(quote, unit_text):
     return quote, False
 
 
+_LIST_FIELDS = ["summary", "claims", "mechanism", "practice", "nuances", "deeper", "procedure", "numbers_conditions",
+                "terms_defined", "terms_used", "formulas", "tables", "figures", "worked_examples", "book_problems",
+                "links", "typos", "questions"]
+_DICT_FIELDS = ["data_meaning", "inefficiency", "threshold", "videoability"]
+
+
+def _as_txt_item(x):
+    if isinstance(x, str):
+        return {"text": x, "claims": []}
+    if isinstance(x, dict):
+        x = dict(x)
+        if not isinstance(x.get("text"), str):
+            x["text"] = "" if x.get("text") is None else str(x.get("text"))
+        cl = x.get("claims")
+        x["claims"] = [str(c) for c in cl if isinstance(c, (str, int))] if isinstance(cl, list) else []
+        return x
+    return None
+
+
+def sanitize(o):
+    """Coerce a model's node JSON to the types assemble() expects; never raises."""
+    if not isinstance(o, dict):
+        return {"claims": []}
+    o = dict(o)
+    for k in _LIST_FIELDS:
+        v = o.get(k)
+        if v is None:
+            o[k] = []
+        elif isinstance(v, dict):
+            o[k] = [v]
+        elif not isinstance(v, list):
+            o[k] = [v] if isinstance(v, str) else []
+    for k in ("summary", "mechanism", "practice", "nuances", "procedure", "numbers_conditions"):
+        o[k] = [t for t in (_as_txt_item(x) for x in o[k]) if t and t["text"]]
+    for k in ("claims", "deeper", "terms_defined", "formulas", "tables", "figures", "worked_examples", "book_problems", "links", "typos", "questions"):
+        o[k] = [x for x in o[k] if isinstance(x, dict)]
+    o["terms_used"] = [str(x) for x in o["terms_used"] if isinstance(x, (str, int))]
+    for c in o["claims"]:
+        for f in ("text", "quote", "unit_id", "kind", "key"):
+            if c.get(f) is not None and not isinstance(c.get(f), str):
+                c[f] = str(c[f])
+        if not isinstance(c.get("numbers"), list):
+            c["numbers"] = []
+        try:
+            c["page"] = int(c.get("page") or 0)
+        except (TypeError, ValueError):
+            c["page"] = 0
+    for k in _DICT_FIELDS:
+        if not isinstance(o.get(k), dict):
+            o[k] = {}
+    for k in ("inputs", "outputs", "breaks"):
+        v = o["data_meaning"].get(k)
+        o["data_meaning"][k] = [t for t in (_as_txt_item(x) for x in (v if isinstance(v, list) else [v] if v else [])) if t and t["text"]]
+    for k in ("inputs", "manual_steps", "judgment_points", "time", "typical_errors"):
+        v = o["inefficiency"].get(k)
+        o["inefficiency"][k] = [t for t in (_as_txt_item(x) for x in (v if isinstance(v, list) else [v] if v else [])) if t and t["text"]]
+    o["videoability"] = {k: o["videoability"].get(k) in (True, "true", "True", 1) for k in ("time_change", "invisible_visible", "scale_jump", "counterintuitive", "cause_effect")}
+    for k in ("misconception", "it_analogy", "now_nuance"):
+        v = o.get(k)
+        if isinstance(v, str):
+            o[k] = {"text": v} if k == "now_nuance" else None
+        elif not isinstance(v, dict):
+            o[k] = None
+    for e in o["worked_examples"]:
+        for f in ("condition", "result"):
+            e[f] = _as_txt_item(e.get(f)) or {"text": "", "claims": []}
+        e["steps"] = [t for t in (_as_txt_item(x) for x in (e.get("steps") if isinstance(e.get("steps"), list) else [])) if t]
+        e["unit_ids"] = [str(u) for u in e.get("unit_ids", []) if isinstance(u, (str, int))] if isinstance(e.get("unit_ids"), list) else []
+        e["figures"] = [str(u) for u in e.get("figures", []) if isinstance(u, str)] if isinstance(e.get("figures"), list) else []
+    for f in o["formulas"]:
+        f["variables"] = [v for v in f.get("variables", []) if isinstance(v, dict)] if isinstance(f.get("variables"), list) else []
+        for kk in ("latex", "label", "unit_id"):
+            if not isinstance(f.get(kk), str):
+                f[kk] = "" if f.get(kk) is None else str(f[kk])
+        if not isinstance(f.get("meaning"), (str, dict)):
+            f["meaning"] = ""
+    for t in o["tables"]:
+        t["unit_ids"] = [str(u) for u in t.get("unit_ids", [])] if isinstance(t.get("unit_ids"), list) else []
+    for p in o["book_problems"]:
+        p["figures_needed"] = [str(x) for x in p.get("figures_needed", [])] if isinstance(p.get("figures_needed"), list) else []
+        for kk in ("unit_id", "text", "number"):
+            if not isinstance(p.get(kk), str):
+                p[kk] = "" if p.get(kk) is None else str(p[kk])
+    for q in o["questions"]:
+        q["claims"] = [str(c) for c in q.get("claims", [])] if isinstance(q.get("claims"), list) else []
+        q["options"] = [str(c) for c in q.get("options", [])] if isinstance(q.get("options"), list) else []
+        for kk in ("question", "statement", "key"):
+            if not isinstance(q.get(kk), str):
+                q[kk] = "" if q.get(kk) is None else str(q[kk])
+    for t in o["terms_defined"]:
+        for kk in ("term", "definition", "term_en", "abbr"):
+            if t.get(kk) is not None and not isinstance(t.get(kk), str):
+                t[kk] = str(t[kk])
+        if not isinstance(t.get("claims"), list):
+            t["claims"] = []
+    for t in o["typos"]:
+        for kk in ("unit_id", "original", "corrected", "note"):
+            if not isinstance(t.get(kk), str):
+                t[kk] = "" if t.get(kk) is None else str(t[kk])
+    if not isinstance(o.get("title_novice"), str):
+        o["title_novice"] = None
+    if not isinstance(o.get("state_model"), str):
+        o["state_model"] = ""
+    return o
+
+
 def assemble(cfg, units, plan, node_outs, pack):
     chap_id = cfg["id"]
     umap = {u.id: u for u in units}
@@ -179,6 +294,7 @@ def assemble(cfg, units, plan, node_outs, pack):
     parts = [{"id": "%s.%s" % (chap_id, p["id"]), "title": p["title"], "title_book": p.get("title_book", "")} for p in plan["parts"]]
     nodes, typos, questions, autofixes = [], [], [], []
     tcount = 0
+    node_outs = {pn["key"]: sanitize(node_outs.get(pn["key"])) for pn in plan["nodes"]}
     for order, pn in enumerate(plan["nodes"], start=1):
         nid = key2id[pn["key"]]
         o = node_outs[pn["key"]]
@@ -192,6 +308,11 @@ def assemble(cfg, units, plan, node_outs, pack):
             c["question"] = (q.get("key") if isinstance(q, dict) else q) if isinstance(q, (str, dict)) else None
             if not isinstance(c.get("unit_id"), str):
                 c["unit_id"] = str(c.get("unit_id") or "")
+            if c.get("unit_id") not in umap:
+                m = difflib.get_close_matches(c.get("unit_id") or "", pn["units"], n=1, cutoff=0.85)
+                if not m:
+                    continue  # no such unit: the claim cannot be checked, drop it
+                c["unit_id"] = m[0]
             u = umap.get(c.get("unit_id"))
             quote = c.get("quote", "")
             fixed = False
@@ -265,14 +386,14 @@ def assemble(cfg, units, plan, node_outs, pack):
                              "figures_needed": p.get("figures_needed", []), "unit_id": p.get("unit_id", "")})
         mis = o.get("misconception")
         if mis and mis.get("wrong"):
-            mis = {"pack_id": mis.get("pack_id"), "wrong": _txt({"text": mis["wrong"], "claims": []}),
+            mis = {"pack_id": _sid(mis.get("pack_id")), "wrong": _txt({"text": mis["wrong"], "claims": []}),
                    "right": remap(_txt({"text": mis.get("right", ""), "claims": mis.get("claims", [])}))}
         else:
             mis = None
         dm = o.get("data_meaning") or {}
         ita = o.get("it_analogy")
         if ita and ita.get("analogy"):
-            ita = {"analogy": _txt(ita["analogy"], default_hyp=True), "breaks_where": _txt(ita.get("breaks_where", ""), default_hyp=True), "pack_id": ita.get("pack_id")}
+            ita = {"analogy": _txt(ita["analogy"], default_hyp=True), "breaks_where": _txt(ita.get("breaks_where", ""), default_hyp=True), "pack_id": _sid(ita.get("pack_id"))}
             ita["analogy"]["hypothesis"] = True
             ita["breaks_where"]["hypothesis"] = True
         else:
@@ -357,6 +478,8 @@ def assemble(cfg, units, plan, node_outs, pack):
                                            "машинное описание рисунка; рисунок не нужен узлам" if u.kind == "figure_description" else "")
             coverage.append({"unit_id": u.id, "status": "not_covered", "node_ids": [], "reason": reason or "не включена в план",
                              "by": "rule" if u.kind in ("heading", "problems_header") else "model"})
+    from .coerce import coerce_layer_parts
+    nodes, typos, questions, coverage = coerce_layer_parts(nodes, typos, questions, coverage)
     return parts, nodes, typos, questions, coverage, autofixes
 
 
@@ -564,6 +687,23 @@ def fix_numbers(layer):
     return fixes
 
 
+def safe_assemble(cfg, units, plan, node_outs, pack):
+    """assemble(); if it raises, find the node outputs that break it, replace them by an empty node
+    (its units stay covered by the plan, the node is reported as failed) and assemble again."""
+    try:
+        return assemble(cfg, units, plan, node_outs, pack), []
+    except Exception:
+        pass
+    bad = []
+    for pn in plan["nodes"]:
+        try:
+            assemble(cfg, units, dict(plan, nodes=[pn]), {pn["key"]: node_outs.get(pn["key"], {})}, pack)
+        except Exception as e:
+            bad.append({"node": pn["key"], "error": "сборка узла упала: %s: %s" % (type(e).__name__, str(e)[:200])})
+            node_outs[pn["key"]] = {"claims": []}
+    return assemble(cfg, units, plan, node_outs, pack), bad
+
+
 def autoattach_uncovered(plan, units):
     """Deterministic fix after planning: author units the plan forgot go to the node holding the nearest preceding unit."""
     order = [u.id for u in units]
@@ -637,7 +777,14 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=8):
                 calls.append(r)
             node_outs[key] = o
 
-    parts, nodes, typos, questions, coverage, autofixes = assemble(cfg, units, plan, node_outs, pack)
+    (parts, nodes, typos, questions, coverage, autofixes), bad = safe_assemble(cfg, units, plan, node_outs, pack)
+    failed += bad
+    if not only_nodes:
+        from .refine import refine
+        _tmp = {"units": [u.to_json() for u in units], "nodes": nodes}
+        rf, rcalls = refine(_tmp, log)
+        autofixes += rf
+        calls += rcalls
     for _ in range(6):  # moved definitions may mention other terms: iterate to a fixed point
         f = fix_term_order(nodes)
         autofixes += f

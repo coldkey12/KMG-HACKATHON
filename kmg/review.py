@@ -145,3 +145,23 @@ def evaluate(remarks_path, key_path):
     return {"errors_in_key": n_err, "found_full": full, "found_half": half, "recall_weighted": round(score, 3),
             "false_alarms": fa, "misses": misses, "false_alarm_items": false_alarms,
             "meets_tz": score >= 0.7 and fa <= 2}
+
+
+def tasks_to_package(tasks_path, chapter_cfg):
+    """Agent B's tasks.json -> review package: each task becomes 'question + key + explanation'."""
+    T = json.loads(Path(tasks_path).read_text(encoding="utf-8"))
+    items = []
+    for t in T.get("tasks", []):
+        typ, a = t.get("type"), t.get("answer")
+        opts = t.get("options") or t.get("items") or []
+        if typ == "single" and isinstance(a, int) and 0 <= a < len(opts):
+            key = opts[a]
+        elif typ == "multi" and isinstance(a, list):
+            key = "; ".join(str(opts[i]) for i in a if isinstance(i, int) and 0 <= i < len(opts))
+        elif typ == "order" and isinstance(a, list):
+            key = " → ".join(str(opts[i]) if isinstance(i, int) and 0 <= i < len(opts) else str(i) for i in a)
+        else:
+            key = a if isinstance(a, str) else json.dumps(a, ensure_ascii=False)
+        items.append({"id": t["id"], "kind": "task_key",
+                      "text": "Задание: %s Верный ответ по ключу: %s. Пояснение: %s" % (t.get("prompt", ""), key, t.get("explanation", ""))})
+    return {"chapter": chapter_cfg, "items": items}

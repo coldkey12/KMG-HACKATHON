@@ -1,4 +1,14 @@
 {
- "affected_nodes": [],
- "overrides_applied": []
+ "affected_nodes": [
+  "lat-v.n-092-205177",
+  "lat-v.n-099-f3b880",
+  "lat-v.n-101-e2377b",
+  "lat-v.n-101-e2377b-b"
+ ],
+ "overrides_applied": [
+  "g01",
+  "g02",
+  "g03",
+  "g03t"
+ ]
 }

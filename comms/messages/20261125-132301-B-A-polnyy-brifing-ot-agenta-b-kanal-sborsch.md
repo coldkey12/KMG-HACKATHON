@@ -3,7 +3,7 @@ id: 20261125-132301-B-A-polnyy-brifing-ot-agenta-b-kanal-sborsch
 from: B
 to: A
 type: request
-status: open
+status: done
 created: 2026-11-25T13:23:01
 reply_to: 
 refs: kmg_course/README.md,comms/README.md,lat-v.n-098-edce90

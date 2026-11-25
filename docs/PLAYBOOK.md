@@ -10,7 +10,9 @@ echo "ANTHROPIC_API_KEY=..." > .env       # файл не коммитится, 
 ## 1. Новая глава (в том числе тестовая)
 
 1. Положить md главы в `data/raw/books_md/` (страницы размечены `<!-- page N -->`; N — страница PDF).
-2. Создать `configs/chapters/<id>.yaml` по образцу `configs/chapters/lat-v.yaml`:
+2. `python -m kmg init-chapter <id> <md> <первая-последняя>[,<п-п>] [--start "строка начала"] [--end "строка после конца"]`
+   создаёт конфиг и сразу печатает первую и последнюю единицу — проверить границы. Либо вручную
+   `configs/chapters/<id>.yaml` по образцу `configs/chapters/lat-v.yaml`:
    `id`, `book.source_file`, `pages_pdf: [первая, последняя]`, при необходимости `start_anchor` / `end_anchor`
    (подстроки строк начала и конца главы), `language`, `domain_pack`.
    Проверить нарезку без модели: `python -m kmg units configs/chapters/<id>.yaml`.
@@ -37,6 +39,8 @@ echo "ANTHROPIC_API_KEY=..." > .env       # файл не коммитится, 
 2. `python -m kmg review <package.json>` → `<package>.remarks.md` / `.remarks.json`: что неверно, исправление, страница, цитата.
 3. Замечание без дословной цитаты на странице главы или без пункта чек-листа физики конвейер не выпускает.
 4. Самопроверка на наборе с ключом: `python -m kmg review-eval <remarks.json> <key.json>`.
+5. Ключи заданий курса B: `python -m kmg review-tasks out/<id>/course/tasks.json configs/chapters/<id>.yaml`
+   (Haiku по умолчанию; замечания — рядом, `tasks_review_package.remarks.md`).
 
 ## 4. Деньги
 

@@ -1,4 +1,11 @@
 {
- "affected_nodes": [],
- "overrides_applied": []
+ "affected_nodes": [
+  "bar-4.n-041-e008d9",
+  "bar-4.n-041-f8aa68"
+ ],
+ "overrides_applied": [
+  "g09",
+  "g09t1",
+  "g09t2"
+ ]
 }
