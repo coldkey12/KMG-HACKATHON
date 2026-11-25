@@ -1,0 +1,647 @@
+{
+ "chapter": "en-welllog",
+ "rows": [
+  {
+   "unit_id": "u-101-64257e",
+   "kind": "paragraph",
+   "page_pdf": 101,
+   "excerpt": "Well logging, also known as borehole logging, is the practice of making",
+   "node_ids": [
+    "en-welllog.n-101-64257e"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-101-7c6769",
+   "kind": "heading",
+   "page_pdf": 101,
+   "excerpt": "Wireline logging",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-101-e446e5",
+   "kind": "paragraph",
+   "page_pdf": 101,
+   "excerpt": "Different industries, as mining, oil and gas uses wireline logging to obtain",
+   "node_ids": [
+    "en-welllog.n-101-e446e5",
+    "en-welllog.n-101-e446e5-b",
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-108-f15548",
+    "en-welllog.n-108-496809"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-101-465a9f",
+   "kind": "paragraph",
+   "page_pdf": 101,
+   "excerpt": "Wireline logging is performed by lowering a 'logging tool' - or a",
+   "node_ids": [
+    "en-welllog.n-101-e446e5",
+    "en-welllog.n-102-47d9c9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-101-74f1bd",
+   "kind": "paragraph",
+   "page_pdf": 101,
+   "excerpt": "The data itself is recorded either at surface (real-time mode), or in",
+   "node_ids": [
+    "en-welllog.n-101-74f1bd"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-102-e835f7",
+   "kind": "paragraph",
+   "page_pdf": 102,
+   "excerpt": "Real-time data is recorded directly against measured cable depth. Memory data is",
+   "node_ids": [
+    "en-welllog.n-101-74f1bd"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-102-0cf394",
+   "kind": "paragraph",
+   "page_pdf": 102,
+   "excerpt": "The measured cable depth can be derived from a number of different",
+   "node_ids": [
+    "en-welllog.n-101-e446e5-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-102-aebdc9",
+   "kind": "paragraph",
+   "page_pdf": 102,
+   "excerpt": "There are many types of wireline logs and they can be categorized",
+   "node_ids": [
+    "en-welllog.n-102-aebdc9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-102-47d9c9",
+   "kind": "paragraph",
+   "page_pdf": 102,
+   "excerpt": "Wireline logs can be divided into broad categories based on the physical",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-102-c29788",
+   "kind": "heading",
+   "page_pdf": 102,
+   "excerpt": "History",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-102-1dd165",
+   "kind": "paragraph",
+   "page_pdf": 102,
+   "excerpt": "Conrad and Marcel Schlumberger, who founded Schlumberger Limited in 1926, are considered",
+   "node_ids": [
+    "en-welllog.n-102-1dd165"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-102-ede89a",
+   "kind": "paragraph",
+   "page_pdf": 102,
+   "excerpt": "In 1931, Henri George Doll and G. Dechatre, working for Schlumberger, discovered",
+   "node_ids": [
+    "en-welllog.n-105-13a1d1",
+    "en-welllog.n-106-ee036a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-102-18b342",
+   "kind": "paragraph",
+   "page_pdf": 102,
+   "excerpt": "In 1940, Schlumberger invented the spontaneous potential dipmeter; this instrument allowed the",
+   "node_ids": [
+    "en-welllog.n-102-18b342"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-103-12ffb6",
+   "kind": "paragraph",
+   "page_pdf": 103,
+   "excerpt": "Oil-based mud (OBM) was first used in Rangely Field, Colorado, in 1948.",
+   "node_ids": [
+    "en-welllog.n-103-12ffb6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-103-daf0cf",
+   "kind": "paragraph",
+   "page_pdf": 103,
+   "excerpt": "The introduction of the transistor and integrated circuits in the 1960s made",
+   "node_ids": [
+    "en-welllog.n-103-daf0cf",
+    "en-welllog.n-104-f1312d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-103-ac8489",
+   "kind": "paragraph",
+   "page_pdf": 103,
+   "excerpt": "The two types of porosity logs (acoustic logs and nuclear logs) date",
+   "node_ids": [
+    "en-welllog.n-104-617dcb"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-103-26b173",
+   "kind": "paragraph",
+   "page_pdf": 103,
+   "excerpt": "Nuclear logging was initially developed to measure the natural gamma radiation emitted",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-105-58a3a3",
+    "en-welllog.n-103-26b173"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-103-5aaf0b",
+   "kind": "paragraph",
+   "page_pdf": 103,
+   "excerpt": "After the discovery of nuclear magnetic resonance by Bloch and Purcell in",
+   "node_ids": [
+    "en-welllog.n-106-a96946"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-103-7cc395",
+   "kind": "paragraph",
+   "page_pdf": 103,
+   "excerpt": "Many modern oil and gas wells are drilled directionally. At first, loggers",
+   "node_ids": [
+    "en-welllog.n-107-4ede6f",
+    "en-welllog.n-107-ed1b3a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-104-d2e5d2",
+   "kind": "heading",
+   "page_pdf": 104,
+   "excerpt": "Electrical logs",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-104-035ac7",
+   "kind": "heading",
+   "page_pdf": 104,
+   "excerpt": "Resistivity log",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-104-54074f",
+   "kind": "paragraph",
+   "page_pdf": 104,
+   "excerpt": "Resistivity logging measures the subsurface electrical resistivity, which can impede the flow",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-104-54074f",
+    "en-welllog.n-104-f1312d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-104-0377d0",
+   "kind": "heading",
+   "page_pdf": 104,
+   "excerpt": "Borehole imaging",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-104-f1312d",
+   "kind": "paragraph",
+   "page_pdf": 104,
+   "excerpt": "The term \"borehole imaging\" refers to those logging and data-processing methods that",
+   "node_ids": [
+    "en-welllog.n-104-f1312d",
+    "en-welllog.n-104-f1312d-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-104-c24ae4",
+   "kind": "heading",
+   "page_pdf": 104,
+   "excerpt": "Optical imaging",
+   "node_ids": [
+    "en-welllog.n-104-f1312d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-104-d0805e",
+   "kind": "heading",
+   "page_pdf": 104,
+   "excerpt": "Acoustic imaging",
+   "node_ids": [
+    "en-welllog.n-104-f1312d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-104-af23be",
+   "kind": "heading",
+   "page_pdf": 104,
+   "excerpt": "Electrical imaging",
+   "node_ids": [
+    "en-welllog.n-104-f1312d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-104-0d6cea",
+   "kind": "heading",
+   "page_pdf": 104,
+   "excerpt": "Methods that draw on both acoustic and electrical imaging techniques using the",
+   "node_ids": [
+    "en-welllog.n-104-f1312d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-104-c63605",
+   "kind": "heading",
+   "page_pdf": 104,
+   "excerpt": "Porosity logs",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-104-617dcb",
+   "kind": "paragraph",
+   "page_pdf": 104,
+   "excerpt": "Porosity logs measure the fraction or percentage of pore volume in a",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-104-617dcb",
+    "en-welllog.n-104-617dcb-b",
+    "en-welllog.n-104-617dcb-c",
+    "en-welllog.n-104-f1312d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-105-d44de8",
+   "kind": "heading",
+   "page_pdf": 105,
+   "excerpt": "Density",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-105-553203",
+   "kind": "paragraph",
+   "page_pdf": 105,
+   "excerpt": "The density log measures the bulk density of a formation by bombarding",
+   "node_ids": [
+    "en-welllog.n-105-553203"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-105-a03fc1",
+   "kind": "heading",
+   "page_pdf": 105,
+   "excerpt": "Neutron porosity",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-105-4c820a",
+   "kind": "paragraph",
+   "page_pdf": 105,
+   "excerpt": "The neutron porosity log works by bombarding a formation with high energy",
+   "node_ids": [
+    "en-welllog.n-104-617dcb-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-105-cb3844",
+   "kind": "paragraph",
+   "page_pdf": 105,
+   "excerpt": "Boron is known to cause anomalously low neutron tool count rates due",
+   "node_ids": [
+    "en-welllog.n-105-cb3844"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-105-8a95c8",
+   "kind": "heading",
+   "page_pdf": 105,
+   "excerpt": "Sonic",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-105-8afb69",
+   "kind": "paragraph",
+   "page_pdf": 105,
+   "excerpt": "A sonic log provides a formation interval transit time, which is typically",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-105-8afb69"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-105-e8047e",
+   "kind": "heading",
+   "page_pdf": 105,
+   "excerpt": "Lithology logs",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-105-53bb95",
+   "kind": "heading",
+   "page_pdf": 105,
+   "excerpt": "Gamma ray",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-105-58a3a3",
+   "kind": "paragraph",
+   "page_pdf": 105,
+   "excerpt": "A log of the natural radioactivity of the formation along the borehole,",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-105-58a3a3"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-105-f4c50d",
+   "kind": "paragraph",
+   "page_pdf": 105,
+   "excerpt": "In some rocks, and in particular in carbonate rocks, the contribution from",
+   "node_ids": [
+    "en-welllog.n-105-f4c50d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-105-b7770b",
+   "kind": "heading",
+   "page_pdf": 105,
+   "excerpt": "Self/spontaneous potential",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-105-13a1d1",
+   "kind": "paragraph",
+   "page_pdf": 105,
+   "excerpt": "The Spontaneous Potential (SP) log measures the natural or spontaneous potential difference",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-105-13a1d1"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-106-ee036a",
+   "kind": "paragraph",
+   "page_pdf": 106,
+   "excerpt": "The most useful component of this potential difference is the electrochemical potential",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-106-ee036a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-106-1b49b8",
+   "kind": "heading",
+   "page_pdf": 106,
+   "excerpt": "Miscellaneous logs",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-106-e7b7d5",
+   "kind": "heading",
+   "page_pdf": 106,
+   "excerpt": "Caliper",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-106-0fc22c",
+   "kind": "paragraph",
+   "page_pdf": 106,
+   "excerpt": "A tool that measures the diameter of the borehole mechanically, using either",
+   "node_ids": [
+    "en-welllog.n-106-0fc22c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-106-bcb221",
+   "kind": "heading",
+   "page_pdf": 106,
+   "excerpt": "Nuclear magnetic resonance",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-106-a96946",
+   "kind": "paragraph",
+   "page_pdf": 106,
+   "excerpt": "Nuclear magnetic resonance (NMR) logging uses the NMR response of a formation",
+   "node_ids": [
+    "en-welllog.n-102-47d9c9",
+    "en-welllog.n-106-a96946",
+    "en-welllog.n-106-a96946-b",
+    "en-welllog.n-106-a96946-c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-106-04cc4a",
+   "kind": "heading",
+   "page_pdf": 106,
+   "excerpt": "Spectral acoustic logging",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-106-19a6b4",
+   "kind": "paragraph",
+   "page_pdf": 106,
+   "excerpt": "Spectral acoustic logging is an acoustic measurement technique used in oil and",
+   "node_ids": [
+    "en-welllog.n-106-19a6b4"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-106-7d76f0",
+   "kind": "paragraph",
+   "page_pdf": 106,
+   "excerpt": "Acoustic logging tools have been used in the petroleum industry for several",
+   "node_ids": [
+    "en-welllog.n-106-7d76f0"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-107-ac544a",
+   "kind": "heading",
+   "page_pdf": 107,
+   "excerpt": "Corrosion well logging",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-107-37e70c",
+   "kind": "paragraph",
+   "page_pdf": 107,
+   "excerpt": "Throughout the life of the wells, integrity controles of the steel and",
+   "node_ids": [
+    "en-welllog.n-107-37e70c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-107-0861d6",
+   "kind": "heading",
+   "page_pdf": 107,
+   "excerpt": "Logging while drilling",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-107-4ede6f",
+   "kind": "paragraph",
+   "page_pdf": 107,
+   "excerpt": "In the 1970s, a new approach to wireline logging was introduced in",
+   "node_ids": [
+    "en-welllog.n-107-4ede6f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-107-ed1b3a",
+   "kind": "paragraph",
+   "page_pdf": 107,
+   "excerpt": "In LWD, measured data is transmitted to the surface in real time",
+   "node_ids": [
+    "en-welllog.n-107-ed1b3a"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-107-bfa5de",
+   "kind": "heading",
+   "page_pdf": 107,
+   "excerpt": "Memory log",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-107-2974f0",
+   "kind": "paragraph",
+   "page_pdf": 107,
+   "excerpt": "This method of data acquisition involves recording the sensor data into a",
+   "node_ids": [
+    "en-welllog.n-107-2974f0",
+    "en-welllog.n-107-2974f0-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-108-cd523f",
+   "kind": "heading",
+   "page_pdf": 108,
+   "excerpt": "Coring",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-108-44643b",
+   "kind": "paragraph",
+   "page_pdf": 108,
+   "excerpt": "Coring is the process of obtaining an actual sample of a rock",
+   "node_ids": [
+    "en-welllog.n-108-44643b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-108-54c122",
+   "kind": "heading",
+   "page_pdf": 108,
+   "excerpt": "Mudlogging",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-108-f15548",
+   "kind": "paragraph",
+   "page_pdf": 108,
+   "excerpt": "Mud logs are well logs prepared by describing rock or soil cuttings",
+   "node_ids": [
+    "en-welllog.n-108-f15548",
+    "en-welllog.n-108-f15548-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-108-d604fd",
+   "kind": "heading",
+   "page_pdf": 108,
+   "excerpt": "Information use",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-108-496809",
+   "kind": "paragraph",
+   "page_pdf": 108,
+   "excerpt": "In the oil industry, the well and mud logs are usually transferred",
+   "node_ids": [
+    "en-welllog.n-108-496809"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-108-d08f88",
+   "kind": "paragraph",
+   "page_pdf": 108,
+   "excerpt": "",
+   "node_ids": [
+    "en-welllog.n-108-496809"
+   ],
+   "reason": null
+  }
+ ]
+}

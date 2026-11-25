@@ -80,7 +80,17 @@ def make_plan(units, pack_text, chapter_text, log):
     system = _sys("plan.md", pack_text, chapter_text)
     user = "Составь план узлов для этой главы. Единиц: %d. Верни только JSON." % len(units)
     r = llm.call("plan", system, user, log_path=log, tag="plan")
-    plan = llm.parse_json(r["text"])
+    plan, rr = llm.parse_json_or_repair(r["text"], log_path=log, tag="plan")
+    if rr:
+        r = dict(r, cost_usd=r["cost_usd"] + rr["cost_usd"], cost_usd_original=(r["cost_usd_original"] or 0) + (rr["cost_usd_original"] or 0))
+    if not isinstance(plan, dict) or not isinstance(plan.get("nodes"), list) or not plan["nodes"]:
+        raise llm.LLMError("plan: no nodes in model output")
+    plan.setdefault("parts", [])
+    for n in plan["nodes"]:
+        n.setdefault("units", [])
+        n.setdefault("part", (plan["parts"][0]["id"] if plan["parts"] else "p1"))
+    if not plan["parts"]:
+        plan["parts"] = [{"id": "p1", "title": "Глава", "title_book": ""}]
     return plan, r
 
 
