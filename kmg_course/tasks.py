@@ -6,6 +6,9 @@ A task survives only if:
   * the correct answer is supported by the cited claims (word overlap / verbatim gap word / recomputed number);
   * agent A's course-text check passes (numbers come from the node's source units, no term before its node).
 Rejected tasks are written to the report with the reason, never silently fixed.
+
+Kept tasks are written in the organizers' format (docs/organizers/pack/01_схемы/task.schema.json; extra fields are
+allowed by the pack, required ones are never dropped) and validated against that schema during the build.
 """
 import ast
 import json
@@ -20,7 +23,10 @@ from kmg.structure import pack_prereq_terms
 
 from . import llm
 
-TYPES = ("single", "multi", "order", "gap", "calc")
+TYPES = ("single", "multiple", "order", "gap", "calc")  # names as in the organizers' task.schema.json
+ALIASES = {"multi": "multiple"}  # older model outputs
+KINDS = ("recall", "understanding", "transfer", "data")
+SCHEMAS = ROOT / "docs" / "organizers" / "pack" / "01_схемы"
 PROMPT = Path(__file__).resolve().parent / "prompts" / "tasks.md"
 STOP = set("и в во на не но а с со к ко по о об от до из за для при что как это то же ли или у его ее её их "
            "так также только более менее чем который которая которые которых".split())
@@ -146,7 +152,7 @@ def _correct_texts(t):
     ty = t["type"]
     if ty == "single":
         return [t["options"][t["answer"]]]
-    if ty == "multi":
+    if ty == "multiple":
         return [t["options"][i] for i in t["answer"]]
     if ty == "order":
         return list(t["items"])
@@ -163,7 +169,8 @@ def validate(layer, raw_tasks, pack_terms):
     for i, t in enumerate(raw_tasks):
         why = None
         n = nodes.get(t.get("node_id"))
-        ty = t.get("type")
+        ty = ALIASES.get(t.get("type"), t.get("type"))
+        t = dict(t, type=ty)
         if not n:
             why = "нет такого узла"
         elif ty not in TYPES:
@@ -177,13 +184,13 @@ def validate(layer, raw_tasks, pack_terms):
                 why = "ключ опирается на непроверенное утверждение"
         if not why:
             try:
-                if ty in ("single", "multi"):
+                if ty in ("single", "multiple"):
                     opts = t["options"]
                     if not (3 <= len(opts) <= 5) or len(set(map(_norm, opts))) != len(opts):
                         why = "варианты: нужно 3–5 разных"
                     elif ty == "single" and not (isinstance(t["answer"], int) and 0 <= t["answer"] < len(opts)):
                         why = "answer вне диапазона"
-                    elif ty == "multi" and not (isinstance(t["answer"], list) and 2 <= len(set(t["answer"])) < len(opts)
+                    elif ty == "multiple" and not (isinstance(t["answer"], list) and 2 <= len(set(t["answer"])) < len(opts)
                                                 and all(isinstance(a, int) and 0 <= a < len(opts) for a in t["answer"])):
                         why = "multi: нужно ≥2 верных и не все"
                 elif ty == "order":
@@ -207,7 +214,7 @@ def validate(layer, raw_tasks, pack_terms):
             if ty == "gap":
                 if _norm(str(t["answer"])) not in _norm(ntext):
                     why = "ответ пропуска не встречается в тексте шага"
-            elif ty in ("single", "multi"):
+            elif ty in ("single", "multiple"):
                 formulas = " ".join(f["latex"] + " " + " ".join(v["symbol"] for v in f.get("variables", []))
                                     for f in n.get("formulas", []))
                 for ct in _correct_texts(t):
@@ -236,26 +243,94 @@ def validate(layer, raw_tasks, pack_terms):
         if why:
             rejected.append({"index": i, "node_id": t.get("node_id"), "type": ty, "prompt": t.get("prompt"), "why": why})
             continue
-        tid = "%s.t%02d" % (n["id"], sum(1 for k in kept if k["node_id"] == n["id"]) + 1)
-        out = {"id": tid, "node_id": n["id"], "claim_ids": t["claim_ids"], "type": ty, "prompt": t["prompt"],
-               "explanation": t.get("explanation", ""), "by": "model", "checked": "auto"}
-        if ty in ("single", "multi"):
-            out["options"], out["answer"] = t["options"], t["answer"]
-        elif ty == "order":
-            rnd = random.Random(tid)
-            idx = list(range(len(t["items"])))
-            while idx == sorted(idx):
-                rnd.shuffle(idx)
-            out["items"] = t["items"]
-            out["shuffled"] = idx
-        elif ty == "gap":
-            out["answer"] = str(t["answer"])
-            out["accept"] = [str(a) for a in t.get("accept", [])]
-        elif ty == "calc":
-            out["answer"] = float(t["answer"])
-            out["calc"] = t["calc"]
-        kept.append(out)
+        kept.append(official(t, n["id"], sum(1 for k in kept if k["node_id"] == n["id"]) + 1))
     return kept, rejected
+
+
+def _letters(k):
+    return [chr(ord("a") + i) for i in range(k)]
+
+
+def official(t, node_id, num):
+    """A checked task (model's internal shape: indices, '___') -> the organizers' task.schema.json shape.
+    Extra fields (node_id, by, checked, accept, calc) are allowed by the pack."""
+    ty = t["type"]
+    tid = "%s.t%02d" % (node_id, num)
+    out = {"id": tid, "type": ty, "step_id": node_id, "node_id": node_id, "claim_ids": list(t["claim_ids"]),
+           "prompt": t["prompt"], "explanation": t.get("explanation", ""), "by": "model", "checked": "auto"}
+    if t.get("kind") in KINDS:
+        out["kind"] = t["kind"]
+    if ty in ("single", "multiple"):
+        ids = _letters(len(t["options"]))
+        out["options"] = [{"id": ids[i], "text": o, "misconception": None} for i, o in enumerate(t["options"])]
+        out["answer"] = ids[t["answer"]] if ty == "single" else [ids[i] for i in sorted(set(t["answer"]))]
+    elif ty == "order":
+        # options are stored in the order shown to the learner (shuffled, never already correct); answer = ids in
+        # the correct order
+        rnd = random.Random(tid)
+        idx = list(range(len(t["items"])))
+        while idx == sorted(idx):
+            rnd.shuffle(idx)
+        ids = _letters(len(idx))
+        out["options"] = [{"id": ids[pos], "text": t["items"][i], "misconception": None} for pos, i in enumerate(idx)]
+        out["answer"] = [ids[idx.index(i)] for i in range(len(idx))]
+    elif ty == "gap":
+        out["prompt"] = t["prompt"].replace("___", "{{1}}", 1)
+        out["answer"] = [str(t["answer"])]
+        out["accept"] = [[str(a) for a in t.get("accept", []) if str(a).strip()]]
+    elif ty == "calc":
+        c = t["calc"]
+        out["answer"] = float(t["answer"])
+        out["tolerance"] = float(c.get("tolerance", 0.01))
+        out["unit"] = c.get("unit") or None
+        out["calc"] = {"expr": c["expr"], "vars": c.get("vars", {})}
+    return out
+
+
+def upgrade(t):
+    """A task of an older built course (kmg-tasks/0.1.0: indices, '___', items+shuffled) -> official shape.
+    Used only by `build --assets-only`, so an old course keeps working with the new app until it is rebuilt."""
+    if "step_id" in t:
+        return t
+    ty = ALIASES.get(t["type"], t["type"])
+    num = int(t["id"].rsplit(".t", 1)[1]) if ".t" in t["id"] else 1
+    base = {"type": ty, "claim_ids": t["claim_ids"], "prompt": t["prompt"], "explanation": t.get("explanation", "")}
+    if ty in ("single", "multiple"):
+        base.update(options=t["options"], answer=t["answer"])
+    elif ty == "order":
+        base.update(items=t["items"])
+    elif ty == "gap":
+        base.update(answer=t["answer"], accept=t.get("accept", []))
+    elif ty == "calc":
+        base.update(answer=t["answer"], calc=t["calc"])
+    out = official(base, t["node_id"], num)
+    if ty == "order" and t.get("shuffled"):  # keep the order the learner saw before
+        ids = _letters(len(t["items"]))
+        out["options"] = [{"id": ids[pos], "text": t["items"][i], "misconception": None} for pos, i in enumerate(t["shuffled"])]
+        out["answer"] = [ids[t["shuffled"].index(i)] for i in range(len(t["items"]))]
+    return out
+
+
+def schema_errors(doc, schema_file):
+    """Validate a document against an organizers' schema; returns readable messages (empty = valid)."""
+    import jsonschema
+    path = SCHEMAS / schema_file
+    if not path.exists():
+        return ["нет схемы организаторов %s" % path]
+    schema = json.loads(path.read_text(encoding="utf-8"))
+    v = jsonschema.Draft202012Validator(schema)
+    out = []
+    for e in sorted(v.iter_errors(doc), key=lambda e: list(e.absolute_path)):
+        where = "/".join(str(x) for x in e.absolute_path) or "(корень)"
+        item = doc
+        try:
+            for x in list(e.absolute_path)[:2]:
+                item = item[x]
+            ident = item.get("id") if isinstance(item, dict) else None
+        except (KeyError, IndexError, TypeError):
+            ident = None
+        out.append("%s: %s%s" % (where, e.message[:200], " (id %s)" % ident if ident else ""))
+    return out
 
 
 def build_tasks(layer, out_dir, log_path, min_total=15):
@@ -263,11 +338,15 @@ def build_tasks(layer, out_dir, log_path, min_total=15):
     raw, r = generate(layer, log_path, min_total=min_total)
     kept, rejected = validate(layer, raw, pack_terms)
     types = sorted({t["type"] for t in kept})
-    report = {"schema": "kmg-tasks/0.1.0", "chapter": layer["chapter"]["id"], "generated": len(raw),
+    doc = {"chapter": layer["chapter"]["id"], "schema": "glava-kurs/task.schema.json", "tasks": kept}
+    errors = schema_errors(doc, "task.schema.json")
+    report = {"schema": "kmg-tasks/0.2.0", "chapter": layer["chapter"]["id"], "generated": len(raw),
               "kept": len(kept), "rejected": rejected, "types": types,
+              "kinds": sorted({t["kind"] for t in kept if t.get("kind")}),
               "meets_tz": len(kept) >= min_total and len(types) >= 4,
+              "schema_errors": errors, "schema_ok": not errors,
               "cost_usd": round(r["cost_usd"], 6), "cost_usd_original": round(r["cost_usd_original"], 6),
               "cached": r["cached"], "model": r["model"], "calls": r["calls"]}
     Path(out_dir).mkdir(parents=True, exist_ok=True)
-    (Path(out_dir) / "tasks.json").write_text(json.dumps({"schema": "kmg-tasks/0.1.0", "tasks": kept}, ensure_ascii=False, indent=1), encoding="utf-8")
+    (Path(out_dir) / "tasks.json").write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
     return kept, report

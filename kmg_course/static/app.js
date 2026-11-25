@@ -6,7 +6,7 @@
   steps.forEach(function (s, i) { s.idx = i; byId[s.id] = s; });
   C.parts.forEach(function (p) { partById[p.id] = p; });
   var tasksByNode = {};
-  (C.tasks || []).forEach(function (t) { (tasksByNode[t.node_id] = tasksByNode[t.node_id] || []).push(t); });
+  (C.tasks || []).forEach(function (t) { (tasksByNode[t.step_id] = tasksByNode[t.step_id] || []).push(t); });
 
   /* ---------- storage (per viewer convenience; works without it) ---------- */
   var KEY = "kmg-course:" + C.chapter.id;
@@ -401,7 +401,7 @@
   }
 
   /* ---------- tasks ---------- */
-  var TYPE_LABEL = { single: "один ответ", multi: "несколько ответов", order: "порядок", gap: "пропуск", calc: "расчёт" };
+  var TYPE_LABEL = { single: "один ответ", multiple: "несколько ответов", order: "порядок", gap: "пропуск", calc: "расчёт" };
   function normA(x) { return String(x).toLowerCase().replace(/ё/g, "е").replace(/[«»"'.,;:!?()]/g, "").replace(/\s+/g, " ").trim(); }
 
   function taskView(t, onResult) {
@@ -410,31 +410,32 @@
     box.appendChild(el("p", { "class": "q", text: t.prompt }));
     var fb = el("div", { "class": "fb", hidden: true, role: "status", "aria-live": "polite" });
     var check, getRes;
-    if (t.type === "single" || t.type === "multi") {
+    var optText = {}; (t.options || []).forEach(function (o) { optText[o.id] = o.text; });
+    if (t.type === "single" || t.type === "multiple") {
       var name = "o-" + t.id, inputs = [];
-      t.options.forEach(function (o, i) {
-        var inp = el("input", { type: t.type === "single" ? "radio" : "checkbox", name: name, value: String(i) });
+      t.options.forEach(function (o) {
+        var inp = el("input", { type: t.type === "single" ? "radio" : "checkbox", name: name, value: o.id });
         inputs.push(inp);
-        box.appendChild(el("label", { "class": "opt" }, [inp, el("span", { text: o })]));
+        box.appendChild(el("label", { "class": "opt" }, [inp, el("span", { text: o.text })]));
       });
       getRes = function () {
-        var sel = inputs.filter(function (x) { return x.checked; }).map(function (x) { return +x.value; });
-        var right = t.type === "single" ? [t.answer] : t.answer.slice().sort();
-        var ok = JSON.stringify(sel.sort()) === JSON.stringify(right.sort());
-        inputs.forEach(function (x, i) { x.parentNode.classList.toggle("good", right.indexOf(i) >= 0); x.parentNode.classList.toggle("bad", x.checked && right.indexOf(i) < 0); });
-        return { ok: ok, empty: !sel.length, right: right.map(function (i) { return t.options[i]; }).join("; ") };
+        var sel = inputs.filter(function (x) { return x.checked; }).map(function (x) { return x.value; });
+        var right = t.type === "single" ? [t.answer] : t.answer.slice();
+        var ok = JSON.stringify(sel.slice().sort()) === JSON.stringify(right.slice().sort());
+        inputs.forEach(function (x) { x.parentNode.classList.toggle("good", right.indexOf(x.value) >= 0); x.parentNode.classList.toggle("bad", x.checked && right.indexOf(x.value) < 0); });
+        return { ok: ok, empty: !sel.length, right: right.map(function (i) { return optText[i]; }).join("; ") };
       };
     } else if (t.type === "order") {
       var list = el("ol", { "class": "order", "aria-label": "Перетащите пункты или используйте кнопки ↑ ↓" });
-      t.shuffled.forEach(function (i) { list.appendChild(orderItem(t.items[i], i, list)); });
+      t.options.forEach(function (o) { list.appendChild(orderItem(o.text, o.id, list)); });
       box.appendChild(list);
       getRes = function () {
-        var cur = Array.prototype.map.call(list.children, function (li) { return +li.getAttribute("data-i"); });
-        Array.prototype.forEach.call(list.children, function (li, pos) { li.classList.toggle("good", +li.getAttribute("data-i") === pos); li.classList.toggle("bad", +li.getAttribute("data-i") !== pos); });
-        return { ok: cur.every(function (v, k) { return v === k; }), empty: false, right: t.items.join(" → ") };
+        var cur = Array.prototype.map.call(list.children, function (li) { return li.getAttribute("data-i"); });
+        Array.prototype.forEach.call(list.children, function (li, pos) { li.classList.toggle("good", li.getAttribute("data-i") === t.answer[pos]); li.classList.toggle("bad", li.getAttribute("data-i") !== t.answer[pos]); });
+        return { ok: cur.every(function (v, k) { return v === t.answer[k]; }), empty: false, right: t.answer.map(function (i) { return optText[i]; }).join(" → ") };
       };
     } else if (t.type === "gap") {
-      var parts = t.prompt.split("___");
+      var parts = t.prompt.split("{{1}}");
       var inp = el("input", { "class": "gapin", type: "text", "aria-label": "Пропущенное слово", autocomplete: "off" });
       box.querySelector(".q").textContent = "";
       box.querySelector(".q").appendChild(document.createTextNode(parts[0]));
@@ -442,20 +443,20 @@
       box.querySelector(".q").appendChild(document.createTextNode(parts[1] || ""));
       getRes = function () {
         // exact match, or the same word with a different ending (Russian inflection): common stem ≥ 5 letters, ≤ 2 letters differ
-        var v = normA(inp.value), ok = [t.answer].concat(t.accept || []).some(function (a) {
+        var v = normA(inp.value), ok = [t.answer[0]].concat((t.accept || [])[0] || []).some(function (a) {
           a = normA(a); if (a === v) return true;
           if (a.indexOf(" ") >= 0 || v.indexOf(" ") >= 0 || a.length < 6) return false;
           var k = 0; while (k < a.length && a[k] === v[k]) k++;
           return k >= 5 && a.length - k <= 2 && v.length - k <= 2;
         });
-        return { ok: ok, empty: !v, right: t.answer };
+        return { ok: ok, empty: !v, right: t.answer[0] };
       };
     } else if (t.type === "calc") {
-      var ci = el("input", { "class": "gapin", type: "text", inputmode: "decimal", "aria-label": "Ответ" + (t.calc.unit ? ", " + t.calc.unit : "") });
-      box.appendChild(el("p", null, [ci, " " + (t.calc.unit || "")]));
+      var ci = el("input", { "class": "gapin", type: "text", inputmode: "decimal", "aria-label": "Ответ" + (t.unit ? ", " + t.unit : "") });
+      box.appendChild(el("p", null, [ci, " " + (t.unit || "")]));
       getRes = function () {
-        var v = parseFloat(String(ci.value).replace(",", ".")), tol = Math.max(t.calc.tolerance || 0.01, Math.abs(t.answer) * 0.005);
-        return { ok: !isNaN(v) && Math.abs(v - t.answer) <= tol, empty: isNaN(v), right: String(t.answer).replace(".", ",") + " " + (t.calc.unit || "") };
+        var v = parseFloat(String(ci.value).replace(",", ".")), tol = Math.max(t.tolerance || 0.01, Math.abs(t.answer) * 0.005);
+        return { ok: !isNaN(v) && Math.abs(v - t.answer) <= tol, empty: isNaN(v), right: String(t.answer).replace(".", ",") + " " + (t.unit || "") };
       };
     }
     var actions = el("div", { "class": "actions" });
@@ -471,8 +472,8 @@
       if (!r.ok) fbt.appendChild(el("p", { text: "Верный ответ: " + r.right + "." }));
       fbt.appendChild(el("p", { text: t.explanation }));
       var pages = t.claim_ids.map(function (c) { return claimIndex[c] && claimIndex[c].page; }).filter(Boolean);
-      var s = byId[t.node_id];
-      fbt.appendChild(el("a", { href: "#/step/" + t.node_id, text: "Урок «" + s.title + "», стр. " + pages.filter(function (v, i, a) { return a.indexOf(v) === i; }).join(", ") }));
+      var s = byId[t.step_id];
+      fbt.appendChild(el("a", { href: "#/step/" + t.step_id, text: "Урок «" + s.title + "», стр. " + pages.filter(function (v, i, a) { return a.indexOf(v) === i; }).join(", ") }));
       fb.appendChild(fbt);
       if (onResult) {  // inside an exercise: one check per question, then the exercise moves on
         check.disabled = true; check.textContent = "Проверено";

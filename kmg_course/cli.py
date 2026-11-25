@@ -10,6 +10,7 @@ import shutil
 import sys
 import time
 from pathlib import Path
+from xml.sax.saxutils import escape
 
 from kmg.config import ROOT, domain_pack
 
@@ -17,6 +18,98 @@ from . import illus, model, tasks as tasks_mod
 
 STATIC = Path(__file__).resolve().parent / "static"
 MAX_MB = 30
+APP_FILES = ("app.js", "style.css")
+
+
+def _media(layer_path):
+    """Media built by `kmg_course video` for this chapter: <layer dir>/media/<node>/manifest.json.
+    Frame class and provenance label are read from the video passport when it has them."""
+    media_src = layer_path.parent / "media"
+    media = {}
+    if media_src.exists():
+        for mf in sorted(media_src.glob("*/manifest.json")):
+            m = dict(json.loads(mf.read_text(encoding="utf-8")), dir=mf.parent.name)
+            if not m.get("mp4") or not (mf.parent / m["mp4"]).exists():
+                continue  # no video file -> nothing to put on the step (the page must not break)
+            pj = mf.parent / "passport.json"
+            if pj.exists():
+                try:
+                    p = json.loads(pj.read_text(encoding="utf-8"))
+                    spec = p.get("scene_spec") or {}
+                    frames = p.get("frames") or []
+                    m["frame_class"] = p.get("frame_class") or spec.get("frame_class") or (frames[0].get("class") if frames else None)
+                    prov = " ".join(str(f.get("provenance", "")) for f in frames[:1]).lower()
+                    m["label"] = next((l for l in ("реальные данные", "симуляция", "схема") if prov.startswith(l[:5])), None)
+                    m["claim_ids"] = sorted({c for s in (p.get("sources") or []) if isinstance(s, dict)
+                                             for c in ([s.get("claim_id")] if s.get("claim_id") else s.get("claim_ids", []))})
+                except (ValueError, AttributeError, TypeError):
+                    pass
+            media.setdefault(m["node_id"], []).append(m)
+    return media_src, media
+
+
+def _write_app(out, title):
+    (out / "assets").mkdir(parents=True, exist_ok=True)
+    for f in APP_FILES:
+        shutil.copy(STATIC / f, out / "assets" / f)
+    html = (STATIC / "index.html").read_text(encoding="utf-8").replace("{{TITLE}}", escape(title))
+    (out / "index.html").write_text(html, encoding="utf-8")
+
+
+def _decor(view, pack, out):
+    """Photos (domain pack, class D) and the styleguide legend: copied into the course, attached to the view.
+    Returns the illustration records of the photos (organizers' format)."""
+    shutil.rmtree(out / "assets" / "photos", ignore_errors=True)
+    style = illus.load_style(pack)
+    view["style"] = {"school": style.get("school"), "source": style.get("source"),
+                     "groups": [{"id": g, "title": t, "items": [{"key": k, "ru": e.get("ru") or k, "color": e["color"]}
+                                                                for k, e in (style.get(g) or {}).items()]}
+                                for g, t in illus.GROUPS if style.get(g)]}
+    pdir, photos = illus.load_photos(pack)
+    plan = illus.assign_photos(photos, view["parts"], view["steps"])
+    recs, pub = [], {"cover": None, "parts": {}, "final": None}
+    used = {}
+
+    def put(p):
+        if p["file"] not in used:
+            (out / "assets" / "photos").mkdir(parents=True, exist_ok=True)
+            shutil.copy(pdir / p["file"], out / "assets" / "photos" / p["file"])
+            used[p["file"]] = "assets/photos/" + p["file"]
+        return illus.photo_public(p, used[p["file"]])
+
+    first_of = {}
+    for s in view["steps"]:
+        first_of.setdefault(s["part"], s["id"])
+    if plan["cover"]:
+        pub["cover"] = put(plan["cover"])
+        recs.append(("course-cover", view["steps"][0]["id"], plan["cover"]))
+    for pid, p in plan["parts"].items():
+        pub["parts"][pid] = put(p)
+        recs.append(("part-cover-" + pid, first_of.get(pid), p))
+    if plan["final"]:
+        pub["final"] = put(plan["final"])
+    view["photos"] = pub
+    return [{"id": "%s.photo.%s" % (view["chapter"]["id"], rid), "step_id": sid, "node_id": None,
+             "file": used[p["file"]], "frame_class": "D", "origin": "photo", "label": None,
+             "caption": p.get("caption_ru") or "", "alt": p.get("alt_ru") or p.get("caption_ru") or "",
+             "source": "%s, %s, %s (%s)" % (p["author"], p["license"], p.get("source") or "", p["source_url"]),
+             "claim_ids": [], "placement": rid} for rid, sid, p in recs if sid]
+
+
+def _illustrations_doc(view, out, photo_recs):
+    shutil.rmtree(out / "illus", ignore_errors=True)
+    (out / "illus").mkdir(parents=True, exist_ok=True)
+    items = []
+    for s in view["steps"]:
+        for r in s["illustrations"]:
+            (out / r["file"]).write_text('<?xml version="1.0" encoding="UTF-8"?>\n' + r["svg"], encoding="utf-8")
+            items.append({k: v for k, v in r.items() if k != "svg"})
+        items += illus.media_items(s)
+    items += photo_recs
+    for it in items:
+        if it.get("label") is None:
+            it.pop("label", None)
+    return {"chapter": view["chapter"]["id"], "schema": "glava-kurs/illustration.schema.json", "illustrations": items}
 
 
 def build(layer_path, out=None, with_tasks=True):
@@ -29,8 +122,11 @@ def build(layer_path, out=None, with_tasks=True):
     log_path = ROOT / "runs" / chapter_id / "course_llm_calls.jsonl"
 
     view = model.build_view(layer, pack)
+    media_src, media = _media(layer_path)
+    style = illus.load_style(pack)
     for s in view["steps"]:
-        s["illustrations"] = illus.illustrations(s)
+        s["media"] = media.get(s["id"], [])
+        s["illustrations"] = illus.illustrations(s, style)
 
     report = {"tasks": None}
     task_list = []
@@ -39,26 +135,12 @@ def build(layer_path, out=None, with_tasks=True):
         report["tasks"] = rep
     view["tasks"] = task_list
 
-    # media built by `kmg_course video` for this chapter: <layer dir>/media/<node>/manifest.json
-    media_src = layer_path.parent / "media"
-    media = {}
-    if media_src.exists():
-        for mf in sorted(media_src.glob("*/manifest.json")):
-            m = json.loads(mf.read_text(encoding="utf-8"))
-            media.setdefault(m["node_id"], []).append(dict(m, dir=mf.parent.name))
-    for s in view["steps"]:
-        s["media"] = media.get(s["id"], [])
-
     if out.exists():
-        shutil.rmtree(out / "media", ignore_errors=True)
-        for sub in ("assets", "data"):
+        for sub in ("media", "assets", "data", "illus"):
             shutil.rmtree(out / sub, ignore_errors=True)
-    (out / "assets").mkdir(parents=True, exist_ok=True)
     (out / "data").mkdir(parents=True, exist_ok=True)
-    shutil.copy(STATIC / "app.js", out / "assets" / "app.js")
-    shutil.copy(STATIC / "style.css", out / "assets" / "style.css")
-    html = (STATIC / "index.html").read_text(encoding="utf-8").replace("{{TITLE}}", view["chapter"]["title"])
-    (out / "index.html").write_text(html, encoding="utf-8")
+    _write_app(out, view["chapter"]["title"])
+    photo_recs = _decor(view, pack, out)
     for node_id, ms in media.items():
         for m in ms:
             dst = out / "media" / m["dir"]
@@ -66,35 +148,44 @@ def build(layer_path, out=None, with_tasks=True):
             for k in ("mp4", "scene", "audio", "subtitles", "subtitles_vtt", "passport"):
                 if m.get(k) and (media_src / m["dir"] / m[k]).exists():
                     shutil.copy(media_src / m["dir"] / m[k], dst / m[k])
+    idoc = _illustrations_doc(view, out, photo_recs)
+    (out / "illustrations.json").write_text(json.dumps(idoc, ensure_ascii=False, indent=1), encoding="utf-8")
+    ierr = tasks_mod.schema_errors(idoc, "illustration.schema.json")
     (out / "data" / "course.js").write_text("window.COURSE = " + json.dumps(view, ensure_ascii=False) + ";\n", encoding="utf-8")
 
     # TZ: «курс без видео — не больше 30 МБ на главу» → video files are not counted
     size_mb = sum(f.stat().st_size for f in out.rglob("*") if f.is_file() and f.suffix != ".mp4") / 1e6
     steps = view["steps"]
     no_illus = [s["id"] for s in steps if not s["illustrations"]]
+    parts_ab = {s["part"] for s in steps if any(r["frame_class"] in ("A", "B") for r in s["illustrations"]) or s["media"]}
     report.update({
-        "schema": "kmg-course-report/0.1.0", "chapter": chapter_id, "layer": str(layer_path.as_posix()),
+        "schema": "kmg-course-report/0.2.0", "chapter": chapter_id, "layer": str(layer_path.as_posix()),
         "steps": len(steps), "parts": len(view["parts"]), "size_mb": round(size_mb, 2), "size_ok": size_mb <= MAX_MB,
-        "steps_without_illustration": no_illus, "seconds": round(time.time() - t0, 1),
+        "steps_without_illustration": no_illus,
+        "parts_without_ab_illustration": [p["id"] for p in view["parts"] if p["id"] not in parts_ab],
+        "illustrations": len(idoc["illustrations"]), "photos": sum(1 for r in photo_recs),
+        "illustration_schema_errors": ierr, "illustration_schema_ok": not ierr,
+        "seconds": round(time.time() - t0, 1),
     })
     (out / "course_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     return out, report
 
 
 def refresh_assets(layer_path, out=None):
-    """Refresh only the app (index.html, assets/) of an already built course: content, tasks and media stay as
-    built. For design changes when the layer moved on and tasks must not be regenerated yet."""
+    """Refresh the app (index.html, assets/) and its decoration from the domain pack (photos, colour legend) of an
+    already built course: content, tasks, illustrations and media stay as built. For design changes when the layer
+    moved on and tasks must not be regenerated yet. No model calls."""
     layer_path = Path(layer_path)
     out = Path(out) if out else layer_path.parent / "course"
     data = out / "data" / "course.js"
     if not data.exists():
         raise SystemExit("курс ещё не собран: %s (нужна полная сборка build)" % out)
     view = json.loads(data.read_text(encoding="utf-8").split("=", 1)[1].strip().rstrip(";"))
-    (out / "assets").mkdir(parents=True, exist_ok=True)
-    shutil.copy(STATIC / "app.js", out / "assets" / "app.js")
-    shutil.copy(STATIC / "style.css", out / "assets" / "style.css")
-    html = (STATIC / "index.html").read_text(encoding="utf-8").replace("{{TITLE}}", view["chapter"]["title"])
-    (out / "index.html").write_text(html, encoding="utf-8")
+    layer = json.loads(layer_path.read_text(encoding="utf-8"))
+    _write_app(out, view["chapter"]["title"])
+    _decor(view, domain_pack(layer["chapter"]["domain_pack"]), out)
+    view["tasks"] = [tasks_mod.upgrade(t) for t in view.get("tasks", [])]
+    data.write_text("window.COURSE = " + json.dumps(view, ensure_ascii=False) + ";\n", encoding="utf-8")
     return out
 
 
@@ -154,7 +245,22 @@ def main(argv=None):
         t = rep.get("tasks") or {}
         print(json.dumps({"out": str(out), "steps": rep["steps"], "size_mb": rep["size_mb"],
                           "tasks_kept": t.get("kept"), "tasks_generated": t.get("generated"), "task_types": t.get("types"),
-                          "tasks_meet_tz": t.get("meets_tz"), "cost_usd": t.get("cost_usd"),
+                          "tasks_meet_tz": t.get("meets_tz"), "tasks_schema_ok": t.get("schema_ok"), "cost_usd": t.get("cost_usd"),
+                          "illustrations": rep["illustrations"], "illustrations_schema_ok": rep["illustration_schema_ok"],
+                          "photos": rep["photos"],
                           "steps_without_illustration": len(rep["steps_without_illustration"])}, ensure_ascii=False))
-        ok = rep["size_ok"] and (not t or t.get("meets_tz")) and not rep["steps_without_illustration"]
-        sys.exit(0 if ok else 1)
+        problems = []
+        if not rep["size_ok"]:
+            problems.append("курс без видео весит %.1f МБ > %d МБ" % (rep["size_mb"], MAX_MB))
+        if t and not t.get("meets_tz"):
+            problems.append("заданий %s, типов %s: нужно ≥15 заданий и ≥4 типа из 5" % (t.get("kept"), len(t.get("types") or [])))
+        if t and not t.get("schema_ok"):
+            problems.append("tasks.json не проходит task.schema.json организаторов:\n    " + "\n    ".join(t["schema_errors"][:20]))
+        if not rep["illustration_schema_ok"]:
+            problems.append("illustrations.json не проходит illustration.schema.json организаторов:\n    " +
+                            "\n    ".join(rep["illustration_schema_errors"][:20]))
+        if rep["steps_without_illustration"]:
+            problems.append("шаги без иллюстрации: " + ", ".join(rep["steps_without_illustration"][:10]))
+        for p in problems:
+            print("ОШИБКА СБОРКИ КУРСА: " + p, file=sys.stderr)
+        sys.exit(1 if problems else 0)
