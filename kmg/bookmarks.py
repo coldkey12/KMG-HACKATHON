@@ -14,6 +14,8 @@ TASKS = ["number", "condition", "causality", "mechanism", "misconception"]
 
 
 def build(layer_path, out_dir, n_errors=15, n_surprising=6, n_keep=9, seed=7):
+    import os
+    n_errors = int(os.environ.get("KMG_BM_ERRORS", n_errors)); n_surprising = int(os.environ.get("KMG_BM_SURPRISING", n_surprising)); n_keep = int(os.environ.get("KMG_BM_KEEP", n_keep))
     L = json.loads(Path(layer_path).read_text(encoding="utf-8"))
     pack = domain_pack(L["chapter"]["domain_pack"])
     rng = random.Random(seed)

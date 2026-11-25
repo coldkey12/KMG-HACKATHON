@@ -12,3 +12,6 @@ start_anchor: "## 1.2 Дельты"
 end_anchor: "## 1.3 Озерные обстановки"
 language: ru
 domain_pack: geology
+analysis:
+  file: "data/raw/organizers/analysis_books/Барабошкин_-_Практическая_седиментология_(терригенные_коллектора)_-_2007.md"
+  match: "1\\.2\\b|[Дд]ельт"

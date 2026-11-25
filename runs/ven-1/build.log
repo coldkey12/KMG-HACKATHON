@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Users/coldkey/KMG-HACKATHON/kmg/__main__.py", line 3, in <module>
+    main()
+  File "/Users/coldkey/KMG-HACKATHON/kmg/cli.py", line 49, in main
+    if args.cmd == "build":
+  File "/Users/coldkey/KMG-HACKATHON/kmg/structure.py", line 634, in build
+    parts, nodes, typos, questions, coverage, autofixes = assemble(cfg, units, plan, node_outs, pack)
+  File "/Users/coldkey/KMG-HACKATHON/kmg/structure.py", line 332, in assemble
+    if c.get("question_id") and not c["question_id"].startswith(nid):
+AttributeError: 'dict' object has no attribute 'startswith'
+EXIT 1

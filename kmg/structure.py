@@ -149,12 +149,12 @@ def _fix_quote(quote, unit_text):
     L = len(q)
     step = max(1, L // 10)
     for i in range(0, max(1, len(src) - L // 2), step):
-        for LL in (L - L // 10, L, L + L // 10):
+        for LL in (L - L // 5, L - L // 10, L, L + L // 10):
             cand = src[i:i + LL]
             r = difflib.SequenceMatcher(None, norm(q), norm(cand)).ratio()
             if r > best_r:
                 best, best_r = cand, r
-    if best is not None and best_r >= 0.9:
+    if best is not None and best_r >= 0.85:
         # extend to word boundaries
         s = src.find(best)
         e = s + len(best)
@@ -186,6 +186,12 @@ def assemble(cfg, units, plan, node_outs, pack):
         ckey2id = {}
         claims = []
         for c in o.get("claims", []):
+            if not isinstance(c, dict):
+                continue
+            q = c.get("question")  # model sometimes gives an object instead of the question key
+            c["question"] = (q.get("key") if isinstance(q, dict) else q) if isinstance(q, (str, dict)) else None
+            if not isinstance(c.get("unit_id"), str):
+                c["unit_id"] = str(c.get("unit_id") or "")
             u = umap.get(c.get("unit_id"))
             quote = c.get("quote", "")
             fixed = False
@@ -329,7 +335,7 @@ def assemble(cfg, units, plan, node_outs, pack):
             questions.append({"id": qid, "node_id": nid, "claim_ids": cl, "page": pg, "statement": q.get("statement", ""),
                               "question": q.get("question", ""), "options": q.get("options", []), "status": "open"})
         for c in claims:
-            if c.get("question_id") and not c["question_id"].startswith(nid):
+            if c.get("question_id") and not str(c["question_id"]).startswith(nid):
                 c.pop("question_id")  # dangling model key
     # coverage
     covered = {}

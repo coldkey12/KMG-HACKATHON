@@ -114,7 +114,7 @@ def check_numbers_in_text(text, source_text, where, hypothesis=False, check="num
     out = []
     for x in sorted(_nums_of(text) - src):
         if re.search(r"(?:^|\s)%s[.)]\s" % re.escape(x), text) or re.search(
-                r"(?:шаг|этап|пункт|способ|вариант|признак|групп|тип|случа|step|stage|group|case)\w*\s*№?\s*%s(?!\d)" % re.escape(x), text, re.I):
+                r"(?:шаг|этап|пункт|способ|вариант|признак|групп|тип|случа|услови|правил|критери|step|stage|group|case|condition|rule)\w*\s*№?\s*%s(?!\d)" % re.escape(x), text, re.I):
             continue  # enumeration added for readability ("1. …", "шаг 2"), not a fact
         level = "warning" if hypothesis else "error"
         out.append(_issue(check, level, where, "число %s нет в исходных единицах" % x))

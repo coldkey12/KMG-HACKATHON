@@ -13,3 +13,6 @@ ranges:
   - {pages: [20, 30], start_anchor: "## ОЦЕНКА ХАРАКТЕРА НАСЫЩЕНИЯ КОЛЛЕКТОРА", end_anchor: "# ГЛАВА II"}
 language: ru
 domain_pack: geology
+analysis:
+  file: "data/raw/organizers/analysis_books/Вендельштейн_и_др_-_Геофизические_методы_определения_параметров_нефтегазовых_коллекторов_-_1978.md"
+  match: "(Глава|гл\\.)\\s*I\\b(?!I|V)|§\\s*I\\.[1-3]"

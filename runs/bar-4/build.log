@@ -1,0 +1,4 @@
+{"llm_calls": 49, "cached_calls": 0, "cost_usd_this_run": 1.3097, "cost_usd_if_uncached": 1.3097, "cost_usd_per_node": 0.0273, "usage": {"input_tokens": 231355, "output_tokens": 1270995, "cache_creation_input_tokens": 51307, "cache_read_input_tokens": 1265099}, "seconds": 988.3, "nodes": 48, "units": 170, "claims": 363, "manual_minutes": 0.0}
+{"contract": {"errors": 0, "warnings": 0}, "coverage": {"errors": 0, "warnings": 0}, "quote": {"errors": 0, "warnings": 0}, "numbers": {"errors": 0, "warnings": 1}, "term_order": {"errors": 0, "warnings": 82}}
+passed: True
+EXIT 0

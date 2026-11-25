@@ -21,7 +21,7 @@
  },
  "generator": {
   "pipeline_version": "0.1.0",
-  "created_at": "2026-11-25T13:05:02",
+  "created_at": "2026-11-25T13:32:44",
   "models": [
    {
     "role": "plan",
@@ -36109,7 +36109,7 @@
    "cache_creation_input_tokens": 331742,
    "cache_read_input_tokens": 1782768
   },
-  "seconds": 9.5,
+  "seconds": 9.1,
   "nodes": 56,
   "units": 126,
   "claims": 463,

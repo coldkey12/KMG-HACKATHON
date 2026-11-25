@@ -12,3 +12,6 @@ start_anchor: "## § 4. Нестационарное движение однор
 end_anchor: "## § 5. Нестационарное движение однородных жидкостей"
 language: ru
 domain_pack: geology
+analysis:
+  file: "data/raw/organizers/analysis_books/Баренблатт_и_др_-_Движение_жидкостей_и_газов_в_природных_пластах_-_1984.md"
+  match: "§\\s*4\\b"
