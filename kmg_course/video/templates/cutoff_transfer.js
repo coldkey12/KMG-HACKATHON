@@ -6,7 +6,7 @@
    state: {view: log|both, t0, t1, wrong, fit, cut, classify, shift, provenance} */
 (function () {
   "use strict";
-  var FONT = "Segoe UI, Arial, sans-serif", PT = "#9FB3C8", CURVE = "#7FB8F0", KSTAR = "#F2C14E";
+  var FONT = window.FONT;  // colours: styleguide of the domain pack (spec.palette), see draw()
   function font(ctx, w, px, U) { ctx.font = w + " " + px * U + "px " + FONT; }
 
   function model(spec) {
@@ -19,6 +19,7 @@
   }
 
   function draw(ctx, box, st, spec, g) {
+    var PAL = spec.palette || {}, PT = PAL.measurement, CURVE = PAL["curve_" + (spec.case.curve || "")] || g.C.ink, KSTAR = g.C.accent;
     var C = g.C, U = g.U, m = model(spec), Lb = spec.labels, pal = spec.palette || {}, t = st.tSim == null ? 1 : st.tSim;
     var L0 = 150 * U, R0 = 40 * U;
     function X(x) { return box.x + L0 + x * (box.w - L0 - R0); }
@@ -46,10 +47,10 @@
       if (st.fit) {
         var reveal = !st.cut;                       // reveal: line grows (0–0.6), then k* and the drop (0.6–1)
         var fl = reveal ? Math.min(1, t / 0.6) : 1, kp = reveal ? Math.max(0, (t - 0.6) / 0.4) : 1;
-        ctx.strokeStyle = C.accent; ctx.lineWidth = 6 * U; ctx.beginPath();
+        ctx.strokeStyle = C.ink; ctx.lineWidth = 6 * U; ctx.beginPath();
         ctx.moveTo(X(0), YP(m.lk(0))); ctx.lineTo(X(fl), YP(m.lk(fl))); ctx.stroke();
         if (fl >= 1) { // label under the line, clear of the points above it
-          font(ctx, 700, 26, U); ctx.fillStyle = C.accent; var fx = 0.88;
+          font(ctx, 700, 26, U); ctx.fillStyle = C.ink; var fx = 0.88;
           ctx.fillText(Lb.fit, X(fx), YP(m.lk(fx)) + 44 * U);
         }
         if (kp > 0) {
@@ -81,7 +82,7 @@
       var y0 = YD(b.top), y1 = YD(b.bottom), done = st.classify && (i + 0.5) / m.beds.length <= classP + 1e-9;
       var coll = m.isColl(b.x, xc);
       if (done && coll) nColl++;
-      ctx.fillStyle = !done ? "#3A4643" : (coll ? (pal.sand || C.sand) : (pal.shale || C.shale));
+      ctx.fillStyle = !done ? C.hidden : (coll ? pal[spec.legend_keys.rock] : C.muted);  // one rock (assumption): colour = collector or not
       ctx.fillRect(colX, y0, colW, y1 - y0); ctx.strokeStyle = C.bg; ctx.lineWidth = 2 * U; ctx.strokeRect(colX, y0, colW, y1 - y0);
       if (!done) {
         var qs = Math.min(30, (y1 - y0) / U * 0.75); ctx.fillStyle = C.muted; font(ctx, 700, qs, U);

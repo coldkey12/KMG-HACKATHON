@@ -28,18 +28,71 @@ class TTSError(RuntimeError):
     pass
 
 
+ACUTE = "\u0301"
+VOWELS = "аеёиоуыэюяАЕЁИОУЫЭЮЯ"
+_W = r"[\wА-Яа-яЁё\u0301-]"
+
+
+def spoken_form(say):
+    """Dictionary reading -> text for the voice. Stress is marked with U+0301 after the vowel (organizers' style)
+    or by a capital vowel inside a lower-case word (team style «каротАж»): both become U+0301, which the
+    Microsoft voices honour (checked: the stressed syllable gets longer and louder)."""
+    out = []
+    for w in re.split(r"(\s+|-)", say):
+        if any(c.islower() for c in w) and any(c in VOWELS[10:] for c in w[1:]):
+            w = w[0] + "".join(c.lower() + ACUTE if c in VOWELS[10:] else c for c in w[1:])
+        out.append(w)
+    return "".join(out)
+
+
+def _stress_index(word):
+    i = word.find(ACUTE)
+    return i - 1 if i > 0 else None
+
+
 def apply_pronunciation(text, pack):
-    """Replace terms by their spoken form from the domain pack (stress capitals are lowered: the engine
-    does not read them; the stressed form stays in the passport list «проверить на слух»)."""
+    """Replace terms by their spoken form from the domain pack's pronunciation dictionary.
+    - abbreviations / symbols (ПС, ГК, kп, Ом·м): exact match, read as in the dictionary («пэ-эс»);
+    - words with a stress mark: the exact word and its inflected forms (коллектор → коллекторы) when the stress
+      falls on the stem; forms where the stress could move (stress in the ending) only on exact match.
+    Returns (spoken text, used items); every item used goes to the passport list «проверить на слух»."""
     items = (pack.get("pronunciation") or {}).get("items", [])
     out = text
     used = []
     for it in sorted(items, key=lambda x: -len(x["term"])):
-        pat = r"(?<![\wА-Яа-яЁё])" + re.escape(it["term"]) + r"(?![\wА-Яа-яЁё])"
-        if re.search(pat, out):
-            out = re.sub(pat, it["say"].lower(), out)
-            used.append(it)
+        term, say = it["term"], spoken_form(it["say"])
+        is_word = term.isalpha() and term.lower() == term and ACUTE in say and say.replace(ACUTE, "").lower() == term.lower()
+        if not is_word:
+            pat = r"(?<![\wА-Яа-яЁё])" + re.escape(term) + r"(?![\wА-Яа-яЁё])"
+            if re.search(pat, out):
+                out = re.sub(pat, lambda m: say.lower() if say.isupper() else say, out)
+                used.append(dict(it, form=term))
+            continue
+        si = _stress_index(say)
+        stem = term[:max(len(term) - 2, si + 1)] if si is not None and si < len(term) - 2 else term
+        pat = r"(?<![\wА-Яа-яЁё\u0301])(" + re.escape(stem) + r"[а-яё]{0,4})(?![\wА-Яа-яЁё\u0301])"
+        found = []
+
+        def rep(m):
+            w = m.group(1)
+            if stem == term and w.lower() != term:
+                return w
+            if ACUTE in w:
+                return w
+            found.append(w)
+            return w[:si + 1] + ACUTE + w[si + 1:]
+        out = re.sub(pat, rep, out, flags=re.IGNORECASE)
+        if found:
+            used.append(dict(it, form=", ".join(sorted(set(f.lower() for f in found)))))
     return out, used
+
+
+def listen_list(used, pack):
+    """Passport «проверить на слух»: dictionary words the voice read with a forced stress or reading, plus the
+    dictionary's own «check by ear» words if the script uses them."""
+    out = sorted({"%s → %s" % (u.get("form") or u["term"], spoken_form(u["say"])) for u in used})
+    extra = (pack.get("pronunciation") or {}).get("listen", [])
+    return out, [w for w in extra]
 
 
 def _key(text, cfg):

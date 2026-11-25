@@ -17,7 +17,10 @@ from kmg.config import ROOT, domain_pack
 from kmg.structure import pack_prereq_terms
 
 from .. import llm
+from . import env as venv
+from . import style as vstyle
 from . import tts
+from .env import ffbin
 
 HERE = Path(__file__).resolve().parent
 TEMPLATES = HERE / "templates"
@@ -28,21 +31,6 @@ FORMATS = {"short": {"w": 1080, "h": 1920, "min_s": 40, "max_s": 90, "target": (
 FPS = 30
 LEAD, GAP, PRED_PAUSE, END_HOLD = 0.25, 0.35, 1.3, 1.6
 TEMPO = 1.12  # the neural voice reads ~105 wpm; ×1.12 brings the track into the TZ range 110–150 wpm (pitch kept)
-STYLE_DARK = {"bg": "#101614", "ink": "#E9F0ED", "muted": "#9CABA5", "paper": "#F5F1E6", "accent": "#5CC4BE",
-              "chipBg": "#22302C", "chipFg": "#CFE3DE", "warnBg": "#3A2220", "warnFg": "#F08C80",
-              "pressureRGB": "232,162,56", "curve": "#7FB8F0", "steel": "#B9C2C6"}
-
-
-def ffbin(name):
-    p = shutil.which(name)
-    if p:
-        return p
-    import os
-    for base in (Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft" / "WinGet" / "Links",):
-        cand = base / (name + ".exe")
-        if cand.exists():
-            return str(cand)
-    raise RuntimeError("%s not found on PATH" % name)
 
 
 def duration(path):
@@ -63,22 +51,23 @@ def load_template(tid):
     return json.loads(p.read_text(encoding="utf-8")), (TEMPLATES / (tid + ".js")).read_text(encoding="utf-8")
 
 
-def build_spec(layer, node, tpl, fmt, pack):
-    colors = (pack.get("styleguide") or {}).get("colors", {})
-    lith = colors.get("lithology", {})
-    palette = dict(lith)
-    palette.update({"fluid_" + k: v for k, v in (colors.get("fluids") or {}).items()})
-    palette["fluid_fresh"] = (colors.get("fluids") or {}).get("filtrate", "#8FC1E8")
-    curves = colors.get("curves") or {}
-    for cid, key in (("res", "resistivity_deep"), ("sp", "SP"), ("cal", "caliper"), ("gr", "GR"), ("nn", "neutron")):
-        if curves.get(key):
-            palette["curve_" + cid] = "#9FB3C8" if key == "resistivity_deep" else curves[key]  # deep-res colour is too dark on the dark frame
-    spec = {"schema": "kmg-scene-spec/0.1.0", "template": tpl["id"], "format": fmt, "frame_class": tpl["frame_class"],
+def build_spec(layer, node, tpl, fmt, pack, log=print):
+    """Scene spec = template data + what is computed for this node. Every colour comes from the domain pack's
+    styleguide (organizers' legend): palette by official keys, frame colours, conventions; the template's
+    legend_keys say which legend entry each object uses."""
+    sg, sg_path, warn = vstyle.load(pack)
+    if warn:
+        log("WARNING: " + warn)
+    spec = {"schema": "kmg-scene-spec/0.2.0", "template": tpl["id"], "format": fmt, "frame_class": tpl["frame_class"],
             "node_id": node["id"], "chapter": layer["chapter"]["id"], "state_model": tpl["state_model"],
             "objects": tpl["objects"], "params": tpl.get("params", {}), "params_note": tpl.get("params_note"),
             "assumptions": tpl["assumptions"], "labels": tpl["labels"], "exaggeration": tpl["exaggeration"],
-            "school": (pack.get("styleguide") or {}).get("school"), "palette": palette,
-            "colors": {"sand": lith.get("sand", "#F2D98B"), "shale": lith.get("shale", "#7F8C8D")}}
+            "exaggeration_named": tpl.get("exaggeration_named"), "true_scale": tpl.get("true_scale"),
+            "school": sg.get("school"), "conventions": sg.get("conventions"),
+            "styleguide": sg_path.relative_to(ROOT).as_posix() if sg_path.is_relative_to(ROOT) else str(sg_path),
+            "palette": vstyle.palette(sg), "legend_keys": tpl.get("legend_keys", {}), "frame_colors": vstyle.frame_colors(sg),
+            "safe_zone": sg.get("safe_zone") if fmt == "short" else None,
+            "min_caption_px": (sg.get("fonts") or {}).get("min_caption_px_at_1080")}
     if tpl.get("table_columns"):
         spec["panel"] = feature_panel(layer, node, tpl)
     if tpl.get("case"):
@@ -168,8 +157,9 @@ def cutoff_case(node, tpl):
         return [i for i, b in enumerate(beds) if (b["x"] >= xc if slope > 0 else b["x"] <= xc)]
     k0, k1 = P["log_kstar"], P["log_kstar"] + P["log_kstar_shift"]
     c0, c1 = coll(xcut(k0)), coll(xcut(k1))
+    curve = next((c["curve"] for c in (tpl.get("legend_keys") or {}).get("curve_by_text", []) if re.search(c["match"], text)), None)
     side = "справа от линии — где показание кривой больше" if slope > 0 else "слева от линии — где показание кривой меньше"
-    return {"negative": neg, "property": prop, "points": [[round(x, 4), round(y, 4)] for x, y in zip(xs, ys)],
+    return {"negative": neg, "property": prop, "curve": curve, "points": [[round(x, 4), round(y, 4)] for x, y in zip(xs, ys)],
             "fit": {"slope": round(slope, 6), "intercept": round(icpt, 6), "r2": round(r2, 4)},
             "log_kstar": [k0, k1], "x_cut": [round(xcut(k0), 4), round(xcut(k1), 4)], "collectors": [c0, c1],
             "facts": {"property": prop, "side": side, "n_beds": len(beds), "n_coll": len(c0), "n_coll_alt": len(c1),
@@ -226,7 +216,7 @@ def feature_panel(layer, node, tpl):
                           "top": round(d, 3), "bottom": round(d + th, 3), "cited_by": r["cited_by"]})
         d += th
     focus = [i for i, it in enumerate(intervals) if any(it["name"] == r["name"] for r in focus_rows)]
-    return {"table": tab["label"], "table_page": tab["page"], "columns": [{k: c[k] for k in ("id", "label", "kind")} for c in cols],
+    return {"table": tab["label"], "table_page": tab["page"], "columns": [{k: c.get(k) for k in ("id", "label", "kind", "curve_key")} for c in cols],
             "intervals": intervals, "focus": focus, "primary": prim, "discriminating": disc}
 
 
@@ -257,8 +247,16 @@ def scene_facts(spec):
                   same_list=", ".join(same) or "—", decision_text=dec)
 
 
+def doubtful_claims(layer, node):
+    """Claims whose source unit has an OCR typo the layer marks as needing a scan check (e.g. «≪» read as «≤»):
+    the voice must not read them aloud until the scan is checked, whatever their status."""
+    units = {t["unit_id"] for t in layer.get("typos", []) if t.get("needs_scan_check")}
+    return {c["id"] for c in node["claims"] if c.get("unit_id") in units}
+
+
 def gen_script(layer, node, tpl, fmt, story, log_path, feedback=None, spec=None):
-    ok = [c for c in node["claims"] if c["status"] == "ok"]
+    bad = doubtful_claims(layer, node)
+    ok = [c for c in node["claims"] if c["status"] == "ok" and c["id"] not in bad]
     facts = scene_facts(spec or {})
     slots_txt = "\n".join("%d. `%s` — %s" % (i + 1, s, tpl["slots"][s]["sees"].format_map(facts)) for i, s in enumerate(story))
     lo, hi = FORMATS[fmt]["words"]
@@ -281,6 +279,7 @@ def gen_script(layer, node, tpl, fmt, story, log_path, feedback=None, spec=None)
 def check_script(layer, node, beats, story, fmt, pack_terms, spec=None):
     errs = []
     claims = {c["id"]: c for c in node["claims"]}
+    doubtful = doubtful_claims(layer, node)
     if [b.get("slot") for b in beats] != story:
         errs.append("порядок частей должен быть ровно: %s" % ", ".join(story))
     total = 0
@@ -312,6 +311,8 @@ def check_script(layer, node, beats, story, fmt, pack_terms, spec=None):
                     errs.append("часть %d: утверждения %s нет в узле" % (i + 1, c))
                 elif claims[c]["status"] != "ok":
                     errs.append("часть %d: утверждение %s не проверено (status %s)" % (i + 1, c, claims[c]["status"]))
+                elif c in doubtful:
+                    errs.append("часть %d: утверждение %s взято из места с сомнительным распознаванием (нужна сверка со сканом) — не используй его" % (i + 1, c))
     # script vs computed scene: a curve that reads the same on the highlighted beds must not be called discriminating
     P = (spec or {}).get("panel")
     if P:
@@ -349,27 +350,50 @@ def check_script(layer, node, beats, story, fmt, pack_terms, spec=None):
 
 
 # ---------------------------------------------------------------- timeline
+def align_display(text, spoken, words):
+    """Subtitles show the script's own words even when the voice read a dictionary form («ПС» → «пэ-эс»,
+    stress marks). Script tokens and the voice's words are aligned by a diff of normalised words; a script
+    token the voice read differently goes to the first voice word of the differing stretch.
+    -> list of len(words) strings (empty where one script token was read as several words)."""
+    import difflib
+    merged = []
+    for tok in text.split():  # punctuation-only tokens («—», «–») attach to the previous word
+        if re.search(r"\w", tok) or not merged:
+            merged.append(tok)
+        else:
+            merged[-1] += " " + tok
+    if not words:
+        return []
+
+    def norm(x):
+        return re.sub(r"[^\wа-яё]", "", x.replace("\u0301", "").lower())
+    A = [norm(t) for t in merged]
+    B = [norm(w["w"]) for w in words]
+    out = [""] * len(words)
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, A, B, autojunk=False).get_opcodes():
+        if op == "equal":
+            for k in range(i2 - i1):
+                out[j1 + k] = (out[j1 + k] + " " + merged[i1 + k]).strip()
+        elif i2 > i1:
+            j = min(j1, len(words) - 1) if j2 > j1 else max(0, j1 - 1)
+            out[j] = (out[j] + " " + " ".join(merged[i1:i2])).strip()
+    return out
+
+
 def build_timeline(beats, voices, tpl, claims, spoken=None):
     t = 0.0
     out = []
     for i, (b, v) in enumerate(zip(beats, voices)):
         d = duration(v["mp3"]) / TEMPO
         words = [{"w": w["w"], "start": round(w["start"] / TEMPO, 3), "dur": round(w["dur"] / TEMPO, 3)} for w in v["words"]]
-        display = []
-        for tok in b["text"].split():  # punctuation-only tokens («—», «–») attach to the previous word
-            if re.search(r"\w", tok) or not display:
-                display.append(tok)
-            else:
-                display[-1] += " " + tok
-        if spoken and spoken[i] != b["text"]:
-            display = []  # pronunciation substitutions changed the words: subtitles fall back to the voice's words
+        display = align_display(b["text"], spoken[i] if spoken else b["text"], v["words"])
         start = t
         vs = start + LEAD
         ve = vs + d
         gap = PRED_PAUSE if b["slot"] == "prediction" else (END_HOLD if i == len(beats) - 1 else GAP)
         end = ve + gap
         st = dict(tpl["slots"][b["slot"]])
-        st["provenance"] = tpl["provenance"][st.get("provenance", "model")]
+        st["provenance"] = vstyle.provenance(tpl["provenance"][st.get("provenance", "model")])
         st.pop("sees", None)
         out.append({"id": "b%02d" % (i + 1), "slot": b["slot"], "text": b["text"], "on_screen": b["on_screen"],
                     "claim_ids": b.get("claim_ids", []), "start": round(start, 3), "end": round(end, 3),
@@ -383,18 +407,23 @@ def build_timeline(beats, voices, tpl, claims, spoken=None):
 # ---------------------------------------------------------------- render
 def scene_html(spec, timeline, tpl, tpl_js, mode, audio_src, title):
     fmt = FORMATS[spec["format"]]
-    style = {"colors": dict(STYLE_DARK, sand=spec["colors"]["sand"], shale=spec["colors"]["shale"])}
+    style = {"colors": spec["frame_colors"]}
     scene = {"spec": spec, "timeline": timeline, "format": {"w": fmt["w"], "h": fmt["h"]}, "style": style,
-             "labels": {"provenance": tpl["provenance"]["model"], "exaggeration": spec["exaggeration"]}, "mode": mode}
+             "labels": {"provenance": vstyle.provenance(tpl["provenance"]["model"]), "exaggeration": spec["exaggeration"]},
+             "mode": mode}
     html = (PLAYER / "scene.html").read_text(encoding="utf-8")
     alt = "Сцена «%s»: %s" % (title, tpl["state_model"])
-    rep = {"{{TITLE}}": title, "{{BG}}": STYLE_DARK["bg"], "{{MAXW}}": "430" if fmt["h"] > fmt["w"] else "960",
+    rep = {"{{TITLE}}": title, "{{BG}}": spec["frame_colors"]["bg"], "{{MAXW}}": "430" if fmt["h"] > fmt["w"] else "960",
            "{{MODE}}": mode, "{{ALT}}": alt.replace('"', "'"), "{{AUDIO}}": audio_src,
            "{{SCENE}}": json.dumps(scene, ensure_ascii=False).replace("</", "<\\/"),
            "{{TEMPLATE_JS}}": tpl_js, "{{PLAYER_JS}}": (PLAYER / "player.js").read_text(encoding="utf-8")}
     for k, v in rep.items():
         html = html.replace(k, v)
     return html
+
+
+EXAG_JS = """(function () { window.renderAt(0); var T = window.TEMPLATES[window.SCENE.spec.template];
+  return (T.exaggeration && T.exaggeration(window.SCENE.spec)) || window.SCENE.spec.exaggeration; })()"""
 
 
 def render_video(record_html, timeline, fmt, audio_wav, out_mp4, log=print):
@@ -407,7 +436,7 @@ def render_video(record_html, timeline, fmt, audio_wav, out_mp4, log=print):
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     inv = None
     with sync_playwright() as p:
-        b = p.chromium.launch(channel="msedge", headless=True)
+        b = venv.launch(p)
         pg = b.new_page(viewport={"width": f["w"], "height": f["h"]}, device_scale_factor=1)
         pg.goto(Path(record_html).resolve().as_uri())
         pg.wait_for_function("typeof window.frameData === 'function'")
@@ -415,6 +444,7 @@ def render_video(record_html, timeline, fmt, audio_wav, out_mp4, log=print):
         if not all(i["ok"] for i in inv):
             proc.stdin.close(); proc.kill(); b.close()
             raise RuntimeError("инварианты сцены не выполнены: %s" % [i["id"] for i in inv if not i["ok"]])
+        exag = pg.evaluate(EXAG_JS)
         t0 = time.time()
         for k in range(n):
             data = pg.evaluate("window.frameData(%f)" % (k / FPS))
@@ -425,7 +455,7 @@ def render_video(record_html, timeline, fmt, audio_wav, out_mp4, log=print):
     proc.stdin.close()
     if proc.wait() != 0:
         raise RuntimeError("ffmpeg failed")
-    return inv, n
+    return inv, n, exag
 
 
 def mix_audio(timeline, out_wav):
@@ -462,7 +492,7 @@ def srt(timeline, path):
         shown = b.get("display_words") if len(b.get("display_words") or []) == len(ws) else [w["w"] for w in ws]
         for j in range(0, len(ws), 8):
             ch = ws[j:j + 8]
-            ch_text = " ".join(shown[j:j + 8])
+            ch_text = " ".join(x for x in shown[j:j + 8] if x).replace("\u0301", "")
             a = b["voice_start"] + ch[0]["start"]
             e = b["voice_start"] + ch[-1]["start"] + ch[-1]["dur"]
             if j + 8 < len(ws):
@@ -475,19 +505,100 @@ def srt(timeline, path):
 
 
 # ---------------------------------------------------------------- passport
-def passport(spec, node, tpl, timeline, meta, path_md, path_json):
+PASSPORT_SCHEMA = ROOT / "docs" / "organizers" / "pack" / "01_схемы" / "passport.schema.json"
+
+
+def physics_checklist(pack, tpl, invariants, node, beats):
+    """Answers to the domain pack's physics checklist for this video. A template declares which items its scene
+    answers (and, where it can, by which pre-render invariant); an item bound to an invariant is «да» only if the
+    invariant held. «Условия применимости» is answered from the script itself: does the voice cite a condition
+    (an assumption claim) of the node. Everything the scene does not show is «н/п»."""
+    inv = {i["id"]: i for i in invariants}
+    decl = tpl.get("physics", {})
+    claims = {c["id"]: c for c in node["claims"]}
+    cited = {c for b in beats for c in b["claim_ids"]}
+    cond_all = [c for c in node["claims"] if c["status"] == "ok" and c["kind"] == "assumption"]
+    cond_cited = [c for c in cond_all if c["id"] in cited]
+    out = []
+    for it in (pack.get("physics_checklist") or {}).get("items", []):
+        ids = {it["id"], it.get("alias")}
+        d = next((decl[k] for k in decl if k in ids), None)
+        row = {"id": it["id"], "item": it["text"], "answer": "н/п", "note": "в сцене шаблона «%s» таких объектов нет" % tpl["id"]}
+        if it["id"] == "pc.applicability" or it.get("alias") == "P-M3":
+            if cond_cited:
+                row.update(answer="да", note="голос называет условие: " + "; ".join("«%s» (стр. %s)" % (c["text"], c["page"]) for c in cond_cited))
+            elif cond_all:
+                row.update(answer="нет", note="у узла есть условия применимости, но голос их не называет: " +
+                           "; ".join("«%s»" % c["text"] for c in cond_all[:3]))
+            else:
+                row.update(answer="н/п", note="у узла нет утверждений-условий")
+        elif d:
+            if d.get("invariant"):
+                ok = inv.get(d["invariant"], {}).get("ok")
+                row.update(answer="да" if ok else "нет", note="%s (инвариант «%s» %s до рендера)" % (
+                    d.get("note", ""), d["invariant"], "проверен" if ok else "НЕ выполнен"))
+            else:
+                row.update(answer="да", note=d.get("note", ""))
+        out.append(row)
+    return out
+
+
+def validate_passport(pj):
+    import jsonschema
+    schema = json.loads(PASSPORT_SCHEMA.read_text(encoding="utf-8"))
+    errs = sorted(jsonschema.Draft202012Validator(schema).iter_errors(pj), key=lambda e: list(e.path))
+    return ["%s: %s" % ("/".join(str(x) for x in e.path) or "(корень)", e.message) for e in errs]
+
+
+def passport(spec, node, tpl, timeline, meta, path_md, path_json, pack=None):
     claims = {c["id"]: c for c in node["claims"]}
     beats = timeline["beats"]
     words = sum(len(_words(b["text"])) for b in beats)
     speech = sum(b["voice_dur"] for b in beats)
-    pj = {"schema": "kmg-video-passport/0.1.0", "node": {"id": node["id"], "title": node["title_novice"], "title_book": node["title_book"],
+    pc = physics_checklist(pack or {}, tpl, meta["invariants"], node, beats)
+    dm = node.get("data_meaning") or {}
+    ita = node.get("it_analogy") or {}
+    bridge = " ".join(
+        ["%s: %s." % (lab, "; ".join(t["text"].rstrip(".") for t in dm.get(k, [])))
+         for k, lab in (("inputs", "Данные на входе"), ("outputs", "Что получают"), ("breaks", "Где правило ломается")) if dm.get(k)] +
+        (["ИТ-аналогия (гипотеза модели, в голос не идёт): %s Где не работает: %s" % (
+            (ita.get("analogy") or {}).get("text", ""), (ita.get("breaks_where") or {}).get("text", ""))] if (ita.get("analogy") or {}).get("text") else []))
+    official = {
+        "video_id": "%s.%s" % (node["id"], spec["format"]),
+        "node_id": node["id"],
+        "node_card": {"title": node["title_novice"], "title_book": node["title_book"], "summary": (node.get("summary") or {}).get("text")
+                      if isinstance(node.get("summary"), dict) else node.get("summary"),
+                      "difficulty": node.get("difficulty"), "format": (node.get("format") or {}).get("format"),
+                      "pages": sorted({c["page"] for c in node["claims"]}), "chapter": spec["chapter"]},
+        "script": [{"t_start": b["voice_start"], "t_end": b["voice_end"], "text": b["text"],
+                    "claim_id": (b["claim_ids"] or [None])[0], "claim_ids": b["claim_ids"], "is_analogy": False,
+                    "on_screen": b["on_screen"], "slot": b["slot"], "beat": b["id"]} for b in beats],
+        "sources": [{"claim_id": c, "page_or_dataset": "стр. %s" % claims[c]["page"], "quote": claims[c]["quote"],
+                     "page": claims[c]["page"], "kind": claims[c]["kind"]} for c in sorted({c for b in beats for c in b["claim_ids"]})],
+        "scene_spec": "spec.json",
+        "frames": [{"t": b["start"], "t_end": b["end"], "beat": b["id"], "class": spec["frame_class"],
+                    "label": b["state"]["provenance"]["label"], "note": b["state"]["provenance"].get("note", "")} for b in beats],
+        "exaggerations": [x for x in [meta.get("exaggeration_named") or spec["exaggeration"],
+                                      (spec.get("true_scale") or {}).get("note")] if x],
+        "prediction_question": " / ".join(b["text"] for b in beats if b["slot"] == "prediction"),
+        "transfer_question": " / ".join(b["text"] for b in beats if b["slot"] == "transfer"),
+        "data_it_bridge": bridge or "в узле нет описания данных",
+        "physics_checklist": pc,
+        "audio_check": {"lufs_integrated": meta["lufs"], "lufs_target": -16, "wpm": round(words / max(1e-6, speech) * 60, 1),
+                        "wpm_target": [110, 150], "words": words, "voice": meta["voice"], "fallback_used": meta["fallback_used"],
+                        "tempo_factor": meta.get("tempo"), "sync_max_offset_s": 0.0,
+                        "sync_note": "смена частей и субтитры ставятся по меткам времени слов синтеза — рассинхрон 0 с по построению",
+                        "prediction_pause_s": PRED_PAUSE, "asr": meta["asr"], "listen": meta["listen"],
+                        "listen_dictionary": meta.get("listen_dictionary", [])},
+    }
+    pj = dict(official)
+    pj.update({"schema": "kmg-video-passport/0.2.0 (passport.schema.json организаторов + поля команды)", "node": {"id": node["id"], "title": node["title_novice"], "title_book": node["title_book"],
                                                           "difficulty": node.get("difficulty"), "pages": sorted({c["page"] for c in node["claims"]})},
           "format": spec["format"], "duration_s": timeline["duration"], "script": [
               {k: b[k] for k in ("id", "slot", "start", "end", "voice_start", "voice_end", "text", "on_screen", "claim_ids")} for b in beats],
           "sources": [{"claim_id": c, "page": claims[c]["page"], "quote": claims[c]["quote"], "kind": claims[c]["kind"]}
                       for c in sorted({c for b in beats for c in b["claim_ids"]})],
-          "scene_spec": spec, "frames": [{"beat": b["id"], "class": spec["frame_class"], "provenance": b["state"]["provenance"]} for b in beats],
-          "exaggerations": [spec["exaggeration"]], "questions": {
+          "scene_spec_data": spec, "questions": {
               "prediction": [b["text"] for b in beats if b["slot"] == "prediction"],
               "transfer": [b["text"] for b in beats if b["slot"] == "transfer"]},
           "data_it_bridge": {"data_meaning": {k: [t["text"] for t in (node.get("data_meaning") or {}).get(k, [])] for k in ("inputs", "outputs", "breaks")},
@@ -495,8 +606,11 @@ def passport(spec, node, tpl, timeline, meta, path_md, path_json):
                              "it_analogy_breaks": ((node.get("it_analogy") or {}).get("breaks_where") or {}).get("text"),
                              "note": "аналогия — гипотеза модели, в голос не идёт"},
           "measurements": dict(meta, words=words, wpm=round(words / max(1e-6, speech) * 60, 1)),
-          }
+          })
     Path(path_json).write_text(json.dumps(pj, ensure_ascii=False, indent=1), encoding="utf-8")
+    errs = validate_passport(pj)
+    if errs:
+        raise SystemExit("паспорт %s не проходит passport.schema.json организаторов:\n- %s" % (path_json, "\n- ".join(errs)))
 
     def mmss(x):
         return "%d:%04.1f" % (int(x // 60), x % 60)
@@ -515,32 +629,84 @@ def passport(spec, node, tpl, timeline, meta, path_md, path_json):
           "**Объекты:** " + "; ".join(spec["objects"]) + ".", "", "**Параметры:** `%s`. %s" % (json.dumps(spec["params"], ensure_ascii=False), spec.get("params_note") or ""), "",
           "**Допущения:**"] + ["- " + a for a in spec["assumptions"]]
     L += ["", "**Инварианты (проверены до рендера):**"] + ["- %s %s" % ("✓" if i["ok"] else "✗", i["text"]) for i in meta["invariants"]]
-    L += ["", "## Классы кадров и метки происхождения", "", "| Часть | Класс | Метка на кадре |", "|---|---|---|"]
+    L += ["", "## Классы кадров и метки происхождения", "", "| Часть | Время | Класс | Метка на кадре | Пояснение |", "|---|---|---|---|---|"]
     for f, b in zip(pj["frames"], beats):
-        L.append("| %s (%s) | %s | %s |" % (b["id"], b["slot"], f["class"], f["provenance"]))
-    L += ["", "## Преувеличения", "", "- " + spec["exaggeration"] + " (плашка на каждом кадре).",
-          "- Истинный масштаб: в этой сцене не показан — кадр в истинном масштабе даёт другой ролик серии (TODO).", "",
-          "## Вопросы", "", "- Предсказание: " + " / ".join(pj["questions"]["prediction"]),
-          "- Перенос: " + " / ".join(pj["questions"]["transfer"]), "",
-          "## Мост «где здесь данные и ИТ»", ""]
-    for k, lab in (("inputs", "Вход"), ("outputs", "Выход"), ("breaks", "Где ломается")):
-        for t in pj["data_it_bridge"]["data_meaning"][k]:
-            L.append("- %s: %s" % (lab, t))
-    if pj["data_it_bridge"]["it_analogy"]:
-        L.append("- ИТ-аналогия (гипотеза модели, не звучит в ролике): %s — %s" % (pj["data_it_bridge"]["it_analogy"], pj["data_it_bridge"]["it_analogy_breaks"] or ""))
-    m = pj["measurements"]
+        L.append("| %s (%s) | %s–%s | %s | %s | %s |" % (b["id"], b["slot"], mmss(f["t"]), mmss(f["t_end"]), f["class"], f["label"], f["note"]))
+    L += ["", "## Преувеличения", ""] + ["- " + x for x in pj["exaggerations"]] + [
+          "- Плашка «Не в масштабе» с названным преувеличением стоит на каждом кадре." +
+          (" Кадр в истинном масштабе: первая часть ролика (тот же пласт без вертикального преувеличения)." if spec.get("true_scale") and
+           any((tpl["slots"][b["slot"]] or {}).get("trueScale") for b in beats) else ""), "",
+          "## Вопросы", "", "- Предсказание (после него пауза %.1f с и надпись «Подумайте…»): %s" % (PRED_PAUSE, pj["prediction_question"]),
+          "- Перенос (в конце, финальное состояние держится на экране): " + pj["transfer_question"], "",
+          "## Мост «где здесь данные и ИТ»", "", pj["data_it_bridge"], "",
+          "## Чек-лист физики (доменный пакет)", "", "| Пункт | Ответ | Пояснение |", "|---|---|---|"]
+    for r in pj["physics_checklist"]:
+        L.append("| %s | %s | %s |" % (r["item"], r["answer"], r["note"].replace("|", "/")))
+    m, A = pj["measurements"], pj["audio_check"]
+    asr = A["asr"]
+    asr_txt = asr if isinstance(asr, str) else ("модель %s, ошибок в словах (WER) %.1f %% (норма ≤ 10 %%)%s" % (
+        asr.get("model"), 100 * asr.get("wer", 0), "; искажены термины: " + ", ".join(asr["terms_missed"]) if asr.get("terms_missed") else "; термины распознаны"))
     L += ["", "## Озвучка и измерения", "",
           "- Голос: %s%s; наружу ушёл только текст сценария." % (m["voice"], " (запасной — основной отказал)" if m["fallback_used"] else ""),
-          "- Темп: %.0f слов/мин (норма 110–150); слов: %d." % (m["wpm"], m["words"]),
-          "- Громкость: %s LUFS (цель −16)." % m["lufs"],
-          "- Синхрон голоса и кадра: субтитры и смена частей ставятся по меткам времени слов синтеза — рассинхрон 0 с по построению.",
-          "- Проверка дорожки распознаванием речи: %s" % m["asr"],
-          "- Проверить на слух (ударения): " + (", ".join(m["listen"]) or "—"),
-          "- Темп голоса ускорен в %.2f раза без смены высоты (atempo), метки слов пересчитаны." % m.get("tempo", 1.0),
-          "- Стоимость: сценарий $%.4f (при генерации; пересборка из кэша — $0); синтез голоса — бесплатный онлайн-сервис; ручных минут: %d." % (m["script_cost_usd"], m["manual_minutes"]), "",
+          "- Темп: %.0f слов/мин (норма 110–150); слов: %d." % (A["wpm"], A["words"]),
+          "- Громкость: %s LUFS (цель −16)." % A["lufs_integrated"],
+          "- Синхрон голоса и кадра: " + A["sync_note"] + ".",
+          "- Проверка дорожки распознаванием речи: %s" % asr_txt,
+          "- Проверить на слух (ударения и чтения по словарю доменного пакета): " + (", ".join(A["listen"]) or "—"),
+          "- Слова словаря «проверить на слух»: " + (", ".join(A["listen_dictionary"]) or "—"),
+          "- Темп голоса ускорен в %.2f раза без смены высоты (atempo), метки слов пересчитаны." % (m.get("tempo") or 1.0),
+          "- Стоимость: сценарий $%.4f (при генерации; пересборка из кэша — $0); синтез голоса — бесплатный онлайн-сервис; ручных минут: %d." % (m["script_cost_usd"], m["manual_minutes"]),
+          "- Кадры сняты в %s; паспорт проверен по passport.schema.json организаторов." % m.get("browser", "?"), "",
           "Пересборка одной командой: `%s`" % m["rebuild"]]
     Path(path_md).write_text("\n".join(L) + "\n", encoding="utf-8")
     return pj
+
+
+def passport_html(md_path, html_path, title):
+    """The passport as a page that opens by double click (tables, headings, code), no network, no libraries."""
+    import html as H
+    lines = Path(md_path).read_text(encoding="utf-8").splitlines()
+
+    def inline(t):
+        t = H.escape(t)
+        t = re.sub(r"`([^`]+)`", r"<code>\1</code>", t)
+        return re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", t)
+    out, i = [], 0
+    while i < len(lines):
+        ln = lines[i]
+        if ln.startswith("|"):
+            rows = []
+            while i < len(lines) and lines[i].startswith("|"):
+                rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")])
+                i += 1
+            head, body = rows[0], [r for r in rows[1:] if not all(set(c) <= set("-: ") for c in r)]
+            out.append("<div class=tw><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>" % (
+                "".join("<th>%s</th>" % inline(c) for c in head),
+                "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % inline(c) for c in r) for r in body)))
+            continue
+        if ln.startswith("# "):
+            out.append("<h1>%s</h1>" % inline(ln[2:]))
+        elif ln.startswith("## "):
+            out.append("<h2>%s</h2>" % inline(ln[3:]))
+        elif ln.startswith("- "):
+            items = []
+            while i < len(lines) and lines[i].startswith("- "):
+                items.append("<li>%s</li>" % inline(lines[i][2:]))
+                i += 1
+            out.append("<ul>%s</ul>" % "".join(items))
+            continue
+        elif ln.strip():
+            out.append("<p>%s</p>" % inline(ln))
+        i += 1
+    css = ("body{margin:0;font:16px/1.55 system-ui,-apple-system,'Segoe UI',Arial,sans-serif;background:#fff;color:#111}"
+           "main{max-width:1100px;margin:0 auto;padding:16px}h1{font-size:1.5rem}h2{font-size:1.15rem;margin-top:1.6em}"
+           ".tw{overflow-x:auto}table{border-collapse:collapse;min-width:100%;font-size:15px}td,th{border:1px solid #ccd;"
+           "padding:6px 8px;vertical-align:top;text-align:left}th{background:#eef}code{font-size:.9em;background:#f3f3f6;padding:0 3px}"
+           "@media (prefers-color-scheme:dark){body{background:#111;color:#eee}th{background:#223}td,th{border-color:#445}code{background:#222}}")
+    Path(html_path).write_text("<!doctype html><html lang=ru><head><meta charset=utf-8><meta name=viewport content='width=device-width,"
+                               "initial-scale=1'><title>Паспорт ролика: %s</title><style>%s</style></head><body><main>%s"
+                               "<p>Машиночитаемый паспорт по схеме организаторов: <a href='passport.json'>passport.json</a>.</p>"
+                               "</main></body></html>" % (H.escape(title), css, "\n".join(out)), encoding="utf-8")
 
 
 # ---------------------------------------------------------------- main
@@ -574,7 +740,7 @@ def preview(layer_path, node_id, fmt="short", template=None, out_dir=None, log=p
     beats, t, step = [], 0.0, 3.0
     for i, s in enumerate(story):
         st = dict(tpl["slots"][s])
-        st["provenance"] = tpl["provenance"][st.get("provenance", "model")]
+        st["provenance"] = vstyle.provenance(tpl["provenance"][st.get("provenance", "model")])
         st.pop("sees", None)
         beats.append({"id": "b%02d" % (i + 1), "slot": s, "text": "", "on_screen": s, "claim_ids": [], "start": t, "end": t + step,
                       "voice_start": t, "voice_end": t, "voice_dur": 0, "words": [], "display_words": [], "state": st, "claims": []})
@@ -587,7 +753,7 @@ def preview(layer_path, node_id, fmt="short", template=None, out_dir=None, log=p
     f = FORMATS[fmt]
     shots = []
     with sync_playwright() as p:
-        b = p.chromium.launch(channel="msedge", headless=True)
+        b = venv.launch(p)
         pg = b.new_page(viewport={"width": f["w"], "height": f["h"]}, device_scale_factor=1)
         errors = []
         pg.on("pageerror", lambda e: errors.append(str(e)))
@@ -633,7 +799,7 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
     out.mkdir(parents=True, exist_ok=True)
     log_path = ROOT / "runs" / layer["chapter"]["id"] / "video_llm_calls.jsonl"
 
-    spec = build_spec(layer, node, tpl, fmt, pack)
+    spec = build_spec(layer, node, tpl, fmt, pack, log=log)
     story = tpl["story"][fmt]
     # An approved script is kept (script.json) and reused while the node's facts are unchanged:
     # a prompt edit must not silently rewrite a script the geologist has already checked.
@@ -670,17 +836,22 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
     sp.write_text(json.dumps({"node_id": node["id"], "node_hash": nh, "story": story, "cost_usd": cost, "beats": beats},
                              ensure_ascii=False, indent=1), encoding="utf-8")
 
-    spoken, listen = [], set()
+    spoken, used_all = [], []
     for b in beats:
         s, used = tts.apply_pronunciation(b["text"], pack)
         spoken.append(s)
-        listen |= {u["term"] for u in used}
+        used_all += used
+    listen, listen_dict = tts.listen_list(used_all, pack)
+    script_low = " ".join(b["text"] for b in beats).lower()
+    listen_dict = [w for w in listen_dict if w.lower().replace("ё", "е")[:6] in script_low.replace("ё", "е")]
     voices, vcfg, fb = tts.synth_series(spoken, log=log)
     claims = {c["id"]: c for c in node["claims"]}
     timeline = build_timeline(beats, voices, tpl, claims, spoken)
     f = FORMATS[fmt]
     if not (f["min_s"] <= timeline["duration"] <= f["max_s"]):
-        log("WARNING: duration %.1f s outside %s" % (timeline["duration"], (f["min_s"], f["max_s"])))
+        raise SystemExit("длительность %.1f с вне допустимого для формата %s: %s–%s с" % (timeline["duration"], fmt, f["min_s"], f["max_s"]))
+    if not (f["target"][0] <= timeline["duration"] <= f["target"][1]):
+        log("WARNING: duration %.1f s outside the target %s" % (timeline["duration"], f["target"]))
 
     title = node["title_novice"]
     wav = out / "voice.wav"
@@ -692,20 +863,27 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
     (out / "scene.html").write_text(scene_html(spec, timeline, tpl, tpl_js, "interactive", "voice.mp3", title), encoding="utf-8")
     mp4 = out / ("%s_%s.mp4" % (node_id.split(".", 1)[1], fmt))
     log("rendering %.1f s at %d fps…" % (timeline["duration"], FPS))
-    inv, nframes = render_video(rec_html, timeline, fmt, wav, mp4, log=log)
+    inv, nframes, exag = render_video(rec_html, timeline, fmt, wav, mp4, log=log)
     srt(timeline, out / "subtitles.srt")
     lufs = loudness(mp4)
+    from . import asr
+    asr_res = asr.check(mp3, [b["text"] for b in beats], sorted({u.get("form") or u["term"] for u in used_all}), log=log)
     rebuild = "python -m kmg_course video %s %s --format %s" % (layer_path.as_posix(), node_id, fmt)
     meta = {"voice": vcfg.get("voice") or vcfg.get("provider"), "fallback_used": fb, "lufs": lufs, "invariants": inv,
-            "asr": "не выполнялась (локальная модель распознавания ещё не установлена)", "listen": sorted(listen),
+            "asr": asr_res, "listen": listen, "listen_dictionary": listen_dict, "exaggeration_named": exag,
             "script_cost_usd": round(cost or 0, 6), "manual_minutes": 0, "rebuild": rebuild, "frames": nframes, "tempo": TEMPO,
-            "seconds_to_build": round(time.time() - t_start, 1)}
-    pj = passport(spec, node, tpl, timeline, meta, out / "passport.md", out / "passport.json")
+            "browser": venv.browser_name(), "seconds_to_build": round(time.time() - t_start, 1),
+            "subtitles": "вшиты в кадр (читаемость без звука, крупно, в безопасной зоне) и дополнительно выгружены файлами "
+                         "subtitles.vtt / .srt для отключаемого показа"}
+    pj = passport(spec, node, tpl, timeline, meta, out / "passport.md", out / "passport.json", pack=pack)
+    passport_html(out / "passport.md", out / "passport.html", node["title_novice"])
     (out / "spec.json").write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "timeline.json").write_text(json.dumps({k: v for k, v in timeline.items()}, ensure_ascii=False, indent=1), encoding="utf-8")
+    # what the course copies: video, interactive scene + its voice track, switchable subtitles, passport (HTML + JSON)
     (out / "manifest.json").write_text(json.dumps({"node_id": node_id, "format": fmt, "mp4": mp4.name, "scene": "scene.html",
-                                                    "audio": "voice.mp3", "subtitles": "subtitles.srt", "subtitles_vtt": "subtitles.vtt",
-                                                    "passport": "passport.md", "title": title, "template": tpl["id"],
+                                                    "audio": "voice.mp3", "subtitles_vtt": "subtitles.vtt",
+                                                    "passport": "passport.html", "passport_json": "passport.json",
+                                                    "subtitles_burned_in": True, "title": title, "template": tpl["id"],
                                                     "duration_s": timeline["duration"]}, ensure_ascii=False, indent=1), encoding="utf-8")
     rec_html.unlink()
     wav.unlink()

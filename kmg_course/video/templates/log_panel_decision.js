@@ -6,12 +6,12 @@
    at bed boundaries. state: {view, tracks, t0,t1, focus, column, wrong, marks, decision, provenance} */
 (function () {
   "use strict";
-  var LITH = { clay: "shale", sand: "sand", limestone: "limestone", anhydrite: "anhydrite", salt: "salt", other: "muted" };
-  var CURVE = { res: "resistivity_deep", sp: "SP", cal: "caliper", gr: "GR", nn: "neutron" };
+  // colours: spec.palette (styleguide of the domain pack); which legend entry a rock / fluid / column uses —
+  // spec.legend_keys and columns[].curve_key from the template JSON
 
   function draw(ctx, box, st, spec, g) {
     var C = g.C, U = g.U, P = spec.panel, cols = P.columns, iv = P.intervals;
-    var pal = spec.palette || {};
+    var pal = spec.palette || {}, LK = spec.legend_keys || { lith: {}, fluid: {} };
     var showDecision = !!st.decision, panelW = showDecision ? 600 * U : 0;
     // which beds to highlight: the beds whose table rows this part's claims cite; otherwise the decision group
     var focusIdx = P.focus;
@@ -20,7 +20,7 @@
       iv.forEach(function (it, i) { if ((it.cited_by || []).some(function (c) { return st.beat.claim_ids.indexOf(c) >= 0; })) hit.push(i); });
       if (hit.length) focusIdx = hit;
     }
-    function fit(text, maxW, px, weight) { var s = px; do { ctx.font = (weight || 600) + " " + s * U + "px Segoe UI, Arial, sans-serif"; s -= 1; } while (ctx.measureText(text).width > maxW && s > 14); }
+    function fit(text, maxW, px, weight) { var s = px; do { ctx.font = (weight || 600) + " " + s * U + "px " + window.FONT; s -= 1; } while (ctx.measureText(text).width > maxW && s > 14); }
     var axisW = 70 * U, colW = 170 * U, gapW = 14 * U;
     var nT = cols.length, trW = (box.w - axisW - colW - panelW - gapW * (nT + 2)) / nT;
     var top = box.y + 70 * U, h = box.h - 90 * U;
@@ -34,23 +34,23 @@
     ctx.strokeStyle = C.muted; ctx.lineWidth = 3 * U;
     ctx.beginPath(); ctx.moveTo(box.x + axisW - 10 * U, top); ctx.lineTo(box.x + axisW - 10 * U, top + h); ctx.stroke();
     ctx.save(); ctx.translate(box.x + 30 * U, top + h / 2); ctx.rotate(-Math.PI / 2);
-    ctx.fillStyle = C.muted; ctx.font = "500 " + 28 * U + "px Segoe UI, Arial, sans-serif"; ctx.textAlign = "center";
+    ctx.fillStyle = C.muted; ctx.font = "500 " + 28 * U + "px " + window.FONT; ctx.textAlign = "center";
     ctx.fillText(spec.labels.depth, 0, 0); ctx.restore();
 
     // lithology column
     var cx = box.x + axisW;
-    ctx.fillStyle = C.ink; ctx.font = "600 " + 28 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillStyle = C.ink; ctx.font = "600 " + 28 * U + "px " + window.FONT;
     ctx.fillText(spec.labels.column, cx, top - 20 * U);
     iv.forEach(function (it, i) {
       var y0 = Y(it.top), y1 = Y(it.bottom);
-      ctx.fillStyle = st.column ? (pal[LITH[it.lith] || "muted"] || C.muted) : "#3A4643";
+      ctx.fillStyle = st.column ? (pal[LK.lith[it.lith]] || C.muted) : C.hidden;
       ctx.fillRect(cx, y0, colW, y1 - y0);
       ctx.strokeStyle = C.bg; ctx.lineWidth = 2 * U; ctx.strokeRect(cx, y0, colW, y1 - y0);
-      if (st.column && it.fluid && pal["fluid_" + it.fluid]) {
-        ctx.fillStyle = pal["fluid_" + it.fluid]; ctx.beginPath(); ctx.arc(cx + colW - 22 * U, (y0 + y1) / 2, 12 * U, 0, 7); ctx.fill();
+      if (st.column && it.fluid && pal["fluid_" + LK.fluid[it.fluid]]) {
+        ctx.fillStyle = pal["fluid_" + LK.fluid[it.fluid]]; ctx.beginPath(); ctx.arc(cx + colW - 22 * U, (y0 + y1) / 2, 12 * U, 0, 7); ctx.fill();
       }
       if (!st.column && focusIdx.indexOf(i) >= 0) {
-        ctx.fillStyle = C.ink; ctx.font = "700 " + 40 * U + "px Segoe UI, Arial, sans-serif";
+        ctx.fillStyle = C.ink; ctx.font = "700 " + 40 * U + "px " + window.FONT;
         ctx.fillText(spec.labels.hidden, cx + colW / 2 - 10 * U, (y0 + y1) / 2 + 14 * U);
       }
     });
@@ -74,7 +74,7 @@
       ctx.fillText(scale, x + 6 * U, top - 16 * U);
       if (k >= visible) continue;
       var frac = k === visible - 1 ? partial : 1;
-      ctx.strokeStyle = pal["curve_" + col.id] || C.curve; ctx.lineWidth = 5 * U; ctx.beginPath();
+      ctx.strokeStyle = pal["curve_" + col.curve_key] || C.ink; ctx.lineWidth = 5 * U; ctx.beginPath();
       var started = false, dMax = D * frac;
       iv.forEach(function (it, i) {
         var v = it.values[col.id];
@@ -95,18 +95,18 @@
       });
       if (st.marks && frac >= 1 && k > 0) {
         var disc = P.discriminating.indexOf(col.id) >= 0;
-        ctx.fillStyle = disc ? "#86C98C" : C.muted; ctx.font = "700 " + 24 * U + "px Segoe UI, Arial, sans-serif";
+        ctx.fillStyle = disc ? C.accent : C.muted; ctx.font = "700 " + 24 * U + "px " + window.FONT;
         ctx.fillText(disc ? "✓ " + spec.labels.differs : "= " + spec.labels.same, x + 6 * U, top + h + 30 * U);
       }
     }
     if (st.marks) {
-      ctx.fillStyle = C.muted; ctx.font = "700 " + 24 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillStyle = C.muted; ctx.font = "700 " + 24 * U + "px " + window.FONT;
       ctx.fillText("= " + spec.labels.same, tx0 + 6 * U, top + h + 30 * U);
     }
     if (st.wrong) {
       var f0 = iv[P.focus[0]], yy = (Y(f0.top) + Y(f0.bottom)) / 2;
       ctx.fillStyle = C.warnBg; g.roundRect(tx0 + trW + 30 * U, yy - 34 * U, 520 * U, 68 * U, 10 * U); ctx.fill();
-      ctx.fillStyle = C.warnFg; ctx.font = "700 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillStyle = C.warnFg; ctx.font = "700 " + 30 * U + "px " + window.FONT;
       ctx.fillText("✗ " + spec.labels.wrong_tag, tx0 + trW + 46 * U, yy + 10 * U);
     }
 
@@ -114,23 +114,28 @@
     if (showDecision) {
       var px0 = txEnd + 2 * gapW, py = top;
       ctx.fillStyle = C.chipBg; g.roundRect(px0, top - 60 * U, panelW - gapW, h + 60 * U, 12 * U); ctx.fill();
-      ctx.fillStyle = C.ink; ctx.font = "700 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillStyle = C.ink; ctx.font = "700 " + 30 * U + "px " + window.FONT;
       ctx.fillText(spec.labels.decision, px0 + 18 * U, top - 18 * U);
       var maxTW = panelW - gapW - 40 * U;
       P.focus.forEach(function (i) {
         var it = iv[i]; py += 20 * U;
-        ctx.fillStyle = C.accent; ctx.font = "700 " + 28 * U + "px Segoe UI, Arial, sans-serif";
-        ctx.fillText(st.column ? it.name : "интервал " + (i + 1), px0 + 18 * U, py += 30 * U);
+        // observation (what the curves show) first, then the conclusion with an explicit arrow «признаки → вывод»
+        ctx.fillStyle = C.ink; ctx.font = "700 " + 26 * U + "px " + window.FONT;
+        ctx.fillText(spec.labels.interval + " " + (i + 1) + ": " + spec.labels.signs, px0 + 18 * U, py += 30 * U);
         [P.primary].concat(P.discriminating).forEach(function (cid) {  // only the curves that matter for the decision
           var c = cols.filter(function (x) { return x.id === cid; })[0], w = it.words[cid]; if (!c || !w) return;
           var disc = P.discriminating.indexOf(cid) >= 0;
           ctx.fillStyle = disc ? C.ink : C.muted;
-          var f = "500 " + 24 * U + "px Segoe UI, Arial, sans-serif";
+          var f = "500 " + 24 * U + "px " + window.FONT;
           g.wrap((disc ? "▸ " : "= ") + c.label + ": " + w, maxTW, f).forEach(function (ln) {
             ctx.font = f; ctx.fillText(ln, px0 + 18 * U, py += 32 * U);
           });
         });
-        py += 10 * U;
+        if (st.column) {
+          ctx.fillStyle = C.accent; var fc = "700 " + 26 * U + "px " + window.FONT;
+          g.wrap("→ " + spec.labels.conclusion + ": " + it.name, maxTW, fc).forEach(function (ln) { ctx.font = fc; ctx.fillText(ln, px0 + 18 * U, py += 34 * U); });
+        }
+        py += 14 * U;
       });
     }
   }

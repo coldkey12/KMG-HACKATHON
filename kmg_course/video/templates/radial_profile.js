@@ -8,9 +8,10 @@
    state: {view: readings|sweep, t0, t1, hidden, wrong, marks, deep, provenance} */
 (function () {
   "use strict";
-  var LINE = { water: "#6FA8F0", oil: "#E8A860" };
-  var TOOL = { micro: "#C9A0F0", shallow: "#7FD1B9", deep: "#F2C14E" };
-  var FONT = "Segoe UI, Arial, sans-serif";
+  // colours: spec.palette (styleguide of the domain pack); probe → curve key in spec.legend_keys.tool_curve
+  function LINE(spec, id) { return spec.palette["fluid_" + id]; }
+  function TOOL(spec, id) { return spec.palette["curve_" + spec.legend_keys.tool_curve[id]]; }
+  var FONT = window.FONT;
 
   function model(spec) {
     var P = spec.params, K = spec.case;
@@ -29,6 +30,10 @@
   function lg(v) { return Math.log(v) / Math.LN10; }
   function hash(k) { var s = Math.sin(k * 12.9898) * 43758.5453; return s - Math.floor(s); } // fixed scatter, same every frame
 
+  var last = { ratio: null };
+  function exaggeration(spec) {
+    return last.ratio && spec.exaggeration_named ? spec.exaggeration_named.replace("{ratio}", String(last.ratio)) : spec.exaggeration;
+  }
   function font(ctx, w, px, U) { ctx.font = w + " " + px * U + "px " + FONT; }
   function chipRight(ctx, g, xr, y, text, fg, bg) {
     font(ctx, 600, 26, g.U); var w = ctx.measureText(text).width + 28 * g.U;
@@ -38,31 +43,32 @@
   /* ---- cross-section: well on the left, two beds between clays, invaded zone grows from the wall ---- */
   function section(ctx, b, m, d, st, spec, g) {
     var C = g.C, U = g.U, pal = spec.palette || {}, Lb = spec.labels;
-    ctx.fillStyle = pal.shale || C.shale; ctx.fillRect(b.x, b.y, b.w, b.h);
+    ctx.fillStyle = pal[spec.legend_keys.clay]; ctx.fillRect(b.x, b.y, b.w, b.h);
     var wellW = 50 * U, x0 = b.x + wellW, x1 = b.x + b.w;
     function X(r) { return x0 + Math.min(1, r / m.P.r_view) * (x1 - x0); }
     var dShow = st.wrong ? 0 : d;
     // fixed strips in frame units: probe brackets on top (3 rows), clay between beds, axis label at the bottom
     var top = 108 * U, bottom = 40 * U, mid = Math.max(26 * U, b.h * 0.12), bedH = (b.h - top - bottom - mid) / 2;
     var rows = [
-      { bed: m.beds[0], y: b.y + top, h: bedH, label: Lb.water_bed, fill: pal.fluid_water || "#3C7DD9" },
-      { bed: m.beds[1], y: b.y + top + bedH + mid, h: bedH, label: Lb.oil_bed, fill: pal.fluid_oil || "#7A4E2D" }
+      { bed: m.beds[0], y: b.y + top, h: bedH, label: Lb.water_bed },
+      { bed: m.beds[1], y: b.y + top + bedH + mid, h: bedH, label: Lb.oil_bed }
     ];
+    var TS = spec.true_scale;  // horizontal px per metre vs vertical px per metre in the section
+    if (TS) { var rr = ((x1 - x0) / (m.P.r_view * TS.well_radius_m)) / (bedH / TS.bed_m); last.ratio = rr >= 20 ? Math.round(rr / 5) * 5 : Math.round(rr); }
     rows.forEach(function (r) {
-      ctx.fillStyle = r.fill; ctx.fillRect(x0, r.y, x1 - x0, r.h);
-      if (dShow > 0) {
-        var xz = X(dShow);
-        ctx.fillStyle = pal.fluid_filtrate || "#8FC1E8"; ctx.fillRect(x0, r.y, xz - x0, r.h);
-        if (r.bed.id === "oil") { // residual oil stays in the invaded zone
-          ctx.fillStyle = pal.fluid_oil || "#7A4E2D";
-          // fixed even scatter (R2 low-discrepancy sequence) over the whole bed, shown only inside the zone:
-          // dots stay put while the zone grows
-          for (var k = 0; k < 520; k++) {
-            var fx = hash(k * 2 + 1), fy = hash(k * 2 + 2);
-            var px = x0 + fx * (x1 - x0), py = r.y + 8 * U + fy * (r.h - 16 * U);
-            if (px < xz - 8 * U) ctx.fillRect(px, py, 6 * U, 6 * U);
-          }
+      // fluids are in the pores of the rock (checklist pc.fluids_in_pores): rock colour + a fixed grid of pores;
+      // a pore's fluid comes from the model — water saturation of the bed / of the invaded zone
+      ctx.fillStyle = pal[spec.legend_keys.rock]; ctx.fillRect(x0, r.y, x1 - x0, r.h);
+      var xz = dShow > 0 ? X(dShow) : x0, sp = 26 * U, k = 0;
+      for (var py = r.y + sp / 2; py < r.y + r.h - 4 * U; py += sp) {
+        for (var px = x0 + sp / 2; px < x1 - 4 * U; px += sp) {
+          var hv = hash(++k), inZone = px < xz;
+          var sw = r.bed.id === "water" ? 1 : (inZone ? m.P.sw_flushed_oil : m.P.sw_oil);
+          ctx.fillStyle = hv < sw ? (inZone ? pal.fluid_filtrate : pal.fluid_water) : pal.fluid_oil;
+          ctx.beginPath(); ctx.arc(px, py, 7 * U, 0, 7); ctx.fill();
         }
+      }
+      if (dShow > 0) {
         ctx.strokeStyle = C.ink; ctx.lineWidth = 3 * U; ctx.setLineDash([10 * U, 8 * U]);
         ctx.beginPath(); ctx.moveTo(xz, r.y - 6 * U); ctx.lineTo(xz, r.y + r.h + 6 * U); ctx.stroke(); ctx.setLineDash([]);
         if (r.bed.id === "water" && xz - x0 > 300 * U) {
@@ -72,15 +78,15 @@
       chipRight(ctx, g, x1 - 10 * U, r.y + 8 * U, r.label, C.chipFg, "rgba(16,22,20,0.82)");
     });
     // well
-    ctx.fillStyle = "#56656A"; ctx.fillRect(b.x, b.y, wellW, b.h);
+    ctx.fillStyle = pal.fluid_mud; ctx.fillRect(b.x, b.y, wellW, b.h);  // the well is full of drilling mud
     ctx.save(); ctx.translate(b.x + wellW / 2 + 9 * U, b.y + b.h / 2); ctx.rotate(-Math.PI / 2);
     ctx.fillStyle = C.ink; font(ctx, 600, 24, U); ctx.textAlign = "center"; ctx.fillText(Lb.well, 0, 0); ctx.restore();
     // probe depths of investigation: brackets from the wall to L in the top clay, staggered rows
     m.tools.forEach(function (t, i) {
       var y = b.y + 18 * U + i * 30 * U, xe = X(t.L);
-      ctx.strokeStyle = TOOL[t.id]; ctx.lineWidth = 5 * U;
+      ctx.strokeStyle = TOOL(spec, t.id); ctx.lineWidth = 5 * U;
       ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(xe, y); ctx.moveTo(xe, y - 9 * U); ctx.lineTo(xe, y + 9 * U); ctx.stroke();
-      ctx.fillStyle = TOOL[t.id]; font(ctx, 600, 24, U); ctx.fillText(Lb.tools[t.id], xe + 10 * U, y + 8 * U);
+      ctx.fillStyle = TOOL(spec, t.id); font(ctx, 600, 24, U); ctx.fillText(Lb.tools[t.id], xe + 10 * U, y + 8 * U);
     });
     // radial axis label in the bottom clay
     ctx.fillStyle = C.paper; font(ctx, 500, 24, U);
@@ -111,7 +117,7 @@
     frame(ctx, ch, g, Lb.axis_res);
     var xs = [0.14, 0.5, 0.86].map(function (f) { return ch.x + f * ch.w; });
     m.tools.forEach(function (t, i) {
-      ctx.fillStyle = TOOL[t.id]; font(ctx, 600, 26, U); var s = Lb.tools[t.id];
+      ctx.fillStyle = TOOL(spec, t.id); font(ctx, 600, 26, U); var s = Lb.tools[t.id];
       ctx.fillText(s, xs[i] - ctx.measureText(s).width / 2, ch.y + ch.h + 36 * U);
     });
     ctx.fillStyle = C.muted; font(ctx, 500, 24, U); var ax = Lb.axis_tool;
@@ -125,29 +131,29 @@
     m.beds.forEach(function (bed) {
       var vals = m.tools.map(function (t) { return st.wrong ? bed.rp : m.read(bed, t.L, d); });
       if (st.marks) { // the two true zone values, thin: what the probes are averaging between
-        ctx.strokeStyle = LINE[bed.id]; ctx.lineWidth = 2 * U;
+        ctx.strokeStyle = LINE(spec, bed.id); ctx.lineWidth = 2 * U;
         ctx.setLineDash([4 * U, 8 * U]); ctx.beginPath(); ctx.moveTo(ch.x, Y(ch, bed.rz)); ctx.lineTo(ch.x + ch.w, Y(ch, bed.rz)); ctx.stroke();
         ctx.setLineDash([16 * U, 8 * U]); ctx.beginPath(); ctx.moveTo(ch.x, Y(ch, bed.rp)); ctx.lineTo(ch.x + ch.w, Y(ch, bed.rp)); ctx.stroke();
         ctx.setLineDash([]);
-        ctx.fillStyle = LINE[bed.id]; font(ctx, 500, 22, U);
+        ctx.fillStyle = LINE(spec, bed.id); font(ctx, 500, 22, U);
         if (Math.abs(Y(ch, bed.rz) - Y(ch, bed.rp)) > 26 * U) {
           ctx.fillText(Lb.true_zone, ch.x + 8 * U, Y(ch, bed.rz) - 6 * U);
           ctx.fillText(Lb.true_bed, ch.x + 8 * U, Y(ch, bed.rp) - 6 * U);
         }
       }
-      ctx.strokeStyle = st.wrong ? C.warnFg : LINE[bed.id]; ctx.lineWidth = 6 * U;
+      ctx.strokeStyle = st.wrong ? C.warnFg : LINE(spec, bed.id); ctx.lineWidth = 6 * U;
       if (st.wrong) ctx.setLineDash([16 * U, 10 * U]);
       ctx.beginPath(); vals.forEach(function (v, i) { if (i) ctx.lineTo(xs[i], Y(ch, v)); else ctx.moveTo(xs[i], Y(ch, v)); }); ctx.stroke();
       ctx.setLineDash([]);
       vals.forEach(function (v, i) {
-        ctx.beginPath(); ctx.arc(xs[i], Y(ch, v), 12 * U, 0, 7); ctx.fillStyle = st.wrong ? C.warnFg : LINE[bed.id]; ctx.fill();
+        ctx.beginPath(); ctx.arc(xs[i], Y(ch, v), 12 * U, 0, 7); ctx.fillStyle = st.wrong ? C.warnFg : LINE(spec, bed.id); ctx.fill();
         ctx.strokeStyle = C.bg; ctx.lineWidth = 3 * U; ctx.stroke();
       });
       labelYs.push(Y(ch, vals[2])); labels.push(bed);
     });
     var ly = spread(labelYs, 64 * U);
     labels.forEach(function (bed, i) {
-      ctx.fillStyle = LINE[bed.id]; font(ctx, 700, 26, U);
+      ctx.fillStyle = LINE(spec, bed.id); font(ctx, 700, 26, U);
       var name = bed.id === "water" ? Lb.water_bed : Lb.oil_bed;
       ctx.fillText(name, ch.x + ch.w + 18 * U, ly[i] - 4 * U);
       if (st.marks && !st.wrong) { font(ctx, 600, 24, U); ctx.fillStyle = C.ink; ctx.fillText(Lb.dir[m.dir(bed)], ch.x + ch.w + 18 * U, ly[i] + 26 * U); }
@@ -168,18 +174,18 @@
     function X(v) { return ch.x + v / Dm * ch.w; }
     var deep = m.tools[2], ends = [];
     m.beds.forEach(function (bed) {
-      ctx.strokeStyle = LINE[bed.id]; ctx.lineWidth = 2.5 * U; ctx.setLineDash([16 * U, 8 * U]);
+      ctx.strokeStyle = LINE(spec, bed.id); ctx.lineWidth = 2.5 * U; ctx.setLineDash([16 * U, 8 * U]);
       ctx.beginPath(); ctx.moveTo(ch.x, Y(ch, bed.rp)); ctx.lineTo(ch.x + ch.w, Y(ch, bed.rp)); ctx.stroke(); ctx.setLineDash([]);
       ctx.lineWidth = 7 * U; ctx.beginPath();
       for (var k = 0; k <= 120; k++) { var v = Dm * k / 120; if (v > d + 1e-9) break; var y = Y(ch, m.read(bed, deep.L, v)); if (k) ctx.lineTo(X(v), y); else ctx.moveTo(X(v), y); }
       ctx.stroke();
       var yc = Y(ch, m.read(bed, deep.L, d));
-      ctx.beginPath(); ctx.arc(X(d), yc, 12 * U, 0, 7); ctx.fillStyle = LINE[bed.id]; ctx.fill();
+      ctx.beginPath(); ctx.arc(X(d), yc, 12 * U, 0, 7); ctx.fillStyle = LINE(spec, bed.id); ctx.fill();
       ends.push(yc);
     });
     var ly = spread(ends, 40 * U);
     m.beds.forEach(function (bed, i) {
-      ctx.fillStyle = LINE[bed.id]; font(ctx, 700, 26, U);
+      ctx.fillStyle = LINE(spec, bed.id); font(ctx, 700, 26, U);
       ctx.fillText(bed.id === "water" ? Lb.water_bed : Lb.oil_bed, ch.x + ch.w + 18 * U, ly[i] + 8 * U);
     });
     ctx.fillStyle = C.muted; font(ctx, 500, 22, U);
@@ -223,5 +229,5 @@
   }
 
   window.TEMPLATES = window.TEMPLATES || {};
-  window.TEMPLATES.radial_profile = { draw: draw, invariants: invariants };
+  window.TEMPLATES.radial_profile = { draw: draw, invariants: invariants, exaggeration: exaggeration };
 })();

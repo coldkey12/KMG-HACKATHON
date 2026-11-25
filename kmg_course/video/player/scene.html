@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{{TITLE}}</title>
 <style>
-  html,body{margin:0;background:{{BG}};color:#E4EBE8;font-family:system-ui,"Segoe UI",Arial,sans-serif;font-size:17px}
+  html,body{margin:0;background:{{BG}};color:#E4EBE8;font-family:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:17px}
   .stage{max-width:{{MAXW}}px;margin:0 auto;padding:8px}
   canvas{display:block;width:100%;height:auto;border-radius:10px;cursor:pointer}
   .ctl{display:flex;gap:10px;align-items:center;margin:10px 0}
@@ -26,7 +26,7 @@
   <div id="more" aria-live="polite"></div>
   <audio id="voice" src="{{AUDIO}}" preload="auto"></audio>
 </div>
-<script>window.SCENE = {{SCENE}};</script>
+<script>window.SCENE = {{SCENE}}; window.FONT = window.SCENE.style.colors.font;</script>
 <script>{{TEMPLATE_JS}}</script>
 <script>{{PLAYER_JS}}</script>
 </body>

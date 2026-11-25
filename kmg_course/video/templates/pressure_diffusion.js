@@ -29,14 +29,21 @@
     var C = g.C, U = g.U;
     ctx.strokeStyle = C.muted; ctx.lineWidth = 3 * U;
     ctx.beginPath(); ctx.moveTo(b.x, b.y); ctx.lineTo(b.x, b.y + b.h); ctx.lineTo(b.x + b.w, b.y + b.h); ctx.stroke();
-    ctx.fillStyle = C.muted; ctx.font = "500 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillStyle = C.muted; ctx.font = "500 " + 30 * U + "px " + window.FONT;
     ctx.fillText(xl, b.x + b.w - ctx.measureText(xl).width, b.y + b.h + 40 * U);
+    var px = 30; do { ctx.font = "500 " + px * U + "px " + window.FONT; px -= 1; } while (ctx.measureText(yl).width > b.h && px > 16);
     ctx.save(); ctx.translate(b.x - 18 * U, b.y + b.h); ctx.rotate(-Math.PI / 2); ctx.fillText(yl, 0, 0); ctx.restore();
   }
   function crossOut(ctx, x, y, s, g) {
     ctx.strokeStyle = g.C.warnFg; ctx.lineWidth = 6 * g.U;
     ctx.beginPath(); ctx.moveTo(x - s, y - s); ctx.lineTo(x + s, y + s); ctx.moveTo(x + s, y - s); ctx.lineTo(x - s, y + s); ctx.stroke();
   }
+
+  var last = { ratio: null };
+  function exaggeration(spec) {  // named exaggeration with the number computed from the drawn geometry
+    return last.ratio && spec.exaggeration_named ? spec.exaggeration_named.replace("{ratio}", String(last.ratio)) : spec.exaggeration;
+  }
+  function roundRatio(r) { return r >= 20 ? Math.round(r / 5) * 5 : Math.round(r); }
 
   function draw(ctx, box, st, spec, g) {
     var C = g.C, U = g.U, m = model(spec), t = st.tSim || 0;
@@ -48,9 +55,12 @@
 
     /* 1. cross-section of the layer: rock above/below, reservoir band, well at x = 0 */
     var band = { x: sec.x, y: sec.y + h1 * 0.28, w: sec.w, h: h1 * 0.44 };
-    ctx.fillStyle = C.shale; ctx.fillRect(sec.x, sec.y, sec.w, h1);
-    ctx.fillStyle = C.sand; ctx.fillRect(band.x, band.y, band.w, band.h);
+    var pal = spec.palette;  // colours of the domain pack's styleguide
+    ctx.fillStyle = pal[spec.legend_keys.seal]; ctx.fillRect(sec.x, sec.y, sec.w, h1);
+    ctx.fillStyle = pal[spec.legend_keys.rock]; ctx.fillRect(band.x, band.y, band.w, band.h);
     var wellX = band.x + 34 * U, x0 = wellX + 18 * U, xw = band.x + band.w - x0;
+    var TS = spec.true_scale;
+    if (TS) last.ratio = roundRatio((band.h / TS.y_m) / (xw / TS.x_m));
     var N = 160;
     for (var i = 0; i < N; i++) {
       var xr = i / N, d = m.D(xr, t);
@@ -59,7 +69,7 @@
       ctx.fillRect(x0 + xr * xw, band.y, xw / N + 1, band.h);
     }
     ctx.fillStyle = C.steel; ctx.fillRect(wellX, sec.y, 18 * U, h1);
-    ctx.fillStyle = C.ink; ctx.font = "600 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillStyle = C.ink; ctx.font = "600 " + 30 * U + "px " + window.FONT;
     ctx.fillText(spec.labels.layer, band.x + 70 * U, band.y + band.h - 18 * U);
     ctx.fillText(spec.labels.well, wellX + 26 * U, sec.y + 36 * U);
     if (st.showSound) {
@@ -68,9 +78,10 @@
       ctx.beginPath(); ctx.moveTo(xs, band.y - 10 * U); ctx.lineTo(xs, band.y + band.h + 10 * U); ctx.stroke(); ctx.setLineDash([]);
     }
     // legend for the shading
-    ctx.fillStyle = "rgba(" + C.pressureRGB + ",0.85)"; ctx.fillRect(sec.x + sec.w - 300 * U, sec.y + h1 - 46 * U, 30 * U, 30 * U);
-    ctx.fillStyle = C.paper; ctx.font = "500 " + 26 * U + "px Segoe UI, Arial, sans-serif";
-    ctx.fillText(spec.labels.shading, sec.x + sec.w - 260 * U, sec.y + h1 - 22 * U);
+    ctx.font = "500 " + 26 * U + "px " + window.FONT;
+    var lw = ctx.measureText(spec.labels.shading).width, lx = sec.x + sec.w - lw - 56 * U;
+    ctx.fillStyle = "rgba(" + C.pressureRGB + ",0.85)"; ctx.fillRect(lx, sec.y + h1 - 46 * U, 30 * U, 30 * U);
+    ctx.fillStyle = C.paper; ctx.fillText(spec.labels.shading, lx + 40 * U, sec.y + h1 - 22 * U);
 
     /* 2. profile: pressure drop along the layer at the current moment */
     axes(ctx, prof, g, spec.labels.x_axis, spec.labels.y_axis);
@@ -81,7 +92,7 @@
       if (j) ctx.lineTo(px, py); else ctx.moveTo(px, py);
     }
     ctx.stroke();
-    ctx.fillStyle = "rgb(" + C.pressureRGB + ")"; ctx.font = "600 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillStyle = "rgb(" + C.pressureRGB + ")"; ctx.font = "600 " + 30 * U + "px " + window.FONT;
     ctx.fillText(spec.labels.curve_model, prof.x + 16 * U, prof.y - 8 * U);
     if (st.showSound) {
       var s = Math.min(1, m.sound(t));
@@ -109,7 +120,7 @@
         ctx.setLineDash([16 * U, 12 * U]); ctx.strokeStyle = C.warnFg; ctx.lineWidth = 5 * U; ctx.beginPath();
         ctx.moveTo(low.x, low.y + low.h); ctx.lineTo(low.x + low.w, low.y + low.h - Math.min(1, m.sound(T)) * low.h); ctx.stroke(); ctx.setLineDash([]);
       }
-      ctx.font = "600 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.font = "600 " + 30 * U + "px " + window.FONT;
       ctx.fillStyle = "rgb(" + C.pressureRGB + ")"; ctx.fillText(spec.labels.front_model, low.x + 16 * U, low.y + 30 * U);
       if (st.showSound) { ctx.fillStyle = C.warnFg; ctx.fillText(spec.labels.front_wrong, low.x + 16 * U, low.y + 70 * U); }
     }
@@ -125,14 +136,25 @@
         if (k3) ctx.lineTo(gx, gy); else ctx.moveTo(gx, gy);
       }
       ctx.stroke();
-      ctx.fillStyle = C.curve; ctx.font = "600 " + 30 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillStyle = C.curve; ctx.font = "600 " + 30 * U + "px " + window.FONT;
       ctx.fillText(spec.labels.gauge, low.x + 16 * U, low.y + 30 * U);
       // gauge marker in the layer
       var gxl = x0 + xg * xw;
-      ctx.beginPath(); ctx.arc(gxl, band.y + band.h / 2, 14 * U, 0, 7); ctx.fillStyle = C.curve; ctx.fill();
+      ctx.beginPath(); ctx.arc(gxl, band.y + band.h / 2, 14 * U, 0, 7); ctx.fillStyle = C.measurement; ctx.fill();
+    }
+    /* 3c. the same layer in true scale (no vertical exaggeration): checklist «хотя бы один кадр серии в истинном масштабе» */
+    if (st.trueScale && TS) {
+      var th = Math.max(1, xw * TS.y_m / TS.x_m), ty = low.y + low.h * 0.45;
+      ctx.fillStyle = pal[spec.legend_keys.seal]; ctx.fillRect(x0, ty - 30 * U, xw, 60 * U + th);
+      ctx.fillStyle = pal[spec.legend_keys.rock]; ctx.fillRect(x0, ty, xw, th);
+      ctx.fillStyle = C.steel; ctx.fillRect(wellX, ty - 30 * U, 18 * U, 60 * U + th);
+      ctx.fillStyle = C.ink; ctx.font = "600 " + 28 * U + "px " + window.FONT;
+      ctx.fillText(TS.label, x0, ty - 48 * U);
+      ctx.fillStyle = C.muted; ctx.font = "500 " + 24 * U + "px " + window.FONT;
+      ctx.fillText("истинный масштаб: 1 : 1 по вертикали и горизонтали", x0, ty + th + 70 * U);
     }
     // time counter (dimensionless)
-    ctx.fillStyle = C.muted; ctx.font = "500 " + 28 * U + "px Segoe UI, Arial, sans-serif";
+    ctx.fillStyle = C.muted; ctx.font = "500 " + 28 * U + "px " + window.FONT;
     ctx.fillText(spec.labels.time + " " + t.toFixed(2), sec.x + sec.w - 220 * U, sec.y + 34 * U);
   }
 
@@ -148,9 +170,12 @@
     // 3. front slows down: displacement in equal time steps decreases
     var d1 = m.front(0.25) - m.front(0), d2 = m.front(0.5) - m.front(0.25), d3 = m.front(1) - m.front(0.75);
     out.push({ id: "front_slows", ok: d1 > d2 && d2 > d3, text: "граница возмущённой зоны движется всё медленнее (∝ √t), а не с постоянной скоростью" });
+    // 4. cause before effect: no disturbance anywhere in the layer before the well starts (t = 0)
+    out.push({ id: "cause_first", ok: [0.05, 0.3, 0.8].every(function (x) { return m.D(x, 0) === 0; }) && m.D(0.4, 0.01) < m.D(0.4, 0.2),
+      text: "до пуска скважины понижения давления в пласте нет; вдали от скважины оно появляется позже, чем рядом" });
     return out;
   }
 
   window.TEMPLATES = window.TEMPLATES || {};
-  window.TEMPLATES.pressure_diffusion = { draw: draw, invariants: invariants };
+  window.TEMPLATES.pressure_diffusion = { draw: draw, invariants: invariants, exaggeration: exaggeration };
 })();
