@@ -3,7 +3,7 @@ id: 20261125-130452-B-A-sohranyat-usloviya-primenimosti-v-claims
 from: B
 to: A
 type: request
-status: open
+status: done
 created: 2026-11-25T13:04:52
 reply_to: 
 refs: lat-v.n-090-6c1318
