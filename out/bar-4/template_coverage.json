@@ -1,8 +1,10 @@
 {
  "chapter": "bar-4",
  "templates": [
+  "cutoff_transfer",
   "log_panel_decision",
-  "pressure_diffusion"
+  "pressure_diffusion",
+  "radial_profile"
  ],
  "video_nodes": 45,
  "covered": 25,
@@ -61,8 +63,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -75,8 +79,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -89,8 +95,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -103,8 +111,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -117,8 +127,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -175,8 +187,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Пр/В не из М/Ф"
+    "pressure_diffusion: тип трудности Пр/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -189,8 +203,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Н/В не из М/Ф"
+    "pressure_diffusion: тип трудности Н/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -214,8 +230,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -228,8 +246,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -286,8 +306,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности И/Пр не из М/Ф"
+    "pressure_diffusion: тип трудности И/Пр не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -311,8 +333,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Н/И не из М/Ф"
+    "pressure_diffusion: тип трудности Н/И не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -325,8 +349,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Пр/И не из М/Ф"
+    "pressure_diffusion: тип трудности Пр/И не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -339,8 +365,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Н/В не из М/Ф"
+    "pressure_diffusion: тип трудности Н/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -364,8 +392,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -378,8 +408,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -392,8 +424,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности П/Н не из М/Ф"
+    "pressure_diffusion: тип трудности П/Н не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -406,8 +440,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Пр/Р не из М/Ф"
+    "pressure_diffusion: тип трудности Пр/Р не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -464,8 +500,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -478,8 +516,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -514,8 +554,10 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {

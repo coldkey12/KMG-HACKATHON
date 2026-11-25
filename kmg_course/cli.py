@@ -98,7 +98,20 @@ def main(argv=None):
     cv = sub.add_parser("coverage")
     cv.add_argument("layers", nargs="+")
     cv.add_argument("--registry", default=str(ROOT / "scenes" / "registry.json"))
+    pv = sub.add_parser("preview", help="кадры каждой части сцены без сценария и голоса ($0)")
+    pv.add_argument("layer")
+    pv.add_argument("node_id")
+    pv.add_argument("--format", choices=["short", "long"], default="short")
+    pv.add_argument("--template", default=None)
+    pv.add_argument("--out", default=None)
     args = ap.parse_args(argv)
+    if args.cmd == "preview":
+        from .video import build as vb
+        out, rep = vb.preview(args.layer, args.node_id, args.format, args.template, args.out)
+        print(json.dumps({"out": str(out), "template": rep["template"], "shots": len(rep["shots"]), "page_errors": rep["page_errors"],
+                          "invariants_ok": all(i["ok"] for i in rep["invariants"]),
+                          "failed": [i["id"] for i in rep["invariants"] if not i["ok"]]}, ensure_ascii=False))
+        return
     if args.cmd == "coverage":
         from .video import coverage
         coverage.write_registry(args.registry)

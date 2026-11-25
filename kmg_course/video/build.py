@@ -5,6 +5,7 @@ what depends on it is regenerated (the script prompt contains the node's claims;
 """
 import base64
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -80,7 +81,103 @@ def build_spec(layer, node, tpl, fmt, pack):
             "colors": {"sand": lith.get("sand", "#F2D98B"), "shale": lith.get("shale", "#7F8C8D")}}
     if tpl.get("table_columns"):
         spec["panel"] = feature_panel(layer, node, tpl)
+    if tpl.get("case"):
+        spec["case"] = CASES[tpl["case"]](node, tpl)
     return spec
+
+
+def node_text(node):
+    """Lower-cased text of the node's ok claims + the corrected idea: what scenario rules read (no model)."""
+    ok = [c["text"] for c in node["claims"] if c["status"] == "ok"]
+    mis = node.get("misconception") or {}
+    return " ".join(ok + [(mis.get("right") or {}).get("text") or ""]).lower()
+
+
+def radial_case(node, tpl):
+    """radial_profile: choose the filtrate/water ratio and invasion depth from the node's text by the template's
+    rules, then compute (same formulas as the JS) the invasion direction per bed and what deep invasion does."""
+    P = tpl["params"]
+    text = node_text(node)
+    sc = next(s for s in tpl["scenarios"] if not s["match"] or re.search(s["match"], text))
+    rf = (P["sw_flushed_oil"] / P["sw_oil"]) ** P["n"] if sc["rf"] == "flat_oil" else float(sc["rf"])
+    deep = bool(re.search(tpl["deep_match"], text))
+    pp = 1 / P["phi"] ** P["m"]
+    beds = {"water": (pp, rf * pp), "oil": (pp / P["sw_oil"] ** P["n"], rf * pp / P["sw_flushed_oil"] ** P["n"])}
+
+    def read(b, L, d):
+        rp, rz = beds[b]
+        j = 0 if d <= 0 else 1 - math.exp(-d / L)
+        return j * rz + (1 - j) * rp
+
+    def dir_(b):
+        r = beds[b][1] / beds[b][0]
+        return "up" if r > P["dir_up"] else ("down" if r < P["dir_down"] else "flat")
+
+    def change(r):
+        return "растёт" if r > P["dir_up"] else ("падает" if r < P["dir_down"] else "почти не меняется")
+    Ld, D = P["L"]["deep"], P["invasion_deep"]
+    true_ratio = beds["oil"][0] / beds["water"][0]
+    deep_ratio = read("oil", Ld, D) / read("water", Ld, D)
+    contrast = ("разница между пластами по глубокому зонду сжимается" if deep_ratio < true_ratio * 0.8 else
+                "разница между пластами по глубокому зонду растёт" if deep_ratio > true_ratio * 1.25 else
+                "разница между пластами по глубокому зонду почти сохраняется")
+    words = {"up": "повышающее проникновение: зона проникновения сопротивляется сильнее пласта, микрозонд показывает больше глубокого",
+             "down": "понижающее проникновение: зона проникновения сопротивляется слабее пласта, микрозонд показывает меньше глубокого",
+             "flat": "градиента нет: зона проникновения и пласт дают почти одно сопротивление, все зонды показывают одно и то же"}
+    dirs = {b: dir_(b) for b in beds}
+    deep_change = {b: change(read(b, Ld, D) / beds[b][0]) for b in beds}
+    return {"scenario": sc["id"], "rf": round(rf, 4), "deep": deep,
+            "invasion": P["invasion_deep"] if deep else P["invasion_moderate"],
+            "rho": {b: {"bed": round(v[0], 2), "zone": round(v[1], 2)} for b, v in beds.items()},
+            "dirs": dirs, "dir_words": {b: words[dirs[b]] for b in beds},
+            "facts": {"filtrate": sc["text"], "water_dir": words[dirs["water"]], "oil_dir": words[dirs["oil"]],
+                      "deep_water": deep_change["water"], "deep_oil": deep_change["oil"], "deep_contrast": contrast,
+                      "invasion_word": "глубоко" if deep else "на небольшую глубину"}}
+
+
+def cutoff_case(node, tpl):
+    """cutoff_transfer: synthetic test intervals around a stated correlation «log parameter → property»
+    (deterministic noise), least-squares fit, the property cut-off k* carried to the curve through the fit,
+    beds of a synthetic log classified by it; then k* is raised and the classification recomputed.
+    The JS draws from these numbers and re-checks them in its invariants."""
+    P = tpl["params"]
+    text = node_text(node)
+    neg = bool(re.search(tpl["negative_match"], text)) and not re.search(tpl["positive_override"], text)
+    prop = next((p["label"] for p in tpl["properties"] if re.search(p["match"], text)), tpl["properties"][-1]["label"])
+    sgn = -1 if neg else 1
+
+    def noise(k):  # deterministic pseudo-random in [-1, 1]
+        s = math.sin(k * 12.9898 + 78.233) * 43758.5453
+        return 2 * (s - math.floor(s)) - 1
+    n = P["n_points"]
+    xs = [0.06 + 0.88 * ((0.5 + i * 0.6180339887) % 1) for i in range(n)]
+    ys = [P["a"] + sgn * P["b"] * (x - 0.5) + P["noise"] * noise(i) for i, x in enumerate(xs)]
+    mx, my = sum(xs) / n, sum(ys) / n
+    sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    sxx = sum((x - mx) ** 2 for x in xs)
+    slope = sxy / sxx
+    icpt = my - slope * mx
+    syy = sum((y - my) ** 2 for y in ys)
+    r2 = sxy * sxy / (sxx * syy)
+
+    def xcut(lk):
+        return (lk - icpt) / slope
+    beds = P["beds"]
+
+    def coll(xc):
+        return [i for i, b in enumerate(beds) if (b["x"] >= xc if slope > 0 else b["x"] <= xc)]
+    k0, k1 = P["log_kstar"], P["log_kstar"] + P["log_kstar_shift"]
+    c0, c1 = coll(xcut(k0)), coll(xcut(k1))
+    side = "справа от линии — где показание кривой больше" if slope > 0 else "слева от линии — где показание кривой меньше"
+    return {"negative": neg, "property": prop, "points": [[round(x, 4), round(y, 4)] for x, y in zip(xs, ys)],
+            "fit": {"slope": round(slope, 6), "intercept": round(icpt, 6), "r2": round(r2, 4)},
+            "log_kstar": [k0, k1], "x_cut": [round(xcut(k0), 4), round(xcut(k1), 4)], "collectors": [c0, c1],
+            "facts": {"property": prop, "side": side, "n_beds": len(beds), "n_coll": len(c0), "n_coll_alt": len(c1),
+                      "relation": "чем больше показание кривой, тем больше %s" % prop if slope > 0 else
+                                  "чем меньше показание кривой, тем больше %s" % prop}}
+
+
+CASES = {"radial": radial_case, "cutoff": cutoff_case}
 
 
 def feature_panel(layer, node, tpl):
@@ -142,6 +239,9 @@ class _Facts(dict):
 def scene_facts(spec):
     """Computed facts about what is on screen, injected into the slot descriptions so the script cannot
     contradict the picture (e.g. which curves actually discriminate)."""
+    K = spec.get("case")
+    if K:
+        return _Facts(K["facts"])
     P = spec.get("panel")
     if not P:
         return _Facts()
@@ -224,6 +324,19 @@ def check_script(layer, node, beats, story, fmt, pack_terms, spec=None):
                     for lab in same:
                         if lab.lower()[:5] in low:
                             errs.append("часть %d: «%s» по расчёту таблицы у подсвеченных пластов одинакова — не называй её различающей" % (i + 1, lab))
+    # script vs computed invasion: a direction named for one bed must be the one the scene draws for it
+    K = (spec or {}).get("case")
+    if K and K.get("dirs"):
+        kinds ={"up": r"повышающ", "down": r"понижающ", "flat": r"нет градиента|градиента нет|без градиента"}
+        for i, b in enumerate(beats):
+            for cl in re.split(r"(?<=[.!?…])\s+|;\s*|\s+а\s+|\s+но\s+", b.get("text", "")):
+                low = cl.lower()
+                bed = ("water" if re.search(r"водонос|с водой", low) and not re.search(r"нефт|продуктив", low) else
+                       "oil" if re.search(r"нефт|продуктив", low) and not re.search(r"водонос|с водой|пластов\w* вод", low) else None)
+                said = [k for k, rx in kinds.items() if re.search(rx, low)]
+                if bed and len(said) == 1 and said[0] != K["dirs"][bed]:
+                    errs.append("часть %d: у пласта %s в сцене по расчёту «%s», а голос говорит другое" % (
+                        i + 1, "с водой" if bed == "water" else "с нефтью", K["dir_words"][bed].split(":")[0]))
     lo, hi = FORMATS[fmt]["words"]
     if not (lo * 0.85 <= total <= hi * 1.1):
         errs.append("всего %d слов, нужно %d–%d: %s" % (total, lo, hi, "добавь в каждую часть ещё одну фразу из утверждений"
@@ -431,6 +544,71 @@ def passport(spec, node, tpl, timeline, meta, path_md, path_json):
 
 
 # ---------------------------------------------------------------- main
+def pick_template(node):
+    """The router's template (agent A, format.scene_template) when its rule holds for the node, else the first
+    implemented template whose rule holds; same choice as the coverage report."""
+    from . import coverage
+    tid = coverage.pick(node)
+    if not tid:
+        raise SystemExit("ни один шаблон сцены не подходит узлу %s (нужен новый): %s" % (
+            node["id"], "; ".join("%s: %s" % (t["id"], coverage.applies(t, node)[1]) for t in coverage.registry())))
+    return tid
+
+
+def preview(layer_path, node_id, fmt="short", template=None, out_dir=None, log=print):
+    """Stills of every part of the scene without script, voice or model calls ($0): for checking a template on a
+    node before paying for a script. Writes <out>/<NN>_<slot>.png, the slot descriptions the script would get,
+    and the invariant check."""
+    from playwright.sync_api import sync_playwright
+    layer_path = Path(layer_path)
+    layer = json.loads(layer_path.read_text(encoding="utf-8"))
+    node = next((n for n in layer["nodes"] if n["id"] == node_id), None)
+    if not node:
+        raise SystemExit("нет узла %s" % node_id)
+    tid = template or pick_template(node)
+    tpl, tpl_js = load_template(tid)
+    pack = domain_pack(layer["chapter"]["domain_pack"])
+    spec = build_spec(layer, node, tpl, fmt, pack)
+    story = tpl["story"][fmt]
+    facts = scene_facts(spec)
+    beats, t, step = [], 0.0, 3.0
+    for i, s in enumerate(story):
+        st = dict(tpl["slots"][s])
+        st["provenance"] = tpl["provenance"][st.get("provenance", "model")]
+        st.pop("sees", None)
+        beats.append({"id": "b%02d" % (i + 1), "slot": s, "text": "", "on_screen": s, "claim_ids": [], "start": t, "end": t + step,
+                      "voice_start": t, "voice_end": t, "voice_dur": 0, "words": [], "display_words": [], "state": st, "claims": []})
+        t += step
+    timeline = {"beats": beats, "duration": t}
+    out = Path(out_dir) if out_dir else layer_path.parent / "media_preview" / ("%s_%s_%s" % (node_id.split(".", 1)[1], tid, fmt))
+    out.mkdir(parents=True, exist_ok=True)
+    html = out / "preview.html"
+    html.write_text(scene_html(spec, timeline, tpl, tpl_js, "record", "", node["title_novice"]), encoding="utf-8")
+    f = FORMATS[fmt]
+    shots = []
+    with sync_playwright() as p:
+        b = p.chromium.launch(channel="msedge", headless=True)
+        pg = b.new_page(viewport={"width": f["w"], "height": f["h"]}, device_scale_factor=1)
+        errors = []
+        pg.on("pageerror", lambda e: errors.append(str(e)))
+        pg.goto(html.resolve().as_uri())
+        pg.wait_for_function("typeof window.frameData === 'function'")
+        inv = pg.evaluate("window.TEMPLATES[window.SCENE.spec.template].invariants(window.SCENE.spec)")
+        for i, bt in enumerate(beats):
+            st = bt["state"]
+            moments = [("mid", bt["start"] + step * 0.5)] if st.get("t0") is not None and st.get("t0") != st.get("t1") else []
+            for tag, tt in moments + [("end", bt["end"] - 0.01)]:
+                png = out / ("%02d_%s%s.png" % (i + 1, bt["slot"], "_mid" if tag == "mid" else ""))
+                png.write_bytes(base64.b64decode(pg.evaluate("window.frameData(%f)" % tt).split(",", 1)[1]))
+                shots.append(png.name)
+        b.close()
+    sees = [{"slot": s, "sees": tpl["slots"][s]["sees"].format_map(facts)} for s in story]
+    rep = {"node_id": node_id, "template": tid, "format": fmt, "invariants": inv, "page_errors": errors, "shots": shots,
+           "sees": sees, "case": spec.get("case"), "panel_focus": (spec.get("panel") or {}).get("focus")}
+    (out / "preview.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1), encoding="utf-8")
+    return out, rep
+
+
 def node_hash(node):
     """Fingerprint of what the voice may say: ok claims (id, text, page, quote) + misconception."""
     import hashlib
@@ -447,7 +625,7 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
     node = next((n for n in layer["nodes"] if n["id"] == node_id), None)
     if not node:
         raise SystemExit("нет узла %s" % node_id)
-    tid = template or (node.get("format") or {}).get("scene_template")
+    tid = template or pick_template(node)
     tpl, tpl_js = load_template(tid)
     pack = domain_pack(layer["chapter"]["domain_pack"])
     pack_terms = pack_prereq_terms(pack)

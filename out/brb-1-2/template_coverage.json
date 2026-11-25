@@ -1,42 +1,64 @@
 {
  "chapter": "brb-1-2",
  "templates": [
+  "cutoff_transfer",
   "log_panel_decision",
-  "pressure_diffusion"
+  "pressure_diffusion",
+  "radial_profile"
  ],
- "video_nodes": 27,
- "covered": 2,
+ "video_nodes": 30,
+ "covered": 4,
  "rows": [
   {
    "order": 3,
-   "node_id": "brb-1-2.n-031-d79373",
-   "title": "Три типа дельт по фронту",
+   "node_id": "brb-1-2.n-032-3753bb",
+   "title": "Фация: обстановка, оставившая след",
    "format": "interactive",
-   "router_template": "log_panel_decision",
+   "router_template": "feature_matching",
    "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/Н не из М/Ф"
+    "pressure_diffusion: тип трудности Р/None не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 4,
-   "node_id": "brb-1-2.n-031-8383ee",
-   "title": "Наступление и отступание моря в разрезе",
+   "node_id": "brb-1-2.n-031-d79373",
+   "title": "Фронт дельты и три типа дельт",
    "format": "short",
-   "router_template": "growth_timeline",
-   "difficulty": "В",
+   "router_template": "feature_matching",
+   "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности В/П не из М/Ф"
+    "pressure_diffusion: тип трудности Р/П не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 5,
+   "node_id": "brb-1-2.n-031-8383ee",
+   "title": "Регрессия и трансгрессия в разрезе",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
+   ]
+  },
+  {
+   "order": 6,
    "node_id": "brb-1-2.n-031-e5b4d1",
    "title": "Депоцентр и повторяющиеся циклы",
    "format": "short",
@@ -45,126 +67,171 @@
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности В/П не из М/Ф"
+    "pressure_diffusion: тип трудности В/П не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 8,
-   "node_id": "brb-1-2.n-032-a33430",
-   "title": "Фронт дельты: снизу глина, сверху песок",
+   "node_id": "brb-1-2.n-032-cb3a9b",
+   "title": "Фронт дельты: типичный разрез",
    "format": "interactive",
    "router_template": "log_panel_decision",
    "difficulty": "В",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности В/Н не из М/Ф"
+    "pressure_diffusion: тип трудности В/Н не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
+   ]
+  },
+  {
+   "order": 9,
+   "node_id": "brb-1-2.n-033-01dd74",
+   "title": "Тонкие слои отмирания как маркеры",
+   "format": "short",
+   "router_template": "log_panel_decision",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 10,
    "node_id": "brb-1-2.n-034-31ed40",
-   "title": "Как заполняется внутридельтовый залив",
+   "title": "Заполнение залива: глинистое начало",
    "format": "short",
    "router_template": "log_panel_decision",
-   "difficulty": "В",
+   "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности В/Р не из М/Ф"
+    "pressure_diffusion: тип трудности Р/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 11,
    "node_id": "brb-1-2.n-035-816d5b",
-   "title": "Намывные валы: песок от наводнений",
-   "format": "interactive",
+   "title": "Песчаный вал, заходящий в залив",
+   "format": "short",
    "router_template": "log_panel_decision",
    "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/П не из М/Ф"
+    "pressure_diffusion: тип трудности Р/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 12,
    "node_id": "brb-1-2.n-035-2b1ff1",
-   "title": "Конус выноса промоины: похож на турбидит",
+   "title": "Конус выноса промоины: быстрое заполнение залива",
    "format": "short",
-   "router_template": "growth_timeline",
-   "difficulty": "Р",
+   "router_template": "radial_profile",
+   "difficulty": "Н",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/Н не из М/Ф"
+    "pressure_diffusion: тип трудности Н/Р не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 13,
    "node_id": "brb-1-2.n-035-135c5a",
-   "title": "Устьевой бар: разрез, крупнеющий вверх",
-   "format": "interactive",
+   "title": "Устьевой бар: зерно крупнеет кверху",
+   "format": "short",
    "router_template": "log_panel_decision",
-   "difficulty": "Р",
-   "covered_by": null,
-   "state_model": null,
-   "why_not": [
-    "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/В не из М/Ф"
-   ]
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
   },
   {
    "order": 14,
    "node_id": "brb-1-2.n-035-eb990d",
-   "title": "Каналы промоин и волновые отмели",
+   "title": "Каналы промоин: как читать их разрез",
    "format": "short",
    "router_template": "log_panel_decision",
    "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/П не из М/Ф"
+    "pressure_diffusion: тип трудности Р/None не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 15,
-   "node_id": "brb-1-2.n-036-10069d",
-   "title": "Как узнать песчаник дельтового рукава",
-   "format": "interactive",
+   "node_id": "brb-1-2.n-034-31ed40-b",
+   "title": "Как залив заполняется до конца",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "В",
+   "covered_by": null,
+   "state_model": null,
+   "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
+    "log_panel_decision: нет таблицы признаков в узле",
+    "pressure_diffusion: тип трудности В/П не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
+   ]
+  },
+  {
+   "order": 16,
+   "node_id": "brb-1-2.n-036-8c1fe8",
+   "title": "Дельтовый рукав: признаки в керне",
+   "format": "short",
    "router_template": "log_panel_decision",
    "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/None не из М/Ф"
+    "pressure_diffusion: тип трудности Р/None не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
-   "order": 16,
-   "node_id": "brb-1-2.n-037-9107ce",
-   "title": "Авульсия: рукав бросают, он зарастает",
-   "format": "short",
+   "order": 17,
+   "node_id": "brb-1-2.n-036-8c1fe8-b",
+   "title": "Авульсия: как рукав умирает",
+   "format": "long_video",
    "router_template": "log_panel_decision",
    "difficulty": "В",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности В/П не из М/Ф"
+    "pressure_diffusion: тип трудности В/П не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
-   "order": 17,
+   "order": 18,
    "node_id": "brb-1-2.n-036-22af0d",
-   "title": "Разбор разреза древнего речного рукава",
+   "title": "Разбор разреза: как рукав закупорили и засыпали",
    "format": "interactive",
    "router_template": "log_panel_decision",
    "difficulty": "Пр",
@@ -174,148 +241,163 @@
   },
   {
    "order": 19,
-   "node_id": "brb-1-2.n-039-dd576c",
-   "title": "Короткая жизнь рукава — узкие песчаники",
+   "node_id": "brb-1-2.n-038-9c7d78",
+   "title": "Оползни берегов и форма тел",
    "format": "interactive",
-   "router_template": "growth_timeline",
+   "router_template": "geometry_3d",
    "difficulty": "П",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности П/В не из М/Ф"
+    "pressure_diffusion: тип трудности П/Н не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 20,
    "node_id": "brb-1-2.n-039-9e3c08",
-   "title": "Фронт речной дельты: снизу вверх",
-   "format": "long_video",
+   "title": "Фронт речной дельты: глинистое основание",
+   "format": "interactive",
    "router_template": "log_panel_decision",
-   "difficulty": "В",
+   "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности В/Р не из М/Ф"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 21,
    "node_id": "brb-1-2.n-039-9e3c08-b",
-   "title": "Паводковые песчаные слои фронта",
+   "title": "Песчаные слои фронта: следы паводков",
    "format": "short",
    "router_template": "log_panel_decision",
-   "difficulty": "Р",
-   "covered_by": null,
-   "state_model": null,
-   "why_not": [
-    "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/Н не из М/Ф"
-   ]
+   "difficulty": "М",
+   "covered_by": "pressure_diffusion",
+   "state_model": "D(x,t) = erfc(x / (2·√(κ·t))) — точное решение уравнения ∂p/∂t = κ·∂²p/∂x² при мгновенном постоянном понижении давления на скважине (x = 0). Из этой одной функции вычисляются заливка пласта, профиль давления, положение границы возмущённой зоны и показания датчика.",
+   "why_not": []
   },
   {
    "order": 22,
-   "node_id": "brb-1-2.n-039-1a5949",
-   "title": "Как отмирание дельты видно на фронте",
-   "format": "short",
+   "node_id": "brb-1-2.n-039-6a5ef5",
+   "title": "Как отмирает фронт речной дельты",
+   "format": "interactive",
    "router_template": "log_panel_decision",
    "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/В не из М/Ф"
+    "pressure_diffusion: тип трудности Р/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 25,
    "node_id": "brb-1-2.n-040-901b96",
-   "title": "Фронт волновой дельты: признаки разреза",
+   "title": "Разрез фронта волновой дельты",
    "format": "interactive",
    "router_template": "log_panel_decision",
    "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/В не из М/Ф"
+    "pressure_diffusion: тип трудности Р/Н не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 26,
-   "node_id": "brb-1-2.n-040-62c87a",
-   "title": "Ровный берег волновой дельты в плане",
-   "format": "interactive",
+   "node_id": "brb-1-2.n-040-5d950f",
+   "title": "Волновая дельта в плане",
+   "format": "short",
    "router_template": "log_panel_decision",
    "difficulty": "П",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: тип трудности П/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 27,
    "node_id": "brb-1-2.n-041-a9e07f",
-   "title": "Волны стирают часть разреза дельты",
+   "title": "Что остаётся от волновой дельты",
    "format": "short",
    "router_template": "growth_timeline",
    "difficulty": "В",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности В/Н не из М/Ф"
+    "pressure_diffusion: тип трудности В/Н не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 28,
    "node_id": "brb-1-2.n-041-240d37",
-   "title": "Приливные рукава: воронки, а не змейки",
+   "title": "Приливные рукава и внутренние дельты",
    "format": "short",
    "router_template": "log_panel_decision",
    "difficulty": "П",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+    "pressure_diffusion: нет признака видеоёмкости из time_change",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 29,
    "node_id": "brb-1-2.n-041-233f3a",
-   "title": "Внутренние дельты и приливные гряды",
+   "title": "Песчаные гряды в приливных протоках",
    "format": "short",
-   "router_template": "log_panel_decision",
-   "difficulty": "М",
+   "router_template": "geometry_3d",
+   "difficulty": "П",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: нет признака видеоёмкости из time_change"
+    "pressure_diffusion: тип трудности П/None не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 30,
-   "node_id": "brb-1-2.n-042-84ea6b",
-   "title": "Разрез приливного рукава: как его узнать",
+   "node_id": "brb-1-2.n-042-490d53",
+   "title": "Разрез приливного рукава: течения туда-обратно",
    "format": "short",
    "router_template": "log_panel_decision",
    "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Р/В не из М/Ф"
+    "pressure_diffusion: тип трудности Р/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 31,
    "node_id": "brb-1-2.n-042-f1a0e6",
-   "title": "Разрез приливного рукава в Лидни",
+   "title": "Разрез рукава в Лидни: читаем таблицу",
    "format": "interactive",
    "router_template": "log_panel_decision",
    "difficulty": "Пр",
@@ -326,29 +408,33 @@
   {
    "order": 32,
    "node_id": "brb-1-2.n-043-e99053",
-   "title": "Как протоки смещаются и какой бывает песок",
+   "title": "Размер и миграция приливных песчаных тел",
    "format": "short",
-   "router_template": "growth_timeline",
+   "router_template": "log_panel_decision",
    "difficulty": "П",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности П/В не из М/Ф"
+    "pressure_diffusion: тип трудности П/Н не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 33,
-   "node_id": "brb-1-2.n-043-47c5e3",
-   "title": "Межпротоковые области зависят от климата",
-   "format": "interactive",
-   "router_template": "radial_profile",
-   "difficulty": "Н",
+   "node_id": "brb-1-2.n-043-3aa19f",
+   "title": "Внутридельтовые области: климат решает",
+   "format": "short",
+   "router_template": "growth_timeline",
+   "difficulty": "Р",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Н/Р не из М/Ф"
+    "pressure_diffusion: тип трудности Р/Н не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
@@ -356,27 +442,31 @@
    "node_id": "brb-1-2.n-044-f7014b",
    "title": "Фронт приливной дельты: радиальные гряды",
    "format": "short",
-   "router_template": "log_panel_decision",
+   "router_template": "geometry_3d",
    "difficulty": "П",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности П/Р не из М/Ф"
+    "pressure_diffusion: тип трудности П/Р не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   },
   {
    "order": 35,
    "node_id": "brb-1-2.n-044-d480e7",
-   "title": "Что остаётся от приливной дельты",
-   "format": "interactive",
+   "title": "Как отмирает дельта: три разных следа",
+   "format": "short",
    "router_template": "radial_profile",
    "difficulty": "Н",
    "covered_by": null,
    "state_model": null,
    "why_not": [
+    "cutoff_transfer: меньше 2 проверенных утверждений про «гранич|критическ|порог|отсечк»",
     "log_panel_decision: нет таблицы признаков в узле",
-    "pressure_diffusion: тип трудности Н/Р не из М/Ф"
+    "pressure_diffusion: тип трудности Н/В не из М/Ф",
+    "radial_profile: меньше 1 проверенных утверждений про «проникн|фильтрат|промыт»"
    ]
   }
  ]

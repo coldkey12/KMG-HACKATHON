@@ -5,6 +5,7 @@ or «нужен новый» and why. Applicability rules are data in each templ
 without a model, so the report is reproducible on an unseen chapter.
 """
 import json
+import re
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -41,7 +42,22 @@ def applies(tpl, node):
         return False, "нет признака видеоёмкости из %s" % ", ".join(flags)
     if rule.get("data_decision") and not f.get("data_decision"):
         return False, "узел не помечен как «решение на данных»"
+    ok = [c["text"].lower() for c in node["claims"] if c["status"] == "ok"]
+    for t in rule.get("terms", []):  # the mechanism must be in the checked claims, not only in the title
+        if sum(1 for x in ok if re.search(t["match"], x)) < t.get("min_ok_claims", 1):
+            return False, "меньше %d проверенных утверждений про «%s»" % (t.get("min_ok_claims", 1), t["match"])
+    for t in rule.get("not_terms", []):  # another mechanism (e.g. another method) the scene would misdraw
+        if sum(1 for x in ok if re.search(t["match"], x)) > t.get("max_ok_claims", 0):
+            return False, "утверждения про «%s» — сцена этого не рисует" % t["match"]
     return True, "подходит"
+
+
+def pick(node, reg=None):
+    """Router's template (format.scene_template) if its rule holds, else the first implemented one that holds."""
+    reg = reg if reg is not None else registry()
+    want = (node.get("format") or {}).get("scene_template")
+    order = sorted(reg, key=lambda t: t["id"] != want)
+    return next((t["id"] for t in order if applies(t, node)[0]), None)
 
 
 def report(layer_path, out_path=None):
@@ -56,7 +72,8 @@ def report(layer_path, out_path=None):
         for t in reg:
             ok, why = applies(t, n)
             cands.append((t["id"], ok, why))
-        hit = next((c for c in cands if c[1]), None)
+        tid = pick(n, reg)
+        hit = next((c for c in cands if c[0] == tid), None)
         rows.append({"order": n["order"], "node_id": n["id"], "title": n["title_novice"], "format": f.get("format"),
                      "router_template": f.get("scene_template"), "difficulty": (n.get("difficulty") or {}).get("primary"),
                      "covered_by": hit[0] if hit else None,

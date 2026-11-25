@@ -29,3 +29,6 @@ data/raw/
 # local scratch
 .claude/
 cache/llm_fresh/
+
+# kmg_course preview stills (python -m kmg_course preview)
+out/*/media_preview/
