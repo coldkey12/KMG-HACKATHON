@@ -351,14 +351,18 @@ def load_photos(pack):
     return d, ok
 
 
-def assign_photos(photos, parts, steps):
-    """Course cover + one cover per part (+ final screen), round-robin over the pack's photos, deterministic.
-    Returns {"cover": photo|None, "parts": {part_id: photo}, "final": photo|None}."""
+def assign_photos(photos, parts, steps, seed=""):
+    """Course cover + one cover per part (+ final screen), round-robin over the pack's photos, deterministic per
+    chapter (different chapters get different covers). Returns {"cover", "parts": {part_id: photo}, "final"}."""
     if not photos:
         return {"cover": None, "parts": {}, "final": None}
-    pref = sorted(photos, key=lambda p: (p.get("subject") not in ("outcrop", "landscape", "rig", "oilfield"), p["file"]))
-    cover = pref[0]
-    rest = [p for p in photos if p is not cover] or [cover]
+    import zlib
+    k = zlib.crc32(seed.encode("utf-8"))
+    pref = sorted([p for p in photos if p.get("subject") in ("outcrop", "landscape", "rig", "oilfield", "offshore")] or photos,
+                  key=lambda p: p["file"])
+    cover = pref[k % len(pref)]
+    rest = sorted([p for p in photos if p is not cover], key=lambda p: p["file"]) or [cover]
+    rest = rest[k % len(rest):] + rest[:k % len(rest)]
     parts_map = {pt["id"]: rest[i % len(rest)] for i, pt in enumerate(parts)}
     final = rest[len(parts) % len(rest)]
     return {"cover": cover, "parts": parts_map, "final": final}

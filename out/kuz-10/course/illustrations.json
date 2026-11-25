@@ -1420,6 +1420,19 @@
    "id": "kuz-10.photo.part-cover-kuz-10.p1",
    "step_id": "kuz-10.n-200-f60108",
    "node_id": null,
+   "file": "assets/photos/oilfield-pumpjack.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Станок-качалка на месторождении Гленн-Пул, Оклахома (США)",
+   "alt": "Станок-качалка чёрного цвета стоит на зелёном лугу на фоне лесистых холмов.",
+   "source": "roy.luck, CC BY 2.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Pumpjack,_Glenn_Pool_oil_field_OK.jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-kuz-10.p1"
+  },
+  {
+   "id": "kuz-10.photo.part-cover-kuz-10.p2",
+   "step_id": "kuz-10.n-202-852d08",
+   "node_id": null,
    "file": "assets/photos/outcrop-folded-strata.jpg",
    "frame_class": "D",
    "origin": "photo",
@@ -1427,11 +1440,11 @@
    "alt": "Скалистый берег реки, в обрыве которого видны изогнутые в складки слои горных пород разных оттенков.",
    "source": "Sergey Kotov (https://imaggeo.egu.eu/user/kotov/), CC BY 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Folded_Strata_of_Pay-Khoy_Ridge_in_Russia.jpg)",
    "claim_ids": [],
-   "placement": "part-cover-kuz-10.p1"
+   "placement": "part-cover-kuz-10.p2"
   },
   {
-   "id": "kuz-10.photo.part-cover-kuz-10.p2",
-   "step_id": "kuz-10.n-202-852d08",
+   "id": "kuz-10.photo.part-cover-kuz-10.p3",
+   "step_id": "kuz-10.n-205-3e48d1",
    "node_id": null,
    "file": "assets/photos/outcrop-layered-badlands.jpg",
    "frame_class": "D",
@@ -1440,11 +1453,11 @@
    "alt": "Пологие склоны из чередующихся белых, бежевых и красноватых осадочных слоёв под ясным небом.",
    "source": "IvarT, CC0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Kyzylkup.jpg)",
    "claim_ids": [],
-   "placement": "part-cover-kuz-10.p2"
+   "placement": "part-cover-kuz-10.p3"
   },
   {
-   "id": "kuz-10.photo.part-cover-kuz-10.p3",
-   "step_id": "kuz-10.n-205-3e48d1",
+   "id": "kuz-10.photo.part-cover-kuz-10.p4",
+   "step_id": "kuz-10.n-216-b21ee1",
    "node_id": null,
    "file": "assets/photos/rig-distant.jpg",
    "frame_class": "D",
@@ -1453,31 +1466,18 @@
    "alt": "Буровая вышка на грунтовой площадке среди полей под синим небом с кучевыми облаками.",
    "source": "Dwight Burdette, CC BY 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Oil_Drilling_Rig_Saline_Township_Michigan.JPG)",
    "claim_ids": [],
-   "placement": "part-cover-kuz-10.p3"
-  },
-  {
-   "id": "kuz-10.photo.part-cover-kuz-10.p4",
-   "step_id": "kuz-10.n-216-b21ee1",
-   "node_id": null,
-   "file": "assets/photos/oilfield-pumpjack.jpg",
-   "frame_class": "D",
-   "origin": "photo",
-   "caption": "Станок-качалка на месторождении Гленн-Пул, Оклахома (США)",
-   "alt": "Станок-качалка чёрного цвета стоит на зелёном лугу на фоне лесистых холмов.",
-   "source": "roy.luck, CC BY 2.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Pumpjack,_Glenn_Pool_oil_field_OK.jpg)",
-   "claim_ids": [],
    "placement": "part-cover-kuz-10.p4"
   },
   {
    "id": "kuz-10.photo.part-cover-kuz-10.p5",
    "step_id": "kuz-10.n-220-126ba6",
    "node_id": null,
-   "file": "assets/photos/fieldwork-geologists-outcrop.jpg",
+   "file": "assets/photos/seismic-node-tundra.jpg",
    "frame_class": "D",
    "origin": "photo",
-   "caption": "Геологи изучают нефтематеринские триасовые породы, Северный склон Аляски (США)",
-   "alt": "Геологи у подножия крупного обнажения наклонных тёмных слоёв, один из них изучает породы на склоне.",
-   "source": "USGS, Public domain, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Surprise_Creek,_Western_North_Slope_of_Alaska.jpg)",
+   "caption": "Узловой сейсмоприёмник на профиле сейсморазведки, NPR-A, Аляска (США)",
+   "alt": "Жёлтый автономный сейсмический регистратор (узел) установлен в снегу среди низких кустарников тундры.",
+   "source": "BLM Alaska, Public domain, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Seismic_node_(55180102938).jpg)",
    "claim_ids": [],
    "placement": "part-cover-kuz-10.p5"
   }

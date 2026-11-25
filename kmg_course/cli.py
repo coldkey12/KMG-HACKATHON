@@ -125,7 +125,7 @@ def _decor(view, pack, out):
                                                                 for k, e in (style.get(g) or {}).items()]}
                                 for g, t in illus.GROUPS if style.get(g)]}
     pdir, photos = illus.load_photos(pack)
-    plan = illus.assign_photos(photos, view["parts"], view["steps"])
+    plan = illus.assign_photos(photos, view["parts"], view["steps"], view["chapter"]["id"])
     recs, pub = [], {"cover": None, "parts": {}, "final": None}
     used = {}
 
