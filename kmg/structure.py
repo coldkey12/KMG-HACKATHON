@@ -255,7 +255,7 @@ def assemble(cfg, units, plan, node_outs, pack):
                              "figures_needed": p.get("figures_needed", []), "unit_id": p.get("unit_id", "")})
         mis = o.get("misconception")
         if mis and mis.get("wrong"):
-            mis = {"pack_id": mis.get("pack_id"), "wrong": remap(_txt({"text": mis["wrong"], "claims": mis.get("claims", [])})),
+            mis = {"pack_id": mis.get("pack_id"), "wrong": _txt({"text": mis["wrong"], "claims": []}),
                    "right": remap(_txt({"text": mis.get("right", ""), "claims": mis.get("claims", [])}))}
         else:
             mis = None

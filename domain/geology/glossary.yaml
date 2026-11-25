@@ -17,9 +17,9 @@ terms:
   - {id: g-cal, ru: "кавернограмма, каверномер", en: "caliper log", prerequisite: true, def: "Запись фактического диаметра скважины."}
   - {id: g-nmr, ru: "ядерно-магнитный метод (ЯМР, ЯММ)", en: "nuclear magnetic resonance log (NMR)", abbr: "ЯМР", prerequisite: true, def: "Отклик пропорционален количеству подвижного водорода в порах — индекс свободного флюида."}
   - {id: g-rho, ru: "удельное электрическое сопротивление (ρ)", en: "resistivity", prerequisite: true, def: "Насколько порода сопротивляется электрическому току, Ом·м."}
-  - {id: g-kp, ru: "коэффициент пористости (kп)", en: "porosity", abbr: "kп", prerequisite: true, def: "Доля объёма породы, занятая порами."}
-  - {id: g-kpr, ru: "коэффициент проницаемости (kпр)", en: "permeability", abbr: "kпр", prerequisite: true, def: "Способность породы пропускать флюид; не то же, что пористость."}
-  - {id: g-kv, ru: "коэффициент водонасыщения (kв)", en: "water saturation (Sw)", abbr: "kв", prerequisite: true, def: "Доля объёма пор, занятая водой."}
+  - {id: g-kp, ru: "коэффициент пористости (kп)", en: "porosity", abbr: "kп", aliases: ["пористость"], prerequisite: true, def: "Доля объёма породы, занятая порами."}
+  - {id: g-kpr, ru: "коэффициент проницаемости (kпр)", en: "permeability", abbr: "kпр", aliases: ["проницаемость"], prerequisite: true, def: "Способность породы пропускать флюид; не то же, что пористость."}
+  - {id: g-kv, ru: "коэффициент водонасыщения (kв)", en: "water saturation (Sw)", abbr: "kв", aliases: ["водонасыщенность", "нефтенасыщенность", "насыщение"], prerequisite: true, def: "Доля объёма пор, занятая водой."}
   - {id: g-pp, ru: "параметр пористости (Pп)", en: "formation factor (F)", abbr: "Pп", prerequisite: true, def: "Отношение сопротивления водонасыщенной породы к сопротивлению воды."}
   - {id: g-pn, ru: "параметр насыщения (Pн)", en: "resistivity index (RI)", abbr: "Pн", prerequisite: true, def: "Во сколько раз сопротивление нефтегазонасыщенной породы больше, чем той же породы с водой."}
   - {id: g-alpha-sp, ru: "относительная амплитуда ПС (αпс)", en: "relative SP amplitude", abbr: "αпс", prerequisite: true, def: "Амплитуда ПС против пласта, делённая на амплитуду в чистом опорном пласте."}
@@ -31,3 +31,8 @@ terms:
   - {id: g-gnk, ru: "газонефтяной контакт (ГНК)", en: "gas-oil contact (GOC)", abbr: "ГНК", prerequisite: false, def: "Граница между газовой шапкой и нефтью."}
   - {id: g-gzhk, ru: "газожидкостный контакт (ГЖК)", en: "gas-liquid contact", abbr: "ГЖК", prerequisite: false, def: "Граница газа и жидкости (нефти или воды)."}
   - {id: g-heff, ru: "эффективная толщина (hэф)", en: "net pay / net thickness", abbr: "hэф", prerequisite: false, def: "Суммарная толщина прослоев-коллекторов в пласте."}
+  - {id: g-field, ru: "месторождение", en: "field", prerequisite: true, def: "Скопление нефти или газа, которое выгодно разрабатывать."}
+  - {id: g-well, ru: "скважина", en: "well", prerequisite: true, def: "Узкий глубокий ствол, пробуренный в земле."}
+  - {id: g-mud, ru: "буровой (промывочный) раствор", en: "drilling mud", aliases: ["буровой раствор", "промывочная жидкость", "глинистый раствор"], prerequisite: true, def: "Жидкость, которую прокачивают через скважину при бурении: выносит шлам, держит стенки, создаёт давление."}
+  - {id: g-core, ru: "керн", en: "core", prerequisite: true, def: "Цилиндрический образец породы, поднятый из скважины."}
+  - {id: g-lith, ru: "литология", en: "lithology", aliases: ["литологический"], prerequisite: true, def: "Состав и строение горной породы."}

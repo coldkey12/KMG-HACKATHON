@@ -6,6 +6,7 @@ Provider is chosen in config/models.yaml; only 'anthropic' is implemented, other
 providers plug in by adding a function to PROVIDERS.
 """
 import hashlib
+import os
 import json
 import time
 from pathlib import Path
@@ -61,7 +62,12 @@ PROVIDERS = {"anthropic": _anthropic}
 def call(role, system, user, log_path=None, tag=""):
     """system: list of Anthropic-style text blocks (may carry cache_control); user: str.
     Returns dict(text, usage, cost_usd, cached, model)."""
-    cfg = models()["roles"][role]
+    cfg = dict(models()["roles"][role])
+    # experiment overrides without editing the manifest: KMG_<ROLE>_MODEL / KMG_<ROLE>_EFFORT
+    for k in ("model", "effort"):
+        v = os.environ.get("KMG_%s_%s" % (role.upper(), k.upper()))
+        if v:
+            cfg[k] = v
     messages = [{"role": "user", "content": user}]
     payload = {"provider": cfg["provider"], "model": cfg["model"], "effort": cfg.get("effort"),
                "max_tokens": cfg["max_tokens"], "system": system, "messages": messages}
