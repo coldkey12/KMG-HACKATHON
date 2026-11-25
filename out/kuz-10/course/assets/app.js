@@ -405,10 +405,10 @@
       var pp = PHOTOS.parts && PHOTOS.parts[p.id];
       grid.appendChild(el("details", { "class": "panel part", open: p.id === openPart }, [
         el("summary", null, [
-          el("div", { "class": "part-cover" }, [pp ? el("img", { src: pp.src_small || pp.src, alt: "", loading: "lazy", decoding: "async" }) : null,
+          el("div", { "class": "part-cover" }, [pp ? el("img", { src: pp.src_small || pp.src, alt: pp.alt, loading: "lazy", decoding: "async" }) : null,
             el("span", { text: "Раздел " + (p.idx + 1) + " · " + plural(ps.length, "урок", "урока", "уроков") })]),
           el("div", { "class": "part-h" }, [el("div", null, [el("h3", { text: p.title }), p.title_book ? el("p", { "class": "muted", text: "В книге: " + p.title_book }) : null]), chev(),
-            el("div", { "class": "part-prog" }, [el("div", { "class": "pbar" }, [el("span", { style: "width:" + Math.round(100 * pts / (3 * ps.length)) + "%" })]), "освоено " + done + " из " + ps.length])])]),
+            el("div", { "class": "part-prog" }, [el("div", { "class": "pbar" }, [el("span", { style: "width:" + Math.round(100 * pts / (3 * ps.length)) + "%" })]), (function () { var o = ps.filter(function (s) { return mastery(s) >= 1; }).length; return (o ? "открыто " + o + " · " : "") + "освоено " + done + " из " + ps.length; })()])])]),
         el("ol", { "class": "lessons" }, ps.map(function (s) {
           var n = (tasksByStep[s.id] || []).length;
           return el("li", null, [el("a", { "class": "lrow", href: "#/step/" + s.id }, [mq(mastery(s), null, s.id),
@@ -416,7 +416,7 @@
               el("span", { "class": "m", text: LEVELS[mastery(s)] + " · ~" + s.minutes + " мин" + (n ? " · " + plural(n, "вопрос", "вопроса", "вопросов") : "") + (st.last === s.id ? " · вы здесь" : "") })]),
             el("span", { "class": "go" }, [icon("chev")])])]);
         })),
-        first ? el("div", { "class": "part-f" }, [el("a", { "class": "btn sec", href: "#/step/" + first.id, text: done ? "Продолжить раздел" : "Начать раздел" })]) : null]));
+        first ? el("div", { "class": "part-f" }, [el("a", { "class": "btn sec", href: "#/step/" + first.id, text: done ? "Продолжить раздел" : "Начать раздел" })]) : null, photoCredit(pp)]));
     });
     kids.push(grid);
     render(kids);
