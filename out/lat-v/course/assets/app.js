@@ -32,7 +32,14 @@
      Data (quotes) stays verbatim; this only changes how it is drawn. */
   var TEX = { "\\rightarrow": "→", "\\to": "→", "\\infty": "∞", "\\approx": "≈", "\\leq": "≤", "\\geq": "≥", "\\le": "≤", "\\ge": "≥",
     "\\Delta": "Δ", "\\rho": "ρ", "\\delta": "δ", "\\mu": "μ", "\\pi": "π", "\\eta": "η", "\\alpha": "α", "\\beta": "β", "\\gamma": "γ",
-    "\\varphi": "φ", "\\phi": "φ", "\\sigma": "σ", "\\lambda": "λ", "\\kappa": "κ", "\\chi": "χ", "\\cdot": "·", "\\times": "×", "\\%": "%", "\\,": " ", "\\;": " " };
+    "\\varphi": "φ", "\\phi": "φ", "\\sigma": "σ", "\\lambda": "λ", "\\kappa": "κ", "\\chi": "χ", "\\cdot": "·", "\\times": "×", "\\%": "%", "\\,": " ", "\\;": " ",
+    "\\tau": "τ", "\\xi": "ξ", "\\theta": "θ", "\\omega": "ω", "\\nu": "ν", "\\zeta": "ζ", "\\epsilon": "ε", "\\varepsilon": "ε", "\\psi": "ψ",
+    "\\Phi": "Φ", "\\Psi": "Ψ", "\\Omega": "Ω", "\\Sigma": "Σ", "\\Gamma": "Γ", "\\Lambda": "Λ", "\\Pi": "Π", "\\Theta": "Θ",
+    "\\partial": "∂", "\\int": "∫", "\\sum": "Σ", "\\nabla": "∇", "\\pm": "±", "\\neq": "≠", "\\ne": "≠", "\\ll": "≪", "\\gg": "≫",
+    "\\propto": "∝", "\\sim": "~", "\\prime": "′", "\\dots": "…", "\\ldots": "…", "\\cdots": "⋯", "\\leqslant": "≤", "\\geqslant": "≥",
+    "\\ln": "ln", "\\lg": "lg", "\\log": "log", "\\exp": "exp", "\\sin": "sin", "\\cos": "cos", "\\max": "max", "\\min": "min", "\\lim": "lim",
+    "\\quad": "  ", "\\qquad": "   ", "\\!": "", "\\:": " ", "\\ ": " ", "\\bigl": "", "\\bigr": "", "\\Bigl": "", "\\Bigr": "", "\\big": "", "\\Big": "",
+    "\\{": "{", "\\}": "}" };
   function texFrag(src) {
     var frag = document.createDocumentFragment();
     var re = /\$\$?([^$]+)\$\$?|\\\(\s*(.+?)\s*\\\)/g, last = 0, m;
@@ -52,7 +59,7 @@
       while (i < s.length && s[i] !== "}") out.appendChild(atom());
       i++; return out;
     }
-    function arg() { while (s[i] === " ") i++; if (s[i] === "{") return group(); var c = s[i++] || ""; return document.createTextNode(c); }
+    function arg() { while (s[i] === " ") i++; if (s[i] === "{") return group(); if (s[i] === "\\") return atom(); var c = s[i++] || ""; return document.createTextNode(c); }
     function atom() {
       var c = s[i];
       if (c === "{") return group();
@@ -66,6 +73,11 @@
         if (name === "sqrt") { var r = el("span", { "class": "sqrt" }); r.appendChild(document.createTextNode("√")); var b = el("span", { "class": "rad" }); b.appendChild(arg()); r.appendChild(b); return r; }
         if (name === "text" || name === "mathrm" || name === "operatorname" || name === "mathit" || name === "mathbf") return arg();
         if (name === "left" || name === "right") return document.createTextNode("");
+        if (name === "bar" || name === "overline" || name === "widehat" || name === "hat" || name === "tilde") {
+          var ov = el("span", { "class": name === "bar" || name === "overline" ? "ovl" : "" }); ov.appendChild(arg()); return ov;
+        }
+        if (name === "begin" || name === "end") { arg(); return document.createTextNode(name === "end" ? "" : " "); }
+        if (name === "\\") return el("br");
         var sym = TEX["\\" + name];
         return document.createTextNode(sym != null ? sym : (name.length === 1 ? name : ""));
       }
@@ -206,6 +218,24 @@
     var sections = [];
     function add(key, content) { if (content && content.length) sections.push([key, content]); }
 
+    titles.media = "Ролик и интерактивная сцена";
+    add("media", (s.media || []).map(function (m) {
+      var base = "media/" + m.dir + "/", portrait = m.format === "short";
+      var v = el("video", { controls: true, playsinline: true, preload: "metadata", src: base + m.mp4, "class": "vid" + (portrait ? " portrait" : ""),
+        "aria-label": "Ролик: " + (m.title || s.title) });
+      if (m.subtitles_vtt) v.appendChild(el("track", { kind: "subtitles", srclang: "ru", label: "Русские субтитры", src: base + m.subtitles_vtt, "default": true }));
+      var frame = null;
+      var det = el("details", { "class": "scene-box" }, [el("summary", { text: "Интерактивная сцена: та же модель, пауза на предсказание, источники по нажатию" })]);
+      det.addEventListener("toggle", function () {
+        if (det.open && !frame) {
+          frame = el("iframe", { src: base + m.scene, title: "Интерактивная сцена: " + (m.title || s.title), "class": "scene-frame" + (portrait ? " portrait" : "") });
+          det.appendChild(frame);
+        }
+      });
+      return el("div", { "class": "media-item" }, [v,
+        el("p", { "class": "small muted" }, ["Ролик собран конвейером из утверждений этого шага (" + (portrait ? "шортс 9:16" : "разбор 16:9") + ", " + Math.round(m.duration_s) + " с). ",
+          el("a", { href: base + m.passport, target: "_blank", rel: "noopener", text: "Паспорт ролика" })]), det]);
+    }));
     add("summary", B.summary.map(function (p) { return para(p, terms); }));
     var how = [];
     B.how.forEach(function (h) { how.push(el("p", { "class": "sub", text: h.sub })); h.items.forEach(function (p) { how.push(para(p, terms)); }); });

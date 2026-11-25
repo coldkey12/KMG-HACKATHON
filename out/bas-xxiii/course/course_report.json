@@ -193,8 +193,8 @@
  "layer": "out/bas-xxiii/layer.json",
  "steps": 78,
  "parts": 6,
- "size_mb": 2.99,
+ "size_mb": 2.98,
  "size_ok": true,
  "steps_without_illustration": [],
- "seconds": 0.3
+ "seconds": 0.5
 }

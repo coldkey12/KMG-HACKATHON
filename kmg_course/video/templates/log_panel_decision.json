@@ -37,13 +37,13 @@
   "labels": {"depth": "глубина ↓ (условно)", "column": "порода", "hidden": "?", "same": "одинаково", "differs": "различает",
              "decision": "Признаки → вывод", "nodata": "нет данных", "wrong_tag": "по одной кривой не различить"},
   "slots": {
-    "hook":          {"view": "primary", "tracks": 1, "focus": true, "column": false, "provenance": "model", "sees": "планшет с одной кривой (первая колонка таблицы, сопротивление); несколько интервалов подсвечены — по ней они выглядят одинаково; колонка пород скрыта"},
-    "misconception": {"view": "primary", "tracks": 1, "focus": true, "column": false, "wrong": true, "provenance": "wrong", "sees": "те же подсвеченные интервалы с перечёркнутой подписью «по одной кривой не различить»"},
-    "prediction":    {"view": "primary", "tracks": 1, "focus": true, "column": false, "provenance": "model", "sees": "вопрос: какие ещё кривые нужны, чтобы различить подсвеченные интервалы; пауза"},
-    "reveal":        {"view": "all", "t0": 0, "t1": 1, "focus": true, "column": false, "provenance": "model", "sees": "по очереди появляются остальные кривые таблицы; на тех, где подсвеченные интервалы отличаются, ставится метка «различает»"},
-    "explain":       {"view": "all", "t0": 1, "t1": 1, "focus": true, "column": false, "marks": true, "provenance": "model", "sees": "все кривые; отмечено, какие кривые различают подсвеченные интервалы, а какие дают одинаковые показания"},
-    "data":          {"view": "all", "t0": 1, "t1": 1, "focus": true, "column": true, "decision": true, "provenance": "model", "sees": "открывается колонка пород; справа панель «признаки → вывод» по каждому подсвеченному интервалу словами таблицы"},
-    "transfer":      {"view": "all", "t0": 1, "t1": 1, "focus": false, "column": true, "decision": true, "provenance": "model", "sees": "полный планшет с колонкой пород; вопрос на перенос"}
+    "hook":          {"view": "primary", "tracks": 1, "focus": true, "column": false, "provenance": "model", "sees": "планшет из {n_beds} пластов; видна только кривая «{primary}»; подсвечены ровно {n_focus} интервала ({focus_names}, но названия скрыты знаком «?») — по этой кривой они одинаковы: «{primary_word}»"},
+    "misconception": {"view": "primary", "tracks": 1, "focus": true, "column": false, "wrong": true, "provenance": "wrong", "sees": "те же {n_focus} подсвеченных интервала с перечёркнутой подписью «по одной кривой не различить»"},
+    "prediction":    {"view": "primary", "tracks": 1, "focus": true, "column": false, "provenance": "model", "sees": "вопрос: какие ещё кривые нужны, чтобы различить {n_focus} подсвеченных интервала; пауза"},
+    "reveal":        {"view": "all", "t0": 0, "t1": 1, "focus": true, "column": false, "provenance": "model", "sees": "по очереди появляются кривые: {track_list}. У подсвеченных интервалов различаются ТОЛЬКО: {disc_list}; одинаковы или без данных: {same_list}. Говори только об этих кривых"},
+    "explain":       {"view": "all", "t0": 1, "t1": 1, "focus": "claims", "column": false, "marks": true, "provenance": "model", "sees": "все кривые; подсвечены пласты, о строках таблицы которых говорит эта часть (по её claim_ids); под дорожками метки: «различает» — {disc_list}, «одинаково» — {same_list}"},
+    "data":          {"view": "all", "t0": 1, "t1": 1, "focus": "claims", "column": true, "decision": true, "provenance": "model", "sees": "открывается колонка пород с названиями; справа панель «признаки → вывод»: {decision_text}"},
+    "transfer":      {"view": "all", "t0": 1, "t1": 1, "focus": false, "column": true, "decision": true, "provenance": "model", "sees": "полный планшет с колонкой пород и панелью решения; вопрос на перенос"}
   },
   "story": {
     "short": ["hook", "misconception", "prediction", "reveal", "explain", "data", "transfer"],

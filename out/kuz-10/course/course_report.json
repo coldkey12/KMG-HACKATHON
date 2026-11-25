@@ -45,8 +45,8 @@
  "layer": "out/kuz-10/layer.json",
  "steps": 56,
  "parts": 5,
- "size_mb": 1.68,
+ "size_mb": 1.69,
  "size_ok": true,
  "steps_without_illustration": [],
- "seconds": 0.3
+ "seconds": 0.5
 }

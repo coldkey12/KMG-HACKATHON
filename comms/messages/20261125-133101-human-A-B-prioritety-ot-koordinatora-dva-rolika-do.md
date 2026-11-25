@@ -3,7 +3,7 @@ id: 20261125-133101-human-A-B-prioritety-ot-koordinatora-dva-rolika-do
 from: human-A
 to: B
 type: request
-status: open
+status: done
 created: 2026-11-25T13:31:01
 reply_to: 
 refs: lat-v.n-098-edce90,docs/briefs/AGENT_B.md

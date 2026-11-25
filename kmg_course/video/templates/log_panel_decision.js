@@ -12,7 +12,15 @@
   function draw(ctx, box, st, spec, g) {
     var C = g.C, U = g.U, P = spec.panel, cols = P.columns, iv = P.intervals;
     var pal = spec.palette || {};
-    var showDecision = !!st.decision, panelW = showDecision ? 520 * U : 0;
+    var showDecision = !!st.decision, panelW = showDecision ? 600 * U : 0;
+    // which beds to highlight: the beds whose table rows this part's claims cite; otherwise the decision group
+    var focusIdx = P.focus;
+    if (st.focus === "claims" && st.beat && st.beat.claim_ids && st.beat.claim_ids.length) {
+      var hit = [];
+      iv.forEach(function (it, i) { if ((it.cited_by || []).some(function (c) { return st.beat.claim_ids.indexOf(c) >= 0; })) hit.push(i); });
+      if (hit.length) focusIdx = hit;
+    }
+    function fit(text, maxW, px, weight) { var s = px; do { ctx.font = (weight || 600) + " " + s * U + "px Segoe UI, Arial, sans-serif"; s -= 1; } while (ctx.measureText(text).width > maxW && s > 14); }
     var axisW = 70 * U, colW = 170 * U, gapW = 14 * U;
     var nT = cols.length, trW = (box.w - axisW - colW - panelW - gapW * (nT + 2)) / nT;
     var top = box.y + 70 * U, h = box.h - 90 * U;
@@ -41,7 +49,7 @@
       if (st.column && it.fluid && pal["fluid_" + it.fluid]) {
         ctx.fillStyle = pal["fluid_" + it.fluid]; ctx.beginPath(); ctx.arc(cx + colW - 22 * U, (y0 + y1) / 2, 12 * U, 0, 7); ctx.fill();
       }
-      if (!st.column && P.focus.indexOf(i) >= 0) {
+      if (!st.column && focusIdx.indexOf(i) >= 0) {
         ctx.fillStyle = C.ink; ctx.font = "700 " + 40 * U + "px Segoe UI, Arial, sans-serif";
         ctx.fillText(spec.labels.hidden, cx + colW / 2 - 10 * U, (y0 + y1) / 2 + 14 * U);
       }
@@ -49,7 +57,7 @@
 
     // focus bands across the tracks
     var tx0 = cx + colW + gapW, txEnd = tx0 + nT * (trW + gapW) - gapW;
-    if (st.focus) P.focus.forEach(function (i) {
+    if (st.focus) focusIdx.forEach(function (i) {
       var it = iv[i]; ctx.fillStyle = "rgba(92,196,190,0.16)";
       ctx.fillRect(cx, Y(it.top), txEnd - cx, Y(it.bottom) - Y(it.top));
       ctx.strokeStyle = C.accent; ctx.lineWidth = 3 * U; ctx.strokeRect(cx, Y(it.top), txEnd - cx, Y(it.bottom) - Y(it.top));
@@ -59,10 +67,11 @@
     for (var k = 0; k < nT; k++) {
       var col = cols[k], x = tx0 + k * (trW + gapW);
       ctx.strokeStyle = C.chipBg; ctx.lineWidth = 2 * U; ctx.strokeRect(x, top, trW, h);
-      ctx.fillStyle = C.ink; ctx.font = "600 " + 26 * U + "px Segoe UI, Arial, sans-serif";
+      ctx.fillStyle = C.ink; fit(col.label, trW - 8 * U, 26, 600);
       ctx.fillText(col.label, x + 6 * U, top - 44 * U);
-      ctx.fillStyle = C.muted; ctx.font = "500 " + 22 * U + "px Segoe UI, Arial, sans-serif";
-      ctx.fillText(col.kind === "diameter" ? "уже ← ном. → шире" : "мин ← → макс", x + 6 * U, top - 16 * U);
+      var scale = col.kind === "diameter" ? "уже ← ном. → шире" : "мин ← → макс";
+      ctx.fillStyle = C.muted; fit(scale, trW - 8 * U, 22, 500);
+      ctx.fillText(scale, x + 6 * U, top - 16 * U);
       if (k >= visible) continue;
       var frac = k === visible - 1 ? partial : 1;
       ctx.strokeStyle = pal["curve_" + col.id] || C.curve; ctx.lineWidth = 5 * U; ctx.beginPath();
@@ -107,16 +116,19 @@
       ctx.fillStyle = C.chipBg; g.roundRect(px0, top - 60 * U, panelW - gapW, h + 60 * U, 12 * U); ctx.fill();
       ctx.fillStyle = C.ink; ctx.font = "700 " + 30 * U + "px Segoe UI, Arial, sans-serif";
       ctx.fillText(spec.labels.decision, px0 + 18 * U, top - 18 * U);
+      var maxTW = panelW - gapW - 40 * U;
       P.focus.forEach(function (i) {
         var it = iv[i]; py += 20 * U;
         ctx.fillStyle = C.accent; ctx.font = "700 " + 28 * U + "px Segoe UI, Arial, sans-serif";
         ctx.fillText(st.column ? it.name : "интервал " + (i + 1), px0 + 18 * U, py += 30 * U);
-        ctx.font = "500 " + 24 * U + "px Segoe UI, Arial, sans-serif";
-        cols.forEach(function (c) {
-          var w = it.words[c.id]; if (!w) return;
-          var disc = P.discriminating.indexOf(c.id) >= 0;
+        [P.primary].concat(P.discriminating).forEach(function (cid) {  // only the curves that matter for the decision
+          var c = cols.filter(function (x) { return x.id === cid; })[0], w = it.words[cid]; if (!c || !w) return;
+          var disc = P.discriminating.indexOf(cid) >= 0;
           ctx.fillStyle = disc ? C.ink : C.muted;
-          ctx.fillText((disc ? "▸ " : "  ") + c.label + ": " + w, px0 + 18 * U, py += 32 * U);
+          var f = "500 " + 24 * U + "px Segoe UI, Arial, sans-serif";
+          g.wrap((disc ? "▸ " : "= ") + c.label + ": " + w, maxTW, f).forEach(function (ln) {
+            ctx.font = f; ctx.fillText(ln, px0 + 18 * U, py += 32 * U);
+          });
         });
         py += 10 * U;
       });

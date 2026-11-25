@@ -102,8 +102,8 @@
  "layer": "out/lat-v/layer.json",
  "steps": 69,
  "parts": 9,
- "size_mb": 2.3,
+ "size_mb": 3.87,
  "size_ok": true,
  "steps_without_illustration": [],
- "seconds": 0.4
+ "seconds": 0.7
 }

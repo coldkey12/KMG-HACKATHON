@@ -26,7 +26,7 @@ FORMATS = {"short": {"w": 1080, "h": 1920, "min_s": 40, "max_s": 90, "target": (
            "long": {"w": 1920, "h": 1080, "min_s": 90, "max_s": 180, "target": (90, 180), "words": (180, 330), "phrases": "2–3"}}
 FPS = 30
 LEAD, GAP, PRED_PAUSE, END_HOLD = 0.25, 0.35, 1.3, 1.6
-TEMPO = 1.1  # the neural voice reads ~105 wpm; ×1.1 brings the track into the TZ range 110–150 wpm (pitch kept)
+TEMPO = 1.12  # the neural voice reads ~105 wpm; ×1.12 brings the track into the TZ range 110–150 wpm (pitch kept)
 STYLE_DARK = {"bg": "#101614", "ink": "#E9F0ED", "muted": "#9CABA5", "paper": "#F5F1E6", "accent": "#5CC4BE",
               "chipBg": "#22302C", "chipFg": "#CFE3DE", "warnBg": "#3A2220", "warnFg": "#F08C80",
               "pressureRGB": "232,162,56", "curve": "#7FB8F0", "steel": "#B9C2C6"}
@@ -134,9 +134,33 @@ def feature_panel(layer, node, tpl):
 
 
 # ---------------------------------------------------------------- script
-def gen_script(layer, node, tpl, fmt, story, log_path, feedback=None):
+class _Facts(dict):
+    def __missing__(self, k):
+        return "{" + k + "}"
+
+
+def scene_facts(spec):
+    """Computed facts about what is on screen, injected into the slot descriptions so the script cannot
+    contradict the picture (e.g. which curves actually discriminate)."""
+    P = spec.get("panel")
+    if not P:
+        return _Facts()
+    cols = {c["id"]: c["label"] for c in P["columns"]}
+    iv = P["intervals"]
+    foc = [iv[i] for i in P["focus"]]
+    same = [cols[c] for c in cols if c != P["primary"] and c not in P["discriminating"]]
+    dec = "; ".join("%s: %s" % (it["name"], ", ".join("%s — %s" % (cols[c], it["words"].get(c)) for c in [P["primary"]] + P["discriminating"]))
+                    for it in foc)
+    return _Facts(n_beds=len(iv), n_focus=len(foc), focus_names=", ".join(it["name"] for it in foc),
+                  primary=cols[P["primary"]], primary_word=foc[0]["words"].get(P["primary"]) if foc else "",
+                  track_list=", ".join(cols.values()), disc_list=", ".join(cols[c] for c in P["discriminating"]),
+                  same_list=", ".join(same) or "—", decision_text=dec)
+
+
+def gen_script(layer, node, tpl, fmt, story, log_path, feedback=None, spec=None):
     ok = [c for c in node["claims"] if c["status"] == "ok"]
-    slots_txt = "\n".join("%d. `%s` — %s" % (i + 1, s, tpl["slots"][s]["sees"]) for i, s in enumerate(story))
+    facts = scene_facts(spec or {})
+    slots_txt = "\n".join("%d. `%s` — %s" % (i + 1, s, tpl["slots"][s]["sees"].format_map(facts)) for i, s in enumerate(story))
     lo, hi = FORMATS[fmt]["words"]
     system = [{"type": "text", "text": PROMPT.read_text(encoding="utf-8").replace("{slots}", slots_txt)
                .replace("{min_words}", str(lo)).replace("{max_words}", str(hi)).replace("{phrases}", FORMATS[fmt]["phrases"])
@@ -154,7 +178,7 @@ def gen_script(layer, node, tpl, fmt, story, log_path, feedback=None):
     return llm.parse_json(r["text"]).get("beats", []), r
 
 
-def check_script(layer, node, beats, story, fmt, pack_terms):
+def check_script(layer, node, beats, story, fmt, pack_terms, spec=None):
     errs = []
     claims = {c["id"]: c for c in node["claims"]}
     if [b.get("slot") for b in beats] != story:
@@ -188,6 +212,18 @@ def check_script(layer, node, beats, story, fmt, pack_terms):
                     errs.append("часть %d: утверждения %s нет в узле" % (i + 1, c))
                 elif claims[c]["status"] != "ok":
                     errs.append("часть %d: утверждение %s не проверено (status %s)" % (i + 1, c, claims[c]["status"]))
+    # script vs computed scene: a curve that reads the same on the highlighted beds must not be called discriminating
+    P = (spec or {}).get("panel")
+    if P:
+        same = [c["label"] for c in P["columns"] if c["id"] != P["primary"] and c["id"] not in P["discriminating"]]
+        for i, b in enumerate(beats):
+            # clause by clause: «Диаметр тоже разный, а нейтронные у обоих средние» is correct
+            for cl in re.split(r"(?<=[.!?…])\s+|,\s*|;\s*|\s+—\s+|\s+а\s+|\s+но\s+", b.get("text", "")):
+                low = cl.lower()
+                if re.search(r"различ|разн|отлич", low) and not re.search(r"\bнет\b|\bне\b|одинаков|у обоих|так же|то же", low):
+                    for lab in same:
+                        if lab.lower()[:5] in low:
+                            errs.append("часть %d: «%s» по расчёту таблицы у подсвеченных пластов одинакова — не называй её различающей" % (i + 1, lab))
     lo, hi = FORMATS[fmt]["words"]
     if not (lo * 0.85 <= total <= hi * 1.1):
         errs.append("всего %d слов, нужно %d–%d: %s" % (total, lo, hi, "добавь в каждую часть ещё одну фразу из утверждений"
@@ -426,25 +462,32 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
     nh = node_hash(node)
     sp = out / "script.json"
     saved = json.loads(sp.read_text(encoding="utf-8")) if sp.exists() else None
+    rej = out / "script_rejected.json"
+    if not saved and rej.exists() and not new_script:
+        # a script rejected by an earlier (stricter or buggy) check is re-validated before paying for a new one
+        r0 = json.loads(rej.read_text(encoding="utf-8"))
+        if r0.get("node_hash", nh) == nh and [b.get("slot") for b in r0.get("beats", [])] == story:
+            saved = {"node_hash": nh, "story": story, "beats": r0["beats"], "cost_usd": r0.get("cost_usd", 0)}
     if saved and saved.get("node_hash") == nh and saved.get("story") == story and not new_script:
         beats, cost = saved["beats"], saved.get("cost_usd", 0)
-        errs = check_script(layer, node, beats, story, fmt, pack_terms)
+        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec)
         log("script reused (node facts unchanged)" if not errs else "saved script fails checks now: regenerating")
         if errs:
             saved = None
     if not saved or saved.get("node_hash") != nh or saved.get("story") != story or new_script:
         beats, cost, errs = None, 0, ["new"]
     if errs:
-        beats, r = gen_script(layer, node, tpl, fmt, story, log_path)
+        beats, r = gen_script(layer, node, tpl, fmt, story, log_path, spec=spec)
         cost = r["cost_usd_original"] or 0  # what the script cost when it was generated (rebuilds from cache are $0)
-        errs = check_script(layer, node, beats, story, fmt, pack_terms)
+        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec)
     if errs:
         log("script rejected (%d issues), one repair attempt" % len(errs))
-        beats, r = gen_script(layer, node, tpl, fmt, story, log_path, feedback=errs)
+        beats, r = gen_script(layer, node, tpl, fmt, story, log_path, feedback=errs, spec=spec)
         cost += r["cost_usd_original"] or 0
-        errs = check_script(layer, node, beats, story, fmt, pack_terms)
+        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec)
     if errs:
-        (out / "script_rejected.json").write_text(json.dumps({"beats": beats, "errors": errs}, ensure_ascii=False, indent=1), encoding="utf-8")
+        (out / "script_rejected.json").write_text(json.dumps({"node_hash": nh, "cost_usd": cost, "beats": beats, "errors": errs},
+                                                             ensure_ascii=False, indent=1), encoding="utf-8")
         raise SystemExit("сценарий не прошёл проверку:\n- " + "\n- ".join(errs))
     sp.write_text(json.dumps({"node_id": node["id"], "node_hash": nh, "story": story, "cost_usd": cost, "beats": beats},
                              ensure_ascii=False, indent=1), encoding="utf-8")
