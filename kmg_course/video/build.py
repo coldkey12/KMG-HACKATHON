@@ -133,6 +133,15 @@ def cutoff_case(node, tpl):
     text = node_text(node)
     neg = bool(re.search(tpl["negative_match"], text)) and not re.search(tpl["positive_override"], text)
     prop = next((p["label"] for p in tpl["properties"] if re.search(p["match"], text)), tpl["properties"][-1]["label"])
+    # which method the node is about: exactly one named → its legend colour and its physical sign (template data);
+    # several or none → a neutral, unnamed curve and the sign from the node's wording
+    from .coverage import methods_named
+    found = methods_named(tpl, text)
+    curve = found[0] if len(found) == 1 and found[0] in (tpl.get("curve_sign") or {}) else None  # no known sign → unnamed curve
+    sign_src = "текст узла"
+    if curve and curve in (tpl.get("curve_sign") or {}):
+        neg = tpl["curve_sign"][curve] < 0
+        sign_src = "физика метода %s" % curve
     sgn = -1 if neg else 1
 
     def noise(k):  # deterministic pseudo-random in [-1, 1]
@@ -157,9 +166,8 @@ def cutoff_case(node, tpl):
         return [i for i, b in enumerate(beds) if (b["x"] >= xc if slope > 0 else b["x"] <= xc)]
     k0, k1 = P["log_kstar"], P["log_kstar"] + P["log_kstar_shift"]
     c0, c1 = coll(xcut(k0)), coll(xcut(k1))
-    curve = next((c["curve"] for c in (tpl.get("legend_keys") or {}).get("curve_by_text", []) if re.search(c["match"], text)), None)
     side = "справа от линии — где показание кривой больше" if slope > 0 else "слева от линии — где показание кривой меньше"
-    return {"negative": neg, "property": prop, "curve": curve, "points": [[round(x, 4), round(y, 4)] for x, y in zip(xs, ys)],
+    return {"negative": neg, "sign_source": sign_src, "property": prop, "curve": curve, "points": [[round(x, 4), round(y, 4)] for x, y in zip(xs, ys)],
             "fit": {"slope": round(slope, 6), "intercept": round(icpt, 6), "r2": round(r2, 4)},
             "log_kstar": [k0, k1], "x_cut": [round(xcut(k0), 4), round(xcut(k1), 4)], "collectors": [c0, c1],
             "facts": {"property": prop, "side": side, "n_beds": len(beds), "n_coll": len(c0), "n_coll_alt": len(c1),
@@ -250,8 +258,17 @@ def scene_facts(spec):
 def doubtful_claims(layer, node):
     """Claims whose source unit has an OCR typo the layer marks as needing a scan check (e.g. «≪» read as «≤»):
     the voice must not read them aloud until the scan is checked, whatever their status."""
-    units = {t["unit_id"] for t in layer.get("typos", []) if t.get("needs_scan_check")}
-    return {c["id"] for c in node["claims"] if c.get("unit_id") in units}
+    def norm(x):
+        return re.sub(r"\s+", "", x or "")
+    frags = []
+    for t in layer.get("typos", []):
+        if not t.get("needs_scan_check"):
+            continue
+        # «ρp < ρm ≥ ρn (колонка …)» → the fragment itself; parentheses of formulas («(4 \kappa t)») stay
+        f = norm(re.sub(r"\([^)]*[А-Яа-яЁё][^)]*\)", "", t.get("original") or ""))
+        if len(f) >= 8:  # short fragments («То же», «\leq 1») would match half the chapter
+            frags.append(f)
+    return {c["id"] for c in node["claims"] if any(f in norm(c.get("quote")) for f in frags)}
 
 
 def gen_script(layer, node, tpl, fmt, story, log_path, feedback=None, spec=None):
@@ -276,7 +293,56 @@ def gen_script(layer, node, tpl, fmt, story, log_path, feedback=None, spec=None)
     return llm.parse_json(r["text"]).get("beats", []), r
 
 
-def check_script(layer, node, beats, story, fmt, pack_terms, spec=None):
+def _stems(text, min_len=6):
+    return {w[:6] for w in re.findall(r"[а-яё]{%d,}" % min_len, (text or "").lower().replace("ё", "е"))}
+
+
+# general Russian words that carry no fact of their own (language, not domain knowledge)
+GENERIC_STEMS = {"относя", "оценив", "являет", "называ", "получа", "исполь", "показы", "означа", "опреде", "следов",
+                 "которы", "наибол", "различ", "одинак", "поэтом", "значит", "примен", "рассма", "служит"}
+
+
+def grounding_errors(node, beats, spec, pack=None):
+    """«Голос не говорит больше источника»: a fact part (reveal/explain/data) that uses a specific word of another
+    claim of the node (a word found in at most two claims) must cite that claim — unless the word is what the scene
+    itself shows (labels, computed facts, table rows). Catches «the right words, the wrong claim id»."""
+    ok = [c for c in node["claims"] if c["status"] == "ok"]
+    df = {}
+    for c in ok:
+        for s in _stems(c["text"]):
+            df[s] = df.get(s, 0) + 1
+    vocab = set()
+
+    def walk(x):
+        if isinstance(x, str):
+            vocab.update(_stems(x))
+        elif isinstance(x, dict):
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v)
+    for k in ("labels", "case", "panel", "objects"):
+        walk((spec or {}).get(k))
+    vocab |= _stems(node.get("title_novice")) | _stems(node.get("title_book")) | GENERIC_STEMS
+    for t in ((pack or {}).get("glossary") or {}).get("terms", []):  # terms of the domain glossary are not «facts of a claim»
+        vocab |= _stems(t.get("ru")) | _stems(" ".join(t.get("aliases") or []))
+    errs = []
+    for i, b in enumerate(beats):
+        if b.get("slot") not in ("reveal", "explain", "data"):
+            continue
+        cited = set()
+        for cid in b.get("claim_ids") or []:
+            cited |= _stems(next((c["text"] for c in ok if c["id"] == cid), ""))
+        for s in sorted(_stems(b.get("text"), 7) - cited - vocab):
+            if 0 < df.get(s, 0) <= 2:
+                src = [c["id"] for c in ok if s in _stems(c["text"])]
+                errs.append("часть %d (%s): слово «%s…» есть в утверждении %s, но оно не указано в claim_ids — добавь его или убери слово"
+                            % (i + 1, b.get("slot"), s, ", ".join(src)))
+    return errs
+
+
+def check_script(layer, node, beats, story, fmt, pack_terms, spec=None, pack=None):
     errs = []
     claims = {c["id"]: c for c in node["claims"]}
     doubtful = doubtful_claims(layer, node)
@@ -338,6 +404,7 @@ def check_script(layer, node, beats, story, fmt, pack_terms, spec=None):
                 if bed and len(said) == 1 and said[0] != K["dirs"][bed]:
                     errs.append("часть %d: у пласта %s в сцене по расчёту «%s», а голос говорит другое" % (
                         i + 1, "с водой" if bed == "water" else "с нефтью", K["dir_words"][bed].split(":")[0]))
+    errs += grounding_errors(node, beats, spec, pack)
     lo, hi = FORMATS[fmt]["words"]
     if not (lo * 0.85 <= total <= hi * 1.1):
         errs.append("всего %d слов, нужно %d–%d: %s" % (total, lo, hi, "добавь в каждую часть ещё одну фразу из утверждений"
@@ -594,19 +661,18 @@ def passport(spec, node, tpl, timeline, meta, path_md, path_json, pack=None):
     pj = dict(official)
     pj.update({"schema": "kmg-video-passport/0.2.0 (passport.schema.json организаторов + поля команды)", "node": {"id": node["id"], "title": node["title_novice"], "title_book": node["title_book"],
                                                           "difficulty": node.get("difficulty"), "pages": sorted({c["page"] for c in node["claims"]})},
-          "format": spec["format"], "duration_s": timeline["duration"], "script": [
+          "format": spec["format"], "duration_s": timeline["duration"], "beats": [
               {k: b[k] for k in ("id", "slot", "start", "end", "voice_start", "voice_end", "text", "on_screen", "claim_ids")} for b in beats],
-          "sources": [{"claim_id": c, "page": claims[c]["page"], "quote": claims[c]["quote"], "kind": claims[c]["kind"]}
-                      for c in sorted({c for b in beats for c in b["claim_ids"]})],
           "scene_spec_data": spec, "questions": {
               "prediction": [b["text"] for b in beats if b["slot"] == "prediction"],
               "transfer": [b["text"] for b in beats if b["slot"] == "transfer"]},
-          "data_it_bridge": {"data_meaning": {k: [t["text"] for t in (node.get("data_meaning") or {}).get(k, [])] for k in ("inputs", "outputs", "breaks")},
+          "data_it_bridge_detail": {"data_meaning": {k: [t["text"] for t in (node.get("data_meaning") or {}).get(k, [])] for k in ("inputs", "outputs", "breaks")},
                              "it_analogy": ((node.get("it_analogy") or {}).get("analogy") or {}).get("text"),
                              "it_analogy_breaks": ((node.get("it_analogy") or {}).get("breaks_where") or {}).get("text"),
                              "note": "аналогия — гипотеза модели, в голос не идёт"},
           "measurements": dict(meta, words=words, wpm=round(words / max(1e-6, speech) * 60, 1)),
           })
+    pj.update(official)  # the organizers' fields always win over the team's extra fields
     Path(path_json).write_text(json.dumps(pj, ensure_ascii=False, indent=1), encoding="utf-8")
     errs = validate_passport(pj)
     if errs:
@@ -814,7 +880,7 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
             saved = {"node_hash": nh, "story": story, "beats": r0["beats"], "cost_usd": r0.get("cost_usd", 0)}
     if saved and saved.get("node_hash") == nh and saved.get("story") == story and not new_script:
         beats, cost = saved["beats"], saved.get("cost_usd", 0)
-        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec)
+        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec, pack)
         log("script reused (node facts unchanged)" if not errs else "saved script fails checks now: regenerating")
         if errs:
             saved = None
@@ -823,12 +889,12 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
     if errs:
         beats, r = gen_script(layer, node, tpl, fmt, story, log_path, spec=spec)
         cost = r["cost_usd_original"] or 0  # what the script cost when it was generated (rebuilds from cache are $0)
-        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec)
+        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec, pack)
     if errs:
         log("script rejected (%d issues), one repair attempt" % len(errs))
         beats, r = gen_script(layer, node, tpl, fmt, story, log_path, feedback=errs, spec=spec)
         cost += r["cost_usd_original"] or 0
-        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec)
+        errs = check_script(layer, node, beats, story, fmt, pack_terms, spec, pack)
     if errs:
         (out / "script_rejected.json").write_text(json.dumps({"node_hash": nh, "cost_usd": cost, "beats": beats, "errors": errs},
                                                              ensure_ascii=False, indent=1), encoding="utf-8")

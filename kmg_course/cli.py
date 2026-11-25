@@ -287,7 +287,16 @@ def main(argv=None):
     pv.add_argument("--format", choices=["short", "long"], default="short")
     pv.add_argument("--template", default=None)
     pv.add_argument("--out", default=None)
+    rf = sub.add_parser("refresh", help="после правки факта в слое: пересобрать ролики главы, чьи факты изменились, и курс")
+    rf.add_argument("layer")
+    rf.add_argument("--all", action="store_true", help="пересобрать все ролики главы (например, после правки шаблона)")
+    rf.add_argument("--no-course", action="store_true", help="только ролики, без сборки курса")
     args = ap.parse_args(argv)
+    if args.cmd == "refresh":
+        from .video import refresh
+        res = refresh.run(args.layer, rebuild_all=args.all, course=not args.no_course)
+        print(json.dumps(res, ensure_ascii=False))
+        return
     if args.cmd == "preview":
         from .video import build as vb
         out, rep = vb.preview(args.layer, args.node_id, args.format, args.template, args.out)

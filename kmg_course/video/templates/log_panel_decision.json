@@ -1,7 +1,7 @@
 {
   "id": "log_panel_decision",
   "frame_class": "A",
-  "applies": {"needs_table": true, "needs_ok_table_claims": 4},
+  "applies": {"needs_table": true, "needs_ok_table_claims": 4, "table_match": {"rows": 2, "columns": 2}},
   "layout": "wide",
   "legend_keys": {"lith": {"clay": "shale", "sand": "sand", "limestone": "limestone", "anhydrite": "anhydrite", "salt": "salt"},
                   "fluid": {"water": "water", "oil": "oil", "gas": "gas", "fresh": "water"}},

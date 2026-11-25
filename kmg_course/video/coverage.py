@@ -21,6 +21,15 @@ def registry():
     return out
 
 
+def methods_named(tpl, text):
+    """Legend curve keys of the methods a node names (template data legend_keys.curve_by_text), in order."""
+    found = []
+    for c in (tpl.get("legend_keys") or {}).get("curve_by_text", []):
+        if re.search(c["match"], text) and c["curve"] not in found:
+            found.append(c["curve"])
+    return found
+
+
 def applies(tpl, node):
     """-> (ok: bool, why: str)"""
     f = node.get("format") or {}
@@ -34,6 +43,13 @@ def applies(tpl, node):
         tab = {u for t in node.get("tables", []) for u in t["unit_ids"]}
         if sum(1 for c in node["claims"] if c["status"] == "ok" and c["unit_id"] in tab) < rule["needs_ok_table_claims"]:
             return False, "мало проверенных утверждений по строкам таблицы"
+    if rule.get("table_match"):  # the table must be the kind the template draws: its rows and log columns are found
+        tab = {u for t in node.get("tables", []) for u in t["unit_ids"]}
+        txt = [c["text"] + " " + (c.get("quote") or "") for c in node["claims"] if c["status"] == "ok" and c["unit_id"] in tab]
+        rows = {r["name"] for r in tpl.get("row_names", []) if any(re.search(r["match"], x, re.I | re.M) for x in txt)}
+        cols = {c["id"] for c in tpl.get("table_columns", []) if any(re.search(c["match"], x) for x in txt)}
+        if len(rows) < rule["table_match"]["rows"] or len(cols) < rule["table_match"]["columns"]:
+            return False, "таблица узла не похожа на таблицу признаков «порода × метод» (строк шаблона: %d, колонок-методов: %d)" % (len(rows), len(cols))
     types = set(rule.get("difficulty", []))
     if types and not ({prim, sec} & types):
         return False, "тип трудности %s/%s не из %s" % (prim, sec, "/".join(sorted(types)))
@@ -49,6 +65,10 @@ def applies(tpl, node):
     for t in rule.get("not_terms", []):  # another mechanism (e.g. another method) the scene would misdraw
         if sum(1 for x in ok if re.search(t["match"], x)) > t.get("max_ok_claims", 0):
             return False, "утверждения про «%s» — сцена этого не рисует" % t["match"]
+    if rule.get("method_sign_known"):  # one named method whose link to the property the template cannot draw
+        m = methods_named(tpl, " ".join(ok))
+        if len(m) == 1 and m[0] not in (tpl.get("curve_sign") or {}):
+            return False, "единственный метод узла (%s) не связан со свойством коллектора однозначным знаком — сцена его не рисует" % m[0]
     return True, "подходит"
 
 

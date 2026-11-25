@@ -11,5 +11,7 @@ tts:
   fallback: [{provider: elevenlabs, voice: multilingual_v2, external: true, when: "есть ELEVENLABS_API_KEY"},
              {provider: microsoft-edge-online, voice: ru-RU-DmitryNeural, external: true}]
 render:
-  browser: {tool: "Microsoft Edge (headless, Playwright)", external: false}
+  browser: {tool: "Chromium-семейство без окна через Playwright 1.65 (Chromium Playwright / Google Chrome / Microsoft Edge — что найдётся; KMG_BROWSER)", external: false}
   encoder: {tool: "FFmpeg (libx264, AAC, loudnorm −16 LUFS)", external: false}
+asr:
+  check: {tool: "faster-whisper 1.2.1, модель small (CPU, int8)", external: false, note: "модель скачивается один раз с Hugging Face; аудио не уходит наружу"}

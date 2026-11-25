@@ -33,8 +33,14 @@ def check(audio_path, spoken_texts, terms=(), log=print):
         return {"status": "не выполнялась: не установлен пакет faster-whisper (pip install faster-whisper)"}
     name = os.environ.get("KMG_ASR_MODEL", "small")
     try:
+        import numpy as np
+        from .env import ffbin
+        import subprocess
+        # decode with FFmpeg (already a dependency) instead of the PyAV path inside faster-whisper: fewer version clashes
+        raw = subprocess.run([ffbin("ffmpeg"), "-v", "error", "-i", str(audio_path), "-ac", "1", "-ar", "16000", "-f", "f32le", "-"],
+                             capture_output=True, check=True).stdout
         model = WhisperModel(name, device="cpu", compute_type="int8")
-        segs, _ = model.transcribe(str(audio_path), language="ru", beam_size=5, vad_filter=False)
+        segs, _ = model.transcribe(np.frombuffer(raw, dtype=np.float32), language="ru", beam_size=5, vad_filter=False)
         hyp = " ".join(s.text for s in segs)
     except Exception as e:  # model download / decode failure: report, do not break the build
         return {"status": "не выполнялась: %s" % str(e).splitlines()[0][:200], "model": "faster-whisper " + name}

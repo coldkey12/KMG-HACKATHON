@@ -1,3 +1,8 @@
 anthropic==0.125.0
 jsonschema==4.25.1
 PyYAML==6.0.3
+# видео (агент B): кадры сцен в браузере, голос Microsoft, проверка дорожки распознаванием речи
+playwright==1.65.2; python_version >= "3.10"
+playwright==1.60.0; python_version < "3.10"
+edge-tts==7.3.1
+faster-whisper==1.2.1
