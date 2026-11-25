@@ -10,6 +10,7 @@
   check  <layer.json>               — машинные проверки слоя, отчёт рядом (checks.md)
   check-text <layer.json> <items.json> — проверки текста курса/заданий/сценариев агента B
   review <package.json>             — модуль проверки чужого пакета: замечания со страницей и исправлением
+  review-official <package.json> [--out ответ.json] — модуль проверки в формате организаторов (кадры смотрит моделью)
   review-tasks <tasks.json> <chapter.yaml> — проверка ключей заданий B модулем review (по умолчанию Haiku: KMG_REVIEW_MODEL)
   review-eval <remarks.json> <key.json> — замер на наборе с закладками (находки, ложные тревоги)
   bookmarks <layer.json> <out_dir>  — собрать свой набор с закладками из проверенного слоя
@@ -40,6 +41,7 @@ def main(argv=None):
     sub.add_parser("manifest")
     sub.add_parser("spend")
     e = sub.add_parser("review"); e.add_argument("package"); e.add_argument("--out", default=None)
+    ro = sub.add_parser("review-official"); ro.add_argument("package"); ro.add_argument("--out", default=None)
     rt = sub.add_parser("review-tasks"); rt.add_argument("tasks"); rt.add_argument("chapter")
     f = sub.add_parser("review-eval"); f.add_argument("remarks"); f.add_argument("key")
     g = sub.add_parser("bookmarks"); g.add_argument("layer"); g.add_argument("out_dir")
@@ -183,3 +185,8 @@ def main(argv=None):
     if args.cmd == "spend":
         from .spend import report
         print(report())
+
+    if args.cmd == "review-official":
+        from .review_official import review as rv
+        out, dropped = rv(args.package, args.out)
+        print("remarks:", len(out["remarks"]), "dropped:", len(dropped))

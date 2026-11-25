@@ -34,10 +34,18 @@ def cost_usd(model, usage):
                   + usage.get("cache_read_input_tokens", 0) * p["cache_read"]) / 1e6, 6)
 
 
-def _anthropic(cfg, system, messages):
+def _anthropic(cfg, system, messages, images=None):
     import anthropic
     load_env()
     client = anthropic.Anthropic(max_retries=4, timeout=900)
+    if images:
+        import base64
+        blocks = []
+        for p in images:
+            with open(p, "rb") as f:
+                blocks.append({"type": "text", "text": "Файл: %s" % os.path.basename(p)})
+                blocks.append({"type": "image", "source": {"type": "base64", "media_type": "image/png", "data": base64.b64encode(f.read()).decode()}})
+        messages = [{"role": "user", "content": blocks + [{"type": "text", "text": messages[-1]["content"]}]}]
     kwargs = dict(model=cfg["model"], max_tokens=cfg["max_tokens"], system=system, messages=messages)
     if cfg.get("effort"):
         kwargs["output_config"] = {"effort": cfg["effort"]}
@@ -56,7 +64,7 @@ def _anthropic(cfg, system, messages):
     return text, usage, msg.stop_reason
 
 
-def _claude_code(cfg, system, messages):
+def _claude_code(cfg, system, messages, images=None):
     """Same model through Claude Code headless mode (`claude -p`): billed to the user's Claude
     subscription, not to the API key. No tools, no MCP, no session files, isolated cwd."""
     import subprocess
@@ -68,8 +76,13 @@ def _claude_code(cfg, system, messages):
         sp = os.path.join(d, "system.txt")
         with open(sp, "w", encoding="utf-8") as f:
             f.write(sys_text)
+        tools = ["--tools", ""]
+        if images:  # the model looks at the PNGs with the Read tool only; nothing else is allowed
+            dirs = sorted({os.path.dirname(os.path.abspath(p)) for p in images})
+            tools = ["--tools", "Read", "--allowedTools", "Read"] + sum((["--add-dir", d] for d in dirs), [])
+            user = "Сначала открой инструментом Read и рассмотри изображения: %s\n\n%s" % (", ".join(os.path.abspath(p) for p in images), user)
         cmd = [os.environ.get("KMG_CLAUDE_BIN", "claude"), "-p", "--model", cfg["model"], "--output-format", "json",
-               "--tools", "", "--system-prompt-file", sp, "--no-session-persistence", "--strict-mcp-config"]
+               "--system-prompt-file", sp, "--no-session-persistence", "--strict-mcp-config"] + tools
         if cfg.get("effort"):
             cmd += ["--effort", cfg["effort"]]
         try:
@@ -98,7 +111,7 @@ def transport():
     return os.environ.get("KMG_TRANSPORT") or models().get("transport", "api")
 
 
-def call(role, system, user, log_path=None, tag=""):
+def call(role, system, user, log_path=None, tag="", images=None):
     """system: list of Anthropic-style text blocks (may carry cache_control); user: str.
     Returns dict(text, usage, cost_usd, cached, model)."""
     cfg = dict(models()["roles"][role])
@@ -110,6 +123,8 @@ def call(role, system, user, log_path=None, tag=""):
     messages = [{"role": "user", "content": user}]
     payload = {"provider": cfg["provider"], "model": cfg["model"], "effort": cfg.get("effort"),
                "max_tokens": cfg["max_tokens"], "system": system, "messages": messages}
+    if images:
+        payload["images"] = [hashlib.sha256(open(p, "rb").read()).hexdigest() for p in images]
     key = _key(payload)
     cache_dir = CACHE
     if role in (os.environ.get("KMG_NOCACHE_ROLES") or "").split(","):
@@ -126,7 +141,7 @@ def call(role, system, user, log_path=None, tag=""):
         last = None
         for attempt in range(3):  # subscription limits / transient errors: back off, then let the caller isolate the failure
             try:
-                text, usage, stop = fn(cfg, system, messages)
+                text, usage, stop = fn(cfg, system, messages, images) if images else fn(cfg, system, messages)
                 break
             except LLMError as e:
                 last = e
