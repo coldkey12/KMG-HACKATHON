@@ -1,0 +1,29 @@
+{
+ "tasks": {
+  "schema": "kmg-tasks/0.1.0",
+  "chapter": "lat-v",
+  "generated": 21,
+  "kept": 21,
+  "rejected": [],
+  "types": [
+   "gap",
+   "multi",
+   "order",
+   "single"
+  ],
+  "meets_tz": true,
+  "cost_usd": 0.0,
+  "cost_usd_original": 0.012189,
+  "cached": true,
+  "model": "claude-haiku-5-5"
+ },
+ "schema": "kmg-course-report/0.1.0",
+ "chapter": "lat-v",
+ "layer": "out/lat-v-sample/layer.json",
+ "steps": 8,
+ "parts": 3,
+ "size_mb": 0.29,
+ "size_ok": true,
+ "steps_without_illustration": [],
+ "seconds": 0.1
+}

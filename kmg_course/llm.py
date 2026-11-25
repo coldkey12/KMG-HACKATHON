@@ -1,0 +1,66 @@
+"""Model calls for agent B, reusing agent A's provider, disk cache and price table.
+
+Only the role table differs: it lives in kmg_course/models.yaml (agent B's manifest).
+A repeated build with unchanged input is served from cache/llm/ and costs $0.
+"""
+import json
+import os
+import time
+from pathlib import Path
+
+import yaml
+
+from kmg import llm as base
+
+HERE = Path(__file__).resolve().parent
+
+
+def roles():
+    with open(HERE / "models.yaml", encoding="utf-8") as f:
+        return yaml.safe_load(f)["roles"]
+
+
+def call(role, system, user, log_path=None, tag=""):
+    cfg = dict(roles()[role])
+    for k in ("model", "effort"):
+        v = os.environ.get("KMG_%s_%s" % (role.upper(), k.upper()))
+        if v:
+            cfg[k] = v
+    messages = [{"role": "user", "content": user}]
+    payload = {"provider": cfg["provider"], "model": cfg["model"], "effort": cfg.get("effort"),
+               "max_tokens": cfg["max_tokens"], "system": system, "messages": messages}
+    key = base._key(payload)
+    base.CACHE.mkdir(parents=True, exist_ok=True)
+    cpath = base.CACHE / (key + ".json")
+    t0 = time.time()
+    if cpath.exists():
+        rec = json.loads(cpath.read_text(encoding="utf-8"))
+        cached = True
+    else:
+        text, usage, stop = base.PROVIDERS[cfg["provider"]](cfg, system, messages)
+        if stop == "max_tokens":
+            if log_path:  # money was spent even though the output is unusable: record it
+                Path(log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(log_path, "a", encoding="utf-8") as f:
+                    f.write(json.dumps({"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "role": role, "tag": tag,
+                                        "model": cfg["model"], "cached": False, "usage": usage, "truncated": True,
+                                        "cost_usd": base.cost_usd(cfg["model"], usage)}, ensure_ascii=False) + "\n")
+            raise base.LLMError("output truncated at max_tokens (%s) for %s" % (cfg["max_tokens"], tag))
+        rec = {"key": key, "role": role, "model": cfg["model"], "effort": cfg.get("effort"), "text": text,
+               "usage": usage, "stop_reason": stop, "cost_usd": base.cost_usd(cfg["model"], usage),
+               "created": time.strftime("%Y-%m-%dT%H:%M:%S")}
+        cpath.write_text(json.dumps(rec, ensure_ascii=False), encoding="utf-8")
+        cached = False
+    out = {"text": rec["text"], "usage": rec["usage"], "cost_usd": 0.0 if cached else rec["cost_usd"],
+           "cost_usd_original": rec["cost_usd"], "cached": cached, "model": rec["model"]}
+    if log_path:
+        Path(log_path).parent.mkdir(parents=True, exist_ok=True)
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps({"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "role": role, "tag": tag,
+                                "model": rec["model"], "cached": cached, "usage": rec["usage"],
+                                "cost_usd": out["cost_usd"], "cost_usd_original": rec["cost_usd"],
+                                "seconds": round(time.time() - t0, 1), "key": key}, ensure_ascii=False) + "\n")
+    return out
+
+
+parse_json = base.parse_json

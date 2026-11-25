@@ -1,0 +1,6 @@
+# Манифест моделей агента B. Заменить модель = поменять строку здесь; код сборщика не меняется.
+# external: уходят ли данные во внешний сервис. Цены берутся из config/models.yaml (общий манифест агента A).
+version: 0.1.0
+roles:
+  tasks: {provider: anthropic, model: claude-haiku-5-5, effort: medium, max_tokens: 64000, external: true,
+          purpose: "задания по утверждениям узлов (ключи затем проверяются без модели)"}
