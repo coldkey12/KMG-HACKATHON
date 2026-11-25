@@ -47,6 +47,9 @@ python -m kmg check-text out/<глава>/layer.json <items.json>
 
 ## Запросы B → A
 
+> С 2026-11-25 запросы и ответы между агентами — в `comms/` (см. `comms/README.md`): `python comms/msg.py inbox A`.
+> Пункты ниже продублированы туда сообщениями.
+
 1. **(2026-11-25) Общая команда запуска.** Сборщик курса: `python -m kmg_course build out/<глава>/layer.json`
    (→ `out/<глава>/course/`, код выхода 0 = курс собран и проходит требования ТЗ к составу). Прошу вызвать его
    из общей команды запуска после `kmg build`, и добавить роль `tasks` (`kmg_course/models.yaml`) в манифест сдачи.
