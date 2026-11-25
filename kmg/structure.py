@@ -33,7 +33,9 @@ def render_units(units):
 def render_pack(pack):
     lines = ["ДОМЕННЫЙ ПАКЕТ: %s" % pack["name"], "", "Типы трудности (коды):"]
     for code, t in pack["difficulty_types"]["types"].items():
-        lines.append("- %s — %s: %s" % (code, t["name"], t["description"]))
+        lines.append("- %s — %s: %s%s" % (code, t["name"], t["description"], ("; ведущий формат: %s" % t["leading_format"]) if t.get("leading_format") else ""))
+    for r in pack["difficulty_types"].get("rules", []):
+        lines.append("  · " + r)
     lines += ["", "Список заблуждений (pack_id):"]
     for m in pack["misconceptions"]["items"]:
         lines.append("- %s: %s" % (m["id"], m["text"]))
@@ -849,5 +851,11 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=8):
                         "claims": sum(len(n["claims"]) for n in nodes),
                         "manual_minutes": ov["manual_minutes"]}
     (out_dir / "layer.json").write_text(json.dumps(layer, ensure_ascii=False, indent=1), encoding="utf-8")
+    from .export_official import export as export_official
+    off = export_official(out_dir / "layer.json")
+    res["summary"]["official"] = {"errors": sum(len(v) for v in off.values()), "warnings": 0}
+    res["issues"] += [{"check": "official", "level": "error", "where": k, "msg": m} for k, v in off.items() for m in v]
+    if any(off.values()):
+        res["passed"] = False
     (out_dir / "checks.md").write_text(checks.report_md(res, "Проверки слоя %s" % chap_id), encoding="utf-8")
     return layer, res

@@ -3,17 +3,32 @@
 # Критерии видеоёмкости — из ТЗ: изменение во времени, невидимое становится видимым, скачок масштаба,
 # контринтуитивность, причина и следствие. Модель ставит флаги щедро, поэтому видео — только при сильном сигнале
 # (калибровка на Латышовой 2026-11-25: без порогов 47 из 69 узлов уходили в видео).
-version: 0.2.0
+version: 0.3.0
 rules:
-  # порядок важен: первое сработавшее правило
-  - {if: "data_decision and score >= 3 and (has_figures or has_examples)", format: long_video, why: "решение на данных по рисунку/примеру и ≥3 критерия видеоёмкости → разбор 16:9 с синхронными видами"}
-  - {if: "score >= 3 and (time_change or invisible_visible) and not (has_formulas or has_tables)", format: short, why: "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16"}
-  - {if: "score >= 2 and (time_change or invisible_visible or has_figures or has_formulas)", format: interactive, why: "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам)"}
-  - {if: "data_decision or has_examples", format: data_practicum, why: "правило на данных или разобранные примеры с числами → практикум на данных"}
-  - {if: "has_formulas", format: interactive, why: "формулы показываются интерактивом с расшифровкой переменных"}
-  - {if: "n_terms >= 3 and n_claims <= 6", format: cards, why: "узел в основном из определений → карточки"}
-  - {if: "True", format: text, why: "нет сильного критерия видеоёмкости → текст шага"}
-
+- if: data_decision and score >= 3 and (has_figures or has_examples)
+  format: long_video
+  why: решение на данных по рисунку/примеру и ≥3 критерия видеоёмкости → разбор 16:9 с синхронными видами
+- if: primary in ('М','В') and score >= 4 and time_change
+  format: long_video
+  why: 'механизм/время: цепочка событий длиннее одного шортса → длинное видео (правило типов М и В)'
+- if: score >= 3 and (time_change or invisible_visible) and not (has_formulas or has_tables) and primary in ('М','В','И','Р','Ф')
+  format: short
+  why: ≥3 критерия, есть движение или невидимое, один механизм → шортс 9:16 (для Ф — смысл членов, не вывод)
+- if: score >= 2 and (time_change or invisible_visible or has_figures or has_formulas)
+  format: interactive
+  why: 2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив
+- if: primary == 'Пр' or data_decision or has_examples
+  format: data_practicum
+  why: процедура / правило на данных / примеры с числами → практикум на данных (ведущий формат типа Пр)
+- if: primary in ('Ф','П','Н') or has_formulas
+  format: interactive
+  why: формализм, пространство или неопределённость → интерактив (ведущий формат типа)
+- if: primary == 'Р' or (n_terms >= 3 and n_claims <= 6)
+  format: cards
+  why: распознавание или узел из определений → карточки (ведущий формат типа Р)
+- if: 'True'
+  format: text
+  why: нет сильного критерия видеоёмкости → текст шага
 scene_templates:
 - id: tool_in_well
   when: primary in ('И',) and invisible_visible

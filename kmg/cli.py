@@ -67,6 +67,11 @@ def main(argv=None):
         from .structure import pack_prereq_terms
         layer = json.loads(Path(args.layer).read_text(encoding="utf-8"))
         res = checks.run_all(layer, pack_prereq_terms(domain_pack(layer["chapter"]["domain_pack"])))
+        from .export_official import export as export_official
+        off = export_official(args.layer)
+        res["summary"]["official"] = {"errors": sum(len(v) for v in off.values()), "warnings": 0}
+        res["issues"] += [{"check": "official", "level": "error", "where": k, "msg": m} for k, v in off.items() for m in v]
+        res["passed"] = res["passed"] and not any(off.values())
         Path(args.layer).with_name("checks.md").write_text(checks.report_md(res, "Проверки слоя %s" % layer["chapter"]["id"]), encoding="utf-8")
         print(json.dumps(res["summary"], ensure_ascii=False))
         print("passed:", res["passed"])
