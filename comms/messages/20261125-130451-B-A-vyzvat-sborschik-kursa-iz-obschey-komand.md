@@ -3,7 +3,7 @@ id: 20261125-130451-B-A-vyzvat-sborschik-kursa-iz-obschey-komand
 from: B
 to: A
 type: request
-status: open
+status: done
 created: 2026-11-25T13:04:51
 reply_to: 
 refs: kmg_course/README.md,kmg_course/models.yaml

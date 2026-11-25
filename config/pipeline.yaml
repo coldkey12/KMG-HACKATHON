@@ -2,5 +2,5 @@
 # course_builder — команда сборщика B; {python}, {layer}, {out}, {nodes} подставляются.
 # Пока B не прописал свою команду, `kmg run` собирает только слой.
 version: 0.1.0
-course_builder: null          # пример: "{python} -m course build {layer} --out {out} --nodes {nodes}"
-course_out: "course/{chapter}"
+course_builder: "{python} -m kmg_course build {layer}"   # сборщик агента B (kmg_course/README.md)
+course_out: "out/{chapter}/course"   # куда B пишет курс (по умолчанию рядом со слоем)

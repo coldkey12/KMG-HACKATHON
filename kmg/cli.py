@@ -4,6 +4,7 @@
   run    <chapter.yaml> [--affected]  — ОДНА КОМАНДА: глава → слой → курс B (если прописан в config/pipeline.yaml)
   build  <chapter.yaml> [--nodes N] — глава → учебный слой (out/<id>/layer.json) + проверки
   metrics                           — сводка метрик по всем главам (out/metrics.md)
+  manifest                          — манифест моделей и инструментов (docs/MANIFEST.md)
   check  <layer.json>               — машинные проверки слоя, отчёт рядом (checks.md)
   check-text <layer.json> <items.json> — проверки текста курса/заданий/сценариев агента B
   review <package.json>             — модуль проверки чужого пакета: замечания со страницей и исправлением
@@ -30,6 +31,7 @@ def main(argv=None):
     c = sub.add_parser("check"); c.add_argument("layer")
     r = sub.add_parser("run"); r.add_argument("chapter"); r.add_argument("--affected", action="store_true", help="пересобрать у B только узлы, затронутые правками overrides")
     sub.add_parser("metrics")
+    sub.add_parser("manifest")
     e = sub.add_parser("review"); e.add_argument("package"); e.add_argument("--out", default=None)
     f = sub.add_parser("review-eval"); f.add_argument("remarks"); f.add_argument("key")
     g = sub.add_parser("bookmarks"); g.add_argument("layer"); g.add_argument("out_dir")
@@ -125,3 +127,7 @@ def main(argv=None):
             print("в конфиге главы нет analysis/analysis_match"); return
         out = kc(args.layer, ROOT / cfg["analysis"]["file"], cfg["analysis"]["match"])
         print("ideas in scope:", out["ideas_in_scope"], "score:", out["score"], "$", out["cost_usd"])
+
+    if args.cmd == "manifest":
+        from .manifest import write as mw
+        print(mw())
