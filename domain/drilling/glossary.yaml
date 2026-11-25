@@ -1,0 +1,9 @@
+version: 0.1.0
+terms:
+  - {id: d-well, ru: "скважина", en: "well", prerequisite: true, def: "Узкий глубокий ствол, пробуренный в земле."}
+  - {id: d-mud, ru: "буровой раствор", en: "drilling mud", aliases: ["промывочная жидкость"], prerequisite: true, def: "Жидкость, которую прокачивают через бурильную колонну: выносит шлам, держит стенки, создаёт противодавление."}
+  - {id: d-bit, ru: "долото", en: "drill bit", prerequisite: true, def: "Инструмент на конце бурильной колонны, разрушающий породу."}
+  - {id: d-cuttings, ru: "шлам", en: "cuttings", prerequisite: true, def: "Обломки породы, выносимые раствором на поверхность."}
+  - {id: d-casing, ru: "обсадная колонна", en: "casing", prerequisite: true, def: "Стальные трубы, закрепляющие стенки скважины."}
+  - {id: d-annulus, ru: "затрубное пространство", en: "annulus", aliases: ["затруб"], prerequisite: true, def: "Кольцевой зазор между колонной и стенкой скважины."}
+  - {id: d-bhp, ru: "забойное давление", en: "bottomhole pressure", prerequisite: false, def: "Давление на забое скважины."}

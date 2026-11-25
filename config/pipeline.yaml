@@ -1,0 +1,6 @@
+# Общая команда запуска: глава → слой (агент A) → курс и медиа (агент B).
+# course_builder — команда сборщика B; {python}, {layer}, {out}, {nodes} подставляются.
+# Пока B не прописал свою команду, `kmg run` собирает только слой.
+version: 0.1.0
+course_builder: null          # пример: "{python} -m course build {layer} --out {out} --nodes {nodes}"
+course_out: "course/{chapter}"

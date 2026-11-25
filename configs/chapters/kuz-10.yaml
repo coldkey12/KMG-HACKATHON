@@ -9,3 +9,6 @@ sections: "гл. 10 §10.1–10.4"
 pages_pdf: [200, 222]
 language: ru
 domain_pack: geology
+analysis:
+  file: "data/raw/organizers/analysis_books/Кузнецов Литология природных резервуаров нефти и газа 2012.md"
+  match: "(Глава|гл\\.)\\s*10\\b|10\\.[1-4]\\b"

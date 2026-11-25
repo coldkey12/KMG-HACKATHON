@@ -111,3 +111,14 @@ def parse_json(text):
     if i < 0 or j < 0:
         raise LLMError("no JSON object in model output")
     return json.loads(s[i:j + 1])
+
+
+def parse_json_or_repair(text, log_path=None, tag=""):
+    """Parse model JSON; on a syntax error ask the 'repair' role to fix syntax only (content preserved)."""
+    try:
+        return parse_json(text), None
+    except (json.JSONDecodeError, LLMError) as e:
+        err = str(e)
+    system = [{"type": "text", "text": "Исправь синтаксис JSON: экранируй кавычки внутри строк, расставь пропущенные запятые и скобки. Содержание не меняй, ничего не добавляй и не удаляй. Верни только исправленный JSON."}]
+    r = call("repair", system, "Ошибка парсера: %s\n\nJSON:\n%s" % (err, text), log_path=log_path, tag="repair:" + tag)
+    return parse_json(r["text"]), r

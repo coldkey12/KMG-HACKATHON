@@ -4,7 +4,8 @@ version: 0.1.0
 roles:
   plan:   {provider: anthropic, model: claude-opus-5-5, effort: high,    max_tokens: 64000, external: true, purpose: "план узлов главы: разбиение единиц, порядок, части"}
   node:   {provider: anthropic, model: claude-haiku-5-5, effort: high,  max_tokens: 64000, external: true, purpose: "заполнение полей узла с цитатами"}
-  repair: {provider: anthropic, model: claude-opus-5-5, effort: low,    max_tokens: 32000, external: true, purpose: "починка узла по отчёту проверок"}
+  repair: {provider: anthropic, model: claude-haiku-5-5, effort: low,   max_tokens: 64000, external: true, purpose: "починка синтаксиса JSON ответа модели"}
+  pack:   {provider: anthropic, model: claude-haiku-5-5, effort: high, max_tokens: 64000, external: true, purpose: "черновик доменного пакета по главе нового домена"}
   review: {provider: anthropic, model: claude-opus-5-5, effort: high,   max_tokens: 64000, external: true, purpose: "модуль проверки чужого пакета"}
 # $ за 1M токенов (cache_write = запись в кэш 5 мин, cache_read = чтение из кэша)
 prices:

@@ -10,3 +10,6 @@ pages_pdf: [474, 500]
 end_anchor: "§2. Метод А.М.Пирвердяна"
 language: ru
 domain_pack: geology
+analysis:
+  file: "data/raw/organizers/analysis_books/Басниев_и_др_-_Нефтегазовая_гидромеханика_-_2005.md"
+  match: "XXIII|XXIV"

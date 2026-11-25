@@ -1206,6 +1206,16 @@
         },
         "answer": {
           "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "scan",
+            "geologist"
+          ],
+          "description": "scan — сверить со сканом страницы (распознавание, обозначения, индексы); geologist — вопрос по существу к геологу."
+        },
+        "typo_id": {
+          "type": "string"
         }
       }
     }

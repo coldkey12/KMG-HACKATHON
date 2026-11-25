@@ -113,8 +113,9 @@ def check_numbers_in_text(text, source_text, where, hypothesis=False, check="num
     src = set(numbers(source_text))
     out = []
     for x in sorted(_nums_of(text) - src):
-        if x in {"1", "2", "3", "4", "5"} and re.search(r"(?:^|\s)%s[.)]\s" % re.escape(x), text):
-            continue  # list numbering "1. …"
+        if re.search(r"(?:^|\s)%s[.)]\s" % re.escape(x), text) or re.search(
+                r"(?:шаг|этап|пункт|способ|вариант|step|stage)\w*\s*№?\s*%s(?!\d)" % re.escape(x), text, re.I):
+            continue  # enumeration added for readability ("1. …", "шаг 2"), not a fact
         level = "warning" if hypothesis else "error"
         out.append(_issue(check, level, where, "число %s нет в исходных единицах" % x))
     return out

@@ -4,6 +4,7 @@ Steps (order fixed by the ТЗ): units (deterministic) -> plan (model) -> nodes 
 -> assemble with stable ids -> auto-fix (deterministic) -> routing (deterministic) -> checks.
 """
 import difflib
+import re
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -115,7 +116,10 @@ def make_node(pn, plan, pack_text, chapter_text, log):
         "", "Верни только JSON узла.",
     ])
     r = llm.call("node", system, user, log_path=log, tag="node:" + pn["key"])
-    return llm.parse_json(r["text"]), r
+    out, rr = llm.parse_json_or_repair(r["text"], log_path=log, tag=pn["key"])
+    if rr:
+        r = dict(r, cost_usd=r["cost_usd"] + rr["cost_usd"], cost_usd_original=(r["cost_usd_original"] or 0) + (rr["cost_usd_original"] or 0))
+    return out, r
 
 
 # ---------------- assembly ----------------
@@ -390,6 +394,106 @@ def fix_term_order(nodes):
     return fixes
 
 
+_SCAN_RE = re.compile(r"символ|индекс|обозначен|напечат|записан|распозна|скан|опечат|единиц|колонк|ячейк|строк|степен|какой знак|буква|подпис|панел", re.I)
+
+
+def classify_questions(layer):
+    for q in layer["open_questions"]:
+        q.setdefault("kind", "scan" if _SCAN_RE.search(q.get("question", "") + " " + q.get("statement", "")) else "geologist")
+
+
+def dispute_typo_claims(layer):
+    """Claims whose quote contains an uncertain OCR correction must not reach video or task keys until the scan is checked."""
+    fixes = []
+    typos = [t for t in layer["typos"] if t.get("needs_scan_check") or t.get("confidence") != "high"]
+    for n in layer["nodes"]:
+        for c in n["claims"]:
+            q = norm(c["quote"])
+            for t in typos:
+                o = norm(t["original"])
+                if t["unit_id"] == c["unit_id"] and o and len(o) >= 3 and o in q and c["status"] == "ok":
+                    qid = "%s.q-%s" % (n["id"], hash6("scan" + t["id"]))
+                    if all(x["id"] != qid for x in layer["open_questions"]):
+                        layer["open_questions"].append({"id": qid, "node_id": n["id"], "claim_ids": [c["id"]], "page": t["page"],
+                                                        "statement": "В тексте: «%s». Предполагаемое исправление: %s" % (t["original"], t["corrected"]),
+                                                        "question": "Сверить со сканом стр. %s: как напечатано «%s»?" % (t["page"], t["original"]),
+                                                        "options": [t["original"], t["corrected"]], "status": "open", "kind": "scan", "typo_id": t["id"]})
+                    c["status"] = "disputed"
+                    c["question_id"] = qid
+                    fixes.append({"node": n["id"], "claim": c["id"], "what": "цитата содержит неуверенную опечатку %s → спорно до сверки со сканом" % t["id"]})
+                    break
+    return fixes
+
+
+def fix_unit_ids(layer):
+    """Model typos in unit ids (e.g. a dropped character): map to the closest existing id of the node's units."""
+    ids = [u["id"] for u in layer["units"]]
+    idset = set(ids)
+    fixes = []
+
+    def best(uid, prefer):
+        cands = difflib.get_close_matches(uid, prefer, n=1, cutoff=0.85) or difflib.get_close_matches(uid, ids, n=1, cutoff=0.9)
+        return cands[0] if cands else None
+
+    for n in layer["nodes"]:
+        for c in n["claims"]:
+            if c["unit_id"] not in idset:
+                b = best(c["unit_id"], n["source_units"])
+                if b:
+                    fixes.append({"node": n["id"], "claim": c["id"], "what": "unit_id %s → %s" % (c["unit_id"], b)})
+                    c["unit_id"] = b
+        for f in n.get("formulas", []):
+            if f["unit_id"] not in idset:
+                b = best(f["unit_id"], n["source_units"])
+                if b:
+                    f["unit_id"] = b
+    return fixes
+
+
+def fix_numbers(layer):
+    """A number the node uses but its units lack: if a neighbouring unit (±2 in chapter order) has it,
+    the node actually draws on that unit — add it to source_units (and coverage)."""
+    order = [u["id"] for u in layer["units"]]
+    pos = {u: i for i, u in enumerate(order)}
+    utext = {u["id"]: u["text"] for u in layer["units"]}
+    from .textnorm import numbers as nums
+    fixes = []
+    issues = checks.check_numbers(layer)
+    by_node = {}
+    for i in issues:
+        nid = i["where"].split("/")[0]
+        nid = nid.split(".c-")[0]
+        x = i["msg"].split()[1]
+        by_node.setdefault(nid, set()).add(x)
+    nodes = {n["id"]: n for n in layer["nodes"]}
+    cov = {r["unit_id"]: r for r in layer["coverage"]}
+    for nid, xs in by_node.items():
+        n = nodes.get(nid)
+        if not n:
+            continue
+        idx = sorted({pos[u] for u in n["source_units"] if u in pos} | {pos[c["unit_id"]] for c in n["claims"] if c["unit_id"] in pos})
+        near = []
+        for i in idx:
+            for d in (1, -1, 2, -2):
+                j = i + d
+                if 0 <= j < len(order) and order[j] not in n["source_units"]:
+                    near.append(order[j])
+        for x in xs:
+            for u in near:
+                if x in nums(utext[u]):
+                    n["source_units"].append(u)
+                    r = cov.get(u)
+                    if r:
+                        if r["status"] != "covered":
+                            r.update(status="covered", node_ids=[], by="rule")
+                            r.pop("reason", None)
+                        if nid not in r["node_ids"]:
+                            r["node_ids"].append(nid)
+                    fixes.append({"node": nid, "what": "число %s найдено в соседней единице %s — она добавлена в источники узла" % (x, u)})
+                    break
+    return fixes
+
+
 def autoattach_uncovered(plan, units):
     """Deterministic fix after planning: author units the plan forgot go to the node holding the nearest preceding unit."""
     order = [u.id for u in units]
@@ -418,7 +522,7 @@ def autoattach_uncovered(plan, units):
     return fixes
 
 
-def build(cfg_path, out_dir=None, only_nodes=None, workers=4):
+def build(cfg_path, out_dir=None, only_nodes=None, workers=8):
     t0 = time.time()
     cfg = load_chapter(cfg_path)
     chap_id = cfg["id"]
@@ -435,23 +539,33 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=4):
 
     plan, r_plan = make_plan(units, pack_text, chapter_text, log)
     plan_fixes = autoattach_uncovered(plan, units)
-    if only_nodes:
-        plan["nodes"] = plan["nodes"][:only_nodes]
     (run_dir / "plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=1), encoding="utf-8")
+    full_plan = plan  # prompts always see the whole plan, so a sample shares the cache with the full build
+    if only_nodes:
+        plan = dict(plan, nodes=plan["nodes"][:only_nodes])
 
     node_outs, calls = {}, [r_plan]
     first = plan["nodes"][0]
-    o, r = make_node(first, plan, pack_text, chapter_text, log)  # first call warms the prompt cache
+    o, r = make_node(first, full_plan, pack_text, chapter_text, log)  # first call warms the prompt cache
     node_outs[first["key"]] = o
     calls.append(r)
 
+    failed = []
+
     def work(pn):
-        return pn["key"], make_node(pn, plan, pack_text, chapter_text, log)
+        try:
+            return pn["key"], make_node(pn, full_plan, pack_text, chapter_text, log)
+        except Exception as e:  # one bad node must not kill the chapter
+            return pn["key"], (None, {"error": "%s: %s" % (type(e).__name__, str(e)[:300])})
 
     with ThreadPoolExecutor(max_workers=workers) as ex:
         for key, (o, r) in ex.map(work, plan["nodes"][1:]):
+            if o is None:
+                failed.append({"node": key, "error": r["error"]})
+                o = {"title_novice": None, "claims": []}
+            else:
+                calls.append(r)
             node_outs[key] = o
-            calls.append(r)
 
     parts, nodes, typos, questions, coverage, autofixes = assemble(cfg, units, plan, node_outs, pack)
     for _ in range(6):  # moved definitions may mention other terms: iterate to a fixed point
@@ -480,7 +594,16 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=4):
         "units": [u.to_json() for u in units],
         "parts": parts, "nodes": nodes, "coverage": coverage, "typos": typos, "open_questions": questions,
     }
+    autofixes += fix_unit_ids(layer)
+    autofixes += fix_numbers(layer)
+    autofixes += dispute_typo_claims(layer)
+    classify_questions(layer)
+    from . import overrides
+    ov = overrides.apply(layer, overrides.load(chap_id))
     res = checks.run_all(layer, pack_prereq_terms(pack))
+    for f in failed:
+        res["issues"].append({"check": "build", "level": "error", "where": f["node"], "msg": "узел не собран: " + f["error"]})
+        res["passed"] = False
     # mark claims failing quote check as unverified (they never go to video)
     bad = {i["where"] for i in res["issues"] if i["check"] in ("quote",) and i["level"] == "error"}
     for n in layer["nodes"]:
@@ -492,12 +615,15 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=4):
     cost = sum(c["cost_usd"] for c in calls)
     cost_orig = sum(c["cost_usd_original"] or 0 for c in calls)
     usage = {k: sum(c["usage"].get(k, 0) for c in calls) for k in ("input_tokens", "output_tokens", "cache_creation_input_tokens", "cache_read_input_tokens")}
-    layer["checks"] = {"passed": res["passed"], "summary": res["summary"], "plan_autofixes": plan_fixes, "assembly_autofixes": autofixes}
+    layer["checks"] = {"passed": res["passed"], "summary": res["summary"], "plan_autofixes": plan_fixes, "assembly_autofixes": autofixes,
+                       "overrides": ov, "failed_nodes": failed}
+    (out_dir / "affected.json").write_text(json.dumps({"affected_nodes": ov["affected_nodes"], "overrides_applied": ov["applied"]}, ensure_ascii=False, indent=1), encoding="utf-8")
     layer["metrics"] = {"llm_calls": len(calls), "cached_calls": sum(1 for c in calls if c["cached"]),
                         "cost_usd_this_run": round(cost, 4), "cost_usd_if_uncached": round(cost_orig, 4),
                         "cost_usd_per_node": round(cost_orig / max(1, len(nodes)), 4),
                         "usage": usage, "seconds": round(time.time() - t0, 1), "nodes": len(nodes), "units": len(units),
-                        "claims": sum(len(n["claims"]) for n in nodes)}
+                        "claims": sum(len(n["claims"]) for n in nodes),
+                        "manual_minutes": ov["manual_minutes"]}
     (out_dir / "layer.json").write_text(json.dumps(layer, ensure_ascii=False, indent=1), encoding="utf-8")
     (out_dir / "checks.md").write_text(checks.report_md(res, "Проверки слоя %s" % chap_id), encoding="utf-8")
     return layer, res

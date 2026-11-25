@@ -1,0 +1,10 @@
+# Легенда и стайлгайд команды (временная — стайлгайда организаторов нет). Конвенция: русская школа, названа в кадре.
+version: 0.1.0
+school: "русская (ГОСТ-подобная) — указывать в кадре"
+depth_axis: "глубина растёт вниз"
+colors:
+  fluids: {gas: "#E8C547", oil: "#7A4E2D", water: "#3C7DD9", filtrate: "#8FC1E8"}
+  lithology: {sand: "#F2D98B", shale: "#7F8C8D", limestone: "#9FD3C7", dolomite: "#C7B8E0", anhydrite: "#E6A0C4", salt: "#FFFFFF"}
+  curves: {SP: "#C0392B", GR: "#27AE60", resistivity_deep: "#2C3E50", resistivity_shallow: "#7F8C8D", neutron: "#2980B9", density: "#D35400", sonic: "#8E44AD", caliper: "#16A085"}
+  uncertainty: "штриховка 45°, полупрозрачная"
+provenance_labels: ["реальные данные", "симуляция", "схема", "иллюстрация ИИ"]

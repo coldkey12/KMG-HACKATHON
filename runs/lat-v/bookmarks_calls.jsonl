@@ -1,0 +1,1 @@
+{"ts": "2026-11-25T12:57:52", "role": "node", "tag": "bookmarks", "model": "claude-haiku-5-5", "cached": false, "usage": {"input_tokens": 5289, "output_tokens": 12901, "cache_creation_input_tokens": 0, "cache_read_input_tokens": 0}, "cost_usd": 0.006979, "cost_usd_original": 0.006979, "seconds": 49.2, "key": "5e50d5cb8e9ba13f51a46108616ece8e532ccb2cb50ef26de022afef4d3985cc"}

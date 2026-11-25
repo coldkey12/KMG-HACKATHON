@@ -1,27 +1,41 @@
 # Маршрутизация форматов: детерминированное правило (одинаковый узел → одинаковый формат).
-# Вход правила: флаги видеоёмкости (ставит модель), тип трудности, data_decision, наличие формул/таблиц/примеров.
+# Вход правила: флаги видеоёмкости (ставит модель), тип трудности, data_decision, наличие формул/таблиц/примеров/рисунков.
 # Критерии видеоёмкости — из ТЗ: изменение во времени, невидимое становится видимым, скачок масштаба,
-# контринтуитивность, причина и следствие.
-version: 0.1.0
+# контринтуитивность, причина и следствие. Модель ставит флаги щедро, поэтому видео — только при сильном сигнале
+# (калибровка на Латышовой 2026-11-25: без порогов 47 из 69 узлов уходили в видео).
+version: 0.2.0
 rules:
   # порядок важен: первое сработавшее правило
-  - {if: "data_decision and score >= 2", format: long_video, why: "решение на данных и ≥2 критерия видеоёмкости → разбор 16:9 с синхронными видами"}
-  - {if: "score >= 3 and (has_formulas or has_tables)", format: interactive, why: "видеоёмкий узел, но с формулами/таблицами — их не втискивают в шортс → интерактив"}
-  - {if: "score >= 3", format: short, why: "≥3 критерия видеоёмкости, один механизм → шортс 9:16"}
-  - {if: "score == 2", format: interactive, why: "2 критерия видеоёмкости → интерактив (сцена по шагам)"}
-  - {if: "data_decision or has_examples", format: data_practicum, why: "есть правило на данных или разобранные примеры с числами → практикум на данных"}
+  - {if: "data_decision and score >= 3 and (has_figures or has_examples)", format: long_video, why: "решение на данных по рисунку/примеру и ≥3 критерия видеоёмкости → разбор 16:9 с синхронными видами"}
+  - {if: "score >= 3 and (time_change or invisible_visible) and not (has_formulas or has_tables)", format: short, why: "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16"}
+  - {if: "score >= 2 and (time_change or invisible_visible or has_figures or has_formulas)", format: interactive, why: "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам)"}
+  - {if: "data_decision or has_examples", format: data_practicum, why: "правило на данных или разобранные примеры с числами → практикум на данных"}
   - {if: "has_formulas", format: interactive, why: "формулы показываются интерактивом с расшифровкой переменных"}
   - {if: "n_terms >= 3 and n_claims <= 6", format: cards, why: "узел в основном из определений → карточки"}
-  - {if: "True", format: text, why: "ни одного сильного критерия видеоёмкости → текст шага"}
+  - {if: "True", format: text, why: "нет сильного критерия видеоёмкости → текст шага"}
 
-# Предложения шаблонов сцен (владелец шаблонов — агент B; его реестр, если есть, лежит в scenes/registry.json
-# и имеет приоритет). Подбор — по коду типа трудности и флагам; первое совпадение.
 scene_templates:
-  - {id: tool_in_well,        when: "primary in ('И',) and invisible_visible",              state_model: "глубина прибора → положение в кадре и текущая точка кривой"}
-  - {id: radial_profile,      when: "primary in ('И','Н') and cause_effect",               state_model: "радиальный профиль свойства от стенки скважины вглубь пласта; зонды разной глубинности читают его"}
-  - {id: log_panel_decision,  when: "data_decision",                                        state_model: "планшет кривых по глубине → признаки → правило → вывод по интервалам"}
-  - {id: crossplot_regions,   when: "has_figures and primary in ('Пр','Н','И')",           state_model: "точка (x, y) на кроссплоте/палетке → область → вывод"}
-  - {id: pressure_diffusion,  when: "primary in ('М','Ф') and time_change",                 state_model: "поле давления p(r,t) из решения уравнения → кривая давления на скважине"}
-  - {id: growth_timeline,     when: "primary in ('В',) or (time_change and primary in ('Р','П'))", state_model: "этапы роста/развития тела во времени, разрез на каждом этапе"}
-  - {id: geometry_3d,         when: "primary in ('П',) or scale_jump",                       state_model: "3D-тело/разрез, синхронные виды: разрез, план, поверхность"}
-  - {id: feature_matching,    when: "primary in ('Р',)",                                     state_model: "набор признаков → совпадение с эталонами типов"}
+- id: tool_in_well
+  when: primary in ('И',) and invisible_visible
+  state_model: глубина прибора → положение в кадре и текущая точка кривой
+- id: radial_profile
+  when: primary in ('И','Н') and cause_effect
+  state_model: радиальный профиль свойства от стенки скважины вглубь пласта; зонды разной глубинности читают его
+- id: log_panel_decision
+  when: data_decision
+  state_model: планшет кривых по глубине → признаки → правило → вывод по интервалам
+- id: crossplot_regions
+  when: has_figures and primary in ('Пр','Н','И')
+  state_model: точка (x, y) на кроссплоте/палетке → область → вывод
+- id: pressure_diffusion
+  when: primary in ('М','Ф') and time_change
+  state_model: поле давления p(r,t) из решения уравнения → кривая давления на скважине
+- id: growth_timeline
+  when: primary in ('В',) or (time_change and primary in ('Р','П'))
+  state_model: этапы роста/развития тела во времени, разрез на каждом этапе
+- id: geometry_3d
+  when: primary in ('П',) or scale_jump
+  state_model: '3D-тело/разрез, синхронные виды: разрез, план, поверхность'
+- id: feature_matching
+  when: primary in ('Р',)
+  state_model: набор признаков → совпадение с эталонами типов

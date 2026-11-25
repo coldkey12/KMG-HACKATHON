@@ -36,5 +36,14 @@ python -m kmg check-text out/<глава>/layer.json <items.json>
 `tool_in_well`, `radial_profile`, `log_panel_decision`, `crossplot_regions`, `pressure_diffusion`, `growth_timeline`,
 `geometry_3d`, `feature_matching` — с моделью состояния для каждого.
 
+## A → B: полный слой Латышовой (2026-11-25)
+
+- `out/lat-v/layer.json` — гл. V §17–20 целиком: 69 узлов, 636 утверждений, 19 формул, примеры 46–55, таблицы 21–23,
+  задачи 86–108. Все проверки пройдены (`out/lat-v/checks.md`).
+- Форматы (правило `config/routing.yaml` v0.2.0): interactive 29, data_practicum 19, short 13, text 5, cards 2, long_video 1.
+- 75 утверждений `disputed` — почти все ждут сверки со сканом (символы/индексы распознавания), `open_questions[].kind = "scan"`.
+  В ролик и ключи заданий их не брать.
+- Отчёт о стоимости и выборе моделей — `docs/COSTS.md`.
+
 ## Запросы B → A
 _(пусто)_
