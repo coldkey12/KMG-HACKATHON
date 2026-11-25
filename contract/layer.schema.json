@@ -1,0 +1,1213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kmg-hackathon/layer.schema.json",
+  "title": "Учебный слой главы (временный контракт команды, до схемы организаторов)",
+  "description": "Граф узлов по главе. Поля названы по-английски; в description у каждого поля — формулировка из ТЗ (раздел «Задание и пакет сдачи», п. 1). Таблица соответствия — contract/README.md. Любое изменение — в docs/CONTRACT_CHANGELOG.md.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "chapter",
+    "generator",
+    "units",
+    "parts",
+    "nodes",
+    "coverage",
+    "typos",
+    "open_questions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "chapter": {
+      "$ref": "#/$defs/Chapter"
+    },
+    "generator": {
+      "$ref": "#/$defs/Generator"
+    },
+    "units": {
+      "description": "Единицы главы (абзац, рисунок, формула, таблица, разобранный пример, задача…) — нарезаны детерминированно, без модели.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Unit"
+      }
+    },
+    "parts": {
+      "description": "Части главы для пути курса (обычно параграфы).",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Part"
+      }
+    },
+    "nodes": {
+      "description": "Узлы в порядке, нужном неспециалисту (поле order).",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Node"
+      }
+    },
+    "coverage": {
+      "description": "Таблица покрытия: каждая единица → узел или причина, почему нет.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CoverageRow"
+      }
+    },
+    "typos": {
+      "description": "Лист опечаток распознавания: исправления фиксируются здесь, а не молча.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Typo"
+      }
+    },
+    "open_questions": {
+      "description": "Спорные места → вопросы геологу. Пока status != answered, связанные утверждения не идут в ролик.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OpenQuestion"
+      }
+    },
+    "checks": {
+      "description": "Итог машинных проверок последнего прогона (заполняет kmg check).",
+      "type": "object"
+    },
+    "metrics": {
+      "description": "Деньги, токены, время прогона (заполняет конвейер).",
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "By": {
+      "description": "Кто написал поле: author — дословно автор книги; model — языковая модель; rule — детерминированное правило конвейера; human — человек (запись в журнале ручных правок обязательна). ТЗ: «пометка на каждом поле, написано ли оно моделью».",
+      "enum": [
+        "author",
+        "model",
+        "rule",
+        "human"
+      ]
+    },
+    "Txt": {
+      "description": "Текстовое поле с происхождением. claims — на какие утверждения узла опирается текст; hypothesis — гипотеза (не следует прямо из главы).",
+      "type": "object",
+      "required": [
+        "text",
+        "by"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "by": {
+          "$ref": "#/$defs/By"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hypothesis": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "Chapter": {
+      "type": "object",
+      "required": [
+        "id",
+        "book",
+        "title",
+        "pages_pdf",
+        "language",
+        "domain_pack"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Короткий устойчивый id главы, например lat-v."
+        },
+        "book": {
+          "type": "object",
+          "required": [
+            "author",
+            "title",
+            "year",
+            "source_file"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "author": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "year": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "source_file": {
+              "type": "string"
+            },
+            "source_sha256": {
+              "type": "string"
+            }
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "string",
+          "description": "Например «гл. V §17–20»."
+        },
+        "pages_pdf": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "language": {
+          "type": "string",
+          "description": "ru | en | …"
+        },
+        "domain_pack": {
+          "type": "string",
+          "description": "Имя доменного пакета, например geology."
+        },
+        "scope": {
+          "enum": [
+            "full",
+            "sample"
+          ],
+          "description": "sample — образец: в слое только единицы, покрытые выбранными узлами (для отладки сборщика B); full — вся глава."
+        }
+      }
+    },
+    "Generator": {
+      "type": "object",
+      "required": [
+        "pipeline_version",
+        "created_at",
+        "models"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "pipeline_version": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "prompts": {
+          "type": "object",
+          "description": "имя промпта → sha256"
+        }
+      }
+    },
+    "Unit": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "page",
+        "text",
+        "author_text"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Устойчивый id: u-<page>-<hash6 нормализованного текста>."
+        },
+        "kind": {
+          "enum": [
+            "heading",
+            "paragraph",
+            "list",
+            "formula",
+            "table",
+            "figure_caption",
+            "figure_description",
+            "worked_example",
+            "problem",
+            "problems_header",
+            "footnote",
+            "note"
+          ],
+          "description": "figure_description — машинное описание рисунка из md (не текст автора, цитировать нельзя)."
+        },
+        "page": {
+          "type": "integer",
+          "description": "Страница PDF, где единица начинается."
+        },
+        "page_end": {
+          "type": "integer"
+        },
+        "line_start": {
+          "type": "integer"
+        },
+        "line_end": {
+          "type": "integer"
+        },
+        "section": {
+          "type": "string",
+          "description": "Ближайший заголовок (параграф/подраздел)."
+        },
+        "label": {
+          "type": "string",
+          "description": "Номер: «Рис. 69», «Таблица 21», «Пример 46», «Задача 92», «(63)»."
+        },
+        "text": {
+          "type": "string"
+        },
+        "author_text": {
+          "type": "boolean",
+          "description": "true — текст автора (можно цитировать); false — служебный/машинный."
+        },
+        "figure_unit": {
+          "type": "string",
+          "description": "Для figure_description: id подписи рисунка."
+        }
+      }
+    },
+    "Part": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "title_book"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "description": "Название части для новичка."
+        },
+        "title_book": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Claim": {
+      "description": "ТЗ: «утверждения с пометкой „наблюдение, вывод или допущение“, ссылкой на страницу и дословной цитатой автора, на которую они опираются».",
+      "type": "object",
+      "required": [
+        "id",
+        "text",
+        "kind",
+        "page",
+        "quote",
+        "unit_id",
+        "by",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Устойчивый id: <node_id>.c-<hash6 цитаты>."
+        },
+        "text": {
+          "type": "string",
+          "description": "Утверждение простыми словами (пишет модель)."
+        },
+        "kind": {
+          "enum": [
+            "observation",
+            "inference",
+            "assumption"
+          ],
+          "description": "наблюдение / вывод / допущение"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "quote": {
+          "type": "string",
+          "description": "Дословная цитата автора (подстрока единицы unit_id)."
+        },
+        "unit_id": {
+          "type": "string"
+        },
+        "by": {
+          "$ref": "#/$defs/By"
+        },
+        "numbers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Числа, которые утверждение использует (для проверки «число есть в единице»)."
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "unverified",
+            "disputed"
+          ],
+          "description": "unverified — не прошло проверку цитаты/числа или ждёт геолога; disputed — открыт вопрос геологу. В ролик идут только ok."
+        },
+        "question_id": {
+          "type": "string"
+        }
+      }
+    },
+    "Term": {
+      "type": "object",
+      "required": [
+        "term",
+        "definition"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "term": {
+          "type": "string"
+        },
+        "term_en": {
+          "type": "string"
+        },
+        "abbr": {
+          "type": "string"
+        },
+        "definition": {
+          "$ref": "#/$defs/Txt"
+        },
+        "pack_id": {
+          "type": "string",
+          "description": "id в глоссарии доменного пакета, если есть."
+        }
+      }
+    },
+    "Formula": {
+      "type": "object",
+      "required": [
+        "id",
+        "unit_id",
+        "page",
+        "latex",
+        "variables"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "description": "Номер формулы в книге, например (63)."
+        },
+        "unit_id": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "latex": {
+          "type": "string",
+          "description": "Исправленная запись; исходная — в единице; правка — в typos."
+        },
+        "meaning": {
+          "$ref": "#/$defs/Txt"
+        },
+        "variables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "symbol",
+              "meaning"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "symbol": {
+                "type": "string"
+              },
+              "meaning": {
+                "type": "string"
+              },
+              "unit": {
+                "type": "string"
+              },
+              "by": {
+                "$ref": "#/$defs/By"
+              }
+            }
+          }
+        }
+      }
+    },
+    "WorkedExample": {
+      "description": "ТЗ: «разобранные примеры автора (условие, шаги решения, итог с числами автора)» — отдельное поле.",
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "page",
+        "unit_ids",
+        "condition",
+        "steps",
+        "result"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "description": "«Пример 46»"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "unit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "condition": {
+          "$ref": "#/$defs/Txt"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Txt"
+          }
+        },
+        "result": {
+          "$ref": "#/$defs/Txt"
+        },
+        "figures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Нужные рисунки: «рис. 69»."
+        }
+      }
+    },
+    "BookProblem": {
+      "description": "ТЗ: «задачи книги (номер, формулировка, какой рисунок нужен)» — отдельное поле.",
+      "type": "object",
+      "required": [
+        "number",
+        "page",
+        "text",
+        "figures_needed",
+        "unit_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string",
+          "description": "Формулировка дословно (с исправлением опечаток по листу typos)."
+        },
+        "figures_needed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unit_id": {
+          "type": "string"
+        },
+        "outside_chapter_refs": {
+          "type": "boolean",
+          "description": "Нужны рисунки вне главы."
+        }
+      }
+    },
+    "FigureRef": {
+      "type": "object",
+      "required": [
+        "label",
+        "page",
+        "unit_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "unit_id": {
+          "type": "string",
+          "description": "Единица-подпись рисунка."
+        },
+        "description_unit_id": {
+          "type": "string",
+          "description": "Машинное описание рисунка из md, если есть."
+        },
+        "role": {
+          "type": "string",
+          "description": "Зачем рисунок шагу: пример, палетка, задача…"
+        },
+        "redraw": {
+          "type": "boolean",
+          "description": "Рисунок держит пример или задачу → перерисовать кодом по скану («перерисовано по рис. N, стр. M»)."
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "required": [
+        "target",
+        "type"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "id узла (или pack:<id> для внешней предпосылки из доменного пакета)."
+        },
+        "type": {
+          "enum": [
+            "prerequisite",
+            "example",
+            "refutes_misconception",
+            "to_data"
+          ],
+          "description": "предпосылка / пример / опровергает заблуждение / переход к данным"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "Format": {
+      "description": "Маршрутизация форматов. Решение принимает детерминированное правило по типу трудности и флагам видеоёмкости (флаги ставит модель).",
+      "type": "object",
+      "required": [
+        "format",
+        "rationale",
+        "videoability",
+        "by"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "enum": [
+            "short",
+            "long_video",
+            "interactive",
+            "data_practicum",
+            "cards",
+            "text"
+          ],
+          "description": "шортс / длинное видео / интерактив / практикум на данных / карточки / текст"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "videoability": {
+          "type": "object",
+          "required": [
+            "time_change",
+            "invisible_visible",
+            "scale_jump",
+            "counterintuitive",
+            "cause_effect"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "time_change": {
+              "type": "boolean",
+              "description": "изменение во времени"
+            },
+            "invisible_visible": {
+              "type": "boolean",
+              "description": "невидимое становится видимым"
+            },
+            "scale_jump": {
+              "type": "boolean",
+              "description": "скачок масштаба"
+            },
+            "counterintuitive": {
+              "type": "boolean",
+              "description": "контринтуитивность"
+            },
+            "cause_effect": {
+              "type": "boolean",
+              "description": "причина и следствие"
+            }
+          }
+        },
+        "score": {
+          "type": "integer"
+        },
+        "data_decision": {
+          "type": "boolean",
+          "description": "Узел годится для шага «решение на данных» (признаки → правило → вывод)."
+        },
+        "scene_template": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Шаблон сцены агента B, который закрывает узел, или «нужен новый»."
+        },
+        "state_model": {
+          "type": "string",
+          "description": "Модель состояния сцены (что вычисляется), подсказка для B."
+        },
+        "by": {
+          "$ref": "#/$defs/By"
+        }
+      }
+    },
+    "Node": {
+      "type": "object",
+      "required": [
+        "id",
+        "order",
+        "part_id",
+        "title_novice",
+        "title_book",
+        "order_rationale",
+        "difficulty",
+        "summary",
+        "claims",
+        "layers",
+        "terms_defined",
+        "terms_used",
+        "links",
+        "format",
+        "source_units",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Устойчивый id узла: <chapter>.n-<id первой опорной единицы>."
+        },
+        "order": {
+          "type": "integer"
+        },
+        "part_id": {
+          "type": "string"
+        },
+        "title_novice": {
+          "type": "string",
+          "description": "Заголовок для новичка, 3–7 слов."
+        },
+        "title_book": {
+          "type": "string",
+          "description": "Полное название из книги."
+        },
+        "order_rationale": {
+          "$ref": "#/$defs/Txt",
+          "description": "«почему этот узел раньше»"
+        },
+        "difficulty": {
+          "type": "object",
+          "required": [
+            "primary",
+            "secondary"
+          ],
+          "additionalProperties": false,
+          "description": "тип трудности (основной и второй); коды — в доменном пакете difficulty_types.yaml",
+          "properties": {
+            "primary": {
+              "type": "string"
+            },
+            "secondary": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "by": {
+              "$ref": "#/$defs/By"
+            }
+          }
+        },
+        "threshold": {
+          "type": "object",
+          "required": [
+            "is_threshold"
+          ],
+          "additionalProperties": false,
+          "description": "метка пороговой идеи",
+          "properties": {
+            "is_threshold": {
+              "type": "boolean"
+            },
+            "why": {
+              "$ref": "#/$defs/Txt"
+            }
+          }
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Txt"
+          },
+          "description": "Суть: 2–3 фразы, первая — главное."
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Claim"
+          }
+        },
+        "layers": {
+          "type": "object",
+          "required": [
+            "mechanism",
+            "practice",
+            "nuances"
+          ],
+          "additionalProperties": false,
+          "description": "слои «механизм → практика → нюансы»; вместе — блок «Как это работает»: все мысли автора по шагу, фразы до 20 слов",
+          "properties": {
+            "mechanism": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            },
+            "practice": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            },
+            "nuances": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            }
+          }
+        },
+        "deeper": {
+          "type": "array",
+          "description": "ветки «глубже»",
+          "items": {
+            "type": "object",
+            "required": [
+              "title",
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "$ref": "#/$defs/Txt"
+              },
+              "target": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "procedure": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Txt"
+          },
+          "description": "«По шагам», если автор описывает порядок действий."
+        },
+        "numbers_conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Txt"
+          },
+          "description": "«Цифры и условия»: пороги, диапазоны, условия применимости."
+        },
+        "terms_defined": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Term"
+          },
+          "description": "Новые понятия: термины, которые объясняются в этом узле."
+        },
+        "terms_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Термины, на которые узел опирается (должны быть объяснены раньше или в пакете)."
+        },
+        "formulas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Formula"
+          }
+        },
+        "tables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "unit_ids",
+              "label",
+              "page"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "page": {
+                "type": "integer"
+              },
+              "unit_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "description": "Таблицы книги целиком: текст — в units; правки — в typos."
+        },
+        "figures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FigureRef"
+          }
+        },
+        "worked_examples": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WorkedExample"
+          }
+        },
+        "book_problems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BookProblem"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Link"
+          },
+          "description": "связи с другими узлами с типом"
+        },
+        "misconception": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "заблуждение, которое узел исправляет",
+          "additionalProperties": false,
+          "required": [
+            "wrong",
+            "right"
+          ],
+          "properties": {
+            "pack_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "wrong": {
+              "$ref": "#/$defs/Txt"
+            },
+            "right": {
+              "$ref": "#/$defs/Txt"
+            }
+          }
+        },
+        "data_meaning": {
+          "type": "object",
+          "description": "«что это значит для данных и что здесь ломается»: только прямо следующее из главы, остальное hypothesis=true",
+          "additionalProperties": false,
+          "required": [
+            "inputs",
+            "outputs",
+            "breaks"
+          ],
+          "properties": {
+            "inputs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            },
+            "outputs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            },
+            "breaks": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            }
+          }
+        },
+        "it_analogy": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "ИТ-аналогия и где она ломается",
+          "additionalProperties": false,
+          "required": [
+            "analogy",
+            "breaks_where"
+          ],
+          "properties": {
+            "analogy": {
+              "$ref": "#/$defs/Txt"
+            },
+            "breaks_where": {
+              "$ref": "#/$defs/Txt"
+            },
+            "pack_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "now_nuance": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/Txt"
+            }
+          ],
+          "description": "нюанс «как это делается сейчас», если книга описывает устаревшую технику (почти всегда hypothesis=true: в главе этого нет)"
+        },
+        "inefficiency": {
+          "type": "object",
+          "description": "линза неэффективности",
+          "additionalProperties": false,
+          "required": [
+            "inputs",
+            "manual_steps",
+            "judgment_points",
+            "time",
+            "typical_errors"
+          ],
+          "properties": {
+            "inputs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            },
+            "manual_steps": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            },
+            "judgment_points": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            },
+            "time": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            },
+            "typical_errors": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Txt"
+              }
+            }
+          }
+        },
+        "format": {
+          "$ref": "#/$defs/Format"
+        },
+        "source_units": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Единицы главы, которые покрывает узел."
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "has_unverified",
+            "failed_checks"
+          ]
+        }
+      }
+    },
+    "CoverageRow": {
+      "type": "object",
+      "required": [
+        "unit_id",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "unit_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "covered",
+            "not_covered"
+          ]
+        },
+        "node_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reason": {
+          "type": "string",
+          "description": "Почему нет узла: заголовок, вне главы, служебный текст, дубль описания рисунка…"
+        },
+        "by": {
+          "$ref": "#/$defs/By"
+        }
+      }
+    },
+    "Typo": {
+      "type": "object",
+      "required": [
+        "id",
+        "unit_id",
+        "page",
+        "original",
+        "corrected",
+        "by"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "unit_id": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "original": {
+          "type": "string"
+        },
+        "corrected": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "by": {
+          "$ref": "#/$defs/By"
+        },
+        "needs_scan_check": {
+          "type": "boolean",
+          "description": "Сверить со сканом PDF."
+        }
+      }
+    },
+    "OpenQuestion": {
+      "type": "object",
+      "required": [
+        "id",
+        "page",
+        "question",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "page": {
+          "type": "integer"
+        },
+        "statement": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "open",
+            "asked",
+            "answered"
+          ]
+        },
+        "answer": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
