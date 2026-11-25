@@ -1,0 +1,12 @@
+id: bas-xxiii
+book:
+  author: "Басниев К. С. и др."
+  title: "Нефтегазовая гидромеханика"
+  year: 2005
+  source_file: data/raw/books_md/train_basniev.md
+title: "Неустановившееся движение упругой жидкости в упругом пласте; метод последовательной смены стационарных состояний"
+sections: "гл. XXIII, гл. XXIV §1"
+pages_pdf: [474, 500]
+end_anchor: "§2. Метод А.М.Пирвердяна"
+language: ru
+domain_pack: geology

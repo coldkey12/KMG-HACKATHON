@@ -25,3 +25,6 @@ data/raw/
 # Hackathon materials (must not be published)
 *.zip
 *.mp4
+
+# local scratch
+.claude/

@@ -1,0 +1,11 @@
+id: kuz-10
+book:
+  author: "Кузнецов В. Г."
+  title: "Литология природных резервуаров нефти и газа"
+  year: 2012
+  source_file: data/raw/books_md/train_kuznetsov.md
+title: "Рифовые резервуары: типы рифов, породы и коллекторские свойства, строение, ловушки и основы разведки"
+sections: "гл. 10 §10.1–10.4"
+pages_pdf: [200, 222]
+language: ru
+domain_pack: geology

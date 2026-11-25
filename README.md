@@ -1,16 +1,31 @@
-# KMG Hackathon — Geological Project
+# KMG Hackathon — «Глава → курс»
 
-Project repository for the KMG geological hackathon.
+Конвейер: глава книги по геологии → учебный слой (граф узлов, JSON) → демо-курс и медиа.
+Агент A: «глава → слой», проверки, доменный пакет, метрики. Агент B: «слой → курс и медиа».
 
-## Structure
+## Быстрый старт (часть A)
 
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+echo "ANTHROPIC_API_KEY=..." > .env           # ключ не коммитится
+.venv/bin/python -m kmg build configs/chapters/lat-v.yaml   # → out/lat-v/layer.json, out/lat-v/checks.md
+.venv/bin/python -m kmg check out/lat-v/layer.json          # машинные проверки без модели
 ```
-data/        # raw and processed geological datasets (large files are git-ignored)
-notebooks/   # exploration and analysis notebooks
-src/         # source code
-docs/        # documentation and presentation materials
-```
 
-## Getting started
+Новая глава — новый файл `configs/chapters/<id>.yaml` (источник md, страницы PDF, при желании якоря начала/конца).
+Повторный прогон без изменений берётся из кэша модели (`cache/llm/`) и стоит $0.
 
-_TBD — add setup instructions once the stack is chosen._
+## Где что
+
+| Путь | Что |
+|---|---|
+| `contract/` | контракт слоя (JSON-схема) и его описание |
+| `kmg/` | код: `units.py` (нарезка без модели), `structure.py` (план и узлы), `route.py` (форматы), `checks.py` (проверки), `llm.py` (модель, кэш, деньги) |
+| `prompts/` | промпты |
+| `config/models.yaml` | манифест моделей (замена модели — здесь), цены |
+| `config/routing.yaml` | правила маршрутизации форматов и шаблоны сцен |
+| `configs/chapters/` | конфиги глав |
+| `domain/geology/` | доменный пакет: глоссарий, заблуждения, чек-лист физики, ИТ-мосты, стайлгайд, ударения |
+| `out/<глава>/` | собранные слои (руками не правятся) |
+| `runs/<глава>/` | журнал вызовов модели (токены, $) |
+| `docs/HANDOFF.md` | обмен между агентами |
