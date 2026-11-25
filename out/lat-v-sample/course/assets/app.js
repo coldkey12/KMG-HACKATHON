@@ -14,6 +14,32 @@
   try { var raw = localStorage.getItem(KEY); if (raw) st = Object.assign(st, JSON.parse(raw)); } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
 
+  /* ---------- mastery per step (from what the viewer did; nothing is sent anywhere) ----------
+     0 not started · 1 opened · 2 familiar (marked done or ≥1 task right) · 3 mastered (all its tasks right,
+     or marked done when the step has no tasks) */
+  var LEVELS = ["Не начат", "Открыт", "Знаком", "Освоен"];
+  function mastery(s) {
+    var tl = tasksByNode[s.id] || [];
+    var right = tl.filter(function (t) { return st.tasks[t.id] === true; }).length;
+    if (tl.length ? right === tl.length : st.done[s.id]) return 3;
+    if (st.done[s.id] || right > 0) return 2;
+    return st.visited[s.id] ? 1 : 0;
+  }
+  function mq(level, extra, sid) {
+    return el("span", { "class": "mq l" + level + (extra ? " " + extra : ""), title: LEVELS[level], "aria-label": LEVELS[level], role: "img",
+      "data-step": sid || null }, level === 3 ? ["✓"] : null);
+  }
+  function refreshMastery(s) {  // live update of every square of this step on the page (rail, lesson header)
+    var lv = mastery(s);
+    Array.prototype.forEach.call(document.querySelectorAll('.mq[data-step="' + s.id + '"]'), function (x) {
+      x.className = x.className.replace(/\bl\d\b/, "l" + lv); x.title = LEVELS[lv]; x.setAttribute("aria-label", LEVELS[lv]);
+      x.textContent = lv === 3 ? "✓" : "";
+    });
+  }
+  function legend() {
+    return el("div", { "class": "mlegend" }, LEVELS.map(function (n, k) { return el("span", null, [mq(k), n]); }));
+  }
+
   /* ---------- tiny DOM helpers ---------- */
   function el(tag, attrs, kids) {
     var e = document.createElement(tag);
@@ -100,9 +126,9 @@
   document.title = C.chapter.title;
 
   function progress() {
-    var d = steps.filter(function (s) { return st.done[s.id]; }).length;
-    document.getElementById("progress-bar").style.width = (100 * d / steps.length) + "%";
-    return d;
+    var pts = steps.reduce(function (a, s) { return a + mastery(s); }, 0);
+    document.getElementById("progress-bar").style.width = (100 * pts / (3 * steps.length)) + "%";
+    return steps.filter(function (s) { return mastery(s) >= 2; }).length;
   }
 
   /* ---------- provenance-aware paragraph ---------- */
@@ -172,34 +198,55 @@
     });
   }
 
+  function partSteps(pid) { return steps.filter(function (s) { return s.part === pid; }); }
+  function lessonRow(s, cur) {
+    var n = (tasksByNode[s.id] || []).length, lv = mastery(s);
+    return el("li", null, [el("a", { "class": "lrow" + (cur ? " cur" : "") + (st.last === s.id && !cur ? " last" : ""), href: "#/step/" + s.id,
+      "aria-current": cur ? "page" : null }, [
+      mq(lv, null, s.id),
+      el("span", { "class": "lt" }, [el("span", { "class": "t", text: s.title }),
+        el("span", { "class": "m", text: "~" + s.minutes + " мин" + (n ? " · " + plural(n, "вопрос", "вопроса", "вопросов") : "") + " · стр. " + s.pages.join(", ") })]),
+      st.last === s.id && !cur ? el("span", { "class": "pill", text: "вы здесь" }) : null,
+      el("span", { "class": "visually-hidden", text: LEVELS[lv] })])]);
+  }
+
   function viewPath() {
     setTab("path");
     var d = progress();
-    var kids = [
-      el("p", { "class": "crumb", text: C.chapter.book.author + ", «" + C.chapter.book.title + "» (" + C.chapter.book.year + "), " + C.chapter.sections + ", стр. " + C.chapter.pages.join("–") }),
-      el("h1", { text: C.chapter.title }),
-      el("p", { "class": "muted", text: "Путь из " + plural(steps.length, "шага", "шагов", "шагов") + ". Пройдено: " + d + " из " + steps.length + "." })
-    ];
-    if (C.chapter.scope === "sample") kids.push(el("p", { "class": "legend", text: "Это образец: в курсе только часть узлов главы." }));
+    var counts = [0, 0, 0, 0]; steps.forEach(function (s) { counts[mastery(s)]++; });
     var last = st.last && byId[st.last];
-    var next = last || steps.filter(function (s) { return !st.done[s.id]; })[0] || steps[0];
-    kids.push(el("div", { "class": "row" }, [el("a", { "class": "btn", href: "#/step/" + next.id, text: last ? "Продолжить с места" : "Начать" })]));
-    kids.push(el("p", { "class": "legend", text: "Как читать курс: обычный текст — пересказ главы моделью по цитатам автора. Кнопка «стр. N» показывает дословную цитату и страницу книги (по PDF). «Гипотеза» — то, чего нет в книге прямо; «ждёт проверки геолога» — спорное место." }));
-    C.parts.forEach(function (p) {
-      var ps = steps.filter(function (s) { return s.part === p.id; });
-      var ol = el("ol", { "class": "steps" });
-      ps.forEach(function (s) {
-        var cls = (st.done[s.id] ? "done " : "") + (st.last === s.id ? "last" : "");
-        ol.appendChild(el("li", { "class": cls }, [el("a", { href: "#/step/" + s.id, "class": cls }, [
-          el("span", { "class": "num", text: st.done[s.id] ? "✓" : String(s.order), "aria-hidden": "true" }),
-          el("span", null, [el("span", { "class": "t", text: s.title }), el("br"),
-            el("span", { "class": "m", text: "~" + s.minutes + " мин · стр. " + s.pages.join(", ") + ((tasksByNode[s.id] || []).length ? " · заданий: " + tasksByNode[s.id].length : "") })]),
-          el("span", { "class": "visually-hidden", text: st.done[s.id] ? "пройден" : "" })
-        ])]));
-      });
-      kids.push(el("section", { "class": "part" }, [el("h2", { text: p.title }), p.title_book ? el("p", { "class": "small muted", text: p.title_book }) : null, ol]));
+    var next = last || steps.filter(function (s) { return mastery(s) < 2; })[0] || steps[0];
+    var bar = el("div", { "class": "mbar", role: "img", "aria-label": LEVELS.map(function (n, k) { return n + ": " + counts[k]; }).join(", ") },
+      [3, 2, 1, 0].map(function (k) { return counts[k] ? el("span", { "class": "seg l" + k, style: "flex-grow:" + counts[k] }) : null; }));
+    var hero = el("section", { "class": "hero" }, [el("div", { "class": "hero-in" }, [
+      el("p", { "class": "hero-k", text: C.chapter.book.author + " · «" + C.chapter.book.title + "» (" + C.chapter.book.year + ") · " + C.chapter.sections + " · стр. " + C.chapter.pages.join("–") }),
+      el("h1", { text: C.chapter.title }),
+      el("p", { "class": "hero-sub", text: plural(C.parts.length, "раздел", "раздела", "разделов") + " · " + plural(steps.length, "урок", "урока", "уроков") + " · " +
+        plural((C.tasks || []).length, "вопрос", "вопроса", "вопросов") + ". Освоено или знакомо: " + d + " из " + steps.length + "." }),
+      bar, legend(),
+      el("div", { "class": "row" }, [el("a", { "class": "btn big", href: "#/step/" + next.id, text: last ? "Продолжить: " + next.title : "Начать курс" })])
+    ])]);
+    var kids = [hero];
+    if (C.chapter.scope === "sample") kids.push(el("p", { "class": "legend", text: "Это образец: в курсе только часть узлов главы." }));
+    kids.push(el("details", { "class": "howto" }, [el("summary", { text: "Как читать курс" }),
+      el("p", { text: "Обычный текст — пересказ главы моделью по цитатам автора. Кнопка «стр. N» показывает дословную цитату и страницу книги (по PDF). «Гипотеза» — то, чего нет в книге прямо; «ждёт проверки геолога» — спорное место. Квадратики — ваш уровень по уроку: он растёт, когда вы отвечаете на вопросы урока." })]));
+    var grid = el("div", { "class": "units" });
+    C.parts.forEach(function (p, pi) {
+      var ps = partSteps(p.id), done = ps.filter(function (s) { return mastery(s) === 3; }).length;
+      var first = ps.filter(function (s) { return mastery(s) < 3; })[0] || ps[0];
+      grid.appendChild(el("section", { "class": "unit", "aria-labelledby": "u-" + p.id }, [
+        el("div", { "class": "unit-head" }, [
+          el("p", { "class": "unit-k", text: "Раздел " + (pi + 1) }),
+          el("h2", { id: "u-" + p.id, text: p.title }),
+          p.title_book ? el("p", { "class": "small muted", text: "В книге: " + p.title_book }) : null,
+          el("div", { "class": "unit-prog" }, [el("span", { "class": "sq" }, ps.map(function (s) { return mq(mastery(s)); })),
+            el("span", { "class": "small muted", text: "Освоено " + done + " из " + ps.length })])]),
+        el("ol", { "class": "lessons" }, ps.map(function (s) { return lessonRow(s, false); })),
+        first ? el("div", { "class": "unit-foot" }, [el("a", { "class": "btn ghost", href: "#/step/" + first.id, text: done ? "Продолжить раздел" : "Начать раздел" })]) : null
+      ]));
     });
-    render(kids);
+    kids.push(grid);
+    render(kids, "wide");
   }
 
   function block(id, title, content) {
@@ -308,9 +355,10 @@
 
     var tl = tasksByNode[s.id] || [];
     var part = partById[s.part] || { title: "" };
+    var ps = partSteps(s.part), pi = C.parts.indexOf(part);
     var head = [
-      el("p", { "class": "crumb" }, [el("a", { href: "#/", text: "Путь" }), " · " + part.title + " · шаг " + s.order + " из " + steps.length]),
-      el("h1", { text: s.title }),
+      el("p", { "class": "crumb" }, [el("a", { href: "#/", text: "Курс" }), " › Раздел " + (pi + 1) + ": " + part.title + " › урок " + (ps.indexOf(s) + 1) + " из " + ps.length]),
+      el("div", { "class": "lhead" }, [mq(mastery(s), "big", s.id), el("h1", { text: s.title })]),
       el("p", { "class": "booktitle", text: "В книге: " + s.title_book }),
       el("div", { "class": "meta" }, [
         el("span", { "class": "badge", text: "~" + s.minutes + " мин" }),
@@ -324,27 +372,41 @@
     if (tl.length) toc.appendChild(el("a", { href: "#b-tasks", "data-anchor": "b-tasks", text: "Проверь себя" }));
     // collapsed on phones (long list of chips pushes the text below the fold), open on wider screens
     var tocBox = el("details", { "class": "tocbox", open: window.matchMedia("(min-width: 760px)").matches }, [
-      el("summary", { text: "Оглавление шага (" + toc.childNodes.length + ")" }), toc]);
+      el("summary", { text: "Содержание урока (" + toc.childNodes.length + ")" }), toc]);
     head.push(tocBox);
     var body = sections.map(function (x) { return block(x[0], titles[x[0]], x[1]); });
-    if (tl.length) body.push(block("tasks", "Проверь себя", tl.map(taskView)));
+    if (tl.length) body.push(block("tasks", "Проверь себя", [el("p", { "class": "muted", text: "Вопросы по одному. Ответ на каждый есть в тексте урока; после проверки видно верный ответ и страницу книги." }), practice(tl, s)]));
     var prev = steps[s.idx - 1], next = steps[s.idx + 1];
+    var doneBtn = el("button", { "class": "btn ghost", type: "button", text: st.done[id] ? "Урок пройден ✓" : "Отметить урок пройденным", onclick: function (e) {
+      st.done[id] = !st.done[id]; save(); progress(); refreshMastery(s); e.target.textContent = st.done[id] ? "Урок пройден ✓" : "Отметить урок пройденным"; } });
     var nav = el("div", { "class": "nav-steps" }, [
-      prev ? el("a", { "class": "btn ghost", href: "#/step/" + prev.id, text: "← Назад" }) : el("span"),
-      el("button", { "class": "btn ghost", type: "button", text: st.done[id] ? "Шаг пройден ✓" : "Отметить шаг пройденным", onclick: function (e) {
-        st.done[id] = !st.done[id]; save(); progress(); e.target.textContent = st.done[id] ? "Шаг пройден ✓" : "Отметить шаг пройденным"; } }),
-      next ? el("a", { "class": "btn", href: "#/step/" + next.id, text: "Дальше →", onclick: function () { st.done[id] = true; save(); } }) : el("a", { "class": "btn", href: "#/tasks", text: "К заданиям →" })
+      next ? el("a", { "class": "upnext", href: "#/step/" + next.id, onclick: function () { st.done[id] = true; save(); } }, [
+        el("span", { "class": "un-k", text: "Далее" + (next.part !== s.part ? " · новый раздел" : "") }),
+        el("span", { "class": "un-t", text: next.title }),
+        el("span", { "class": "un-m", text: "~" + next.minutes + " мин · стр. " + next.pages.join(", ") }),
+        el("span", { "class": "un-go", "aria-hidden": "true", text: "→" })])
+        : el("a", { "class": "upnext", href: "#/tasks" }, [el("span", { "class": "un-k", text: "Курс пройден" }), el("span", { "class": "un-t", text: "Все упражнения главы" }), el("span", { "class": "un-go", "aria-hidden": "true", text: "→" })]),
+      el("div", { "class": "row" }, [prev ? el("a", { "class": "btn ghost", href: "#/step/" + prev.id, text: "← Предыдущий урок" }) : null, doneBtn])
     ]);
-    render(head.concat(body, [nav]));
+    // left rail: the unit's lessons with mastery (desktop); on phones it folds into a details box above the lesson
+    var rail = el("nav", { "class": "rail", "aria-label": "Уроки раздела" }, [
+      el("p", { "class": "rail-k", text: "Раздел " + (pi + 1) }),
+      el("p", { "class": "rail-t", text: part.title }),
+      el("ol", { "class": "lessons compact" }, ps.map(function (x) { return lessonRow(x, x === s); })),
+      el("a", { "class": "rail-all", href: "#/", text: "← Все разделы" })]);
+    var railBox = el("details", { "class": "railbox" }, [el("summary", { text: "Уроки раздела «" + part.title + "»" }),
+      el("ol", { "class": "lessons compact" }, ps.map(function (x) { return lessonRow(x, x === s); }))]);
+    var article = el("article", { "class": "lesson" }, [railBox].concat(head, body, [nav]));
+    render([el("div", { "class": "lesson-grid" }, [rail, article])], "wide");
   }
 
   /* ---------- tasks ---------- */
   var TYPE_LABEL = { single: "один ответ", multi: "несколько ответов", order: "порядок", gap: "пропуск", calc: "расчёт" };
   function normA(x) { return String(x).toLowerCase().replace(/ё/g, "е").replace(/[«»"'.,;:!?()]/g, "").replace(/\s+/g, " ").trim(); }
 
-  function taskView(t) {
+  function taskView(t, onResult) {
     var box = el("div", { "class": "task", id: "task-" + t.id });
-    box.appendChild(el("p", { "class": "kind", text: "Задание · " + TYPE_LABEL[t.type] }));
+    box.appendChild(el("p", { "class": "kind", text: TYPE_LABEL[t.type] }));
     box.appendChild(el("p", { "class": "q", text: t.prompt }));
     var fb = el("div", { "class": "fb", hidden: true, role: "status", "aria-live": "polite" });
     var check, getRes;
@@ -396,21 +458,69 @@
         return { ok: !isNaN(v) && Math.abs(v - t.answer) <= tol, empty: isNaN(v), right: String(t.answer).replace(".", ",") + " " + (t.calc.unit || "") };
       };
     }
+    var actions = el("div", { "class": "actions" });
     check = el("button", { "class": "btn", type: "button", text: "Проверить", onclick: function () {
       var r = getRes();
       if (r.empty) { fb.hidden = false; fb.className = "fb"; fb.textContent = "Сначала дайте ответ."; return; }
-      st.tasks[t.id] = r.ok; save();
+      st.tasks[t.id] = r.ok; save(); progress();
       fb.hidden = false; fb.className = "fb " + (r.ok ? "good" : "bad");
       fb.textContent = "";
-      fb.appendChild(el("b", { text: r.ok ? "Верно. " : "Неверно. " }));
-      if (!r.ok) fb.appendChild(el("span", { text: "Верный ответ: " + r.right + ". " }));
-      fb.appendChild(el("span", { text: t.explanation + " " }));
+      fb.appendChild(el("span", { "class": "fb-ic", "aria-hidden": "true", text: r.ok ? "✓" : "✗" }));
+      var fbt = el("div", { "class": "fb-t" });
+      fbt.appendChild(el("b", { text: r.ok ? "Верно!" : "Пока неверно." }));
+      if (!r.ok) fbt.appendChild(el("p", { text: "Верный ответ: " + r.right + "." }));
+      fbt.appendChild(el("p", { text: t.explanation }));
       var pages = t.claim_ids.map(function (c) { return claimIndex[c] && claimIndex[c].page; }).filter(Boolean);
       var s = byId[t.node_id];
-      fb.appendChild(el("a", { href: "#/step/" + t.node_id, text: "Шаг «" + s.title + "», стр. " + pages.filter(function (v, i, a) { return a.indexOf(v) === i; }).join(", ") }));
+      fbt.appendChild(el("a", { href: "#/step/" + t.node_id, text: "Урок «" + s.title + "», стр. " + pages.filter(function (v, i, a) { return a.indexOf(v) === i; }).join(", ") }));
+      fb.appendChild(fbt);
+      if (onResult) {  // inside an exercise: one check per question, then the exercise moves on
+        check.disabled = true; check.textContent = "Проверено";
+        Array.prototype.forEach.call(box.querySelectorAll("input,.mv"), function (x) { x.disabled = true; });
+        onResult(r.ok, actions);
+      }
     } });
-    box.appendChild(el("div", { "class": "row", style: "margin-top:10px" }, [check]));
+    actions.appendChild(check);
     box.appendChild(fb);
+    box.appendChild(actions);
+    return box;
+  }
+
+  /* An exercise: the step's questions one at a time, progress dots, a score at the end. */
+  function practice(tl, s) {
+    var i = 0, res = {}, box = el("div", { "class": "practice" });
+    function dots() {
+      return el("ol", { "class": "pdots", "aria-label": "Ход упражнения" }, tl.map(function (t, k) {
+        var r = res[t.id];
+        return el("li", { "class": "pdot" + (k === i ? " cur" : "") + (r === true ? " ok" : r === false ? " no" : ""),
+          "aria-label": "Вопрос " + (k + 1) + (r === true ? ": верно" : r === false ? ": неверно" : k === i ? ": текущий" : "") }, [r === true ? "✓" : r === false ? "✗" : ""]);
+      }));
+    }
+    function show(focus) {
+      box.textContent = "";
+      if (i >= tl.length) {
+        var ok = tl.filter(function (t) { return res[t.id]; }).length, lv = mastery(s);
+        box.appendChild(el("div", { "class": "pdone", role: "status" }, [
+          el("p", { "class": "pscore", text: "Верно " + ok + " из " + tl.length }),
+          dots(),
+          el("p", { "class": "plevel" }, [mq(lv, "big"), " Уровень урока: " + LEVELS[lv]]),
+          el("p", { "class": "muted", text: ok === tl.length ? "Все ответы верные — урок освоен." : "Перечитайте блоки урока по страницам из разборов и пройдите упражнение ещё раз." }),
+          el("div", { "class": "row" }, [el("button", { "class": "btn", type: "button", text: "Пройти ещё раз", onclick: function () { i = 0; res = {}; show(true); } }),
+            s.idx + 1 < steps.length ? el("a", { "class": "btn ghost", href: "#/step/" + steps[s.idx + 1].id, text: "Следующий урок →" }) : null])]));
+        if (focus) box.querySelector(".pscore").focus();
+        return;
+      }
+      var t = tl[i], d = dots();
+      box.appendChild(el("div", { "class": "phead" }, [el("span", { "class": "pcount", text: "Вопрос " + (i + 1) + " из " + tl.length }), d]));
+      box.appendChild(taskView(t, function (ok, actions) {
+        res[t.id] = ok; refreshMastery(s);
+        d.parentNode.replaceChild(dots(), d); d = box.querySelector(".pdots");
+        var nx = el("button", { "class": "btn", type: "button", text: i + 1 < tl.length ? "Следующий вопрос" : "Итог", onclick: function () { i++; show(true); } });
+        actions.appendChild(nx); nx.focus();
+      }));
+      if (focus) { var q = box.querySelector(".q"); if (q) { q.setAttribute("tabindex", "-1"); q.focus({ preventScroll: true }); box.scrollIntoView({ block: "start" }); } }
+    }
+    show(false);
     return box;
   }
 
@@ -439,14 +549,34 @@
     setTab("tasks");
     var all = C.tasks || [];
     var solved = all.filter(function (t) { return st.tasks[t.id] === true; }).length;
-    var kids = [el("h1", { text: "Задания по главе" }),
-      el("p", { "class": "muted", text: plural(all.length, "задание", "задания", "заданий") + ". Решено верно: " + solved + ". Ответ на каждое есть в тексте шага; после проверки видно верный ответ и страницу книги." })];
-    steps.forEach(function (s) {
-      var tl = tasksByNode[s.id]; if (!tl) return;
-      kids.push(el("h2", null, [el("a", { href: "#/step/" + s.id, text: s.order + ". " + s.title })]));
-      tl.forEach(function (t) { kids.push(taskView(t)); });
+    var kinds = {}; all.forEach(function (t) { kinds[t.type] = (kinds[t.type] || 0) + 1; });
+    var kids = [el("h1", { text: "Упражнения" }),
+      el("p", { "class": "muted", text: plural(all.length, "вопрос", "вопроса", "вопросов") + " по главе, решено верно: " + solved + ". Типы: " +
+        Object.keys(kinds).map(function (k) { return TYPE_LABEL[k] + " — " + kinds[k]; }).join(", ") + "." }), legend()];
+    C.parts.forEach(function (p, pi) {
+      var ps = partSteps(p.id).filter(function (s) { return (tasksByNode[s.id] || []).length; });
+      if (!ps.length) return;
+      kids.push(el("h2", { text: "Раздел " + (pi + 1) + ". " + p.title }));
+      kids.push(el("div", { "class": "exgrid" }, ps.map(function (s) {
+        var tl = tasksByNode[s.id], ok = tl.filter(function (t) { return st.tasks[t.id] === true; }).length;
+        return el("a", { "class": "excard", href: "#/practice/" + s.id }, [mq(mastery(s)),
+          el("span", { "class": "lt" }, [el("span", { "class": "t", text: s.title }),
+            el("span", { "class": "m", text: plural(tl.length, "вопрос", "вопроса", "вопросов") + " · верно " + ok })]),
+          el("span", { "class": "un-go", "aria-hidden": "true", text: "→" })]);
+      })));
     });
     render(kids);
+  }
+
+  function viewPractice(id) {
+    var s = byId[id], tl = s && tasksByNode[id];
+    if (!tl) return viewTasks();
+    setTab("tasks");
+    st.visited[id] = true; save(); progress();
+    render([el("p", { "class": "crumb" }, [el("a", { href: "#/tasks", text: "Упражнения" }), " › " + s.title]),
+      el("h1", { text: "Упражнение: " + s.title }),
+      el("p", { "class": "muted" }, ["Ответы — в тексте урока. ", el("a", { href: "#/step/" + id, text: "Открыть урок" })]),
+      practice(tl, s)]);
   }
 
   /* ---------- cards ---------- */
@@ -466,7 +596,7 @@
         [el("a", { href: "#/step/" + s.id, "class": "small", text: "Открыть шаг" })]));
       var show = el("button", { "class": "btn ghost", type: "button", text: "Показать ответ", "aria-expanded": "false", onclick: function () { back.hidden = !back.hidden; show.setAttribute("aria-expanded", back.hidden ? "false" : "true"); show.textContent = back.hidden ? "Показать ответ" : "Скрыть"; } });
       function setMark(m) { return function () { st.cards[s.id] = m; save(); card.className = "fcard " + m; }; }
-      card.appendChild(el("span", { "class": "small muted", text: "Шаг " + s.order }));
+      card.appendChild(el("span", { "class": "small muted", text: "Урок " + s.order }));
       card.appendChild(el("div", { "class": "front", text: s.title + ": в чём суть?" }));
       card.appendChild(show); card.appendChild(back);
       card.appendChild(el("div", { "class": "row" }, [el("button", { "class": "btn ghost", type: "button", text: "Знаю", onclick: setMark("know") }),
@@ -531,8 +661,9 @@
   }
 
   /* ---------- render + router ---------- */
-  function render(kids) {
+  function render(kids, layout) {
     main.textContent = "";
+    main.className = layout || "";
     kids.forEach(function (k) { if (k) main.appendChild(k); });
     window.scrollTo(0, 0);
     main.focus({ preventScroll: true });
@@ -549,6 +680,7 @@
     var h = location.hash.replace(/^#\/?/, "");
     var m;
     if ((m = h.match(/^step\/(.+)$/))) viewStep(decodeURIComponent(m[1]));
+    else if ((m = h.match(/^practice\/(.+)$/))) viewPractice(decodeURIComponent(m[1]));
     else if (h === "tasks") viewTasks();
     else if (h === "cards") viewCards();
     else if (h === "cards/repeat") viewCards("repeat");

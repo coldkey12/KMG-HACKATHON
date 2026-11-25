@@ -81,6 +81,23 @@ def build(layer_path, out=None, with_tasks=True):
     return out, report
 
 
+def refresh_assets(layer_path, out=None):
+    """Refresh only the app (index.html, assets/) of an already built course: content, tasks and media stay as
+    built. For design changes when the layer moved on and tasks must not be regenerated yet."""
+    layer_path = Path(layer_path)
+    out = Path(out) if out else layer_path.parent / "course"
+    data = out / "data" / "course.js"
+    if not data.exists():
+        raise SystemExit("курс ещё не собран: %s (нужна полная сборка build)" % out)
+    view = json.loads(data.read_text(encoding="utf-8").split("=", 1)[1].strip().rstrip(";"))
+    (out / "assets").mkdir(parents=True, exist_ok=True)
+    shutil.copy(STATIC / "app.js", out / "assets" / "app.js")
+    shutil.copy(STATIC / "style.css", out / "assets" / "style.css")
+    html = (STATIC / "index.html").read_text(encoding="utf-8").replace("{{TITLE}}", view["chapter"]["title"])
+    (out / "index.html").write_text(html, encoding="utf-8")
+    return out
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="kmg_course")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -88,6 +105,7 @@ def main(argv=None):
     b.add_argument("layer")
     b.add_argument("--out", default=None)
     b.add_argument("--no-tasks", action="store_true")
+    b.add_argument("--assets-only", action="store_true", help="обновить только приложение курса (дизайн), содержание и задания не трогать")
     v = sub.add_parser("video")
     v.add_argument("layer")
     v.add_argument("node_id")
@@ -127,6 +145,9 @@ def main(argv=None):
         print(json.dumps({"out": str(out), "duration_s": pj["duration_s"], "wpm": m["wpm"], "lufs": m["lufs"],
                           "voice": m["voice"], "fallback_used": m["fallback_used"], "script_cost_usd": m["script_cost_usd"],
                           "invariants_ok": all(i["ok"] for i in m["invariants"])}, ensure_ascii=False))
+        return
+    if args.cmd == "build" and args.assets_only:
+        print(json.dumps({"out": str(refresh_assets(args.layer, args.out)), "assets_only": True}, ensure_ascii=False))
         return
     if args.cmd == "build":
         out, rep = build(args.layer, args.out, with_tasks=not args.no_tasks)
