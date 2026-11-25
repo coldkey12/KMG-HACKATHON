@@ -755,12 +755,15 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=8):
         plan = dict(plan, nodes=plan["nodes"][:only_nodes])
 
     node_outs, calls = {}, [r_plan]
-    first = plan["nodes"][0]
-    o, r = make_node(first, full_plan, pack_text, chapter_text, log)  # first call warms the prompt cache
-    node_outs[first["key"]] = o
-    calls.append(r)
-
     failed = []
+    first = plan["nodes"][0]
+    try:
+        o, r = make_node(first, full_plan, pack_text, chapter_text, log)  # first call warms the prompt cache
+        node_outs[first["key"]] = o
+        calls.append(r)
+    except Exception as e:
+        failed.append({"node": first["key"], "error": "%s: %s" % (type(e).__name__, str(e)[:300])})
+        node_outs[first["key"]] = {"claims": []}
 
     def work(pn):
         try:
@@ -831,12 +834,15 @@ def build(cfg_path, out_dir=None, only_nodes=None, workers=8):
         if any(c["status"] != "ok" for c in n["claims"]):
             n["status"] = "has_unverified"
     cost = sum(c["cost_usd"] for c in calls)
+    paid = sum(c.get("paid_usd", c["cost_usd"]) for c in calls)
     cost_orig = sum(c["cost_usd_original"] or 0 for c in calls)
     usage = {k: sum(c["usage"].get(k, 0) for c in calls) for k in ("input_tokens", "output_tokens", "cache_creation_input_tokens", "cache_read_input_tokens")}
     layer["checks"] = {"passed": res["passed"], "summary": res["summary"], "plan_autofixes": plan_fixes, "assembly_autofixes": autofixes,
                        "overrides": ov, "failed_nodes": failed}
     (out_dir / "affected.json").write_text(json.dumps({"affected_nodes": ov["affected_nodes"], "overrides_applied": ov["applied"]}, ensure_ascii=False, indent=1), encoding="utf-8")
     layer["metrics"] = {"llm_calls": len(calls), "cached_calls": sum(1 for c in calls if c["cached"]),
+                        "transport": llm.transport(), "paid_usd_this_run": round(paid, 4),
+                        "cost_note": "cost_usd_* — расчётная стоимость по токенам и прайсу config/models.yaml; paid_usd — фактически списано с ключа API (через подписку Claude Code — 0)",
                         "cost_usd_this_run": round(cost, 4), "cost_usd_if_uncached": round(cost_orig, 4),
                         "cost_usd_per_node": round(cost_orig / max(1, len(nodes)), 4),
                         "usage": usage, "seconds": round(time.time() - t0, 1), "nodes": len(nodes), "units": len(units),

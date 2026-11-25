@@ -56,7 +56,46 @@ def _anthropic(cfg, system, messages):
     return text, usage, msg.stop_reason
 
 
+def _claude_code(cfg, system, messages):
+    """Same model through Claude Code headless mode (`claude -p`): billed to the user's Claude
+    subscription, not to the API key. No tools, no MCP, no session files, isolated cwd."""
+    import subprocess
+    import tempfile
+    sys_text = "\n\n".join(b["text"] for b in system)
+    user = messages[-1]["content"]
+    env = {k: v for k, v in os.environ.items() if k not in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "CLAUDE_CODE_SIMPLE")}
+    with tempfile.TemporaryDirectory(prefix="kmg-cc-") as d:
+        sp = os.path.join(d, "system.txt")
+        with open(sp, "w", encoding="utf-8") as f:
+            f.write(sys_text)
+        cmd = [os.environ.get("KMG_CLAUDE_BIN", "claude"), "-p", "--model", cfg["model"], "--output-format", "json",
+               "--tools", "", "--system-prompt-file", sp, "--no-session-persistence", "--strict-mcp-config"]
+        if cfg.get("effort"):
+            cmd += ["--effort", cfg["effort"]]
+        try:
+            pr = subprocess.run(cmd, input=user, capture_output=True, text=True, cwd=d, env=env, timeout=1800)
+        except subprocess.TimeoutExpired:
+            raise LLMError("claude_code: timeout")
+    try:
+        js = json.loads(pr.stdout)
+    except json.JSONDecodeError:
+        raise LLMError("claude_code: no JSON (exit %s): %s" % (pr.returncode, (pr.stderr or pr.stdout)[:300]))
+    if js.get("is_error") or js.get("subtype") != "success":
+        raise LLMError("claude_code: %s %s %s" % (js.get("subtype"), js.get("api_error_status"), str(js.get("result"))[:300]))
+    u = js.get("usage") or {}
+    usage = {"input_tokens": u.get("input_tokens", 0) or 0, "output_tokens": u.get("output_tokens", 0) or 0,
+             "cache_creation_input_tokens": u.get("cache_creation_input_tokens", 0) or 0,
+             "cache_read_input_tokens": u.get("cache_read_input_tokens", 0) or 0}
+    return js.get("result") or "", usage, js.get("stop_reason") or "end_turn"
+
+
 PROVIDERS = {"anthropic": _anthropic}
+TRANSPORTS = {"api": None, "claude_code": _claude_code}
+
+
+def transport():
+    """How to reach the model: 'claude_code' (subscription) or 'api' (API key). KMG_TRANSPORT overrides config."""
+    return os.environ.get("KMG_TRANSPORT") or models().get("transport", "api")
 
 
 def call(role, system, user, log_path=None, tag=""):
@@ -72,29 +111,48 @@ def call(role, system, user, log_path=None, tag=""):
     payload = {"provider": cfg["provider"], "model": cfg["model"], "effort": cfg.get("effort"),
                "max_tokens": cfg["max_tokens"], "system": system, "messages": messages}
     key = _key(payload)
-    CACHE.mkdir(parents=True, exist_ok=True)
-    cpath = CACHE / (key + ".json")
+    cache_dir = CACHE
+    if role in (os.environ.get("KMG_NOCACHE_ROLES") or "").split(","):
+        cache_dir = CACHE.parent / "llm_fresh"  # experiment: force a fresh call, keep the main cache untouched
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cpath = cache_dir / (key + ".json")
     t0 = time.time()
     if cpath.exists():
         rec = json.loads(cpath.read_text(encoding="utf-8"))
         cached = True
     else:
-        text, usage, stop = PROVIDERS[cfg["provider"]](cfg, system, messages)
+        tr = transport()
+        fn = TRANSPORTS.get(tr) or PROVIDERS[cfg["provider"]]
+        last = None
+        for attempt in range(3):  # subscription limits / transient errors: back off, then let the caller isolate the failure
+            try:
+                text, usage, stop = fn(cfg, system, messages)
+                break
+            except LLMError as e:
+                last = e
+                time.sleep(float(os.environ.get("KMG_RETRY_SLEEP", 20)) * (attempt + 1))
+        else:
+            raise last
+        est = cost_usd(cfg["model"], usage)
         rec = {"key": key, "role": role, "model": cfg["model"], "effort": cfg.get("effort"),
-               "text": text, "usage": usage, "stop_reason": stop,
-               "cost_usd": cost_usd(cfg["model"], usage), "created": time.strftime("%Y-%m-%dT%H:%M:%S")}
+               "text": text, "usage": usage, "stop_reason": stop, "transport": tr,
+               "cost_usd": est, "paid_usd": est if tr == "api" else 0.0,
+               "created": time.strftime("%Y-%m-%dT%H:%M:%S")}
         if stop == "max_tokens":
             raise LLMError("output truncated at max_tokens (%s) for %s" % (cfg["max_tokens"], tag))
         cpath.write_text(json.dumps(rec, ensure_ascii=False), encoding="utf-8")
         cached = False
     out = {"text": rec["text"], "usage": rec["usage"], "cost_usd": 0.0 if cached else rec["cost_usd"],
-           "cost_usd_original": rec["cost_usd"], "cached": cached, "model": rec["model"], "key": key}
+           "cost_usd_original": rec["cost_usd"], "cached": cached, "model": rec["model"], "key": key,
+           "transport": rec.get("transport", "api"),
+           "paid_usd": 0.0 if cached else rec.get("paid_usd", rec["cost_usd"])}
     if log_path:
         Path(log_path).parent.mkdir(parents=True, exist_ok=True)
         with open(log_path, "a", encoding="utf-8") as f:
             f.write(json.dumps({"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "role": role, "tag": tag,
                                 "model": rec["model"], "cached": cached, "usage": rec["usage"],
                                 "cost_usd": out["cost_usd"], "cost_usd_original": rec["cost_usd"],
+                                "transport": out["transport"], "paid_usd": out["paid_usd"],
                                 "seconds": round(time.time() - t0, 1), "key": key}, ensure_ascii=False) + "\n")
     return out
 

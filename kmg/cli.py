@@ -6,6 +6,7 @@
   build  <chapter.yaml> [--nodes N] — глава → учебный слой (out/<id>/layer.json) + проверки
   metrics                           — сводка метрик по всем главам (out/metrics.md)
   manifest                          — манифест моделей и инструментов (docs/MANIFEST.md)
+  spend                             — траты по журналам вызовов: расчётная стоимость и оплачено с ключа
   check  <layer.json>               — машинные проверки слоя, отчёт рядом (checks.md)
   check-text <layer.json> <items.json> — проверки текста курса/заданий/сценариев агента B
   review <package.json>             — модуль проверки чужого пакета: замечания со страницей и исправлением
@@ -37,6 +38,7 @@ def main(argv=None):
     ic.add_argument("--title", default=""); ic.add_argument("--author", default=""); ic.add_argument("--book", default=""); ic.add_argument("--lang", default="ru")
     sub.add_parser("metrics")
     sub.add_parser("manifest")
+    sub.add_parser("spend")
     e = sub.add_parser("review"); e.add_argument("package"); e.add_argument("--out", default=None)
     rt = sub.add_parser("review-tasks"); rt.add_argument("tasks"); rt.add_argument("chapter")
     f = sub.add_parser("review-eval"); f.add_argument("remarks"); f.add_argument("key")
@@ -177,3 +179,7 @@ def main(argv=None):
         if us:
             print("первая:", us[0].text[:100].replace("\n", " "))
             print("последняя:", us[-1].text[:100].replace("\n", " "))
+
+    if args.cmd == "spend":
+        from .spend import report
+        print(report())

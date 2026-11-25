@@ -28,3 +28,4 @@ data/raw/
 
 # local scratch
 .claude/
+cache/llm_fresh/
