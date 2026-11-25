@@ -87,6 +87,23 @@ def _node_payload(n, later_terms):
     }
 
 
+BATCH = 10  # nodes per model call: keeps output well under max_tokens on big chapters
+
+
+def _batches(nodes):
+    """Group consecutive nodes by part, splitting big parts, so one call sees related steps together."""
+    out, cur, cur_part = [], [], None
+    for n in nodes:
+        if cur and (n["part_id"] != cur_part and len(cur) >= BATCH // 2 or len(cur) >= BATCH):
+            out.append(cur)
+            cur = []
+        cur.append(n)
+        cur_part = n["part_id"]
+    if cur:
+        out.append(cur)
+    return out
+
+
 def generate(layer, log_path, min_total=15):
     nodes = sorted(layer["nodes"], key=lambda n: n["order"])
     defined_at = {}
@@ -98,12 +115,22 @@ def generate(layer, log_path, min_total=15):
         later = {t for t, k in defined_at.items() if k > n["order"]}
         p = _node_payload(n, later)
         if p["claims"]:
-            payload.append(p)
-    system = [{"type": "text", "text": PROMPT.read_text(encoding="utf-8").replace("{min_total}", str(min_total))}]
-    user = "Шаги курса (JSON):\n" + json.dumps(payload, ensure_ascii=False, indent=1)
-    r = llm.call("tasks", system, user, log_path=log_path, tag="tasks:%s" % layer["chapter"]["id"])
-    data = llm.parse_json(r["text"])
-    return data.get("tasks", []), r
+            payload.append((n, p))
+    batches = _batches([n for n, _ in payload])
+    by_id = {n["id"]: p for n, p in payload}
+    tasks, total = [], {"cost_usd": 0.0, "cost_usd_original": 0.0, "cached": True, "model": None, "calls": 0}
+    for i, b in enumerate(batches):
+        want = max(3, -(-min_total * len(b) // len(payload)), len(b))
+        system = [{"type": "text", "text": PROMPT.read_text(encoding="utf-8").replace("{min_total}", str(want))}]
+        user = "Шаги курса (JSON):\n" + json.dumps([by_id[n["id"]] for n in b], ensure_ascii=False, indent=1)
+        r = llm.call("tasks", system, user, log_path=log_path, tag="tasks:%s:b%d" % (layer["chapter"]["id"], i + 1))
+        tasks += llm.parse_json(r["text"]).get("tasks", [])
+        total["cost_usd"] += r["cost_usd"] or 0
+        total["cost_usd_original"] += r["cost_usd_original"] or 0
+        total["cached"] = total["cached"] and r["cached"]
+        total["model"] = r["model"]
+        total["calls"] += 1
+    return tasks, total
 
 
 # ---------- validation ----------
@@ -195,7 +222,7 @@ def validate(layer, raw_tasks, pack_terms):
                     "text": " ".join([t.get("prompt", "")] + _correct_texts(t) + [t.get("explanation", "")])}
             res = achecks.check_course_items(layer, [item], pack_terms)
             if not res["passed"]:
-                why = "проверка A: " + "; ".join(x["message"] for x in res["issues"] if x["level"] == "error")[:200]
+                why = "проверка A: " + "; ".join(x.get("msg", "") for x in res["issues"] if x["level"] == "error")[:200]
         if why:
             rejected.append({"index": i, "node_id": t.get("node_id"), "type": ty, "prompt": t.get("prompt"), "why": why})
             continue
@@ -229,8 +256,8 @@ def build_tasks(layer, out_dir, log_path, min_total=15):
     report = {"schema": "kmg-tasks/0.1.0", "chapter": layer["chapter"]["id"], "generated": len(raw),
               "kept": len(kept), "rejected": rejected, "types": types,
               "meets_tz": len(kept) >= min_total and len(types) >= 4,
-              "cost_usd": r["cost_usd"], "cost_usd_original": r["cost_usd_original"], "cached": r["cached"],
-              "model": r["model"]}
+              "cost_usd": round(r["cost_usd"], 6), "cost_usd_original": round(r["cost_usd_original"], 6),
+              "cached": r["cached"], "model": r["model"], "calls": r["calls"]}
     Path(out_dir).mkdir(parents=True, exist_ok=True)
     (Path(out_dir) / "tasks.json").write_text(json.dumps({"schema": "kmg-tasks/0.1.0", "tasks": kept}, ensure_ascii=False, indent=1), encoding="utf-8")
     return kept, report

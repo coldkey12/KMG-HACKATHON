@@ -113,7 +113,13 @@ th{background:var(--surface-2)}
 figure{margin:12px 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px}
 figure svg{display:block;width:100%;max-width:520px;height:auto;margin:0 auto}
 figcaption{font-size:.86rem;color:var(--muted);margin-top:6px}
-.formula{font-family:var(--fm);background:var(--surface-2);padding:8px 10px;border-radius:6px;overflow-x:auto}
+.formula{font-family:"Cambria Math","STIX Two Math",Cambria,"Times New Roman",serif;font-size:1.2rem;background:var(--surface-2);padding:10px 12px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .15em}
+.frac .num{border-bottom:1px solid currentColor;padding:0 .2em}
+.frac .den{padding:0 .2em}
+.formula .frac{font-size:.95em}
+.sqrt .rad{border-top:1px solid currentColor;padding:0 .1em}
+.tex sub,.tex sup{font-size:.72em}
 .nav-steps{display:flex;justify-content:space-between;gap:8px;margin-top:32px;flex-wrap:wrap}
 .nav-steps .btn{max-width:100%}
 .why{font-size:.9rem;color:var(--muted)}

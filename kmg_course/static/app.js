@@ -44,17 +44,36 @@
     frag.appendChild(document.createTextNode(src.slice(last)));
     return frag;
   }
+  /* Minimal recursive TeX renderer: \frac, \sqrt, _ ^, {groups}, \left( \right), symbol table. */
   function texSpan(t) {
-    Object.keys(TEX).sort(function (a, b) { return b.length - a.length; }).forEach(function (k) { t = t.split(k).join(TEX[k]); });
-    t = t.replace(/\\(text|mathrm|operatorname)\{([^}]*)\}/g, "$2").replace(/\\[a-zA-Z]+/g, "");
-    var span = el("span", { "class": "tex" }), re = /([_^])(\{([^}]*)\}|(.))/g, last = 0, m;
-    while ((m = re.exec(t))) {
-      span.appendChild(document.createTextNode(t.slice(last, m.index).replace(/[{}]/g, "")));
-      span.appendChild(el(m[1] === "_" ? "sub" : "sup", { text: (m[3] != null ? m[3] : m[4]).replace(/[{}]/g, "") }));
-      last = re.lastIndex;
+    var i = 0, s = String(t);
+    function group() {            // after '{' ... until matching '}'
+      var out = el("span"); i++;
+      while (i < s.length && s[i] !== "}") out.appendChild(atom());
+      i++; return out;
     }
-    span.appendChild(document.createTextNode(t.slice(last).replace(/[{}]/g, "")));
-    return span;
+    function arg() { while (s[i] === " ") i++; if (s[i] === "{") return group(); var c = s[i++] || ""; return document.createTextNode(c); }
+    function atom() {
+      var c = s[i];
+      if (c === "{") return group();
+      if (c === "_" || c === "^") { i++; var a = arg(); var e = el(c === "_" ? "sub" : "sup"); e.appendChild(a); return e; }
+      if (c === "\\") {
+        var m = s.slice(i).match(/^\\([a-zA-Z]+|.)/), name = m[1]; i += m[0].length;
+        if (name === "frac" || name === "dfrac" || name === "tfrac") {
+          var f = el("span", { "class": "frac" }), n = el("span", { "class": "num" }), d = el("span", { "class": "den" });
+          n.appendChild(arg()); d.appendChild(arg()); f.appendChild(n); f.appendChild(d); return f;
+        }
+        if (name === "sqrt") { var r = el("span", { "class": "sqrt" }); r.appendChild(document.createTextNode("√")); var b = el("span", { "class": "rad" }); b.appendChild(arg()); r.appendChild(b); return r; }
+        if (name === "text" || name === "mathrm" || name === "operatorname" || name === "mathit" || name === "mathbf") return arg();
+        if (name === "left" || name === "right") return document.createTextNode("");
+        var sym = TEX["\\" + name];
+        return document.createTextNode(sym != null ? sym : (name.length === 1 ? name : ""));
+      }
+      i++; return document.createTextNode(c === "~" ? " " : c);
+    }
+    var root = el("span", { "class": "tex" });
+    while (i < s.length) root.appendChild(atom());
+    return root;
   }
   function plural(n, a, b, c) { var m = n % 10, h = n % 100; return n + " " + (m === 1 && h !== 11 ? a : (m >= 2 && m <= 4 && (h < 10 || h >= 20)) ? b : c); }
 
@@ -214,8 +233,8 @@
     add("formulas", B.formulas.map(function (f) {
       return el("div", { "class": "card" }, [
         el("p", { "class": "small muted", text: (f.label ? "Формула " + f.label + " · " : "") + "стр. " + f.page }),
-        el("div", { "class": "formula", text: f.latex }), para(f.meaning),
-        f.vars.length ? el("ul", null, f.vars.map(function (v) { return el("li", { text: v.symbol + " — " + v.meaning + (v.unit ? ", " + v.unit : "") }); })) : null
+        el("div", { "class": "formula", role: "math", "aria-label": f.latex }, [texSpan(f.latex)]), para(f.meaning),
+        f.vars.length ? el("ul", null, f.vars.map(function (v) { return el("li", null, [texSpan(v.symbol), " — " + v.meaning + (v.unit ? ", " + v.unit : "")]); })) : null
       ]);
     }));
     add("tables", B.tables.map(function (t) {

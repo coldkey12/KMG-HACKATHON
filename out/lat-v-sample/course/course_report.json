@@ -2,9 +2,17 @@
  "tasks": {
   "schema": "kmg-tasks/0.1.0",
   "chapter": "lat-v",
-  "generated": 21,
-  "kept": 21,
-  "rejected": [],
+  "generated": 23,
+  "kept": 22,
+  "rejected": [
+   {
+    "index": 3,
+    "node_id": "lat-v.n-090-cdc869",
+    "type": "single",
+    "prompt": "Для простейшего случая межзерновых коллекторов выделение и насыщение оценивают:",
+    "why": "верный вариант не подтверждается утверждениями: «качественно, по признакам на главных диаграммах»"
+   }
+  ],
   "types": [
    "gap",
    "multi",
@@ -12,18 +20,19 @@
    "single"
   ],
   "meets_tz": true,
-  "cost_usd": 0.0,
-  "cost_usd_original": 0.012189,
-  "cached": true,
-  "model": "claude-haiku-5-5"
+  "cost_usd": 0.010613,
+  "cost_usd_original": 0.010613,
+  "cached": false,
+  "model": "claude-haiku-5-5",
+  "calls": 2
  },
  "schema": "kmg-course-report/0.1.0",
  "chapter": "lat-v",
  "layer": "out/lat-v-sample/layer.json",
  "steps": 8,
  "parts": 3,
- "size_mb": 0.29,
+ "size_mb": 0.3,
  "size_ok": true,
  "steps_without_illustration": [],
- "seconds": 0.1
+ "seconds": 69.3
 }
