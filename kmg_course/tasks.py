@@ -337,9 +337,44 @@ def schema_errors(doc, schema_file):
     return out
 
 
-def build_tasks(layer, out_dir, log_path, min_total=15):
+def internal(t):
+    """Organizers' shape (tasks.json of an earlier build) -> the shape `validate` checks; inverse of `official`."""
+    ty = t["type"]
+    out = {"node_id": t.get("node_id") or t["step_id"], "claim_ids": t["claim_ids"], "type": ty, "prompt": t["prompt"],
+           "explanation": t.get("explanation", ""), "kind": t.get("kind")}
+    if ty in ("single", "multiple"):
+        ids = [o["id"] for o in t["options"]]
+        out["options"] = [o["text"] for o in t["options"]]
+        out["answer"] = ids.index(t["answer"]) if ty == "single" else [ids.index(a) for a in t["answer"]]
+    elif ty == "order":
+        txt = {o["id"]: o["text"] for o in t["options"]}
+        out["items"] = [txt[a] for a in t["answer"]]
+    elif ty == "gap":
+        out["prompt"] = t["prompt"].replace("{{1}}", "___", 1)
+        out["answer"] = t["answer"][0]
+        out["accept"] = (t.get("accept") or [[]])[0]
+    elif ty == "calc":
+        c = dict(t.get("calc") or {})
+        c.update(unit=t.get("unit"), tolerance=t.get("tolerance") or 0.01)
+        out["answer"], out["calc"] = t["answer"], c
+    return out
+
+
+def build_tasks(layer, out_dir, log_path, min_total=15, reuse=False):
+    """reuse=True: no model call — the tasks of the previous build (out_dir/tasks.json) are re-checked against the
+    current layer (e.g. after a fact edit): tasks whose keys no longer hold go to the report as rejected."""
     pack_terms = pack_prereq_terms(domain_pack(layer["chapter"]["domain_pack"]))
-    raw, r = generate(layer, log_path, min_total=min_total)
+    prev = Path(out_dir) / "tasks.json"
+    if reuse and prev.exists():
+        raw = []
+        for t in json.loads(prev.read_text(encoding="utf-8")).get("tasks", []):
+            try:
+                raw.append(internal(t))
+            except (KeyError, ValueError, TypeError, IndexError):
+                pass
+        r = {"cost_usd": 0.0, "cost_usd_original": 0.0, "cached": True, "model": "reuse:" + prev.name, "calls": 0}
+    else:
+        raw, r = generate(layer, log_path, min_total=min_total)
     kept, rejected = validate(layer, raw, pack_terms)
     types = sorted({t["type"] for t in kept})
     doc = {"chapter": layer["chapter"]["id"], "schema": "glava-kurs/task.schema.json", "tasks": kept}

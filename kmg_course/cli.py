@@ -174,7 +174,7 @@ def _illustrations_doc(view, out, photo_recs):
     return {"chapter": view["chapter"]["id"], "schema": "glava-kurs/illustration.schema.json", "illustrations": items}
 
 
-def build(layer_path, out=None, with_tasks=True):
+def build(layer_path, out=None, with_tasks=True, reuse_tasks=False):
     t0 = time.time()
     layer_path = Path(layer_path)
     layer = json.loads(layer_path.read_text(encoding="utf-8"))
@@ -193,7 +193,7 @@ def build(layer_path, out=None, with_tasks=True):
     report = {"tasks": None}
     task_list = []
     if with_tasks:
-        task_list, rep = tasks_mod.build_tasks(layer, out, log_path)
+        task_list, rep = tasks_mod.build_tasks(layer, out, log_path, reuse=reuse_tasks)
         report["tasks"] = rep
     view["tasks"] = task_list
 
@@ -215,7 +215,10 @@ def build(layer_path, out=None, with_tasks=True):
                 elif k == "scene":
                     m["scene"] = None   # no scene file -> the step shows no scene box
             pmd = media_src / m["dir"] / (m.get("passport") or "passport.md")
-            if pmd.exists() and pmd.suffix == ".md":
+            if pmd.exists() and pmd.suffix == ".html":   # the video stage already renders the passport page
+                shutil.copy(pmd, dst / "passport.html")
+                m["passport"] = "passport.html"
+            elif pmd.exists() and pmd.suffix == ".md":
                 (dst / "passport.html").write_text(md_html(pmd.read_text(encoding="utf-8"), "Паспорт ролика: " + (m.get("title") or "")), encoding="utf-8")
                 m["passport"] = "passport.html"
             else:
@@ -270,6 +273,7 @@ def main(argv=None):
     b.add_argument("layer")
     b.add_argument("--out", default=None)
     b.add_argument("--no-tasks", action="store_true")
+    b.add_argument("--reuse-tasks", action="store_true", help="без вызова модели: задания прошлой сборки перепроверяются по текущему слою (быстрая пересборка после правки факта)")
     b.add_argument("--assets-only", action="store_true", help="обновить только приложение курса (дизайн), содержание и задания не трогать")
     v = sub.add_parser("video")
     v.add_argument("layer")
@@ -324,7 +328,7 @@ def main(argv=None):
         print(json.dumps({"out": str(refresh_assets(args.layer, args.out)), "assets_only": True}, ensure_ascii=False))
         return
     if args.cmd == "build":
-        out, rep = build(args.layer, args.out, with_tasks=not args.no_tasks)
+        out, rep = build(args.layer, args.out, with_tasks=not args.no_tasks, reuse_tasks=args.reuse_tasks)
         t = rep.get("tasks") or {}
         print(json.dumps({"out": str(out), "steps": rep["steps"], "size_mb": rep["size_mb"],
                           "tasks_kept": t.get("kept"), "tasks_generated": t.get("generated"), "task_types": t.get("types"),

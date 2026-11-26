@@ -1,0 +1,1646 @@
+{
+ "chapter": "bas-xxiii",
+ "schema": "glava-kurs/illustration.schema.json",
+ "illustrations": [
+  {
+   "alt": "Схема шага «Что меняется в пласте со временем»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-474-d10c22.c-c84afb",
+    "bas-xxiii.n-474-d10c22.c-c7266f"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-474-d10c22.i1",
+   "step_id": "bas-xxiii.n-474-d10c22",
+   "node_id": "bas-xxiii.n-474-d10c22",
+   "file": "illus/bas-xxiii.n-474-d10c22.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Упругость пласта — источник притока»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-474-d10c22-b.c-24fa48",
+    "bas-xxiii.n-474-d10c22-b.c-84296b",
+    "bas-xxiii.n-474-d10c22-b.c-38cf1b",
+    "bas-xxiii.n-474-d10c22-b.c-5d53f2"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-474-d10c22-b.i1",
+   "step_id": "bas-xxiii.n-474-d10c22-b",
+   "node_id": "bas-xxiii.n-474-d10c22-b",
+   "file": "illus/bas-xxiii.n-474-d10c22-b.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Условие: давление выше давления насыщения»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-474-f05555.c-c7366c",
+    "bas-xxiii.n-474-f05555.c-7ca87e"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-474-f05555.i1",
+   "step_id": "bas-xxiii.n-474-f05555",
+   "node_id": "bas-xxiii.n-474-f05555",
+   "file": "illus/bas-xxiii.n-474-f05555.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Условие: давление выше давления насыщения»: газ, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "bas-xxiii.n-474-f05555.i2",
+   "step_id": "bas-xxiii.n-474-f05555",
+   "node_id": "bas-xxiii.n-474-f05555",
+   "file": "illus/bas-xxiii.n-474-f05555.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Вода снаружи или замкнутая залежь»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-474-eacc1d.c-889676",
+    "bas-xxiii.n-474-eacc1d.c-8caad3",
+    "bas-xxiii.n-474-eacc1d.c-fae241",
+    "bas-xxiii.n-474-eacc1d.c-592506"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-474-eacc1d.i1",
+   "step_id": "bas-xxiii.n-474-eacc1d",
+   "node_id": "bas-xxiii.n-474-eacc1d",
+   "file": "illus/bas-xxiii.n-474-eacc1d.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Вода снаружи или замкнутая залежь»: нефть, пластовая вода, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "bas-xxiii.n-474-eacc1d.i2",
+   "step_id": "bas-xxiii.n-474-eacc1d",
+   "node_id": "bas-xxiii.n-474-eacc1d",
+   "file": "illus/bas-xxiii.n-474-eacc1d.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Почему давление выравнивается долго»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-475-e20d95.c-9aee67",
+    "bas-xxiii.n-475-e20d95.c-bbaf63",
+    "bas-xxiii.n-475-e20d95.c-51928d",
+    "bas-xxiii.n-475-e20d95.c-728c8d"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-475-e20d95.i1",
+   "step_id": "bas-xxiii.n-475-e20d95",
+   "node_id": "bas-xxiii.n-475-e20d95",
+   "file": "illus/bas-xxiii.n-475-e20d95.i1.svg"
+  },
+  {
+   "id": "bas-xxiii.n-475-e20d95.v1",
+   "step_id": "bas-xxiii.n-475-e20d95",
+   "node_id": "bas-xxiii.n-475-e20d95",
+   "file": "media/n-475-e20d95/n-475-e20d95_short.mp4",
+   "frame_class": "B",
+   "origin": "code_from_model",
+   "label": "симуляция",
+   "caption": "Ролик: Почему давление выравнивается долго",
+   "alt": "Ролик по шагу «Почему давление выравнивается долго» с субтитрами: Почему давление выравнивается долго",
+   "source": "сцена pressure_diffusion, паспорт ролика media/n-475-e20d95/passport.html",
+   "claim_ids": [
+    "bas-xxiii.n-475-e20d95.c-05c02f",
+    "bas-xxiii.n-475-e20d95.c-51928d",
+    "bas-xxiii.n-475-e20d95.c-728c8d",
+    "bas-xxiii.n-475-e20d95.c-9aee67",
+    "bas-xxiii.n-475-e20d95.c-bbaf63"
+   ]
+  },
+  {
+   "alt": "Схема шага «Как появилась теория упругого режима»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-475-052a3f.c-68bbb3"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-475-052a3f.i1",
+   "step_id": "bas-xxiii.n-475-052a3f",
+   "node_id": "bas-xxiii.n-475-052a3f",
+   "file": "illus/bas-xxiii.n-475-052a3f.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Упругий запас жидкости: что это»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-475-a98103.c-3b8c6f",
+    "bas-xxiii.n-475-a98103.c-17cd20",
+    "bas-xxiii.n-475-a98103.c-e83997"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-475-a98103.i1",
+   "step_id": "bas-xxiii.n-475-a98103",
+   "node_id": "bas-xxiii.n-475-a98103",
+   "file": "illus/bas-xxiii.n-475-a98103.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Изменение объёма жидкости и пор»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-475-9f8dd3.c-35d309",
+    "bas-xxiii.n-475-9f8dd3.c-054ad8",
+    "bas-xxiii.n-475-9f8dd3.c-1e4acd",
+    "bas-xxiii.n-475-9f8dd3.c-32ecea",
+    "bas-xxiii.n-475-9f8dd3.c-32eceax"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-475-9f8dd3.i1",
+   "step_id": "bas-xxiii.n-475-9f8dd3",
+   "node_id": "bas-xxiii.n-475-9f8dd3",
+   "file": "illus/bas-xxiii.n-475-9f8dd3.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Почему знак минус опускается»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-476-e17829.c-0244d0",
+    "bas-xxiii.n-476-e17829.c-d0cde1",
+    "bas-xxiii.n-476-e17829.c-8ae6d7",
+    "bas-xxiii.n-476-e17829.c-0244d0x"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-476-e17829.i1",
+   "step_id": "bas-xxiii.n-476-e17829",
+   "node_id": "bas-xxiii.n-476-e17829",
+   "file": "illus/bas-xxiii.n-476-e17829.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Объём жидкости равен объёму пор»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-476-d135ab.c-aa46a8",
+    "bas-xxiii.n-476-d135ab.c-771172",
+    "bas-xxiii.n-476-d135ab.c-d135ab"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-476-d135ab.i1",
+   "step_id": "bas-xxiii.n-476-d135ab",
+   "node_id": "bas-xxiii.n-476-d135ab",
+   "file": "illus/bas-xxiii.n-476-d135ab.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Коэффициент упругоёмкости пласта β*»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-476-30bb03.c-ffd768"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-476-30bb03.i1",
+   "step_id": "bas-xxiii.n-476-30bb03",
+   "node_id": "bas-xxiii.n-476-30bb03",
+   "file": "illus/bas-xxiii.n-476-30bb03.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Коэффициент упругоёмкости пласта β*»: газ, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "bas-xxiii.n-476-30bb03.i2",
+   "step_id": "bas-xxiii.n-476-30bb03",
+   "node_id": "bas-xxiii.n-476-30bb03",
+   "file": "illus/bas-xxiii.n-476-30bb03.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Возмущённая зона и средневзвешенное давление»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-476-30999c.c-eaa29a",
+    "bas-xxiii.n-476-30999c.c-9d1691",
+    "bas-xxiii.n-476-30999c.c-73fd60",
+    "bas-xxiii.n-476-30999c.c-c68018"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-476-30999c.i1",
+   "step_id": "bas-xxiii.n-476-30999c",
+   "node_id": "bas-xxiii.n-476-30999c",
+   "file": "illus/bas-xxiii.n-476-30999c.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Баланс: сколько взяли — сколько освободилось»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-477-8060ac.c-dbdba3",
+    "bas-xxiii.n-477-8060ac.c-00cf57"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-477-8060ac.i1",
+   "step_id": "bas-xxiii.n-477-8060ac",
+   "node_id": "bas-xxiii.n-477-8060ac",
+   "file": "illus/bas-xxiii.n-477-8060ac.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Баланс: сколько взяли — сколько освободилось»: нефть, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "bas-xxiii.n-477-8060ac.i2",
+   "step_id": "bas-xxiii.n-477-8060ac",
+   "node_id": "bas-xxiii.n-477-8060ac",
+   "file": "illus/bas-xxiii.n-477-8060ac.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Зачем изучать упругий режим»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-477-c7007e.c-ea9e54",
+    "bas-xxiii.n-477-c7007e.c-fecc21",
+    "bas-xxiii.n-477-c7007e.c-32cef2",
+    "bas-xxiii.n-477-c7007e.c-21103a"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-477-c7007e.i1",
+   "step_id": "bas-xxiii.n-477-c7007e",
+   "node_id": "bas-xxiii.n-477-c7007e",
+   "file": "illus/bas-xxiii.n-477-c7007e.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Зачем изучать упругий режим»: нефть, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "bas-xxiii.n-477-c7007e.i2",
+   "step_id": "bas-xxiii.n-477-c7007e",
+   "node_id": "bas-xxiii.n-477-c7007e",
+   "file": "illus/bas-xxiii.n-477-c7007e.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Три части модели фильтрации»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-478-c73118.c-8708c3",
+    "bas-xxiii.n-478-c73118.c-af3972"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-478-c73118.i1",
+   "step_id": "bas-xxiii.n-478-c73118",
+   "node_id": "bas-xxiii.n-478-c73118",
+   "file": "illus/bas-xxiii.n-478-c73118.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Функция Лейбензона упрощает запись уравнений»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-478-f10753.c-c09b58",
+    "bas-xxiii.n-478-f10753.c-1077dd",
+    "bas-xxiii.n-478-f10753.c-559d95",
+    "bas-xxiii.n-478-f10753.c-b4983d",
+    "bas-xxiii.n-478-f10753.c-725a18"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-478-f10753.i1",
+   "step_id": "bas-xxiii.n-478-f10753",
+   "node_id": "bas-xxiii.n-478-f10753",
+   "file": "illus/bas-xxiii.n-478-f10753.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Плотность и пористость зависят от давления»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-478-4cc09f.c-add02b",
+    "bas-xxiii.n-478-4cc09f.c-197fed",
+    "bas-xxiii.n-478-4cc09f.c-0eeaa8",
+    "bas-xxiii.n-478-4cc09f.c-dd1750",
+    "bas-xxiii.n-478-4cc09f.c-faf432",
+    "bas-xxiii.n-478-4cc09f.c-02d8d4"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-478-4cc09f.i1",
+   "step_id": "bas-xxiii.n-478-4cc09f",
+   "node_id": "bas-xxiii.n-478-4cc09f",
+   "file": "illus/bas-xxiii.n-478-4cc09f.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Допущение: проницаемость не меняется»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-478-80aa63.c-76e566",
+    "bas-xxiii.n-478-80aa63.c-9519df",
+    "bas-xxiii.n-478-80aa63.c-d16dbd",
+    "bas-xxiii.n-478-80aa63.c-8b398a"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-478-80aa63.i1",
+   "step_id": "bas-xxiii.n-478-80aa63",
+   "node_id": "bas-xxiii.n-478-80aa63",
+   "file": "illus/bas-xxiii.n-478-80aa63.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Полная система уравнений упругого режима»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-479-e3dd4b.c-51ede1",
+    "bas-xxiii.n-479-e3dd4b.c-b12df6",
+    "bas-xxiii.n-479-e3dd4b.c-3d36ad",
+    "bas-xxiii.n-479-e3dd4b.c-8a66e1",
+    "bas-xxiii.n-479-e3dd4b.c-21392a",
+    "bas-xxiii.n-479-e3dd4b.c-039e57"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-479-e3dd4b.i1",
+   "step_id": "bas-xxiii.n-479-e3dd4b",
+   "node_id": "bas-xxiii.n-479-e3dd4b",
+   "file": "illus/bas-xxiii.n-479-e3dd4b.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Подставляем функцию Лейбензона в уравнение»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-479-eb237c.c-1e820f"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-479-eb237c.i1",
+   "step_id": "bas-xxiii.n-479-eb237c",
+   "node_id": "bas-xxiii.n-479-eb237c",
+   "file": "illus/bas-xxiii.n-479-eb237c.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Почему квадратичное слагаемое отбрасывают»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-479-abb043.c-eb4544",
+    "bas-xxiii.n-479-abb043.c-bb3180",
+    "bas-xxiii.n-479-abb043.c-6f8516",
+    "bas-xxiii.n-479-abb043.c-8ecbc5",
+    "bas-xxiii.n-479-abb043.c-7c7d7b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-479-abb043.i1",
+   "step_id": "bas-xxiii.n-479-abb043",
+   "node_id": "bas-xxiii.n-479-abb043",
+   "file": "illus/bas-xxiii.n-479-abb043.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Почему квадратичное слагаемое отбрасывают»: нефть, пластовая вода, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "bas-xxiii.n-479-abb043.i2",
+   "step_id": "bas-xxiii.n-479-abb043",
+   "node_id": "bas-xxiii.n-479-abb043",
+   "file": "illus/bas-xxiii.n-479-abb043.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Накопление массы выражается через β*»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-480-ef2409.c-da2214"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-480-ef2409.i1",
+   "step_id": "bas-xxiii.n-480-ef2409",
+   "node_id": "bas-xxiii.n-480-ef2409",
+   "file": "illus/bas-xxiii.n-480-ef2409.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Упрощение правой части для слабосжимаемой жидкости»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-480-00c9ed.c-fd6474",
+    "bas-xxiii.n-480-00c9ed.c-19dc66",
+    "bas-xxiii.n-480-00c9ed.c-36244a"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-480-00c9ed.i1",
+   "step_id": "bas-xxiii.n-480-00c9ed",
+   "node_id": "bas-xxiii.n-480-00c9ed",
+   "file": "illus/bas-xxiii.n-480-00c9ed.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Уравнение пьезопроводности: как давление выравнивается»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-480-b6113a.c-fe5530",
+    "bas-xxiii.n-480-b6113a.c-a124de"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-480-b6113a.i1",
+   "step_id": "bas-xxiii.n-480-b6113a",
+   "node_id": "bas-xxiii.n-480-b6113a",
+   "file": "illus/bas-xxiii.n-480-b6113a.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Коэффициент пьезопроводности: скорость выравнивания давления»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-480-551f3d.c-27b495",
+    "bas-xxiii.n-480-551f3d.c-0f87bb"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-480-551f3d.i1",
+   "step_id": "bas-xxiii.n-480-551f3d",
+   "node_id": "bas-xxiii.n-480-551f3d",
+   "file": "illus/bas-xxiii.n-480-551f3d.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Когда уравнение пьезопроводности неприменимо»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-481-8caf17.c-418154",
+    "bas-xxiii.n-481-8caf17.c-aeb6ca",
+    "bas-xxiii.n-481-8caf17.c-c627d1",
+    "bas-xxiii.n-481-8caf17.c-a5d134"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-481-8caf17.i1",
+   "step_id": "bas-xxiii.n-481-8caf17",
+   "node_id": "bas-xxiii.n-481-8caf17",
+   "file": "illus/bas-xxiii.n-481-8caf17.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Галерея с постоянным давлением: схема пласта»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-481-169f3d.c-9b0793",
+    "bas-xxiii.n-481-169f3d.c-d87acd",
+    "bas-xxiii.n-481-169f3d.c-eae47c",
+    "bas-xxiii.n-481-169f3d.c-fded4a",
+    "bas-xxiii.n-481-169f3d.c-1d9384",
+    "bas-xxiii.n-481-169f3d.c-1129b3"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-481-169f3d.i1",
+   "step_id": "bas-xxiii.n-481-169f3d",
+   "node_id": "bas-xxiii.n-481-169f3d",
+   "file": "illus/bas-xxiii.n-481-169f3d.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Начальные и граничные условия задачи»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-482-585528.c-a50995",
+    "bas-xxiii.n-482-585528.c-579813",
+    "bas-xxiii.n-482-585528.c-ac35d7",
+    "bas-xxiii.n-482-585528.c-a2023f"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-482-585528.i1",
+   "step_id": "bas-xxiii.n-482-585528",
+   "node_id": "bas-xxiii.n-482-585528",
+   "file": "illus/bas-xxiii.n-482-585528.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Автомодельность: масштаб √(κt)»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-482-f79472.i1",
+   "step_id": "bas-xxiii.n-482-f79472",
+   "node_id": "bas-xxiii.n-482-f79472",
+   "file": "illus/bas-xxiii.n-482-f79472.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Как уравнение давления сводится к одной переменной»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-482-f51828.i1",
+   "step_id": "bas-xxiii.n-482-f51828",
+   "node_id": "bas-xxiii.n-482-f51828",
+   "file": "illus/bas-xxiii.n-482-f51828.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Откуда в решении берётся e^(−u²)»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-483-ec9759.c-6a249c",
+    "bas-xxiii.n-483-ec9759.c-65193b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-483-ec9759.i1",
+   "step_id": "bas-xxiii.n-483-ec9759",
+   "node_id": "bas-xxiii.n-483-ec9759",
+   "file": "illus/bas-xxiii.n-483-ec9759.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Константа из условия на бесконечности»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-483-c6ef7c.c-589b94",
+    "bas-xxiii.n-483-c6ef7c.c-9a8e1a"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-483-c6ef7c.i1",
+   "step_id": "bas-xxiii.n-483-c6ef7c",
+   "node_id": "bas-xxiii.n-483-c6ef7c",
+   "file": "illus/bas-xxiii.n-483-c6ef7c.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Как выглядит падение давления в пласте»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-483-c01ba8.c-53fc76",
+    "bas-xxiii.n-483-c01ba8.c-32dd50",
+    "bas-xxiii.n-483-c01ba8.c-7162b5",
+    "bas-xxiii.n-483-c01ba8.c-f31a75"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-483-c01ba8.i1",
+   "step_id": "bas-xxiii.n-483-c01ba8",
+   "node_id": "bas-xxiii.n-483-c01ba8",
+   "file": "illus/bas-xxiii.n-483-c01ba8.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Дебит галереи падает со временем»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-484-2747e1.c-f43ff3",
+    "bas-xxiii.n-484-2747e1.c-9bcebe",
+    "bas-xxiii.n-484-2747e1.c-2fc327"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-484-2747e1.i1",
+   "step_id": "bas-xxiii.n-484-2747e1",
+   "node_id": "bas-xxiii.n-484-2747e1",
+   "file": "illus/bas-xxiii.n-484-2747e1.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Накопленная добыча растёт как корень из времени»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-485-2a49f0.c-7f8278",
+    "bas-xxiii.n-485-2a49f0.c-337861",
+    "bas-xxiii.n-485-2a49f0.c-0e2115"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-485-2a49f0.i1",
+   "step_id": "bas-xxiii.n-485-2a49f0",
+   "node_id": "bas-xxiii.n-485-2a49f0",
+   "file": "illus/bas-xxiii.n-485-2a49f0.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Галерея с постоянным дебитом: постановка»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-485-3f7cba.c-74aefd",
+    "bas-xxiii.n-485-3f7cba.c-23b2d4",
+    "bas-xxiii.n-485-3f7cba.c-50876a",
+    "bas-xxiii.n-485-3f7cba.c-d0469c",
+    "bas-xxiii.n-485-3f7cba.c-46e10a"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-485-3f7cba.i1",
+   "step_id": "bas-xxiii.n-485-3f7cba",
+   "node_id": "bas-xxiii.n-485-3f7cba",
+   "file": "illus/bas-xxiii.n-485-3f7cba.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Как получить уравнение для скорости фильтрации»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-485-6fd4fc.c-6d869b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-485-6fd4fc.i1",
+   "step_id": "bas-xxiii.n-485-6fd4fc",
+   "node_id": "bas-xxiii.n-485-6fd4fc",
+   "file": "illus/bas-xxiii.n-485-6fd4fc.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Скорость фильтрации: решение через erf»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-486-b90484.c-99dcd8",
+    "bas-xxiii.n-486-b90484.c-cfea8c"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-486-b90484.i1",
+   "step_id": "bas-xxiii.n-486-b90484",
+   "node_id": "bas-xxiii.n-486-b90484",
+   "file": "illus/bas-xxiii.n-486-b90484.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Как найти константы скорости фильтрации»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-486-ff3538.c-5e63b3",
+    "bas-xxiii.n-486-ff3538.c-de4bcd"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-486-ff3538.i1",
+   "step_id": "bas-xxiii.n-486-ff3538",
+   "node_id": "bas-xxiii.n-486-ff3538",
+   "file": "illus/bas-xxiii.n-486-ff3538.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Из скорости — давление: интегрирование»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-487-c90a81.c-c90a81",
+    "bas-xxiii.n-487-c90a81.c-2dc04b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-487-c90a81.i1",
+   "step_id": "bas-xxiii.n-487-c90a81",
+   "node_id": "bas-xxiii.n-487-c90a81",
+   "file": "illus/bas-xxiii.n-487-c90a81.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Давление в пласте при постоянном дебите»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-487-7272d4.c-fc44c5",
+    "bas-xxiii.n-487-7272d4.c-d3f71e",
+    "bas-xxiii.n-487-7272d4.c-48fdcd",
+    "bas-xxiii.n-487-7272d4.c-2bde5b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-487-7272d4.i1",
+   "step_id": "bas-xxiii.n-487-7272d4",
+   "node_id": "bas-xxiii.n-487-7272d4",
+   "file": "illus/bas-xxiii.n-487-7272d4.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Давление на галерее падает как √t»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-487-fa0070.c-9624ad"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-487-fa0070.i1",
+   "step_id": "bas-xxiii.n-487-fa0070",
+   "node_id": "bas-xxiii.n-487-fa0070",
+   "file": "illus/bas-xxiii.n-487-fa0070.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Предел модели: кавитация»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-488-bfc887.c-6d893b",
+    "bas-xxiii.n-488-bfc887.c-9c2b9d",
+    "bas-xxiii.n-488-bfc887.c-c63057",
+    "bas-xxiii.n-488-bfc887.c-9a1e1e"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-488-bfc887.i1",
+   "step_id": "bas-xxiii.n-488-bfc887",
+   "node_id": "bas-xxiii.n-488-bfc887",
+   "file": "illus/bas-xxiii.n-488-bfc887.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Скважина как точка в бесконечном пласте»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-488-ad0466.c-66805d",
+    "bas-xxiii.n-488-ad0466.c-cd6d56",
+    "bas-xxiii.n-488-ad0466.c-cf44db",
+    "bas-xxiii.n-488-ad0466.c-3dac42",
+    "bas-xxiii.n-488-ad0466.c-d23b64"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-488-ad0466.i1",
+   "step_id": "bas-xxiii.n-488-ad0466",
+   "node_id": "bas-xxiii.n-488-ad0466",
+   "file": "illus/bas-xxiii.n-488-ad0466.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Условия задачи: постоянный дебит скважины»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-488-34569d.c-29b201",
+    "bas-xxiii.n-488-34569d.c-0a346c",
+    "bas-xxiii.n-488-34569d.c-67d8cf",
+    "bas-xxiii.n-488-34569d.c-8fa3d8"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-488-34569d.i1",
+   "step_id": "bas-xxiii.n-488-34569d",
+   "node_id": "bas-xxiii.n-488-34569d",
+   "file": "illus/bas-xxiii.n-488-34569d.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Размерности сокращают число аргументов»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-489-5cbca3.c-0b6ecf",
+    "bas-xxiii.n-489-5cbca3.c-4ac9d5",
+    "bas-xxiii.n-489-5cbca3.c-fb9ea5",
+    "bas-xxiii.n-489-5cbca3.c-5c8555",
+    "bas-xxiii.n-489-5cbca3.c-aeb6ca"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-489-5cbca3.i1",
+   "step_id": "bas-xxiii.n-489-5cbca3",
+   "node_id": "bas-xxiii.n-489-5cbca3",
+   "file": "illus/bas-xxiii.n-489-5cbca3.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Радиальное уравнение: одна переменная вместо двух»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-489-552976.c-c63f6f",
+    "bas-xxiii.n-489-552976.c-3ce4ff",
+    "bas-xxiii.n-489-552976.c-00a03b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-489-552976.i1",
+   "step_id": "bas-xxiii.n-489-552976",
+   "node_id": "bas-xxiii.n-489-552976",
+   "file": "illus/bas-xxiii.n-489-552976.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Подстановка и разделение переменных»: частая ошибка и как правильно.",
+   "caption": "Частая ошибка и поправка по книге.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-489-2ebe17.c-17e620",
+    "bas-xxiii.n-489-2ebe17.c-f45746"
+   ],
+   "source": "блок «Частая ошибка» этого шага",
+   "block": "mistake",
+   "id": "bas-xxiii.n-489-2ebe17.i1",
+   "step_id": "bas-xxiii.n-489-2ebe17",
+   "node_id": "bas-xxiii.n-489-2ebe17",
+   "file": "illus/bas-xxiii.n-489-2ebe17.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Интегрирование до безразмерного давления»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-490-113c15.c-61e180",
+    "bas-xxiii.n-490-113c15.c-65193b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-490-113c15.i1",
+   "step_id": "bas-xxiii.n-490-113c15",
+   "node_id": "bas-xxiii.n-490-113c15",
+   "file": "illus/bas-xxiii.n-490-113c15.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Константа по условию на скважине»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-490-8fe2be.c-82e1a9",
+    "bas-xxiii.n-490-8fe2be.c-656c60",
+    "bas-xxiii.n-490-8fe2be.c-8fe2be"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-490-8fe2be.i1",
+   "step_id": "bas-xxiii.n-490-8fe2be",
+   "node_id": "bas-xxiii.n-490-8fe2be",
+   "file": "illus/bas-xxiii.n-490-8fe2be.i1.svg"
+  },
+  {
+   "alt": "Схема шага «От безразмерного давления к давлению в пласте»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-490-11588f.c-09b1b3",
+    "bas-xxiii.n-490-11588f.c-447c04",
+    "bas-xxiii.n-490-11588f.c-f29d17"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-490-11588f.i1",
+   "step_id": "bas-xxiii.n-490-11588f",
+   "node_id": "bas-xxiii.n-490-11588f",
+   "file": "illus/bas-xxiii.n-490-11588f.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Основная формула упругого режима»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-490-719304.c-809992",
+    "bas-xxiii.n-490-719304.c-48b76d",
+    "bas-xxiii.n-490-719304.c-719304"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-490-719304.i1",
+   "step_id": "bas-xxiii.n-490-719304",
+   "node_id": "bas-xxiii.n-490-719304",
+   "file": "illus/bas-xxiii.n-490-719304.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Функция −Ei(−x): ряд и график»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-491-0da6d4.c-0da6d4",
+    "bas-xxiii.n-491-0da6d4.c-0c7d3b",
+    "bas-xxiii.n-491-0da6d4.c-ce925e",
+    "bas-xxiii.n-491-0da6d4.c-a08d25"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-491-0da6d4.i1",
+   "step_id": "bas-xxiii.n-491-0da6d4",
+   "node_id": "bas-xxiii.n-491-0da6d4",
+   "file": "illus/bas-xxiii.n-491-0da6d4.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Логарифмическое приближение и его точность»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-491-ab6880.c-420c96",
+    "bas-xxiii.n-491-ab6880.c-34263e",
+    "bas-xxiii.n-491-ab6880.c-f303c4",
+    "bas-xxiii.n-491-ab6880.c-95f6c7",
+    "bas-xxiii.n-491-ab6880.c-a72839"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-491-ab6880.i1",
+   "step_id": "bas-xxiii.n-491-ab6880",
+   "node_id": "bas-xxiii.n-491-ab6880",
+   "file": "illus/bas-xxiii.n-491-ab6880.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Расход через окружность и стационарная скорость»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-492-a4bb1c.c-b18a1c",
+    "bas-xxiii.n-492-a4bb1c.c-7ff13a",
+    "bas-xxiii.n-492-a4bb1c.c-21f1e7",
+    "bas-xxiii.n-492-a4bb1c.c-9d4e65"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-492-a4bb1c.i1",
+   "step_id": "bas-xxiii.n-492-a4bb1c",
+   "node_id": "bas-xxiii.n-492-a4bb1c",
+   "file": "illus/bas-xxiii.n-492-a4bb1c.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Параметры Фурье: безразмерное время»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-492-6ed81d.c-d1ab40",
+    "bas-xxiii.n-492-6ed81d.c-d96ba0",
+    "bas-xxiii.n-492-6ed81d.c-5fee08",
+    "bas-xxiii.n-492-6ed81d.c-f93b2e",
+    "bas-xxiii.n-492-6ed81d.c-c38d20"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-492-6ed81d.i1",
+   "step_id": "bas-xxiii.n-492-6ed81d",
+   "node_id": "bas-xxiii.n-492-6ed81d",
+   "file": "illus/bas-xxiii.n-492-6ed81d.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Скважина не точка: когда погрешность мала»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-492-7947f0.c-1f1300",
+    "bas-xxiii.n-492-7947f0.c-c5ae03",
+    "bas-xxiii.n-492-7947f0.c-51b11d",
+    "bas-xxiii.n-492-7947f0.c-7eac04",
+    "bas-xxiii.n-492-7947f0.c-67e80b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-492-7947f0.i1",
+   "step_id": "bas-xxiii.n-492-7947f0",
+   "node_id": "bas-xxiii.n-492-7947f0",
+   "file": "illus/bas-xxiii.n-492-7947f0.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Конечный пласт: когда считать бесконечным»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-492-cd532d.c-cc2d2e",
+    "bas-xxiii.n-492-cd532d.c-2ce3fb",
+    "bas-xxiii.n-492-cd532d.c-5b2b82"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-492-cd532d.i1",
+   "step_id": "bas-xxiii.n-492-cd532d",
+   "node_id": "bas-xxiii.n-492-cd532d",
+   "file": "illus/bas-xxiii.n-492-cd532d.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Как меняются кривые давления у скважины»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-492-cd532d-b.c-5e450c",
+    "bas-xxiii.n-492-cd532d-b.c-d5b1fb",
+    "bas-xxiii.n-492-cd532d-b.c-13524a",
+    "bas-xxiii.n-492-cd532d-b.c-3c5333",
+    "bas-xxiii.n-492-cd532d-b.c-8c8d1b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-492-cd532d-b.i1",
+   "step_id": "bas-xxiii.n-492-cd532d-b",
+   "node_id": "bas-xxiii.n-492-cd532d-b",
+   "file": "illus/bas-xxiii.n-492-cd532d-b.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Зачем нужны приближённые методы»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-494-36b29c.c-a00449",
+    "bas-xxiii.n-494-36b29c.c-250630"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-494-36b29c.i1",
+   "step_id": "bas-xxiii.n-494-36b29c",
+   "node_id": "bas-xxiii.n-494-36b29c",
+   "file": "illus/bas-xxiii.n-494-36b29c.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Метод: время меняется медленнее пространства»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-494-3d3699.c-4b9794"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-494-3d3699.i1",
+   "step_id": "bas-xxiii.n-494-3d3699",
+   "node_id": "bas-xxiii.n-494-3d3699",
+   "file": "illus/bas-xxiii.n-494-3d3699.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Две области: возмущённая и невозмущённая»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-494-cf6094.c-52e523",
+    "bas-xxiii.n-494-cf6094.c-c4b963",
+    "bas-xxiii.n-494-cf6094.c-7c92b6",
+    "bas-xxiii.n-494-cf6094.c-ddb67a"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-494-cf6094.i1",
+   "step_id": "bas-xxiii.n-494-cf6094",
+   "node_id": "bas-xxiii.n-494-cf6094",
+   "file": "illus/bas-xxiii.n-494-cf6094.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Две фазы перераспределения давления»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-495-e32e84.c-47a756",
+    "bas-xxiii.n-495-e32e84.c-2e641b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-495-e32e84.i1",
+   "step_id": "bas-xxiii.n-495-e32e84",
+   "node_id": "bas-xxiii.n-495-e32e84",
+   "file": "illus/bas-xxiii.n-495-e32e84.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Галерея с постоянным дебитом по методу ПССС»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-495-a86d75.c-d048e9",
+    "bas-xxiii.n-495-a86d75.c-377f1a",
+    "bas-xxiii.n-495-a86d75.c-8d3f5e",
+    "bas-xxiii.n-495-a86d75.c-46ded0"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-495-a86d75.i1",
+   "step_id": "bas-xxiii.n-495-a86d75",
+   "node_id": "bas-xxiii.n-495-a86d75",
+   "file": "illus/bas-xxiii.n-495-a86d75.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Баланс добычи и упругого запаса зоны»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-495-39a04d.c-0b0c86",
+    "bas-xxiii.n-495-39a04d.c-59273c",
+    "bas-xxiii.n-495-39a04d.c-d4d985",
+    "bas-xxiii.n-495-39a04d.c-a3263b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-495-39a04d.i1",
+   "step_id": "bas-xxiii.n-495-39a04d",
+   "node_id": "bas-xxiii.n-495-39a04d",
+   "file": "illus/bas-xxiii.n-495-39a04d.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Связь дебита с длиной зоны»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-496-22da9c.c-dc8cb6",
+    "bas-xxiii.n-496-22da9c.c-22da9c",
+    "bas-xxiii.n-496-22da9c.c-d54999",
+    "bas-xxiii.n-496-22da9c.c-610def"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-496-22da9c.i1",
+   "step_id": "bas-xxiii.n-496-22da9c",
+   "node_id": "bas-xxiii.n-496-22da9c",
+   "file": "illus/bas-xxiii.n-496-22da9c.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Граница возмущённой зоны растёт как √(2κt)»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-496-1b01a5.c-1b01a5",
+    "bas-xxiii.n-496-1b01a5.c-6c452c",
+    "bas-xxiii.n-496-1b01a5.c-0cafa2"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-496-1b01a5.i1",
+   "step_id": "bas-xxiii.n-496-1b01a5",
+   "node_id": "bas-xxiii.n-496-1b01a5",
+   "file": "illus/bas-xxiii.n-496-1b01a5.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Приближённый профиль давления: ошибка 25 %»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-496-989cb6.c-85fb5c",
+    "bas-xxiii.n-496-989cb6.c-f0fde2",
+    "bas-xxiii.n-496-989cb6.c-0dd229"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-496-989cb6.i1",
+   "step_id": "bas-xxiii.n-496-989cb6",
+   "node_id": "bas-xxiii.n-496-989cb6",
+   "file": "illus/bas-xxiii.n-496-989cb6.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Галерея с постоянным забойным давлением: дебит»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-496-5ffcc9.c-e1b218",
+    "bas-xxiii.n-496-5ffcc9.c-8170be",
+    "bas-xxiii.n-496-5ffcc9.c-d1a34d",
+    "bas-xxiii.n-496-5ffcc9.c-e66574"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-496-5ffcc9.i1",
+   "step_id": "bas-xxiii.n-496-5ffcc9",
+   "node_id": "bas-xxiii.n-496-5ffcc9",
+   "file": "illus/bas-xxiii.n-496-5ffcc9.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Граница зоны растёт как корень из времени»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-497-e62dd2.c-2761c6",
+    "bas-xxiii.n-497-e62dd2.c-a0e182",
+    "bas-xxiii.n-497-e62dd2.c-10f0f5",
+    "bas-xxiii.n-497-e62dd2.c-9ea951"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-497-e62dd2.i1",
+   "step_id": "bas-xxiii.n-497-e62dd2",
+   "node_id": "bas-xxiii.n-497-e62dd2",
+   "file": "illus/bas-xxiii.n-497-e62dd2.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Приближённый дебит галереи: ошибка около 11 %»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-497-afe122.c-cdeab4",
+    "bas-xxiii.n-497-afe122.c-07eead",
+    "bas-xxiii.n-497-afe122.c-93d432",
+    "bas-xxiii.n-497-afe122.c-32c7df"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-497-afe122.i1",
+   "step_id": "bas-xxiii.n-497-afe122",
+   "node_id": "bas-xxiii.n-497-afe122",
+   "file": "illus/bas-xxiii.n-497-afe122.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Скважина с постоянным дебитом: растущая зона возмущения»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-497-73643c.c-26b196",
+    "bas-xxiii.n-497-73643c.c-c4f896",
+    "bas-xxiii.n-497-73643c.c-7fde86",
+    "bas-xxiii.n-497-73643c.c-47d58d",
+    "bas-xxiii.n-497-73643c.c-554b89"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-497-73643c.i1",
+   "step_id": "bas-xxiii.n-497-73643c",
+   "node_id": "bas-xxiii.n-497-73643c",
+   "file": "illus/bas-xxiii.n-497-73643c.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Дебит скважины по формуле типа Дюпюи»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-498-8a86fa.c-f6559c",
+    "bas-xxiii.n-498-8a86fa.c-d71066"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-498-8a86fa.i1",
+   "step_id": "bas-xxiii.n-498-8a86fa",
+   "node_id": "bas-xxiii.n-498-8a86fa",
+   "file": "illus/bas-xxiii.n-498-8a86fa.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Средневзвешенное давление в воронке»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-498-43e8d2.c-a31072",
+    "bas-xxiii.n-498-43e8d2.c-bd3352",
+    "bas-xxiii.n-498-43e8d2.c-ac80f5",
+    "bas-xxiii.n-498-43e8d2.c-2765f2"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-498-43e8d2.i1",
+   "step_id": "bas-xxiii.n-498-43e8d2",
+   "node_id": "bas-xxiii.n-498-43e8d2",
+   "file": "illus/bas-xxiii.n-498-43e8d2.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Радиус возмущения: как он растёт»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-498-573ed7.c-1cee17",
+    "bas-xxiii.n-498-573ed7.c-fe5530",
+    "bas-xxiii.n-498-573ed7.c-ebb54a",
+    "bas-xxiii.n-498-573ed7.c-bac85b",
+    "bas-xxiii.n-498-573ed7.c-76e566",
+    "bas-xxiii.n-498-573ed7.c-5a880a",
+    "bas-xxiii.n-498-573ed7.c-47a756",
+    "bas-xxiii.n-498-573ed7.c-2e641b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-498-573ed7.i1",
+   "step_id": "bas-xxiii.n-498-573ed7",
+   "node_id": "bas-xxiii.n-498-573ed7",
+   "file": "illus/bas-xxiii.n-498-573ed7.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Давление и депрессия в скважине по ПССС»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-499-e8979c.c-c2f81d",
+    "bas-xxiii.n-499-e8979c.c-62f433",
+    "bas-xxiii.n-499-e8979c.c-f86790",
+    "bas-xxiii.n-499-e8979c.c-78d4e8",
+    "bas-xxiii.n-499-e8979c.c-ba1ccc",
+    "bas-xxiii.n-499-e8979c.c-052f15"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-499-e8979c.i1",
+   "step_id": "bas-xxiii.n-499-e8979c",
+   "node_id": "bas-xxiii.n-499-e8979c",
+   "file": "illus/bas-xxiii.n-499-e8979c.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Скважина при постоянном забойном давлении»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-499-4e9699.c-4146e8",
+    "bas-xxiii.n-499-4e9699.c-d38267",
+    "bas-xxiii.n-499-4e9699.c-478b27",
+    "bas-xxiii.n-499-4e9699.c-adb378",
+    "bas-xxiii.n-499-4e9699.c-022cc2"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-499-4e9699.i1",
+   "step_id": "bas-xxiii.n-499-4e9699",
+   "node_id": "bas-xxiii.n-499-4e9699",
+   "file": "illus/bas-xxiii.n-499-4e9699.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Слабые и сильные стороны метода ПССС»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "bas-xxiii.n-499-7ef37e.c-a0ac61",
+    "bas-xxiii.n-499-7ef37e.c-d6e68f",
+    "bas-xxiii.n-499-7ef37e.c-e2557c",
+    "bas-xxiii.n-499-7ef37e.c-d171a6",
+    "bas-xxiii.n-499-7ef37e.c-761da7"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "bas-xxiii.n-499-7ef37e.i1",
+   "step_id": "bas-xxiii.n-499-7ef37e",
+   "node_id": "bas-xxiii.n-499-7ef37e",
+   "file": "illus/bas-xxiii.n-499-7ef37e.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Слабые и сильные стороны метода ПССС»: газ, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "bas-xxiii.n-499-7ef37e.i2",
+   "step_id": "bas-xxiii.n-499-7ef37e",
+   "node_id": "bas-xxiii.n-499-7ef37e",
+   "file": "illus/bas-xxiii.n-499-7ef37e.i2.svg"
+  },
+  {
+   "id": "bas-xxiii.photo.course-cover",
+   "step_id": "bas-xxiii.n-474-d10c22",
+   "node_id": null,
+   "file": "assets/photos/outcrop-folded-strata.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Складчатые слои пород хребта Пай-Хой, река Силоваяха (Россия)",
+   "alt": "Скалистый берег реки, в обрыве которого видны изогнутые в складки слои горных пород разных оттенков.",
+   "source": "Sergey Kotov (https://imaggeo.egu.eu/user/kotov/), CC BY 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Folded_Strata_of_Pay-Khoy_Ridge_in_Russia.jpg)",
+   "claim_ids": [],
+   "placement": "course-cover"
+  },
+  {
+   "id": "bas-xxiii.photo.part-cover-bas-xxiii.p1",
+   "step_id": "bas-xxiii.n-474-d10c22",
+   "node_id": null,
+   "file": "assets/photos/landscape-steppe-mesas.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Горы Айракты-Шоманай, Мангистауская область (Казахстан)",
+   "alt": "Светлые скалистые останцы из осадочных пород поднимаются над зелёной степью под чистым синим небом.",
+   "source": "Sergio Agostinelli, CC BY 2.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Airakty_Shomanai_Mountains_in_Mangystau_Region,_Kazakhstan_(April_2024).jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-bas-xxiii.p1"
+  },
+  {
+   "id": "bas-xxiii.photo.part-cover-bas-xxiii.p2",
+   "step_id": "bas-xxiii.n-475-a98103",
+   "node_id": null,
+   "file": "assets/photos/oilfield-pumpjack.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Станок-качалка на месторождении Гленн-Пул, Оклахома (США)",
+   "alt": "Станок-качалка чёрного цвета стоит на зелёном лугу на фоне лесистых холмов.",
+   "source": "roy.luck, CC BY 2.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Pumpjack,_Glenn_Pool_oil_field_OK.jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-bas-xxiii.p2"
+  },
+  {
+   "id": "bas-xxiii.photo.part-cover-bas-xxiii.p3",
+   "step_id": "bas-xxiii.n-477-c7007e",
+   "node_id": null,
+   "file": "assets/photos/outcrop-layered-badlands.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Слоистые осадочные отложения урочища Кызылкуп, Мангистауская область (Казахстан)",
+   "alt": "Пологие склоны из чередующихся белых, бежевых и красноватых осадочных слоёв под ясным небом.",
+   "source": "IvarT, CC0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Kyzylkup.jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-bas-xxiii.p3"
+  },
+  {
+   "id": "bas-xxiii.photo.part-cover-bas-xxiii.p4",
+   "step_id": "bas-xxiii.n-481-169f3d",
+   "node_id": null,
+   "file": "assets/photos/rig-distant.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Буровая установка на нефтяной скважине, Мичиган (США)",
+   "alt": "Буровая вышка на грунтовой площадке среди полей под синим небом с кучевыми облаками.",
+   "source": "Dwight Burdette, CC BY 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Oil_Drilling_Rig_Saline_Township_Michigan.JPG)",
+   "claim_ids": [],
+   "placement": "part-cover-bas-xxiii.p4"
+  },
+  {
+   "id": "bas-xxiii.photo.part-cover-bas-xxiii.p5",
+   "step_id": "bas-xxiii.n-488-ad0466",
+   "node_id": null,
+   "file": "assets/photos/seismic-node-tundra.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Узловой сейсмоприёмник на профиле сейсморазведки, NPR-A, Аляска (США)",
+   "alt": "Жёлтый автономный сейсмический регистратор (узел) установлен в снегу среди низких кустарников тундры.",
+   "source": "BLM Alaska, Public domain, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Seismic_node_(55180102938).jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-bas-xxiii.p5"
+  },
+  {
+   "id": "bas-xxiii.photo.part-cover-bas-xxiii.p6",
+   "step_id": "bas-xxiii.n-494-36b29c",
+   "node_id": null,
+   "file": "assets/photos/fieldwork-geologists-outcrop.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Геологи изучают нефтематеринские триасовые породы, Северный склон Аляски (США)",
+   "alt": "Геологи у подножия крупного обнажения наклонных тёмных слоёв, один из них изучает породы на склоне.",
+   "source": "USGS, Public domain, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Surprise_Creek,_Western_North_Slope_of_Alaska.jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-bas-xxiii.p6"
+  }
+ ]
+}
