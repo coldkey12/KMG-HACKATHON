@@ -50,7 +50,8 @@
     up: '<path d="M12 19V5M6 11l6-6 6 6"/>', down: '<path d="M12 5v14M6 13l6 6 6-6"/>', arrowdown: '<path d="M12 4v16M6 14l6 6 6-6"/>',
     close: '<path d="M6 6l12 12M18 6L6 18"/>', check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
     list: '<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>', flag: '<path d="M5 21V4h11l-2 4 2 4H5"/>',
-    inbox: '<path d="M3 13l3-8h12l3 8v6H3z"/><path d="M3 13h5l1 3h6l1-3h5"/>'
+    inbox: '<path d="M3 13l3-8h12l3 8v6H3z"/><path d="M3 13h5l1 3h6l1-3h5"/>',
+    play: '<rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M10 9v6l5-3z" fill="currentColor"/>'
   };
   function svgStr(name) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + ICONS[name] + "</svg>"; }
   function icon(name, cls) { return el("span", { "class": "ico" + (cls ? " " + cls : ""), "aria-hidden": "true", html: svgStr(name) }); }
@@ -337,7 +338,7 @@
         el("ol", null, ps.map(function (s) {
           var cur = curStep && curStep.id === s.id;
           return el("li", null, [el("a", { href: "#/step/" + s.id, "aria-current": cur ? "page" : null }, [mq(mastery(s), null, s.id),
-            el("span", null, [s.order + ". " + s.title, st.last === s.id && !cur ? el("span", { "class": "here", text: " · вы здесь" }) : null])]),
+            el("span", null, [s.order + ". " + s.title, hasVid(s) ? el("span", { "class": "vidmark", title: "есть ролик", "aria-label": "есть ролик", role: "img" }, [icon("play")]) : null, st.last === s.id && !cur ? el("span", { "class": "here", text: " · вы здесь" }) : null])]),
             cur && curToc ? tocList(curToc, "stoc") : null]);
         }))])]));
     });
@@ -364,6 +365,20 @@
       el("img", { src: ph.src, srcset: ph.src_small ? ph.src_small + " 800w, " + ph.src + " 1600w" : null, sizes: ph.src_small ? "(max-width: 900px) 100vw, 1000px" : null,
         alt: ph.alt, decoding: "async" }),
       el("span", { "class": "phototag", text: "фото · атмосфера" })] : []);
+  }
+  function hasVid(s) { return !!(s.media && s.media.length); }
+  function videosBlock() {   // home: every lesson with a video or an interactive scene, one click away
+    var withVid = steps.filter(hasVid);
+    if (!withVid.length) return null;
+    return el("section", { "class": "panel vids", "aria-labelledby": "vids-h" }, [
+      el("div", { "class": "panel-h" }, [icon("play"), el("h2", { id: "vids-h", text: "Ролики" }), el("span", { "class": "sep" }), el("span", { "class": "small muted", text: plural(withVid.length, "урок", "урока", "уроков") + " с роликом" })]),
+      el("ul", { "class": "vidlist" }, [].concat.apply([], withVid.map(function (s) {
+        return s.media.map(function (m) {
+          return el("li", null, [el("a", { href: "#/step/" + s.id, "class": "vidrow" }, [icon("play", "big"),
+            el("span", null, [el("span", { "class": "t", text: m.title || s.title }),
+              el("span", { "class": "m", text: "Урок " + s.order + ": " + s.title + " · " + (m.format === "short" ? "шортс 9:16" : "разбор 16:9") + (m.duration_s ? ", " + Math.round(m.duration_s) + " с" : "") + (m.scene ? " · есть интерактивная сцена" : "") })])])]);
+        });
+      })))]);
   }
   function photoCredit(ph) {
     if (!ph) return null;
@@ -405,6 +420,7 @@
       photoCredit(ph)]);
     var kids = [cover];
     if (C.chapter.scope === "sample") kids.push(el("p", { "class": "callout note", text: "Это образец: в курсе только часть узлов главы." }));
+    kids.push(videosBlock());
     kids.push(el("ol", { "class": "start", "aria-label": "С чего начать" }, [
       el("li", null, [el("div", null, [el("b", { text: "Читайте урок" }), el("span", { text: "Суть в начале, дальше механизм, примеры автора и цифры. «по книге, стр. N» открывает цитату." })])]),
       el("li", null, [el("div", null, [el("b", { text: "Проверьте себя" }), el("span", { text: "После основного текста вопросы по одному: сразу видно верный ответ и пояснение." })])]),
@@ -427,7 +443,7 @@
         el("ol", { "class": "lessons" }, ps.map(function (s) {
           var n = (tasksByStep[s.id] || []).length;
           return el("li", null, [el("a", { "class": "lrow", href: "#/step/" + s.id }, [mq(mastery(s), null, s.id),
-            el("span", null, [el("span", { "class": "t", text: s.order + ". " + s.title }),
+            el("span", null, [el("span", { "class": "t" }, [s.order + ". " + s.title, hasVid(s) ? el("span", { "class": "vidmark", title: "есть ролик", "aria-label": "есть ролик", role: "img" }, [icon("play")]) : null]),
               el("span", { "class": "m", text: LEVELS[mastery(s)] + " · ~" + s.minutes + " мин" + (n ? " · " + plural(n, "вопрос", "вопроса", "вопросов") : "") + (st.last === s.id ? " · вы здесь" : "") })]),
             el("span", { "class": "go" }, [icon("chev")])])]);
         })),
@@ -477,7 +493,7 @@
     content.media = (s.media || []).map(function (m) {
       var base = "media/" + m.dir + "/", portrait = m.format === "short";
       var miss = el("p", { "class": "media-miss", hidden: true, text: "Ролик не загрузился. Текст шага ниже — то же содержание." });
-      var v = el("video", { controls: true, playsinline: true, preload: "metadata", src: base + m.mp4, "class": "vid" + (portrait ? " portrait" : ""),
+      var v = el("video", { controls: true, playsinline: true, preload: "metadata", src: base + m.mp4 + "#t=1", "class": "vid" + (portrait ? " portrait" : ""),
         "aria-label": "Ролик с вшитыми субтитрами: " + (m.title || s.title) });
       v.addEventListener("error", function () { v.hidden = true; miss.hidden = false; });
       var frame = null;
