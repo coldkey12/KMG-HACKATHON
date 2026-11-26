@@ -4,10 +4,11 @@
  "mp4": "n-475-e20d95_short.mp4",
  "scene": "scene.html",
  "audio": "voice.mp3",
- "subtitles": "subtitles.srt",
  "subtitles_vtt": "subtitles.vtt",
- "passport": "passport.md",
+ "passport": "passport.html",
+ "passport_json": "passport.json",
+ "subtitles_burned_in": true,
  "title": "Почему давление выравнивается долго",
  "template": "pressure_diffusion",
- "duration_s": 56.414
+ "duration_s": 59.071
 }

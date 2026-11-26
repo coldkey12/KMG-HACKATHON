@@ -4,10 +4,11 @@
  "mp4": "n-092-fe1183_long.mp4",
  "scene": "scene.html",
  "audio": "voice.mp3",
- "subtitles": "subtitles.srt",
  "subtitles_vtt": "subtitles.vtt",
- "passport": "passport.md",
+ "passport": "passport.html",
+ "passport_json": "passport.json",
+ "subtitles_burned_in": true,
  "title": "Глина и песчаник по таблице признаков",
  "template": "log_panel_decision",
- "duration_s": 123.314
+ "duration_s": 133.364
 }

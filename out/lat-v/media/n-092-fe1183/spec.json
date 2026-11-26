@@ -1,5 +1,5 @@
 {
- "schema": "kmg-scene-spec/0.1.0",
+ "schema": "kmg-scene-spec/0.2.0",
  "template": "log_panel_decision",
  "format": "long",
  "frame_class": "A",
@@ -28,33 +28,92 @@
   "same": "одинаково",
   "differs": "различает",
   "decision": "Признаки → вывод",
+  "interval": "интервал",
+  "signs": "признаки",
+  "conclusion": "вывод",
   "nodata": "нет данных",
   "wrong_tag": "по одной кривой не различить"
  },
- "exaggeration": "Не реальная скважина: уровни по таблице, глубины условные",
- "school": "русская (ГОСТ-подобная) — указывать в кадре",
+ "exaggeration": "Не в масштабе: мощности пластов и глубины условные; уровни по таблице",
+ "exaggeration_named": null,
+ "true_scale": null,
+ "school": "русская школа ГИС (названа в кадре)",
+ "conventions": {
+  "depth": "глубина на планшете и разрезе растёт вниз",
+  "log_school": "русская школа обозначений (ПС, ГК, КС, НГК, ГГК-П, АК); при западных обозначениях школа называется в кадре",
+  "seismic_polarity": "полярность сейсмики указывается в кадре; по умолчанию нормальная полярность SEG: рост акустического импеданса — положительная амплитуда (пик), закрашивается",
+  "vertical_exaggeration": "вертикальное преувеличение подписывается числом; хотя бы один кадр серии — в истинном масштабе",
+  "uncertainty": "неопределённость — диапазон или штриховка цветом uncertainty, а не одна линия"
+ },
+ "styleguide": "domain/geology/styleguide_official.json",
  "palette": {
-  "sand": "#F2D98B",
-  "shale": "#7F8C8D",
-  "limestone": "#9FD3C7",
-  "dolomite": "#C7B8E0",
-  "anhydrite": "#E6A0C4",
-  "salt": "#FFFFFF",
-  "fluid_gas": "#E8C547",
-  "fluid_oil": "#7A4E2D",
-  "fluid_water": "#3C7DD9",
-  "fluid_filtrate": "#8FC1E8",
-  "fluid_fresh": "#8FC1E8",
-  "curve_res": "#9FB3C8",
-  "curve_sp": "#C0392B",
-  "curve_cal": "#16A085",
-  "curve_gr": "#27AE60",
-  "curve_nn": "#2980B9"
+  "sand": "#E8C872",
+  "shale": "#6B8E5A",
+  "limestone": "#7FB3D5",
+  "dolomite": "#A98FD1",
+  "anhydrite": "#D98CB3",
+  "salt": "#C9D6DF",
+  "dense": "#8C7B6B",
+  "reef": "#F0A35E",
+  "fluid_oil": "#2E8B57",
+  "fluid_gas": "#E74C3C",
+  "fluid_water": "#3498DB",
+  "fluid_filtrate": "#9BD7F5",
+  "fluid_mud": "#7A6A58",
+  "curve_SP": "#E74C3C",
+  "curve_GR": "#2ECC71",
+  "curve_RES": "#F1C40F",
+  "curve_RES_SHALLOW": "#E67E22",
+  "curve_NEUTRON": "#3498DB",
+  "curve_DENSITY": "#E84393",
+  "curve_SONIC": "#9B59B6",
+  "curve_CALIPER": "#BDC3C7",
+  "curve_PRESSURE": "#00CEC9",
+  "measurement": "#F1C40F",
+  "uncertainty": "#95A5A6"
  },
- "colors": {
-  "sand": "#F2D98B",
-  "shale": "#7F8C8D"
+ "legend_keys": {
+  "lith": {
+   "clay": "shale",
+   "sand": "sand",
+   "limestone": "limestone",
+   "anhydrite": "anhydrite",
+   "salt": "salt"
+  },
+  "fluid": {
+   "water": "water",
+   "oil": "oil",
+   "gas": "gas",
+   "fresh": "water"
+  }
  },
+ "frame_colors": {
+  "bg": "#0F1419",
+  "panel": "#1A2129",
+  "ink": "#ECEFF4",
+  "muted": "#8A96A3",
+  "paper": "#ECEFF4",
+  "chipBg": "#1A2129",
+  "chipFg": "#ECEFF4",
+  "measurement": "#F1C40F",
+  "uncertainty": "#95A5A6",
+  "pressure": "#00CEC9",
+  "pressureRGB": "0,206,201",
+  "curve": "#00CEC9",
+  "accent": "#5CC4BE",
+  "warnBg": "#3A2220",
+  "warnFg": "#FF9E8F",
+  "steel": "#B9C2C6",
+  "hidden": "#3A4643",
+  "provenance": {
+   "реальные данные": "#27AE60",
+   "симуляция": "#2980B9",
+   "схема": "#8E44AD"
+  },
+  "font": "Segoe UI, \"Helvetica Neue\", Arial, sans-serif"
+ },
+ "safe_zone": null,
+ "min_caption_px": 44,
  "panel": {
   "table": "Таблица 21",
   "table_page": 93,
@@ -62,27 +121,32 @@
    {
     "id": "res",
     "label": "сопротивление",
-    "kind": "level"
+    "kind": "level",
+    "curve_key": "RES"
    },
    {
     "id": "sp",
     "label": "СП",
-    "kind": "level"
+    "kind": "level",
+    "curve_key": "SP"
    },
    {
     "id": "cal",
     "label": "диаметр скважины",
-    "kind": "diameter"
+    "kind": "diameter",
+    "curve_key": "CALIPER"
    },
    {
     "id": "gr",
     "label": "гамма-метод",
-    "kind": "level"
+    "kind": "level",
+    "curve_key": "GR"
    },
    {
     "id": "nn",
     "label": "нейтронные",
-    "kind": "level"
+    "kind": "level",
+    "curve_key": "NEUTRON"
    }
   ],
   "intervals": [
