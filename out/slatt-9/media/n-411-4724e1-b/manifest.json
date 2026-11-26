@@ -1,0 +1,14 @@
+{
+ "node_id": "slatt-9.n-411-4724e1-b",
+ "format": "long",
+ "mp4": "n-411-4724e1-b_long.mp4",
+ "scene": "scene.html",
+ "audio": "voice.mp3",
+ "subtitles_vtt": "subtitles.vtt",
+ "passport": "passport.html",
+ "passport_json": "passport.json",
+ "subtitles_burned_in": true,
+ "title": "Проградация: дельта шагает в море",
+ "template": "claim_steps",
+ "duration_s": 131.95
+}

@@ -1,0 +1,28 @@
+[2026-11-26 11:31:08.529] [ctranslate2] [thread 30207623] [warning] Tip: experimental MPS backend is available and often 2x+ faster than CPU on Apple Silicon (varies by workload and hardware). Try device="mps".
+script reused (node facts unchanged)
+  voice 1/10 ok
+  voice 2/10 ok
+  voice 3/10 ok
+  voice 4/10 ok
+  voice 5/10 ok
+  voice 6/10 ok
+  voice 7/10 ok
+  voice 8/10 ok
+  voice 9/10 ok
+  voice 10/10 ok
+rendering 131.9 s at 30 fps…
+  frames 300/3958 (5 s)
+  frames 600/3958 (8 s)
+  frames 900/3958 (12 s)
+  frames 1200/3958 (16 s)
+  frames 1500/3958 (20 s)
+  frames 1800/3958 (25 s)
+  frames 2100/3958 (30 s)
+  frames 2400/3958 (36 s)
+  frames 2700/3958 (40 s)
+  frames 3000/3958 (45 s)
+  frames 3300/3958 (49 s)
+  frames 3600/3958 (53 s)
+  frames 3900/3958 (58 s)
+  ASR: WER 2.8 % over 286 words
+{"out": "out/slatt-9/media/n-411-4724e1-b", "duration_s": 131.95, "wpm": 138.2, "lufs": -15.9, "voice": "ru-RU-SvetlanaNeural", "fallback_used": false, "script_cost_usd": 0.050553, "invariants_ok": true}

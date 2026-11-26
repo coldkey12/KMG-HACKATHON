@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Users/coldkey/KMG-HACKATHON/kmg_course/__main__.py", line 3, in <module>
+    main()
+  File "/Users/coldkey/KMG-HACKATHON/kmg_course/cli.py", line 332, in main
+    out, pj = vb.build(args.layer, args.node_id, args.format, args.template, args.out, new_script=args.new_script)
+  File "/Users/coldkey/KMG-HACKATHON/kmg_course/video/build.py", line 986, in build
+    inv, nframes, exag = render_video(rec_html, timeline, fmt, wav, mp4, log=log)
+  File "/Users/coldkey/KMG-HACKATHON/kmg_course/video/build.py", line 539, in render_video
+    from playwright.sync_api import sync_playwright
+ModuleNotFoundError: No module named 'playwright'
+script rejected (2 issues), one repair attempt
+voice ru-RU-SvetlanaNeural failed (TTS failed for 'Представьте два песка, похожих друг на д' after 8 tries: No module named 'edge_tts'); switching the whole series to the next voice
+  voice 1/10 ok
+  voice 2/10 ok
+  voice 3/10 ok
+  voice 4/10 ok
+  voice 5/10 ok
+  voice 6/10 ok
+  voice 7/10 ok
+  voice 8/10 ok
+  voice 9/10 ok
+  voice 10/10 ok
+rendering 125.7 s at 30 fps…
