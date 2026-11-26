@@ -1,42 +1,55 @@
 [
  {
   "chapter": "bar-4",
-  "nodes": 48,
-  "claims": 369,
-  "cost_usd": 1.3884,
-  "cost_per_node": 0.0289,
+  "nodes": 42,
+  "claims": 337,
+  "cost_usd": 1.3708,
+  "cost_per_node": 0.0326,
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
-  "manual_share_nodes": 0.042,
-  "machine_seconds": 144.2,
+  "manual_share_nodes": 0.024,
+  "machine_seconds": 28418.0,
   "checks_passed": true,
-  "open_questions": 23
+  "open_questions": 19
  },
  {
   "chapter": "bas-xxiii",
-  "nodes": 78,
-  "claims": 580,
-  "cost_usd": 2.2563,
-  "cost_per_node": 0.0289,
+  "nodes": 71,
+  "claims": 558,
+  "cost_usd": 2.4155,
+  "cost_per_node": 0.034,
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
-  "manual_share_nodes": 0.026,
-  "machine_seconds": 690.8,
+  "manual_share_nodes": 0.014,
+  "machine_seconds": 28913.5,
   "checks_passed": true,
-  "open_questions": 38
+  "open_questions": 43
  },
  {
   "chapter": "brb-1-2",
-  "nodes": 35,
-  "claims": 323,
-  "cost_usd": 1.0186,
-  "cost_per_node": 0.0291,
+  "nodes": 38,
+  "claims": 299,
+  "cost_usd": 1.0471,
+  "cost_per_node": 0.0276,
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
   "manual_share_nodes": 0.0,
-  "machine_seconds": 706.1,
+  "machine_seconds": 902.3,
   "checks_passed": true,
-  "open_questions": 9
+  "open_questions": 5
+ },
+ {
+  "chapter": "en-welllog",
+  "nodes": 39,
+  "claims": 252,
+  "cost_usd": 0.9873,
+  "cost_per_node": 0.0253,
+  "manual_minutes": 0.0,
+  "manual_min_per_node": 0.0,
+  "manual_share_nodes": 0.0,
+  "machine_seconds": 786.3,
+  "checks_passed": true,
+  "open_questions": 4
  },
  {
   "chapter": "kuz-10",
@@ -53,28 +66,28 @@
  },
  {
   "chapter": "lat-v",
-  "nodes": 69,
-  "claims": 673,
-  "cost_usd": 2.3478,
-  "cost_per_node": 0.034,
+  "nodes": 70,
+  "claims": 652,
+  "cost_usd": 2.5763,
+  "cost_per_node": 0.0368,
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
-  "manual_share_nodes": 0.058,
-  "machine_seconds": 30627.3,
+  "manual_share_nodes": 0.029,
+  "machine_seconds": 28741.3,
   "checks_passed": true,
-  "open_questions": 62
+  "open_questions": 65
  },
  {
   "chapter": "ven-1",
-  "nodes": 73,
-  "claims": 680,
-  "cost_usd": 2.2932,
-  "cost_per_node": 0.0314,
+  "nodes": 66,
+  "claims": 718,
+  "cost_usd": 2.5086,
+  "cost_per_node": 0.038,
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
-  "manual_share_nodes": 0.041,
-  "machine_seconds": 1315.2,
+  "manual_share_nodes": 0.0,
+  "machine_seconds": 1956.5,
   "checks_passed": true,
-  "open_questions": 67
+  "open_questions": 63
  }
 ]

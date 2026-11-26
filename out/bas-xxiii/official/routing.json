@@ -13,14 +13,14 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности В; критерии видеоёмкости: time_change, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности М; критерии видеоёмкости: time_change, cause_effect.",
    "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-474-d10c22-b",
-   "format": "шортс",
+   "format": "длинное видео",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
@@ -32,12 +32,12 @@
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, scale_jump, counterintuitive, cause_effect.",
+   "why": "механизм/время: цепочка событий длиннее одного шортса → длинное видео (правило типов М и В). Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, scale_jump, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-474-f05555",
-   "format": "практикум на данных",
+   "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
     "time": 0,
@@ -48,9 +48,9 @@
    },
    "hook_short": false,
    "template": null,
-   "template_needed": false,
-   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Н; критерии видеоёмкости: нет.",
-   "data_decision": true
+   "template_needed": true,
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
+   "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-474-eacc1d",
@@ -58,37 +58,88 @@
    "secondary_format": null,
    "video_scores": {
     "time": 2,
-    "invisible": 0,
+    "invisible": 2,
     "scale": 0,
     "counterintuitive": 0,
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "log_panel_decision",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Р; критерии видеоёмкости: time_change, cause_effect.",
-   "data_decision": true
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-475-e20d95",
-   "format": "интерактив",
+   "format": "длинное видео",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
-    "invisible": 0,
+    "invisible": 2,
     "scale": 0,
-    "counterintuitive": 0,
+    "counterintuitive": 2,
     "cause_effect": 2
    },
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности М; критерии видеоёмкости: time_change, cause_effect.",
+   "why": "механизм/время: цепочка событий длиннее одного шортса → длинное видео (правило типов М и В). Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-475-052a3f",
-   "format": "текст",
+   "node_id": "bas-xxiii.n-477-c7007e",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": true,
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Н; критерии видеоёмкости: counterintuitive.",
+   "data_decision": false
+  },
+  {
+   "node_id": "bas-xxiii.n-475-a98103",
+   "format": "шортс",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 2,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": true,
+   "why": "≥3 критерия, есть движение или невидимое, один механизм → шортс 9:16 (для Ф — смысл членов, не вывод). Тип трудности Ф; критерии видеоёмкости: invisible_visible, scale_jump, counterintuitive, cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "bas-xxiii.n-476-32ecea",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "bas-xxiii.n-480-04d2ff",
+   "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
     "time": 0,
@@ -99,59 +150,8 @@
    },
    "hook_short": false,
    "template": null,
-   "template_needed": false,
-   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности Н; критерии видеоёмкости: нет.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-475-a98103",
-   "format": "шортс",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 2,
-    "invisible": 2,
-    "scale": 2,
-    "counterintuitive": 2,
-    "cause_effect": 2
-   },
-   "hook_short": false,
-   "template": "pressure_diffusion",
-   "template_needed": false,
-   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, scale_jump, counterintuitive, cause_effect.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-475-9f8dd3",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 2,
-    "scale": 0,
-    "counterintuitive": 2,
-    "cause_effect": 2
-   },
-   "hook_short": false,
-   "template": null,
    "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-476-e17829",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 2,
-    "scale": 0,
-    "counterintuitive": 2,
-    "cause_effect": 2
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Н; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
@@ -168,24 +168,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: invisible_visible.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-476-30bb03",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 2,
-    "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 2
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, cause_effect.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: invisible_visible.",
    "data_decision": false
   },
   {
@@ -193,16 +176,16 @@
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
-    "time": 2,
+    "time": 0,
     "invisible": 2,
     "scale": 0,
-    "counterintuitive": 0,
+    "counterintuitive": 2,
     "cause_effect": 0
    },
    "hook_short": false,
-   "template": "growth_timeline",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: time_change, invisible_visible.",
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности П; критерии видеоёмкости: invisible_visible, counterintuitive.",
    "data_decision": false
   },
   {
@@ -219,24 +202,7 @@
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-477-c7007e",
-   "format": "текст",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 0,
-    "scale": 0,
-    "counterintuitive": 2,
-    "cause_effect": 0
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": false,
-   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности Пр; критерии видеоёмкости: counterintuitive.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -253,7 +219,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -264,13 +230,13 @@
     "time": 0,
     "invisible": 0,
     "scale": 0,
-    "counterintuitive": 0,
+    "counterintuitive": 2,
     "cause_effect": 0
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
    "data_decision": false
   },
   {
@@ -281,13 +247,13 @@
     "time": 0,
     "invisible": 0,
     "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 0
+    "counterintuitive": 2,
+    "cause_effect": 2
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
@@ -298,13 +264,13 @@
     "time": 0,
     "invisible": 0,
     "scale": 0,
-    "counterintuitive": 2,
+    "counterintuitive": 0,
     "cause_effect": 2
    },
    "hook_short": false,
    "template": "radial_profile",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Н; критерии видеоёмкости: cause_effect.",
    "data_decision": false
   },
   {
@@ -316,12 +282,12 @@
     "invisible": 0,
     "scale": 0,
     "counterintuitive": 0,
-    "cause_effect": 2
+    "cause_effect": 0
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: cause_effect.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
@@ -333,46 +299,12 @@
     "invisible": 0,
     "scale": 0,
     "counterintuitive": 0,
-    "cause_effect": 0
+    "cause_effect": 2
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-479-abb043",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 0,
-    "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 0
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-480-ef2409",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 0,
-    "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 0
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: cause_effect.",
    "data_decision": false
   },
   {
@@ -389,7 +321,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: cause_effect.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: cause_effect.",
    "data_decision": false
   },
   {
@@ -406,45 +338,11 @@
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-480-551f3d",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 0,
-    "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 0
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности М; критерии видеоёмкости: нет.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-481-8caf17",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 0,
-    "scale": 0,
-    "counterintuitive": 2,
-    "cause_effect": 2
-   },
-   "hook_short": false,
-   "template": "radial_profile",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
-   "data_decision": true
-  },
-  {
-   "node_id": "bas-xxiii.n-481-169f3d",
+   "node_id": "bas-xxiii.n-480-3308a5",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
@@ -455,47 +353,64 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-482-585528",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 2,
-    "invisible": 0,
-    "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 0
-   },
-   "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: time_change.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-482-f79472",
+   "node_id": "bas-xxiii.n-481-22ca41",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
-    "time": 2,
+    "time": 0,
     "invisible": 0,
     "scale": 0,
     "counterintuitive": 2,
     "cause_effect": 0
    },
    "hook_short": false,
-   "template": "pressure_diffusion",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, counterintuitive.",
+   "template": null,
+   "template_needed": true,
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Н; критерии видеоёмкости: counterintuitive.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-482-f51828",
+   "node_id": "bas-xxiii.n-481-8caf17",
+   "format": "практикум на данных",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 0,
+    "scale": 0,
+    "counterintuitive": 0,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": false,
+   "why": "процедура / правило на данных / примеры с числами → практикум на данных (ведущий формат типа Пр). Тип трудности Ф; критерии видеоёмкости: cause_effect.",
+   "data_decision": true
+  },
+  {
+   "node_id": "bas-xxiii.n-481-169f3d",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 2,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 2
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "data_decision": false
+  },
+  {
+   "node_id": "bas-xxiii.n-482-585528",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
@@ -508,7 +423,41 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
+   "data_decision": false
+  },
+  {
+   "node_id": "bas-xxiii.n-482-f79472",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "data_decision": false
+  },
+  {
+   "node_id": "bas-xxiii.n-482-f51828",
+   "format": "интерактив",
+   "secondary_format": null,
+   "video_scores": {
+    "time": 0,
+    "invisible": 2,
+    "scale": 0,
+    "counterintuitive": 2,
+    "cause_effect": 0
+   },
+   "hook_short": false,
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive.",
    "data_decision": false
   },
   {
@@ -525,7 +474,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
@@ -542,24 +491,24 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-483-c01ba8",
-   "format": "интерактив",
+   "node_id": "bas-xxiii.n-484-428aef",
+   "format": "длинное видео",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
     "invisible": 2,
     "scale": 0,
-    "counterintuitive": 0,
+    "counterintuitive": 2,
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "why": "механизм/время: цепочка событий длиннее одного шортса → длинное видео (правило типов М и В). Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
@@ -570,30 +519,30 @@
     "time": 2,
     "invisible": 0,
     "scale": 0,
-    "counterintuitive": 2,
+    "counterintuitive": 0,
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности В; критерии видеоёмкости: time_change, counterintuitive, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, cause_effect.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-485-2a49f0",
+   "node_id": "bas-xxiii.n-485-31f1fd",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
-    "invisible": 2,
+    "invisible": 0,
     "scale": 0,
     "counterintuitive": 2,
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности В; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности М; критерии видеоёмкости: time_change, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
@@ -601,16 +550,16 @@
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
-    "time": 0,
+    "time": 2,
     "invisible": 0,
     "scale": 0,
     "counterintuitive": 2,
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "template": "pressure_diffusion",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
@@ -621,13 +570,13 @@
     "time": 0,
     "invisible": 0,
     "scale": 0,
-    "counterintuitive": 2,
+    "counterintuitive": 0,
     "cause_effect": 0
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
@@ -644,7 +593,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
@@ -661,7 +610,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
@@ -678,7 +627,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
@@ -695,7 +644,7 @@
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -710,14 +659,14 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности В; критерии видеоёмкости: time_change, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности М; критерии видеоёмкости: time_change, cause_effect.",
    "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-488-bfc887",
-   "format": "шортс",
+   "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
@@ -729,8 +678,8 @@
    "hook_short": false,
    "template": "radial_profile",
    "template_needed": false,
-   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Н; критерии видеоёмкости: time_change, counterintuitive, cause_effect.",
-   "data_decision": true
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Н; критерии видеоёмкости: time_change, counterintuitive, cause_effect.",
+   "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-488-ad0466",
@@ -744,9 +693,9 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -755,7 +704,7 @@
    "secondary_format": null,
    "video_scores": {
     "time": 2,
-    "invisible": 0,
+    "invisible": 2,
     "scale": 0,
     "counterintuitive": 0,
     "cause_effect": 2
@@ -763,7 +712,7 @@
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -780,7 +729,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
    "data_decision": false
   },
   {
@@ -789,7 +738,7 @@
    "secondary_format": null,
    "video_scores": {
     "time": 0,
-    "invisible": 0,
+    "invisible": 2,
     "scale": 0,
     "counterintuitive": 0,
     "cause_effect": 0
@@ -797,7 +746,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: invisible_visible.",
    "data_decision": false
   },
   {
@@ -814,11 +763,11 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-490-113c15",
+   "node_id": "bas-xxiii.n-490-fb1047",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
@@ -826,29 +775,12 @@
     "invisible": 0,
     "scale": 0,
     "counterintuitive": 0,
-    "cause_effect": 0
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-490-8fe2be",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 0,
-    "scale": 0,
-    "counterintuitive": 2,
     "cause_effect": 2
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: cause_effect.",
    "data_decision": false
   },
   {
@@ -865,11 +797,11 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: нет.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-490-719304",
+   "node_id": "bas-xxiii.n-491-48b76d",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
@@ -882,7 +814,7 @@
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -899,7 +831,7 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
    "data_decision": false
   },
   {
@@ -907,16 +839,16 @@
    "format": "практикум на данных",
    "secondary_format": null,
    "video_scores": {
-    "time": 2,
+    "time": 0,
     "invisible": 0,
     "scale": 0,
     "counterintuitive": 0,
-    "cause_effect": 0
+    "cause_effect": 2
    },
    "hook_short": false,
    "template": null,
    "template_needed": false,
-   "why": "правило на данных или разобранные примеры с числами → практикум на данных. Тип трудности Пр; критерии видеоёмкости: time_change.",
+   "why": "процедура / правило на данных / примеры с числами → практикум на данных (ведущий формат типа Пр). Тип трудности Н; критерии видеоёмкости: cause_effect.",
    "data_decision": true
   },
   {
@@ -925,15 +857,15 @@
    "secondary_format": null,
    "video_scores": {
     "time": 2,
-    "invisible": 2,
-    "scale": 0,
-    "counterintuitive": 2,
+    "invisible": 0,
+    "scale": 2,
+    "counterintuitive": 0,
     "cause_effect": 2
    },
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности М; критерии видеоёмкости: time_change, scale_jump, cause_effect.",
    "data_decision": false
   },
   {
@@ -944,18 +876,18 @@
     "time": 0,
     "invisible": 0,
     "scale": 0,
-    "counterintuitive": 0,
+    "counterintuitive": 2,
     "cause_effect": 0
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "формулы показываются интерактивом с расшифровкой переменных. Тип трудности Ф; критерии видеоёмкости: нет.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
    "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-492-7947f0",
-   "format": "интерактив",
+   "format": "длинное видео",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
@@ -965,26 +897,26 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "log_panel_decision",
+   "template": "radial_profile",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: time_change, counterintuitive, cause_effect.",
+   "why": "решение на данных по рисунку/примеру и ≥3 критерия видеоёмкости → разбор 16:9 с синхронными видами. Тип трудности Н; критерии видеоёмкости: time_change, counterintuitive, cause_effect.",
    "data_decision": true
   },
   {
    "node_id": "bas-xxiii.n-492-cd532d",
-   "format": "шортс",
+   "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
     "invisible": 2,
-    "scale": 2,
+    "scale": 0,
     "counterintuitive": 2,
     "cause_effect": 0
    },
    "hook_short": false,
    "template": "log_panel_decision",
    "template_needed": false,
-   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности Пр; критерии видеоёмкости: time_change, invisible_visible, scale_jump, counterintuitive.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Н; критерии видеоёмкости: time_change, invisible_visible, counterintuitive.",
    "data_decision": true
   },
   {
@@ -999,30 +931,13 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-494-36b29c",
-   "format": "текст",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 0,
-    "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 0
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": false,
-   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности Н; критерии видеоёмкости: нет.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-494-3d3699",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
@@ -1035,7 +950,7 @@
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности М; критерии видеоёмкости: time_change, counterintuitive.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, counterintuitive.",
    "data_decision": false
   },
   {
@@ -1050,27 +965,10 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "why": "≥3 критерия, есть движение или невидимое, один механизм → шортс 9:16 (для Ф — смысл членов, не вывод). Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-495-e32e84",
-   "format": "шортс",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 2,
-    "invisible": 2,
-    "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 2
-   },
-   "hook_short": false,
-   "template": "log_panel_decision",
-   "template_needed": false,
-   "why": "≥3 критерия, есть движение или невидимое → один механизм, шортс 9:16. Тип трудности В; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
-   "data_decision": true
   },
   {
    "node_id": "bas-xxiii.n-495-a86d75",
@@ -1084,9 +982,9 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -1103,29 +1001,12 @@
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-496-22da9c",
-   "format": "интерактив",
-   "secondary_format": null,
-   "video_scores": {
-    "time": 0,
-    "invisible": 2,
-    "scale": 0,
-    "counterintuitive": 2,
-    "cause_effect": 2
-   },
-   "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive, cause_effect.",
-   "data_decision": false
-  },
-  {
-   "node_id": "bas-xxiii.n-496-1b01a5",
-   "format": "интерактив",
+   "node_id": "bas-xxiii.n-496-d757fb",
+   "format": "длинное видео",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
@@ -1135,9 +1016,9 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности В; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "why": "механизм/время: цепочка событий длиннее одного шортса → длинное видео (правило типов М и В). Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
@@ -1149,12 +1030,12 @@
     "invisible": 2,
     "scale": 0,
     "counterintuitive": 0,
-    "cause_effect": 0
+    "cause_effect": 2
    },
    "hook_short": false,
-   "template": null,
-   "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Н; критерии видеоёмкости: time_change, invisible_visible.",
+   "template": "radial_profile",
+   "template_needed": false,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Н; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -1165,17 +1046,17 @@
     "time": 2,
     "invisible": 0,
     "scale": 0,
-    "counterintuitive": 0,
+    "counterintuitive": 2,
     "cause_effect": 2
    },
    "hook_short": false,
    "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-497-e62dd2",
+   "node_id": "bas-xxiii.n-497-8c1f68",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
@@ -1186,27 +1067,27 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности В; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Ф; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-497-afe122",
-   "format": "интерактив",
+   "node_id": "bas-xxiii.n-497-962d65",
+   "format": "практикум на данных",
    "secondary_format": null,
    "video_scores": {
-    "time": 2,
+    "time": 0,
     "invisible": 0,
     "scale": 0,
     "counterintuitive": 0,
-    "cause_effect": 2
+    "cause_effect": 0
    },
    "hook_short": false,
    "template": null,
-   "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: time_change, cause_effect.",
-   "data_decision": false
+   "template_needed": false,
+   "why": "процедура / правило на данных / примеры с числами → практикум на данных (ведущий формат типа Пр). Тип трудности Н; критерии видеоёмкости: нет.",
+   "data_decision": true
   },
   {
    "node_id": "bas-xxiii.n-497-73643c",
@@ -1220,9 +1101,9 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -1231,15 +1112,15 @@
    "secondary_format": null,
    "video_scores": {
     "time": 2,
-    "invisible": 0,
+    "invisible": 2,
     "scale": 0,
     "counterintuitive": 0,
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "pressure_diffusion",
-   "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: time_change, cause_effect.",
+   "template": null,
+   "template_needed": true,
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности П; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
    "data_decision": false
   },
   {
@@ -1248,7 +1129,7 @@
    "secondary_format": null,
    "video_scores": {
     "time": 0,
-    "invisible": 2,
+    "invisible": 0,
     "scale": 0,
     "counterintuitive": 2,
     "cause_effect": 0
@@ -1256,12 +1137,12 @@
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Ф; критерии видеоёмкости: invisible_visible, counterintuitive.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Ф; критерии видеоёмкости: counterintuitive.",
    "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-498-573ed7",
-   "format": "интерактив",
+   "format": "длинное видео",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
@@ -1271,26 +1152,26 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": "growth_timeline",
+   "template": "pressure_diffusion",
    "template_needed": false,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности В; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
+   "why": "механизм/время: цепочка событий длиннее одного шортса → длинное видео (правило типов М и В). Тип трудности М; критерии видеоёмкости: time_change, invisible_visible, counterintuitive, cause_effect.",
    "data_decision": false
   },
   {
-   "node_id": "bas-xxiii.n-499-e8979c",
+   "node_id": "bas-xxiii.n-499-8b9da9",
    "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
     "time": 2,
-    "invisible": 2,
+    "invisible": 0,
     "scale": 0,
-    "counterintuitive": 0,
-    "cause_effect": 2
+    "counterintuitive": 2,
+    "cause_effect": 0
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: time_change, invisible_visible, cause_effect.",
+   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив. Тип трудности Н; критерии видеоёмкости: time_change, counterintuitive.",
    "data_decision": false
   },
   {
@@ -1301,18 +1182,18 @@
     "time": 2,
     "invisible": 0,
     "scale": 0,
-    "counterintuitive": 2,
+    "counterintuitive": 0,
     "cause_effect": 0
    },
    "hook_short": false,
    "template": null,
    "template_needed": true,
-   "why": "2+ критерия видеоёмкости и есть что двигать/вычислять → интерактив (сцена по шагам). Тип трудности Пр; критерии видеоёмкости: time_change, counterintuitive.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Н; критерии видеоёмкости: time_change.",
    "data_decision": false
   },
   {
    "node_id": "bas-xxiii.n-499-7ef37e",
-   "format": "текст",
+   "format": "интерактив",
    "secondary_format": null,
    "video_scores": {
     "time": 0,
@@ -1322,9 +1203,9 @@
     "cause_effect": 2
    },
    "hook_short": false,
-   "template": null,
+   "template": "radial_profile",
    "template_needed": false,
-   "why": "нет сильного критерия видеоёмкости → текст шага. Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
+   "why": "формализм, пространство или неопределённость → интерактив (ведущий формат типа). Тип трудности Н; критерии видеоёмкости: counterintuitive, cause_effect.",
    "data_decision": false
   }
  ]

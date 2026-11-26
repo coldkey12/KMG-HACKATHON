@@ -22,8 +22,10 @@
    "kind": "heading",
    "page_pdf": 474,
    "excerpt": "§1. Упругий режим пласта и его характерные особенности",
-   "node_ids": [],
-   "reason": "заголовок"
+   "node_ids": [
+    "bas-xxiii.n-474-d10c22"
+   ],
+   "reason": null
   },
   {
    "unit_id": "u-474-d10c22",
@@ -42,7 +44,8 @@
    "page_pdf": 474,
    "excerpt": "Математическая модель, которая будет сформулирована далее, учитывает проявление упругих сил в однофазном",
    "node_ids": [
-    "bas-xxiii.n-474-f05555"
+    "bas-xxiii.n-474-f05555",
+    "bas-xxiii.n-484-2747e1"
    ],
    "reason": null
   },
@@ -53,7 +56,7 @@
    "excerpt": "При пуске скважины в эксплуатацию в условиях упругого режима движение жидкости начинается",
    "node_ids": [
     "bas-xxiii.n-474-d10c22-b",
-    "bas-xxiii.n-478-4cc09f"
+    "bas-xxiii.n-475-e20d95"
    ],
    "reason": null
   },
@@ -73,8 +76,7 @@
    "page_pdf": 475,
    "excerpt": "Характерная особенность проявления упругого режима в процессе разработки нефтяных месторождений проявляется в",
    "node_ids": [
-    "bas-xxiii.n-475-e20d95",
-    "bas-xxiii.n-478-4cc09f"
+    "bas-xxiii.n-475-e20d95"
    ],
    "reason": null
   },
@@ -84,7 +86,7 @@
    "page_pdf": 475,
    "excerpt": "Первыми исследователями, разрабатывавшими теорию упругого режима в 30-х годах 20-го века, были",
    "node_ids": [
-    "bas-xxiii.n-475-052a3f"
+    "bas-xxiii.n-474-d10c22-b"
    ],
    "reason": null
   },
@@ -112,7 +114,7 @@
    "page_pdf": 475,
    "excerpt": "Упругий запас жидкости в пласте можно подсчитать следующим образом. Выделим мысленно элемент",
    "node_ids": [
-    "bas-xxiii.n-475-9f8dd3"
+    "bas-xxiii.n-475-a98103"
    ],
    "reason": null
   },
@@ -122,7 +124,7 @@
    "page_pdf": 476,
    "excerpt": "- beta_{ text{ж}} V_{0 text{ж}} Delta p = Delta V_{ text{ж}} quad",
    "node_ids": [
-    "bas-xxiii.n-475-9f8dd3"
+    "bas-xxiii.n-476-32ecea"
    ],
    "reason": null
   },
@@ -132,8 +134,7 @@
    "page_pdf": 476,
    "excerpt": "Для дальнейшего использования этих формул необходимо внести некоторые уточнения. При определении формулы",
    "node_ids": [
-    "bas-xxiii.n-476-e17829",
-    "bas-xxiii.n-478-4cc09f"
+    "bas-xxiii.n-476-32ecea"
    ],
    "reason": null
   },
@@ -143,7 +144,7 @@
    "page_pdf": 476,
    "excerpt": "Delta V_{ text{з}} = beta_{ text{ж}} V_{0 text{ж}} Delta p + beta_{",
    "node_ids": [
-    "bas-xxiii.n-476-e17829"
+    "bas-xxiii.n-476-32ecea"
    ],
    "reason": null
   },
@@ -193,8 +194,7 @@
    "page_pdf": 476,
    "excerpt": "Delta V_{ text{з}} = (m beta_{ text{ж}} + beta_{ text{с}}) V_0 Delta",
    "node_ids": [
-    "bas-xxiii.n-476-d135ab",
-    "bas-xxiii.n-476-30bb03"
+    "bas-xxiii.n-476-d135ab"
    ],
    "reason": null
   },
@@ -204,7 +204,7 @@
    "page_pdf": 476,
    "excerpt": "или",
    "node_ids": [
-    "bas-xxiii.n-476-30bb03"
+    "bas-xxiii.n-476-d135ab"
    ],
    "reason": null
   },
@@ -214,7 +214,7 @@
    "page_pdf": 476,
    "excerpt": "Delta V_{ text{з}} = beta^ V_0 Delta p, quad (23.4)",
    "node_ids": [
-    "bas-xxiii.n-476-30bb03"
+    "bas-xxiii.n-476-d135ab"
    ],
    "reason": null
   },
@@ -224,7 +224,7 @@
    "page_pdf": 476,
    "excerpt": "где",
    "node_ids": [
-    "bas-xxiii.n-476-30bb03"
+    "bas-xxiii.n-476-d135ab"
    ],
    "reason": null
   },
@@ -234,7 +234,7 @@
    "page_pdf": 476,
    "excerpt": "beta^ = m beta_{ text{ж}} + beta_{ text{с}}. quad (23.5)",
    "node_ids": [
-    "bas-xxiii.n-476-30bb03"
+    "bas-xxiii.n-476-d135ab"
    ],
    "reason": null
   },
@@ -244,7 +244,7 @@
    "page_pdf": 476,
    "excerpt": "Коэффициент beta^ называется коэффициентом упругоемкости пласта. Из формулы (23.4) следует, что коэффициент",
    "node_ids": [
-    "bas-xxiii.n-476-30bb03"
+    "bas-xxiii.n-476-d135ab"
    ],
    "reason": null
   },
@@ -254,7 +254,7 @@
    "page_pdf": 476,
    "excerpt": "beta^ = frac{ Delta V_{ text{з}}}{V_0 Delta p}.",
    "node_ids": [
-    "bas-xxiii.n-476-30bb03"
+    "bas-xxiii.n-476-d135ab"
    ],
    "reason": null
   },
@@ -442,8 +442,7 @@
    "page_pdf": 478,
    "excerpt": "которая после пренебрежения массовыми силами и введения обобщенной функции Лейбензона, преобразуется к",
    "node_ids": [
-    "bas-xxiii.n-478-f10753",
-    "bas-xxiii.n-479-e3dd4b"
+    "bas-xxiii.n-478-f10753"
    ],
    "reason": null
   },
@@ -524,8 +523,7 @@
    "excerpt": "Для проницаемости и вязкости примем k = text{const} и mu = text{const}",
    "node_ids": [
     "bas-xxiii.n-478-80aa63",
-    "bas-xxiii.n-479-e3dd4b",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-484-2747e1"
    ],
    "reason": null
   },
@@ -643,7 +641,7 @@
    "page_pdf": 479,
    "excerpt": "Теперь преобразуем выражение в левой части уравнения (23.12), для чего используем уравнения",
    "node_ids": [
-    "bas-xxiii.n-479-abb043"
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -653,7 +651,7 @@
    "page_pdf": 479,
    "excerpt": "rho = rho_0[1 + beta_ infty(p - p_0)], quad m = m_0",
    "node_ids": [
-    "bas-xxiii.n-479-abb043"
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -663,7 +661,7 @@
    "page_pdf": 479,
    "excerpt": "и вычислим произведение m rho",
    "node_ids": [
-    "bas-xxiii.n-479-abb043"
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -673,7 +671,7 @@
    "page_pdf": 479,
    "excerpt": "m rho = m_0 rho_0 + (m_0 rho_0 beta_ infty + rho_0",
    "node_ids": [
-    "bas-xxiii.n-479-abb043"
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -683,7 +681,7 @@
    "page_pdf": 479,
    "excerpt": "Последним слагаемым в правой части полученного выражения ввиду его малости по сравнению",
    "node_ids": [
-    "bas-xxiii.n-479-abb043"
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -693,8 +691,8 @@
    "page_pdf": 480,
    "excerpt": "(напомним, что для нефтей beta_ text{ж} изменяется в диапазоне от 7 cdot10^{-10}",
    "node_ids": [
-    "bas-xxiii.n-479-abb043",
-    "bas-xxiii.n-480-ef2409"
+    "bas-xxiii.n-480-04d2ff",
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -704,7 +702,8 @@
    "page_pdf": 480,
    "excerpt": "m rho = m_0 rho_0 left[ 1 + beta^ (p - p_0)/m_0",
    "node_ids": [
-    "bas-xxiii.n-480-ef2409"
+    "bas-xxiii.n-479-eb237c",
+    "bas-xxiii.n-480-04d2ff"
    ],
    "reason": null
   },
@@ -714,7 +713,7 @@
    "page_pdf": 480,
    "excerpt": "откуда после дифференцирования выражения по времени t находим",
    "node_ids": [
-    "bas-xxiii.n-480-ef2409"
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -724,7 +723,7 @@
    "page_pdf": 480,
    "excerpt": "frac{ partial(m rho)}{ partial t} = rho_0 beta^ frac{ partial p}{ partial",
    "node_ids": [
-    "bas-xxiii.n-480-ef2409"
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -774,7 +773,8 @@
    "page_pdf": 480,
    "excerpt": "но снова учитывая, что жидкость слабосжимаемая и коэффициент beta_ text{ж} мал, пренебрежем",
    "node_ids": [
-    "bas-xxiii.n-480-00c9ed"
+    "bas-xxiii.n-480-00c9ed",
+    "bas-xxiii.n-481-8caf17"
    ],
    "reason": null
   },
@@ -814,7 +814,7 @@
    "page_pdf": 480,
    "excerpt": "или в декартовой системе координат",
    "node_ids": [
-    "bas-xxiii.n-480-b6113a"
+    "bas-xxiii.n-480-3308a5"
    ],
    "reason": null
   },
@@ -824,7 +824,7 @@
    "page_pdf": 480,
    "excerpt": "frac{ partial p}{ partial t} = kappa left( frac{ partial^2 p}{ partial",
    "node_ids": [
-    "bas-xxiii.n-480-b6113a"
+    "bas-xxiii.n-480-3308a5"
    ],
    "reason": null
   },
@@ -834,7 +834,7 @@
    "page_pdf": 480,
    "excerpt": "где введено обозначение",
    "node_ids": [
-    "bas-xxiii.n-480-b6113a"
+    "bas-xxiii.n-480-3308a5"
    ],
    "reason": null
   },
@@ -844,8 +844,7 @@
    "page_pdf": 480,
    "excerpt": "kappa = k / ( mu beta^ ). quad (23.18)",
    "node_ids": [
-    "bas-xxiii.n-480-b6113a",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-480-3308a5"
    ],
    "reason": null
   },
@@ -865,8 +864,7 @@
    "page_pdf": 480,
    "excerpt": "Коэффициент kappa , характеризующий скорость перераспределения пластового давления при неустановившейся фильтрации упругой",
    "node_ids": [
-    "bas-xxiii.n-480-551f3d",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-480-3308a5"
    ],
    "reason": null
   },
@@ -876,7 +874,7 @@
    "page_pdf": 481,
    "excerpt": "Размерность коэффициента пьезопроводности kappa можно установить из (23.18):",
    "node_ids": [
-    "bas-xxiii.n-480-551f3d"
+    "bas-xxiii.n-481-22ca41"
    ],
    "reason": null
   },
@@ -886,7 +884,7 @@
    "page_pdf": 481,
    "excerpt": "[ kappa] = frac{h}{[ mu][ beta^ ]} = frac{L^2}{L^{-1}MT^{-1}LM^{-1}T^2} = frac{L^2}{T},",
    "node_ids": [
-    "bas-xxiii.n-480-551f3d"
+    "bas-xxiii.n-481-22ca41"
    ],
    "reason": null
   },
@@ -896,7 +894,7 @@
    "page_pdf": 481,
    "excerpt": "где L , M , T – соответственно, размерности длины, массы и",
    "node_ids": [
-    "bas-xxiii.n-480-551f3d"
+    "bas-xxiii.n-481-22ca41"
    ],
    "reason": null
   },
@@ -906,11 +904,8 @@
    "page_pdf": 481,
    "excerpt": "Отметим, что уравнение пьезопроводности (23.16) применимо только для слабосжимаемой упругой жидкости, для",
    "node_ids": [
-    "bas-xxiii.n-478-4cc09f",
-    "bas-xxiii.n-479-abb043",
     "bas-xxiii.n-481-8caf17",
-    "bas-xxiii.n-484-2747e1",
-    "bas-xxiii.n-489-5cbca3"
+    "bas-xxiii.n-484-2747e1"
    ],
    "reason": null
   },
@@ -946,7 +941,8 @@
    "page_pdf": 481,
    "excerpt": "Случай 1. Приток к галерее, на которой поддерживается постоянное давление. Пусть в",
    "node_ids": [
-    "bas-xxiii.n-481-169f3d"
+    "bas-xxiii.n-481-169f3d",
+    "bas-xxiii.n-484-2747e1"
    ],
    "reason": null
   },
@@ -1036,8 +1032,7 @@
    "page_pdf": 482,
    "excerpt": "Обозначим через P = (p - p_ tau)/(p_ kappa - p_ tau)",
    "node_ids": [
-    "bas-xxiii.n-482-f79472",
-    "bas-xxiii.n-489-5cbca3"
+    "bas-xxiii.n-482-f79472"
    ],
    "reason": null
   },
@@ -1057,8 +1052,7 @@
    "page_pdf": 482,
    "excerpt": "Размерности этих аргументов следующие: [x] = L , [t] = T ,",
    "node_ids": [
-    "bas-xxiii.n-482-f79472",
-    "bas-xxiii.n-492-6ed81d"
+    "bas-xxiii.n-482-f79472"
    ],
    "reason": null
   },
@@ -1318,7 +1312,6 @@
    "page_pdf": 483,
    "excerpt": "Интеграл (23.26) называется интегралом вероятности, является табулированной функцией, изменяющейся в пределах от",
    "node_ids": [
-    "bas-xxiii.n-483-c01ba8",
     "bas-xxiii.n-483-c6ef7c"
    ],
    "reason": null
@@ -1329,7 +1322,7 @@
    "page_pdf": 484,
    "excerpt": "frac{2}{ sqrt{ pi}} int_0^{ frac{x}{2 sqrt{ kappa t}}} e^{-u^2} du = operatorname{erf}",
    "node_ids": [
-    "bas-xxiii.n-483-c01ba8"
+    "bas-xxiii.n-483-c6ef7c"
    ],
    "reason": null
   },
@@ -1339,7 +1332,7 @@
    "page_pdf": 484,
    "excerpt": "Таким образом, P = operatorname{erf} left( frac{x}{2 sqrt{ kappa t}} right) ,",
    "node_ids": [
-    "bas-xxiii.n-483-c01ba8"
+    "bas-xxiii.n-484-428aef"
    ],
    "reason": null
   },
@@ -1349,7 +1342,7 @@
    "page_pdf": 484,
    "excerpt": "p = p_{ mathrm{r}} + (p_{ mathrm{k}} - p_{ mathrm{r}}) operatorname{erf} left(",
    "node_ids": [
-    "bas-xxiii.n-483-c01ba8"
+    "bas-xxiii.n-484-428aef"
    ],
    "reason": null
   },
@@ -1359,8 +1352,7 @@
    "page_pdf": 484,
    "excerpt": "Типичные кривые распределения давления в различные моменты времени в неустановившемся прямолинейно-параллельном потоке",
    "node_ids": [
-    "bas-xxiii.n-483-c01ba8",
-    "bas-xxiii.n-484-2747e1"
+    "bas-xxiii.n-484-428aef"
    ],
    "reason": null
   },
@@ -1370,7 +1362,7 @@
    "page_pdf": 484,
    "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ График",
    "node_ids": [
-    "bas-xxiii.n-483-c01ba8"
+    "bas-xxiii.n-484-428aef"
    ],
    "reason": null
   },
@@ -1380,7 +1372,7 @@
    "page_pdf": 484,
    "excerpt": "Рис. 23.1. Кривые распределения давления в различные моменты времени в неустановившемся прямолинейно-параллельном",
    "node_ids": [
-    "bas-xxiii.n-483-c01ba8"
+    "bas-xxiii.n-484-428aef"
    ],
    "reason": null
   },
@@ -1440,8 +1432,7 @@
    "page_pdf": 484,
    "excerpt": "Q = frac{k}{ mu} frac{p_{ mathrm{k}} - p_{ mathrm{r}}}{ sqrt{ pi kappa",
    "node_ids": [
-    "bas-xxiii.n-484-2747e1",
-    "bas-xxiii.n-497-afe122"
+    "bas-xxiii.n-484-2747e1"
    ],
    "reason": null
   },
@@ -1451,8 +1442,7 @@
    "page_pdf": 485,
    "excerpt": "Из формулы (23.30) следует, что дебит галереи убывает с течением времени, как",
    "node_ids": [
-    "bas-xxiii.n-484-2747e1",
-    "bas-xxiii.n-485-2a49f0"
+    "bas-xxiii.n-485-31f1fd"
    ],
    "reason": null
   },
@@ -1462,7 +1452,7 @@
    "page_pdf": 485,
    "excerpt": "Накопленная к моменту t добыча (объем добытой нефти) V_{доб} определяется по формуле",
    "node_ids": [
-    "bas-xxiii.n-485-2a49f0"
+    "bas-xxiii.n-485-31f1fd"
    ],
    "reason": null
   },
@@ -1472,7 +1462,7 @@
    "page_pdf": 485,
    "excerpt": "V_{доб} = int_0^t Q(t)dt = frac{k(p_к - p_г)Bh}{ mu sqrt{ pi kappa",
    "node_ids": [
-    "bas-xxiii.n-485-2a49f0"
+    "bas-xxiii.n-485-31f1fd"
    ],
    "reason": null
   },
@@ -1482,7 +1472,7 @@
    "page_pdf": 485,
    "excerpt": "т.е. сразу после начала отбора из галереи она быстро возрастает, а в",
    "node_ids": [
-    "bas-xxiii.n-485-2a49f0"
+    "bas-xxiii.n-485-31f1fd"
    ],
    "reason": null
   },
@@ -1542,7 +1532,7 @@
    "page_pdf": 485,
    "excerpt": "Рис. 23.2. Зависимости дебита и добычи жидкости от времени после пуска галереи",
    "node_ids": [
-    "bas-xxiii.n-485-2a49f0",
+    "bas-xxiii.n-485-31f1fd",
     "bas-xxiii.n-485-6fd4fc"
    ],
    "reason": null
@@ -1921,8 +1911,7 @@
    "page_pdf": 488,
    "excerpt": "Распределение давления в пласте (в любой его точке в любой момент времени)",
    "node_ids": [
-    "bas-xxiii.n-488-ad0466",
-    "bas-xxiii.n-489-5cbca3"
+    "bas-xxiii.n-488-ad0466"
    ],
    "reason": null
   },
@@ -2002,8 +1991,7 @@
    "page_pdf": 489,
    "excerpt": "left( r frac{ partial p}{ partial r} right)_{r=0} = frac{Q_0 mu}{2 pi",
    "node_ids": [
-    "bas-xxiii.n-488-34569d",
-    "bas-xxiii.n-489-5cbca3"
+    "bas-xxiii.n-488-34569d"
    ],
    "reason": null
   },
@@ -2063,7 +2051,8 @@
    "page_pdf": 489,
    "excerpt": "frac{ partial P}{ partial t} = - frac{dP}{d xi} frac{ xi}{2t}, quad",
    "node_ids": [
-    "bas-xxiii.n-489-552976"
+    "bas-xxiii.n-489-552976",
+    "bas-xxiii.n-489-5cbca3"
    ],
    "reason": null
   },
@@ -2183,7 +2172,7 @@
    "page_pdf": 490,
    "excerpt": "Проинтегрировав (23.46), получим",
    "node_ids": [
-    "bas-xxiii.n-490-113c15"
+    "bas-xxiii.n-489-2ebe17"
    ],
    "reason": null
   },
@@ -2193,7 +2182,7 @@
    "page_pdf": 490,
    "excerpt": "ln xi + ln v = - xi^2 + ln C_1, quad",
    "node_ids": [
-    "bas-xxiii.n-490-113c15"
+    "bas-xxiii.n-489-2ebe17"
    ],
    "reason": null
   },
@@ -2203,7 +2192,7 @@
    "page_pdf": 490,
    "excerpt": "где C_1 – постоянная интегрирования.",
    "node_ids": [
-    "bas-xxiii.n-490-113c15"
+    "bas-xxiii.n-489-2ebe17"
    ],
    "reason": null
   },
@@ -2213,7 +2202,7 @@
    "page_pdf": 490,
    "excerpt": "Потенцируя (23.47), найдем:",
    "node_ids": [
-    "bas-xxiii.n-490-113c15"
+    "bas-xxiii.n-489-2ebe17"
    ],
    "reason": null
   },
@@ -2223,7 +2212,7 @@
    "page_pdf": 490,
    "excerpt": "v = frac{dP}{d xi} = C_1 frac{e^{- xi^2}}{ xi}. quad (23.48)",
    "node_ids": [
-    "bas-xxiii.n-490-113c15"
+    "bas-xxiii.n-489-2ebe17"
    ],
    "reason": null
   },
@@ -2233,8 +2222,7 @@
    "page_pdf": 490,
    "excerpt": "Проинтегрируем (23.48) в пределах от xi до бесконечности, учтя первое из условий",
    "node_ids": [
-    "bas-xxiii.n-490-113c15",
-    "bas-xxiii.n-490-8fe2be"
+    "bas-xxiii.n-490-fb1047"
    ],
    "reason": null
   },
@@ -2244,7 +2232,7 @@
    "page_pdf": 490,
    "excerpt": "P( xi) = -C_1 int_{ xi}^{ infty} frac{e^{- xi^2}}{ xi} d xi",
    "node_ids": [
-    "bas-xxiii.n-490-113c15"
+    "bas-xxiii.n-490-fb1047"
    ],
    "reason": null
   },
@@ -2254,7 +2242,7 @@
    "page_pdf": 490,
    "excerpt": "Умножая равенство (23.49) на xi , устремляя xi to 0 и используя",
    "node_ids": [
-    "bas-xxiii.n-490-8fe2be"
+    "bas-xxiii.n-490-fb1047"
    ],
    "reason": null
   },
@@ -2264,7 +2252,7 @@
    "page_pdf": 490,
    "excerpt": "C_1 = frac{Q_0 mu}{2 pi k h p_ kappa}.",
    "node_ids": [
-    "bas-xxiii.n-490-8fe2be"
+    "bas-xxiii.n-490-fb1047"
    ],
    "reason": null
   },
@@ -2274,7 +2262,7 @@
    "page_pdf": 490,
    "excerpt": "Тогда (23.49) преобразуется к виду",
    "node_ids": [
-    "bas-xxiii.n-490-8fe2be"
+    "bas-xxiii.n-490-fb1047"
    ],
    "reason": null
   },
@@ -2284,8 +2272,7 @@
    "page_pdf": 490,
    "excerpt": "P( xi) = 1 - frac{Q_0 mu}{2 pi k h p_ kappa}",
    "node_ids": [
-    "bas-xxiii.n-490-8fe2be",
-    "bas-xxiii.n-490-11588f"
+    "bas-xxiii.n-490-fb1047"
    ],
    "reason": null
   },
@@ -2305,7 +2292,8 @@
    "page_pdf": 490,
    "excerpt": "u = xi^2 = frac{r^2}{4 kappa t}, quad frac{d xi}{ xi} =",
    "node_ids": [
-    "bas-xxiii.n-490-11588f"
+    "bas-xxiii.n-490-11588f",
+    "bas-xxiii.n-490-fb1047"
    ],
    "reason": null
   },
@@ -2335,7 +2323,7 @@
    "page_pdf": 490,
    "excerpt": "Интеграл в формуле (23.51) называется интегральной показательной функцией, которая табулирована и имеет",
    "node_ids": [
-    "bas-xxiii.n-490-719304"
+    "bas-xxiii.n-490-11588f"
    ],
    "reason": null
   },
@@ -2345,7 +2333,7 @@
    "page_pdf": 490,
    "excerpt": "- text{Ei} left( - frac{r^2}{4 kappa t} right) = int_{r^2/(4 kappa t)}",
    "node_ids": [
-    "bas-xxiii.n-490-719304"
+    "bas-xxiii.n-490-11588f"
    ],
    "reason": null
   },
@@ -2355,7 +2343,7 @@
    "page_pdf": 491,
    "excerpt": "Таким образом, давление в любой точке плоскорадиального потока в условиях упругого режима",
    "node_ids": [
-    "bas-xxiii.n-490-719304"
+    "bas-xxiii.n-491-48b76d"
    ],
    "reason": null
   },
@@ -2365,7 +2353,8 @@
    "page_pdf": 491,
    "excerpt": "p(r, t) = p_ kappa - frac{Q_0 mu}{4 pi k h} left[",
    "node_ids": [
-    "bas-xxiii.n-490-719304"
+    "bas-xxiii.n-491-48b76d",
+    "bas-xxiii.n-491-0da6d4"
    ],
    "reason": null
   },
@@ -2375,7 +2364,7 @@
    "page_pdf": 491,
    "excerpt": "Формула (23.52) получила название основной формулы теории упругого режима фильтрации. Она имеет",
    "node_ids": [
-    "bas-xxiii.n-490-719304"
+    "bas-xxiii.n-491-48b76d"
    ],
    "reason": null
   },
@@ -2426,7 +2415,8 @@
    "page_pdf": 491,
    "excerpt": "- text{Ei} (- x) = ln frac{1}{x} - 0,5772.",
    "node_ids": [
-    "bas-xxiii.n-491-ab6880"
+    "bas-xxiii.n-491-ab6880",
+    "bas-xxiii.n-474-eacc1d"
    ],
    "reason": null
   },
@@ -2586,7 +2576,8 @@
    "page_pdf": 492,
    "excerpt": "Строго говоря, основная формула теории упругого режима (23.52) справедлива лишь для случая",
    "node_ids": [
-    "bas-xxiii.n-492-7947f0"
+    "bas-xxiii.n-492-7947f0",
+    "bas-xxiii.n-492-cd532d"
    ],
    "reason": null
   },
@@ -2683,8 +2674,7 @@
    "page_pdf": 494,
    "excerpt": "Одним из наиболее простых по своей идее приближенных методов решения задач теории",
    "node_ids": [
-    "bas-xxiii.n-494-3d3699",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-494-36b29c"
    ],
    "reason": null
   },
@@ -2694,9 +2684,7 @@
    "page_pdf": 494,
    "excerpt": "В каждый момент времени весь пласт условно разделяется на две области –",
    "node_ids": [
-    "bas-xxiii.n-494-cf6094",
-    "bas-xxiii.n-498-573ed7",
-    "bas-xxiii.n-499-7ef37e"
+    "bas-xxiii.n-494-cf6094"
    ],
    "reason": null
   },
@@ -2706,8 +2694,7 @@
    "page_pdf": 495,
    "excerpt": "Разделение фильтрационного потока на две области – возмущенную и невозмущенную – вызывает",
    "node_ids": [
-    "bas-xxiii.n-495-e32e84",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-494-cf6094"
    ],
    "reason": null
   },
@@ -2777,8 +2764,7 @@
    "page_pdf": 495,
    "excerpt": "Воспользуемся соотношением (23.7), которое выражает условие того, что количество добытой продукции за",
    "node_ids": [
-    "bas-xxiii.n-495-39a04d",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-495-39a04d"
    ],
    "reason": null
   },
@@ -2848,7 +2834,7 @@
    "page_pdf": 496,
    "excerpt": "Приняв во внимание, что p(x, t) = p_{ mathrm{r}}(t) при x =",
    "node_ids": [
-    "bas-xxiii.n-496-22da9c"
+    "bas-xxiii.n-495-39a04d"
    ],
    "reason": null
   },
@@ -2858,7 +2844,7 @@
    "page_pdf": 496,
    "excerpt": "Q = frac{k}{ mu} frac{p_{ mathrm{k}} - p_{ mathrm{r}}}{l(t)} Bh,",
    "node_ids": [
-    "bas-xxiii.n-496-22da9c"
+    "bas-xxiii.n-495-39a04d"
    ],
    "reason": null
   },
@@ -2868,7 +2854,7 @@
    "page_pdf": 496,
    "excerpt": "откуда",
    "node_ids": [
-    "bas-xxiii.n-496-22da9c"
+    "bas-xxiii.n-495-39a04d"
    ],
    "reason": null
   },
@@ -2878,7 +2864,7 @@
    "page_pdf": 496,
    "excerpt": "frac{Q mu l(t)}{2kBh} = frac{p_{ mathrm{k}} - p_{ mathrm{r}}}{2}. quad (24.5.)",
    "node_ids": [
-    "bas-xxiii.n-496-22da9c"
+    "bas-xxiii.n-495-39a04d"
    ],
    "reason": null
   },
@@ -2888,7 +2874,7 @@
    "page_pdf": 496,
    "excerpt": "Подставив равенства (24.3)–(24.5) в соотношение (24.2), получим",
    "node_ids": [
-    "bas-xxiii.n-496-22da9c"
+    "bas-xxiii.n-496-d757fb"
    ],
    "reason": null
   },
@@ -2898,7 +2884,7 @@
    "page_pdf": 496,
    "excerpt": "Q = beta^ frac{d}{dt} left( Bhl frac{Q mu l}{2kBh} right),",
    "node_ids": [
-    "bas-xxiii.n-496-22da9c"
+    "bas-xxiii.n-496-d757fb"
    ],
    "reason": null
   },
@@ -2908,7 +2894,7 @@
    "page_pdf": 496,
    "excerpt": "или, так как Q = text{const} ,",
    "node_ids": [
-    "bas-xxiii.n-496-1b01a5"
+    "bas-xxiii.n-496-d757fb"
    ],
    "reason": null
   },
@@ -2918,7 +2904,7 @@
    "page_pdf": 496,
    "excerpt": "2Q = frac{ beta^ mu}{k} Q frac{d}{dt} (l^2),",
    "node_ids": [
-    "bas-xxiii.n-496-1b01a5"
+    "bas-xxiii.n-496-d757fb"
    ],
    "reason": null
   },
@@ -2928,7 +2914,7 @@
    "page_pdf": 496,
    "excerpt": "откуда следует",
    "node_ids": [
-    "bas-xxiii.n-496-1b01a5"
+    "bas-xxiii.n-496-d757fb"
    ],
    "reason": null
   },
@@ -2938,7 +2924,7 @@
    "page_pdf": 496,
    "excerpt": "2 kappa dt = dl^2 quad ( kappa = k/( mu beta^",
    "node_ids": [
-    "bas-xxiii.n-496-1b01a5"
+    "bas-xxiii.n-496-d757fb"
    ],
    "reason": null
   },
@@ -2948,7 +2934,7 @@
    "page_pdf": 496,
    "excerpt": "Проинтегрируем полученное соотношение и найдем",
    "node_ids": [
-    "bas-xxiii.n-496-1b01a5"
+    "bas-xxiii.n-496-d757fb"
    ],
    "reason": null
   },
@@ -2958,7 +2944,7 @@
    "page_pdf": 496,
    "excerpt": "l(t) = sqrt{2 kappa t}. quad (24.6)",
    "node_ids": [
-    "bas-xxiii.n-496-1b01a5"
+    "bas-xxiii.n-496-d757fb"
    ],
    "reason": null
   },
@@ -2978,8 +2964,7 @@
    "page_pdf": 496,
    "excerpt": "p(x, t) = p_{ mathrm{k}} - frac{Q mu}{kBh} ( sqrt{2 kappa t}",
    "node_ids": [
-    "bas-xxiii.n-496-989cb6",
-    "bas-xxiii.n-496-1b01a5"
+    "bas-xxiii.n-496-989cb6"
    ],
    "reason": null
   },
@@ -2999,7 +2984,8 @@
    "page_pdf": 496,
    "excerpt": "Значения депрессии p_{ mathrm{k}} - p_{ mathrm{r}} по приближенной формуле (24.7) значительно",
    "node_ids": [
-    "bas-xxiii.n-496-989cb6"
+    "bas-xxiii.n-496-989cb6",
+    "bas-xxiii.n-497-962d65"
    ],
    "reason": null
   },
@@ -3039,7 +3025,7 @@
    "page_pdf": 497,
    "excerpt": "Задача решается аналогично предыдущему случаю с той лишь разницей, что в уравнение",
    "node_ids": [
-    "bas-xxiii.n-497-e62dd2"
+    "bas-xxiii.n-496-5ffcc9"
    ],
    "reason": null
   },
@@ -3049,7 +3035,7 @@
    "page_pdf": 497,
    "excerpt": "V(t) = B h l(t),",
    "node_ids": [
-    "bas-xxiii.n-497-e62dd2"
+    "bas-xxiii.n-496-5ffcc9"
    ],
    "reason": null
   },
@@ -3059,7 +3045,7 @@
    "page_pdf": 497,
    "excerpt": "Delta p = p_ kappa - bar{p} = p_ kappa - frac{p_",
    "node_ids": [
-    "bas-xxiii.n-497-e62dd2"
+    "bas-xxiii.n-496-5ffcc9"
    ],
    "reason": null
   },
@@ -3069,7 +3055,7 @@
    "page_pdf": 497,
    "excerpt": "Q(t) = frac{k(p_ kappa - p_ tau)}{ mu l(t)} Bh.",
    "node_ids": [
-    "bas-xxiii.n-497-e62dd2"
+    "bas-xxiii.n-496-5ffcc9"
    ],
    "reason": null
   },
@@ -3079,7 +3065,7 @@
    "page_pdf": 497,
    "excerpt": "Таким образом, в результате получим",
    "node_ids": [
-    "bas-xxiii.n-497-e62dd2"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3089,7 +3075,7 @@
    "page_pdf": 497,
    "excerpt": "frac{k(p_ kappa - p_ tau)}{ mu l(t)} Bh dt = beta^ d",
    "node_ids": [
-    "bas-xxiii.n-497-e62dd2"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3099,7 +3085,7 @@
    "page_pdf": 497,
    "excerpt": "Проведя арифметические преобразования в этом соотношении, и выполнив интегрирование, найдем закон движения",
    "node_ids": [
-    "bas-xxiii.n-497-e62dd2"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3109,7 +3095,7 @@
    "page_pdf": 497,
    "excerpt": "l(t) = 2 sqrt{ kappa t}.",
    "node_ids": [
-    "bas-xxiii.n-497-e62dd2"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3119,7 +3105,7 @@
    "page_pdf": 497,
    "excerpt": "Следовательно, распределение давления в возмущенной зоне пласта определяется соотношением",
    "node_ids": [
-    "bas-xxiii.n-497-afe122"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3129,7 +3115,7 @@
    "page_pdf": 497,
    "excerpt": "p(x, t) = p_ kappa - (p_ kappa - p_ tau) left(",
    "node_ids": [
-    "bas-xxiii.n-497-afe122"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3139,7 +3125,7 @@
    "page_pdf": 497,
    "excerpt": "p(x, t) = p_ kappa, quad x > 2 sqrt{ kappa t},",
    "node_ids": [
-    "bas-xxiii.n-497-afe122"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3149,7 +3135,7 @@
    "page_pdf": 497,
    "excerpt": "а дебит галереи – соотношением",
    "node_ids": [
-    "bas-xxiii.n-497-afe122"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3159,7 +3145,7 @@
    "page_pdf": 497,
    "excerpt": "Q(t) = frac{k(p_ kappa - p_ tau)}{ mu 2 sqrt{ kappa t}}",
    "node_ids": [
-    "bas-xxiii.n-497-afe122"
+    "bas-xxiii.n-497-8c1f68"
    ],
    "reason": null
   },
@@ -3169,7 +3155,7 @@
    "page_pdf": 497,
    "excerpt": "Погрешность расчета дебита галереи по приближенной формуле (24.8) по сравнению с расчетами",
    "node_ids": [
-    "bas-xxiii.n-497-afe122"
+    "bas-xxiii.n-497-962d65"
    ],
    "reason": null
   },
@@ -3189,8 +3175,7 @@
    "page_pdf": 497,
    "excerpt": "Случай 1. Приток к скважине, на которой поддерживается постоянный дебит Q .",
    "node_ids": [
-    "bas-xxiii.n-497-73643c",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-497-73643c"
    ],
    "reason": null
   },
@@ -3200,9 +3185,7 @@
    "page_pdf": 497,
    "excerpt": "В соответствии с методом ПССС принимаем, что через время t после пуска",
    "node_ids": [
-    "bas-xxiii.n-497-73643c",
-    "bas-xxiii.n-498-573ed7",
-    "bas-xxiii.n-499-7ef37e"
+    "bas-xxiii.n-497-73643c"
    ],
    "reason": null
   },
@@ -3242,8 +3225,7 @@
    "page_pdf": 498,
    "excerpt": "В остальной части пласта сохраняется начальное пластовое давление p_ kappa .",
    "node_ids": [
-    "bas-xxiii.n-497-73643c",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-497-73643c"
    ],
    "reason": null
   },
@@ -3293,8 +3275,7 @@
    "page_pdf": 498,
    "excerpt": "V(t) = pi(R^2(t) - r_c^2)h, quad Delta p = p_ kappa -",
    "node_ids": [
-    "bas-xxiii.n-498-43e8d2",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-498-43e8d2"
    ],
    "reason": null
   },
@@ -3334,8 +3315,7 @@
    "page_pdf": 498,
    "excerpt": "Delta p = p_ kappa - bar{p} = frac{p_ kappa - p_c}{2",
    "node_ids": [
-    "bas-xxiii.n-498-43e8d2",
-    "bas-xxiii.n-498-573ed7"
+    "bas-xxiii.n-498-43e8d2"
    ],
    "reason": null
   },
@@ -3385,7 +3365,7 @@
    "page_pdf": 499,
    "excerpt": "Тогда из равенства (24.10) можно определить давление в любой точке пласта в",
    "node_ids": [
-    "bas-xxiii.n-499-e8979c"
+    "bas-xxiii.n-498-573ed7"
    ],
    "reason": null
   },
@@ -3395,7 +3375,7 @@
    "page_pdf": 499,
    "excerpt": "p(r, t) = p_ kappa - frac{Q mu}{2 pi kh} ln frac{",
    "node_ids": [
-    "bas-xxiii.n-499-e8979c"
+    "bas-xxiii.n-498-573ed7"
    ],
    "reason": null
   },
@@ -3405,7 +3385,7 @@
    "page_pdf": 499,
    "excerpt": "p(r, t) = p_ kappa, quad r > sqrt{r_c^2 + 4 kappa",
    "node_ids": [
-    "bas-xxiii.n-499-e8979c"
+    "bas-xxiii.n-498-573ed7"
    ],
    "reason": null
   },
@@ -3415,7 +3395,7 @@
    "page_pdf": 499,
    "excerpt": "Депрессия в момент времени t :",
    "node_ids": [
-    "bas-xxiii.n-499-e8979c"
+    "bas-xxiii.n-499-8b9da9"
    ],
    "reason": null
   },
@@ -3425,7 +3405,7 @@
    "page_pdf": 499,
    "excerpt": "Delta p_c equiv p_ kappa - p_c(t) = frac{Q mu}{2 pi kh}",
    "node_ids": [
-    "bas-xxiii.n-499-e8979c"
+    "bas-xxiii.n-499-8b9da9"
    ],
    "reason": null
   },
@@ -3435,7 +3415,7 @@
    "page_pdf": 499,
    "excerpt": "Сравнивая (24.16) с депрессией, определенной по точной формуле (23.52), можно убедиться, что",
    "node_ids": [
-    "bas-xxiii.n-499-e8979c"
+    "bas-xxiii.n-499-8b9da9"
    ],
    "reason": null
   },
@@ -3506,7 +3486,6 @@
    "page_pdf": 500,
    "excerpt": "Распределение давления в области фильтрации, получаемое по методу ПССС, является довольно грубым",
    "node_ids": [
-    "bas-xxiii.n-498-573ed7",
     "bas-xxiii.n-499-7ef37e"
    ],
    "reason": null
