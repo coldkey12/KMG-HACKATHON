@@ -42,9 +42,9 @@
   "meets_tz": true,
   "schema_errors": [],
   "schema_ok": true,
-  "cost_usd": 0.080868,
+  "cost_usd": 0.0,
   "cost_usd_original": 0.080868,
-  "cached": false,
+  "cached": true,
   "model": "claude-haiku-5-5",
   "calls": 5
  },
@@ -61,5 +61,5 @@
  "photos": 6,
  "illustration_schema_errors": [],
  "illustration_schema_ok": true,
- "seconds": 186.4
+ "seconds": 2.4
 }
