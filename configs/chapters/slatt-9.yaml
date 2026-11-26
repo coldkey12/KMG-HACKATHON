@@ -1,0 +1,13 @@
+# Тест 26.11, двойник 3. Конец §9.3 (клиноформы) и §9.4 River-Dominated Delta, стр. 410–423.
+id: slatt-9
+book:
+  author: "Slatt R. M."
+  title: "Stratigraphic Reservoir Characterization for Petroleum Geologists, Geophysicists, and Engineers"
+  year: 2013
+  source_file: data/raw/books_md/test_slatt.md
+title: "Clinoforms; River-Dominated Delta Deposits and Reservoirs"
+sections: "end of §9.3 (clinoforms) and §9.4, pp. 410–423"
+pages_pdf: [410, 423]
+end_anchor: "## 9.5 WAVE-DOMINATED DELTAS"
+language: en
+domain_pack: geology

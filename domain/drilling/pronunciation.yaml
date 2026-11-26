@@ -1,4 +1,4 @@
-version: 0.2.0
+version: 0.3.0
 items:
 - term: долото
   say: долотО
@@ -30,3 +30,23 @@ items:
   say: килограмм на кубический метр
 - term: МПа
   say: мегапаскАль
+- term: АВПД
+  say: а вэ пэ дэ
+- term: СПО
+  say: эс пэ о
+- term: м³
+  say: кубический метр
+- term: л/с
+  say: литр в секунду
+- term: штуцер
+  say: штУцер
+- term: ε
+  say: эпсилон
+- term: δ
+  say: дельта
+- term: ΔV_min
+  say: дельта-вэ-минимум
+- term: ΔQ_min
+  say: дельта-кю-минимум
+- term: ρ
+  say: ро

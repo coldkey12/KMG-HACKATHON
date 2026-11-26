@@ -1,4 +1,4 @@
-version: 0.2.0
+version: 0.3.0
 terms:
 - id: d-01
   ru: скважина
@@ -138,3 +138,125 @@ terms:
   en: well kill
   prerequisite: false
   def: Замена флюида в стволе раствором нужной плотности для восстановления контроля.
+- id: d-27
+  ru: ствол скважины
+  en: wellbore
+  prerequisite: true
+  def: Пробуренная часть скважины, заполненная буровым раствором и флюидами.
+- id: d-28
+  ru: аномально высокое пластовое давление
+  en: abnormally high formation pressure
+  prerequisite: false
+  def: Пластовое давление заметно выше нормального для данной глубины.
+  abbr: АВПД
+- id: d-29
+  ru: переходная зона
+  en: transition zone
+  prerequisite: false
+  def: Интервал разреза, где давление постепенно растёт от нормального к аномальному.
+- id: d-30
+  ru: коллектор
+  en: reservoir rock
+  prerequisite: true
+  def: Порода, способная вмещать пластовый флюид и отдавать его в скважину.
+- id: d-31
+  ru: пластовый флюид
+  en: formation fluid
+  prerequisite: false
+  def: Нефть, газ или вода, находящиеся в пласте под давлением.
+- id: d-32
+  ru: перелив
+  en: flow (overflow)
+  prerequisite: false
+  def: Выход бурового раствора из скважины при остановленных насосах.
+- id: d-33
+  ru: газирование раствора
+  en: gas cut mud
+  prerequisite: false
+  def: Насыщение бурового раствора газом, которое может быть признаком притока.
+- id: d-34
+  ru: газосодержание
+  en: gas content
+  prerequisite: false
+  def: Количество газа, растворённого или захваченного в буровом растворе.
+- id: d-35
+  ru: дегазация
+  en: degassing
+  prerequisite: false
+  def: Удаление газа из бурового раствора перед его повторным использованием.
+- id: d-36
+  ru: противодавление
+  en: back pressure
+  prerequisite: false
+  def: Давление, которое столб раствора создаёт на пласт и которое удерживает флюид.
+- id: d-37
+  ru: скачок проходки
+  en: drilling break
+  prerequisite: false
+  def: Резкое увеличение механической скорости бурения, которое может указывать на аномалию давления.
+- id: d-38
+  ru: уровнемер
+  en: level sensor
+  prerequisite: false
+  def: Прибор для измерения уровня бурового раствора в приёмной емкости.
+- id: d-39
+  ru: расходомер
+  en: flowmeter
+  prerequisite: true
+  def: Прибор для измерения расхода бурового раствора.
+- id: d-40
+  ru: долив
+  en: trip fill-up
+  prerequisite: false
+  def: Добавление бурового раствора в скважину при подъёме бурильной колонны.
+- id: d-41
+  ru: спускоподъемные операции
+  en: tripping
+  prerequisite: false
+  def: Спуск и подъём бурильной или обсадной колонны.
+  abbr: СПО
+- id: d-42
+  ru: мерник
+  en: trip tank
+  prerequisite: false
+  def: Мерная емкость с уровнемером, из которой измеряют объём долива.
+- id: d-43
+  ru: свабирование
+  en: swabbing
+  prerequisite: false
+  def: Снижение давления на забое при подъёме колонны, которое может вызвать приток.
+- id: d-44
+  ru: штуцер
+  en: choke
+  prerequisite: false
+  def: Регулируемое сужение на линии, которым управляют давлением в скважине.
+- id: d-45
+  ru: плашки
+  en: rams
+  prerequisite: false
+  def: Уплотняющие элементы превентора; бывают трубными и глухими.
+- id: d-46
+  ru: безопасный клапан
+  en: safety valve
+  prerequisite: false
+  def: Клапан, устанавливаемый на колонну труб для перекрытия её проходного канала.
+- id: d-47
+  ru: метод бурильщика
+  en: driller's method
+  prerequisite: false
+  def: 'Двухэтапный способ глушения: сначала вытесняется флюид, затем закачивается утяжелённый раствор.'
+- id: d-48
+  ru: метод ожидания и веса
+  en: wait-and-weight method
+  prerequisite: false
+  def: Одноэтапный способ глушения, при котором сразу циркулирует утяжелённый раствор.
+- id: d-49
+  ru: абсолютная погрешность
+  en: absolute error
+  prerequisite: false
+  def: Погрешность датчика в единицах измеряемой величины; в главе обозначена как ε.
+- id: d-50
+  ru: коэффициент безопасности
+  en: safety margin
+  prerequisite: false
+  def: Запас давления сверх расчётного, добавляемый при глушении скважины.

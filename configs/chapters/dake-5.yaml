@@ -1,0 +1,15 @@
+# Тест 26.11, двойник 2. Гл. 5 целиком (75–79) и начало §7.3 (87–89); на одном листе — две страницы книги.
+id: dake-5
+book:
+  author: "Dake L. P."
+  title: "Fundamentals of Reservoir Engineering"
+  year: 1978
+  source_file: data/raw/books_md/test_dake.md
+title: "The Basic Differential Equation for Radial Flow in a Porous Medium"
+sections: "ch. 5 (pp. 75–79) and beginning of §7.3 (pp. 87–89)"
+pages_pdf: [75, 89]
+ranges:
+  - {pages: [75, 79], start_anchor: "# CHAPTER 5", end_anchor: "# REFERENCES"}
+  - {pages: [87, 89], start_anchor: "### 7.3 THE CONSTANT TERMINAL RATE SOLUTION"}
+language: en
+domain_pack: geology

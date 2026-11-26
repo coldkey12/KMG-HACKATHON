@@ -1,0 +1,15 @@
+# Тест 26.11, двойник 1. Страницы по меткам md (PDF сдвинут на 1). Текст 126–136 + рисунки 140–146.
+id: asq-7
+book:
+  author: "Asquith G., Krygowski D."
+  title: "Basic Well Log Analysis"
+  year: 2004
+  source_file: data/raw/books_md/test_asquith.md
+title: "Log Interpretation"
+sections: "ch. 7 «Log Interpretation», text pp. 126–136 and figures pp. 140–146"
+pages_pdf: [126, 146]
+ranges:
+  - {pages: [126, 136], start_anchor: "# Log Interpretation"}
+  - {pages: [140, 146]}
+language: en
+domain_pack: geology
