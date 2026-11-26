@@ -116,6 +116,7 @@ function go(i){cur=Math.max(0,Math.min(C.length-1,i));var c=C[cur];shown[cur]=1;
  main.scrollTop=0;location.hash=cur}
 [].forEach.call(side.children,function(b,i){b.onclick=function(){go(i)}});
 addEventListener('keydown',function(e){if(e.key=='ArrowDown'||e.key=='ArrowRight'||e.key==' '){e.preventDefault();go(cur+1)}if(e.key=='ArrowUp'||e.key=='ArrowLeft'){e.preventDefault();go(cur-1)}});
+function fit(){document.body.style.zoom=Math.min(1,innerWidth/1728,innerHeight/1080)}addEventListener('resize',fit);fit();
 go(parseInt(location.hash.slice(1))||0);
 })();
 </script></body></html>

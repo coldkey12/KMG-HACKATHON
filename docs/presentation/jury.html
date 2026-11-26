@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Osiris Deeptech — результаты по критериям оценки</title>
+<style>
+:root{--acc:#19d3c5;--line:#2b2b2b;--mut:#8c8c8c}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#000;color:#fff;font:400 20px/1.35 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+#top{position:fixed;left:0;right:0;top:0;height:58px;display:flex;align-items:center;gap:22px;padding:0 32px;border-bottom:1px solid var(--line)}
+#top b{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+#pb{flex:1;height:6px;background:#1c1c1c;position:relative}#pb i{position:absolute;left:0;top:0;bottom:0;background:var(--acc);width:0;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+#pts{font-size:30px;font-variant-numeric:tabular-nums;letter-spacing:-.02em;min-width:230px;text-align:right}#pts span{color:var(--mut);font-size:18px}
+#side{position:fixed;left:0;top:58px;bottom:0;width:372px;border-right:1px solid var(--line);overflow:auto}
+#side button{display:flex;width:100%;align-items:baseline;gap:12px;background:none;border:0;border-bottom:1px solid var(--line);color:#bdbdbd;font:inherit;font-size:19px;text-align:left;padding:15px 20px 15px 32px;cursor:pointer}
+#side button span{font:500 13px/1 ui-monospace,Menlo,monospace;color:var(--mut);min-width:52px}
+#side button em{margin-left:auto;font-style:normal;font:500 13px/1 ui-monospace,Menlo,monospace;color:var(--mut)}
+#side button.on{background:#fff;color:#000}#side button.on span,#side button.on em{color:#555}
+#side button:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+#main{position:fixed;left:372px;right:0;top:58px;bottom:0;overflow:auto;padding:30px 44px 40px}
+.k{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+h1{font-weight:400;font-size:clamp(34px,3.6vw,58px);letter-spacing:-.03em;line-height:1.02;margin:12px 0 22px;max-width:24ch}
+.g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px}
+.box{border:1px solid var(--line);background:#0b0b0b;padding:18px 22px;animation:in .4s both}
+.box:nth-child(2){animation-delay:.07s}.box:nth-child(3){animation-delay:.14s}.box:nth-child(4){animation-delay:.21s}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.box{animation:none}#pb i{transition:none}}
+.lab{font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:12px}
+.box p{margin:0;color:#d8d8d8}.box ul{margin:0;padding:0;list-style:none}
+.box li{padding:7px 0 7px 24px;border-top:1px solid var(--line);position:relative}.box li:first-child{border-top:0}.box li::before{content:"—";position:absolute;left:0;color:var(--mut)}
+.box li b{color:#fff;font-weight:500}
+pre{margin:0;font:500 16px/1.55 ui-monospace,Menlo,monospace;white-space:pre-wrap;color:#e6e6e6}
+pre .c{color:var(--acc)}pre .m{color:var(--mut)}pre .r{color:#ff5a4f}
+.say{border-color:var(--acc)}.say p{font-size:23px;line-height:1.35;color:#fff}
+.weak{border-color:#6a3a36}.weak .lab{color:#ff8a7e}
+.bn{font-size:clamp(64px,7vw,128px);line-height:.95;letter-spacing:-.05em;margin-bottom:14px;font-variant-numeric:tabular-nums}
+.ft{border-collapse:collapse;width:100%;font-size:21px}.ft td{padding:11px 16px 11px 0;border-bottom:1px solid var(--line);vertical-align:baseline;color:#c8c8c8}.ft tr:last-child td{border-bottom:0}.ft td:first-child{color:#fff;white-space:nowrap}.ft .fp{color:var(--mut);font:500 15px ui-monospace,Menlo,monospace;text-align:right}.ft .fb{color:var(--acc);font-size:30px;letter-spacing:-.02em;white-space:nowrap;text-align:right}
+.hint{position:fixed;right:28px;bottom:12px;font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#555}
+@media (max-width:1100px){.g{grid-template-columns:minmax(0,1fr)}#side{width:260px}#main{left:260px}}
+</style></head><body>
+<div id="top"><b>Osiris Deeptech · результаты по критериям оценки</b><div id="pb"><i></i></div><div id="pts"><b id="pn" style="font:inherit;color:#fff;letter-spacing:inherit;text-transform:none">0</b> <span>из 100 баллов</span></div></div>
+<div id="side"></div>
+<div id="main"></div>
+<div class="hint">↑ ↓ листать</div>
+<script>
+(function(){
+var C=[
+{n:'Допуск',p:0,t:'0:20',h:'Сначала допуск: без него баллы не считают',
+ need:'Пакет полный и курс открывается локально. Конвейер заморожен до выдачи тестовых глав. Ручные правки на тесте в журнале. У каждого утверждения страница.',
+ have:['Метка заморозки <b>freeze-v3</b> поставлена в 09:48, главы выданы в 10:30','Сравнение программы с меткой — <b>пустое</b>','Журнал правок лежит в репозитории','<b>4 449</b> утверждений, у каждого страница и цитата'],
+ proof:'<span class="c">$</span> git log -1 --format="%h %ci" freeze-v3\n4e8ac03 2026-11-26 09:48:16 +0500\n\n<span class="c">$</span> git diff --stat freeze-v3 2273f3c -- kmg prompts config kmg_course contract scenes\n<span class="m">(пусто: программа после заморозки не менялась)</span>',
+ show:'Ничего не запускать. Если спросят — эти две команды в терминале.',
+ say:'«Программу заморозили в 09:48, до выдачи глав. С тех пор в ней не изменилось ни строки — это видно по истории репозитория».'},
+{n:'Разбор главы',p:15,t:'1:00',h:'Учебный слой: глава, разобранная на проверенные утверждения',
+ need:'Не меньше 90% идей главы. Таблица покрытия без пропусков. У каждого утверждения цитата и страница. Новичок проходит по порядку без скачков.',
+ have:['6 глав: <b>3 064</b> утверждения, у каждого цитата и страница','В курс попало <b>90–98%</b> текста автора','Пять проверок программой: ошибок <b>0</b>','Порядок: термин не встречается раньше своего объяснения'],
+ proof:'<span class="m"># Проверки слоя lat-v</span>\nИтог: <span class="c">пройдены</span>\n| contract   | 0 |   <span class="m">формат организаторов</span>\n| coverage   | 0 |   <span class="m">ничего не пропущено</span>\n| quote      | 0 |   <span class="m">цитаты найдены в книге</span>\n| numbers    | 0 |   <span class="m">числа есть в книге</span>\n| official   | 0 |   <span class="m">схемы организаторов</span>\n<span class="m">файл: out/lat-v/checks.md</span>',
+ show:'Команда <b>demo.sh 2</b> — 4 секунды, в конце passed: True. Либо открыть файл out/lat-v/checks.md.',
+ say:'«Это отчёт самой программы, не наш слайд. Каждую из 652 цитат она нашла в книге на указанной странице. Ошибок ноль по всем пяти проверкам».'},
+{n:'Демо-курс',p:15,t:'1:00',h:'Курс: всё, что требует ТЗ, собрано программой',
+ need:'Каждая мысль главы есть в уроках. «стр. N» у каждого абзаца. Задания с верными ответами работают на телефоне. Новички решают 80% задач.',
+ have:['<b>70</b> уроков, <b>164</b> задания пяти типов','<b>123</b> иллюстрации, уроков без иллюстрации — <b>0</b>','Кнопка «по книге, стр. N» у каждого абзаца','Телефон 390 и компьютер; <b>6,9 МБ</b> при лимите 30'],
+ proof:'<span class="c">$</span> python -m kmg_course build out/lat-v/layer.json\n{"steps": <span class="c">70</span>, "size_mb": <span class="c">6.91</span>, "tasks_kept": <span class="c">164</span>,\n "task_types": ["calc","gap","multiple","order","single"],\n "tasks_meet_tz": <span class="c">true</span>, "tasks_schema_ok": <span class="c">true</span>,\n "illustrations": <span class="c">123</span>, "steps_without_illustration": <span class="c">0</span>}\n<span class="m">файл: out/lat-v/course/course_report.json</span>',
+ show:'Показ курса, шаги 1–10: урок, кнопка «стр. 92», метки, вопрос, телефон.',
+ say:'«Нажимаю “стр. 92” — вот слова автора. Так проверяется любой абзац. Правильные ответы всех 164 заданий программа сверила с утверждениями из книги».',
+ weak:'Панель новичков курс не проходила при нас: 80% решённых задач — это оценит жюри.'},
+{n:'Видео',p:10,t:'0:40',h:'Ролики: картинку считает программа, озвучка проверена',
+ need:'Ошибок нет. Кадры совпадают с описанием сцены. Преувеличения названы. Голос совпадает с кадром, термины верны.',
+ have:['3 ролика на 3 главах; <b>два с анимацией по формулам</b>','Плашка «не в масштабе» и метка происхождения в кадре','Озвучка расходится со сценарием на <b>2,4–7,6%</b> при допуске 10%','Громкость <b>−16</b>, темп 118–132 слова в минуту — по ТЗ'],
+ proof:'<span class="m">паспорта роликов: out/&lt;глава&gt;/media/&lt;тема&gt;/passport.json</span>\nБасниев   71,7 с  ошибок речи <span class="c">2,4%</span>  −16,2 LUFS  118 сл/мин\nЛатышова 148,1 с  ошибок речи <span class="c">5,2%</span>  −16,2 LUFS  132 сл/мин\nКузнецов  69,9 с  ошибок речи <span class="c">7,6%</span>  −16,1 LUFS  125 сл/мин',
+ show:'Показ курса, шаг 3: ролик Латышовой 10 секунд. Сильнее всего — ролик Басниева (кнопка «Басниев» вверху).',
+ say:'«Кривая в кадре — решение уравнения из главы. Готовую озвучку программа распознаёт обратно в текст и сверяет со сценарием — цифры в паспорте ролика».',
+ weak:'Ролик по Кузнецову — схема из карточек: готовой сцены для рифов нет. Сказать самим.'},
+{n:'Три незнакомые главы',p:30,t:'1:20',h:'Главный блок: главы, выданные сегодня в 10:30',
+ need:'Разбор, курс и ролик на уровне известных глав — по тем же вопросам.',
+ have:['Asquith <b>91%</b>, Dake <b>95%</b>, Slatt <b>93%</b> главы в курсе','<b>974</b> утверждения, 59–127 заданий на главу','Dake и Slatt: проверки пройдены, ошибок 0','Два ролика по Slatt, ошибок речи 2,8% и 4,0%'],
+ proof:'<span class="m"># out/dake-5/checks.md</span>   Итог: <span class="c">пройдены</span>   цитаты 0 · числа 0\n<span class="m"># out/slatt-9/checks.md</span>  Итог: <span class="c">пройдены</span>   цитаты 0 · числа 0\n<span class="m"># out/asq-7/checks.md</span>    Итог: <span class="r">есть ошибки</span> числа <span class="r">7</span>\n  число 0.14 нет в исходных единицах\n<span class="m">  → в файле главы оно распознано как «0. 1 4».\n    Ложное срабатывание; после заморозки не чинили.</span>',
+ show:'Показ курса, шаги 11–12: курс Slatt, кнопка «по книге, стр. …» на английской главе.',
+ say:'«Три главы, все на английском, программа их раньше не видела. Доля главы в курсе та же, что на известных: 91–95 процентов против 90–98. В Asquith проверка семь раз ошиблась на одном числе — мы это не прятали и не чинили после заморозки».',
+ weak:'Ролики по Slatt — схема, а не анимация: сцен для дельт нет. Это наш главный минус в этом блоке.'},
+{n:'Другая область: бурение',p:5,t:'0:25',h:'Бурение: меняется папка со знаниями, а не программа',
+ need:'Разбор главы на уровне остальных. Знания о бурении собраны отдельно от программы, время записано.',
+ have:['В курс попало <b>98%</b> главы, 311 утверждений, 119 заданий','Проверки пройдены, ошибок 0','Папка бурения: <b>+230 строк за 3,5 минуты</b>','Программа при этом не менялась'],
+ proof:'<span class="c">$</span> git diff --shortstat freeze-v3 2273f3c -- domain\n 6 files changed, <span class="c">230 insertions(+)</span>, 6 deletions(-)\n\n<span class="c">$</span> git diff --stat freeze-v3 2273f3c -- kmg prompts kmg_course\n<span class="m">(пусто)</span>\n<span class="m"># out/bas-4/checks.md</span>  Итог: <span class="c">пройдены</span>\n<span class="m">время: test_results/journal/BUILD_TIME.md</span>',
+ show:'Показ курса, шаг 13: курс по бурению.',
+ say:'«Для бурения мы дополнили словарь и правила — 230 строк за три с половиной минуты. В самой программе изменений ноль, это видно в истории».'},
+{n:'Поиск спрятанных ошибок',p:10,t:'0:50',h:'Проверка чужого курса с заложенными ошибками',
+ need:'Найдено не меньше 70% ошибок с исправлением и страницей. Ложных тревог не больше двух.',
+ have:['Тренировочный набор: <b>19 из 21</b>, 95% по весу','Ложных тревог: <b>2</b> — на границе допуска','Тест: <b>20</b> замечаний, у каждого исправление и страница','Ответ сдан без ручных правок'],
+ proof:'<span class="c">$</span> python -m kmg review-official package.json --out ответ.json\nremarks: <span class="c">20</span> dropped: 0\nзамечаний: 20 | набор: <span class="c">test_asquith</span>\n\n<span class="m">схема review_output: проходит\nfix и page_pdf заполнены у всех 20\nфайл: review/test_asquith_answer.json</span>',
+ show:'Команда <b>demo.sh 5</b> — меньше секунды. Или открыть файл с ответом и показать одно замечание.',
+ say:'«На тренировочном наборе — 19 из 21, ответ сохранён до того, как мы открыли ключ. На сегодняшнем — двадцать замечаний, у каждого исправление и страница. Этим же инструментом можно проверять курсы подрядчиков».',
+ weak:'Сколько из 20 верных, мы не знаем. Третья ложная тревога снимает высший балл.'},
+{n:'Ручной труд',p:10,t:'0:25',h:'Сколько минут человек правил результат на тесте',
+ need:'До 30 человеко-минут ручных правок на тестовую главу. Журнал совпадает с историей изменений.',
+ have:['Человек: <b>0 минут</b> на всех четырёх главах','Помощник-нейросеть: ~6 минут на Slatt, ~4 на выбор тем для роликов','Каждая правка в журнале с номером коммита','С платного ключа за тест: <b>$0</b>'],
+ proof:'<span class="m">test_results/journal/manual_edits.csv</span>\nглава    что изменено                    минут человека\nslatt-9  s9q1–s9q3: сняты 6 утверждений,   <span class="c">0</span>\n         цитировавших описание рисунка\nasq-7    —                                 <span class="c">0</span>\ndake-5   —                                 <span class="c">0</span>\nbas-4    —                                 <span class="c">0</span>',
+ show:'Открыть test_results/journal/manual_edits.csv, если попросят.',
+ say:'«Допуск — тридцать минут на главу. У нас ноль минут человека. Единственную правку — шесть утверждений в Slatt — нашла сама проверка, а не мы глазами».'},
+{n:'Запуск и пересборка',p:5,t:'1:00',h:'Одна команда на главу и секунда на правку',
+ need:'Член жюри запускает конвейер по инструкции сам. После правки факта страница урока и ролик пересобираются одной командой.',
+ have:['Запуск: <b>одна команда</b>, инструкция в README','Проверено на чистой копии репозитория','Правка факта → страница за <b>1 секунду</b>','Задания изменённого урока снимаются автоматически'],
+ proof:'<span class="c">$</span> python -m kmg run configs/chapters/slatt-9.yaml\nlayer: out/slatt-9/layer.json | checks passed: <span class="c">True</span> | $ 0.0\n\n<span class="c">$</span> docs/presentation/demo.sh 3 35\nзаменено мест: 9\nкурс пересобран за <span class="c">1 с</span>',
+ show:'<b>Вживую:</b> жюри называет число → demo.sh 3 ЧИСЛО → «Обновить курс» → урок «Пример с палеткой». Потом demo.sh 0.',
+ say:'«Назовите число вместо двадцати. Меняю в одном файле, одна команда — и оно на странице. Нейросеть для этого не вызывается».',
+ weak:'Ролик после правки пересобирается отдельной командой refresh и дольше; запуск проверен только на macOS.'}];
+var BIG=[["09:48", "заморозка программы — до выдачи тестовых глав"], ["0", "ошибок в пяти проверках программой"], ["164", "задания в главе, ответы сверены с книгой"], ["2,4%", "расхождение озвучки со сценарием при допуске 10%"], ["91–95%", "незнакомой главы попало в курс"], ["3,5 мин", "на новую область; программа не менялась"], ["19 / 21", "спрятанных ошибок найдено на тренировочном наборе"], ["0", "минут человек правил результат на тесте"], ["1 с", "от правки факта до обновлённой страницы"]];C.forEach(function(c,i){c.big=BIG[i]});
+C.unshift({n:'Osiris Deeptech',p:0,title:1});C.push({n:'Итог',p:0,fin:1});
+var side=document.getElementById('side'),main=document.getElementById('main'),cur=0,shown={};
+side.innerHTML=C.map(function(c,i){return '<button data-i="'+i+'"><span>'+(c.p?c.p+' б.':(c.title?'':c.fin?'100':'вход'))+'</span>'+c.n+'</button>'}).join('');
+function go(i){cur=Math.max(0,Math.min(C.length-1,i));var c=C[cur];shown[cur]=1;
+ [].forEach.call(side.children,function(b,k){b.classList.toggle('on',k==cur)});
+ var sum=0;for(var k in shown)sum+=C[k].p;document.querySelector('#pb i').style.width=sum+'%';document.getElementById('pn').textContent=sum;
+ if(c.title){main.innerHTML='<div class="k">Дон Владимир · Темирлан Тойгонбаев · хакатон КМГ «Глава → курс»</div><h1 style="font-size:clamp(48px,5.4vw,92px);max-width:16ch;margin:22px 0 24px">Конвейер, который сам делает курс из главы учебника</h1><p style="font-size:30px;color:#d0d0d0;max-width:44ch;line-height:1.3;margin:0 0 32px">Дальше — по критериям оценки: что требует ТЗ, что у нас, и вывод нашей программы как доказательство.</p><div class="g" style="grid-template-columns:repeat(4,minmax(0,1fr))">'+[['10','глав обработано, 4 из них выданы сегодня'],['4 449','утверждений с цитатой и страницей'],['0','минут ручной работы на тесте'],['','стоит одна глава']].map(function(x){return '<div class="box"><div class="bn">'+x[0]+'</div><p>'+x[1]+'</p></div>'}).join('')+'</div>'}
+ else if(c.fin){main.innerHTML='<div class="k">Все критерии</div><h1>Что у нас по каждому из восьми критериев</h1><div class="box"><table class="ft"><tbody>'+C.filter(function(x){return x.p}).map(function(x){return '<tr><td>'+x.n+'</td><td class="fp">'+x.p+'</td><td class="fb">'+x.big[0]+'</td><td>'+x.big[1]+'</td></tr>'}).join('')+'</tbody></table></div><div class="g" style="margin-top:22px"><div class="box weak"><div class="lab">Ограничения, о которых мы знаем</div><ul><li>Ролики по тестовым главам — схема, а не анимация</li><li>Рисунки книги со сканами страниц не сверяются</li><li>Геолог курс не проверял; запуск проверен на macOS</li></ul></div><div class="box say"><div class="lab" style="color:#19d3c5">Предложение</div><p>Дайте нам десять глав или один ваш регламент. Вернём курсы и список мест, которые должен посмотреть ваш специалист.</p></div></div>'}
+ else{main.innerHTML='<div class="k">'+(c.p?'Критерий · '+c.p+' баллов из 100':'Шаг 1 оценки · допуск')+'</div><h1>'+c.h+'</h1>'+
+ '<div class="g"><div class="box"><div class="lab">Что нужно на высшую оценку (по ТЗ)</div><p>'+c.need+'</p></div>'+
+ '<div class="box"><div class="lab">Что у нас</div><ul>'+c.have.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>'+
+ '<div class="box"><div class="lab">Доказательство: вывод нашей программы</div><pre>'+c.proof+'</pre></div>'+
+ '<div><div class="box say"><div class="bn" style="color:#19d3c5">'+c.big[0]+'</div><p style="font-size:24px">'+c.big[1]+'</p></div>'+
+ (c.weak?'<div class="box weak" style="margin-top:22px"><div class="lab">Ограничение, о котором мы знаем</div><p>'+c.weak.replace(' Сказать самим.','').replace(' Это наш главный минус в этом блоке.','')+'</p></div>':'')+'</div></div>'}
+ main.scrollTop=0;location.hash=cur}
+[].forEach.call(side.children,function(b,i){b.onclick=function(){go(i)}});
+addEventListener('keydown',function(e){if(e.key=='ArrowDown'||e.key=='ArrowRight'||e.key==' '){e.preventDefault();go(cur+1)}if(e.key=='ArrowUp'||e.key=='ArrowLeft'){e.preventDefault();go(cur-1)}});
+function fit(){document.body.style.zoom=Math.min(1,innerWidth/1728,innerHeight/1080)}addEventListener('resize',fit);fit();
+go(parseInt(location.hash.slice(1))||0);
+})();
+</script></body></html>
