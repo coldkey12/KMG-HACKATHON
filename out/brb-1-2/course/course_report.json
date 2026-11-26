@@ -2,31 +2,9 @@
  "tasks": {
   "schema": "kmg-tasks/0.2.0",
   "chapter": "brb-1-2",
-  "generated": 92,
+  "generated": 89,
   "kept": 89,
-  "rejected": [
-   {
-    "index": 31,
-    "node_id": "brb-1-2.n-035-2b1ff1-b",
-    "type": "multiple",
-    "prompt": "Какие признаки разреза канала промоины названы в тексте?",
-    "why": "символьный ответ не найден в утверждениях/формулах: «Мощность 1–4 м»"
-   },
-   {
-    "index": 45,
-    "node_id": "brb-1-2.n-039-dd576c",
-    "type": "single",
-    "prompt": "Песчаное тело в дельтовом рукаве имеет низкое отношение ширины к длине. Что это означает?",
-    "why": "верный вариант не подтверждается утверждениями: «Тело узкое и вытянутое»"
-   },
-   {
-    "index": 87,
-    "node_id": "brb-1-2.n-044-d480e7",
-    "type": "single",
-    "prompt": "Почему в тексте про отмирание приливной дельты стоит слово «может»?",
-    "why": "верный вариант не подтверждается утверждениями: «Процесс описан как возможный, а не гарантированный результат»"
-   }
-  ],
+  "rejected": [],
   "types": [
    "gap",
    "multiple",
@@ -43,10 +21,11 @@
   "schema_errors": [],
   "schema_ok": true,
   "cost_usd": 0.0,
-  "cost_usd_original": 0.080868,
+  "cost_usd_original": 0.0,
   "cached": true,
-  "model": "claude-haiku-5-5",
-  "calls": 5
+  "model": "reuse:tasks.json",
+  "calls": 0,
+  "changed_nodes_tasks_dropped": []
  },
  "schema": "kmg-course-report/0.2.0",
  "chapter": "brb-1-2",
@@ -61,5 +40,5 @@
  "photos": 6,
  "illustration_schema_errors": [],
  "illustration_schema_ok": true,
- "seconds": 2.4
+ "seconds": 0.4
 }
