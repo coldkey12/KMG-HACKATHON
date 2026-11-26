@@ -1,5 +1,18 @@
 [
  {
+  "chapter": "asq-7",
+  "nodes": 63,
+  "claims": 555,
+  "cost_usd": 1.9972,
+  "cost_per_node": 0.0317,
+  "manual_minutes": 0.0,
+  "manual_min_per_node": 0.0,
+  "manual_share_nodes": 0.0,
+  "machine_seconds": 2816.0,
+  "checks_passed": false,
+  "open_questions": 14
+ },
+ {
   "chapter": "bar-4",
   "nodes": 42,
   "claims": 337,
@@ -11,6 +24,19 @@
   "machine_seconds": 15.4,
   "checks_passed": true,
   "open_questions": 19
+ },
+ {
+  "chapter": "bas-4",
+  "nodes": 47,
+  "claims": 311,
+  "cost_usd": 1.3197,
+  "cost_per_node": 0.0281,
+  "manual_minutes": 0.0,
+  "manual_min_per_node": 0.0,
+  "manual_share_nodes": 0.0,
+  "machine_seconds": 2669.2,
+  "checks_passed": true,
+  "open_questions": 8
  },
  {
   "chapter": "bas-xxiii",
@@ -37,6 +63,19 @@
   "machine_seconds": 902.3,
   "checks_passed": true,
   "open_questions": 5
+ },
+ {
+  "chapter": "dake-5",
+  "nodes": 37,
+  "claims": 251,
+  "cost_usd": 1.1574,
+  "cost_per_node": 0.0313,
+  "manual_minutes": 0.0,
+  "manual_min_per_node": 0.0,
+  "manual_share_nodes": 0.0,
+  "machine_seconds": 2185.2,
+  "checks_passed": true,
+  "open_questions": 3
  },
  {
   "chapter": "en-welllog",
@@ -76,6 +115,19 @@
   "machine_seconds": 8.3,
   "checks_passed": true,
   "open_questions": 64
+ },
+ {
+  "chapter": "slatt-9",
+  "nodes": 24,
+  "claims": 168,
+  "cost_usd": 0.9861,
+  "cost_per_node": 0.0411,
+  "manual_minutes": 0.0,
+  "manual_min_per_node": 0.0,
+  "manual_share_nodes": 0.042,
+  "machine_seconds": 11.1,
+  "checks_passed": true,
+  "open_questions": 10
  },
  {
   "chapter": "ven-1",
