@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Osiris Deeptech — конвейер</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#000;overflow:hidden}
+#st{position:relative;width:1920px;height:1200px;background:#000;color:#fff;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;overflow:hidden}
+#bg i{position:absolute;width:1100px;height:1100px;border-radius:50%;filter:blur(120px);opacity:.33}
+#wm{position:absolute;left:-40px;bottom:-120px;font-size:520px;font-weight:700;letter-spacing:-.06em;color:#fff;opacity:.035;white-space:nowrap}
+#cam{position:absolute;left:0;top:60px;width:1920px;height:1080px;transform-origin:50% 50%}
+.sc{position:absolute;inset:0;opacity:0;transform-origin:50% 50%}
+.mono{font-family:ui-monospace,Menlo,monospace}
+.lab{position:absolute;left:110px;top:80px;font:600 26px/1 ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase}
+.huge{position:absolute;font-weight:700;letter-spacing:-.05em;line-height:.9;white-space:nowrap;transform-origin:50% 50%}
+.grad{background:linear-gradient(90deg,#19d3c5,#7ab8ff 50%,#c9a6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chip{position:absolute;padding:22px 30px;border:3px solid #fff;font:600 38px/1 ui-monospace,Menlo,monospace;letter-spacing:.06em;background:#000;white-space:nowrap}
+.bub{position:absolute;left:110px;width:980px;padding:22px 28px;border-radius:26px 26px 26px 6px;background:#17122a;border:3px solid #7c5cff;font-size:40px;line-height:1.25}
+.bub small{display:block;margin-top:10px;font:500 27px/1.2 ui-monospace,Menlo,monospace;color:#c9a6ff}
+.row{position:absolute;left:110px;width:1060px;height:78px;border-bottom:2px solid #2b2b2b;font-size:39px;display:flex;align-items:center;gap:20px;white-space:nowrap}
+.row b{font:600 22px/1 ui-monospace,Menlo,monospace;color:#8c8c8c;width:110px}
+.row u{position:absolute;right:10px;text-decoration:none;font-size:44px;font-weight:700;color:#19d3c5;transform-origin:50% 50%}
+.red{position:absolute;left:130px;top:50%;height:34px;margin-top:-17px;background:#ff3b30;width:0}
+.note{position:absolute;right:70px;width:640px;padding:24px 28px;background:#111;border:2px solid #666;border-radius:18px;font-size:36px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.tile{position:absolute;left:110px;width:520px;border-top:3px solid #fff;padding-top:14px}
+.tile .n{font-size:150px;font-weight:700;letter-spacing:-.05em;line-height:.95;font-variant-numeric:tabular-nums}
+.tile .t{font-size:34px;color:#bdbdbd}
+#stamp{position:absolute;right:210px;top:150px;border:10px solid #19d3c5;color:#19d3c5;font-size:120px;font-weight:800;letter-spacing:.04em;padding:10px 40px;transform-origin:50% 50%}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.75));pointer-events:none}
+#wave{position:absolute;right:60px;bottom:50px;display:flex;gap:6px;align-items:flex-end;height:60px;opacity:.8}
+#wave i{width:8px;background:#19d3c5;display:block}
+.pt{position:absolute;width:12px;height:12px;border-radius:50%}
+#cur{position:absolute;width:0;height:0;border-left:30px solid #fff;border-top:22px solid transparent;border-bottom:22px solid transparent;transform:rotate(-55deg);filter:drop-shadow(0 4px 8px #000)}
+#rip{position:absolute;border:5px solid #19d3c5;border-radius:50%}
+</style></head><body><div id="st">
+<div id="bg"><i id="g1" style="background:#19d3c5"></i><i id="g2" style="background:#7c5cff"></i></div>
+<div id="wm">OSIRIS</div>
+<div id="cam">
+
+<div class="sc" id="s0">
+  <div class="huge" id="a0" style="left:110px;top:230px;font-size:400px"><span id="a0n">0</span></div>
+  <div class="huge" id="a1" style="left:120px;top:620px;font-size:150px">СТРАНИЦ УЧЕБНИКА</div>
+  <div id="term" style="position:absolute;left:110px;top:330px;width:1700px;border:3px solid #fff;background:#000;padding:60px 70px;font:600 96px/1 ui-monospace,Menlo,monospace;opacity:0"><span style="color:#19d3c5">$ </span><span id="cmd"></span><span id="car">▌</span></div>
+  <div class="huge" id="a2" style="left:110px;top:120px;font-size:150px;opacity:0">ОДНА КОМАНДА</div>
+  <div id="cur"></div><div id="rip"></div>
+</div>
+
+<div class="sc" id="s1">
+  <div class="lab" style="color:#8c8c8c">шаг 1 · разбор главы</div>
+  <div id="chips"></div>
+  <div class="huge" id="b0" style="left:110px;top:840px;font-size:130px"><span id="b0n">0</span> <span style="font-weight:400;color:#bdbdbd;font-size:80px">частей главы</span></div>
+</div>
+
+<div class="sc" id="s2">
+  <div class="lab" style="color:#c9a6ff">шаг 2 · нейросеть пишет</div>
+  <div id="bubs"></div>
+  <div class="huge" id="c0" style="left:1180px;top:330px;font-size:330px;color:#c9a6ff"><span id="c0n">0</span></div>
+  <div style="position:absolute;left:1190px;top:660px;font-size:46px;color:#bdbdbd;line-height:1.15">утверждения.<br>У каждого цитата<br>и страница</div>
+</div>
+
+<div class="sc" id="s3">
+  <div class="lab" style="color:#19d3c5">шаг 3 · программа проверяет · без нейросети</div>
+  <div id="rows"></div>
+  <div id="scan" style="position:absolute;left:90px;width:1100px;height:6px;background:#19d3c5;box-shadow:0 0 40px 10px rgba(25,211,197,.7)"></div>
+  <div id="notes"></div>
+  <div class="huge" id="d0" style="left:110px;top:860px;font-size:120px;opacity:0">НЕТ В КНИГЕ — <span style="color:#ff3b30">НЕТ В КУРСЕ</span></div>
+</div>
+
+<div class="sc" id="s4">
+  <div class="lab" style="color:#19d3c5">шаг 4 · сборка курса</div>
+  <div style="position:absolute;left:720px;top:170px;width:1090px;height:700px;overflow:hidden;border:3px solid #fff"><img id="kb" src="img/course_step.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 0;transform-origin:30% 20%"></div>
+  <div class="tile" style="top:170px"><div class="n" id="e1">0</div><div class="t">уроков</div></div>
+  <div class="tile" style="top:420px"><div class="n" id="e2">0</div><div class="t">заданий</div></div>
+  <div class="tile" style="top:670px"><div class="n" id="e3" style="color:#19d3c5">▶</div><div class="t">ролики по формулам</div></div>
+  <div id="stamp">ГОТОВО</div>
+</div>
+
+<div class="sc" id="s5">
+  <div class="huge" id="f0" style="left:0;right:0;top:250px;text-align:center;font-size:420px"></div>
+  <div class="huge" id="f1" style="left:0;right:0;top:720px;text-align:center;font-size:110px;font-weight:400;color:#bdbdbd"></div>
+  <div id="tg" style="position:absolute;left:820px;top:920px;width:280px;height:110px;border-radius:55px;background:#333;opacity:0"><div id="tgk" style="position:absolute;top:10px;left:10px;width:90px;height:90px;border-radius:50%;background:#fff"></div></div>
+</div>
+
+<div class="sc" id="s6">
+  <div id="pts"></div>
+  <div class="huge grad" id="h0" style="left:0;right:0;top:320px;text-align:center;font-size:178px">OSIRIS DEEPTECH</div>
+  <div class="huge" id="h1" style="left:0;right:0;top:590px;text-align:center;font-size:76px;font-weight:400">Конвейер, которому можно верить</div>
+  <div class="mono" id="h2" style="position:absolute;left:0;right:0;top:740px;text-align:center;font-size:30px;letter-spacing:.2em;color:#8c8c8c">ДОН ВЛАДИМИР · ТЕМИРЛАН ТОЙГОНБАЕВ</div>
+</div>
+
+</div>
+<div id="wave"></div><div id="vig"></div><div id="flash"></div>
+</div>
+<script>
+var D=window.DUR||[4,4,5,7,5,6,4],U=window.UNITS||300;
+var $=function(i){return document.getElementById(i)};
+function cl(x){return Math.min(1,Math.max(0,x))}
+function ez(x){x=cl(x);return 1-Math.pow(1-x,3)}
+function back(x){x=cl(x);var c=2.2;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)}
+function rnd(i){var x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+function slam(e,s,t0,d){var p=ez((s-t0)/(d||.2));e.style.opacity=p;e.style.transform='scale('+(2.4-1.4*p)+')';e.style.filter='blur('+(18*(1-p))+'px)'}
+function pop(e,s,t0,d){var x=(s-t0)/(d||.32);e.style.opacity=cl(x*3);e.style.transform='scale('+(x<=0?0:back(x))+')'}
+function glitch(e,s,on){if(!on){e.style.textShadow='';return}var f=Math.floor(s*30),a=(rnd(f)-.5)*40,b=(rnd(f+9)-.5)*40;e.style.textShadow=a+'px 0 #ff3b30,'+b+'px 0 #19d3c5';e.style.transform=(e.style.transform||'')+' translateX('+(rnd(f+3)-.5)*26+'px) skewX('+(rnd(f+5)-.5)*8+'deg)'}
+/* build */
+var KINDS=['абзац','формула','таблица','рисунок','пример','задача','абзац','абзац','формула','абзац','таблица','абзац','пример','абзац','формула','абзац','рисунок','задача','абзац','абзац','формула','таблица','абзац','пример'];
+$('chips').innerHTML=KINDS.map(function(k,i){return '<div class="chip" data-i="'+i+'">'+k+'</div>'}).join('');
+var BUB=[['Глина и коллектор по-разному видны сразу на нескольких кривых.','«…основные признаки некоторых осадочных пород…» · стр. 92'],['Одна кривая задачу не решает: нужен набор откликов.','«…по комплексу диаграмм…» · стр. 93'],['Точка 20 Ом·м и 25 % даёт безводную нефть.','«…ρn = 20 Ом·м, kn = 25 %» · стр. 98']];
+$('bubs').innerHTML=BUB.map(function(b,i){return '<div class="bub" style="top:'+(190+i*250)+'px"><span class="bt"></span><small></small></div>'}).join('');
+var ROW=[['стр. 92','Глина: низкое сопротивление, высокий гамма-фон'],['стр. 93','Таблица записана для глинистого раствора'],['стр. 96','Коллектор сужает диаметр скважины'],['стр. 97','Параметр насыщения сравнивают с порогом'],['стр. 98','Точка 20 Ом·м и 40 % даёт чистую воду'],['стр. 99','Продуктивен, если параметр выше порога'],['стр. 104','Нужен набор методов, а не один']];
+$('rows').innerHTML=ROW.map(function(r,i){return '<div class="row" style="top:'+(190+i*84)+'px"><b>'+r[0]+'</b><span>'+r[1]+'</span>'+(i==4?'<div class="red"></div>':'')+'<u>'+(i==4?'✗':'✓')+'</u></div>'}).join('');
+var NOTE=['<span style="color:#ff3b30">✗</span> числа 40 нет в книге','↻ возврат на исправление','<span style="color:#19d3c5">✓</span> исправлено · стр. 98'];
+$('notes').innerHTML=NOTE.map(function(n,i){return '<div class="note" style="top:'+(210+i*130)+'px">'+n+'</div>'}).join('');
+(function(){var h='';for(var i=0;i<70;i++)h+='<div class="pt" style="background:'+['#19d3c5','#7ab8ff','#c9a6ff','#fff'][i%4]+'"></div>';$('pts').innerHTML=h;h='';for(i=0;i<22;i++)h+='<i></i>';$('wave').innerHTML=h})();
+var CMDT='kmg run глава.yaml';
+/* scenes */
+var R=[
+function(s,d){var a=d*.5;$('a0n').textContent=Math.round(40*ez(s/.7));slam($('a0'),s,.02,.22);slam($('a1'),s,.35,.2);
+  var g=s>a-.25&&s<a;glitch($('a0'),s,g);glitch($('a1'),s,g);if(s>=a){$('a0').style.opacity=0;$('a1').style.opacity=0}
+  $('term').style.opacity=s>=a?1:0;slam($('a2'),s,a,.2);$('cmd').textContent=CMDT.slice(0,Math.round(cl((s-a-.1)/(d*.25))*CMDT.length));$('car').style.opacity=Math.floor(s*6)%2;
+  var cp=ez((s-a-.2)/(d*.28)),cx=1900-cp*520,cy=1000-cp*460;$('cur').style.left=cx+'px';$('cur').style.top=cy+'px';$('cur').style.opacity=s>=a?1:0;
+  var rp=cl((s-(d-.38))/.35);$('rip').style.opacity=rp>0?1-rp:0;var rr=20+rp*260;$('rip').style.left=(cx-rr/2)+'px';$('rip').style.top=(cy-rr/2)+'px';$('rip').style.width=rr+'px';$('rip').style.height=rr+'px'},
+function(s,d){[].forEach.call($('chips').children,function(e,i){var t0=.1+i*(d*.55/24),x=(s-t0)/.4,p=cl(x),tx=110+(i%6)*295,ty=190+Math.floor(i/6)*160,q=x<=0?0:back(x);
+  e.style.opacity=cl(x*3);e.style.left=(960+(tx-960)*q)+'px';e.style.top=(540+(ty-540)*q)+'px';e.style.transform='rotate('+((1-p)*(rnd(i)-.5)*160)+'deg) scale('+(.3+.7*q)+')';
+  e.style.borderColor=['#fff','#7ab8ff','#19d3c5','#c9a6ff','#ffd166','#ff8a65'][KINDS.slice(0,6).indexOf(KINDS[i])]});
+  $('b0n').textContent=Math.round(U*ez((s-.2)/(d*.7)));slam($('b0'),s,.15,.22)},
+function(s,d){[].forEach.call($('bubs').children,function(e,i){var t0=.1+i*d*.26;pop(e,s,t0,.3);var b=BUB[i],k=cl((s-t0-.1)/(d*.2));e.querySelector('.bt').textContent=b[0].slice(0,Math.round(k*b[0].length));e.querySelector('small').textContent=k>=1?b[1]:''});
+  $('c0n').textContent=Math.round(652*ez((s-.2)/(d*.75)));slam($('c0'),s,.1,.22)},
+function(s,d){var T=d*.62,y0=190,y1=190+7*84,sp=cl((s-.25)/T),y=y0+(y1-y0)*sp;$('scan').style.top=y+'px';$('scan').style.opacity=sp<1&&s>.2?1:0;
+  [].forEach.call($('rows').children,function(e,i){var ry=190+i*84+40,hit=y>=ry,th=.25+T*((ry-y0)/(y1-y0));e.style.opacity=cl((s-.05-i*.03)/.2);var u=e.querySelector('u');pop(u,s,th,.3);if(!hit)u.style.opacity=0;
+    if(i==4){var on=hit;e.style.color=on?'#ff3b30':'#fff';u.style.color='#ff3b30';e.querySelector('.red').style.width=(ez((s-th-.25)/.3)*640)+'px';glitch(e.querySelector('span'),s,on&&s<th+.25)}});
+  var te=.25+T*(4.5/7);[].forEach.call($('notes').children,function(e,i){var x=(s-te-.2-i*(d*.09))/.35;e.style.opacity=cl(x*3);e.style.transform='translateY('+((1-(x<=0?0:back(x)))*-160)+'px)'});
+  slam($('d0'),s,d*.8,.2)},
+function(s,d){var p=s/d;$('kb').style.transform='scale('+(1.05+.22*p)+') translate('+(-20*p)+'px,'+(-14*p)+'px)';
+  $('e1').textContent=Math.round(70*ez((s-.15)/(d*.4)));$('e2').textContent=Math.round(164*ez((s-.35)/(d*.45)));
+  [].forEach.call(document.querySelectorAll('#s4 .tile'),function(e,i){var x=(s-.1-i*.22)/.3;e.style.opacity=cl(x*3);e.style.transform='translateX('+((1-ez(x))*-120)+'px)'});
+  var st=$('stamp'),q=ez((s-d*.72)/.18);st.style.opacity=q;st.style.transform='rotate(-12deg) scale('+(3.2-2.2*q)+')'},
+function(s,d){var Q=[['10','глав'],['0','минут ручной работы'],['$2','за главу'],['1 с','правка факта: 20 → 35']],k=Math.min(3,Math.floor(s/(d/4))),ls=s-k*(d/4);
+  var n=Q[k][0];if(k==0)n=String(Math.round(10*ez(ls/.45)));$('f0').textContent=n;$('f1').textContent=Q[k][1];slam($('f0'),ls,.0,.18);slam($('f1'),ls,.12,.18);
+  $('f0').style.color=k==3?'#19d3c5':'#fff';$('tg').style.opacity=k==3?1:0;var tp=ez((ls-.25)/.25);$('tgk').style.left=(10+170*tp)+'px';$('tg').style.background=tp>.5?'#19d3c5':'#333'},
+function(s,d){slam($('h0'),s,.05,.25);var p=ez((s-.5)/.3);$('h1').style.opacity=p;$('h1').style.transform='translateY('+(1-p)*40+'px)';$('h2').style.opacity=ez((s-.9)/.3);
+  [].forEach.call($('pts').children,function(e,i){var t=cl((s-.22)/1.6),a=rnd(i)*6.283,v=300+rnd(i+50)*900,q=1-Math.pow(1-t,3);e.style.left=(960+Math.cos(a)*v*q)+'px';e.style.top=(460+Math.sin(a)*v*q+260*t*t)+'px';e.style.opacity=s>.22?1-t:0;var z=.6+rnd(i+7)*1.8;e.style.transform='scale('+z+')'})}
+];
+var TR=['zoom','whip','zoom','wipe','whip','zoom','zoom'];
+window.TOTAL=D.reduce(function(a,b){return a+b},0);
+window.events=function(){var E=[],a=0;for(var i=0;i<D.length;i++){if(i)E.push([a-.12,'whoosh']);var d=D[i];
+  if(i==0){E.push([a+.02,'boom']);E.push([a+d*.5,'glitch']);E.push([a+d-.38,'click'])}
+  if(i==1){E.push([a+.02,'boom'])}
+  if(i==2){for(var k=0;k<3;k++)E.push([a+.1+k*d*.26,'pop'])}
+  if(i==3){var T=d*.62;for(k=0;k<7;k++)if(k!=4)E.push([a+.25+T*((k*84+40)/(7*84)),'ding']);var te=a+.25+T*((4*84+40)/(7*84));E.push([te,'boom']);E.push([te,'shake']);for(k=0;k<3;k++)E.push([te+.2+k*d*.09,'pop']);E.push([a+d*.8,'boom']);E.push([a+d*.8,'flash'])}
+  if(i==4){E.push([a+d*.72,'boom']);E.push([a+d*.72,'shake']);E.push([a+d*.72,'flash'])}
+  if(i==5){for(k=0;k<4;k++){E.push([a+k*d/4,'boom']);E.push([a+k*d/4,'flash'])}E.push([a+3*d/4+.25,'click'])}
+  if(i==6){E.push([a+.05,'boom']);E.push([a+.05,'flash']);E.push([a+.05,'shake']);E.push([a+.3,'ding'])}
+  a+=d}return E};
+var EV=window.events();
+window.render=function(t){var a=0;
+  $('g1').style.left=(-200+Math.sin(t*.5)*260)+'px';$('g1').style.top=(-300+Math.cos(t*.4)*200)+'px';$('g2').style.left=(1050+Math.cos(t*.45)*260)+'px';$('g2').style.top=(250+Math.sin(t*.6)*220)+'px';
+  for(var i=0;i<D.length;i++){var e=$('s'+i),s=t-a,d=D[i],last=i==D.length-1,W=.22;
+    if(s<0||(s>=d&&!last)){e.style.opacity=0}else{var pi=i==0?1:ez(s/W),po=last?0:cl((s-(d-W))/W),tr=TR[i],to=TR[i+1]||'zoom',tf='',op=1,fl='',cp='';
+      if(pi<1){if(tr=='zoom'){tf='scale('+(.55+.45*pi)+')';op=pi}else if(tr=='whip'){tf='translateX('+(1-pi)*1920+'px)';fl='blur('+(1-pi)*26+'px)'}else if(tr=='wipe'){cp='inset(0 '+(1-pi)*100+'% 0 0)'}}
+      if(po>0){var q=po*po;if(to=='zoom'){tf='scale('+(1+2.2*q)+')';op=1-q}else if(to=='whip'){tf='translateX('+(-q*1920)+'px)';fl='blur('+q*26+'px)'}else if(to=='wipe'){op=1-q*.6}}
+      e.style.opacity=op;e.style.transform=tf+' scale('+(1+.045*(s/d))+')';e.style.filter=fl;e.style.clipPath=cp;R[i](s,d)}
+    a+=d}
+  var fx=0,sx=0,sy=0;EV.forEach(function(v){var dt=t-v[0];if(dt<0)return;if(v[1]=='flash'&&dt<.22)fx=Math.max(fx,.85*(1-dt/.22));if(v[1]=='shake'&&dt<.4){var k=(1-dt/.4)*26,f=Math.floor(t*30);sx+=(rnd(f)-.5)*2*k;sy+=(rnd(f+11)-.5)*2*k}});
+  $('flash').style.opacity=fx;$('cam').style.transform='translate('+sx+'px,'+sy+'px)';
+  [].forEach.call($('wave').children,function(b,i){b.style.height=(8+52*Math.abs(Math.sin(t*9+i*1.7)*Math.sin(t*3.1+i*.6)))+'px'})};
+if(!window.NOAUTO){var t0=performance.now();(function f(){var t=(performance.now()-t0)/1000;render(Math.min(t,window.TOTAL));if(t<window.TOTAL)requestAnimationFrame(f)})()}
+</script></body></html>
