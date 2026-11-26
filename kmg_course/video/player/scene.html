@@ -13,14 +13,25 @@
   button:focus-visible,input:focus-visible{outline:3px solid #5CC4BE;outline-offset:2px}
   input[type=range]{flex:1;min-height:44px}
   .src{font-size:16px;color:#A9B8F2;border-left:3px solid #A9B8F2;padding:4px 10px;margin:6px 0}
-  body.record .ctl,body.record #more{display:none}
+  /* interactive (course): text lives in HTML, not in the canvas — readable at 390 px (≥16 px) */
+  .hud{display:flex;flex-direction:column;gap:6px;margin:0 0 8px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:16px;font-weight:600;line-height:1.3;padding:3px 10px;border-radius:7px;background:#1A2129;color:#ECEFF4}
+  .chip.pv{color:#fff}.chip.warn{background:#3A2220;color:#FF9E8F}
+  .head{font-size:20px;font-weight:700;line-height:1.3;min-height:1.3em}.head .think{color:#5CC4BE;font-weight:600;margin-left:.5em}
+  .sub{font-size:18px;line-height:1.45;min-height:2.9em;margin:8px 0 0;padding:6px 10px;border-radius:8px;background:rgba(0,0,0,.45)}
+  .sub:empty{background:none}
+  body.record .ctl,body.record #more,body.record .hud,body.record .sub{display:none}
   body.record .stage{padding:0;max-width:none}
   body.record canvas{border-radius:0}
 </style>
 </head>
 <body class="{{MODE}}">
 <div class="stage">
+  <div class="hud" id="hud"><div class="chips"><span class="chip pv" id="pv"></span><span class="chip" id="pvn"></span><span class="chip warn" id="ex"></span></div>
+    <div class="head" id="head" aria-live="polite"></div></div>
   <canvas id="cv" role="img" aria-label="{{ALT}}"></canvas>
+  <div class="sub" id="sub" aria-live="off"></div>
   <div class="ctl"><button id="play" type="button">Смотреть</button>
     <input id="seek" type="range" min="0" step="0.01" value="0" aria-label="Время сцены"></div>
   <div id="more" aria-live="polite"></div>

@@ -441,6 +441,12 @@ def check_script(layer, node, beats, story, fmt, pack_terms, spec=None, pack=Non
                     errs.append("часть %d: у пласта %s в сцене по расчёту «%s», а голос говорит другое" % (
                         i + 1, "с водой" if bed == "water" else "с нефтью", K["dir_words"][bed].split(":")[0]))
     errs += grounding_errors(node, beats, spec, pack)
+    # TZ checklist «названы условия применимости»: a node that states a condition must have it in the voice
+    strong = condition_claims(node, strong=True)
+    cited_all = {c for b in beats for c in (b.get("claim_ids") or [])}
+    if strong and not cited_all & {c["id"] for c in strong}:
+        errs.append("голос не называет условие применимости из утверждений узла: %s — добавь его в одну из частей с этим id"
+                    % "; ".join("%s «%s»" % (c["id"], c["text"]) for c in strong[:3]))
     lo, hi = FORMATS[fmt]["words"]
     if not (lo * 0.85 <= total <= hi * 1.1):
         errs.append("всего %d слов, нужно %d–%d: %s" % (total, lo, hi, "добавь в каждую часть ещё одну фразу из утверждений"
@@ -608,6 +614,16 @@ def srt(timeline, path):
 
 
 # ---------------------------------------------------------------- passport
+# wording of a condition of applicability (language markers, not domain knowledge)
+COND_STRONG = r"услови|применим|нельзя|только для|составлен\w* для|верн\w* (только )?для|не работает|ломается"
+COND_WEAK = COND_STRONG + r"|\bесли\b|\bпри\s|режим"
+
+
+def condition_claims(node, strong=False):
+    rx = COND_STRONG if strong else COND_WEAK
+    return [c for c in node["claims"] if c["status"] == "ok" and re.search(rx, c["text"].lower())]
+
+
 PASSPORT_SCHEMA = ROOT / "docs" / "organizers" / "pack" / "01_схемы" / "passport.schema.json"
 
 
@@ -620,7 +636,7 @@ def physics_checklist(pack, tpl, invariants, node, beats):
     decl = tpl.get("physics", {})
     claims = {c["id"]: c for c in node["claims"]}
     cited = {c for b in beats for c in b["claim_ids"]}
-    cond_all = [c for c in node["claims"] if c["status"] == "ok" and c["kind"] == "assumption"]
+    cond_all = condition_claims(node)
     cond_cited = [c for c in cond_all if c["id"] in cited]
     out = []
     for it in (pack.get("physics_checklist") or {}).get("items", []):
@@ -947,7 +963,7 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
         used_all += used
     listen, listen_dict = tts.listen_list(used_all, pack)
     script_low = " ".join(b["text"] for b in beats).lower()
-    listen_dict = [w for w in listen_dict if w.lower().replace("ё", "е")[:6] in script_low.replace("ё", "е")]
+    listen_dict = [w for w in listen_dict if w.lower().replace("ё", "е")[:-2] in script_low.replace("ё", "е")]
     voices, vcfg, fb = tts.synth_series(spoken, log=log)
     claims = {c["id"]: c for c in node["claims"]}
     timeline = build_timeline(beats, voices, tpl, claims, spoken)

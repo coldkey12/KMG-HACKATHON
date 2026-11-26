@@ -52,13 +52,21 @@
     return shown.slice(chunk, chunk + 8).filter(Boolean).join(" ").replace(/\u0301/g, "");
   }
 
+  var DOM = S.mode === "interactive" && document.getElementById("hud");  // course: text in HTML, canvas = scene only
+  var dom = DOM ? { pv: document.getElementById("pv"), pvn: document.getElementById("pvn"), ex: document.getElementById("ex"),
+                    head: document.getElementById("head"), sub: document.getElementById("sub") } : null, seen = {};
+  function setText(k, v, html) { if (seen[k] === v) return; seen[k] = v; if (html) dom[k].innerHTML = v; else dom[k].textContent = v; }
+  function esc(s) { return String(s).replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; }); }
+
   function draw(t) {
     var st = stateAt(t), b = st.beat;
     ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
     var pad = 48 * U;
     // layout boxes. 9:16: every caption inside the styleguide's safe zone (spec.safe_zone: top/bottom/side px at 1080)
     var sz = S.spec.safe_zone, L;
-    if (portrait && sz) {
+    if (DOM) {  // the whole canvas is the scene; headline, plates and subtitles are HTML around it
+      L = { scene: { x: pad, y: 30 * U, w: W - 2 * pad, h: H - 60 * U } };
+    } else if (portrait && sz) {
       var sx = sz.side * U, top0 = sz.top * U, bot = H - sz.bottom * U;
       L = { top: { x: sx, y: top0, w: W - 2 * sx, h: 100 * U }, head: { x: sx, y: top0 + 104 * U, w: W - 2 * sx, h: 150 * U },
             scene: { x: sx, y: top0 + 270 * U, w: W - 2 * sx, h: bot - 214 * U - (top0 + 270 * U) },
@@ -76,6 +84,14 @@
     }
     // template scene
     T.draw(ctx, L.scene, st, S.spec, { C: C, U: U, roundRect: roundRect, wrap: wrap, chip: chip, portrait: portrait });
+    if (DOM) {
+      var pv0 = st.provenance || S.labels.provenance, ex0 = (T.exaggeration ? T.exaggeration(S.spec, st) : null) || S.labels.exaggeration;
+      if (seen.pvl !== pv0.label) { seen.pvl = pv0.label; dom.pv.style.background = (C.provenance || {})[pv0.label] || C.chipBg; }
+      setText("pv", pv0.label); setText("pvn", pv0.note || ""); setText("ex", ex0 || "");
+      setText("head", esc(b.on_screen || "") + (b.slot === "prediction" && t > b.voice_end ? '<span class="think">Подумайте…</span>' : ""), true);
+      setText("sub", t <= b.voice_end + 0.2 ? subtitleAt(t, b) : "");
+      return;
+    }
     // provenance + exaggeration chips (on every frame)
     var x = L.top.x, y = L.top.y, pv = st.provenance || S.labels.provenance;
     // TZ: provenance label on every frame — exactly «реальные данные» / «симуляция» / «схема», legend colour
