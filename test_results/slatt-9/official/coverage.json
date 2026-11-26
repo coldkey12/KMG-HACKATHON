@@ -1,0 +1,585 @@
+{
+ "chapter": "slatt-9",
+ "rows": [
+  {
+   "unit_id": "u-410-f142d6",
+   "kind": "paragraph",
+   "page_pdf": 410,
+   "excerpt": "It is important for proper subsurface correlations to understand that clinoforms, which",
+   "node_ids": [
+    "slatt-9.n-411-4724e1-d",
+    "slatt-9.n-410-f142d6",
+    "slatt-9.n-410-f142d6-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-410-ff6848",
+   "kind": "paragraph",
+   "page_pdf": 410,
+   "excerpt": "A similar example is presented for the modern Mekong River Delta in",
+   "node_ids": [
+    "slatt-9.n-410-ff6848"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-410-9e6db6",
+   "kind": "paragraph",
+   "page_pdf": 410,
+   "excerpt": "In addition to sea-level fluctuations, deltas are subject to “delta distributary switching",
+   "node_ids": [
+    "slatt-9.n-410-9e6db6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-410-c87974",
+   "kind": "paragraph",
+   "page_pdf": 410,
+   "excerpt": "Deltas can also form during a relative fall in sea level; these",
+   "node_ids": [
+    "slatt-9.n-410-c87974"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-410-d1044e",
+   "kind": "figure",
+   "page_pdf": 410,
+   "excerpt": "---- ━━━ FORMAT 4: CROSS-SECTION / РАЗРЕЗ ━━━ Lithostratigraphic Correlation Orientation: Landward",
+   "node_ids": [
+    "slatt-9.n-410-f142d6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-410-1434be",
+   "kind": "paragraph",
+   "page_pdf": 410,
+   "excerpt": "FIGURE 9.10 Lithostratigraphic (upper) and chronostratigraphic (lower) correlation across two wells in",
+   "node_ids": [
+    "slatt-9.n-410-f142d6",
+    "slatt-9.n-410-f142d6-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-411-ebd084",
+   "kind": "heading",
+   "page_pdf": 411,
+   "excerpt": "9.4 RIVER-DOMINATED DELTA DEPOSITS AND RESERVOIRS",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-411-8b0044",
+   "kind": "heading",
+   "page_pdf": 411,
+   "excerpt": "9.4.1 Processes and Deposits",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-411-4724e1",
+   "kind": "paragraph",
+   "page_pdf": 411,
+   "excerpt": "The Mississippi River Delta (Fig. 9.13) has long been considered the “type”",
+   "node_ids": [
+    "slatt-9.n-411-4724e1",
+    "slatt-9.n-411-4724e1-b",
+    "slatt-9.n-410-9e6db6",
+    "slatt-9.n-411-4724e1-c",
+    "slatt-9.n-411-4724e1-d"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-411-51705f",
+   "kind": "paragraph",
+   "page_pdf": 411,
+   "excerpt": "The main facies of a river-dominated delta, and their distribution in space,",
+   "node_ids": [
+    "slatt-9.n-411-51705f",
+    "slatt-9.n-411-51705f-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-411-179f1f",
+   "kind": "figure",
+   "page_pdf": 411,
+   "excerpt": "---- ━━━ FORMAT 3: MAP / КАРТА ━━━ Geological/structural map of an",
+   "node_ids": [
+    "slatt-9.n-410-ff6848"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-411-a445ee",
+   "kind": "figure",
+   "page_pdf": 411,
+   "excerpt": "FIGURE 9.11 (a) Map view of Mekong River Delta. Upper delta plain",
+   "node_ids": [
+    "slatt-9.n-410-ff6848"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-412-22ba0d",
+   "kind": "figure",
+   "page_pdf": 412,
+   "excerpt": "---- ━━━ FORMAT 4: CROSS-SECTION / РАЗРЕЗ ━━━ (b) Orientation: Inland delta",
+   "node_ids": [
+    "slatt-9.n-410-ff6848"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-412-09748f",
+   "kind": "figure",
+   "page_pdf": 412,
+   "excerpt": "---- ━━━ FORMAT 4: CROSS-SECTION / РАЗРЕЗ ━━━ Panel (c). Depositional cross-section",
+   "node_ids": [
+    "slatt-9.n-410-ff6848"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-412-1a2716",
+   "kind": "figure",
+   "page_pdf": 412,
+   "excerpt": "FIGURE 9.11—cont'd (b) Lithostratigraphic correlation of wells based upon paleoenvironmental interpretation. Numbered",
+   "node_ids": [
+    "slatt-9.n-410-ff6848"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-413-4e6061",
+   "kind": "figure",
+   "page_pdf": 413,
+   "excerpt": "---- ━━━ FORMAT 12: CONCEPTUAL DIAGRAM ━━━ Plan-view schematic showing migration of",
+   "node_ids": [
+    "slatt-9.n-410-9e6db6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-413-67744e",
+   "kind": "figure",
+   "page_pdf": 413,
+   "excerpt": "FIGURE 9.12 Model of delta distributary channel switching from a common apex",
+   "node_ids": [
+    "slatt-9.n-410-9e6db6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-413-3984dd",
+   "kind": "figure",
+   "page_pdf": 413,
+   "excerpt": "---- ━━━ FORMAT 3: MAP / КАРТА ━━━ Map showing the distribution",
+   "node_ids": [
+    "slatt-9.n-411-4724e1-c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-413-6cb867",
+   "kind": "figure",
+   "page_pdf": 413,
+   "excerpt": "FIGURE 9.13 Growth patterns of the Mississippi River Delta's lobes during the",
+   "node_ids": [
+    "slatt-9.n-411-4724e1-c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-413-a72a55",
+   "kind": "paragraph",
+   "page_pdf": 413,
+   "excerpt": "facies can be recognized in outcrop by facies relationships and by a",
+   "node_ids": [
+    "slatt-9.n-411-51705f-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-414-69f73b",
+   "kind": "figure",
+   "page_pdf": 414,
+   "excerpt": "---- ━━━ FORMAT 12: CONCEPTUAL DIAGRAM ━━━ Three-dimensional conceptual block diagram of",
+   "node_ids": [
+    "slatt-9.n-411-51705f",
+    "slatt-9.n-411-4724e1-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-414-774e29",
+   "kind": "figure",
+   "page_pdf": 414,
+   "excerpt": "FIGURE 9.14 Schematic illustration of the distribution of facies and environments in",
+   "node_ids": [
+    "slatt-9.n-411-51705f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-415-3a9467",
+   "kind": "figure",
+   "page_pdf": 415,
+   "excerpt": "---- ━━━ FORMAT 15: PHOTOGRAPH ━━━ (a) Subject class: landscape photograph. View",
+   "node_ids": [
+    "slatt-9.n-411-51705f-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-415-6b72cb",
+   "kind": "figure",
+   "page_pdf": 415,
+   "excerpt": "FIGURE 9.15 (a) Pennsylvanian-age distributary-channel sandstone. (b) Schematic facies cross-sections of a",
+   "node_ids": [
+    "slatt-9.n-411-51705f-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-415-2dd75b",
+   "kind": "paragraph",
+   "page_pdf": 415,
+   "excerpt": "In Prudhoe Bay field, formative processes of distributary mouth bars were evaluated",
+   "node_ids": [
+    "slatt-9.n-415-2dd75b",
+    "slatt-9.n-415-2dd75b-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-416-9f7ed7",
+   "kind": "figure",
+   "page_pdf": 416,
+   "excerpt": "---- ━━━ FORMAT 12: CONCEPTUAL DIAGRAM ━━━ Plan-view conceptual diagram of a",
+   "node_ids": [
+    "slatt-9.n-416-0a289f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-416-5b9dda",
+   "kind": "paragraph",
+   "page_pdf": 416,
+   "excerpt": "FIGURE 9.16 Schematic paleogeographic reconstruction of Romeo facies associations, as they existed",
+   "node_ids": [
+    "slatt-9.n-416-0a289f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-416-9b7504",
+   "kind": "paragraph",
+   "page_pdf": 416,
+   "excerpt": "Over a long period of time, repeated bifurcation of distributary mouth channels",
+   "node_ids": [
+    "slatt-9.n-416-9b7504"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-416-a03e80",
+   "kind": "heading",
+   "page_pdf": 416,
+   "excerpt": "9.4.2 Reservoir Example: Prudhoe Bay Field",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-416-0a289f",
+   "kind": "paragraph",
+   "page_pdf": 416,
+   "excerpt": "General geology of Prudhoe Bay field, Alaska, in the river-dominated deltaic deposits",
+   "node_ids": [
+    "slatt-9.n-416-0a289f",
+    "slatt-9.n-416-0a289f-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-417-a10582",
+   "kind": "figure",
+   "page_pdf": 417,
+   "excerpt": "---- ━━━ FORMAT 12: CONCEPTUAL DIAGRAM ━━━ Plan-view and cross-sectional conceptual diagram",
+   "node_ids": [
+    "slatt-9.n-415-2dd75b-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-417-ea48d7",
+   "kind": "figure",
+   "page_pdf": 417,
+   "excerpt": "FIGURE 9.17 Typical sediment distribution pattern and distributary-mouth-bar cross-section. Distributary-mouth channels typically",
+   "node_ids": [
+    "slatt-9.n-415-2dd75b-b",
+    "slatt-9.n-416-9b7504"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-417-2a8f81",
+   "kind": "paragraph",
+   "page_pdf": 417,
+   "excerpt": "fluvial channels were separated laterally by muddy floodplains. In the down-current direction,",
+   "node_ids": [
+    "slatt-9.n-416-0a289f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-417-83c270",
+   "kind": "paragraph",
+   "page_pdf": 417,
+   "excerpt": "River-dominated deposition resulted in significant lateral and vertical facies changes, which caused",
+   "node_ids": [
+    "slatt-9.n-417-83c270"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-417-a66fa6",
+   "kind": "paragraph",
+   "page_pdf": 417,
+   "excerpt": "Insights gained into the formation of distributary mouth bars have led to",
+   "node_ids": [
+    "slatt-9.n-417-a66fa6"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-417-98a2cc",
+   "kind": "paragraph",
+   "page_pdf": 417,
+   "excerpt": "Shales also were found to be particularly important to production and fluid",
+   "node_ids": [
+    "slatt-9.n-417-98a2cc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-418-e9f30e",
+   "kind": "figure",
+   "page_pdf": 418,
+   "excerpt": "---- ━━━ FORMAT 4: CROSS-SECTION / РАЗРЕЗ ━━━ Верхний корреляционный разрез: North–South.",
+   "node_ids": [
+    "slatt-9.n-417-83c270",
+    "slatt-9.n-418-557229-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-418-557229",
+   "kind": "paragraph",
+   "page_pdf": 418,
+   "excerpt": "FIGURE 9.18 Comparison of prestudy lithostratigraphic correlations (upper cross-section) and poststudy sequence",
+   "node_ids": [
+    "slatt-9.n-417-83c270",
+    "slatt-9.n-417-98a2cc",
+    "slatt-9.n-418-557229",
+    "slatt-9.n-418-557229-b",
+    "slatt-9.n-418-557229-c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-419-464655",
+   "kind": "figure",
+   "page_pdf": 419,
+   "excerpt": "---- ━━━ FORMAT 2: WELL LOG / КАРОТАЖНАЯ ДИАГРАММА ━━━ Глубина: ft;",
+   "node_ids": [
+    "slatt-9.n-416-0a289f-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-419-60202c",
+   "kind": "figure",
+   "page_pdf": 419,
+   "excerpt": "FIGURE 9.19 Typical stacking pattern and gamma-ray response of Romeo lithofacies and",
+   "node_ids": [
+    "slatt-9.n-416-0a289f-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-419-fc5f7b",
+   "kind": "paragraph",
+   "page_pdf": 419,
+   "excerpt": "well was drilled as an unconventional completion into the sandstone, and it",
+   "node_ids": [
+    "slatt-9.n-418-557229-c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-419-55ee1f",
+   "kind": "paragraph",
+   "page_pdf": 419,
+   "excerpt": "A second example of the value of understanding shale continuity is presented",
+   "node_ids": [
+    "slatt-9.n-419-55ee1f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-420-41ebfa",
+   "kind": "figure",
+   "page_pdf": 420,
+   "excerpt": "---- ━━━ FORMAT 2: WELL LOG / КАРОТАЖНАЯ ДИАГРАММА ━━━ Depth reference:",
+   "node_ids": [
+    "slatt-9.n-417-98a2cc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-420-0d9b62",
+   "kind": "figure",
+   "page_pdf": 420,
+   "excerpt": "FIGURE 9.20 Part of a north–south wire line log correlation across the",
+   "node_ids": [
+    "slatt-9.n-417-98a2cc"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-420-af65d3",
+   "kind": "figure",
+   "page_pdf": 420,
+   "excerpt": "---- ━━━ FORMAT 3: MAP / КАРТА ━━━ Map showing the distribution",
+   "node_ids": [
+    "slatt-9.n-418-557229"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-420-9f1e06",
+   "kind": "figure",
+   "page_pdf": 420,
+   "excerpt": "FIGURE 9.21 Generalized distribution of three stratigraphically distinct shales in the eastern",
+   "node_ids": [
+    "slatt-9.n-418-557229"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-421-bf77b2",
+   "kind": "figure",
+   "page_pdf": 421,
+   "excerpt": "---- ━━━ FORMAT 2: WELL LOG / КАРОТАЖНАЯ ДИАГРАММА ━━━ Схема ствола",
+   "node_ids": [
+    "slatt-9.n-418-557229-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-421-2fe4ed",
+   "kind": "figure",
+   "page_pdf": 421,
+   "excerpt": "━━━ FORMAT 3: MAP / КАРТА ━━━ Структурная карта: BASE SADEROCHIT STRUCTURE",
+   "node_ids": [
+    "slatt-9.n-418-557229-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-421-eed4a0",
+   "kind": "figure",
+   "page_pdf": 421,
+   "excerpt": "FIGURE 9.22 Horizontal well drilled within distributary-channel and mouth-bar facies separated by",
+   "node_ids": [
+    "slatt-9.n-418-557229-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-421-0483c0",
+   "kind": "figure",
+   "page_pdf": 421,
+   "excerpt": "---- ━━━ FORMAT 6: XY PLOT / CHART WITH DATA ━━━ (a)",
+   "node_ids": [
+    "slatt-9.n-418-557229-c",
+    "slatt-9.n-418-557229-b"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-421-1f5618",
+   "kind": "figure",
+   "page_pdf": 421,
+   "excerpt": "FIGURE 9.23 Wire line logs for the original well 09-35, and a",
+   "node_ids": [
+    "slatt-9.n-418-557229-c"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-422-82e39b",
+   "kind": "figure",
+   "page_pdf": 422,
+   "excerpt": "---- ━━━ FORMAT 4: CROSS-SECTION / РАЗРЕЗ ━━━ (a) Southwest–Northeast correlation section.",
+   "node_ids": [
+    "slatt-9.n-419-55ee1f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-422-a9ccaf",
+   "kind": "paragraph",
+   "page_pdf": 422,
+   "excerpt": "FIGURE 9.24 Schematic cross-section illustrating facies association interpretations between wells 11-28 and",
+   "node_ids": [
+    "slatt-9.n-419-55ee1f"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-422-501c3a",
+   "kind": "heading",
+   "page_pdf": 422,
+   "excerpt": "9.4.3 Kuparuk River Field, Alaska USA",
+   "node_ids": [],
+   "reason": "заголовок"
+  },
+  {
+   "unit_id": "u-422-176649",
+   "kind": "paragraph",
+   "page_pdf": 422,
+   "excerpt": "A similar example is provided by the Cretaceous Kuparuk River field on",
+   "node_ids": [
+    "slatt-9.n-422-176649"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-423-1e09a4",
+   "kind": "figure",
+   "page_pdf": 423,
+   "excerpt": "---- ━━━ FORMAT 2: WELL LOG / КАРОТАЖНАЯ ДИАГРАММА ━━━ Vertical multi-track",
+   "node_ids": [
+    "slatt-9.n-422-176649"
+   ],
+   "reason": null
+  },
+  {
+   "unit_id": "u-423-6a1925",
+   "kind": "figure",
+   "page_pdf": 423,
+   "excerpt": "FIGURE 9.25 Kuparuk River unit A showing a typical gamma-ray log with",
+   "node_ids": [
+    "slatt-9.n-422-176649"
+   ],
+   "reason": null
+  }
+ ]
+}

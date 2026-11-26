@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Жёсткое закрытие: быстро, но с ударом</title>
+<style>
+  html,body{margin:0;background:#0F1419;color:#E4EBE8;font-family:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:17px}
+  .stage{max-width:430px;margin:0 auto;padding:8px}
+  canvas{display:block;width:100%;height:auto;border-radius:10px;cursor:pointer}
+  .ctl{display:flex;gap:10px;align-items:center;margin:10px 0}
+  button{font:inherit;font-weight:600;min-height:44px;padding:6px 16px;border-radius:8px;border:1px solid #5CC4BE;background:#5CC4BE;color:#0B1A19;cursor:pointer}
+  button:focus-visible,input:focus-visible{outline:3px solid #5CC4BE;outline-offset:2px}
+  input[type=range]{flex:1;min-height:44px}
+  .src{font-size:16px;color:#A9B8F2;border-left:3px solid #A9B8F2;padding:4px 10px;margin:6px 0}
+  /* interactive (course): text lives in HTML, not in the canvas — readable at 390 px (≥16 px) */
+  .hud{display:flex;flex-direction:column;gap:6px;margin:0 0 8px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:16px;font-weight:600;line-height:1.3;padding:3px 10px;border-radius:7px;background:#1A2129;color:#ECEFF4}
+  .chip.pv{color:#fff}.chip.warn{background:#3A2220;color:#FF9E8F}
+  .head{font-size:20px;font-weight:700;line-height:1.3;min-height:1.3em}.head .think{color:#5CC4BE;font-weight:600;margin-left:.5em}
+  .sub{font-size:18px;line-height:1.45;min-height:2.9em;margin:8px 0 0;padding:6px 10px;border-radius:8px;background:rgba(0,0,0,.45)}
+  .sub:empty{background:none}
+  body.record .ctl,body.record #more,body.record .hud,body.record .sub{display:none}
+  body.record .stage{padding:0;max-width:none}
+  body.record canvas{border-radius:0}
+</style>
+</head>
+<body class="interactive">
+<div class="stage">
+  <div class="hud" id="hud"><div class="chips"><span class="chip pv" id="pv"></span><span class="chip" id="pvn"></span><span class="chip warn" id="ex"></span></div>
+    <div class="head" id="head" aria-live="polite"></div></div>
+  <canvas id="cv" role="img" aria-label="Сцена «Жёсткое закрытие: быстро, но с ударом»: Карточки — проверенные утверждения узла (status ok, без мест с сомнительным распознаванием) в порядке страниц книги, не больше восьми. Тип карточки — вид утверждения в слое: наблюдение, условие (допущение), вывод. Стрелки идут от наблюдений и условий к выводам. В каждой части подсвечены карточки, на которые ссылается голос (claim_ids этой части); на подсвеченной карточке — первые слова утверждения."></canvas>
+  <div class="sub" id="sub" aria-live="off"></div>
+  <div class="ctl"><button id="play" type="button">Смотреть</button>
+    <input id="seek" type="range" min="0" step="0.01" value="0" aria-label="Время сцены"></div>
+  <div id="more" aria-live="polite"></div>
+  <audio id="voice" src="voice.mp3" preload="auto"></audio>
+</div>
+<script>window.SCENE = {"spec": {"schema": "kmg-scene-spec/0.2.0", "template": "claim_steps", "format": "short", "frame_class": "B", "node_id": "bas-4.n-315-bec0ef", "chapter": "bas-4", "state_model": "Карточки — проверенные утверждения узла (status ok, без мест с сомнительным распознаванием) в порядке страниц книги, не больше восьми. Тип карточки — вид утверждения в слое: наблюдение, условие (допущение), вывод. Стрелки идут от наблюдений и условий к выводам. В каждой части подсвечены карточки, на которые ссылается голос (claim_ids этой части); на подсвеченной карточке — первые слова утверждения.", "objects": ["карточки утверждений узла с номером, видом и страницей", "стрелки «наблюдение / условие → вывод»", "подсветка карточек, о которых говорит голос"], "params": {"max_cards": 8, "words_on_card": 6}, "params_note": "Ничего не вычисляется сверх слоя: число, порядок, тип и страницы карточек — данные узла.", "assumptions": ["схема структуры рассуждения автора, а не изображение объекта: формы, масштабы и пространственное положение не показаны", "вид утверждения (наблюдение, условие, вывод) взят из учебного слоя", "порядок карточек — порядок страниц книги"], "labels": {"kinds": {"observation": "наблюдение", "assumption": "условие", "inference": "вывод"}, "page": "стр.", "hidden": "?", "wrong_tag": "так думают многие — неверно", "flow": "наблюдения и условия → вывод", "legend_title": "из книги, по порядку"}, "exaggeration": "Не в масштабе: схема рассуждения, объект не изображён", "exaggeration_named": null, "true_scale": null, "school": "русская школа ГИС (названа в кадре)", "conventions": {"depth": "глубина на планшете и разрезе растёт вниз", "log_school": "русская школа обозначений (ПС, ГК, КС, НГК, ГГК-П, АК); при западных обозначениях школа называется в кадре", "seismic_polarity": "полярность сейсмики указывается в кадре; по умолчанию нормальная полярность SEG: рост акустического импеданса — положительная амплитуда (пик), закрашивается", "vertical_exaggeration": "вертикальное преувеличение подписывается числом; хотя бы один кадр серии — в истинном масштабе", "uncertainty": "неопределённость — диапазон или штриховка цветом uncertainty, а не одна линия"}, "styleguide": "domain/drilling/styleguide_official.json", "palette": {"sand": "#E8C872", "shale": "#6B8E5A", "limestone": "#7FB3D5", "dolomite": "#A98FD1", "anhydrite": "#D98CB3", "salt": "#C9D6DF", "dense": "#8C7B6B", "reef": "#F0A35E", "fluid_oil": "#2E8B57", "fluid_gas": "#E74C3C", "fluid_water": "#3498DB", "fluid_filtrate": "#9BD7F5", "fluid_mud": "#7A6A58", "curve_SP": "#E74C3C", "curve_GR": "#2ECC71", "curve_RES": "#F1C40F", "curve_RES_SHALLOW": "#E67E22", "curve_NEUTRON": "#3498DB", "curve_DENSITY": "#E84393", "curve_SONIC": "#9B59B6", "curve_CALIPER": "#BDC3C7", "curve_PRESSURE": "#00CEC9", "measurement": "#F1C40F", "uncertainty": "#95A5A6"}, "legend_keys": {}, "frame_colors": {"bg": "#0F1419", "panel": "#1A2129", "ink": "#ECEFF4", "muted": "#8A96A3", "paper": "#ECEFF4", "chipBg": "#1A2129", "chipFg": "#ECEFF4", "measurement": "#F1C40F", "uncertainty": "#95A5A6", "pressure": "#00CEC9", "pressureRGB": "0,206,201", "curve": "#00CEC9", "accent": "#5CC4BE", "warnBg": "#3A2220", "warnFg": "#FF9E8F", "steel": "#B9C2C6", "hidden": "#3A4643", "provenance": {"реальные данные": "#27AE60", "симуляция": "#2980B9", "схема": "#8E44AD"}, "font": "Segoe UI, \"Helvetica Neue\", Arial, sans-serif"}, "safe_zone": {"top": 220, "bottom": 380, "side": 70}, "min_caption_px": 44, "case": {"cards": [{"id": "bas-4.n-315-bec0ef.c-d06515", "kind": "observation", "page": 315, "short": "При перекрытии устьевой арматурой сначала закрывают…"}, {"id": "bas-4.n-315-bec0ef.c-c4ed97", "kind": "observation", "page": 315, "short": "При перекрытии устьевой арматурой после этого…"}, {"id": "bas-4.n-315-bec0ef.c-b723df", "kind": "observation", "page": 315, "short": "Такое перекрытие делают быстро поэтому проявление…"}, {"id": "bas-4.n-315-bec0ef.c-70069a", "kind": "inference", "page": 315, "short": "Благодаря быстрому закрытию объём притока и…"}, {"id": "bas-4.n-315-bec0ef.c-88e3fe", "kind": "observation", "page": 315, "short": "При быстром жёстком закрытии в скважине…"}, {"id": "bas-4.n-315-bec0ef.c-9ee8e1", "kind": "observation", "page": 315, "short": "Колебания давления могут привести к неправильной…"}, {"id": "bas-4.n-315-bec0ef.c-911513", "kind": "observation", "page": 315, "short": "При больших давлениях для открытия задвижки…"}, {"id": "bas-4.n-315-bec0ef.c-2db5d7", "kind": "inference", "page": 315, "short": "При больших давлениях перепад давления затрудняет…"}], "facts": {"n_cards": 8, "n_obs": 6, "n_inf": 2, "kinds_line": "наблюдение — 6, вывод — 2"}}}, "timeline": {"beats": [{"id": "b01", "slot": "hook", "text": "Скважину закрыли быстро, приток стихает. Почему же давлению на устье рано доверять?", "on_screen": "Быстро закрыли — можно верить?", "claim_ids": [], "start": 0.0, "end": 6.836, "voice_start": 0.25, "voice_end": 6.486, "voice_dur": 6.236, "words": [{"w": "Скважину", "start": 0.089, "dur": 0.558}, {"w": "закрыли", "start": 0.647, "dur": 0.379}, {"w": "быстро", "start": 1.027, "dur": 0.413}, {"w": "приток", "start": 1.562, "dur": 0.346}, {"w": "стихает", "start": 1.908, "dur": 0.67}, {"w": "Почему", "start": 3.337, "dur": 0.391}, {"w": "же", "start": 3.728, "dur": 0.089}, {"w": "давлению", "start": 3.817, "dur": 0.446}, {"w": "на", "start": 4.263, "dur": 0.134}, {"w": "устье", "start": 4.397, "dur": 0.29}, {"w": "рано", "start": 4.687, "dur": 0.212}, {"w": "доверять", "start": 4.9, "dur": 0.558}], "display_words": ["Скважину", "закрыли", "быстро,", "приток", "стихает.", "Почему", "же", "давлению", "на", "устье", "рано", "доверять?"], "state": {"view": "cards", "reveal": 0, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/7b5503230989a38f79873d39.mp3", "claims": []}, {"id": "b02", "slot": "misconception", "text": "Многие думают, что после быстрого закрытия приток исчезает мгновенно. Кажется, что давление сразу точное.", "on_screen": "Мгновенно и точно?", "claim_ids": [], "start": 6.836, "end": 15.45, "voice_start": 7.086, "voice_end": 15.1, "voice_dur": 8.014, "words": [{"w": "Многие", "start": 0.089, "dur": 0.502}, {"w": "думают", "start": 0.592, "dur": 0.413}, {"w": "что", "start": 1.228, "dur": 0.179}, {"w": "после", "start": 1.406, "dur": 0.268}, {"w": "быстрого", "start": 1.674, "dur": 0.357}, {"w": "закрытия", "start": 2.031, "dur": 0.435}, {"w": "приток", "start": 2.467, "dur": 0.435}, {"w": "исчезает", "start": 2.902, "dur": 0.569}, {"w": "мгновенно", "start": 3.471, "dur": 0.703}, {"w": "Кажется", "start": 4.933, "dur": 0.547}, {"w": "что", "start": 5.58, "dur": 0.167}, {"w": "давление", "start": 5.748, "dur": 0.446}, {"w": "сразу", "start": 6.194, "dur": 0.335}, {"w": "точное", "start": 6.529, "dur": 0.681}], "display_words": ["Многие", "думают,", "что", "после", "быстрого", "закрытия", "приток", "исчезает", "мгновенно.", "Кажется,", "что", "давление", "сразу", "точное."], "state": {"view": "cards", "reveal": 0, "wrong": true, "provenance": {"label": "схема", "note": "распространённое заблуждение — неверно"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/9e38be9c6f3ea6d6f8ef85de.mp3", "claims": []}, {"id": "b03", "slot": "prediction", "text": "Предположите: что выиграет буровая бригада от быстрого закрытия и чем за это заплатит?", "on_screen": "Выигрыш и цена скорости", "claim_ids": [], "start": 15.45, "end": 22.4, "voice_start": 15.7, "voice_end": 21.1, "voice_dur": 5.4, "words": [{"w": "Предположите", "start": 0.089, "dur": 0.737}, {"w": "что", "start": 0.938, "dur": 0.223}, {"w": "выиграет", "start": 1.161, "dur": 0.402}, {"w": "буровая", "start": 1.562, "dur": 0.379}, {"w": "бригада", "start": 1.942, "dur": 0.446}, {"w": "от", "start": 2.388, "dur": 0.134}, {"w": "быстрого", "start": 2.522, "dur": 0.335}, {"w": "закрытия", "start": 2.857, "dur": 0.592}, {"w": "и", "start": 3.449, "dur": 0.078}, {"w": "чем", "start": 3.527, "dur": 0.201}, {"w": "за", "start": 3.728, "dur": 0.112}, {"w": "это", "start": 3.839, "dur": 0.156}, {"w": "заплатит", "start": 3.996, "dur": 0.636}], "display_words": ["Предположите:", "что", "выиграет", "буровая", "бригада", "от", "быстрого", "закрытия", "и", "чем", "за", "это", "заплатит?"], "state": {"view": "cards", "reveal": 0, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/1a6cd5a9b076e2ccb213060d.mp3", "claims": []}, {"id": "b04", "slot": "reveal", "text": "В книге сначала закрывают задвижку штуцерной линии, затем превентор с трубными плашками. Быстрота прекращает проявление за короткое время.", "on_screen": "Порядок закрытия и скорость", "claim_ids": ["bas-4.n-315-bec0ef.c-d06515", "bas-4.n-315-bec0ef.c-b723df"], "start": 22.4, "end": 32.343, "voice_start": 22.65, "voice_end": 31.993, "voice_dur": 9.343, "words": [{"w": "В", "start": 0.089, "dur": 0.134}, {"w": "книге", "start": 0.223, "dur": 0.357}, {"w": "сначала", "start": 0.58, "dur": 0.402}, {"w": "закрывают", "start": 0.982, "dur": 0.458}, {"w": "задвижку", "start": 1.44, "dur": 0.413}, {"w": "штуцерной", "start": 1.853, "dur": 0.446}, {"w": "линии", "start": 2.299, "dur": 0.379}, {"w": "затем", "start": 2.991, "dur": 0.357}, {"w": "преве́нтор", "start": 3.348, "dur": 0.491}, {"w": "с", "start": 3.839, "dur": 0.078}, {"w": "трубными", "start": 3.917, "dur": 0.413}, {"w": "плашками", "start": 4.33, "dur": 0.647}, {"w": "Быстрота", "start": 5.792, "dur": 0.592}, {"w": "прекращает", "start": 6.384, "dur": 0.58}, {"w": "проявление", "start": 6.964, "dur": 0.513}, {"w": "за", "start": 7.478, "dur": 0.089}, {"w": "короткое", "start": 7.567, "dur": 0.458}, {"w": "время", "start": 8.025, "dur": 0.491}], "display_words": ["В", "книге", "сначала", "закрывают", "задвижку", "штуцерной", "линии,", "затем", "превентор", "с", "трубными", "плашками.", "Быстрота", "прекращает", "проявление", "за", "короткое", "время."], "state": {"view": "cards", "reveal": 1, "t0": 0, "t1": 1, "focus": "claims", "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/7878c25674164b1ca6d6d7ff.mp3", "claims": [{"id": "bas-4.n-315-bec0ef.c-d06515", "page": 315, "quote": "В этом случае задвижку 10 (см. рис. 4.16) штуцерной линии 9 закрывают, а затем закрывают и превентор 6 с трубными плашками."}, {"id": "bas-4.n-315-bec0ef.c-b723df", "page": 315, "quote": "Такое перекрытие скважины проводится быстро, поэтому проявление из пласта в скважину прекращается в течение короткого промежутка времени"}]}, {"id": "b05", "slot": "explain", "text": "Быстрота сводит приток и давление на устье к минимуму, но вызывает значительные колебания давления. Это называют жёстким закрытием.", "on_screen": "Жёсткое закрытие: выигрыш и удар", "claim_ids": ["bas-4.n-315-bec0ef.c-70069a", "bas-4.n-315-bec0ef.c-88e3fe"], "start": 32.343, "end": 41.729, "voice_start": 32.593, "voice_end": 41.379, "voice_dur": 8.786, "words": [{"w": "Быстрота", "start": 0.089, "dur": 0.558}, {"w": "сводит", "start": 0.647, "dur": 0.357}, {"w": "приток", "start": 1.004, "dur": 0.368}, {"w": "и", "start": 1.373, "dur": 0.033}, {"w": "давление", "start": 1.406, "dur": 0.413}, {"w": "на", "start": 1.819, "dur": 0.123}, {"w": "устье", "start": 1.942, "dur": 0.246}, {"w": "к", "start": 2.188, "dur": 0.067}, {"w": "минимуму", "start": 2.254, "dur": 0.446}, {"w": "но", "start": 2.98, "dur": 0.089}, {"w": "вызывает", "start": 3.069, "dur": 0.402}, {"w": "значительные", "start": 3.471, "dur": 0.625}, {"w": "колебания", "start": 4.096, "dur": 0.491}, {"w": "давления", "start": 4.587, "dur": 0.714}, {"w": "Это", "start": 6.083, "dur": 0.257}, {"w": "называют", "start": 6.339, "dur": 0.491}, {"w": "жёстким", "start": 6.83, "dur": 0.458}, {"w": "закрытием", "start": 7.288, "dur": 0.658}], "display_words": ["Быстрота", "сводит", "приток", "и", "давление", "на", "устье", "к", "минимуму,", "но", "вызывает", "значительные", "колебания", "давления.", "Это", "называют", "жёстким", "закрытием."], "state": {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/c1bb20f9c003db616ca6ca63.mp3", "claims": [{"id": "bas-4.n-315-bec0ef.c-70069a", "page": 315, "quote": "и тем самым объем притока и давление нагнетания на устье скважины доводят до минимума."}, {"id": "bas-4.n-315-bec0ef.c-88e3fe", "page": 315, "quote": "Однако при этом в скважине возникают значительные колебания давления."}]}, {"id": "b06", "slot": "data", "text": "Автор описывает: из-за колебаний давление на устье можно оценить неправильно. При больших давлениях задвижку открывать труднее.", "on_screen": "Осторожно с показаниями и задвижкой", "claim_ids": ["bas-4.n-315-bec0ef.c-9ee8e1", "bas-4.n-315-bec0ef.c-2db5d7", "bas-4.n-315-bec0ef.c-c4ed97"], "start": 41.729, "end": 50.45, "voice_start": 41.979, "voice_end": 50.1, "voice_dur": 8.121, "words": [{"w": "Автор", "start": 0.089, "dur": 0.346}, {"w": "описывает", "start": 0.435, "dur": 0.525}, {"w": "из-за", "start": 1.071, "dur": 0.223}, {"w": "колебаний", "start": 1.295, "dur": 0.435}, {"w": "давление", "start": 1.73, "dur": 0.413}, {"w": "на", "start": 2.143, "dur": 0.123}, {"w": "устье", "start": 2.266, "dur": 0.268}, {"w": "можно", "start": 2.533, "dur": 0.268}, {"w": "оценить", "start": 2.801, "dur": 0.413}, {"w": "неправильно", "start": 3.214, "dur": 0.625}, {"w": "При", "start": 4.598, "dur": 0.167}, {"w": "больших", "start": 4.766, "dur": 0.346}, {"w": "давлениях", "start": 5.112, "dur": 0.525}, {"w": "задвижку", "start": 5.636, "dur": 0.536}, {"w": "открывать", "start": 6.172, "dur": 0.48}, {"w": "труднее", "start": 6.652, "dur": 0.681}], "display_words": ["Автор", "описывает:", "из-за", "колебаний", "давление", "на", "устье", "можно", "оценить", "неправильно.", "При", "больших", "давлениях", "задвижку", "открывать", "труднее."], "state": {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/6e08ed8e4a0d42ba75b5eb9e.mp3", "claims": [{"id": "bas-4.n-315-bec0ef.c-9ee8e1", "page": 315, "quote": "Эти колебания могут привести к неправильному определению значений основных параметров контроля скважины (давлением нагнетания на устье скважины)."}, {"id": "bas-4.n-315-bec0ef.c-2db5d7", "page": 315, "quote": "при больших давлениях в скважине для открытия задвижки 10 требуется сообщение с нагнетательной стороной клапана, так как возникающий при этом перепад давления затрудняет открытие задвижки"}, {"id": "bas-4.n-315-bec0ef.c-c4ed97", "page": 315, "quote": "После этого задвижку 10 открывают, оставляя закрытой штуцерную линию."}]}, {"id": "b07", "slot": "transfer", "text": "Представьте запись давления на устье сразу после закрытия. Как вы проверите, можно ли доверять одному показанию?", "on_screen": "Одно показание — достаточно ли?", "claim_ids": [], "start": 50.45, "end": 60.057, "voice_start": 50.7, "voice_end": 58.457, "voice_dur": 7.757, "words": [{"w": "Представьте", "start": 0.089, "dur": 0.536}, {"w": "запись", "start": 0.625, "dur": 0.312}, {"w": "давления", "start": 0.938, "dur": 0.424}, {"w": "на", "start": 1.362, "dur": 0.123}, {"w": "устье", "start": 1.484, "dur": 0.246}, {"w": "сразу", "start": 1.73, "dur": 0.368}, {"w": "после", "start": 2.098, "dur": 0.268}, {"w": "закрытия", "start": 2.366, "dur": 0.804}, {"w": "Как", "start": 3.996, "dur": 0.223}, {"w": "вы", "start": 4.219, "dur": 0.1}, {"w": "проверите", "start": 4.319, "dur": 0.569}, {"w": "можно", "start": 5.0, "dur": 0.246}, {"w": "ли", "start": 5.246, "dur": 0.078}, {"w": "доверять", "start": 5.324, "dur": 0.469}, {"w": "одному", "start": 5.792, "dur": 0.335}, {"w": "показанию", "start": 6.127, "dur": 0.781}], "display_words": ["Представьте", "запись", "давления", "на", "устье", "сразу", "после", "закрытия.", "Как", "вы", "проверите,", "можно", "ли", "доверять", "одному", "показанию?"], "state": {"view": "cards", "reveal": 1, "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/0994bdffe821680f202a003b.mp3", "claims": []}], "duration": 60.057}, "format": {"w": 1080, "h": 1920}, "style": {"colors": {"bg": "#0F1419", "panel": "#1A2129", "ink": "#ECEFF4", "muted": "#8A96A3", "paper": "#ECEFF4", "chipBg": "#1A2129", "chipFg": "#ECEFF4", "measurement": "#F1C40F", "uncertainty": "#95A5A6", "pressure": "#00CEC9", "pressureRGB": "0,206,201", "curve": "#00CEC9", "accent": "#5CC4BE", "warnBg": "#3A2220", "warnFg": "#FF9E8F", "steel": "#B9C2C6", "hidden": "#3A4643", "provenance": {"реальные данные": "#27AE60", "симуляция": "#2980B9", "схема": "#8E44AD"}, "font": "Segoe UI, \"Helvetica Neue\", Arial, sans-serif"}}, "labels": {"provenance": {"label": "схема", "note": "утверждения узла по книге"}, "exaggeration": "Не в масштабе: схема рассуждения, объект не изображён"}, "mode": "interactive"}; window.FONT = window.SCENE.style.colors.font;</script>
+<script>/* Template claim_steps — FALLBACK, label «схема». Draws only the structure of the node's verified claims:
+   numbered cards in book order, typed observation / condition / conclusion with the page, arrows from
+   observations and conditions to conclusions, highlight of the cards the current part cites.
+   No subsurface, fluids, tools or curves: nothing is drawn that the layer does not state.
+   spec.case.cards = [{id, kind, page, short}] (computed in Python). state: {reveal, t0, t1, focus, arrows, wrong} */
+(function () {
+  "use strict";
+  function font(ctx, w, px, U) { ctx.font = w + " " + px * U + "px " + window.FONT; }
+  function kindColor(C, k) { return k === "inference" ? C.accent : (k === "assumption" ? C.measurement : C.ink); }
+
+  function layout(box, n, U, portrait) {
+    var cols = portrait ? 1 : (n > 4 ? 2 : 1), rows = Math.ceil(n / cols), gap = 18 * U;
+    var w = (box.w - (cols - 1) * 60 * U) / cols, h = Math.min(150 * U, (box.h - 60 * U - (rows - 1) * gap) / rows);
+    var out = [];
+    for (var i = 0; i < n; i++) {
+      var c = Math.floor(i / rows), r = i % rows;
+      out.push({ x: box.x + c * (w + 60 * U), y: box.y + 50 * U + r * (h + gap), w: w, h: h });
+    }
+    return out;
+  }
+
+  function draw(ctx, box, st, spec, g) {
+    var C = g.C, U = g.U, K = spec.case, cards = K.cards, Lb = spec.labels;
+    var R = layout(box, cards.length, U, g.portrait);
+    var t = st.tSim == null ? 1 : st.tSim, shown = st.reveal ? Math.ceil(t * cards.length - 1e-9) : 0;
+    if (st.reveal && st.t0 == null) shown = cards.length;
+    var cited = (st.focus === "claims" && st.beat && st.beat.claim_ids) ? st.beat.claim_ids : [];
+    font(ctx, 600, 24, U); ctx.fillStyle = C.muted; ctx.fillText(Lb.legend_title + " · " + Lb.flow, box.x, box.y + 24 * U);
+    // arrows: from every observation / condition card to the next conclusion card below it (book order)
+    if (st.arrows) {
+      cards.forEach(function (cd, i) {
+        if (cd.kind === "inference") return;
+        var j = -1; for (var k = i + 1; k < cards.length; k++) if (cards[k].kind === "inference") { j = k; break; }
+        if (j < 0) return;
+        var a = R[i], b = R[j], x0 = a.x + a.w - 30 * U, y0 = a.y + a.h, x1 = b.x + b.w - 30 * U, y1 = b.y;
+        if (b.x !== a.x) { x0 = a.x + a.w; y0 = a.y + a.h / 2; x1 = b.x; y1 = b.y + b.h / 2; }
+        ctx.strokeStyle = C.muted; ctx.lineWidth = 3 * U; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+        var an = Math.atan2(y1 - y0, x1 - x0); ctx.fillStyle = C.muted; ctx.beginPath();
+        ctx.moveTo(x1, y1); ctx.lineTo(x1 - 16 * U * Math.cos(an - 0.4), y1 - 16 * U * Math.sin(an - 0.4));
+        ctx.lineTo(x1 - 16 * U * Math.cos(an + 0.4), y1 - 16 * U * Math.sin(an + 0.4)); ctx.closePath(); ctx.fill();
+      });
+    }
+    cards.forEach(function (cd, i) {
+      var r = R[i], open = i < shown, hot = open && cited.indexOf(cd.id) >= 0;
+      ctx.fillStyle = open ? C.panel : C.hidden; g.roundRect(r.x, r.y, r.w, r.h, 12 * U); ctx.fill();
+      if (hot) { ctx.strokeStyle = C.accent; ctx.lineWidth = 5 * U; g.roundRect(r.x, r.y, r.w, r.h, 12 * U); ctx.stroke(); }
+      font(ctx, 700, 30, U); ctx.fillStyle = C.ink; ctx.fillText(String(i + 1), r.x + 18 * U, r.y + 42 * U);
+      if (!open) { font(ctx, 700, 40, U); ctx.fillStyle = C.muted; ctx.fillText(Lb.hidden, r.x + r.w / 2, r.y + r.h / 2 + 14 * U); return; }
+      font(ctx, 700, 26, U); ctx.fillStyle = kindColor(C, cd.kind);
+      ctx.fillText(Lb.kinds[cd.kind] || cd.kind, r.x + 60 * U, r.y + 40 * U);
+      font(ctx, 500, 24, U); ctx.fillStyle = C.muted;
+      var pg = Lb.page + " " + cd.page; ctx.fillText(pg, r.x + r.w - ctx.measureText(pg).width - 18 * U, r.y + 40 * U);
+      if (hot || st.focus !== "claims" || !cited.length) {  // words of the claim only where the voice is (≤ 6 words on a card)
+        var f = "600 " + 28 * U + "px " + window.FONT;
+        var nl = r.h >= 120 * U ? 2 : 1, y0 = r.y + Math.min(80 * U, r.h - 16 * U);  // text stays inside the card
+        g.wrap(cd.short, r.w - 80 * U, f).slice(0, nl).forEach(function (ln, k) { ctx.font = f; ctx.fillStyle = hot ? C.ink : C.muted; ctx.fillText(ln, r.x + 60 * U, y0 + k * 34 * U); });
+      }
+    });
+    if (st.wrong) {
+      var yy = box.y + box.h * 0.45;
+      ctx.fillStyle = C.warnBg; g.roundRect(box.x + 20 * U, yy - 40 * U, box.w - 40 * U, 80 * U, 12 * U); ctx.fill();
+      font(ctx, 700, 32, U); ctx.fillStyle = C.warnFg; ctx.fillText("✗ " + Lb.wrong_tag, box.x + 44 * U, yy + 12 * U);
+    }
+  }
+
+  function invariants(spec) {
+    var K = spec.case, out = [];
+    out.push({ id: "cards_from_layer", ok: K.cards.length >= 3 && K.cards.every(function (c) { return c.id && c.page != null; }),
+      text: "каждая карточка — проверенное утверждение узла со страницей книги" });
+    out.push({ id: "kinds_separated", ok: K.cards.every(function (c) { return ["observation", "assumption", "inference"].indexOf(c.kind) >= 0; }),
+      text: "у каждой карточки один вид: наблюдение, условие или вывод" });
+    out.push({ id: "cards_stable", ok: K.cards.every(function (c, i) { return !i || c.page >= K.cards[i - 1].page; }),
+      text: "карточки идут в порядке страниц книги и не меняются между кадрами" });
+    return out;
+  }
+
+  window.TEMPLATES = window.TEMPLATES || {};
+  window.TEMPLATES.claim_steps = { draw: draw, invariants: invariants };
+})();
+</script>
+<script>/* Scene player: draws a scene spec at time t on one canvas.
+   Same code for the interactive in the course (mode=interactive) and for recording video frames (mode=record).
+   window.SCENE = {spec, timeline, format:{w,h}, style, labels}; templates register in window.TEMPLATES. */
+(function () {
+  "use strict";
+  var S = window.SCENE, T = window.TEMPLATES[S.spec.template];
+  var W = S.format.w, H = S.format.h, portrait = H > W;
+  var cv = document.getElementById("cv"); cv.width = W; cv.height = H;
+  var ctx = cv.getContext("2d");
+  var C = S.style.colors;
+  var U = W / 1080; // unit: 1 at 1080 px width (portrait) — fonts scale with frame
+  if (!portrait) U = H / 1080;
+
+  function beatAt(t) {
+    var bs = S.timeline.beats;
+    for (var i = 0; i < bs.length; i++) if (t < bs[i].end) return bs[i];
+    return bs[bs.length - 1];
+  }
+  function lerp(a, b, p) { return a + (b - a) * p; }
+  function stateAt(t) {
+    var b = beatAt(t), st = Object.assign({}, b.state);
+    var p = Math.max(0, Math.min(1, (t - b.start) / Math.max(0.001, b.end - b.start)));
+    p = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // ease
+    if (st.t0 != null) st.tSim = lerp(st.t0, st.t1 != null ? st.t1 : st.t0, p);
+    st.progress = p; st.beat = b;
+    return st;
+  }
+
+  function wrap(text, maxW, font) {
+    ctx.font = font; var words = String(text).split(/\s+/), lines = [], cur = "";
+    words.forEach(function (w) { var t = cur ? cur + " " + w : w; if (ctx.measureText(t).width > maxW && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur); return lines;
+  }
+  function chip(x, y, text, fg, bg) {
+    ctx.font = "600 " + (26 * U) + "px " + window.FONT;
+    var w = ctx.measureText(text).width + 28 * U, h = 46 * U;
+    ctx.fillStyle = bg; roundRect(x, y, w, h, 10 * U); ctx.fill();
+    ctx.fillStyle = fg; ctx.textBaseline = "middle"; ctx.fillText(text, x + 14 * U, y + h / 2); ctx.textBaseline = "alphabetic";
+    return w;
+  }
+  function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+
+  /* subtitles: chunks of ≤8 words timed by word boundaries of the voice */
+  function subtitleAt(t, b) {
+    var ws = b.words || [];
+    if (!ws.length) return b.text;
+    var rel = t - b.voice_start, idx = 0;
+    for (var i = 0; i < ws.length; i++) if (ws[i].start <= rel) idx = i;
+    var chunk = Math.floor(idx / 8) * 8;
+    // show the script's own words (with punctuation) when they align one-to-one with the voice's words
+    var shown = b.display_words && b.display_words.length === ws.length ? b.display_words : ws.map(function (w) { return w.w; });
+    return shown.slice(chunk, chunk + 8).filter(Boolean).join(" ").replace(/\u0301/g, "");
+  }
+
+  var DOM = S.mode === "interactive" && document.getElementById("hud");  // course: text in HTML, canvas = scene only
+  var dom = DOM ? { pv: document.getElementById("pv"), pvn: document.getElementById("pvn"), ex: document.getElementById("ex"),
+                    head: document.getElementById("head"), sub: document.getElementById("sub") } : null, seen = {};
+  function setText(k, v, html) { if (seen[k] === v) return; seen[k] = v; if (html) dom[k].innerHTML = v; else dom[k].textContent = v; }
+  function esc(s) { return String(s).replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; }); }
+
+  function draw(t) {
+    var st = stateAt(t), b = st.beat;
+    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    var pad = 48 * U;
+    // layout boxes. 9:16: every caption inside the styleguide's safe zone (spec.safe_zone: top/bottom/side px at 1080)
+    var sz = S.spec.safe_zone, L;
+    if (DOM) {  // the whole canvas is the scene; headline, plates and subtitles are HTML around it
+      L = { scene: { x: pad, y: 30 * U, w: W - 2 * pad, h: H - 60 * U } };
+    } else if (portrait && sz) {
+      var sx = sz.side * U, top0 = sz.top * U, bot = H - sz.bottom * U;
+      L = { top: { x: sx, y: top0, w: W - 2 * sx, h: 100 * U }, head: { x: sx, y: top0 + 104 * U, w: W - 2 * sx, h: 150 * U },
+            scene: { x: sx, y: top0 + 270 * U, w: W - 2 * sx, h: bot - 214 * U - (top0 + 270 * U) },
+            sub: { x: sx, y: bot - 196 * U, w: W - 2 * sx, h: 196 * U } };
+    } else if (portrait) {
+      L = { top: { x: pad, y: 40 * U, w: W - 2 * pad, h: 100 * U }, head: { x: pad, y: 150 * U, w: W - 2 * pad, h: 250 * U },
+            scene: { x: pad, y: 420 * U, w: W - 2 * pad, h: 1120 * U }, sub: { x: pad, y: 1580 * U, w: W - 2 * pad, h: 260 * U } };
+    } else if (T.layout === "wide") {
+      // 16:9: subtitles end ~110 px above the bottom so the player's control bar does not cover them on pause
+      L = { top: { x: pad, y: 20 * U, w: W - 2 * pad, h: 100 * U }, head: { x: pad, y: 120 * U, w: W - 2 * pad, h: 70 * U },
+            scene: { x: pad, y: 210 * U, w: W - 2 * pad, h: 610 * U }, sub: { x: pad * 4, y: 830 * U, w: W - 8 * pad, h: 140 * U } };
+    } else {
+      L = { top: { x: pad, y: 24 * U, w: W - 2 * pad, h: 100 * U }, head: { x: pad, y: 130 * U, w: 640 * U, h: 680 * U },
+            scene: { x: 760 * U, y: 130 * U, w: W - 760 * U - pad, h: 680 * U }, sub: { x: pad, y: 830 * U, w: W - 2 * pad, h: 140 * U } };
+    }
+    // template scene
+    T.draw(ctx, L.scene, st, S.spec, { C: C, U: U, roundRect: roundRect, wrap: wrap, chip: chip, portrait: portrait });
+    if (DOM) {
+      var pv0 = st.provenance || S.labels.provenance, ex0 = (T.exaggeration ? T.exaggeration(S.spec, st) : null) || S.labels.exaggeration;
+      if (seen.pvl !== pv0.label) { seen.pvl = pv0.label; dom.pv.style.background = (C.provenance || {})[pv0.label] || C.chipBg; }
+      setText("pv", pv0.label); setText("pvn", pv0.note || ""); setText("ex", ex0 || "");
+      setText("head", esc(b.on_screen || "") + (b.slot === "prediction" && t > b.voice_end ? '<span class="think">Подумайте…</span>' : ""), true);
+      setText("sub", t <= b.voice_end + 0.2 ? subtitleAt(t, b) : "");
+      return;
+    }
+    // provenance + exaggeration chips (on every frame)
+    var x = L.top.x, y = L.top.y, pv = st.provenance || S.labels.provenance;
+    // TZ: provenance label on every frame — exactly «реальные данные» / «симуляция» / «схема», legend colour
+    x += chip(x, y, pv.label, "#FFFFFF", (C.provenance || {})[pv.label] || C.chipBg) + 10 * U;
+    if (pv.note) {
+      ctx.font = "600 " + (26 * U) + "px " + window.FONT;
+      if (x + ctx.measureText(pv.note).width + 28 * U > L.top.x + L.top.w) { x = L.top.x; y += 54 * U; }
+      x += chip(x, y, pv.note, C.chipFg, C.chipBg) + 10 * U;
+    }
+    var ex = (T.exaggeration ? T.exaggeration(S.spec, st) : null) || S.labels.exaggeration;
+    if (ex) {
+      ctx.font = "600 " + (26 * U) + "px " + window.FONT;
+      x = L.top.x; y += 54 * U;
+      chip(x, y, ex, C.warnFg, C.warnBg);
+    }
+    // headline (on-screen words ≤ 7–8)
+    if (b.on_screen) {
+      var wide = !portrait && T.layout === "wide";
+      var hp = portrait ? (sz ? 60 : 64) : wide ? 50 : 56, f = "700 " + hp * U + "px " + window.FONT;
+      var ls = wrap(b.on_screen, L.head.w, f); ctx.fillStyle = b.slot === "misconception" ? C.warnFg : C.ink;
+      ls.slice(0, wide ? 1 : (portrait && sz ? 2 : 3)).forEach(function (ln, i) { ctx.fillText(ln, L.head.x, L.head.y + (i + 1) * (wide ? 60 : hp * 1.22) * U); });
+    }
+    if (b.slot === "prediction" && t > b.voice_end) {
+      ctx.fillStyle = C.accent; ctx.font = "600 " + 40 * U + "px " + window.FONT;
+      var py = portrait ? L.head.y + (sz ? 150 : 250) * U : (T.layout === "wide" ? L.head.y + 60 * U : L.head.y + 330 * U);
+      var px = T.layout === "wide" && !portrait ? L.head.x + L.head.w - 260 * U : L.head.x;
+      ctx.fillText("Подумайте…", px, py);
+    }
+    // subtitles in the safe zone
+    var sub = subtitleAt(t, b);
+    if (sub && t <= b.voice_end + 0.2) {
+      var sp = Math.max(S.spec.min_caption_px || 44, 44), sf = "500 " + sp * U + "px " + window.FONT;
+      var sl = wrap(sub, L.sub.w - 40 * U, sf).slice(0, 3);
+      var bh = sl.length * 58 * U + 30 * U;
+      ctx.fillStyle = "rgba(0,0,0,0.62)"; roundRect(L.sub.x, L.sub.y, L.sub.w, bh, 14 * U); ctx.fill();
+      ctx.fillStyle = "#FFFFFF"; ctx.font = sf;
+      sl.forEach(function (ln, i) { ctx.fillText(ln, L.sub.x + 20 * U, L.sub.y + 50 * U + i * 58 * U); });
+    }
+  }
+
+  window.renderAt = function (t) { draw(t); return true; };
+  window.frameData = function (t) { draw(t); return cv.toDataURL("image/png"); };
+
+  if (S.mode !== "interactive") { draw(0); return; }
+
+  /* ---------- interactive mode (course) ---------- */
+  var audio = document.getElementById("voice"), t = 0, playing = false, waitPred = null, last = null;
+  var btn = document.getElementById("play"), bar = document.getElementById("seek"), more = document.getElementById("more");
+  bar.max = S.timeline.duration;
+  function setT(v) { t = Math.max(0, Math.min(S.timeline.duration, v)); bar.value = t; draw(t); showInfo(); }
+  function showInfo() {
+    var b = beatAt(t);
+    more.textContent = "";
+    if (!b.claims || !b.claims.length) return;
+    b.claims.forEach(function (c) {
+      var d = document.createElement("div"); d.className = "src";
+      d.textContent = "стр. " + c.page + " — «" + c.quote + "»"; more.appendChild(d);
+    });
+  }
+  function tick(ts) {
+    if (!playing) return;
+    if (audio && !audio.paused) t = audio.currentTime; else if (last != null) t += (ts - last) / 1000;
+    last = ts;
+    var b = beatAt(t);
+    if (b.slot === "prediction" && t >= b.end - 0.05 && waitPred !== b.id) {
+      waitPred = b.id; pause(); btn.textContent = "Показать ответ"; return;
+    }
+    if (t >= S.timeline.duration) { pause(); setT(S.timeline.duration); return; }
+    bar.value = t; draw(t); showInfo();
+    requestAnimationFrame(tick);
+  }
+  function play() { playing = true; last = null; btn.textContent = "Пауза"; if (audio) { audio.currentTime = t; audio.play().catch(function () {}); } requestAnimationFrame(tick); }
+  function pause() { playing = false; btn.textContent = "Смотреть"; if (audio) audio.pause(); }
+  btn.addEventListener("click", function () { if (playing) pause(); else { if (t >= S.timeline.duration - 0.05) setT(0); play(); } });
+  bar.addEventListener("input", function () { pause(); setT(parseFloat(bar.value)); });
+  cv.addEventListener("click", function () { btn.click(); });
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setT(reduce ? S.timeline.duration : 0);
+})();
+</script>
+</body>
+</html>

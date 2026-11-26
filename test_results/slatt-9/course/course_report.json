@@ -1,0 +1,44 @@
+{
+ "tasks": {
+  "schema": "kmg-tasks/0.2.0",
+  "chapter": "slatt-9",
+  "generated": 59,
+  "kept": 59,
+  "rejected": [],
+  "types": [
+   "gap",
+   "multiple",
+   "order",
+   "single"
+  ],
+  "kinds": [
+   "data",
+   "recall",
+   "transfer",
+   "understanding"
+  ],
+  "meets_tz": true,
+  "schema_errors": [],
+  "schema_ok": true,
+  "cost_usd": 0.0,
+  "cost_usd_original": 0.0,
+  "cached": true,
+  "model": "reuse:tasks.json",
+  "calls": 0,
+  "changed_nodes_tasks_dropped": []
+ },
+ "schema": "kmg-course-report/0.2.0",
+ "chapter": "slatt-9",
+ "layer": "out/slatt-9/layer.json",
+ "steps": 24,
+ "parts": 5,
+ "size_mb": 6.18,
+ "size_ok": true,
+ "steps_without_illustration": [],
+ "parts_without_ab_illustration": [],
+ "illustrations": 42,
+ "photos": 6,
+ "illustration_schema_errors": [],
+ "illustration_schema_ok": true,
+ "seconds": 0.4
+}
