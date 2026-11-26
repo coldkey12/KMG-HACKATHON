@@ -1,0 +1,10 @@
+{
+ "affected_nodes": [
+  "slatt-9.n-415-2dd75b-b"
+ ],
+ "overrides_applied": [
+  "s9q1",
+  "s9q2",
+  "s9q3"
+ ]
+}

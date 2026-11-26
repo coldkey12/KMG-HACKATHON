@@ -1,0 +1,186 @@
+# Правки по тесту 26.11. Минуты человека: 0 (правки агента A по замечаниям машинной проверки).
+- id: s9q1
+  node: slatt-9.n-415-2dd75b-b
+  path: claims
+  value:
+  - id: slatt-9.n-415-2dd75b-b.c-82e07b
+    text: Происхождение литофаций установили, изучая современные речные дельты и их осадки.
+    kind: observation
+    page: 416
+    quote: The origin of these lithofacies was determined by studying modern river-dominated delta processes and sediments.
+    unit_id: u-415-2dd75b
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-05b120
+    text: 'Учёные считают: паводковые шлейфы взвеси из рукавов отлагали самый сортированный и проницаемый песок.'
+    kind: inference
+    page: 416
+    quote: Geoscientists believe that sediment plumes emanating from distributary channels during flood stage deposited the best-sorted and most-permeable sands
+    unit_id: u-415-2dd75b
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-6d1d9e
+    text: Самый сортированный и проницаемый песок лежит у вершины бара и вдоль его проксимального края.
+    kind: inference
+    page: 416
+    quote: at the apex or most-proximal part of the distributary mouth bars, as well as along the proximal-bar margin
+    unit_id: u-415-2dd75b
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-fc6a41
+    text: Тонкий, хуже отсортированный песок и ил отлагались дальше от устья, при слабом потоке.
+    kind: inference
+    page: 416
+    quote: Finer-grained, more poorly sorted sands and muds were deposited more distally, under lower flow-regime conditions.
+    unit_id: u-415-2dd75b
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-ce6441
+    text: 'Раздвоение рукавов разделяет литофации: более крупный осадок собирается на вершинах баров ниже точки ветвления и вдоль их краёв.'
+    kind: inference
+    page: 417
+    quote: the bifurcations segregate lithofacies by concentrating the coarser-grained sediment on the bar apices downstream of the bifurcation point and along bar margins.
+    unit_id: u-417-ea48d7
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-07ca98
+    text: Устьевые рукава обычно раздваиваются, как показано на схеме.
+    kind: observation
+    page: 417
+    quote: Distributary-mouth channels typically bifurcate as shown
+    unit_id: u-417-ea48d7
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-eeaef4
+    text: Схема 9.17 показывает типичный рисунок распределения осадка и разрез устьевого бара.
+    kind: observation
+    page: 417
+    quote: Typical sediment distribution pattern and distributary-mouth-bar cross-section.
+    unit_id: u-417-ea48d7
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-7a2e16
+    text: Горизонтальная скважина длиной 300 м вскрыла песчаник устьевого бара; получено три керна.
+    kind: observation
+    page: 415
+    quote: A 1000-ft. (300-m) horizontal well was drilled into a distributary mouth-bar reservoir sandstone, and three cores were obtained.
+    unit_id: u-415-2dd75b
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-6f682c
+    text: 'В керне выделено семь песчаных литофаций: все умеренно и очень хорошо отсортированы, мелко- и очень мелкозернистые.'
+    kind: observation
+    page: 415
+    quote: Seven sandy lithofacies were identified in the core, all are moderately to very well sorted and fine to very fine-grained.
+    unit_id: u-415-2dd75b
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-45094c
+    text: Шесть литофаций имеют среднюю горизонтальную проницаемость 12–40 md.
+    kind: observation
+    page: 415
+    quote: Six of the lithofacies exhibit average horizontal permeabilities of 12–40 md.
+    unit_id: u-415-2dd75b
+    by: model
+    numbers: []
+    status: ok
+  - id: slatt-9.n-415-2dd75b-b.c-812797
+    text: Седьмая, лучше всего отсортированная литофация имеет в среднем 129 md.
+    kind: observation
+    page: 415
+    quote: The seventh, best-sorted lithofacies averages 129 md.
+    unit_id: u-415-2dd75b
+    by: model
+    numbers: []
+    status: ok
+  by: agent A
+  people: агент A
+  minutes: 0
+  agent_minutes: 6
+  reason: цитаты 6 утверждений взяты из машинного описания рисунка 9.17 (не текст автора; проверка quote = error). Утверждения сняты вместе с опирающимися на них фразами слоя; то же по смыслу остаётся в
+    утверждениях по тексту и подписи рис. 9.17 (c-6d1d9e, c-fc6a41, c-ce6441).
+- id: s9q2
+  node: slatt-9.n-415-2dd75b-b
+  path: layers.mechanism
+  value:
+  - text: 'Во время паводка из распределительного рукава выходит шлейф взвеси: мутная струя с мелким осадком.'
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-05b120
+    hypothesis: false
+  - text: В вершине бара и вдоль его проксимального края ложится самый сортированный и проницаемый песок.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-05b120
+    - slatt-9.n-415-2dd75b-b.c-6d1d9e
+    hypothesis: false
+  - text: Сортировка — это однородность зёрен по размеру. Лучшая сортировка и лучшая проницаемость совпали в одном и том же песке.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-05b120
+    hypothesis: false
+  - text: Дальше от устья течение слабее. Туда уходят тонкий, плохо отсортированный песок и ил.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-fc6a41
+    hypothesis: false
+  - text: Рукав часто делится на ветви. Каждое раздвоение собирает более крупный осадок на вершинах баров и по их краям.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-ce6441
+    - slatt-9.n-415-2dd75b-b.c-07ca98
+    hypothesis: false
+  - text: На схеме 9.17 показан типичный рисунок распределения осадка и разрез устьевого бара.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-eeaef4
+    hypothesis: false
+  - text: 'По описанию схемы цвета отвечают сортировке: от жёлтого чистого песка в центре бара к серо-коричневым илам и глинам по краю.'
+    by: model
+    claims: []
+    hypothesis: true
+  by: agent A
+  people: агент A
+  minutes: 0
+  agent_minutes: 0
+  reason: см. s9q1
+- id: s9q3
+  node: slatt-9.n-415-2dd75b-b
+  path: layers.nuances
+  value:
+  - text: Объяснение происхождения — это интерпретация учёных, а не прямое наблюдение в древнем баре.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-82e07b
+    - slatt-9.n-415-2dd75b-b.c-05b120
+    hypothesis: false
+  - text: Лучший песок связан с паводковым шлейфом. При слабом потоке отлагается тонкий материал.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-05b120
+    - slatt-9.n-415-2dd75b-b.c-fc6a41
+    hypothesis: false
+  - text: Эффект раздвоения действует ниже точки ветвления, а не выше неё.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-ce6441
+    hypothesis: false
+  - text: Схема показывает типичный рисунок. Отдельные бары могут отличаться от неё.
+    by: model
+    claims:
+    - slatt-9.n-415-2dd75b-b.c-eeaef4
+    hypothesis: true
+  by: agent A
+  people: агент A
+  minutes: 0
+  agent_minutes: 0
+  reason: см. s9q1

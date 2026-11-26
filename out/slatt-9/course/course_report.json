@@ -1,0 +1,58 @@
+{
+ "tasks": {
+  "schema": "kmg-tasks/0.2.0",
+  "chapter": "slatt-9",
+  "generated": 61,
+  "kept": 59,
+  "rejected": [
+   {
+    "index": 9,
+    "node_id": "slatt-9.n-411-4724e1-c",
+    "type": "order",
+    "prompt": "Расставь события по порядку, как они связаны в тексте.",
+    "why": "пункт порядка не из шага: «Дельта растёт вперёд и вверх, вода у устья мельчает»"
+   },
+   {
+    "index": 53,
+    "node_id": "slatt-9.n-418-557229-c",
+    "type": "single",
+    "prompt": "Вертикальная скважина давала стабильно больше 300 BOPD, но добыча воды росла. Что это значит?",
+    "why": "верный вариант не подтверждается утверждениями: «Добыча нефти со временем заметно упадёт»"
+   }
+  ],
+  "types": [
+   "gap",
+   "multiple",
+   "order",
+   "single"
+  ],
+  "kinds": [
+   "data",
+   "recall",
+   "transfer",
+   "understanding"
+  ],
+  "meets_tz": true,
+  "schema_errors": [],
+  "schema_ok": true,
+  "cost_usd": 0.0,
+  "cost_usd_original": 0.05019,
+  "cached": true,
+  "model": "claude-haiku-5-5",
+  "calls": 4
+ },
+ "schema": "kmg-course-report/0.2.0",
+ "chapter": "slatt-9",
+ "layer": "/Users/coldkey/KMG-HACKATHON/out/slatt-9/layer.json",
+ "steps": 24,
+ "parts": 5,
+ "size_mb": 2.86,
+ "size_ok": true,
+ "steps_without_illustration": [],
+ "parts_without_ab_illustration": [],
+ "illustrations": 40,
+ "photos": 6,
+ "illustration_schema_errors": [],
+ "illustration_schema_ok": true,
+ "seconds": 0.4
+}

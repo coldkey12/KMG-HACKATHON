@@ -1,0 +1,3 @@
+{"out": "/Users/coldkey/KMG-HACKATHON/out/slatt-9/course", "steps": 24, "size_mb": 2.86, "tasks_kept": 59, "tasks_generated": 61, "task_types": ["gap", "multiple", "order", "single"], "tasks_meet_tz": true, "tasks_schema_ok": true, "cost_usd": 0.05019, "illustrations": 40, "illustrations_schema_ok": true, "photos": 6, "steps_without_illustration": 0}
+layer: out/slatt-9/layer.json | checks passed: False | $ 0.9792
+course: /Users/coldkey/KMG-HACKATHON/.venv/bin/python -m kmg_course build /Users/coldkey/KMG-HACKATHON/out/slatt-9/layer.json

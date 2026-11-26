@@ -1,0 +1,2019 @@
+{
+ "chapter": "slatt-9",
+ "schema": "glava-kurs/task.schema.json",
+ "tasks": [
+  {
+   "id": "slatt-9.n-411-4724e1.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-411-4724e1",
+   "node_id": "slatt-9.n-411-4724e1",
+   "claim_ids": [
+    "slatt-9.n-411-4724e1.c-bd0c46"
+   ],
+   "prompt": "Какой статус имеет дельта Миссисипи по тексту шага?",
+   "explanation": "Книга называет дельту Миссисипи давно считавшимся типовым примером речной дельты.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Типовой (эталонный) пример речной дельты",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Дельта, которую сильно перемывают волны",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Дельта с открытым для сильных волн берегом",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-411-4724e1.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-411-4724e1",
+   "node_id": "slatt-9.n-411-4724e1",
+   "claim_ids": [
+    "slatt-9.n-411-4724e1.c-f97389",
+    "slatt-9.n-411-4724e1.c-c4108e"
+   ],
+   "prompt": "Почему осадок у берега дельты Миссисипи не разносится в стороны?",
+   "explanation": "Защищённый берег не подвергается ударам, поэтому осадок там не перемывается и не разносится.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Берег защищён: сильные волны и течения в него не ударяют",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Сильные волны и течения постоянно ударяют в этот берег",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Осадок у берега постоянно перемывается и разносится в стороны",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-411-51705f.t01",
+   "type": "multiple",
+   "step_id": "slatt-9.n-411-51705f",
+   "node_id": "slatt-9.n-411-51705f",
+   "claim_ids": [
+    "slatt-9.n-411-51705f.c-a725f8",
+    "slatt-9.n-411-51705f.c-044d72"
+   ],
+   "prompt": "Какие фации по тексту являются песчаными коллекторами?",
+   "explanation": "Песчаные фации-коллекторы — это распределительные рукава и устьевые бары; заливы и болота их разделяют.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Отложения распределительных рукавов",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Устьевые бары",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Междурукавные заливы",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Болота между рукавами",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "slatt-9.n-411-51705f.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-411-51705f",
+   "node_id": "slatt-9.n-411-51705f",
+   "claim_ids": [
+    "slatt-9.n-411-51705f.c-a233cb",
+    "slatt-9.n-411-51705f.c-044d72",
+    "slatt-9.n-411-51705f.c-a725f8"
+   ],
+   "prompt": "В подземном коллекторе между песчаными фациями есть глинистый барьер. Какая обстановка по тексту его дала?",
+   "explanation": "Заливы, болота и лагуны дают глинистые барьеры; рукава и бары являются песчаными коллекторами.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Залив, болото или лагуна между рукавами",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Распределительный рукав, по которому течёт вода",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Устьевой бар у выхода рукава",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-411-51705f.t03",
+   "type": "gap",
+   "step_id": "slatt-9.n-411-51705f",
+   "node_id": "slatt-9.n-411-51705f",
+   "claim_ids": [
+    "slatt-9.n-411-51705f.c-044d72"
+   ],
+   "prompt": "Заливы, болота и лагуны {{1}} песчаные фации.",
+   "explanation": "Заливы, болота и лагуны между рукавами разделяют песчаные фации.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "разделяют"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "slatt-9.n-411-4724e1-b.t01",
+   "type": "order",
+   "step_id": "slatt-9.n-411-4724e1-b",
+   "node_id": "slatt-9.n-411-4724e1-b",
+   "claim_ids": [
+    "slatt-9.n-411-4724e1-b.c-432a86",
+    "slatt-9.n-411-4724e1-b.c-34e21d"
+   ],
+   "prompt": "Расставь события по порядку, как они связаны в тексте.",
+   "explanation": "Пространство для осадка позволяет дельте выдвигаться; при этом поверхности времени режут границы фаций.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Дельта выдвигается в сторону моря",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Есть достаточно пространства между морем и дном для осадка",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Поверхности одного момента времени режут границы фаций",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "b",
+    "a",
+    "c"
+   ]
+  },
+  {
+   "id": "slatt-9.n-411-4724e1-b.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-411-4724e1-b",
+   "node_id": "slatt-9.n-411-4724e1-b",
+   "claim_ids": [
+    "slatt-9.n-411-4724e1-b.c-432a86",
+    "slatt-9.n-411-4724e1-b.c-417cc8"
+   ],
+   "prompt": "Дельта выдвинулась в море. Какое условие было выполнено по тексту?",
+   "explanation": "Выдвижение дельты требует достаточного пространства для осадка между морем и дном.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Со временем было достаточно пространства для осадка между морем и дном",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Осадок не поступал, и дельта стояла на месте",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Между морем и дном не оставалось места для осадка",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-410-9e6db6.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-410-9e6db6",
+   "node_id": "slatt-9.n-410-9e6db6",
+   "claim_ids": [
+    "slatt-9.n-410-9e6db6.c-b4864a"
+   ],
+   "prompt": "Какое утверждение о переключении рукавов верно по тексту?",
+   "explanation": "Overeem и соавторы считают, что переключение рукавов может быть важнее изменения уровня моря.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Оно может влиять на дельту сильнее, чем уровень моря",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Оно всегда слабее колебаний уровня моря",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Оно не влияет на эволюцию дельт",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-410-9e6db6.t02",
+   "type": "gap",
+   "step_id": "slatt-9.n-410-9e6db6",
+   "node_id": "slatt-9.n-410-9e6db6",
+   "claim_ids": [
+    "slatt-9.n-410-9e6db6.c-9235b4"
+   ],
+   "prompt": "Помимо колебаний уровня моря, на дельты действуют {{1}} рукавов.",
+   "explanation": "Помимо колебаний уровня моря, на дельты действуют процессы переключения рукавов.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "переключения"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "slatt-9.n-411-4724e1-c.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-411-4724e1-c",
+   "node_id": "slatt-9.n-411-4724e1-c",
+   "claim_ids": [
+    "slatt-9.n-411-4724e1-c.c-db7ef9",
+    "slatt-9.n-411-4724e1-c.c-b07804"
+   ],
+   "prompt": "Почему вода у устья дельты становится мельче?",
+   "explanation": "Проградация и аградация при достаточном пространстве постепенно уменьшают глубину воды у дельты.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Проградация и вертикальная аградация со временем уменьшают глубину воды",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Главная река сама уходит в более глубокую воду",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Вода мельчает сразу, в один момент",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-410-c87974.t01",
+   "type": "order",
+   "step_id": "slatt-9.n-410-c87974",
+   "node_id": "slatt-9.n-410-c87974",
+   "claim_ids": [
+    "slatt-9.n-410-c87974.c-d0378a"
+   ],
+   "prompt": "Расставь события по порядку при раннем падении уровня моря.",
+   "explanation": "Раннее падение уровня вызывает врез долины, а затем берег отходит к морю и понижается.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Берег отходит к морю и понижается",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Образуется врез долины",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Раннее падение уровня моря",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "c",
+    "b",
+    "a"
+   ]
+  },
+  {
+   "id": "slatt-9.n-410-c87974.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-410-c87974",
+   "node_id": "slatt-9.n-410-c87974",
+   "claim_ids": [
+    "slatt-9.n-410-c87974.c-098fb9"
+   ],
+   "prompt": "Как ещё по тексту называют дельты низкого стояния?",
+   "explanation": "Дельты низкого стояния также называют дельтами края шельфа или системными трактами.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Дельты края шельфа или системные тракты",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Дельты высокого стояния",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Дельты раннего подъёма уровня моря",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-410-c87974.t03",
+   "type": "multiple",
+   "step_id": "slatt-9.n-410-c87974",
+   "node_id": "slatt-9.n-410-c87974",
+   "claim_ids": [
+    "slatt-9.n-410-c87974.c-a4a87d",
+    "slatt-9.n-410-c87974.c-e67105"
+   ],
+   "prompt": "Какие утверждения о дельтах низкого стояния верны по тексту?",
+   "explanation": "Дельты низкого стояния образуются при падении уровня моря и обычно меньше дельт высокого стояния.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Они образуются при падении уровня моря",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Обычно они меньше дельт высокого стояния",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Они крупнее и распространённее дельт высокого стояния",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Они не образуются при падении уровня моря",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "slatt-9.n-411-4724e1-d.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-411-4724e1-d",
+   "node_id": "slatt-9.n-411-4724e1-d",
+   "claim_ids": [
+    "slatt-9.n-411-4724e1-d.c-e0d830",
+    "slatt-9.n-411-4724e1-d.c-31e01b"
+   ],
+   "prompt": "Почему поверхности времени в дельте пересекают границы фаций?",
+   "explanation": "При выдвижении дельты в море поверхности времени пересекают границы фаций, как и клиноформы.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Потому что поверхности времени всегда идут вдоль границ пород.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Потому что при выдвижении дельты в море поверхности времени режут границы фаций.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Потому что клиноформы — это границы пород, а не времени.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Потому что в дельте не происходит осадконакопления.",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "slatt-9.n-411-4724e1-d.t02",
+   "type": "gap",
+   "step_id": "slatt-9.n-411-4724e1-d",
+   "node_id": "slatt-9.n-411-4724e1-d",
+   "claim_ids": [
+    "slatt-9.n-411-4724e1-d.c-31e01b"
+   ],
+   "prompt": "Клиноформы — это линии {{1}}, и они пересекают литостратиграфические границы.",
+   "explanation": "Клиноформы представляют геологические линии времени, поэтому режут литостратиграфические границы.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "геологического времени"
+   ],
+   "accept": [
+    [
+     "геологического времени"
+    ]
+   ]
+  },
+  {
+   "id": "slatt-9.n-411-4724e1-d.t03",
+   "type": "multiple",
+   "step_id": "slatt-9.n-411-4724e1-d",
+   "node_id": "slatt-9.n-411-4724e1-d",
+   "claim_ids": [
+    "slatt-9.n-411-4724e1-d.c-31e01b",
+    "slatt-9.n-411-4724e1-d.c-5e6621"
+   ],
+   "prompt": "Какие утверждения о клиноформах верны?",
+   "explanation": "Клиноформы — линии времени, режут литостратиграфические границы и важны для сопоставления скважин.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Клиноформы пересекают литостратиграфические границы.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Понимание роли клиноформ важно для сопоставления скважин.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Клиноформы всегда совпадают с границами пород.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Клиноформы представляют линии геологического времени.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "d"
+   ]
+  },
+  {
+   "id": "slatt-9.n-410-f142d6.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-410-f142d6",
+   "node_id": "slatt-9.n-410-f142d6",
+   "claim_ids": [
+    "slatt-9.n-410-f142d6.c-43956a",
+    "slatt-9.n-410-f142d6.c-ca2e0d"
+   ],
+   "prompt": "В корреляции по времени между песками видны глины и гетеролиты. Что это значит для скважин 1 и 2?",
+   "explanation": "Глины и гетеролиты между песками разрывают связь: пески между скважинами 1 и 2 не сообщаются.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Пески между скважинами 1 и 2 сообщаются напрямую.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Пески между скважинами 1 и 2 разделены и не сообщаются.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Глины не влияют на связь песков между скважинами.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Гетеролиты между песками делают их непрерывными.",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "slatt-9.n-410-f142d6.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-410-f142d6",
+   "node_id": "slatt-9.n-410-f142d6",
+   "claim_ids": [
+    "slatt-9.n-410-f142d6.c-01269a",
+    "slatt-9.n-410-f142d6.c-6c3480"
+   ],
+   "prompt": "Что показывает рис. 9.10 в книге?",
+   "explanation": "Рисунок гипотетический и сравнивает две корреляции одной пары скважин, 1 и 2.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Две корреляции одной пары скважин: по литофациям и по геологическому времени.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Две корреляции для разных месторождений.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Реальную корреляцию одного месторождения.",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-410-f142d6-b.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-410-f142d6-b",
+   "node_id": "slatt-9.n-410-f142d6-b",
+   "claim_ids": [
+    "slatt-9.n-410-f142d6-b.c-ecfb3b",
+    "slatt-9.n-410-f142d6-b.c-43956a"
+   ],
+   "prompt": "Глины разделяют пески. Как это скажется на заводнении?",
+   "explanation": "Разделяющие глины нарушают сообщаемость песков, поэтому заводнение и продуктивность ухудшаются.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Улучшит: пески станут связаны между собой.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Ухудшит: такой разделяющий признак снижает эффективность заводнения.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Не повлияет, если пески лежат в одном разрезе.",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "slatt-9.n-410-f142d6-b.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-410-f142d6-b",
+   "node_id": "slatt-9.n-410-f142d6-b",
+   "claim_ids": [
+    "slatt-9.n-410-f142d6-b.c-ca2e0d",
+    "slatt-9.n-410-f142d6-b.c-43956a"
+   ],
+   "prompt": "Что видно в хроностратиграфической корреляции между песками?",
+   "explanation": "По времени гетеролиты и глины разделяют пески; непрерывность видна в литостратиграфической корреляции.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Гетеролиты между песками.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Глины между песками.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Непрерывные пески без разрывов.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Связь песков между скважинами 1 и 2.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "slatt-9.n-410-ff6848.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-410-ff6848",
+   "node_id": "slatt-9.n-410-ff6848",
+   "claim_ids": [
+    "slatt-9.n-410-ff6848.c-cd7525"
+   ],
+   "prompt": "За какой период датирован рост дельты Меконга?",
+   "explanation": "В тексте прямо указано, что рост дельты Меконга датирован за последние 6000 лет.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "За последние 6000 лет.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "За последние несколько недель.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Рост дельты не датирован.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "За всё время существования реки.",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-410-ff6848.t02",
+   "type": "gap",
+   "step_id": "slatt-9.n-410-ff6848",
+   "node_id": "slatt-9.n-410-ff6848",
+   "claim_ids": [
+    "slatt-9.n-410-ff6848.c-de53ea"
+   ],
+   "prompt": "Хроностратиграфическая корреляция показывает возможность {{1}} внутри литостратиграфических интервалов.",
+   "explanation": "Хроностратиграфическая корреляция показывает возможные разрывы внутри литостратиграфических интервалов.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "разрывов"
+   ],
+   "accept": [
+    [
+     "разрывов"
+    ]
+   ]
+  },
+  {
+   "id": "slatt-9.n-410-ff6848.t03",
+   "type": "multiple",
+   "step_id": "slatt-9.n-410-ff6848",
+   "node_id": "slatt-9.n-410-ff6848",
+   "claim_ids": [
+    "slatt-9.n-410-ff6848.c-b60dc3",
+    "slatt-9.n-410-ff6848.c-36eded",
+    "slatt-9.n-410-ff6848.c-de53ea"
+   ],
+   "prompt": "Какие утверждения о двух корреляциях Меконга верны?",
+   "explanation": "Линии времени режут границы фаций, поэтому две корреляции одних слоёв различаются.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Линии времени пересекают границы литофаций.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Обе корреляции дают одинаковые сопоставления слоёв.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Две корреляции дают разные сопоставления одних и тех же слоёв.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Хроностратиграфическая корреляция показывает разрывы внутри литостратиграфических интервалов.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c",
+    "d"
+   ]
+  },
+  {
+   "id": "slatt-9.n-411-51705f-b.t01",
+   "type": "multiple",
+   "step_id": "slatt-9.n-411-51705f-b",
+   "node_id": "slatt-9.n-411-51705f-b",
+   "claim_ids": [
+    "slatt-9.n-411-51705f-b.c-9ecfbd"
+   ],
+   "prompt": "По каким признакам в обнажении узнают фации?",
+   "explanation": "В обнажении фации узнают по соотношению, укрупнению зерна вверх и осадочным структурам.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "По соотношению фаций.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "По огрублению зерна вверх.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "По набору осадочных структур.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "По цвету нефти в пласте.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "slatt-9.n-411-51705f-b.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-411-51705f-b",
+   "node_id": "slatt-9.n-411-51705f-b",
+   "claim_ids": [
+    "slatt-9.n-411-51705f-b.c-d20649",
+    "slatt-9.n-411-51705f-b.c-3981fa"
+   ],
+   "prompt": "Где на каротаже пласт становится тоньше и мельче?",
+   "explanation": "Каротаж показывает утончение и измельчение пласта в стороны от оси русла.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "В стороны от оси русла.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Вдоль оси русла.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Только в керне, но не на каротаже.",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-411-51705f-b.t03",
+   "type": "gap",
+   "step_id": "slatt-9.n-411-51705f-b",
+   "node_id": "slatt-9.n-411-51705f-b",
+   "claim_ids": [
+    "slatt-9.n-411-51705f-b.c-3981fa"
+   ],
+   "prompt": "Те же признаки можно найти в недрах по {{1}} и по каротажу.",
+   "explanation": "В недрах эти признаки видны и в керне, и на каротаже.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "керну"
+   ],
+   "accept": [
+    [
+     "керну",
+     "керн"
+    ]
+   ]
+  },
+  {
+   "id": "slatt-9.n-415-2dd75b.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-415-2dd75b",
+   "node_id": "slatt-9.n-415-2dd75b",
+   "claim_ids": [
+    "slatt-9.n-415-2dd75b.c-6f682c"
+   ],
+   "prompt": "Сколько песчаных литофаций выделили в керне?",
+   "explanation": "В керне выделили семь песчаных литофаций, все мелко- и очень мелкозернистые.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Шесть",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Семь",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Три",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "slatt-9.n-415-2dd75b.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-415-2dd75b",
+   "node_id": "slatt-9.n-415-2dd75b",
+   "claim_ids": [
+    "slatt-9.n-415-2dd75b.c-6f682c",
+    "slatt-9.n-415-2dd75b.c-45094c",
+    "slatt-9.n-415-2dd75b.c-812797"
+   ],
+   "prompt": "Какие утверждения о литофациях в керне верны?",
+   "explanation": "Шесть литофаций дают 12–40 мД, а седьмая, лучше всех отсортированная, — 129 мД.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Все семь литофаций имеют сортировку от умеренной до очень хорошей.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Шесть литофаций имеют среднюю горизонтальную проницаемость 12–40 мД.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Седьмая литофация — самая плохо отсортированная.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Седьмая литофация имеет среднюю горизонтальную проницаемость 129 мД.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "d"
+   ]
+  },
+  {
+   "id": "slatt-9.n-415-2dd75b.t03",
+   "type": "single",
+   "step_id": "slatt-9.n-415-2dd75b",
+   "node_id": "slatt-9.n-415-2dd75b",
+   "claim_ids": [
+    "slatt-9.n-415-2dd75b.c-45094c",
+    "slatt-9.n-415-2dd75b.c-812797"
+   ],
+   "prompt": "Какая литофация в примере самая проницаемая?",
+   "explanation": "Седьмая литофация в среднем 129 мД, а шесть других — 12–40 мД.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Любая из шести, по 12–40 мД.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Седьмая, лучше всех отсортированная, со средним 129 мД.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Все семь одинаково проницаемы.",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "slatt-9.n-415-2dd75b-b.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-415-2dd75b-b",
+   "node_id": "slatt-9.n-415-2dd75b-b",
+   "claim_ids": [
+    "slatt-9.n-415-2dd75b-b.c-05b120",
+    "slatt-9.n-415-2dd75b-b.c-6d1d9e"
+   ],
+   "prompt": "Почему самый проницаемый песок лежит у вершины бара?",
+   "explanation": "Паводковые шлейфы несут лучший песок, и он ложится у вершины и проксимального края бара.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Паводковые шлейфы взвеси отложили там самый сортированный песок.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Вершина бара самая дальняя от выхода рукава.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Там отлагается только тонкий ил при слабом потоке.",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-415-2dd75b-b.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-415-2dd75b-b",
+   "node_id": "slatt-9.n-415-2dd75b-b",
+   "claim_ids": [
+    "slatt-9.n-415-2dd75b-b.c-fc6a41",
+    "slatt-9.n-415-2dd75b-b.c-05b120",
+    "slatt-9.n-415-2dd75b-b.c-6d1d9e"
+   ],
+   "prompt": "Где и при каком потоке отлагаются тонкий, хуже отсортированный песок и ил?",
+   "explanation": "Тонкий песок и ил идут дальше от устья, при слабом потоке.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Дальше от устья.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "При слабом потоке.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "У вершины бара при паводке.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "У проксимального края бара.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "slatt-9.n-415-2dd75b-b.t03",
+   "type": "gap",
+   "step_id": "slatt-9.n-415-2dd75b-b",
+   "node_id": "slatt-9.n-415-2dd75b-b",
+   "claim_ids": [
+    "slatt-9.n-415-2dd75b-b.c-ce6441"
+   ],
+   "prompt": "Раздвоение рукавов концентрирует крупный осадок на вершинах баров ниже точки {{1}}.",
+   "explanation": "Раздвоение собирает крупный осадок на вершинах баров ниже точки ветвления и у краёв.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "ветвления"
+   ],
+   "accept": [
+    [
+     "ветвления"
+    ]
+   ]
+  },
+  {
+   "id": "slatt-9.n-416-9b7504.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-416-9b7504",
+   "node_id": "slatt-9.n-416-9b7504",
+   "claim_ids": [
+    "slatt-9.n-416-9b7504.c-2bc9fb"
+   ],
+   "prompt": "Что создаёт широкий лист баров, вытянутый вдоль простирания?",
+   "explanation": "Повторное раздвоение рукавов в ходе проградации даёт широкий лист баров вдоль простирания.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Многократное раздвоение устьевых рукавов в ходе проградации.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Один рукав без раздвоения.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Устьевые рукава, которые никогда не раздваиваются.",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-416-9b7504.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-416-9b7504",
+   "node_id": "slatt-9.n-416-9b7504",
+   "claim_ids": [
+    "slatt-9.n-416-9b7504.c-c8c558",
+    "slatt-9.n-416-9b7504.c-a30cd8"
+   ],
+   "prompt": "Какие утверждения о барах верны?",
+   "explanation": "Внутри бара фации прерываются, а крупный осадок собирается у вершин и краёв.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Внутри одного бара фации и проницаемость прерываются.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Лист баров однороден внутри каждого бара.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Раздвоение рукавов концентрирует крупный осадок ниже точки ветвления.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Крупный осадок лежит в центре бара, а не у его краёв.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c"
+   ]
+  },
+  {
+   "id": "slatt-9.n-416-9b7504.t03",
+   "type": "gap",
+   "step_id": "slatt-9.n-416-9b7504",
+   "node_id": "slatt-9.n-416-9b7504",
+   "claim_ids": [
+    "slatt-9.n-416-9b7504.c-07ca98"
+   ],
+   "prompt": "Устьевые рукава обычно {{1}}, как показано на схеме.",
+   "explanation": "Устьевые рукава обычно раздваиваются; автор описывает это как типичное явление.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "раздваиваются"
+   ],
+   "accept": [
+    [
+     "раздваиваются",
+     "раздваиваться"
+    ]
+   ]
+  },
+  {
+   "id": "slatt-9.n-416-0a289f.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-416-0a289f",
+   "node_id": "slatt-9.n-416-0a289f",
+   "claim_ids": [
+    "slatt-9.n-416-0a289f.c-716e30"
+   ],
+   "prompt": "Какие отложения дают самые продуктивные коллекторы зоны Ромео?",
+   "explanation": "Самые продуктивные коллекторы имеют речное происхождение: это отложения ветвящейся реки.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Русловые отложения ветвящейся реки",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Фронт дельты и продельта",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Илистая пойма между руслами",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-416-0a289f.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-416-0a289f",
+   "node_id": "slatt-9.n-416-0a289f",
+   "claim_ids": [
+    "slatt-9.n-416-0a289f.c-5cb7d7",
+    "slatt-9.n-416-0a289f.c-6d76de",
+    "slatt-9.n-416-0a289f.c-fb3368",
+    "slatt-9.n-416-0a289f.c-46a631",
+    "slatt-9.n-416-0a289f.c-716e30"
+   ],
+   "prompt": "Какие утверждения о зоне Ромео верны по тексту?",
+   "explanation": "Продуктивные коллекторы речные, а не морские; остальные четыре утверждения прямо есть в тексте.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Нижний интервал в основном сложен фронтом дельты и продельтой",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Речные русла разделены в стороны илистыми поймами",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Ниже по течению русла раздваиваются и образуют дельтовую равнину",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Речные системы простирались около 60 миль (100 км) от источника",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Самые продуктивные коллекторы — морские отложения шельфа",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c",
+    "d"
+   ]
+  },
+  {
+   "id": "slatt-9.n-416-0a289f.t03",
+   "type": "order",
+   "step_id": "slatt-9.n-416-0a289f",
+   "node_id": "slatt-9.n-416-0a289f",
+   "claim_ids": [
+    "slatt-9.n-416-0a289f.c-6d76de",
+    "slatt-9.n-416-0a289f.c-fb3368"
+   ],
+   "prompt": "Расставьте по порядку течения реки: от верхнего участка к нижнему.",
+   "explanation": "Русла сначала разделены поймами, затем раздваиваются и образуют дельтовую равнину.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Образуется дельтовая равнина с устьевыми барами",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Речные русла разделены илистыми поймами",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Ниже по течению русла раздваиваются",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "b",
+    "c",
+    "a"
+   ]
+  },
+  {
+   "id": "slatt-9.n-416-0a289f-b.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-416-0a289f-b",
+   "node_id": "slatt-9.n-416-0a289f-b",
+   "claim_ids": [
+    "slatt-9.n-416-0a289f-b.c-58536c"
+   ],
+   "prompt": "Какие фации дельты продуктивны по тексту?",
+   "explanation": "Продуктивны песчаники русловых рукавов и устьевых баров, как сказано в тексте.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Песчаники русловых рукавов и устьевых баров",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Илистые поймы между руслами",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Глинистые отложения продельты",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-416-0a289f-b.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-416-0a289f-b",
+   "node_id": "slatt-9.n-416-0a289f-b",
+   "claim_ids": [
+    "slatt-9.n-416-0a289f-b.c-e993b7"
+   ],
+   "prompt": "Что показывает рисунок 9.19?",
+   "explanation": "Рисунок 9.19 показывает укладку фаций и гамма-отклик именно в скважине 07-06.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Укладку фаций и гамма-отклик в скважине 07-06",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Карту глин между скважинами 11-28 и 11-23",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Карту распределения глин по площади",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-417-83c270.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-417-83c270",
+   "node_id": "slatt-9.n-417-83c270",
+   "claim_ids": [
+    "slatt-9.n-417-83c270.c-238f87",
+    "slatt-9.n-417-83c270.c-9d3088"
+   ],
+   "prompt": "Почему прежние корреляции по литологии оказались неверными?",
+   "explanation": "Пологий наклон не распознали до секвенсной интерпретации, поэтому корреляции вышли неверными.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Пологий наклон песчаных пластов не был распознан",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Песчаники лежали строго горизонтально",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Схема опиралась на историю добычи",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-417-83c270.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-417-83c270",
+   "node_id": "slatt-9.n-417-83c270",
+   "claim_ids": [
+    "slatt-9.n-417-83c270.c-1d58c2",
+    "slatt-9.n-417-83c270.c-8dc9d5",
+    "slatt-9.n-417-83c270.c-55eb6b"
+   ],
+   "prompt": "Что верно о схеме, построенной после исследования?",
+   "explanation": "Налегание и переслаивание клиньев описаны в новой интерпретации; остальные варианты противоречат тексту.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Налегание видно по пологим нижним интервалам",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Песчаные клинья переслаиваются с глинами вниз по падению",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Стратиграфия признана пластовой",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Схема по времени хуже совпала с историей добычи",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "slatt-9.n-417-83c270.t03",
+   "type": "gap",
+   "step_id": "slatt-9.n-417-83c270",
+   "node_id": "slatt-9.n-417-83c270",
+   "claim_ids": [
+    "slatt-9.n-417-83c270.c-dffd25"
+   ],
+   "prompt": "Речная дельта даёт сильную смену фаций по горизонтали и по {{1}}, поэтому резервуар очень неоднороден.",
+   "explanation": "Смена фаций по горизонтали и вертикали делает резервуар неоднородным.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "вертикали"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "slatt-9.n-417-a66fa6.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-417-a66fa6",
+   "node_id": "slatt-9.n-417-a66fa6",
+   "claim_ids": [
+    "slatt-9.n-417-a66fa6.c-565a92"
+   ],
+   "prompt": "Почему синусоидальный горизонтальный ствол пересёк бы больше нужных фаций?",
+   "explanation": "Знание о боковых свойствах показало, что такой ствол пересечёт больше высокопроницаемых литофаций.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Пересёк бы больше высокопроницаемых литофаций, чем обычная скважина",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Пробурился бы быстрее обычной вертикальной скважины",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Совсем не касался бы песчаных баров",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-417-a66fa6.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-417-a66fa6",
+   "node_id": "slatt-9.n-417-a66fa6",
+   "claim_ids": [
+    "slatt-9.n-417-a66fa6.c-34b0fa",
+    "slatt-9.n-417-a66fa6.c-3858e2"
+   ],
+   "prompt": "Откуда получили сведения о боковых свойствах баров, включая проницаемость?",
+   "explanation": "Подробные боковые сведения пришли из горизонтальной скважины с кернами, а не из вертикальных.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Из горизонтальной скважины с кернами",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Из интерпретации стандартных вертикальных кернов",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Из схемы корреляции по литологии",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-417-98a2cc.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-417-98a2cc",
+   "node_id": "slatt-9.n-417-98a2cc",
+   "claim_ids": [
+    "slatt-9.n-417-98a2cc.c-240456",
+    "slatt-9.n-417-98a2cc.c-9562a6"
+   ],
+   "prompt": "Почему некоторые глины менее непрерывны, чем другие?",
+   "explanation": "Такие глины срезаны вышележащим песком или выклиниваются, поэтому они прерываются.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Их срезал вышележащий песчаник или они выклинились",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Они непрерывны на площади больше расстояния между скважинами",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Глина сама растворилась в пластовой воде",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-417-98a2cc.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-417-98a2cc",
+   "node_id": "slatt-9.n-417-98a2cc",
+   "claim_ids": [
+    "slatt-9.n-417-98a2cc.c-27318e",
+    "slatt-9.n-417-98a2cc.c-051c3a"
+   ],
+   "prompt": "Что означают цвета на рисунке 9.20 по тексту?",
+   "explanation": "Бежевый — пойма, жёлтый — русла, белый — бары, фронт дельты и продельта.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Бежевый — пойма",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Жёлтый — речные и распределительные русловые фации",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Белый — устьевой бар, фронт дельты, продельта и шельф",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Белый — русловые фации",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "slatt-9.n-418-557229.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-418-557229",
+   "node_id": "slatt-9.n-418-557229",
+   "claim_ids": [
+    "slatt-9.n-418-557229.c-6a512d"
+   ],
+   "prompt": "Почему непрерывные глины помогают сфокусировать заводнение?",
+   "explanation": "Непрерывная глина служит вертикальным барьером потоку и помогает сфокусировать заводнение.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Они создают вертикальные барьеры потоку",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Они растворяют воду в пласте",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Они заменяют собой песчаные пласты",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-418-557229.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-418-557229",
+   "node_id": "slatt-9.n-418-557229",
+   "claim_ids": [
+    "slatt-9.n-418-557229.c-7a5264",
+    "slatt-9.n-418-557229.c-57a947"
+   ],
+   "prompt": "Что верно о трёх глинах по тексту?",
+   "explanation": "Отсутствие глин и разделение пластов описаны в тексте; сплошность по всей площади — нет.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "В одних местах все три глины отсутствуют",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "В других местах все три глины разделяют соседние пласты",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Все три глины непрерывны по всей площади",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Глины нигде не влияют на заводнение",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "slatt-9.n-418-557229.t03",
+   "type": "gap",
+   "step_id": "slatt-9.n-418-557229",
+   "node_id": "slatt-9.n-418-557229",
+   "claim_ids": [
+    "slatt-9.n-418-557229.c-1773c2"
+   ],
+   "prompt": "Только при таком уровне стратиграфической {{1}} можно эффективно управлять механизмами разработки.",
+   "explanation": "Только с такой стратиграфической детальностью механизмы разработки можно эффективно контролировать.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "детальности"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "slatt-9.n-418-557229-b.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-418-557229-b",
+   "node_id": "slatt-9.n-418-557229-b",
+   "claim_ids": [
+    "slatt-9.n-418-557229-b.c-ad9844"
+   ],
+   "prompt": "Почему перфорации горизонтальных скважин ограничили дельтовыми песчаниками?",
+   "explanation": "Речной песок более проницаемый; ограничение перфораций избавило от конкуренции за воду.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Чтобы речные и дельтовые пески не конкурировали за воду",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Потому что речные пески менее проницаемы дельтовых",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Чтобы добывать только речной песок",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-418-557229-b.t02",
+   "type": "multiple",
+   "step_id": "slatt-9.n-418-557229-b",
+   "node_id": "slatt-9.n-418-557229-b",
+   "claim_ids": [
+    "slatt-9.n-418-557229-b.c-795f70"
+   ],
+   "prompt": "Что глины делают в дельтовых фациях Прадхо-Бей по тексту?",
+   "explanation": "Глины делят песчаники на отсеки и защищают от газовой шапки; остальные варианты неверны.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Делят песчаники на отсеки",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Защищают от прорыва газовой шапки",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Полностью убирают газовую шапку",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Делают пласт однородным по всей толще",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "slatt-9.n-418-557229-c.t01",
+   "type": "order",
+   "step_id": "slatt-9.n-418-557229-c",
+   "node_id": "slatt-9.n-418-557229-c",
+   "claim_ids": [
+    "slatt-9.n-418-557229-c.c-4d91f1",
+    "slatt-9.n-418-557229-c.c-e28d69",
+    "slatt-9.n-418-557229-c.c-e19790",
+    "slatt-9.n-418-557229-c.c-982d51"
+   ],
+   "prompt": "Расставьте шаги по тексту: от наблюдения к новой добыче.",
+   "explanation": "Сначала замечают рост воды, затем картируют глину, предполагают запертую нефть и бурят ствол.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Сравнить добычу нефти и воды во времени",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Пробурить горизонтальный боковой ствол в песчанике",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Получить около 400 BOPD новой добычи",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Предположить, что нефть заперта под глиной",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Закартировать глину, которая экранирует пласт",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "e",
+    "d",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "slatt-9.n-419-55ee1f.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-419-55ee1f",
+   "node_id": "slatt-9.n-419-55ee1f",
+   "claim_ids": [
+    "slatt-9.n-419-55ee1f.c-092061",
+    "slatt-9.n-419-55ee1f.c-ae7033"
+   ],
+   "prompt": "Сколько футов горизонтального участка 11-30 признали нефтенасыщенными?",
+   "explanation": "Из 894 футов нефтенасыщенной (net pay) признали 475 футов.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "475 футов (144 м)",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "894 фута (272 м)",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "1600 барр./сут",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-419-55ee1f.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-419-55ee1f",
+   "node_id": "slatt-9.n-419-55ee1f",
+   "claim_ids": [
+    "slatt-9.n-419-55ee1f.c-db318f"
+   ],
+   "prompt": "Зачем скважину 11-30 пробурили под глиной залива?",
+   "explanation": "Глина залива служила щитом от газовой шапки сверху, поэтому скважину провели под ней.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Чтобы глина защищала от газовой шапки сверху",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Чтобы ствол проходил только через глину",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Чтобы глина залива стала песчаником",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-422-176649.t01",
+   "type": "single",
+   "step_id": "slatt-9.n-422-176649",
+   "node_id": "slatt-9.n-422-176649",
+   "claim_ids": [
+    "slatt-9.n-422-176649.c-a7b8e7"
+   ],
+   "prompt": "Где расположено месторождение Купарук?",
+   "explanation": "В тексте прямо сказано: месторождение на северном склоне Аляски, меловой период.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "На северном склоне Аляски",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "В Мексиканском заливе",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "На севере Канады",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "У южного побережья Аляски",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "slatt-9.n-422-176649.t02",
+   "type": "single",
+   "step_id": "slatt-9.n-422-176649",
+   "node_id": "slatt-9.n-422-176649",
+   "claim_ids": [
+    "slatt-9.n-422-176649.c-5c5bbe",
+    "slatt-9.n-422-176649.c-67ded9"
+   ],
+   "prompt": "Что показали корреляции секвенсной стратиграфии по единице A?",
+   "explanation": "Корреляция выявила шесть отдельных тел, а не одно непрерывное, как считали раньше.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Единица A — одно непрерывное песчаное тело",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Единица A состоит из шести отдельных песчаных тел",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Единица A не содержит песчаных тел",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Единица A состоит из двух песчаных тел",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "slatt-9.n-422-176649.t03",
+   "type": "multiple",
+   "step_id": "slatt-9.n-422-176649",
+   "node_id": "slatt-9.n-422-176649",
+   "claim_ids": [
+    "slatt-9.n-422-176649.c-3fb876",
+    "slatt-9.n-422-176649.c-17e2d4",
+    "slatt-9.n-422-176649.c-9dd679",
+    "slatt-9.n-422-176649.c-a1b55c"
+   ],
+   "prompt": "Какие утверждения о месторождении Купарук верны по книге?",
+   "explanation": "Разбиение на шесть тел описано только для единицы A; Купарук — второе по величине.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Добыча идёт из двух интервалов: единицы A и C",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Каждое песчаное тело единицы A отделено от соседнего морской глиной",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Разбиение на шесть тел описано для всех единиц месторождения",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Купарук — крупнейшее нефтяное месторождение в Северной Америке",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "slatt-9.n-422-176649.t04",
+   "type": "gap",
+   "step_id": "slatt-9.n-422-176649",
+   "node_id": "slatt-9.n-422-176649",
+   "claim_ids": [
+    "slatt-9.n-422-176649.c-17e2d4"
+   ],
+   "prompt": "Каждое песчаное тело единицы A отделено от соседнего высокочастотной трансгрессивной {{1}}.",
+   "explanation": "Соседние песчаные тела разделены высокочастотной трансгрессивной морской глиной.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "морской глиной"
+   ],
+   "accept": [
+    [
+     "морская глина",
+     "морской глиной",
+     "морскую глину"
+    ]
+   ]
+  }
+ ]
+}
