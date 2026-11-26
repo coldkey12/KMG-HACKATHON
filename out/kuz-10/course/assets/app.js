@@ -186,6 +186,7 @@
     themeBtn.title = isDark() ? "Тёмная тема включена" : "Тёмная тема выключена";
   }
   applyTheme();
+  applyMarks();
   themeBtn.addEventListener("click", function () { st.theme = isDark() ? "light" : "dark"; save(); applyTheme(); });
   document.getElementById("brand-k").textContent = C.chapter.book.author + " · " + (C.chapter.sections || "");
   document.getElementById("brand-t").textContent = C.chapter.title;
@@ -205,12 +206,24 @@
     });
     return q;
   }
+  // provenance marks: by default a quiet icon (the word is in its title / for screen readers); the switch
+  // «Показать источники и метки» shows the full labelled badges (remembered in this browser)
+  function pvq(cls, ic, word) {
+    return el("span", { "class": "pv " + cls, title: word, role: "img", "aria-label": word }, [icon(ic), el("span", { "class": "w", text: word })]);
+  }
   function pv(kind) {
-    if (kind === "model") return el("span", { "class": "pv model" }, [icon("spark"), "пояснение модели"]);
-    if (kind === "pack") return el("span", { "class": "pv model" }, [icon("spark"), "из глоссария курса"]);
-    if (kind === "hyp") return el("span", { "class": "pv hyp" }, [icon("qmark"), "гипотеза"]);
-    if (kind === "pend") return el("span", { "class": "pv pend" }, [icon("clock"), "ждёт проверки"]);
+    if (kind === "model") return pvq("model", "spark", "пояснение модели");
+    if (kind === "pack") return pvq("model", "spark", "из глоссария курса");
+    if (kind === "hyp") return pvq("hyp", "qmark", "гипотеза");
+    if (kind === "pend") return pvq("pend", "clock", "ждёт проверки");
     return el("span", { "class": "pv book" }, [icon("book"), "по книге, стр. N"]);
+  }
+  function applyMarks() { document.body.classList.toggle("marks-on", !!st.marks); }
+  function marksToggle() {
+    var b = el("button", { "class": "btn sec marks-btn noprint", type: "button", "aria-pressed": st.marks ? "true" : "false", onclick: function () {
+      st.marks = !st.marks; save(); applyMarks(); b.setAttribute("aria-pressed", st.marks ? "true" : "false");
+    } }, ["Показать источники и метки"]);
+    return b;
   }
   function srcChips(p) {
     var wrap = el("span", { "class": "src" }), qbox = el("div", { "class": "quotes", hidden: true });
@@ -428,8 +441,8 @@
   /* ---------- lesson ---------- */
   // Main reading flow (TZ: block order is free, empty blocks are not shown); questions come right after the core
   // text; reference blocks are folded into «Справка к шагу» at the end (nothing is removed).
-  var ORDER = ["media", "summary", "terms", "how", "procedure", "examples", "numbers", "formulas", "tables", "mistake", "tasks", "data", "analogy", "figures"];
-  var EXTRA = ["now", "manual", "deeper", "problems", "links", "source"];
+  var ORDER = ["media", "summary", "how", "tasks"];   // open by default: the core of the step
+  var EXTRA = ["terms", "procedure", "examples", "numbers", "formulas", "tables", "mistake", "data", "analogy", "figures", "now", "manual", "deeper", "problems", "links", "source"];   // folded under their titles
   var BLOCK_TITLES = { media: "Ролик и интерактивная сцена", figures: "Иллюстрации", tasks: "Проверь себя", links: "Связи шага" };
 
   function dgm(f) {   // step diagram: HTML from the builder's spec (text reflows; the .svg file is the export)
@@ -568,7 +581,7 @@
     function has(k) { return content[k] && content[k].filter(Boolean).length; }
     var mainKeys = ORDER.filter(has), extraKeys = EXTRA.filter(has);
     var toc = mainKeys.map(function (k) { return { id: "b-" + k, t: titles[k] + (k === "tasks" ? " (" + tl.length + ")" : ""), subs: subs[k] || [] }; });
-    if (extraKeys.length) toc.push({ id: "b-extra", t: "Справка к шагу", subs: extraKeys.map(function (k) { return ["b-" + k, titles[k]]; }) });
+    if (extraKeys.length) toc.push({ id: "b-extra", t: "Подробнее к шагу", subs: [] });   // only what is open by default + the folded group
     curToc = toc;
     renderSide("path");
 
@@ -578,8 +591,8 @@
           k === "tasks" ? el("span", { "class": "small muted", text: plural(tl.length, "вопрос", "вопроса", "вопросов") }) : null]),
         el("div", { "class": "body" }, content[k])]);
     });
-    if (extraKeys.length) blocks.push(el("section", { "class": "extra", id: "b-extra", "aria-labelledby": "h-extra" }, [el("h2", { id: "h-extra", text: "Справка к шагу" }),
-      el("p", { text: "Подробности и все цитаты автора. Откройте нужное." })].concat(extraKeys.map(function (k) {
+    if (extraKeys.length) blocks.push(el("section", { "class": "extra", id: "b-extra", "aria-labelledby": "h-extra" }, [el("h2", { id: "h-extra", text: "Подробнее к шагу" }),
+      el("p", { text: "Понятия, примеры, цифры, таблицы, формулы, данные, иллюстрации и все цитаты автора. Нажмите заголовок, чтобы раскрыть." })].concat(extraKeys.map(function (k) {
         return el("details", { "class": "xblock", id: "b-" + k }, [el("summary", null, [chev(), el("h2", { text: titles[k] }), el("span", { "class": "hint", text: hints[k] || "" })]),
           el("div", { "class": "body" }, content[k])]);
       }))));
@@ -594,15 +607,16 @@
         el("span", { text: "урок " + (ps.indexOf(s) + 1) + " из " + ps.length })]),
       el("h1", { tabindex: "-1" }, [mq(mastery(s), "big", s.id), el("span", { text: s.title })]),
       el("p", { "class": "book", text: "В книге: " + s.title_book }),
-      el("div", { "class": "meta" }, [
+      el("details", { "class": "howread noprint" }, [el("summary", null, [chev(), "Как читать урок"]), el("div", { "class": "meta" }, [
         el("span", { "class": "tag", text: "Шаг " + s.order + " из " + steps.length }),
         el("span", { "class": "tag", text: "~" + s.minutes + " мин" }),
         s.pages.length ? el("span", { "class": "tag acc", text: "стр. " + pagesStr(s.pages) }) : null,
         diff ? el("span", { "class": "tag", title: diff.description || "", text: diff.name }) : null,
         s.threshold ? el("span", { "class": "tag ok", text: "пороговая идея" }) : null,
         s.data_decision ? el("span", { "class": "tag acc", text: "решение на данных" }) : null]),
-      el("div", { "class": "pvlegend", "aria-label": "Метки текста" }, ["Метки текста:", pv("book"), pv("model"), pv("hyp"), pv("pend")]),
-      s.why_here ? el("p", { "class": "why" }, [el("b", { text: "Почему этот шаг здесь. " }), richText(s.why_here.t, [])]) : null,
+      el("div", { "class": "pvlegend", "aria-label": "Метки текста" }, ["Метки текста:", pv("book"), pv("model"), pv("hyp"), pv("pend")]), el("p", { "class": "small muted", text: "По умолчанию у абзацев видна только кнопка «по книге, стр. N» и маленький значок метки; полные метки включает переключатель ниже." }),
+        s.why_here ? el("p", { "class": "why" }, [el("b", { text: "Почему этот шаг здесь. " }), richText(s.why_here.t, [])]) : null]),
+      marksToggle(),
       el("div", { "class": "pager noprint" }, [prev ? el("a", { "class": "btn sec", href: "#/step/" + prev.id, "aria-label": "Назад: " + prev.title }, [icon("left"), "Назад"]) : null,
         next ? el("a", { "class": "btn sec", href: "#/step/" + next.id, "aria-label": "Дальше: " + next.title }, ["Дальше", icon("right")]) : null])
     ]);

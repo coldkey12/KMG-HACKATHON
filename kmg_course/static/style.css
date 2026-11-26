@@ -544,3 +544,17 @@ th:first-child{background:var(--surface-3)}
   a{color:#000;text-decoration:none}
   .sum-step{border-color:#bbb}
 }
+
+/* ---------- quiet reading mode (default): marks as small icons; full badges with body.marks-on ---------- */
+body:not(.marks-on) .para .pv:not(.book){border:0;background:transparent;padding:0 2px;min-height:0}
+body:not(.marks-on) .para .pv:not(.book) .w{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+body:not(.marks-on) .para .pv.model{color:var(--muted)}
+body:not(.marks-on) .para.hyp,body:not(.marks-on) .para.pend{border-left:0;padding-left:0}
+body:not(.marks-on) .para .pv.book{border-color:var(--line-2);color:var(--muted);font-weight:500}
+body:not(.marks-on) .para .pv.book:hover{color:var(--primary);border-color:var(--primary)}
+.howread{margin:8px 0 0;border:1px solid var(--line);border-radius:var(--r2);background:var(--surface)}
+.howread > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px;padding:4px 12px;font-weight:600;color:var(--ink-2)}
+.howread > summary::-webkit-details-marker{display:none}
+.howread > .meta,.howread > .pvlegend,.howread > p{margin:8px 12px}
+.howread > .meta{margin-top:4px}
+.marks-btn{margin-top:10px}
