@@ -71,7 +71,7 @@ def build_spec(layer, node, tpl, fmt, pack, log=print):
     if tpl.get("table_columns"):
         spec["panel"] = feature_panel(layer, node, tpl)
     if tpl.get("case"):
-        spec["case"] = CASES[tpl["case"]](node, tpl)
+        spec["case"] = CASES[tpl["case"]](node, tpl, layer) if tpl["case"] == "steps" else CASES[tpl["case"]](node, tpl)
     return spec
 
 
@@ -175,7 +175,23 @@ def cutoff_case(node, tpl):
                                   "чем меньше показание кривой, тем больше %s" % prop}}
 
 
-CASES = {"radial": radial_case, "cutoff": cutoff_case}
+def steps_case(node, tpl, layer=None):
+    """claim_steps (fallback): the node's ok claims as cards, book order; nothing beyond the layer."""
+    bad = doubtful_claims(layer, node) if layer else set()
+    ok = [c for c in node["claims"] if c["status"] == "ok" and c["id"] not in bad]
+    ok = sorted(ok, key=lambda c: c["page"])[:tpl["params"]["max_cards"]]
+    kinds = tpl["labels"]["kinds"]
+    cards = []
+    for c in ok:
+        words = re.findall(r"[A-Za-zА-Яа-яЁё][A-Za-zА-Яа-яЁё-]*", c["text"])
+        cards.append({"id": c["id"], "kind": c["kind"] if c["kind"] in kinds else "observation", "page": c["page"],
+                      "short": " ".join(words[:tpl["params"]["words_on_card"]]) + ("…" if len(words) > tpl["params"]["words_on_card"] else "")})
+    cnt = {k: sum(1 for c in cards if c["kind"] == k) for k in kinds}
+    return {"cards": cards, "facts": {"n_cards": len(cards), "n_obs": cnt["observation"], "n_inf": cnt["inference"],
+                                      "kinds_line": ", ".join("%s — %d" % (kinds[k], v) for k, v in cnt.items() if v)}}
+
+
+CASES = {"radial": radial_case, "cutoff": cutoff_case, "steps": steps_case}
 
 
 def feature_panel(layer, node, tpl):

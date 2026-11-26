@@ -76,7 +76,7 @@ def pick(node, reg=None):
     """Router's template (format.scene_template) if its rule holds, else the first implemented one that holds."""
     reg = reg if reg is not None else registry()
     want = (node.get("format") or {}).get("scene_template")
-    order = sorted(reg, key=lambda t: t["id"] != want)
+    order = sorted(reg, key=lambda t: (bool(t.get("fallback")), t["id"] != want))  # fallback only when nothing else fits
     return next((t["id"] for t in order if applies(t, node)[0]), None)
 
 
@@ -99,18 +99,27 @@ def report(layer_path, out_path=None):
                      "covered_by": hit[0] if hit else None,
                      "state_model": next((t["state_model"] for t in reg if hit and t["id"] == hit[0]), None),
                      "why_not": [] if hit else ["%s: %s" % (c[0], c[2]) for c in cands]})
-    covered = sum(1 for r in rows if r["covered_by"])
+    fb = {t["id"] for t in reg if t.get("fallback")}
+    for r in rows:
+        r["fallback"] = r["covered_by"] in fb
+        if r["fallback"]:  # honest report: the special templates that did not fit, and why
+            r["why_not"] = ["%s: %s" % (c[0], c[2]) for c in [(t["id"],) + applies(t, next(n for n in layer["nodes"] if n["id"] == r["node_id"]))
+                                                             for t in reg if t["id"] not in fb]]
+    covered = sum(1 for r in rows if r["covered_by"] and not r["fallback"])
+    covered_fb = sum(1 for r in rows if r["fallback"])
     res = {"chapter": layer["chapter"]["id"], "templates": [t["id"] for t in reg], "video_nodes": len(rows),
-           "covered": covered, "rows": rows}
+           "covered": covered, "covered_fallback": covered_fb, "rows": rows}
     out = Path(out_path) if out_path else Path(layer_path).parent / "template_coverage.md"
     L = ["# Покрытие шаблонами сцен: %s" % layer["chapter"]["id"], "",
-         "Шаблоны: %s. Видеоёмких узлов (short / long_video / interactive): %d, закрыто шаблоном: %d." % (
-             ", ".join("`%s`" % t for t in res["templates"]), len(rows), covered), "",
+         "Шаблоны: %s. Видеоёмких узлов (short / long_video / interactive): %d, закрыто специальным шаблоном: %d, "
+         "только запасным (ролик соберётся, но нужен специальный шаблон): %d, не закрыто: %d." % (
+             ", ".join("`%s`" % t for t in res["templates"]), len(rows), covered, covered_fb, len(rows) - covered - covered_fb), "",
          "| № | Узел | Формат | Шаблон | Модель состояния / почему нет |", "|---|---|---|---|---|"]
     for r in rows:
         L.append("| %d | %s (`%s`) | %s | %s | %s |" % (r["order"], r["title"], r["node_id"].split(".", 1)[1], r["format"],
-                                                     "`%s`" % r["covered_by"] if r["covered_by"] else "**нужен новый**",
-                                                     (r["state_model"] or "")[:140] if r["covered_by"] else "; ".join(r["why_not"])))
+                                                     ("`%s` (запасной) — **нужен специальный**" % r["covered_by"]) if r.get("fallback") else
+                                                     ("`%s`" % r["covered_by"] if r["covered_by"] else "**нужен новый**"),
+                                                     "; ".join(r["why_not"]) if (r.get("fallback") or not r["covered_by"]) else (r["state_model"] or "")[:140]))
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     out.with_suffix(".json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     return res, out

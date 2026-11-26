@@ -324,6 +324,7 @@ def main(argv=None):
         for lp in args.layers:
             res, out = coverage.report(lp)
             print(json.dumps({"chapter": res["chapter"], "video_nodes": res["video_nodes"], "covered": res["covered"],
+                              "covered_fallback_only": res.get("covered_fallback"),
                               "report": str(out)}, ensure_ascii=False))
         return
     if args.cmd == "video":
