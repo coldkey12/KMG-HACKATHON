@@ -1,0 +1,850 @@
+{
+ "chapter": "dake-5",
+ "schema": "glava-kurs/illustration.schema.json",
+ "illustrations": [
+  {
+   "alt": "Схема шага «Зачем нужно уравнение притока»: частая ошибка и как правильно.",
+   "caption": "Частая ошибка и поправка по книге.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-075-53ce28.c-e08cfe",
+    "dake-5.n-075-53ce28.c-f4c0ff",
+    "dake-5.n-075-53ce28.c-c179b4",
+    "dake-5.n-075-53ce28.c-db029b"
+   ],
+   "source": "блок «Частая ошибка» этого шага",
+   "block": "mistake",
+   "id": "dake-5.n-075-53ce28.i1",
+   "step_id": "dake-5.n-075-53ce28",
+   "node_id": "dake-5.n-075-53ce28",
+   "file": "illus/dake-5.n-075-53ce28.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Зачем нужно уравнение притока»: нефть, газ, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "dake-5.n-075-53ce28.i2",
+   "step_id": "dake-5.n-075-53ce28",
+   "node_id": "dake-5.n-075-53ce28",
+   "file": "illus/dake-5.n-075-53ce28.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Почему поток к скважине круговой»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-075-c13100.c-c0e126",
+    "dake-5.n-075-c13100.c-f259d2",
+    "dake-5.n-075-c13100.c-a94a7e"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-075-c13100.i1",
+   "step_id": "dake-5.n-075-c13100",
+   "node_id": "dake-5.n-075-c13100",
+   "file": "illus/dake-5.n-075-c13100.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Упрощения, на которых стоит модель»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-075-c13100-b.c-b8c04e",
+    "dake-5.n-075-c13100-b.c-cdcedf",
+    "dake-5.n-075-c13100-b.c-e2cf9f"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-075-c13100-b.i1",
+   "step_id": "dake-5.n-075-c13100-b",
+   "node_id": "dake-5.n-075-c13100-b",
+   "file": "illus/dake-5.n-075-c13100-b.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Баланс массы в тонком кольце»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-076-6e29b0.c-7b96ad",
+    "dake-5.n-076-6e29b0.c-d0b8ba",
+    "dake-5.n-076-6e29b0.c-6d22c8"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-076-6e29b0.i1",
+   "step_id": "dake-5.n-076-6e29b0",
+   "node_id": "dake-5.n-076-6e29b0",
+   "file": "illus/dake-5.n-076-6e29b0.i1.svg"
+  },
+  {
+   "alt": "Схема шага «От разности потоков к производной»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-076-99664a.i1",
+   "step_id": "dake-5.n-076-99664a",
+   "node_id": "dake-5.n-076-99664a",
+   "file": "illus/dake-5.n-076-99664a.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Закон Дарси для притока к скважине»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-076-4c2052.c-7a7518",
+    "dake-5.n-076-4c2052.c-7bb346",
+    "dake-5.n-076-4c2052.c-fef595"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-076-4c2052.i1",
+   "step_id": "dake-5.n-076-4c2052",
+   "node_id": "dake-5.n-076-4c2052",
+   "file": "illus/dake-5.n-076-4c2052.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Подставляем закон Дарси в баланс массы»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-076-6c8f9a.i1",
+   "step_id": "dake-5.n-076-6c8f9a",
+   "node_id": "dake-5.n-076-6c8f9a",
+   "file": "illus/dake-5.n-076-6c8f9a.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Сжимаемость: давление меняет плотность»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-076-134e98.c-9d7d57",
+    "dake-5.n-076-134e98.c-6bf513",
+    "dake-5.n-076-134e98.c-40d2b2",
+    "dake-5.n-076-134e98.c-134e98"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-076-134e98.i1",
+   "step_id": "dake-5.n-076-134e98",
+   "node_id": "dake-5.n-076-134e98",
+   "file": "illus/dake-5.n-076-134e98.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Собираем главное уравнение радиального течения»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-076-9e66a4.i1",
+   "step_id": "dake-5.n-076-9e66a4",
+   "node_id": "dake-5.n-076-9e66a4",
+   "file": "illus/dake-5.n-076-9e66a4.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Почему уравнение нельзя решить сразу»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-076-a43909.c-deb016",
+    "dake-5.n-076-a43909.c-a0dd25",
+    "dake-5.n-076-a43909.c-b932e3",
+    "dake-5.n-076-a43909.c-571538"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-076-a43909.i1",
+   "step_id": "dake-5.n-076-a43909",
+   "node_id": "dake-5.n-076-a43909",
+   "file": "illus/dake-5.n-076-a43909.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Почему уравнение нельзя решить сразу»: нефть, газ, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "dake-5.n-076-a43909.i2",
+   "step_id": "dake-5.n-076-a43909",
+   "node_id": "dake-5.n-076-a43909",
+   "file": "illus/dake-5.n-076-a43909.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Раскрываем левую часть уравнения»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-078-13f7ac.i1",
+   "step_id": "dake-5.n-078-13f7ac",
+   "node_id": "dake-5.n-078-13f7ac",
+   "file": "illus/dake-5.n-078-13f7ac.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Раскрываем левую часть уравнения»: нефть, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "dake-5.n-078-13f7ac.i2",
+   "step_id": "dake-5.n-078-13f7ac",
+   "node_id": "dake-5.n-078-13f7ac",
+   "file": "illus/dake-5.n-078-13f7ac.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Три допущения для жидкости: что отбрасываем»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-079-e3e57b.c-e2f078",
+    "dake-5.n-079-e3e57b.c-6032b1",
+    "dake-5.n-079-e3e57b.c-b30265"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-079-e3e57b.i1",
+   "step_id": "dake-5.n-079-e3e57b",
+   "node_id": "dake-5.n-079-e3e57b",
+   "file": "illus/dake-5.n-079-e3e57b.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Три допущения для жидкости: что отбрасываем»: нефть, газ, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "dake-5.n-079-e3e57b.i2",
+   "step_id": "dake-5.n-079-e3e57b",
+   "node_id": "dake-5.n-079-e3e57b",
+   "file": "illus/dake-5.n-079-e3e57b.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Давление расползается, как тепло»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-079-57c272.i1",
+   "step_id": "dake-5.n-079-57c272",
+   "node_id": "dake-5.n-079-57c272",
+   "file": "illus/dake-5.n-079-57c272.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Когда простое уравнение работает»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-079-f310ed.c-da559d"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-079-f310ed.i1",
+   "step_id": "dake-5.n-079-f310ed",
+   "node_id": "dake-5.n-079-f310ed",
+   "file": "illus/dake-5.n-079-f310ed.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Общая сжимаемость породы и флюидов»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-079-1483bc.c-7c8c45",
+    "dake-5.n-079-1483bc.c-67ad55",
+    "dake-5.n-079-1483bc.c-cdf1be"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-079-1483bc.i1",
+   "step_id": "dake-5.n-079-1483bc",
+   "node_id": "dake-5.n-079-1483bc",
+   "file": "illus/dake-5.n-079-1483bc.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Общая сжимаемость породы и флюидов»: нефть, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "dake-5.n-079-1483bc.i2",
+   "step_id": "dake-5.n-079-1483bc",
+   "node_id": "dake-5.n-079-1483bc",
+   "file": "illus/dake-5.n-079-1483bc.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Нефть или газ: проверяем упрощение на числах»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-079-e7f60d.c-789467",
+    "dake-5.n-079-e7f60d.c-7d22b6",
+    "dake-5.n-079-e7f60d.c-0acad1",
+    "dake-5.n-079-e7f60d.c-865c9d",
+    "dake-5.n-079-e7f60d.c-5fc653",
+    "dake-5.n-079-e7f60d.c-7d215f",
+    "dake-5.n-079-e7f60d.c-b44e38"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-079-e7f60d.i1",
+   "step_id": "dake-5.n-079-e7f60d",
+   "node_id": "dake-5.n-079-e7f60d",
+   "file": "illus/dake-5.n-079-e7f60d.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Нефть или газ: проверяем упрощение на числах»: нефть, газ, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "dake-5.n-079-e7f60d.i2",
+   "step_id": "dake-5.n-079-e7f60d",
+   "node_id": "dake-5.n-079-e7f60d",
+   "file": "illus/dake-5.n-079-e7f60d.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Пористость в произведении φc: не перепутать»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-079-642e1b.c-e3bbf3",
+    "dake-5.n-079-642e1b.c-7aba0f",
+    "dake-5.n-079-642e1b.c-7f8dae",
+    "dake-5.n-079-642e1b.c-6db6b1"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-079-642e1b.i1",
+   "step_id": "dake-5.n-079-642e1b",
+   "node_id": "dake-5.n-079-642e1b",
+   "file": "illus/dake-5.n-079-642e1b.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Пуск скважины с постоянным дебитом»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-076-7df203.c-5a742a",
+    "dake-5.n-076-7df203.c-61acc0",
+    "dake-5.n-076-7df203.c-76b220"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-076-7df203.i1",
+   "step_id": "dake-5.n-076-7df203",
+   "node_id": "dake-5.n-076-7df203",
+   "file": "illus/dake-5.n-076-7df203.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Первые часы: пласт кажется бесконечным»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-077-b84212.c-9b55ab",
+    "dake-5.n-077-b84212.c-42386f",
+    "dake-5.n-077-b84212.c-10dad8",
+    "dake-5.n-077-b84212.c-ba00ff",
+    "dake-5.n-077-b84212.c-257c19"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-077-b84212.i1",
+   "step_id": "dake-5.n-077-b84212",
+   "node_id": "dake-5.n-077-b84212",
+   "file": "illus/dake-5.n-077-b84212.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Граница-стена: псевдоустановившийся режим»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-077-ca8a8e.c-d9d12a",
+    "dake-5.n-077-ca8a8e.c-b9d277",
+    "dake-5.n-077-ca8a8e.c-42711c"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-077-ca8a8e.i1",
+   "step_id": "dake-5.n-077-ca8a8e",
+   "node_id": "dake-5.n-077-ca8a8e",
+   "file": "illus/dake-5.n-077-ca8a8e.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Как быстро падает давление при добыче»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-077-bfc0ba.c-e62c1c"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-077-bfc0ba.i1",
+   "step_id": "dake-5.n-077-bfc0ba",
+   "node_id": "dake-5.n-077-bfc0ba",
+   "file": "illus/dake-5.n-077-bfc0ba.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Как быстро падает давление при добыче»: нефть, газ, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "dake-5.n-077-bfc0ba.i2",
+   "step_id": "dake-5.n-077-bfc0ba",
+   "node_id": "dake-5.n-077-bfc0ba",
+   "file": "illus/dake-5.n-077-bfc0ba.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Каждая скважина дренирует свою зону»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-077-ded66e.i1",
+   "step_id": "dake-5.n-077-ded66e",
+   "node_id": "dake-5.n-077-ded66e",
+   "file": "illus/dake-5.n-077-ded66e.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Среднее давление пласта по поровым объёмам»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-077-1d2ed9.c-996404",
+    "dake-5.n-077-1d2ed9.c-b5a880",
+    "dake-5.n-077-1d2ed9.c-dfcce9",
+    "dake-5.n-077-1d2ed9.c-c1121f"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-077-1d2ed9.i1",
+   "step_id": "dake-5.n-077-1d2ed9",
+   "node_id": "dake-5.n-077-1d2ed9",
+   "file": "illus/dake-5.n-077-1d2ed9.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Замена объёмов на замеры дебитов»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-077-94b7d8.c-c8a20f",
+    "dake-5.n-077-94b7d8.c-45bb2e",
+    "dake-5.n-077-94b7d8.c-fb6280",
+    "dake-5.n-077-94b7d8.c-eca5e1",
+    "dake-5.n-077-94b7d8.c-515504"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-077-94b7d8.i1",
+   "step_id": "dake-5.n-077-94b7d8",
+   "node_id": "dake-5.n-077-94b7d8",
+   "file": "illus/dake-5.n-077-94b7d8.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Открытая граница: установившийся режим»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-078-2e64be.c-d78527",
+    "dake-5.n-078-2e64be.c-ea66c8",
+    "dake-5.n-078-2e64be.c-224a3d",
+    "dake-5.n-078-2e64be.c-a9bd73",
+    "dake-5.n-078-2e64be.c-67c515"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-078-2e64be.i1",
+   "step_id": "dake-5.n-078-2e64be",
+   "node_id": "dake-5.n-078-2e64be",
+   "file": "illus/dake-5.n-078-2e64be.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Режимы в жизни: приближения, не законы»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-078-548359.c-d9a27e",
+    "dake-5.n-078-548359.c-e18ba9",
+    "dake-5.n-078-548359.c-d7ce26"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-078-548359.i1",
+   "step_id": "dake-5.n-078-548359",
+   "node_id": "dake-5.n-078-548359",
+   "file": "illus/dake-5.n-078-548359.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Скважина как линия: три условия задачи»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-087-e2cbac.c-2e1dd0",
+    "dake-5.n-087-e2cbac.c-df2859",
+    "dake-5.n-087-e2cbac.c-badcfe",
+    "dake-5.n-087-e2cbac.c-0cea9c"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-087-e2cbac.i1",
+   "step_id": "dake-5.n-087-e2cbac",
+   "node_id": "dake-5.n-087-e2cbac",
+   "file": "illus/dake-5.n-087-e2cbac.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Какие упрощения остаются в силе»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-087-2d43eb.c-08d5ef",
+    "dake-5.n-087-2d43eb.c-066ccb",
+    "dake-5.n-087-2d43eb.c-b9386c",
+    "dake-5.n-087-2d43eb.c-a4b0eb"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-087-2d43eb.i1",
+   "step_id": "dake-5.n-087-2d43eb",
+   "node_id": "dake-5.n-087-2d43eb",
+   "file": "illus/dake-5.n-087-2d43eb.i1.svg"
+  },
+  {
+   "alt": "Условные цвета шага «Какие упрощения остаются в силе»: нефть, давление.",
+   "caption": "Цвета пород, флюидов и кривых, о которых говорит шаг, — по единой легенде курса (русская школа ГИС (названа в кадре)).",
+   "frame_class": "A",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [],
+   "source": "стайлгайд организаторов (styleguide_official.json)",
+   "block": "figures",
+   "id": "dake-5.n-087-2d43eb.i2",
+   "step_id": "dake-5.n-087-2d43eb",
+   "node_id": "dake-5.n-087-2d43eb",
+   "file": "illus/dake-5.n-087-2d43eb.i2.svg"
+  },
+  {
+   "alt": "Схема шага «Подстановка Больцмана: r и t вместе»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-087-3b2d79.c-cf47cc",
+    "dake-5.n-087-3b2d79.c-3b2d79"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-087-3b2d79.i1",
+   "step_id": "dake-5.n-087-3b2d79",
+   "node_id": "dake-5.n-087-3b2d79",
+   "file": "illus/dake-5.n-087-3b2d79.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Уравнение с одной переменной»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-087-c0a8aa.c-243979"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-087-c0a8aa.i1",
+   "step_id": "dake-5.n-087-c0a8aa",
+   "node_id": "dake-5.n-087-c0a8aa",
+   "file": "illus/dake-5.n-087-c0a8aa.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Интегрируем уравнение для производной давления»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-088-f69f33.c-e27d1b",
+    "dake-5.n-088-f69f33.c-e1f759"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-088-f69f33.i1",
+   "step_id": "dake-5.n-088-f69f33",
+   "node_id": "dake-5.n-088-f69f33",
+   "file": "illus/dake-5.n-088-f69f33.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Константа C₂ из дебита скважины»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-088-579dda.c-19553f",
+    "dake-5.n-088-579dda.c-6f401e",
+    "dake-5.n-088-579dda.c-ea4463"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-088-579dda.i1",
+   "step_id": "dake-5.n-088-579dda",
+   "node_id": "dake-5.n-088-579dda",
+   "file": "illus/dake-5.n-088-579dda.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Давление в точке пласта в любой момент»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-088-07e434.c-5825a6",
+    "dake-5.n-088-07e434.c-f8ed83"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-088-07e434.i1",
+   "step_id": "dake-5.n-088-07e434",
+   "node_id": "dake-5.n-088-07e434",
+   "file": "illus/dake-5.n-088-07e434.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Экспоненциальный интеграл: форма кривой»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-088-6928a5.c-07981f",
+    "dake-5.n-088-6928a5.c-5434f7",
+    "dake-5.n-088-6928a5.c-05a0a8",
+    "dake-5.n-088-6928a5.c-02865a"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-088-6928a5.i1",
+   "step_id": "dake-5.n-088-6928a5",
+   "node_id": "dake-5.n-088-6928a5",
+   "file": "illus/dake-5.n-088-6928a5.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Логарифм вместо интеграла при x<0.01»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-088-7a8cf2.c-fe846e",
+    "dake-5.n-088-7a8cf2.c-04c808",
+    "dake-5.n-088-7a8cf2.c-786ba3",
+    "dake-5.n-088-7a8cf2.c-b2102b"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-088-7a8cf2.i1",
+   "step_id": "dake-5.n-088-7a8cf2",
+   "node_id": "dake-5.n-088-7a8cf2",
+   "file": "illus/dake-5.n-088-7a8cf2.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Давление на забое при испытании скважины»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-089-b0f540.c-6e7f01",
+    "dake-5.n-089-b0f540.c-e54be6",
+    "dake-5.n-089-b0f540.c-35af5c",
+    "dake-5.n-089-b0f540.c-f73362"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-089-b0f540.i1",
+   "step_id": "dake-5.n-089-b0f540",
+   "node_id": "dake-5.n-089-b0f540",
+   "file": "illus/dake-5.n-089-b0f540.i1.svg"
+  },
+  {
+   "alt": "Схема шага «Слушаем соседнюю скважину: полная формула»: что на входе, что получаем и где правило ломается.",
+   "caption": "Что на входе и что на выходе этого шага. Текст — из шага.",
+   "frame_class": "B",
+   "origin": "code_from_data",
+   "label": "схема",
+   "claim_ids": [
+    "dake-5.n-089-d27493.c-41a4ef",
+    "dake-5.n-089-d27493.c-b5dcd9",
+    "dake-5.n-089-d27493.c-fbb329",
+    "dake-5.n-089-d27493.c-0b8c19"
+   ],
+   "source": "блок «Что это значит для данных» этого шага",
+   "block": "data",
+   "id": "dake-5.n-089-d27493.i1",
+   "step_id": "dake-5.n-089-d27493",
+   "node_id": "dake-5.n-089-d27493",
+   "file": "illus/dake-5.n-089-d27493.i1.svg"
+  },
+  {
+   "id": "dake-5.photo.course-cover",
+   "step_id": "dake-5.n-075-53ce28",
+   "node_id": null,
+   "file": "assets/photos/landscape-steppe-mesas.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Горы Айракты-Шоманай, Мангистауская область (Казахстан)",
+   "alt": "Светлые скалистые останцы из осадочных пород поднимаются над зелёной степью под чистым синим небом.",
+   "source": "Sergio Agostinelli, CC BY 2.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Airakty_Shomanai_Mountains_in_Mangystau_Region,_Kazakhstan_(April_2024).jpg)",
+   "claim_ids": [],
+   "placement": "course-cover"
+  },
+  {
+   "id": "dake-5.photo.part-cover-dake-5.p1",
+   "step_id": "dake-5.n-075-53ce28",
+   "node_id": null,
+   "file": "assets/photos/outcrop-folded-strata.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Складчатые слои пород хребта Пай-Хой, река Силоваяха (Россия)",
+   "alt": "Скалистый берег реки, в обрыве которого видны изогнутые в складки слои горных пород разных оттенков.",
+   "source": "Sergey Kotov (https://imaggeo.egu.eu/user/kotov/), CC BY 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Folded_Strata_of_Pay-Khoy_Ridge_in_Russia.jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-dake-5.p1"
+  },
+  {
+   "id": "dake-5.photo.part-cover-dake-5.p2",
+   "step_id": "dake-5.n-076-6e29b0",
+   "node_id": null,
+   "file": "assets/photos/outcrop-layered-badlands.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Слоистые осадочные отложения урочища Кызылкуп, Мангистауская область (Казахстан)",
+   "alt": "Пологие склоны из чередующихся белых, бежевых и красноватых осадочных слоёв под ясным небом.",
+   "source": "IvarT, CC0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Kyzylkup.jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-dake-5.p2"
+  },
+  {
+   "id": "dake-5.photo.part-cover-dake-5.p3",
+   "step_id": "dake-5.n-078-13f7ac",
+   "node_id": null,
+   "file": "assets/photos/rig-distant.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Буровая установка на нефтяной скважине, Мичиган (США)",
+   "alt": "Буровая вышка на грунтовой площадке среди полей под синим небом с кучевыми облаками.",
+   "source": "Dwight Burdette, CC BY 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Oil_Drilling_Rig_Saline_Township_Michigan.JPG)",
+   "claim_ids": [],
+   "placement": "part-cover-dake-5.p3"
+  },
+  {
+   "id": "dake-5.photo.part-cover-dake-5.p4",
+   "step_id": "dake-5.n-076-7df203",
+   "node_id": null,
+   "file": "assets/photos/seismic-node-tundra.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Узловой сейсмоприёмник на профиле сейсморазведки, NPR-A, Аляска (США)",
+   "alt": "Жёлтый автономный сейсмический регистратор (узел) установлен в снегу среди низких кустарников тундры.",
+   "source": "BLM Alaska, Public domain, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Seismic_node_(55180102938).jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-dake-5.p4"
+  },
+  {
+   "id": "dake-5.photo.part-cover-dake-5.p5",
+   "step_id": "dake-5.n-087-e2cbac",
+   "node_id": null,
+   "file": "assets/photos/fieldwork-geologists-outcrop.jpg",
+   "frame_class": "D",
+   "origin": "photo",
+   "caption": "Геологи изучают нефтематеринские триасовые породы, Северный склон Аляски (США)",
+   "alt": "Геологи у подножия крупного обнажения наклонных тёмных слоёв, один из них изучает породы на склоне.",
+   "source": "USGS, Public domain, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Surprise_Creek,_Western_North_Slope_of_Alaska.jpg)",
+   "claim_ids": [],
+   "placement": "part-cover-dake-5.p5"
+  }
+ ]
+}
