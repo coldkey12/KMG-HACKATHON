@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Osiris Deeptech — как устроен конвейер</title>
+<style>
+:root{--acc:#19d3c5;--ai:#c9a6ff;--line:#2b2b2b;--mut:#8c8c8c}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#000;color:#fff;font:400 22px/1.38 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+#top{position:fixed;left:0;right:0;top:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;border-bottom:1px solid var(--line);font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+section{position:fixed;inset:54px 0 0 0;padding:40px 56px 70px;display:none;flex-direction:column;justify-content:center;gap:26px}
+section.on{display:flex}
+section.on>*{animation:in .45s both}
+section.on>*:nth-child(2){animation-delay:.06s}section.on>*:nth-child(3){animation-delay:.12s}section.on>*:nth-child(4){animation-delay:.18s}section.on>*:nth-child(5){animation-delay:.24s}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){section.on>*,.nd{animation:none!important}}
+.k{font:500 14px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+h1{font-weight:400;font-size:112px;line-height:.96;letter-spacing:-.04em;margin:0;max-width:15ch}
+h2{font-weight:400;font-size:58px;line-height:1.02;letter-spacing:-.03em;margin:0;max-width:28ch}
+.lede{font-size:30px;color:#d0d0d0;max-width:46ch;line-height:1.3;margin:0}
+.mut{color:var(--mut)}.ai{color:var(--ai)}.pr{color:var(--acc)}
+.g{display:grid;gap:22px}.g2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g21{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.box{border:1px solid var(--line);background:#0b0b0b;padding:22px 26px}
+.lab{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+.box b{font-weight:500;color:#fff}.box p{margin:0;color:#d4d4d4}
+ul{margin:0;padding:0;list-style:none}li{padding:9px 0 9px 26px;border-top:1px solid var(--line);position:relative;color:#d4d4d4}li:first-child{border-top:0}li::before{content:"—";position:absolute;left:0;color:var(--mut)}
+pre{margin:0;font:500 18px/1.55 ui-monospace,Menlo,monospace;white-space:pre-wrap;color:#e6e6e6}
+pre .c{color:var(--acc)}pre .m{color:var(--mut)}pre .r{color:#ff5a4f}pre .a{color:var(--ai)}
+code{font:500 .9em ui-monospace,Menlo,monospace;color:#fff}
+.num{font-size:96px;line-height:.95;letter-spacing:-.05em;font-variant-numeric:tabular-nums;margin-bottom:10px}
+table{border-collapse:collapse;width:100%;font-size:21px}th,td{text-align:left;padding:11px 16px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font:500 12px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase}
+/* diagram */
+.dg{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;align-items:stretch}
+.nd{border:2px solid #444;background:#0b0b0b;padding:16px 18px;animation:in .5s both;position:relative}
+.nd em{display:block;font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;font-style:normal;margin-bottom:12px;color:var(--mut)}
+.nd b{display:block;font-weight:500;font-size:24px;line-height:1.12;margin-bottom:8px}
+.nd span{display:block;font-size:17px;color:#a8a8a8;line-height:1.3}
+.nd code{display:block;margin-top:10px;font-size:14px;color:var(--mut)}
+.nd.A{border-color:var(--ai)}.nd.A em{color:var(--ai)}.nd.P{border-color:var(--acc)}.nd.P em{color:var(--acc)}
+.nd:not(:last-child)::after{content:"→";position:absolute;right:-17px;top:50%;margin-top:-16px;font-size:22px;color:#777;z-index:2}
+.leg{display:flex;gap:28px;font-size:18px;color:#bdbdbd}.leg i{display:inline-block;width:14px;height:14px;margin-right:8px;vertical-align:-1px}
+.pg{position:fixed;right:56px;bottom:16px;font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.16em;color:#555}
+</style></head><body>
+<div id="top"><span>Osiris Deeptech · конвейер «глава → курс»</span><span id="ttl"></span></div>
+
+<section data-t="">
+  <div class="k">Дон Владимир · Темирлан Тойгонбаев</div>
+  <h1>Как устроен наш конвейер</h1>
+  <p class="lede">Одна команда превращает главу учебника в проверенный курс: уроки, задания, анимации и ролики. Ниже — что внутри и почему результату можно верить.</p>
+  <div class="g g4" style="margin-top:14px">
+    <div class="box"><div class="num">6 500</div><p>строк своего кода на Python и 2 100 на JavaScript</p></div>
+    <div class="box"><div class="num">10</div><p>глав обработано, 4 из них программа увидела сегодня</p></div>
+    <div class="box"><div class="num">4 449</div><p>утверждений, у каждого цитата автора и страница</p></div>
+    <div class="box"><div class="num">0</div><p>минут ручной работы на тестовых главах</p></div>
+  </div>
+</section>
+
+<section data-t="Архитектура">
+  <div class="k">01 · Архитектура</div>
+  <h2>Нейросеть пишет. Проверяет и собирает обычный код</h2>
+  <div class="dg">
+    <div class="nd P" style="animation-delay:.1s"><em>код</em><b>Нарезка главы</b><span>абзацы, формулы, таблицы, рисунки, примеры, задачи</span><code>kmg/units.py</code></div>
+    <div class="nd A" style="animation-delay:.3s"><em>нейросеть · сильная</em><b>План</b><span>делит главу на темы и ставит их по порядку, один запрос</span><code>kmg/structure.py</code></div>
+    <div class="nd A" style="animation-delay:.5s"><em>нейросеть · дешёвая</em><b>Утверждения</b><span>по каждой теме, параллельно: текст + цитата + страница</span><code>prompts/node.md</code></div>
+    <div class="nd P" style="animation-delay:.7s"><em>код</em><b>Пять проверок</b><span>цитаты, числа, порядок терминов, пропуски, формат</span><code>kmg/checks.py</code></div>
+    <div class="nd A" style="animation-delay:.9s"><em>нейросеть · цикл</em><b>Исправление</b><span>ошибка с адресом возвращается на доработку, затем снова проверка</span><code>kmg/refine.py</code></div>
+    <div class="nd P" style="animation-delay:1.1s"><em>код</em><b>Сборка</b><span>курс, кадры роликов, паспорта — из проверенных утверждений</span><code>kmg_course/</code></div>
+  </div>
+  <div class="g g3">
+    <div class="box"><div class="lab">Единый источник</div><p>Между двумя половинами лежит один файл <code>layer.json</code>. Курс, задания, диктор и кадры берут текст только из него, а не из книги заново.</p></div>
+    <div class="box"><div class="lab">Что не подтвердилось</div><p>Получает статус «спорно» и вопрос специалисту. В ответы заданий и в текст диктора не попадает.</p></div>
+    <div class="box"><div class="lab">Запуск</div><pre><span class="c">$</span> python -m kmg run configs/chapters/глава.yaml</pre></div>
+  </div>
+  <div class="leg"><span><i style="background:#c9a6ff"></i>шаги, где работает нейросеть</span><span><i style="background:#19d3c5"></i>шаги без нейросети</span></div>
+</section>
+
+<section data-t="Данные">
+  <div class="k">02 · Что хранится</div>
+  <h2>Утверждение — единица, которую можно проверить</h2>
+  <div class="g g21">
+    <div class="box"><div class="lab">Одна запись из out/lat-v/layer.json</div><pre>{
+ <span class="m">"id":</span>      "lat-v.n-098-3acb3f.c-4ec9a3",
+ <span class="m">"text":</span>    "Значения Pн и kв берут из расчёта по формулам
+            (10) и (11) или снимают с рис. 7.",
+ <span class="m">"kind":</span>    "observation",
+ <span class="m">"page":</span>    <span class="c">98</span>,
+ <span class="m">"quote":</span>   <span class="c">"рассчитываемые по формулам (10) и (11) или
+            графически по данным рис. 7"</span>,
+ <span class="m">"unit_id":</span> "u-098-3acb3f",
+ <span class="m">"numbers":</span> ["10", "11", "7"],
+ <span class="m">"by":</span>      <span class="a">"model"</span>,
+ <span class="m">"status":</span>  <span class="c">"ok"</span>
+}</pre></div>
+    <div class="box"><div class="lab">Зачем каждое поле</div><ul>
+      <li><b>quote + page + unit_id</b> — где именно в книге это сказано: страница и конкретный абзац</li>
+      <li><b>kind</b> — наблюдение, вывод или допущение автора</li>
+      <li><b>by</b> — видно, что текст написала нейросеть, а не автор</li>
+      <li><b>status</b> — подтверждено или спорно</li>
+      <li><b>id</b> — страница плюс отпечаток исходного текста. При повторном запуске номер не меняется, поэтому задания, ролики и правки специалиста остаются привязаны</li>
+    </ul></div>
+  </div>
+</section>
+
+<section data-t="Проверки">
+  <div class="k">03 · Проверки без нейросети</div>
+  <h2>Пять проверок, 280 строк кода, ни одного запроса к нейросети</h2>
+  <div class="g g21">
+    <div class="box"><table><thead><tr><th>Проверка</th><th>Как именно</th></tr></thead><tbody>
+      <tr><td><b>Цитата</b></td><td>Текст приводится к одному виду, затем точное вхождение строки — в том абзаце, на который ссылается утверждение, и на той странице. Цитата из описания рисунка отклоняется</td></tr>
+      <tr><td><b>Числа</b></td><td>Все числа урока должны быть в исходных абзацах. «0,46» и «0.46» — одно число; номера рисунков и шагов не считаются</td></tr>
+      <tr><td><b>Порядок</b></td><td>Термин не встречается раньше урока, где объяснён; поиск по основе слова</td></tr>
+      <tr><td><b>Пропуски</b></td><td>У каждого абзаца главы есть урок или записанная причина</td></tr>
+      <tr><td><b>Формат</b></td><td>Файл проходит схему организаторов</td></tr>
+    </tbody></table></div>
+    <div class="g" style="align-content:start">
+      <div class="box"><div class="lab">Отчёт программы · out/lat-v/checks.md</div><pre>Итог: <span class="c">пройдены</span>
+contract 0 · coverage 0 · quote 0
+numbers 0 · official 0</pre></div>
+      <div class="box"><div class="lab">Сегодня на тесте</div><p>В главе Slatt проверка сама сняла <b>6 утверждений</b>: нейросеть выдала описание рисунка за слова автора.</p></div>
+      <div class="box" style="border-color:#6a3a36"><div class="lab" style="color:#ff8a7e">Предел</div><p>Проверяется наличие в книге, а не смысл вывода. Распознанное с пробелами «0. 1 4» дало 7 ложных срабатываний в Asquith.</p></div>
+    </div>
+  </div>
+</section>
+
+<section data-t="Самоисправление">
+  <div class="k">04 · Цикл самоисправления</div>
+  <h2>Ошибку правит не человек — она возвращается с адресом</h2>
+  <div class="g g3">
+    <div class="box"><div class="lab">1 · Проверка нашла</div><pre><span class="r">[error]</span> lat-v.n-098-edce90
+summary[1]: число 40 нет
+в исходных единицах</pre></div>
+    <div class="box"><div class="lab">2 · Запрос на доработку</div><p>Нейросеть получает <b>только эту тему</b>, исходные абзацы книги и точный текст ошибки. Весь курс заново не пишется.</p></div>
+    <div class="box"><div class="lab">3 · Повторная проверка</div><p>Прошло — в курс. Не прошло — статус <b>«спорно»</b>, вопрос специалисту, в задания и ролики не идёт.</p></div>
+  </div>
+  <div class="g g4">
+    <div class="box"><div class="num">1 650</div><p>запросов на доработку по десяти главам</p></div>
+    <div class="box"><div class="num">$2,68</div><p>стоили они по ценам нейросети</p></div>
+    <div class="box"><div class="num">3%</div><p>осталось специалисту на тесте: 41 утверждение из 1 285</p></div>
+    <div class="box"><div class="num">0</div><p>минут человека на правки</p></div>
+  </div>
+</section>
+
+<section data-t="Модели и цена">
+  <div class="k">05 · Какая нейросеть на каком шаге</div>
+  <h2>Сильная — там, где решается структура. Дешёвая — на массовой работе</h2>
+  <div class="g g21">
+    <div class="box"><table><thead><tr><th>Шаг</th><th>Модель</th><th>Запросов на главу</th></tr></thead><tbody>
+      <tr><td>План главы</td><td>Opus 5.5</td><td>1</td></tr>
+      <tr><td>Утверждения по теме</td><td>Haiku 5.5</td><td>25–70, параллельно</td></tr>
+      <tr><td>Доработка после проверок</td><td>Haiku 5.5</td><td>по числу ошибок</td></tr>
+      <tr><td>Задания</td><td>Haiku 5.5</td><td>по уроку</td></tr>
+      <tr><td>Текст диктора</td><td>Sonnet 5.5</td><td>по ролику</td></tr>
+      <tr><td>Поиск ошибок в чужом курсе</td><td>Opus 5.5</td><td>пачками по 15</td></tr>
+    </tbody></table><p class="mut" style="font-size:17px;margin-top:14px">Назначение лежит в <code>config/models.yaml</code>: модель на шаге меняется одной строкой. Способа обращения два — подписка или платный ключ.</p></div>
+    <div class="g" style="align-content:start">
+      <div class="box"><div class="lab">Как выбирали: замер на одном образце</div><pre>Opus на всём          $0,197 за тему
+Haiku + строгое задание <span class="c">$0,010</span> за тему
+совпадение с Opus      <span class="c">96%</span>
+ошибок проверок        <span class="c">0</span></pre></div>
+      <div class="g g2"><div class="box"><div class="num">$12,7</div><p>глава в первом варианте</p></div><div class="box"><div class="num pr">$2</div><p>глава сейчас</p></div></div>
+      <div class="box"><p>Ответы нейросети сохраняются по содержимому запроса: повторный запуск главы — <b>11 секунд и $0</b>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section data-t="Сборка курса">
+  <div class="k">06 · Сборка курса</div>
+  <h2>Курс — статичная папка. Собирается без нейросети за секунду</h2>
+  <div class="g g21">
+    <div class="box"><div class="lab">Отчёт сборки · глава Латышовой</div><pre><span class="c">$</span> python -m kmg_course build out/lat-v/layer.json
+{"steps": <span class="c">70</span>, "size_mb": <span class="c">6.91</span>,
+ "tasks_kept": <span class="c">164</span>,
+ "task_types": ["calc","gap","multiple","order","single"],
+ "tasks_meet_tz": <span class="c">true</span>, "tasks_schema_ok": <span class="c">true</span>,
+ "illustrations": <span class="c">123</span>,
+ "steps_without_illustration": <span class="c">0</span>}</pre></div>
+    <div class="box"><div class="lab">Что внутри</div><ul>
+      <li><b>Без сервера и логина:</b> открывается двойным щелчком, работает без интернета</li>
+      <li><b>Кнопка «стр. N»</b> у каждого абзаца берёт цитату из того же утверждения</li>
+      <li><b>Ответы заданий</b> сверяются с утверждениями, расчётные — пересчётом</li>
+      <li><b>Правка факта:</b> страница пересобирается за 1 секунду; задания изменённого урока снимаются, потому что их ответ больше не подтверждён</li>
+      <li><b>Телефон 390 и компьютер 1280</b>, тёмная и светлая тема</li>
+    </ul></div>
+  </div>
+</section>
+
+<section data-t="Ролики">
+  <div class="k">07 · Сцены и ролики</div>
+  <h2>Одно описание сцены даёт анимацию в уроке и видеофайл</h2>
+  <div class="dg" style="grid-template-columns:repeat(5,minmax(0,1fr))">
+    <div class="nd P"><em>код</em><b>Описание сцены</b><span>объекты, параметры, допущения — данными</span></div>
+    <div class="nd P"><em>код</em><b>Модель состояния</b><span>кадр и кривая считаются из одного расчёта и разойтись не могут</span></div>
+    <div class="nd A"><em>нейросеть</em><b>Текст диктора</b><span>у каждой фразы номер утверждения из книги</span></div>
+    <div class="nd P"><em>код</em><b>Запись</b><span>покадрово из браузера, сборка FFmpeg, голос — синтезатор речи</span></div>
+    <div class="nd P"><em>код</em><b>Контроль звука</b><span>дорожка распознаётся обратно в текст и сверяется со сценарием</span></div>
+  </div>
+  <div class="g g21">
+    <div class="box"><div class="lab">Паспорта роликов · passport.json</div><pre>Басниев   71,7 с  расхождение <span class="c">2,4%</span>  −16,2 LUFS
+Латышова 148,1 с  расхождение <span class="c">5,2%</span>  −16,2 LUFS
+Slatt    132,0 с  расхождение <span class="c">2,8%</span>  −15,9 LUFS
+<span class="m">допуск 10%; ролик с 10,4% мы не сдали</span></pre></div>
+    <div class="box" style="border-color:#6a3a36"><div class="lab" style="color:#ff8a7e">Предел</div><p>Готовых сцен четыре: волна давления, кривые приборов, зона вокруг скважины, пороговое значение. Для рифов, дельт и бурения ролик — схема из карточек с голосом.</p></div>
+  </div>
+</section>
+
+<section data-t="Поиск ошибок">
+  <div class="k">08 · Проверка чужого курса</div>
+  <h2>Замечание выдаётся, только если есть основание в книге</h2>
+  <div class="dg" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+    <div class="nd A"><em>нейросеть · сильная</em><b>Разбор пачками</b><span>по 15 элементов; в контексте глава, описание сцены, правила физики и список заблуждений</span></div>
+    <div class="nd P"><em>код</em><b>Фильтр оснований</b><span>страница должна существовать в главе, цитата — находиться на этой странице. Иначе замечание отбрасывается</span></div>
+    <div class="nd A"><em>нейросеть</em><b>Повторная проверка</b><span>второй проход спорит с каждым оставшимся замечанием</span></div>
+    <div class="nd A"><em>нейросеть</em><b>Кадры</b><span>картинки сверяются с описанием сцены и метками</span></div>
+  </div>
+  <div class="g g4">
+    <div class="box"><div class="num">19 / 21</div><p>спрятанных ошибок на тренировочном наборе</p></div>
+    <div class="box"><div class="num">2</div><p>ложные тревоги — граница допуска</p></div>
+    <div class="box"><div class="num">20</div><p>замечаний на тестовом наборе, у каждого исправление и страница</p></div>
+    <div class="box"><div class="num">3 мин</div><p>на набор из 95 элементов</p></div>
+  </div>
+</section>
+
+<section data-t="Новая область">
+  <div class="k">09 · Знания отдельно от кода</div>
+  <h2>Для бурения поменяли папку, а не программу</h2>
+  <div class="g g21">
+    <div class="box"><div class="lab">domain/drilling/</div><pre>glossary.yaml           <span class="m">словарь терминов RU/EN</span>
+misconceptions.yaml     <span class="m">типичные заблуждения</span>
+physics_checklist.yaml  <span class="m">правила физики для сцен</span>
+pronunciation.yaml      <span class="m">ударения для диктора</span>
+it_bridges.yaml         <span class="m">связи с данными и ИТ</span>
+styleguide.yaml         <span class="m">цвета пород и флюидов</span></pre></div>
+    <div class="g" style="align-content:start">
+      <div class="box"><div class="lab">История репозитория</div><pre><span class="c">$</span> git diff --shortstat freeze-v3 -- domain
+ 6 files changed, <span class="c">230 insertions(+)</span>
+<span class="c">$</span> git diff --stat freeze-v3 -- kmg kmg_course prompts
+<span class="m">(пусто)</span></pre></div>
+      <div class="g g2"><div class="box"><div class="num">3,5</div><p>минуты на пакет бурения</p></div><div class="box"><div class="num">98%</div><p>главы о бурении в курсе</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section data-t="Результат">
+  <div class="k">10 · Что получилось</div>
+  <h2>Четыре главы, которые программа увидела сегодня</h2>
+  <div class="box"><table><thead><tr><th>Глава</th><th>Язык</th><th>Тем</th><th>Утверждений</th><th>Главы в курсе</th><th>Заданий</th><th>Отправлено специалисту</th><th>Минут человека</th></tr></thead><tbody>
+    <tr><td>Asquith — приборы в скважине</td><td>EN</td><td>63</td><td>555</td><td>91%</td><td>127</td><td>17</td><td>0</td></tr>
+    <tr><td>Dake — приток к скважине</td><td>EN</td><td>37</td><td>251</td><td>95%</td><td>75</td><td>3</td><td>0</td></tr>
+    <tr><td>Slatt — речные дельты</td><td>EN</td><td>24</td><td>168</td><td>93%</td><td>59</td><td>12</td><td>0</td></tr>
+    <tr><td>Басарыгин — бурение</td><td>RU</td><td>47</td><td>311</td><td>98%</td><td>119</td><td>9</td><td>0</td></tr>
+  </tbody></table></div>
+  <div class="g g3">
+    <div class="box"><div class="lab">Заморозка</div><p>Программа заморожена в 09:48, главы выданы в 10:30. Сравнение кода с меткой заморозки пустое.</p></div>
+    <div class="box"><div class="lab">Деньги</div><p>553 запроса к нейросети за день теста, с платного ключа — $0.</p></div>
+    <div class="box" style="border-color:#6a3a36"><div class="lab" style="color:#ff8a7e">Что не сделано</div><p>Анимаций для геологии и бурения нет; рисунки со сканами не сверяются; запуск проверен на macOS.</p></div>
+  </div>
+</section>
+
+<div class="pg" id="pg"></div>
+<script>
+(function(){var S=[].slice.call(document.querySelectorAll('section')),cur=0;
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));S.forEach(function(s,k){s.classList.toggle('on',k==cur)});document.getElementById('ttl').textContent=S[cur].dataset.t;document.getElementById('pg').textContent=('0'+(cur+1)).slice(-2)+' / '+S.length;location.hash=cur+1}
+addEventListener('keydown',function(e){if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>=0){e.preventDefault();go(cur+1)}if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>=0){e.preventDefault();go(cur-1)}});
+addEventListener('click',function(e){if(e.target.closest('a,button'))return;go(cur+(e.clientX<innerWidth*.25?-1:1))});
+function fit(){document.body.style.zoom=Math.min(innerWidth/1728,innerHeight/1080)}addEventListener('resize',fit);fit();
+go((parseInt(location.hash.slice(1))||1)-1)})();
+</script></body></html>
