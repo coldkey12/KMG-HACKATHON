@@ -1,0 +1,3 @@
+{"out": "/Users/coldkey/KMG-HACKATHON/out/asq-7/course", "steps": 63, "size_mb": 4.39, "tasks_kept": 127, "tasks_generated": 146, "task_types": ["calc", "gap", "multiple", "order", "single"], "tasks_meet_tz": true, "tasks_schema_ok": true, "cost_usd": 0.105201, "illustrations": 99, "illustrations_schema_ok": true, "photos": 8, "steps_without_illustration": 0}
+layer: out/asq-7/layer.json | checks passed: False | $ 1.9865
+course: /Users/coldkey/KMG-HACKATHON/.venv/bin/python -m kmg_course build /Users/coldkey/KMG-HACKATHON/out/asq-7/layer.json

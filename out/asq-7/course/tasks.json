@@ -1,0 +1,4405 @@
+{
+ "chapter": "asq-7",
+ "schema": "glava-kurs/task.schema.json",
+ "tasks": [
+  {
+   "id": "asq-7.n-126-f1402b.t01",
+   "type": "single",
+   "step_id": "asq-7.n-126-f1402b",
+   "node_id": "asq-7.n-126-f1402b",
+   "claim_ids": [
+    "asq-7.n-126-f1402b.c-e77880",
+    "asq-7.n-126-f1402b.c-6f01a2"
+   ],
+   "prompt": "Зачем переводят каротажные данные в оценки нефти, газа и воды?",
+   "explanation": "Оценки нужны, чтобы оценить зону и решить вопрос о заканчивании скважины.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Чтобы оценить зону и решить, стоит ли пробовать заканчивание скважины",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Чтобы заменить все другие данные о скважине",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Чтобы определить только тип породы без оценки флюидов",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Чтобы сразу начать добычу без оценки зоны",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-126-f1402b.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-126-f1402b",
+   "node_id": "asq-7.n-126-f1402b",
+   "claim_ids": [
+    "asq-7.n-126-f1402b.c-6f01a2",
+    "asq-7.n-126-f1402b.c-e77880"
+   ],
+   "prompt": "Какие шаги входят в интерпретацию каротажа по тексту главы?",
+   "explanation": "Первые три шага описаны в тексте; бурение новой скважины в тексте не упоминается.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Определить пористость и истинное сопротивление зоны",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Перевести эти величины в оценки нефти, газа и воды",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Решить, стоит ли пробовать заканчивание скважины",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Пробурить новую скважину на соседнем участке",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-126-f1402b.t03",
+   "type": "gap",
+   "step_id": "asq-7.n-126-f1402b",
+   "node_id": "asq-7.n-126-f1402b",
+   "claim_ids": [
+    "asq-7.n-126-f1402b.c-c9cde1"
+   ],
+   "prompt": "Rt — глубокий индукционный или глубокий боковой каротаж, исправленный на {{1}}.",
+   "explanation": "Rt — истинное сопротивление: глубокий каротаж, исправленный на проникновение.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "проникновение"
+   ],
+   "accept": [
+    [
+     "проникновения"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-126-f1402b.t04",
+   "type": "single",
+   "step_id": "asq-7.n-126-f1402b",
+   "node_id": "asq-7.n-126-f1402b",
+   "claim_ids": [
+    "asq-7.n-126-f1402b.c-5f3005"
+   ],
+   "prompt": "Почему вода в пласте при неснижаемой водонасыщенности не движется?",
+   "explanation": "Капиллярное давление держит воду на зёрнах, поэтому она не движется при неснижаемой водонасыщенности.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Её удерживает капиллярное давление на зёрнах",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Её выталкивает нефть из пор",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Она испаряется при пластовой температуре",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Её связывает глина в трещинах",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-126-f1402b.t05",
+   "type": "single",
+   "step_id": "asq-7.n-126-f1402b",
+   "node_id": "asq-7.n-126-f1402b",
+   "claim_ids": [
+    "asq-7.n-126-f1402b.c-b28b3e"
+   ],
+   "prompt": "Когда формулы проницаемости по каротажу годны для оценки?",
+   "explanation": "Формулы годны только для пластов при неснижаемой водонасыщенности, как сказано в тексте.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Для любого пласта, независимо от водонасыщенности",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Только для пластов при неснижаемой водонасыщенности",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Только для пластов с нефтью без воды",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Только для глубоких скважин",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "asq-7.n-126-2d97cf.t01",
+   "type": "order",
+   "step_id": "asq-7.n-126-2d97cf",
+   "node_id": "asq-7.n-126-2d97cf",
+   "claim_ids": [
+    "asq-7.n-126-2d97cf.c-bd12b0",
+    "asq-7.n-126-2d97cf.c-572df0",
+    "asq-7.n-126-2d97cf.c-58fc1a"
+   ],
+   "prompt": "Расставьте шаги: как учесть данные перед спуском обсадной колонны.",
+   "explanation": "Сначала собирают данные, затем сопоставляют их с каротажем и только потом решают о спуске.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Сопоставьте их с данными каротажа.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Отберите данные, которые относятся к решаемому вопросу.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Только после этого принимайте решение о спуске обсадной колонны.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Соберите данные из всех источников: испытания пласта, признаки в образцах, газокаротаж, добыча соседних скважин.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "d",
+    "b",
+    "a",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-126-2d97cf.t02",
+   "type": "single",
+   "step_id": "asq-7.n-126-2d97cf",
+   "node_id": "asq-7.n-126-2d97cf",
+   "claim_ids": [
+    "asq-7.n-126-2d97cf.c-fd09bb",
+    "asq-7.n-126-2d97cf.c-58fc1a",
+    "asq-7.n-126-2d97cf.c-572df0"
+   ],
+   "prompt": "Каротаж показал хорошую зону. Что сделать перед решением о спуске обсадной колонны?",
+   "explanation": "Данные каротажа не применяют без других данных; решение принимают после учёта всех источников.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Учесть испытания пласта, признаки в образцах, газокаротаж и добычу соседних скважин",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Принять решение только по данным каротажа",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Считать другие данные очевидными и не проверять их",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Спустить колонну, а данные учесть потом",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-126-2d97cf.t03",
+   "type": "gap",
+   "step_id": "asq-7.n-126-2d97cf",
+   "node_id": "asq-7.n-126-2d97cf",
+   "claim_ids": [
+    "asq-7.n-126-2d97cf.c-c7355b",
+    "asq-7.n-126-2d97cf.c-37f7cax"
+   ],
+   "prompt": "В формуле для Sw показатель цементации m стоит степенью при {{1}}.",
+   "explanation": "В формуле для Sw пористость φ стоит в степени m; m берут из таблицы 1.1.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "пористости"
+   ],
+   "accept": [
+    [
+     "пористость",
+     "φ"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-126-f3bbd9.t01",
+   "type": "single",
+   "step_id": "asq-7.n-126-f3bbd9",
+   "node_id": "asq-7.n-126-f3bbd9",
+   "claim_ids": [
+    "asq-7.n-126-f3bbd9.c-d20a11",
+    "asq-7.n-126-f3bbd9.c-434ed3"
+   ],
+   "prompt": "Зачем при интерпретации выделять водоносные зоны?",
+   "explanation": "Сравнение водоносных и нефтеносных зон показывает наличие и количество углеводородов.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Сравнение с ними помогает определить наличие и объём углеводородов",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Водоносные зоны всегда дают нефть при испытании",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Они не нужны, если каротаж обработан компьютером",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Они нужны только для расчёта плотности",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-126-f3bbd9.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-126-f3bbd9",
+   "node_id": "asq-7.n-126-f3bbd9",
+   "claim_ids": [
+    "asq-7.n-126-f3bbd9.c-860442",
+    "asq-7.n-126-f3bbd9.c-374a4a",
+    "asq-7.n-126-f3bbd9.c-530987"
+   ],
+   "prompt": "Какие утверждения о рекогносцировочном просмотре верны?",
+   "explanation": "Просмотр нужен для незнакомого района и полезен даже с компьютерной обработкой каротажа.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Нужен, когда район незнаком или нужен широкий обзор площади",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Полезен даже при компьютерной обработке каротажа",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Обычно коллекторов в каротаже больше, чем остальных интервалов",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Хороший просмотр только находит коллекторы и больше ничего",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-126-044d85.t01",
+   "type": "single",
+   "step_id": "asq-7.n-126-044d85",
+   "node_id": "asq-7.n-126-044d85",
+   "claim_ids": [
+    "asq-7.n-126-044d85.c-a00596",
+    "asq-7.n-126-044d85.c-3df805"
+   ],
+   "prompt": "Разрез терригенный: коллекторы окружены глинами с медленно меняющимся сопротивлением. Какой признак смотреть первым?",
+   "explanation": "В терригенных породах первичный признак — сопротивление, потому что фон глин ровный.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Кривую сопротивления",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Кривую пористости, как в карбонатах",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пористые зоны без учёта фона глин",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-126-044d85.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-126-044d85",
+   "node_id": "asq-7.n-126-044d85",
+   "claim_ids": [
+    "asq-7.n-126-044d85.c-bf0742",
+    "asq-7.n-126-044d85.c-a00596"
+   ],
+   "prompt": "В карбонатах первичный признак — пористость, а в терригенных породах — {{1}}.",
+   "explanation": "В терригенных породах первичный признак — сопротивление, в карбонатах — пористость.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "сопротивление"
+   ],
+   "accept": [
+    [
+     "сопротивления"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-126-044d85.t03",
+   "type": "order",
+   "step_id": "asq-7.n-126-044d85",
+   "node_id": "asq-7.n-126-044d85",
+   "claim_ids": [
+    "asq-7.n-126-044d85.c-f9b9a1",
+    "asq-7.n-126-044d85.c-dee111",
+    "asq-7.n-126-044d85.c-1276de"
+   ],
+   "prompt": "Расставьте шаги просмотра для терригенного разреза.",
+   "explanation": "Сначала выбирают ветку схемы, затем сравнивают сопротивление с фоном и отбирают зоны интереса.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Определить, терригенная порода или карбонатная.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Отобрать зоны интереса, которые нужно изучить подробнее.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Для терригенной породы взять кривую сопротивления и сравнить её с ровным фоном глин.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-140-a7a09d.t01",
+   "type": "single",
+   "step_id": "asq-7.n-140-a7a09d",
+   "node_id": "asq-7.n-140-a7a09d",
+   "claim_ids": [
+    "asq-7.n-140-a7a09d.c-3db162"
+   ],
+   "prompt": "Зона по диаграммам похожа на глину. Что нужно учесть при просмотре?",
+   "explanation": "Зона, похожая на глину, может оказаться продуктивным радиоактивным пластом, поэтому её не отбрасывают сразу.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Она может быть радиоактивным продуктивным пластом, её нельзя сразу отбрасывать",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Её всегда отбрасывают как глину",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Её сопротивление обязательно высокое, иначе это не пласт",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Такие зоны не бывают продуктивными",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-140-a7a09d.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-140-a7a09d",
+   "node_id": "asq-7.n-140-a7a09d",
+   "claim_ids": [
+    "asq-7.n-140-a7a09d.c-8c80d8",
+    "asq-7.n-140-a7a09d.c-3db162"
+   ],
+   "prompt": "Какие утверждения о глинистых зонах верны?",
+   "explanation": "Глинистая зона с низким сопротивлением и зона, похожая на глину, могут содержать нефть или газ.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Глинистая зона может давать нефть или газ при низком сопротивлении",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Низкое сопротивление всегда означает отсутствие нефти",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Зона, похожая на глину, может быть продуктивной",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Глинистые зоны не дают нефти и газа никогда",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-140-a7a09d.t03",
+   "type": "gap",
+   "step_id": "asq-7.n-140-a7a09d",
+   "node_id": "asq-7.n-140-a7a09d",
+   "claim_ids": [
+    "asq-7.n-140-a7a09d.c-a7a09d"
+   ],
+   "prompt": "Просмотр в сочетании с нейтрон-плотностной проверкой помогает определить литологию и иногда {{1}} флюида.",
+   "explanation": "Такой просмотр дает литологию и иногда тип флюида, если нужные кривые записаны.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "тип"
+   ],
+   "accept": [
+    [
+     "тип флюида"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-126-e46858.t01",
+   "type": "single",
+   "step_id": "asq-7.n-126-e46858",
+   "node_id": "asq-7.n-126-e46858",
+   "claim_ids": [
+    "asq-7.n-126-e46858.c-e46858",
+    "asq-7.n-126-e46858.c-326b5a"
+   ],
+   "prompt": "Когда начинается интерпретация по схеме на рисунке 7.2?",
+   "explanation": "Схема показывает детали интерпретации, когда зоны интереса уже выделены, со ссылками на главы.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "После того как выделены зоны интереса",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "До выделения зон, сначала по сырым данным",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Без выделения зон, сразу по всем интервалам",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-126-e46858.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-126-e46858",
+   "node_id": "asq-7.n-126-e46858",
+   "claim_ids": [
+    "asq-7.n-126-e46858.c-4449d3"
+   ],
+   "prompt": "Большинство методов учёта глины опирается на {{1}}.",
+   "explanation": "Большинство методов учёта глины опирается на объём сланца, как сказано в тексте.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "объём сланца"
+   ],
+   "accept": [
+    [
+     "объёма сланца",
+     "объем сланца"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-126-645f41.t01",
+   "type": "multiple",
+   "step_id": "asq-7.n-126-645f41",
+   "node_id": "asq-7.n-126-645f41",
+   "claim_ids": [
+    "asq-7.n-126-645f41.c-95d452",
+    "asq-7.n-126-645f41.c-c7355b",
+    "asq-7.n-126-645f41.c-8c0873"
+   ],
+   "prompt": "Какие утверждения о формуле Арчи верны?",
+   "explanation": "Sw относится к неизменённой зоне, m стоит степенью при φ, a берут из таблицы 1.1.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Sw относится к неизменённой зоне пласта",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Показатель m стоит степенью при пористости",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Rw — сопротивление пластовой воды при поверхностной температуре",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Коэффициент a берут из таблицы 1.1 первой главы",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Показатель n стоит в знаменателе вместе с пористостью",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "d"
+   ]
+  },
+  {
+   "id": "asq-7.n-126-645f41.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-126-645f41",
+   "node_id": "asq-7.n-126-645f41",
+   "claim_ids": [
+    "asq-7.n-126-645f41.c-c9cde1"
+   ],
+   "prompt": "Rt — истинное сопротивление пласта: глубокий индукционный или глубокий боковой каротаж, {{1}} на проникновение.",
+   "explanation": "Rt берут с глубокого прибора, скорректированного на проникновение фильтрата.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "исправленный"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "asq-7.n-129-34f583.t01",
+   "type": "multiple",
+   "step_id": "asq-7.n-129-34f583",
+   "node_id": "asq-7.n-129-34f583",
+   "claim_ids": [
+    "asq-7.n-129-34f583.c-8cf20d",
+    "asq-7.n-129-34f583.c-ee360a"
+   ],
+   "prompt": "Что сказано о кривой Ro и глубоком сопротивлении?",
+   "explanation": "В воде кривые совпадают; в нефти глубокое сопротивление выше, и разрыв растёт.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "В водоносных зонах Ro и глубокое сопротивление совпадают",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "В нефтеносных зонах Ro выше глубокого сопротивления",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "В нефтеносных зонах глубокое сопротивление выше Ro",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Разрыв между ними растёт с насыщенностью углеводородами",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "В нефтеносных зонах Ro и глубокое сопротивление совпадают",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c",
+    "d"
+   ]
+  },
+  {
+   "id": "asq-7.n-129-34f583.t02",
+   "type": "single",
+   "step_id": "asq-7.n-129-34f583",
+   "node_id": "asq-7.n-129-34f583",
+   "claim_ids": [
+    "asq-7.n-129-34f583.c-8cf20d"
+   ],
+   "prompt": "На кривой Ro совпадает с глубоким сопротивлением в зоне. Что это говорит?",
+   "explanation": "Совпадение Ro и глубокого сопротивления, по тексту, — признак водоносной зоны.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Зона водоносная",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Зона нефтеносная",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пласт непроницаем",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Пористость равна нулю",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-127-90a0c7.t01",
+   "type": "multiple",
+   "step_id": "asq-7.n-127-90a0c7",
+   "node_id": "asq-7.n-127-90a0c7",
+   "claim_ids": [
+    "asq-7.n-127-90a0c7.c-c361df",
+    "asq-7.n-127-90a0c7.c-a8551c",
+    "asq-7.n-127-90a0c7.c-ad2c37",
+    "asq-7.n-127-90a0c7.c-f4ec76"
+   ],
+   "prompt": "Какие условия геолог должен проверить помимо Sw?",
+   "explanation": "Подвижность, проницаемость и коммерческий объём названы условиями помимо Sw.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Углеводороды подвижны",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Пласт проницаем",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Есть коммерческий объём извлекаемых запасов",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Пористость равна нулю",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Rt больше Rw",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-127-90a0c7.t02",
+   "type": "order",
+   "step_id": "asq-7.n-127-90a0c7",
+   "node_id": "asq-7.n-127-90a0c7",
+   "claim_ids": [
+    "asq-7.n-127-90a0c7.c-823a22",
+    "asq-7.n-127-90a0c7.c-5e0102",
+    "asq-7.n-127-90a0c7.c-a8551c",
+    "asq-7.n-127-90a0c7.c-ad2c37"
+   ],
+   "prompt": "Расставьте проверки геолога в порядке, как в шаге.",
+   "explanation": "Сначала считают Sw по Арчи, затем проверяют заканчивание, подвижность и проницаемость.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Проверить, проницаем ли пласт.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Проверить, достаточно ли низка Sw для безводного заканчивания.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Проверить, подвижна ли нефть в пласте.",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Рассчитать Sw неизменённой зоны по уравнению Арчи.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "d",
+    "b",
+    "c",
+    "a"
+   ]
+  },
+  {
+   "id": "asq-7.n-127-617fec.t01",
+   "type": "single",
+   "step_id": "asq-7.n-127-617fec",
+   "node_id": "asq-7.n-127-617fec",
+   "claim_ids": [
+    "asq-7.n-127-617fec.c-1b2a5c",
+    "asq-7.n-127-617fec.c-fc8677"
+   ],
+   "prompt": "Какая пара замен отличает Sxo от Sw?",
+   "explanation": "Для Sxo меняют Rw на Rmf и Rt на Rxo; остальное в формуле остаётся.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Rmf вместо Rw и Rxo вместо Rt",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Rw вместо Rmf и Rt вместо Rxo",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "a вместо m и n вместо φ",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Rxo вместо Rw и Rmf вместо Rt",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-127-617fec.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-127-617fec",
+   "node_id": "asq-7.n-127-617fec",
+   "claim_ids": [
+    "asq-7.n-127-617fec.c-ff2f43",
+    "asq-7.n-127-617fec.c-1b2a5c",
+    "asq-7.n-127-617fec.c-499a65"
+   ],
+   "prompt": "Что верно о Rmf и Rxo?",
+   "explanation": "Rmf — фильтрат при температуре пласта; Rxo читает очень мелкий прибор.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Rmf — сопротивление фильтрата при пластовой температуре",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Rmf — сопротивление пластовой воды",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Rmf берут вместо Rw в формуле Sxo",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Rxo — сопротивление очень мелкого прибора",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Rxo стоит вместо Rw в формуле Sxo",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c",
+    "d"
+   ]
+  },
+  {
+   "id": "asq-7.n-127-e7bcdd.t01",
+   "type": "single",
+   "step_id": "asq-7.n-127-e7bcdd",
+   "node_id": "asq-7.n-127-e7bcdd",
+   "claim_ids": [
+    "asq-7.n-127-e7bcdd.c-38059b",
+    "asq-7.n-127-e7bcdd.c-311e9e"
+   ],
+   "prompt": "Sxo намного больше Sw. Что это указывает?",
+   "explanation": "Если Sxo намного больше Sw, углеводороды у ствола, вероятно, вытеснены фильтратом.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Подвижные углеводороды в промытой зоне, вероятно, вытеснены фильтратом",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Углеводороды точно отсутствуют",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пласт непроницаем",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Sw больше Sxo",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-127-e7bcdd.t02",
+   "type": "single",
+   "step_id": "asq-7.n-127-e7bcdd",
+   "node_id": "asq-7.n-127-e7bcdd",
+   "claim_ids": [
+    "asq-7.n-127-e7bcdd.c-373c38"
+   ],
+   "prompt": "Sxo можно использовать как индикатор чего?",
+   "explanation": "В тексте Sxo назван индикатором подвижности углеводородов.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "подвижности углеводородов",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "пористости пласта",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "температуры пласта",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "мощности пласта",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-127-6cc25e.t01",
+   "type": "single",
+   "step_id": "asq-7.n-127-6cc25e",
+   "node_id": "asq-7.n-127-6cc25e",
+   "claim_ids": [
+    "asq-7.n-127-6cc25e.c-21dfd3",
+    "asq-7.n-127-6cc25e.c-c0e34b"
+   ],
+   "prompt": "Почему F сокращается при делении Sw на Sxo?",
+   "explanation": "Один и тот же F используется для Sw и Sxo, поэтому при делении он сокращается.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "F одинаков для Sw и Sxo",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "F равен нулю",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "F не входит в формулы",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "F заменяют пористостью",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-127-86898d.t01",
+   "type": "single",
+   "step_id": "asq-7.n-127-86898d",
+   "node_id": "asq-7.n-127-86898d",
+   "claim_ids": [
+    "asq-7.n-127-86898d.c-8a5de1"
+   ],
+   "prompt": "Индекс Sw/Sxo равен 1.0 или больше. Что это значит?",
+   "explanation": "По тексту индекс 1.0 и выше означает, что углеводороды при проникновении не вытеснялись.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Углеводороды при проникновении не вытеснялись",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Углеводороды подвижны",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пласт карбонатный",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Rw равно Rmf",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-127-86898d.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-127-86898d",
+   "node_id": "asq-7.n-127-86898d",
+   "claim_ids": [
+    "asq-7.n-127-86898d.c-a540da",
+    "asq-7.n-127-86898d.c-558ff7",
+    "asq-7.n-127-86898d.c-bab293",
+    "asq-7.n-127-86898d.c-1f3740"
+   ],
+   "prompt": "Что верно об индексе подвижных углеводородов?",
+   "explanation": "Индекс — Sw/Sxo; книга принимает n равным 2.0; порог для карбонатов 0.6.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Индекс равен Sw/Sxo",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "При расчёте книга принимает n равным 2.0",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Вывод «не вытеснено» зависит от наличия углеводородов",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Порог для карбонатов 0.6",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Порог для песчаников 0.6",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "d"
+   ]
+  },
+  {
+   "id": "asq-7.n-127-86898d.t03",
+   "type": "order",
+   "step_id": "asq-7.n-127-86898d",
+   "node_id": "asq-7.n-127-86898d",
+   "claim_ids": [
+    "asq-7.n-127-86898d.c-17871a",
+    "asq-7.n-127-86898d.c-8a5de1",
+    "asq-7.n-127-86898d.c-1f3740"
+   ],
+   "prompt": "Расставьте шаги расчёта индекса по порядку.",
+   "explanation": "Сначала считают индекс, затем сравнивают его с 1.0, потом с порогом.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Сравнить с порогом 0.7 для песчаника или 0.6 для карбоната",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Вычислить (Rxo/Rt)/(Rmf/Rw) и извлечь корень по формуле 7.4",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Сравнить индекс с 1.0",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "b",
+    "c",
+    "a"
+   ]
+  },
+  {
+   "id": "asq-7.n-127-281469.t01",
+   "type": "single",
+   "step_id": "asq-7.n-127-281469",
+   "node_id": "asq-7.n-127-281469",
+   "claim_ids": [
+    "asq-7.n-127-281469.c-a99771",
+    "asq-7.n-127-281469.c-a7eaa8"
+   ],
+   "prompt": "Что для метода отношений нужно знать о промытой зоне?",
+   "explanation": "Метод отношений требует знать Sxo — водонасыщенность промытой зоны.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Её водонасыщенность Sxo",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Её пористость",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Её глубину",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Её температуру",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-127-281469.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-127-281469",
+   "node_id": "asq-7.n-127-281469",
+   "claim_ids": [
+    "asq-7.n-127-281469.c-209ff6",
+    "asq-7.n-127-281469.c-ed0ca2",
+    "asq-7.n-127-281469.c-2f7c53",
+    "asq-7.n-127-281469.c-7e587d"
+   ],
+   "prompt": "Какие величины стоят в формуле метода отношений для Swr?",
+   "explanation": "В формуле стоят сопротивления Rxo, Rt, Rmf и Rw; Sw в ней не используется.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Rxo",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Rt",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Rmf",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Rw",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Sw",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c",
+    "d"
+   ]
+  },
+  {
+   "id": "asq-7.n-128-8530f6.t01",
+   "type": "single",
+   "step_id": "asq-7.n-128-8530f6",
+   "node_id": "asq-7.n-128-8530f6",
+   "claim_ids": [
+    "asq-7.n-128-8530f6.c-6ae431",
+    "asq-7.n-128-8530f6.c-dce693"
+   ],
+   "prompt": "Swa больше Swr. Что это значит для Rxo/Rt?",
+   "explanation": "Если Swa больше Swr, по тексту отношение Rxo/Rt занижено.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Значение Rxo/Rt занижено",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Значение Rxo/Rt завышено",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пласт не содержит нефти",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Swr всегда верна",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-128-8530f6.t02",
+   "type": "order",
+   "step_id": "asq-7.n-128-8530f6",
+   "node_id": "asq-7.n-128-8530f6",
+   "claim_ids": [
+    "asq-7.n-128-8530f6.c-1251ce",
+    "asq-7.n-128-8530f6.c-6ae431"
+   ],
+   "prompt": "Расставьте шаги проверки профиля по порядку.",
+   "explanation": "Сначала считают Swa и Swr для одной зоны, затем сравнивают значения.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Рассчитать Swa по уравнению Арчи для неизменённой зоны.",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Сравнить Swa с Swr.",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Рассчитать Swr методом отношений для той же зоны.",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-128-8530f6.t03",
+   "type": "gap",
+   "step_id": "asq-7.n-128-8530f6",
+   "node_id": "asq-7.n-128-8530f6",
+   "claim_ids": [
+    "asq-7.n-128-8530f6.c-6ae431"
+   ],
+   "prompt": "Если Swa больше Swr, значение Rxo/Rt {{1}}.",
+   "explanation": "По тексту Swa больше Swr означает, что Rxo/Rt занижено.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "answer": [
+    "занижено"
+   ],
+   "accept": [
+    [
+     "занижено"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-128-a6b5b1.t01",
+   "type": "single",
+   "step_id": "asq-7.n-128-a6b5b1",
+   "node_id": "asq-7.n-128-a6b5b1",
+   "claim_ids": [
+    "asq-7.n-128-a6b5b1.c-c6da48",
+    "asq-7.n-128-a6b5b1.c-8223a2"
+   ],
+   "prompt": "Что по тексту завышено, если Swa меньше Swr?",
+   "explanation": "При Swa меньше Swr по тексту отношение Rxo/Rt слишком большое.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Отношение Rxo/Rt",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Значение Rw",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Значение Rmf",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Значение пористости",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-128-a6b5b1.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-128-a6b5b1",
+   "node_id": "asq-7.n-128-a6b5b1",
+   "claim_ids": [
+    "asq-7.n-128-a6b5b1.c-957e26"
+   ],
+   "prompt": "Поправка: Swa умножается на отношение Swa/Swr в степени {{1}}.",
+   "explanation": "Исправленная водонасыщенность: Swa умножается на (Swa/Swr) в степени 0.25.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "0.25"
+   ],
+   "accept": [
+    [
+     "0,25"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-128-a6b5b1.t03",
+   "type": "single",
+   "step_id": "asq-7.n-128-a6b5b1",
+   "node_id": "asq-7.n-128-a6b5b1",
+   "claim_ids": [
+    "asq-7.n-128-a6b5b1.c-626b28"
+   ],
+   "prompt": "Что такое Swr?",
+   "explanation": "Swr — водонасыщенность незатронутой зоны, посчитанная по методу отношений.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Водонасыщенность незатронутой зоны по методу отношений",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Водонасыщенность незатронутой зоны по Арчи",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Исправленная водонасыщенность",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Водонасыщенность промытой зоны",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-128-0182fd.t01",
+   "type": "single",
+   "step_id": "asq-7.n-128-0182fd",
+   "node_id": "asq-7.n-128-0182fd",
+   "claim_ids": [
+    "asq-7.n-128-0182fd.c-1251ce"
+   ],
+   "prompt": "Как по книге считают водонасыщенность неизменённой зоны при методе отношений?",
+   "explanation": "Книга требует считать Swa по Арчи и Swr методом отношений для одной и той же зоны.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Только методом отношений, без уравнения Арчи",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Только по уравнению Арчи, без метода отношений",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "По уравнению Арчи (Swa) и методом отношений (Swr)",
+     "misconception": null
+    }
+   ],
+   "answer": "c"
+  },
+  {
+   "id": "asq-7.n-128-0182fd.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-128-0182fd",
+   "node_id": "asq-7.n-128-0182fd",
+   "claim_ids": [
+    "asq-7.n-128-0182fd.c-1b5529"
+   ],
+   "prompt": "Если Swa меньше Swr, пласт может быть карбонатом с {{1}} пористостью и низкой проницаемостью.",
+   "explanation": "Книга называет такой случай карбонатом с моульдической пористостью и низкой проницаемостью.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "моульдической"
+   ],
+   "accept": [
+    [
+     "моульдическая"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-128-136a68.t01",
+   "type": "single",
+   "step_id": "asq-7.n-128-136a68",
+   "node_id": "asq-7.n-128-136a68",
+   "claim_ids": [
+    "asq-7.n-128-136a68.c-7e7b18"
+   ],
+   "prompt": "Что дают экспресс-методы?",
+   "explanation": "Экспресс-методы дают флажки: признаки зон, которые нужно изучать дальше.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Флажки: признаки возможных углеводородных зон для дальнейшего изучения",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Окончательный ответ о наличии нефти в пласте",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Точный расчёт всех параметров пласта",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-128-136a68.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-128-136a68",
+   "node_id": "asq-7.n-128-136a68",
+   "claim_ids": [
+    "asq-7.n-128-136a68.c-6c8542",
+    "asq-7.n-128-136a68.c-aefbc5"
+   ],
+   "prompt": "Какие из перечисленных входят в четыре экспресс-метода книги?",
+   "explanation": "Книга называет четыре метода, и в их списке нет Swa и Swr.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Rxo/Rt",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Rwa",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Ro",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Swa",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Swr",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-128-93cfc0.t01",
+   "type": "single",
+   "step_id": "asq-7.n-128-93cfc0",
+   "node_id": "asq-7.n-128-93cfc0",
+   "claim_ids": [
+    "asq-7.n-128-93cfc0.c-d9b0f6",
+    "asq-7.n-128-93cfc0.c-7f4cdb",
+    "asq-7.n-128-93cfc0.c-0bb709"
+   ],
+   "prompt": "Что происходит с кривой Rxo/Rt в нефтеносном пласте?",
+   "explanation": "В углеводородном пласте отношение уходит от ПС; в водоносном повторяет ПС.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Повторяет ход ПС",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Уходит от ПС",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Остаётся ровной, как в глине",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "asq-7.n-128-93cfc0.t02",
+   "type": "order",
+   "step_id": "asq-7.n-128-93cfc0",
+   "node_id": "asq-7.n-128-93cfc0",
+   "claim_ids": [
+    "asq-7.n-128-93cfc0.c-7c160b",
+    "asq-7.n-128-93cfc0.c-66991d",
+    "asq-7.n-128-93cfc0.c-d9b0f6"
+   ],
+   "prompt": "Расставь шаги метода Rxo/Rt по порядку.",
+   "explanation": "Сначала считают отношение, затем наносят его рядом с ПС и сравнивают форму кривой.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Сравнить форму кривой с ПС в глине, водоносном и нефтеносном пластах",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Нанести отношение в ту же колонку, что и ПС",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Рассчитать отношение Rxo/Rt по глубокому и мелкому замерам сопротивления",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "c",
+    "b",
+    "a"
+   ]
+  },
+  {
+   "id": "asq-7.n-128-93cfc0.t03",
+   "type": "single",
+   "step_id": "asq-7.n-128-93cfc0",
+   "node_id": "asq-7.n-128-93cfc0",
+   "claim_ids": [
+    "asq-7.n-128-93cfc0.c-5075b5",
+    "asq-7.n-128-93cfc0.c-0bb709"
+   ],
+   "prompt": "В нефтеносном пласте при нормальной (отрицательной) ПС кривая Rxo/Rt уходит куда?",
+   "explanation": "При нормальной (отрицательной) ПС уход от ПС в нефтеносном пласте идёт вправо.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "влево",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "вправо",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "не смещается",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "asq-7.n-129-d7ac17.t01",
+   "type": "single",
+   "step_id": "asq-7.n-129-d7ac17",
+   "node_id": "asq-7.n-129-d7ac17",
+   "claim_ids": [
+    "asq-7.n-129-d7ac17.c-04e864",
+    "asq-7.n-129-d7ac17.c-2a6630",
+    "asq-7.n-129-d7ac17.c-78f1c0"
+   ],
+   "prompt": "Почему в водоносной зоне кривая Rxo/Rt повторяет ПС?",
+   "explanation": "Формулы связывают ПС с Rxo/Ro, поэтому в водоносной зоне кривая повторяет ПС.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "ПС выражается через логарифм Rxo/Ro, а Rt можно поставить вместо Ro",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "ПС не зависит от сопротивлений фильтрата и пластовой воды",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Кривые всегда сдвигаются в противоположные стороны",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-129-d7ac17.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-129-d7ac17",
+   "node_id": "asq-7.n-129-d7ac17",
+   "claim_ids": [
+    "asq-7.n-129-d7ac17.c-61be03"
+   ],
+   "prompt": "В углеводородном интервале Rt растёт, поэтому отношение Rxo/Rt {{1}}.",
+   "explanation": "Рост Rt уменьшает отношение Rxo/Rt, и кривая уходит от ПС.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "падает"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "asq-7.n-129-9fc5a8.t01",
+   "type": "single",
+   "step_id": "asq-7.n-129-9fc5a8",
+   "node_id": "asq-7.n-129-9fc5a8",
+   "claim_ids": [
+    "asq-7.n-129-9fc5a8.c-ab2099",
+    "asq-7.n-129-9fc5a8.c-2fd29a"
+   ],
+   "prompt": "Какая зона, скорее всего, водоносная?",
+   "explanation": "Самое низкое Rwa ближе всего к Rw, поэтому такая зона, скорее всего, водоносная.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Зона с самым низким Rwa",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Зона с самым высоким Rwa",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Зона, где Rwa выше минимума",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-129-9fc5a8.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-129-9fc5a8",
+   "node_id": "asq-7.n-129-9fc5a8",
+   "claim_ids": [
+    "asq-7.n-129-9fc5a8.c-b04ba0",
+    "asq-7.n-129-9fc5a8.c-e70fc0",
+    "asq-7.n-129-9fc5a8.c-84ab44",
+    "asq-7.n-129-9fc5a8.c-ab2099"
+   ],
+   "prompt": "Какие утверждения о сравнении Rwa зон верны по книге?",
+   "explanation": "Rwa выше минимума сигналит о углеводородах; минимум ищут в пористой и проницаемой зоне.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Значения Rwa выше минимума указывают на присутствие углеводородов",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Минимум Rwa ищут в любой зоне, даже непористой",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Зоны с Rwa выше минимума, вероятно, содержат некоторую нефтенасыщенность",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Самое низкое Rwa ближе всего к истинному Rt",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-129-4a4fea.t01",
+   "type": "single",
+   "step_id": "asq-7.n-129-4a4fea",
+   "node_id": "asq-7.n-129-4a4fea",
+   "claim_ids": [
+    "asq-7.n-129-4a4fea.c-bb7e08"
+   ],
+   "prompt": "Что происходит с Rwa в зоне с пористостью около 10% и ниже?",
+   "explanation": "При низкой пористости, около 10% и ниже, Rwa получается меньше настоящего Rw.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Rwa получается меньше настоящего Rw",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Rwa получается больше настоящего Rw",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Rwa всегда равно Rt",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-129-4a4fea.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-129-4a4fea",
+   "node_id": "asq-7.n-129-4a4fea",
+   "claim_ids": [
+    "asq-7.n-129-4a4fea.c-145ba4"
+   ],
+   "prompt": "Rw считают одинаковым во всех {{1}} зонах.",
+   "explanation": "Метод предполагает, что Rw одинаково во всех сравниваемых зонах.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "сравниваемых"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "asq-7.n-130-e7fedf.t01",
+   "type": "single",
+   "step_id": "asq-7.n-130-e7fedf",
+   "node_id": "asq-7.n-130-e7fedf",
+   "claim_ids": [
+    "asq-7.n-130-e7fedf.c-5460b9",
+    "asq-7.n-130-e7fedf.c-70d994"
+   ],
+   "prompt": "Какую пористость берут, если нейтрон-плотностная доступна в реальном времени?",
+   "explanation": "Книга называет нейтрон-плотностную пористость лучшей оценкой, если она доступна в реальном времени.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Нейтрон-плотностную (кроссплотную)",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Пористость только по акустике",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пористость без параметров матрицы и флюида",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-130-bc7417.t01",
+   "type": "calc",
+   "step_id": "asq-7.n-130-bc7417",
+   "node_id": "asq-7.n-130-bc7417",
+   "claim_ids": [
+    "asq-7.n-130-bc7417.c-bc7417",
+    "asq-7.n-130-bc7417.c-538885",
+    "asq-7.n-130-bc7417.c-53f175",
+    "asq-7.n-130-bc7417.c-76de1c"
+   ],
+   "prompt": "Отношение Rwa зоны к минимальному равно 5. Чему равна Sw при a = 1.0 и m = 2.0?",
+   "explanation": "При n = 2 Sw равна корню из обратного отношения Rwa; для 5 получается 0.45.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "answer": 0.45,
+   "tolerance": 0.01,
+   "unit": "доля",
+   "calc": {
+    "expr": "(1/ratio)**0.5",
+    "vars": {
+     "ratio": 5
+    }
+   }
+  },
+  {
+   "id": "asq-7.n-130-bc7417.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-130-bc7417",
+   "node_id": "asq-7.n-130-bc7417",
+   "claim_ids": [
+    "asq-7.n-130-bc7417.c-bc7417",
+    "asq-7.n-130-bc7417.c-538885"
+   ],
+   "prompt": "Водонасыщенность по Арчи из отношения Rwa считают при показателе цементации n = {{1}}.",
+   "explanation": "В формуле 7.17 показатель степени n принимается равным 2.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "2"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "asq-7.n-130-fb1feb.t01",
+   "type": "single",
+   "step_id": "asq-7.n-130-fb1feb",
+   "node_id": "asq-7.n-130-fb1feb",
+   "claim_ids": [
+    "asq-7.n-130-fb1feb.c-da26bc",
+    "asq-7.n-130-fb1feb.c-d2e728"
+   ],
+   "prompt": "Что показывает пористость по сопротивлению в зоне с углеводородами?",
+   "explanation": "В зонах с углеводородами эта пористость низкая, ниже истинной пористости пласта.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Низкую пористость, ниже истинной",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Высокую пористость, почти равную истинной",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пористость, не зависящую от флюида",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-130-fb1feb.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-130-fb1feb",
+   "node_id": "asq-7.n-130-fb1feb",
+   "claim_ids": [
+    "asq-7.n-130-fb1feb.c-ce119a"
+   ],
+   "prompt": "Пористость по сопротивлению считают по уравнению Арчи при Sw = {{1}}.",
+   "explanation": "Пористость считают по уравнению Арчи, принимая Sw = 1.0, то есть зона водоносная.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "1.0"
+   ],
+   "accept": [
+    [
+     "1",
+     "1,0"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-130-a11db9.t01",
+   "type": "single",
+   "step_id": "asq-7.n-130-a11db9",
+   "node_id": "asq-7.n-130-a11db9",
+   "claim_ids": [
+    "asq-7.n-130-a11db9.c-72f085"
+   ],
+   "prompt": "Почему расчётная пористость по проводимости в углеводородном пласте меньше настоящей?",
+   "explanation": "Углеводороды повышают Rt выше Ro, поэтому расчётная пористость занижена относительно настоящей.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Rt больше Ro, и расчётная пористость получается меньше",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Rt меньше Ro, и расчётная пористость получается больше",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пористость по проводимости не зависит от Rt",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Углеводороды не влияют на сопротивление пласта",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-130-a11db9.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-130-a11db9",
+   "node_id": "asq-7.n-130-a11db9",
+   "claim_ids": [
+    "asq-7.n-130-a11db9.c-d42a67"
+   ],
+   "prompt": "Признак углеводородов: кривая пористости по проводимости {{1}} относительно пористостной кривой.",
+   "explanation": "Снижение кривой относительно пористостной кривой указывает на углеводороды.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "снижена"
+   ],
+   "accept": [
+    [
+     "снижена",
+     "снижение",
+     "снижена относительно"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-131-5c8770.t01",
+   "type": "order",
+   "step_id": "asq-7.n-131-5c8770",
+   "node_id": "asq-7.n-131-5c8770",
+   "claim_ids": [
+    "asq-7.n-131-5c8770.c-41c994",
+    "asq-7.n-131-5c8770.c-85e1db",
+    "asq-7.n-131-5c8770.c-395a3f"
+   ],
+   "prompt": "Расставьте шаги построения кривой Ro в правильном порядке.",
+   "explanation": "Сначала считают Ro, затем строят и сравнивают, и только потом по желанию считают насыщенность.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Рассчитать Ro по пористости и оценке Rw",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "При желании рассчитать по Арчи водонасыщенность в любой зоне",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Построить кривую Ro в одном масштабе с кривыми сопротивления и сравнить её с глубоким сопротивлением",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-131-5c8770.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-131-5c8770",
+   "node_id": "asq-7.n-131-5c8770",
+   "claim_ids": [
+    "asq-7.n-131-5c8770.c-8cf20d",
+    "asq-7.n-131-5c8770.c-ee360a"
+   ],
+   "prompt": "Какие утверждения о Ro и глубоком сопротивлении верны?",
+   "explanation": "В воде кривые совпадают; в нефти глубокое сопротивление выше Ro, и разрыв растёт с насыщенностью.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "В водоносных зонах Ro и глубокое сопротивление совпадают",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "В нефтеносных зонах глубокое сопротивление выше Ro",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "В нефтеносных зонах глубокое сопротивление ниже Ro",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "В водоносных зонах Ro выше глубокого сопротивления",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Разрыв растёт при уменьшении насыщенности углеводородами",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-131-5c8770.t03",
+   "type": "single",
+   "step_id": "asq-7.n-131-5c8770",
+   "node_id": "asq-7.n-131-5c8770",
+   "claim_ids": [
+    "asq-7.n-131-5c8770.c-050358"
+   ],
+   "prompt": "Чем кривая Ro отличается от большинства других кривых при выводе на диаграмму?",
+   "explanation": "В отличие от других кривых, Ro накладывают на кривую сопротивления, а не сравнивают с ПС.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Её накладывают на кривую сопротивления, а не сравнивают с ПС",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Её сравнивают с кривой ПС в одной дорожке",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Её строят в масштабе, отличном от кривых сопротивления",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Её не строят во время каротажа",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-130-91f648.t01",
+   "type": "single",
+   "step_id": "asq-7.n-130-91f648",
+   "node_id": "asq-7.n-130-91f648",
+   "claim_ids": [
+    "asq-7.n-130-91f648.c-08e4bf",
+    "asq-7.n-130-91f648.c-12dc2d"
+   ],
+   "prompt": "Что меняется при неверно выбранном Rw?",
+   "explanation": "Неверный Rw меняет пористость по проводимости, но сравнение кривых между зонами не меняется.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Пористость по проводимости, и её сравнение с истинной может стать неточным",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Сравнение значений кривых между разными зонами становится неверным",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пористость по проводимости перестаёт зависеть от Rt",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Кривые Ro и сопротивления совпадают в водоносных зонах",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-130-91f648.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-130-91f648",
+   "node_id": "asq-7.n-130-91f648",
+   "claim_ids": [
+    "asq-7.n-130-91f648.c-08e4bf",
+    "asq-7.n-130-91f648.c-12dc2d",
+    "asq-7.n-130-91f648.c-2a73f7"
+   ],
+   "prompt": "Какие утверждения о неверном Rw верны?",
+   "explanation": "Неверный Rw меняет пористость и рассогласовывает водоносные зоны, но не сравнение между зонами.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Пористость по проводимости меняется",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Сравнение кривых между зонами остаётся корректным",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Кривые Ro и сопротивления не совпадают в водоносных зонах",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Кривые Ro и сопротивления совпадают в водоносных зонах",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Сравнение кривых между зонами становится неверным",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-131-25cb38.t01",
+   "type": "gap",
+   "step_id": "asq-7.n-131-25cb38",
+   "node_id": "asq-7.n-131-25cb38",
+   "claim_ids": [
+    "asq-7.n-131-25cb38.c-25cb38"
+   ],
+   "prompt": "BVW по определению равна произведению водонасыщенности Sw и {{1}}.",
+   "explanation": "BVW равна произведению водонасыщенности Sw и пористости φ.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "пористости φ"
+   ],
+   "accept": [
+    [
+     "пористости",
+     "пористость",
+     "φ"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-131-25cb38.t02",
+   "type": "single",
+   "step_id": "asq-7.n-131-25cb38",
+   "node_id": "asq-7.n-131-25cb38",
+   "claim_ids": [
+    "asq-7.n-131-25cb38.c-84cf30"
+   ],
+   "prompt": "Какая зона пласта подразумевается под Sw в формуле BVW?",
+   "explanation": "В формуле BVW Sw берётся для неизменённой зоны пласта.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Неизменённая зона пласта",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Изменённая зона пласта",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Глинистая прослойка в разрезе",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-131-4ce4e9.t01",
+   "type": "single",
+   "step_id": "asq-7.n-131-4ce4e9",
+   "node_id": "asq-7.n-131-4ce4e9",
+   "claim_ids": [
+    "asq-7.n-131-4ce4e9.c-272add",
+    "asq-7.n-131-4ce4e9.c-472e09"
+   ],
+   "prompt": "Что означает постоянный BVW, посчитанный на нескольких глубинах?",
+   "explanation": "Постоянство BVW указывает на один тип породы и неснижаемую водонасыщенность.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Зону одного типа породы при неснижаемой водонасыщенности",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Зону из нескольких типов пород с подвижной водой",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Большой разброс BVW между глубинами",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Зону, из которой добыча должна давать воду",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-131-4ce4e9.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-131-4ce4e9",
+   "node_id": "asq-7.n-131-4ce4e9",
+   "claim_ids": [
+    "asq-7.n-131-4ce4e9.c-5f3005",
+    "asq-7.n-131-4ce4e9.c-0cfe03",
+    "asq-7.n-131-4ce4e9.c-a18e31"
+   ],
+   "prompt": "Почему добыча из зоны при неснижаемой водонасыщенности должна быть безводной?",
+   "explanation": "Капиллярное давление удерживает воду на зёрнах, поэтому при такой добыче воды быть не должно.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Вода в неизменённой зоне удерживается капиллярным давлением на зёрнах",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Вода в такой зоне не движется",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Вода в такой зоне легко движется к скважине",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Капиллярное давление не действует на воду",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Добыча воды не влияет на экономику объекта",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-131-b56975.t01",
+   "type": "single",
+   "step_id": "asq-7.n-131-b56975",
+   "node_id": "asq-7.n-131-b56975",
+   "claim_ids": [
+    "asq-7.n-131-b56975.c-01d384",
+    "asq-7.n-131-b56975.c-159317"
+   ],
+   "prompt": "Что откладывают по осям графика Баклса?",
+   "explanation": "График Баклса показывает пористость против водонасыщенности, обе величины на линейных шкалах.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Пористость и водонасыщенность на линейных шкалах",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Сопротивление и глубину скважины",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пористость и ПС",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Водонасыщенность и BVW",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-131-b56975.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-131-b56975",
+   "node_id": "asq-7.n-131-b56975",
+   "claim_ids": [
+    "asq-7.n-131-b56975.c-0dcf71",
+    "asq-7.n-131-b56975.c-9b22e6",
+    "asq-7.n-131-b56975.c-c630dc"
+   ],
+   "prompt": "Какие выводы верны для точек, разбросанных от гипербол?",
+   "explanation": "Разброс точек значит, что воды больше, чем удерживает капиллярное давление.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Воды больше, чем капиллярно удерживает пласт",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Пласт не находится при неснижаемой водонасыщенности",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пласт при неснижаемой водонасыщенности, и добыча безводна",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Воды добывается меньше относительно нефти",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-141-0378b5.t01",
+   "type": "multiple",
+   "step_id": "asq-7.n-141-0378b5",
+   "node_id": "asq-7.n-141-0378b5",
+   "claim_ids": [
+    "asq-7.n-141-0378b5.c-e08574",
+    "asq-7.n-141-0378b5.c-25ffb2",
+    "asq-7.n-141-0378b5.c-0a6408",
+    "asq-7.n-141-0378b5.c-96684a"
+   ],
+   "prompt": "Какие утверждения о трёх примерах верны?",
+   "explanation": "Узкий разброс BVW у почти неснижаемой водонасыщенности; сильный разброс указывает на подвижную воду.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "У пласта с 96% нефти точки лежат между 0.04 и 0.05",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "У скважины с 68% нефти около половины точек около 0.04",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Скважина без нефти даёт точки, заметно расходящиеся с гипербол",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "У пласта с 96% нефти точки сильно разбросаны",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "У скважины с 68% нефти все точки ложатся на одну гиперболу",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-131-a96d9f.t01",
+   "type": "order",
+   "step_id": "asq-7.n-131-a96d9f",
+   "node_id": "asq-7.n-131-a96d9f",
+   "claim_ids": [
+    "asq-7.n-131-a96d9f.c-6fc426",
+    "asq-7.n-131-a96d9f.c-f41707",
+    "asq-7.n-131-a96d9f.c-c8fb45",
+    "asq-7.n-131-a96d9f.c-61161a",
+    "asq-7.n-131-a96d9f.c-fe4f72",
+    "asq-7.n-131-a96d9f.c-ac4173"
+   ],
+   "prompt": "Расставьте классы кластических пород по росту BVW, от меньшего к большему.",
+   "explanation": "BVW растёт при уменьшении размера зерна, поэтому порядок идёт от крупного к мелкому.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Very Fine: 0.125–0.062 мм, BVW 0.05–0.07",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Medium: 0.5–0.25 мм, BVW 0.025–0.035",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Fine: 0.25–0.125 мм, BVW 0.035–0.05",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Silt: менее 0.062 мм, BVW 0.07–0.09",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Coarse: 1.0–0.5 мм, BVW 0.02–0.025",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "e",
+    "b",
+    "c",
+    "a",
+    "d"
+   ]
+  },
+  {
+   "id": "asq-7.n-131-a96d9f.t02",
+   "type": "single",
+   "step_id": "asq-7.n-131-a96d9f",
+   "node_id": "asq-7.n-131-a96d9f",
+   "claim_ids": [
+    "asq-7.n-131-a96d9f.c-b845bd",
+    "asq-7.n-131-a96d9f.c-6fc426"
+   ],
+   "prompt": "Почему BVW растёт при уменьшении размера зерна?",
+   "explanation": "Мелкое зерно удерживает больше воды капиллярным давлением, поэтому BVW растёт.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Капиллярное давление удерживает больше воды в мелком зерне",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Крупное зерно удерживает больше воды",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Размер зерна не влияет на количество воды",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Мелкое зерно не удерживает воду",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-132-70fcfc.t01",
+   "type": "single",
+   "step_id": "asq-7.n-132-70fcfc",
+   "node_id": "asq-7.n-132-70fcfc",
+   "claim_ids": [
+    "asq-7.n-132-70fcfc.c-9e26e2",
+    "asq-7.n-132-70fcfc.c-2ebfe3"
+   ],
+   "prompt": "Кроссплот насыщенности — это:",
+   "explanation": "Кроссплот — x-y график каротажных данных; искомая величина здесь — водонасыщенность Sw.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "x-y график данных каротажа, по которому находят водонасыщенность Sw",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "таблица пористости по глубине скважины",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "график только по результатам лабораторных измерений керна",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "трёхмерная модель пласта",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-132-70fcfc.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-132-70fcfc",
+   "node_id": "asq-7.n-132-70fcfc",
+   "claim_ids": [
+    "asq-7.n-132-70fcfc.c-643486",
+    "asq-7.n-132-70fcfc.c-dba813",
+    "asq-7.n-132-70fcfc.c-9e26e2"
+   ],
+   "prompt": "Почему такие графики полезны для интерпретации? Отметьте верные утверждения.",
+   "explanation": "Графики строятся по каротажу, сокращают расчёты и помогают сравнивать зоны; появились они раньше компьютеров.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Они сокращают число расчётов",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Они помогают сравнивать потенциально продуктивные зоны",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Они строятся без данных каротажа",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Они появились после широкого использования компьютеров",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-132-ea3303.t01",
+   "type": "gap",
+   "step_id": "asq-7.n-132-ea3303",
+   "node_id": "asq-7.n-132-ea3303",
+   "claim_ids": [
+    "asq-7.n-132-ea3303.c-bc7697"
+   ],
+   "prompt": "Метод Пикетта — графическое решение формулы Арчи, записанной через {{1}}.",
+   "explanation": "Формула Арчи решается относительно сопротивления, поэтому график — её графическое решение.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "сопротивление"
+   ],
+   "accept": [
+    []
+   ]
+  },
+  {
+   "id": "asq-7.n-132-ea3303.t02",
+   "type": "single",
+   "step_id": "asq-7.n-132-ea3303",
+   "node_id": "asq-7.n-132-ea3303",
+   "claim_ids": [
+    "asq-7.n-132-ea3303.c-113886",
+    "asq-7.n-132-ea3303.c-254b59"
+   ],
+   "prompt": "Почему в формуле для водоносной зоны член с насыщением исчезает?",
+   "explanation": "При Sw = 1 логарифм равен нулю, поэтому член с log(Sw) обращается в ноль.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Потому что Sw = 1, а log(Sw) = 0",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Потому что пористость равна 1,0",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Потому что показатель цементации равен нулю",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Потому что зона нефтеносная",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-132-03cc68.t01",
+   "type": "gap",
+   "step_id": "asq-7.n-132-03cc68",
+   "node_id": "asq-7.n-132-03cc68",
+   "claim_ids": [
+    "asq-7.n-132-03cc68.c-89e1b4"
+   ],
+   "prompt": "По наклону прямой на графике Пикетта находят показатель {{1}}.",
+   "explanation": "Наклон прямой Rt–φ даёт показатель цементации m.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "цементации"
+   ],
+   "accept": [
+    [
+     "цементации (m)"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-132-7c6424.t01",
+   "type": "multiple",
+   "step_id": "asq-7.n-132-7c6424",
+   "node_id": "asq-7.n-132-7c6424",
+   "claim_ids": [
+    "asq-7.n-132-7c6424.c-058d72",
+    "asq-7.n-132-7c6424.c-f98820",
+    "asq-7.n-132-7c6424.c-7e6f53"
+   ],
+   "prompt": "Что верно о нефтеносных точках на графике Пикетта? Отметьте верные утверждения.",
+   "explanation": "Смещение вправо вызвано большим сопротивлением; линии постоянной Sw параллельны водной линии.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Они смещены вправо от водной линии из-за большего сопротивления",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Их горизонтальное смещение зависит от Sw",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Они лежат точно на водной линии",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Линии постоянной Sw перпендикулярны водной линии",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-133-58d44d.t01",
+   "type": "gap",
+   "step_id": "asq-7.n-133-58d44d",
+   "node_id": "asq-7.n-133-58d44d",
+   "claim_ids": [
+    "asq-7.n-133-58d44d.c-268a1d"
+   ],
+   "prompt": "Водонасыщенность точки вне водной линии: Sw = (Ro/Rt) в степени {{1}}.",
+   "explanation": "Формула 7.27 даёт Sw = (Ro/Rt)^(1/n), где n — показатель насыщения.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "1/n"
+   ],
+   "accept": [
+    [
+     "(1/n)",
+     "1 / n"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-133-58d44d.t02",
+   "type": "single",
+   "step_id": "asq-7.n-133-58d44d",
+   "node_id": "asq-7.n-133-58d44d",
+   "claim_ids": [
+    "asq-7.n-133-58d44d.c-3bdde2"
+   ],
+   "prompt": "Линии на графике построены для показателя насыщения:",
+   "explanation": "Текст прямо указывает, что линии построены для показателя насыщения n = 2.0.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "n = 2.0",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "m = 2.0 (показатель цементации)",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "коэффициент извилистости a",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-133-8c12f3.t01",
+   "type": "multiple",
+   "step_id": "asq-7.n-133-8c12f3",
+   "node_id": "asq-7.n-133-8c12f3",
+   "claim_ids": [
+    "asq-7.n-133-8c12f3.c-79694c",
+    "asq-7.n-133-8c12f3.c-53d43d"
+   ],
+   "prompt": "Что можно определить по графику Пикетта при полном использовании? Отметьте верные ответы.",
+   "explanation": "При полном использовании график даёт Rw, m и параметры матрицы, но не дебит.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Сопротивление пластовой воды Rw",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Показатель цементации m",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Параметры матрицы: ρma или Δtma",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Дебит скважины",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "c"
+   ]
+  },
+  {
+   "id": "asq-7.n-133-8c12f3.t02",
+   "type": "single",
+   "step_id": "asq-7.n-133-8c12f3",
+   "node_id": "asq-7.n-133-8c12f3",
+   "claim_ids": [
+    "asq-7.n-133-8c12f3.c-c1c3c4"
+   ],
+   "prompt": "Какое главное допущение интерпретации по графику Пикетта?",
+   "explanation": "Сравнение зон корректно, только если все параметры в них остаются постоянными.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "В сравниваемых зонах матрица, a, m, n и Rw не меняются",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Между зонами могут свободно меняться Rw и m",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "График применим только к нефтеносным зонам",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-135-56a05a.t01",
+   "type": "single",
+   "step_id": "asq-7.n-135-56a05a",
+   "node_id": "asq-7.n-135-56a05a",
+   "claim_ids": [
+    "asq-7.n-135-56a05a.c-ce4b4f"
+   ],
+   "prompt": "В примере Morrow линия воды проведена с наклоном:",
+   "explanation": "Линию Sw = 100% провели через точки с наклоном −1/2, что даёт m = 2.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "−1/2, то есть m = 2",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "горизонтальная линия",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "вертикальная линия",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-135-56a05a.t02",
+   "type": "single",
+   "step_id": "asq-7.n-135-56a05a",
+   "node_id": "asq-7.n-135-56a05a",
+   "claim_ids": [
+    "asq-7.n-135-56a05a.c-60ab71"
+   ],
+   "prompt": "Почему в примере m дано диапазоном от 1.8 до 2.15?",
+   "explanation": "Узкий диапазон пористости и разброс точек допускают несколько значений m.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Из-за узкого диапазона пористости и разброса точек",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Потому что Rw неизвестно",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Потому что все зоны нефтеносные",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-135-56a05a.t03",
+   "type": "gap",
+   "step_id": "asq-7.n-135-56a05a",
+   "node_id": "asq-7.n-135-56a05a",
+   "claim_ids": [
+    "asq-7.n-135-56a05a.c-2f60e6"
+   ],
+   "prompt": "Плотность матрицы в примере принята равной {{1}} г/см³.",
+   "explanation": "Плотностную пористость вычислили при плотности матрицы 2.65 г/см³.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "2.65"
+   ],
+   "accept": [
+    [
+     "2,65"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-142-74c2bd.t01",
+   "type": "calc",
+   "step_id": "asq-7.n-142-74c2bd",
+   "node_id": "asq-7.n-142-74c2bd",
+   "claim_ids": [
+    "asq-7.n-142-74c2bd.c-a4e8c4",
+    "asq-7.n-142-74c2bd.c-bdee50",
+    "asq-7.n-142-74c2bd.c-7df61d",
+    "asq-7.n-142-74c2bd.c-87b965"
+   ],
+   "prompt": "В примере Ro = 4.6 Ом·м при φ = 0.10, m = 2.0, a = 1.0. Найдите Rw по формуле Rw = Ro × φ^m / a.",
+   "explanation": "Подставляем Ro, φ, m и a из примера; получаем Rw = 0.046 Ом·м.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "answer": 0.046,
+   "tolerance": 0.001,
+   "unit": "Ом·м",
+   "calc": {
+    "expr": "Ro * phi**m / a",
+    "vars": {
+     "Ro": 4.6,
+     "phi": 0.1,
+     "m": 2.0,
+     "a": 1.0
+    }
+   }
+  },
+  {
+   "id": "asq-7.n-142-74c2bd.t02",
+   "type": "single",
+   "step_id": "asq-7.n-142-74c2bd",
+   "node_id": "asq-7.n-142-74c2bd",
+   "claim_ids": [
+    "asq-7.n-142-74c2bd.c-bdee50"
+   ],
+   "prompt": "Почему коэффициент извилистости a = 1.0 в примере?",
+   "explanation": "В тексте a принимается как допущение, а не получается из измерения.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Его принимают как допущение, он не измерен",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Он измерен по керну",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Он вычисляется из m",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Он читается с водной линии",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-132-3df8ea.t01",
+   "type": "single",
+   "step_id": "asq-7.n-132-3df8ea",
+   "node_id": "asq-7.n-132-3df8ea",
+   "claim_ids": [
+    "asq-7.n-132-3df8ea.c-8ef16b"
+   ],
+   "prompt": "Вместо плотностной пористости Пикетт первоначально брал величину:",
+   "explanation": "Первая величина — разность (ρb − ρma), которая стоит вместо плотностной пористости.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "(ρb − ρma)",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Sw",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Rw",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-133-aa6cba.t01",
+   "type": "single",
+   "step_id": "asq-7.n-133-aa6cba",
+   "node_id": "asq-7.n-133-aa6cba",
+   "claim_ids": [
+    "asq-7.n-133-aa6cba.c-e0bd66"
+   ],
+   "prompt": "Что верно о графике Хингла?",
+   "explanation": "Главное преимущество Хингла: водонасыщенность определяется без знания параметров матрицы.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Sw можно получить, даже если параметры матрицы неизвестны",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Для расчёта обязательно нужно знать ρma или Δtma",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Это самый новый из кроссплотов сопротивление–пористость",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Сопротивление строят на линейных шкалах, и тренды становятся прямыми",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-133-aa6cba.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-133-aa6cba",
+   "node_id": "asq-7.n-133-aa6cba",
+   "claim_ids": [
+    "asq-7.n-133-aa6cba.c-5bf421"
+   ],
+   "prompt": "Решив уравнение Арчи в особой форме, нелинейные тренды становятся {{1}}.",
+   "explanation": "После переписывания уравнения Арчи нелинейные тренды становятся прямыми линиями.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "прямыми линиями"
+   ],
+   "accept": [
+    [
+     "прямыми",
+     "прямые линии",
+     "прямыми линиями"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-133-aa6cba.t03",
+   "type": "single",
+   "step_id": "asq-7.n-133-aa6cba",
+   "node_id": "asq-7.n-133-aa6cba",
+   "claim_ids": [
+    "asq-7.n-133-aa6cba.c-e6d59e",
+    "asq-7.n-133-aa6cba.c-5bf421"
+   ],
+   "prompt": "Геолог нанёс сопротивление и пористость на линейные шкалы и видит изогнутые тренды. Что это значит?",
+   "explanation": "Линейные шкалы дают семейство нелинейных трендов, которые становятся прямыми после переписывания Арчи.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Это ожидаемо: так получаются нелинейные тренды, которые выпрямляют переписыванием Арчи",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Это ошибка: на линейных шкалах тренды всегда прямые",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Нужно заменить сопротивление на пористость и построить график заново",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Прямые линии получатся только при известной матрице",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-133-a98efd.t01",
+   "type": "order",
+   "step_id": "asq-7.n-133-a98efd",
+   "node_id": "asq-7.n-133-a98efd",
+   "claim_ids": [
+    "asq-7.n-133-a98efd.c-04fe6e",
+    "asq-7.n-133-a98efd.c-b0cb50",
+    "asq-7.n-133-a98efd.c-3cde73"
+   ],
+   "prompt": "Расставьте шаги чтения сопротивления по готовой сетке в верном порядке.",
+   "explanation": "Сначала выбирают сетку, затем откладывают пористость, и только потом наносят сопротивление.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Нанести сопротивление по сетке, без вычислений",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Выбрать сетку по типу породы: песчаник или карбонат",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Отложить пористость по линейной оси",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "b",
+    "c",
+    "a"
+   ]
+  },
+  {
+   "id": "asq-7.n-133-e8f9bb.t01",
+   "type": "multiple",
+   "step_id": "asq-7.n-133-e8f9bb",
+   "node_id": "asq-7.n-133-e8f9bb",
+   "claim_ids": [
+    "asq-7.n-133-e8f9bb.c-28f15a",
+    "asq-7.n-133-e8f9bb.c-127ddb"
+   ],
+   "prompt": "Какие утверждения о линиях насыщенности на графике Хингла верны?",
+   "explanation": "Линии идут веером от оси x и через точку нулевой пористости; параллельность относится к Пикетту.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Они расходятся веером от точки пересечения с осью x вправо",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Они проходят через точку нулевой пористости на оси x",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Они параллельны водной линии, как на графике Пикетта",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Их подписывают без значений водонасыщенности",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-133-e8f9bb.t02",
+   "type": "single",
+   "step_id": "asq-7.n-133-e8f9bb",
+   "node_id": "asq-7.n-133-e8f9bb",
+   "claim_ids": [
+    "asq-7.n-133-e8f9bb.c-32e4fd",
+    "asq-7.n-133-e8f9bb.c-29fbe2"
+   ],
+   "prompt": "На графике Хингла точки лежат на водной линии. Какой вывод верен?",
+   "explanation": "Водоносные точки ложатся на водную линию, а углеводородные уходят вниз от неё.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Точки водоносные: линия соответствует 100% водонасыщенности",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Точки содержат углеводороды и лежат выше линии",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Точки указывают на нулевую пористость пласта",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-134-3647ba.t01",
+   "type": "single",
+   "step_id": "asq-7.n-134-3647ba",
+   "node_id": "asq-7.n-134-3647ba",
+   "claim_ids": [
+    "asq-7.n-134-3647ba.c-e43ffe",
+    "asq-7.n-134-3647ba.c-56630f"
+   ],
+   "prompt": "Что на графике Хингла не снимают с точки, а принимают по сетке?",
+   "explanation": "a и m принимают по выбранной сетке, а Ro и пористость читают с графика.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Коэффициенты a и m",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Сопротивление точки Ro",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пористость точки",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-134-3647ba.t02",
+   "type": "order",
+   "step_id": "asq-7.n-134-3647ba",
+   "node_id": "asq-7.n-134-3647ba",
+   "claim_ids": [
+    "asq-7.n-134-3647ba.c-6c48c5",
+    "asq-7.n-134-3647ba.c-56630f",
+    "asq-7.n-134-3647ba.c-e43ffe",
+    "asq-7.n-134-3647ba.c-078cde"
+   ],
+   "prompt": "Расставьте шаги оценки Rw по графику Хингла в верном порядке.",
+   "explanation": "Точку выбирают первой, затем снимают значения, принимают a и m и считают Rw.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Выберите любую точку на водоносной линии",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Примите a и m по сетке, на которую нанесён график",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Снимите с графика сопротивление Ro и пористость точки",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Посчитайте Rw по формуле 7.29",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c",
+    "b",
+    "d"
+   ]
+  },
+  {
+   "id": "asq-7.n-145-2be46c.t01",
+   "type": "calc",
+   "step_id": "asq-7.n-145-2be46c",
+   "node_id": "asq-7.n-145-2be46c",
+   "claim_ids": [
+    "asq-7.n-145-2be46c.c-a1efde",
+    "asq-7.n-145-2be46c.c-87b965",
+    "asq-7.n-145-2be46c.c-398226"
+   ],
+   "prompt": "Ro = 4.1 Ом·м при пористости 10% (φ = 0.10), m = 2.0, a = 1.0. Найдите Rw, Ом·м.",
+   "explanation": "Подстановка в Rw = Ro·φ^m/a дает 4.1 × 0.10² = 0.041 Ом·м.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "answer": 0.041,
+   "tolerance": 0.001,
+   "unit": "Ом·м",
+   "calc": {
+    "expr": "Ro * phi**m / a",
+    "vars": {
+     "Ro": 4.1,
+     "phi": 0.1,
+     "m": 2.0,
+     "a": 1.0
+    }
+   }
+  },
+  {
+   "id": "asq-7.n-145-2be46c.t02",
+   "type": "single",
+   "step_id": "asq-7.n-145-2be46c",
+   "node_id": "asq-7.n-145-2be46c",
+   "claim_ids": [
+    "asq-7.n-145-2be46c.c-275a7c",
+    "asq-7.n-145-2be46c.c-2d95e5"
+   ],
+   "prompt": "Почему значение 2.65 г/см³ в примере дано с оговоркой?",
+   "explanation": "При узком диапазоне пористости и разбросе точек другие плотности матрицы тоже допустимы.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Диапазон пористости узкий, и разброс точек допускает другие значения",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Значение 2.65 г/см³ точное и не может меняться",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Водоносная линия не пересекает ось плотности",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-145-2be46c.t03",
+   "type": "order",
+   "step_id": "asq-7.n-145-2be46c",
+   "node_id": "asq-7.n-145-2be46c",
+   "claim_ids": [
+    "asq-7.n-145-2be46c.c-1980a7",
+    "asq-7.n-145-2be46c.c-1d51a3",
+    "asq-7.n-145-2be46c.c-2d95e5",
+    "asq-7.n-145-2be46c.c-a1efde",
+    "asq-7.n-145-2be46c.c-398226"
+   ],
+   "prompt": "Расставьте шаги примера Morrow в верном порядке.",
+   "explanation": "Сначала выбирают сетку и точки, затем читают Ro и считают Rw по формуле.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Прочитать Ro = 4.1 Ом·м при пористости 10% (2.485 г/см³)",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Подставить в формулу Rw = Ro·φ^m/a и получить 0.041 Ом·м",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Отложить точки по объёмной плотности по горизонтальной оси",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Найти пересечение водоносной линии с осью плотности: 2.65 г/см³",
+     "misconception": null
+    },
+    {
+     "id": "e",
+     "text": "Выбрать сетку Хингла для песчаников: a = 1.0, m = 2.0",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "e",
+    "c",
+    "d",
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-145-5e1801.t01",
+   "type": "single",
+   "step_id": "asq-7.n-145-5e1801",
+   "node_id": "asq-7.n-145-5e1801",
+   "claim_ids": [
+    "asq-7.n-145-5e1801.c-503610"
+   ],
+   "prompt": "Какое Ra берут для точки вне водной линии?",
+   "explanation": "Ra берут с водной линии при той же пористости, что и у рассматриваемой точки.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "На водной линии при той же пористости, что у точки",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "На водной линии при пористости 100%",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "На линии насыщенности 50%",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-145-5e1801.t02",
+   "type": "calc",
+   "step_id": "asq-7.n-145-5e1801",
+   "node_id": "asq-7.n-145-5e1801",
+   "claim_ids": [
+    "asq-7.n-145-5e1801.c-ab711a",
+    "asq-7.n-145-5e1801.c-a1204a",
+    "asq-7.n-145-5e1801.c-b90d4a"
+   ],
+   "prompt": "Ra = 0.83 Ом·м, сопротивление точки 40 Ом·м, n = 2.0. Найдите Sw точки.",
+   "explanation": "Sw = (0.83/40)^(1/2.0) ≈ 0.144 по формуле через Ra и сопротивление точки.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "answer": 0.144,
+   "tolerance": 0.001,
+   "unit": "доля",
+   "calc": {
+    "expr": "(Ra / Rt) ** (1 / n)",
+    "vars": {
+     "Ra": 0.83,
+     "Rt": 40,
+     "n": 2.0
+    }
+   }
+  },
+  {
+   "id": "asq-7.n-134-0e83d2.t01",
+   "type": "single",
+   "step_id": "asq-7.n-134-0e83d2",
+   "node_id": "asq-7.n-134-0e83d2",
+   "claim_ids": [
+    "asq-7.n-134-0e83d2.c-cb1749"
+   ],
+   "prompt": "Что по графику Хингла читают с водоносной линии при проводимости ноль?",
+   "explanation": "Пересечение при нулевой проводимости даёт матрицу; Rw и m по Пикетту читают иначе.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Матрицу (ρma или Δtma)",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Сопротивление воды Rw",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Показатель цементации m",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-134-0e83d2.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-134-0e83d2",
+   "node_id": "asq-7.n-134-0e83d2",
+   "claim_ids": [
+    "asq-7.n-134-0e83d2.c-dd490f",
+    "asq-7.n-134-0e83d2.c-a57ee1"
+   ],
+   "prompt": "Что верно о графике Пикетта?",
+   "explanation": "Rw и m по Пикетту читают с водоносной линии; матрицу для него обычно задают допущением.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Rw читается с водоносной линии при пористости 100%, если a известна",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Показатель m берётся из наклона водоносной линии",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Матрица всегда читается с линии без допущений",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Для построения нужно заранее знать Rw",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-134-4331f0.t01",
+   "type": "single",
+   "step_id": "asq-7.n-134-4331f0",
+   "node_id": "asq-7.n-134-4331f0",
+   "claim_ids": [
+    "asq-7.n-134-4331f0.c-20defd",
+    "asq-7.n-134-4331f0.c-b28b3e"
+   ],
+   "prompt": "Почему оценка проницаемости сомнительна, если BVW в пласте не постоянна?",
+   "explanation": "Формулы годны при неснижаемой водонасыщенности; непостоянная BVW показывает, что пласт не в ней.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Формулы годны только при неснижаемой водонасыщенности, а здесь пласт в ней не находится",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Формулы не используют водонасыщенность, поэтому BVW не важна",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Такие пласты всегда добывающие, поэтому оценка точная",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-134-4331f0.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-134-4331f0",
+   "node_id": "asq-7.n-134-4331f0",
+   "claim_ids": [
+    "asq-7.n-134-4331f0.c-d915ba",
+    "asq-7.n-134-4331f0.c-ff076f",
+    "asq-7.n-134-4331f0.c-1a7cfd",
+    "asq-7.n-134-4331f0.c-6fe162"
+   ],
+   "prompt": "Что геолог делает перед применением формул? Отметьте верные шаги.",
+   "explanation": "Сначала определяют состояние пласта по BVW; абсолютное число и отказ от сравнения не годятся.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Определяет, находится ли пласт при неснижаемой водонасыщенности",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Проверяет, постоянны ли значения BVW по пласту",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Принимает одно число за абсолютное значение проницаемости",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Не сравнивает оценку с соседними скважинами того же пласта",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-134-4331f0.t03",
+   "type": "gap",
+   "step_id": "asq-7.n-134-4331f0",
+   "node_id": "asq-7.n-134-4331f0",
+   "claim_ids": [
+    "asq-7.n-134-4331f0.c-cbe9b1"
+   ],
+   "prompt": "BVW равна водонасыщенности, умноженной на {{1}}.",
+   "explanation": "Объёмная влажность BVW равна водонасыщенности, умноженной на пористость.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "пористость"
+   ],
+   "accept": [
+    [
+     "пористость φ"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-135-3e7a50.t01",
+   "type": "single",
+   "step_id": "asq-7.n-135-3e7a50",
+   "node_id": "asq-7.n-135-3e7a50",
+   "claim_ids": [
+    "asq-7.n-135-3e7a50.c-6ce1df"
+   ],
+   "prompt": "Какая формула проницаемости по каротажу для нефти средней плотности?",
+   "explanation": "Для нефти средней плотности константа 250, φ в третьей степени, Swirr в знаменателе.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "K = (250 × φ³ / Swirr)²",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "K = (250 × φ / Swirr)²",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "K = (79 × φ³ / Swirr)²",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "K = (250 × φ³ × Swirr)²",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-135-3e7a50.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-135-3e7a50",
+   "node_id": "asq-7.n-135-3e7a50",
+   "claim_ids": [
+    "asq-7.n-135-3e7a50.c-afc24d"
+   ],
+   "prompt": "Swirr — водонасыщенность зоны, которая находится при {{1}}.",
+   "explanation": "Swirr — вход формулы: водонасыщенность зоны при неснижаемой водонасыщенности.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "неснижаемой водонасыщенности"
+   ],
+   "accept": [
+    [
+     "неснижаемой водонасыщенности (Swirr)"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-135-3e7a50.t03",
+   "type": "single",
+   "step_id": "asq-7.n-135-3e7a50",
+   "node_id": "asq-7.n-135-3e7a50",
+   "claim_ids": [
+    "asq-7.n-135-3e7a50.c-d4e419",
+    "asq-7.n-135-3e7a50.c-777e92"
+   ],
+   "prompt": "Чем формула для сухого газа отличается от формулы для нефти средней плотности?",
+   "explanation": "Обе формулы одной формы; различается только константа: 79 для сухого газа, 250 для нефти.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Только константой: 79 вместо 250",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Только степенью пористости",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Тем, что Swirr в ней не используется",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Тем, что результат выражается не в миллидарси",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-146-77407b.t01",
+   "type": "single",
+   "step_id": "asq-7.n-146-77407b",
+   "node_id": "asq-7.n-146-77407b",
+   "claim_ids": [
+    "asq-7.n-146-77407b.c-cc9431",
+    "asq-7.n-146-77407b.c-109e3c"
+   ],
+   "prompt": "Какая кривая на палетке K-3 показывает проницаемость?",
+   "explanation": "Тяжёлая кривая через точку даёт проницаемость; светлые гиперболы дают BVW.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Тяжёлая кривая, на которой лежит точка",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Светлые гиперболы C = Swi × φ",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Левая вертикальная шкала",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-146-77407b.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-146-77407b",
+   "node_id": "asq-7.n-146-77407b",
+   "claim_ids": [
+    "asq-7.n-146-77407b.c-a1790f"
+   ],
+   "prompt": "Палетка построена с допущением, что нефть {{1}}.",
+   "explanation": "Палетка построена с допущением о нефти средней плотности (medium-gravity oil).",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "средней плотности"
+   ],
+   "accept": [
+    [
+     "средней плотности (medium-gravity oil)"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-146-88169e.t01",
+   "type": "single",
+   "step_id": "asq-7.n-146-88169e",
+   "node_id": "asq-7.n-146-88169e",
+   "claim_ids": [
+    "asq-7.n-146-88169e.c-79718b",
+    "asq-7.n-146-88169e.c-5ef7db"
+   ],
+   "prompt": "На палетке точки разных интервалов ложатся на один узор. Что это значит?",
+   "explanation": "Связный узор на гиперболе или рядом с ней — признак зоны при неснижаемой водонасыщенности.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "Зона находится при неснижаемой водонасыщенности, палетка применима",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Зона точно не при неснижаемой водонасыщенности",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Узор ничего не говорит о состоянии зоны",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-146-88169e.t02",
+   "type": "single",
+   "step_id": "asq-7.n-146-88169e",
+   "node_id": "asq-7.n-146-88169e",
+   "claim_ids": [
+    "asq-7.n-146-88169e.c-5ef7db",
+    "asq-7.n-146-88169e.c-fc3867"
+   ],
+   "prompt": "Точки одной зоны разбросаны и выпадают из узора. Можно ли по палетке K-3 оценить K?",
+   "explanation": "Палетка годна только для зон при неснижаемой водонасыщенности; разбросанные точки этого не подтверждают.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Нет: такая зона не при неснижаемой водонасыщенности, палетка для неё не годна",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Да: палетка K-3 годна для любой зоны",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Нет: BVW в такой зоне всегда постоянна",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-135-72e2ed.t01",
+   "type": "gap",
+   "step_id": "asq-7.n-135-72e2ed",
+   "node_id": "asq-7.n-135-72e2ed",
+   "claim_ids": [
+    "asq-7.n-135-72e2ed.c-7a9911x"
+   ],
+   "prompt": "Константа C вычисляется только из {{1}}.",
+   "explanation": "Константа C зависит только от плотности углеводородов; других входов в её формуле нет.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "плотности углеводородов"
+   ],
+   "accept": [
+    [
+     "плотности углеводородов (ρh)",
+     "ρh"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-136-95b1e4.t01",
+   "type": "single",
+   "step_id": "asq-7.n-136-95b1e4",
+   "node_id": "asq-7.n-136-95b1e4",
+   "claim_ids": [
+    "asq-7.n-136-95b1e4.c-9b0896",
+    "asq-7.n-136-95b1e4.c-4afa0d"
+   ],
+   "prompt": "Почему глинистый песчаник — не песок с примесью сланца?",
+   "explanation": "Глинистый песчаник — это песок, содержащий глины; сланец и глина — разные понятия.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Потому что в нём содержатся глины, а не просто сланец",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Потому что в нём вообще нет сланца",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Потому что сланец и глина — одно и то же",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-136-95b1e4.t02",
+   "type": "multiple",
+   "step_id": "asq-7.n-136-95b1e4",
+   "node_id": "asq-7.n-136-95b1e4",
+   "claim_ids": [
+    "asq-7.n-136-95b1e4.c-4afa0d",
+    "asq-7.n-136-95b1e4.c-054cce",
+    "asq-7.n-136-95b1e4.c-429ee4"
+   ],
+   "prompt": "Какие утверждения верны по тексту?",
+   "explanation": "Сланец и глина различны, а глины песчаника могут отличаться от глин сланцев.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Сланец и глина — разные понятия",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Глины в песчанике могут отличаться от глин в соседних сланцах",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Глины в песчанике всегда такие же, как в соседних сланцах",
+     "misconception": null
+    },
+    {
+     "id": "d",
+     "text": "Ранние поправки к формуле Арчи вводили через объём сланца",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "b",
+    "d"
+   ]
+  },
+  {
+   "id": "asq-7.n-136-95b1e4.t03",
+   "type": "gap",
+   "step_id": "asq-7.n-136-95b1e4",
+   "node_id": "asq-7.n-136-95b1e4",
+   "claim_ids": [
+    "asq-7.n-136-95b1e4.c-64ce49"
+   ],
+   "prompt": "Пласты, содержащие сланец и/или глину, в литературе называют {{1}}.",
+   "explanation": "Пласты с сланцем и/или глиной называют глинистыми песками (shaly sands).",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "глинистыми песками"
+   ],
+   "accept": [
+    [
+     "глинистые пески",
+     "глинистыми песками"
+    ]
+   ]
+  },
+  {
+   "id": "asq-7.n-136-95b1e4.t04",
+   "type": "order",
+   "step_id": "asq-7.n-136-95b1e4",
+   "node_id": "asq-7.n-136-95b1e4",
+   "claim_ids": [
+    "asq-7.n-136-95b1e4.c-e9de38",
+    "asq-7.n-136-95b1e4.c-429ee4",
+    "asq-7.n-136-95b1e4.c-b2ec7a"
+   ],
+   "prompt": "Расставьте шаги истории метода по порядку.",
+   "explanation": "Сначала создали метод, затем ранние поправки, позже стали видны его ограничения.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Ограничения метода стали заметны в пластах с глиной или сланцем",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "После работы Арчи и других авторов метод оценки водонасыщенности по каротажу был создан",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Ранние работы вносили поправки в уравнение Арчи через объём сланца",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "b",
+    "c",
+    "a"
+   ]
+  },
+  {
+   "id": "asq-7.n-136-56e888.t01",
+   "type": "order",
+   "step_id": "asq-7.n-136-56e888",
+   "node_id": "asq-7.n-136-56e888",
+   "claim_ids": [
+    "asq-7.n-136-56e888.c-409dfa",
+    "asq-7.n-136-56e888.c-3d99bc",
+    "asq-7.n-136-56e888.c-2be794"
+   ],
+   "prompt": "Расставьте работы по году, от раннего к позднему.",
+   "explanation": "Работы Ваксмана и Смитса и Ваксмана и Томаса предшествовали работе Клавье 1977 года.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Ваксман и Смитс, 1968",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Клавье и соавторы, 1977",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Ваксман и Томас, 1974",
+     "misconception": null
+    }
+   ],
+   "answer": [
+    "a",
+    "c",
+    "b"
+   ]
+  },
+  {
+   "id": "asq-7.n-136-56e888.t02",
+   "type": "single",
+   "step_id": "asq-7.n-136-56e888",
+   "node_id": "asq-7.n-136-56e888",
+   "claim_ids": [
+    "asq-7.n-136-56e888.c-3d99bc"
+   ],
+   "prompt": "Какая модель считает, что в глинистом пласте есть два вида воды?",
+   "explanation": "Модель двойной воды считает, что в глинистом пласте есть два вида воды.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "options": [
+    {
+     "id": "a",
+     "text": "Модель Ваксмана–Смитса",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Модель двойной воды",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Поправки к уравнению Арчи через объём сланца",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "asq-7.n-136-56e888.t03",
+   "type": "single",
+   "step_id": "asq-7.n-136-56e888",
+   "node_id": "asq-7.n-136-56e888",
+   "claim_ids": [
+    "asq-7.n-136-56e888.c-095d4f",
+    "asq-7.n-136-56e888.c-cdc670",
+    "asq-7.n-136-56e888.c-31e411"
+   ],
+   "prompt": "Нужно точнее учесть электрические свойства глин. Какой группе методов отдать предпочтение?",
+   "explanation": "Эти методы используют электрические свойства глин, чтобы точнее предсказать водонасыщенность.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Методам Ваксмана–Смитса и двойной воды",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Методам, которые работают только с объёмом сланца",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Методам для песчаника без глин",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-136-19ed53.t01",
+   "type": "single",
+   "step_id": "asq-7.n-136-19ed53",
+   "node_id": "asq-7.n-136-19ed53",
+   "claim_ids": [
+    "asq-7.n-136-19ed53.c-349746",
+    "asq-7.n-136-19ed53.c-ae7661",
+    "asq-7.n-136-19ed53.c-0a246e"
+   ],
+   "prompt": "В пласте сланца больше 15%, а сопротивление нефти и воды почти не различается. Что можно сказать?",
+   "explanation": "Сланец уменьшает разницу сопротивлений, поэтому продуктивность по сопротивлению может быть не определить.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "data",
+   "options": [
+    {
+     "id": "a",
+     "text": "По сопротивлению трудно понять, продуктивна ли зона",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Зона точно водоносна, сланец тут ни при чём",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Пористость по каротажу теперь точна всегда",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-136-19ed53.t02",
+   "type": "single",
+   "step_id": "asq-7.n-136-19ed53",
+   "node_id": "asq-7.n-136-19ed53",
+   "claim_ids": [
+    "asq-7.n-136-19ed53.c-0a246e"
+   ],
+   "prompt": "Пласт с долей сланца меньше 10%. Может ли сланец заметно исказить водонасыщенность по каротажу?",
+   "explanation": "Значимое искажение начинается при доле сланца больше 10–15%, а здесь доля ниже этого порога.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "transfer",
+   "options": [
+    {
+     "id": "a",
+     "text": "Да, любой сланец делает оценку водонасыщенности неверной",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Нет, значимое влияние начинается при доле сланца больше 10–15%",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Да, при любой доле сланца, даже малой",
+     "misconception": null
+    }
+   ],
+   "answer": "b"
+  },
+  {
+   "id": "asq-7.n-136-95b5ee.t01",
+   "type": "single",
+   "step_id": "asq-7.n-136-95b5ee",
+   "node_id": "asq-7.n-136-95b5ee",
+   "claim_ids": [
+    "asq-7.n-136-95b5ee.c-74ffdd"
+   ],
+   "prompt": "Что может случиться, если геолог переоценит содержание глины?",
+   "explanation": "Переоценка глины может показать водоносный пласт как нефтеносный, это ошибка интерпретации.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "understanding",
+   "options": [
+    {
+     "id": "a",
+     "text": "Водоносная зона может выглядеть нефтеносной",
+     "misconception": null
+    },
+    {
+     "id": "b",
+     "text": "Водонасыщенность всегда начнёт расти",
+     "misconception": null
+    },
+    {
+     "id": "c",
+     "text": "Глина не повлияет на оценку пласта",
+     "misconception": null
+    }
+   ],
+   "answer": "a"
+  },
+  {
+   "id": "asq-7.n-136-95b5ee.t02",
+   "type": "gap",
+   "step_id": "asq-7.n-136-95b5ee",
+   "node_id": "asq-7.n-136-95b5ee",
+   "claim_ids": [
+    "asq-7.n-136-95b5ee.c-9f4804"
+   ],
+   "prompt": "Все формулы для глинистых песчаников снижают {{1}} относительно расчёта без учёта глины.",
+   "explanation": "Все формулы снижают Sw относительно расчёта, где эффект глины игнорируется.",
+   "by": "model",
+   "checked": "auto",
+   "kind": "recall",
+   "answer": [
+    "Sw"
+   ],
+   "accept": [
+    [
+     "Sw",
+     "водонасыщенность"
+    ]
+   ]
+  }
+ ]
+}

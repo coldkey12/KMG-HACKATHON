@@ -1,0 +1,3 @@
+{"out": "/Users/coldkey/KMG-HACKATHON/out/bas-4/course", "steps": 47, "size_mb": 2.9, "tasks_kept": 119, "tasks_generated": 126, "task_types": ["gap", "multiple", "order", "single"], "tasks_meet_tz": true, "tasks_schema_ok": true, "cost_usd": 0.095421, "illustrations": 77, "illustrations_schema_ok": true, "photos": 9, "steps_without_illustration": 0}
+layer: out/bas-4/layer.json | checks passed: True | $ 1.3154
+course: /Users/coldkey/KMG-HACKATHON/.venv/bin/python -m kmg_course build /Users/coldkey/KMG-HACKATHON/out/bas-4/layer.json
