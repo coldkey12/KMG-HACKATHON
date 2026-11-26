@@ -470,7 +470,10 @@
       var frame = null;
       var det = m.scene ? el("details", { "class": "scene-box" }, [el("summary", null, [chev(), "Интерактивная сцена: та же модель, пауза на предсказание, источники по нажатию"])]) : null;
       if (det) det.addEventListener("toggle", function () {
-        if (det.open && !frame) { frame = el("iframe", { src: base + m.scene, title: "Интерактивная сцена: " + (m.title || s.title), "class": "scene-frame" + (portrait ? " portrait" : ""), loading: "lazy" }); det.appendChild(frame); }
+        if (det.open && !frame) { frame = el("iframe", { src: base + m.scene, title: "Интерактивная сцена: " + (m.title || s.title), "class": "scene-frame" + (portrait ? " portrait" : "") }); det.appendChild(frame);
+          frame.addEventListener("load", function () {   // a missing scene file must not show a raw error page
+            try { var d = frame.contentDocument; if (d && !d.querySelector("script,canvas,svg")) { frame.replaceWith(el("p", { "class": "media-miss", text: "Интерактивная сцена не загрузилась. Текст шага ниже — то же содержание." })); } } catch (x) {}
+          }); }
       });
       return el("div", { "class": "media-item" }, [v, miss,
         el("p", { "class": "small muted" }, ["Ролик собран конвейером из утверждений этого шага (" + (portrait ? "шортс 9:16" : "разбор 16:9") + (m.duration_s ? ", " + Math.round(m.duration_s) + " с" : "") + "; субтитры в кадре). ",
