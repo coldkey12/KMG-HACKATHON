@@ -32,13 +32,13 @@
  "layer": "out/slatt-9/layer.json",
  "steps": 24,
  "parts": 5,
- "size_mb": 7.08,
+ "size_mb": 6.18,
  "size_ok": true,
  "steps_without_illustration": [],
  "parts_without_ab_illustration": [],
- "illustrations": 43,
+ "illustrations": 42,
  "photos": 6,
  "illustration_schema_errors": [],
  "illustration_schema_ok": true,
- "seconds": 0.3
+ "seconds": 0.4
 }
