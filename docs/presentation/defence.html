@@ -73,6 +73,17 @@ video{width:100%;display:block;background:#0b0b0b;border:1px solid var(--line)}
 .tab.on .cell{animation:in .5s both;animation-delay:calc(var(--i,0)*70ms)}
 @media (prefers-reduced-motion:reduce){.tab.on .cell{animation:none}.st,.rail i,.rail u,.br{transition:none}}
 @media (max-width:1000px){.flow{grid-template-columns:minmax(0,1fr)}.rail{display:none}}
+.trow{display:flex;gap:18px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);color:#bdbdbd;font:inherit;font-size:22px;padding:14px 12px;cursor:pointer}
+.trow span{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--mut)}
+.trow:hover{color:#fff}.trow.on{background:#fff;color:#000}.trow.on span{color:#555}
+.tu{margin:0;padding:0;list-style:none}.tu li{padding:10px 0 10px 26px;border-top:1px solid var(--line);font-size:20px;color:#d0d0d0;position:relative;line-height:1.35}.tu li::before{content:"—";position:absolute;left:0;color:var(--mut)}
+#hl{display:none;position:fixed;z-index:20;pointer-events:none;border:2px solid var(--acc);box-shadow:0 0 0 9999px rgba(0,0,0,.6),0 0 30px rgba(25,211,197,.5);transition:left .35s,top .35s,width .35s,height .35s}
+#tp{display:none;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#0b0b0b;border-top:2px solid var(--acc);padding:16px 40px;grid-template-columns:minmax(0,.8fr) minmax(0,2fr) auto;gap:28px;align-items:center;min-height:170px}
+body.demo #tp{display:grid}body.demo main{bottom:170px}body.demo .hint{display:none}
+#tp .lab{margin-bottom:10px;color:var(--acc)}#tp b{font-weight:500;color:var(--mut);font-size:14px;letter-spacing:.1em;text-transform:uppercase;font-family:ui-monospace,Menlo,monospace}
+.tpa{font-size:18px;color:#fff;line-height:1.3}.tps{font-size:20px;line-height:1.35;color:#e6e6e6}
+.tpb{display:flex;gap:8px}.tpb .btn{margin:0;font-size:18px;padding:11px 16px;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){#hl{transition:none}}
 .hint{position:fixed;right:40px;bottom:16px;font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#555;z-index:6}
 @media (max-width:1000px){.two,.g3,.g4,.g2,.vid{grid-template-columns:minmax(0,1fr)}.cell+.cell{border-left:0;padding-left:0}nav{overflow-x:auto}}
 </style></head><body>
@@ -82,6 +93,7 @@ video{width:100%;display:block;background:#0b0b0b;border:1px solid var(--line)}
 <section class="tab" data-t="Что мы сделали">
   <div class="k">Дон Владимир · Темирлан Тойгонбаев</div>
   <h1>Программа, которая сама делает курс из главы учебника</h1>
+  <p style="margin:0 0 26px"><button class="btn startdemo" style="font-size:24px;padding:16px 30px;background:#19d3c5;border-color:#19d3c5">▶ Начать демо</button></p>
   <p class="lede">Кладём главу — получаем курс для новичка: уроки, задания, ролики. Каждая фраза взята из книги, и это можно проверить одним нажатием.</p>
   <div class="grid g4" style="margin-top:40px">
     <div class="cell"><div class="num" data-n="10">10</div>глав обработано, 4 из них программа увидела впервые сегодня в 10:30</div>
@@ -136,17 +148,12 @@ video{width:100%;display:block;background:#0b0b0b;border:1px solid var(--line)}
 </section>
 
 <section class="tab" data-t="Под капотом">
-  <div class="k">Почему наш конвейер устроен лучше</div>
-  <h2>Шесть решений внутри, которые дают этот результат</h2>
-  <table class="cmp"><thead><tr><th></th><th>Простой путь</th><th>Как сделано у нас</th></tr></thead><tbody>
-    <tr><td>Кто проверяет текст</td><td>Вторая нейросеть или человек на глаз</td><td>Обычная программа сверяет каждую цитату и каждое число с книгой, буква в букву. Она не может «согласиться из вежливости»</td></tr>
-    <tr><td>Что делают с ошибкой</td><td>Правят руками в готовом курсе</td><td>Ошибка сама возвращается на исправление. Не исправилась — фраза помечается спорной и в задания и ролики не попадает</td></tr>
-    <tr><td>Сколько читает специалист</td><td>Весь курс</td><td>Только спорное: 41 утверждение из 1285 на тесте, это 3%</td></tr>
-    <tr><td>Цена главы</td><td>Одна дорогая нейросеть на всё: $12,7 — так стоил наш первый вариант</td><td>Дорогая нейросеть только делит главу на темы, дешёвая пишет: $2. Повторный запуск бесплатен</td></tr>
-    <tr><td>Новая область знаний</td><td>Переписывать программу</td><td>Заменить папку со словарём и правилами. Бурение подключили за 3,5 минуты</td></tr>
-    <tr><td>Правка факта</td><td>Пересобирать курс целиком</td><td>Страница урока пересобирается за 1 секунду, без нейросети</td></tr>
-  </tbody></table>
-  <p class="mut" style="font-size:18px;margin-top:18px;max-width:90ch">Картинки в роликах тоже считает программа по формулам из главы, а готовую озвучку она распознаёт обратно в текст и сверяет со сценарием.</p>
+  <div class="k">Технические решения · нажмите на строку</div>
+  <h2>Восемь вещей внутри, из-за которых результату можно верить</h2>
+  <div class="two" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr)">
+    <div id="tl"></div>
+    <div class="box" id="td" style="min-height:430px"></div>
+  </div>
 </section>
 
 <section class="tab" data-t="Поиск ошибок">
@@ -192,6 +199,8 @@ video{width:100%;display:block;background:#0b0b0b;border:1px solid var(--line)}
 </section>
 
 </main>
+<div id="hl"></div>
+<div id="tp"><div class="tpl"><div class="lab" id="tpn"></div><div class="tpa"><b>Нажать:</b> <span id="tpa"></span></div></div><div class="tps"><b>Сказать:</b> <span id="tps"></span></div><div class="tpb"><button class="btn o" id="tprev">←</button><button class="btn" id="tnext">Дальше →</button><button class="btn o" id="tend">Выйти</button></div></div>
 <div class="hint">← → листать</div>
 <script>
 (function(){
@@ -217,7 +226,7 @@ var tabs=[].slice.call(document.querySelectorAll('.tab')),nav=document.getElemen
 tabs.forEach(function(t,i){var b=document.createElement('button');b.textContent=(i+1)+'. '+t.dataset.t;b.onclick=function(){go(i)};nav.appendChild(b)});
 function go(i){cur=Math.max(0,Math.min(tabs.length-1,i));tabs.forEach(function(t,k){t.classList.toggle('on',k==cur)});[].forEach.call(nav.querySelectorAll('button'),function(b,k){b.classList.toggle('on',k==cur)});document.querySelector('main').scrollTop=0;location.hash=cur+1;if(tabs[cur].dataset.t=='Поиск ошибок')dots();if(tabs[cur].dataset.t=='Как это работает')play();count(tabs[cur]);[].forEach.call(document.querySelectorAll('video'),function(v){v.pause()})}
 addEventListener('keydown',function(e){if(e.target.tagName=='INPUT'){if(e.key=='Enter')check();return}
- if(e.key=='ArrowRight'||e.key=='PageDown'){e.preventDefault();go(cur+1)}if(e.key=='ArrowLeft'||e.key=='PageUp'){e.preventDefault();go(cur-1)}});
+ if(e.key=='ArrowRight'||e.key=='PageDown'){e.preventDefault();ti>=0?document.getElementById('tnext').click():go(cur+1)}if(e.key=='ArrowLeft'||e.key=='PageUp'){e.preventDefault();ti>=0?tour(ti-1):go(cur-1)}});
 [].forEach.call(document.querySelectorAll('.grid'),function(g){[].forEach.call(g.children,function(c,i){c.style.setProperty('--i',i)})});
 function count(tab){[].forEach.call(tab.querySelectorAll('.num[data-n]'),function(el){var n=+el.dataset.n,t0=performance.now();(function f(){var p=Math.min(1,(performance.now()-t0)/900),v=Math.round(n*(1-Math.pow(1-p,3)));el.textContent=v.toLocaleString('ru-RU').replace(/ /g,' ');if(p<1)requestAnimationFrame(f)})()})}
 /* how it works */
@@ -259,6 +268,51 @@ sel(6);
 var dg=document.getElementById('dots');for(var i=0;i<21;i++)dg.appendChild(document.createElement('i'));
 function dots(){[].forEach.call(dg.children,function(d,i){d.classList.remove('f');if(i<19)setTimeout(function(){d.classList.add('f')},120+i*70)})}
 document.getElementById('rem').innerHTML=REM.map(function(r){return '<details><summary><span>'+r[0]+'</span>'+r[1]+'</summary><p>'+r[2]+' <b>Исправление и страница указаны.</b></p></details>'}).join('');
+/* under the hood */
+var TECH=[
+ ["Сверка цитат","6 чужих «цитат» поймано сегодня в главе Slatt",["Текст приводится к одному виду: регистр, «ё» и «е», тире, кавычки, пробелы.","Дальше точное вхождение строки. Ищем не по всей книге, а в том абзаце, на который ссылается утверждение.","Отдельно сверяется страница: она должна лежать в границах этого абзаца.","Цитата из машинного описания рисунка считается ошибкой: это не слова автора."],"kmg/checks.py · check_quotes"],
+ ["Сверка чисел","0,46 и 0.46 — одно число; «рис. 7» и «шаг 2» — не факты",["Из текста урока и из абзацев книги вытаскиваются все числа и сравниваются два набора.","Числа в ссылках (рисунок, таблица, формула) и в нумерации шагов исключаются.","Число, которого нет в источнике, — ошибка с адресом: какая тема, какое поле.","Известная слабость: распознанное с пробелами «0. 1 4» дало 7 ложных срабатываний в Asquith. Мы их не прятали."],"kmg/checks.py · check_numbers"],
+ ["Ничего не пропущено","91–98% главы в курсе на тесте",["Глава заранее режется на единицы: абзац, формула, таблица, пример, задача.","У каждой единицы должна быть строка в таблице покрытия: тема, в которую она попала, или причина, почему нет.","Непокрытый текст автора — ошибка, глава не считается готовой."],"kmg/checks.py · check_coverage"],
+ ["Самоисправление","1 650 запросов на доработку по десяти главам, человек — 0 минут",["Найденная ошибка возвращается нейросети вместе с точным текстом ошибки и адресом.","После исправления проверки запускаются снова.","Что не исправилось, получает статус «спорно», вопрос специалисту и не идёт в задания и ролики.","На тесте так осталось 41 утверждение из 1285."],"kmg/refine.py"],
+ ["Две нейросети вместо одной","$0,197 → $0,010 за тему при совпадении 96%",["Первый вариант: сильная нейросеть на всём — $12,7 за главу.","Мы замерили три нейросети на одном образце одними и теми же проверками.","Дешёвая с ужесточённым заданием дала 0 ошибок проверок и 96% совпадения утверждений с сильной.","Итог: сильная только делит главу на темы ($1,1), дешёвая пишет темы. $2 за главу."],"docs/COSTS.md · config/models.yaml"],
+ ["Устойчивые номера и кэш","Правка числа → страница за 1 секунду",["Номер темы собирается из страницы и отпечатка исходного текста: n-098-edce90.","При повторном запуске номера не меняются, поэтому задания, ролики и ответы специалиста остаются привязаны.","Ответы нейросети сохраняются по содержимому запроса: повторный запуск без изменений бесплатен.","Поэтому после правки факта не нужно заново звать нейросеть."],"kmg/textnorm.py · cache/llm"],
+ ["Ролик под контролем","Озвучка расходится со сценарием на 2–8% при допуске 10%",["Сцена описана данными. Кадр и кривая считаются из одного состояния, поэтому разойтись не могут.","Правила физики проверяются до записи: например, поток идёт от высокого давления к низкому.","У каждой фразы диктора есть номер утверждения из книги.","Готовую дорожку распознаёт локальная программа распознавания речи и сравнивает со сценарием. Ролик с 10,4% мы не сдали."],"kmg_course · scenes"],
+ ["Знания отдельно от программы","Бурение: +230 строк в папке за 3,5 минуты, программа не менялась",["Словарь терминов на двух языках, типичные заблуждения, правила физики и произношения лежат отдельной папкой.","Программа и поиск ошибок берут всё предметное оттуда.","Проверяется по истории репозитория: сравнение программы с меткой заморозки пустое.","Нейросеть тоже задаётся в настройках, есть два способа обращения к ней."],"domain/ · config/"]];
+var tl=document.getElementById('tl'),td=document.getElementById('td');
+tl.innerHTML=TECH.map(function(x,i){return '<button class="trow" data-i="'+i+'"><span>0'+(i+1)+'</span>'+x[0]+'</button>'}).join('');
+function tech(i){var x=TECH[i];[].forEach.call(tl.children,function(b,k){b.classList.toggle('on',k==i)});
+ td.innerHTML='<div class="lab">0'+(i+1)+' · '+x[3]+'</div><div class="big" style="margin-bottom:8px">'+x[0]+'</div><div style="color:#19d3c5;font-size:23px;margin-bottom:18px">'+x[1]+'</div><ul class="tu">'+x[2].map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul>'}
+[].forEach.call(tl.children,function(b,i){b.onclick=function(){tech(i)}});tech(0);
+
+/* guided demo */
+var TOUR=[
+ [0,'h1','Назовите себя и одну фразу о том, что это.','«Мы — Osiris Deeptech. Мы сделали программу, которая сама делает курс из главы учебника. Курс сегодня покажут все. Мы покажем, почему нашему можно верить».'],
+ [0,'.tab.on .grid','Ничего не нажимать.','«Десять глав. Четыре из них программа увидела сегодня в 10:30 и сделала сама — человек не правил ни минуты. Четыре с половиной тысячи утверждений, у каждого цитата и страница».'],
+ [1,'#flow','Анимация идёт сама, шесть шагов.','«Пишет нейросеть — она фиолетовая. А проверяет и собирает обычная программа — она зелёная. Нейросеть может ошибиться, программа — нет: она сравнивает текст с книгой».',function(){play()}],
+ [1,'#flow .st:nth-child(5)','Нажмите на шаг «Сверяет с книгой».','«Вот главное место. Каждая цитата ищется в книге буква в букву, каждое число — в том же абзаце. Не нашлось — назад на исправление. Не исправилось — специалисту, в курс не идёт».',function(){pt.forEach(clearTimeout);step(3)}],
+ [2,'#cbox','Попросите жюри назвать число. Впишите его вместо 25 и нажмите «Проверить».','«Назовите любое число. В книге написано двадцать пять процентов. Допустим, нейросеть ошиблась и написала ваше».'],
+ [2,'#term','Дождитесь красного ответа.','«Программа отвечает: такого числа в этом абзаце книги нет, курс не выпускается. Это правило работает на каждом из четырёх с половиной тысяч утверждений».'],
+ [3,'#tb','Нажмите на строку Slatt или Басарыгин.','«Вот четыре сегодняшние главы. Три на английском, одна про бурение — другая область. В курс попало от 91 до 98 процентов текста, как и на главах, которые мы знали заранее».',function(){sel(8)}],
+ [3,'#det','Нажмите «Открыть этот курс». В курсе: урок → кнопка «стр. N» → цитата. Вернитесь на эту вкладку.','«Это курс, собранный сегодня. У каждого абзаца кнопка со страницей: нажимаю — вижу слова автора. Из 168 утверждений программа сама отправила человеку 12».'],
+ [4,'#tl .trow:nth-child(1)','Откроется «Сверка цитат».','«Теперь почему внутри мы сделаны лучше. Первое: цитату ищем не по всей книге, а в конкретном абзаце и на конкретной странице. Сегодня это поймало шесть утверждений, где нейросеть выдала описание рисунка за слова автора».',function(){tech(0)}],
+ [4,'#td','Откроется «Самоисправление».','«Второе: ошибку не правит человек. Она возвращается нейросети с точным адресом, потом проверка идёт заново. Поэтому на тесте ноль минут ручной работы».',function(){tech(3)}],
+ [4,'#td','Откроется «Две нейросети».','«Третье: деньги. Первый вариант стоил почти тринадцать долларов за главу. Мы замерили три нейросети одними проверками и оставили дорогую только на плане. Два доллара, совпадение 96 процентов».',function(){tech(4)}],
+ [4,'#td','Откроется «Устойчивые номера».','«Четвёртое: у каждой темы постоянный номер из страницы и отпечатка текста. Поэтому поправили одно число — страница пересобралась за секунду, без нейросети. Это вы попросите показать отдельно».',function(){tech(5)}],
+ [5,'#dots','Точки закрасятся сами.','«Та же проверка работает на чужих курсах. В тренировочном наборе организаторы спрятали 21 ошибку — программа нашла 19, с исправлением и страницей. Вашим шести курсам от шести команд нужен именно такой контролёр».'],
+ [5,'#rem','Раскройте одно замечание, например первое.','«Сегодня на тестовом наборе — двадцать замечаний за три минуты. Вот пример: в чужом курсе перевёрнут знак. Сколько из двадцати верных, считаете вы».'],
+ [6,'.vid','Запустите левый ролик на 10 секунд и остановите.','«Картинку рисует программа по уравнению из главы, а не нейросеть. Честно о пределе: такие сцены есть для четырёх типов процессов. Для дельт и бурения их нет, сегодняшние тестовые ролики — схема».'],
+ [7,'.tab.on .lede','Конец. Дальше вопросы и пересборка.','«Курс — это папка с файлами: работает в закрытой сети. Так же подключаются ваши регламенты. Дайте нам десять глав или один регламент — вернём курсы и список мест для вашего специалиста. Спасибо».']];
+var ti=-1,hl=document.getElementById('hl'),tp=document.getElementById('tp'),mainEl=document.querySelector('main');
+function place(){if(ti<0)return;var el=document.querySelector(TOUR[ti][1]);if(!el){hl.style.display='none';return}var r=el.getBoundingClientRect();hl.style.display='block';hl.style.left=(r.left-8)+'px';hl.style.top=(r.top-8)+'px';hl.style.width=(r.width+16)+'px';hl.style.height=(r.height+16)+'px'}
+function tour(i){if(i<0||i>=TOUR.length)return;ti=i;var s=TOUR[i];document.body.classList.add('demo');go(s[0]);if(s[4])s[4]();
+ document.getElementById('tpn').textContent='Шаг '+(i+1)+' из '+TOUR.length;document.getElementById('tpa').textContent=s[2];document.getElementById('tps').textContent=s[3];
+ setTimeout(function(){var el=document.querySelector(s[1]);if(el)el.scrollIntoView({block:'center'});setTimeout(place,60)},380)}
+function endTour(){ti=-1;document.body.classList.remove('demo');hl.style.display='none'}
+document.getElementById('tnext').onclick=function(){ti<TOUR.length-1?tour(ti+1):endTour()};document.getElementById('tprev').onclick=function(){tour(ti-1)};document.getElementById('tend').onclick=endTour;
+[].forEach.call(document.querySelectorAll('.startdemo'),function(b){b.onclick=function(){tour(0)}});
+addEventListener('resize',place);mainEl.addEventListener('scroll',place);
+addEventListener('keydown',function(e){if(ti<0||e.target.tagName=='INPUT')return;if(e.key==' '||e.key=='Enter'){if(e.target.tagName=='BUTTON'||e.target.tagName=='SUMMARY'||e.target.tagName=='A')return;e.preventDefault();document.getElementById('tnext').click()}if(e.key=='Escape')endTour()},true);
+
 go((parseInt(location.hash.slice(1))||1)-1);
 })();
 </script></body></html>
