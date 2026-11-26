@@ -193,7 +193,17 @@ def build(layer_path, out=None, with_tasks=True, reuse_tasks=False):
     report = {"tasks": None}
     task_list = []
     if with_tasks:
-        task_list, rep = tasks_mod.build_tasks(layer, out, log_path, reuse=reuse_tasks)
+        changed = ()
+        if reuse_tasks and (out / "data" / "course.js").exists():   # nodes whose facts differ from the previous build
+            try:
+                old = json.loads((out / "data" / "course.js").read_text(encoding="utf-8").split("=", 1)[1].strip().rstrip(";"))
+                prev_src = {s["id"]: json.dumps(s["blocks"]["source"], ensure_ascii=False, sort_keys=True) for s in old["steps"]}
+                changed = {s["id"] for s in view["steps"] if prev_src.get(s["id"]) != json.dumps(s["blocks"]["source"], ensure_ascii=False, sort_keys=True)}
+            except (ValueError, KeyError, IndexError):
+                changed = ()
+        task_list, rep = tasks_mod.build_tasks(layer, out, log_path, reuse=reuse_tasks, drop_nodes=changed)
+        if reuse_tasks:
+            rep["changed_nodes_tasks_dropped"] = sorted(changed)
         report["tasks"] = rep
     view["tasks"] = task_list
 

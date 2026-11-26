@@ -6,6 +6,7 @@
 .venv/Scripts/python -m kmg_course build out/<глава>/layer.json      # → out/<глава>/course/
 .venv/Scripts/python -m kmg_course build out/<глава>/layer.json --no-tasks   # без модели, $0
 .venv/Scripts/python -m kmg_course build out/<глава>/layer.json --assets-only   # только приложение и оформление из доменного пакета (фото, легенда); содержание и задания не трогает, модель не вызывает
+.venv/Scripts/python -m kmg_course build out/<глава>/layer.json --reuse-tasks   # быстрая пересборка после правки факта (~1 с, без модели): страница из нового слоя; задания неизменённых узлов из прошлой сборки перепроверяются, задания узлов с изменёнными утверждениями снимаются до обычной сборки (course_report.json → changed_nodes_tasks_dropped)
 ```
 
 Курс открывается без сервера: `out/<глава>/course/index.html` (двойной щелчок). Код выхода 0 — курс собран,

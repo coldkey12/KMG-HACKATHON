@@ -360,7 +360,7 @@ def internal(t):
     return out
 
 
-def build_tasks(layer, out_dir, log_path, min_total=15, reuse=False):
+def build_tasks(layer, out_dir, log_path, min_total=15, reuse=False, drop_nodes=()):
     """reuse=True: no model call — the tasks of the previous build (out_dir/tasks.json) are re-checked against the
     current layer (e.g. after a fact edit): tasks whose keys no longer hold go to the report as rejected."""
     pack_terms = pack_prereq_terms(domain_pack(layer["chapter"]["domain_pack"]))
@@ -368,6 +368,8 @@ def build_tasks(layer, out_dir, log_path, min_total=15, reuse=False):
     if reuse and prev.exists():
         raw = []
         for t in json.loads(prev.read_text(encoding="utf-8")).get("tasks", []):
+            if (t.get("node_id") or t.get("step_id")) in drop_nodes:   # facts of this node changed: its old tasks are dropped
+                continue
             try:
                 raw.append(internal(t))
             except (KeyError, ValueError, TypeError, IndexError):
