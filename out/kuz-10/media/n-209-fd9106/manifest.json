@@ -1,0 +1,14 @@
+{
+ "node_id": "kuz-10.n-209-fd9106",
+ "format": "short",
+ "mp4": "n-209-fd9106_short.mp4",
+ "scene": "scene.html",
+ "audio": "voice.mp3",
+ "subtitles_vtt": "subtitles.vtt",
+ "passport": "passport.html",
+ "passport_json": "passport.json",
+ "subtitles_burned_in": true,
+ "title": "Риф то под водой, то остров",
+ "template": "claim_steps",
+ "duration_s": 69.871
+}

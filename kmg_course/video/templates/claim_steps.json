@@ -20,13 +20,14 @@
   "labels": {"kinds": {"observation": "наблюдение", "assumption": "условие", "inference": "вывод"},
              "page": "стр.", "hidden": "?", "wrong_tag": "так думают многие — неверно", "flow": "наблюдения и условия → вывод",
              "legend_title": "из книги, по порядку"},
+  "_note": "на экране только карточки утверждений: голос не говорит «на разрезе / на кривой / на снимке видно» — он ссылается на книгу («автор описывает…», «в книге…»)",
   "slots": {
     "hook":          {"view": "cards", "reveal": 0, "provenance": "model", "sees": "{n_cards} пустых карточек со знаками «?» — утверждения книги по этому шагу ещё скрыты; крупный вопрос на экране"},
     "misconception": {"view": "cards", "reveal": 0, "wrong": true, "provenance": "wrong", "sees": "поверх скрытых карточек красная плашка «так думают многие — неверно»"},
     "prediction":    {"view": "cards", "reveal": 0, "provenance": "model", "sees": "карточки ещё скрыты; вопрос-предсказание; пауза «Подумайте…»"},
-    "reveal":        {"view": "cards", "reveal": 1, "t0": 0, "t1": 1, "focus": "claims", "provenance": "model", "sees": "карточки открываются по порядку книги: {kinds_line}; подсвечены те, о которых говорит голос"},
+    "reveal":        {"view": "cards", "reveal": 1, "t0": 0, "t1": 1, "focus": "claims", "provenance": "model", "sees": "карточки открываются по порядку книги: {kinds_line}; подсвечены те, о которых говорит голос; рисунков объекта на экране нет — ссылайся на книгу"},
     "explain":       {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": "model", "sees": "все карточки открыты; стрелки от наблюдений и условий к выводам; подсвечены карточки этой части"},
-    "data":          {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": "model", "sees": "подсвечены карточки-наблюдения: что видно в данных ({n_obs} шт.) и какой вывод из них делают ({n_inf} шт.)"},
+    "data":          {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": "model", "sees": "подсвечены карточки-наблюдения ({n_obs} шт.) и выводы ({n_inf} шт.); разреза, кривых и снимков на экране НЕТ — не говори «на разрезе видно», говори «автор описывает» или «в книге»"},
     "transfer":      {"view": "cards", "reveal": 1, "arrows": true, "provenance": "model", "sees": "вся схема рассуждения на экране; вопрос на перенос"}
   },
   "story": {

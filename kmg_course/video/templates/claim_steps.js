@@ -52,7 +52,8 @@
       var pg = Lb.page + " " + cd.page; ctx.fillText(pg, r.x + r.w - ctx.measureText(pg).width - 18 * U, r.y + 40 * U);
       if (hot || st.focus !== "claims" || !cited.length) {  // words of the claim only where the voice is (≤ 6 words on a card)
         var f = "600 " + 28 * U + "px " + window.FONT;
-        g.wrap(cd.short, r.w - 80 * U, f).slice(0, 2).forEach(function (ln, k) { ctx.font = f; ctx.fillStyle = hot ? C.ink : C.muted; ctx.fillText(ln, r.x + 60 * U, r.y + 80 * U + k * 34 * U); });
+        var nl = r.h >= 120 * U ? 2 : 1, y0 = r.y + Math.min(80 * U, r.h - 16 * U);  // text stays inside the card
+        g.wrap(cd.short, r.w - 80 * U, f).slice(0, nl).forEach(function (ln, k) { ctx.font = f; ctx.fillStyle = hot ? C.ink : C.muted; ctx.fillText(ln, r.x + 60 * U, y0 + k * 34 * U); });
       }
     });
     if (st.wrong) {
