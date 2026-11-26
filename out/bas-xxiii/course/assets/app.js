@@ -232,12 +232,14 @@
     var frag = document.createDocumentFragment(), rest = t;
     (terms || []).forEach(function (term) {
       if (!dfnDone || dfnDone[term] || !rest) return;
-      var i = rest.toLowerCase().indexOf(term.toLowerCase());
+      var low = rest.toLowerCase(), tl = term.toLowerCase(), i = -1, from = 0, L = /[0-9A-Za-zА-Яа-яЁё]/;
+      while ((i = low.indexOf(tl, from)) >= 0 && i > 0 && L.test(rest[i - 1])) from = i + 1;   // whole word start only
       if (i < 0) return;
       dfnDone[term] = true;
       frag.appendChild(texFrag(rest.slice(0, i)));
-      frag.appendChild(el("dfn", { title: "Объяснение — в блоке «Новые понятия»", text: rest.slice(i, i + term.length) }));
-      rest = rest.slice(i + term.length);
+      var end = i + term.length; while (end < rest.length && end - i - term.length < 4 && L.test(rest[end])) end++;   // the whole word, with its ending
+      frag.appendChild(el("dfn", { title: "Объяснение — в блоке «Новые понятия»", text: rest.slice(i, end) }));
+      rest = rest.slice(end);
     });
     frag.appendChild(texFrag(rest));
     return frag;
