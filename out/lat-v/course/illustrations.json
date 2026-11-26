@@ -621,22 +621,13 @@
    "step_id": "lat-v.n-092-fe1183",
    "node_id": "lat-v.n-092-fe1183",
    "file": "media/n-092-fe1183/n-092-fe1183_long.mp4",
-   "frame_class": "A",
-   "origin": "code_from_data",
-   "label": "схема",
+   "frame_class": "B",
+   "origin": "code_from_model",
+   "label": "симуляция",
    "caption": "Ролик: Глина и песчаник по таблице признаков",
    "alt": "Ролик по шагу «Глина и песчаник по таблице признаков» с субтитрами: Глина и песчаник по таблице признаков",
    "source": "сцена log_panel_decision, паспорт ролика media/n-092-fe1183/passport.html",
-   "claim_ids": [
-    "lat-v.n-092-fe1183.c-135934",
-    "lat-v.n-092-fe1183.c-4cf084",
-    "lat-v.n-092-fe1183.c-4d7431",
-    "lat-v.n-092-fe1183.c-530c2b",
-    "lat-v.n-092-fe1183.c-8546ff",
-    "lat-v.n-092-fe1183.c-a57e9a",
-    "lat-v.n-092-fe1183.c-d62136",
-    "lat-v.n-092-fe1183.c-f2168b"
-   ]
+   "claim_ids": []
   },
   {
    "alt": "Схема шага «Карбонаты, сульфаты и соли по признакам»: что на входе, что получаем и где правило ломается.",
