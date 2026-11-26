@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Osiris Deeptech — показ курса</title>
+<style>
+:root{--acc:#19d3c5;--line:#2b2b2b;--mut:#8c8c8c}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#000;color:#fff;font:400 18px/1.35 "Helvetica Neue",Helvetica,Arial,sans-serif;overflow:hidden}
+#bar{position:fixed;left:0;right:0;top:0;height:52px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid var(--line);background:#000;z-index:40}
+#bar b{font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-right:10px;white-space:nowrap}
+button{font:inherit;cursor:pointer}
+.b{background:none;border:1px solid #444;color:#ddd;font-size:15px;padding:7px 12px;white-space:nowrap}
+.b:hover{border-color:#fff;color:#fff}.b.on{background:#fff;color:#000;border-color:#fff}
+.b.go{background:var(--acc);border-color:var(--acc);color:#000;font-weight:500}
+button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.sp{flex:1}
+#wrap{position:fixed;left:0;right:0;top:52px;bottom:0;display:flex;justify-content:center;background:#050505}
+#fr{border:0;width:100%;height:100%;background:#fff;transition:width .35s}
+body.phone #fr{width:390px;border-left:1px solid #333;border-right:1px solid #333}
+body.demo #wrap{bottom:176px}
+#hl{display:none;position:fixed;z-index:30;pointer-events:none;border:3px solid var(--acc);box-shadow:0 0 0 9999px rgba(0,0,0,.55),0 0 34px rgba(25,211,197,.6);transition:left .3s,top .3s,width .3s,height .3s}
+#tp{display:none;position:fixed;left:0;right:0;bottom:0;height:176px;z-index:45;background:#0b0b0b;border-top:2px solid var(--acc);padding:14px 24px;grid-template-columns:minmax(0,.9fr) minmax(0,2fr) auto;gap:26px;align-items:center}
+body.demo #tp{display:grid}
+.lab{font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+#tp i{font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);font-style:normal}
+#tpa{font-size:18px;line-height:1.3}#tps{font-size:20px;line-height:1.35;color:#e8e8e8}
+.tb{display:flex;gap:8px}.tb .b{font-size:17px;padding:10px 14px}
+#cmd{display:none;position:fixed;right:0;top:52px;bottom:0;width:min(760px,100%);z-index:50;background:#0b0b0b;border-left:2px solid var(--acc);padding:22px 26px;overflow:auto}
+#cmd.on{display:block}
+#cmd h3{font-weight:400;font-size:30px;letter-spacing:-.02em;margin:0 0 6px}
+.c{border-top:1px solid var(--line);padding:16px 0}
+.c h4{margin:0 0 6px;font-weight:500;font-size:20px}
+.c p{margin:6px 0 0;color:#bdbdbd;font-size:16px}
+.c code{display:block;font:500 15px/1.45 ui-monospace,Menlo,monospace;background:#000;border:1px solid #444;padding:10px 12px;margin-top:8px;white-space:pre-wrap;word-break:break-all;color:#fff}
+.c .b{margin-top:8px;font-size:14px}
+@media (prefers-reduced-motion:reduce){#fr,#hl{transition:none}}
+</style></head><body>
+<div id="bar">
+  <b>Osiris Deeptech</b>
+  <button class="b go" id="start">▶ Начать демо</button>
+  <button class="b" data-c="lat-v">Курс: Латышова</button>
+  <button class="b" data-c="bas-xxiii">Басниев</button>
+  <button class="b" data-c="slatt-9">Тест: Slatt</button>
+  <button class="b" data-c="bas-4">Тест: бурение</button>
+  <button class="b" data-c="asq-7">Тест: Asquith</button>
+  <button class="b" data-c="dake-5">Тест: Dake</button>
+  <span class="sp"></span>
+  <button class="b" id="ph">Телефон 390</button>
+  <button class="b" id="rl">Обновить курс</button>
+  <button class="b" id="cb">Команды</button>
+</div>
+<div id="wrap"><iframe id="fr" title="Курс"></iframe></div>
+<div id="hl"></div>
+<div id="tp"><div><div class="lab" id="tpn"></div><div><i>Нажать:</i> <span id="tpa"></span></div></div><div><i>Сказать:</i> <span id="tps"></span></div><div class="tb"><button class="b" id="pv">←</button><button class="b on" id="nx">Дальше →</button><button class="b" id="ex">Выйти</button></div></div>
+
+<div id="cmd">
+  <h3>Если попросят запустить команду</h3>
+  <p style="color:#8c8c8c;margin:0 0 14px;font-size:16px">Терминал открыт в папке проекта. Короткий путь — цифра после <code style="display:inline;border:0;padding:0;background:none">docs/presentation/demo.sh</code>. Кнопка копирует полную команду.</p>
+  <div class="c"><h4>1. «Запустите конвейер на главе»</h4><code>.venv/bin/python -m kmg run configs/chapters/slatt-9.yaml</code><button class="b cp">Скопировать</button><p>Около 10 секунд: ответы нейросети для этой главы сохранены, поэтому запросов и денег нет. В конце строка <b>checks passed: True | $ 0.0</b>. Сказать: «На новой главе это 15–20 минут, здесь повтор из сохранённого».</p></div>
+  <div class="c"><h4>2. «Покажите проверки»</h4><code>.venv/bin/python -m kmg check out/lat-v/layer.json</code><button class="b cp">Скопировать</button><p>3 секунды. В конце <b>passed: True</b>. По всем пяти проверкам ошибок 0.</p></div>
+  <div class="c"><h4>3. «Поменяйте факт и пересоберите» — главное</h4><code>docs/presentation/demo.sh 3 35</code><button class="b cp">Скопировать</button><p>Вместо 35 — число, которое назовёт жюри. Скрипт заменяет «20 Ом·м» на это число в девяти местах и пересобирает курс за секунду. Потом нажмите здесь <b>«Обновить курс»</b> и откройте урок «Пример с палеткой» — шаг 14 демо ведёт прямо на него.</p></div>
+  <div class="c"><h4>4. «А если нейросеть ошибётся?»</h4><code>docs/presentation/demo.sh 4</code><button class="b cp">Скопировать</button><p>Подменяет в одной фразе 25 % на 40 % и запускает проверки. Ответ: <b>numbers: errors 1 … passed: False</b> — числа 40 в книге нет.</p></div>
+  <div class="c"><h4>5. «Запустите поиск ошибок в чужом курсе»</h4><code>docs/presentation/demo.sh 5</code><button class="b cp">Скопировать</button><p>Запускает программу на сегодняшнем тестовом наборе и печатает число замечаний. Если идёт дольше минуты — сказать, что на новом наборе это около трёх минут, и показать готовый ответ: <b>review/test_asquith_answer.json</b>.</p></div>
+  <div class="c"><h4>0. Вернуть всё как было</h4><code>docs/presentation/demo.sh 0</code><button class="b cp">Скопировать</button><p>Делать после каждого показа с подменой.</p></div>
+  <div class="c"><h4>«А где курс на сайте?»</h4><p>По ТЗ курс открывается локально, без сервера и логина. Курс — это папка: <b>out/slatt-9/course/index.html</b>, открывается двойным щелчком. То, что вы видите сейчас в окне, — эта самая папка. Выложить её на внутренний сайт компании — значит скопировать папку на любой веб-сервер, программа для этого не меняется.</p><code>open out/slatt-9/course/index.html</code><button class="b cp">Скопировать</button></div>
+  <div class="c"><h4>«Запустите на главе, которой у вас нет»</h4><code>.venv/bin/python -m kmg init-chapter новая data/raw/books_md/ФАЙЛ.md 10-25 --start "первые слова" --end "последние слова"
+.venv/bin/python -m kmg run configs/chapters/новая.yaml</code><button class="b cp">Скопировать</button><p>Это 15–20 минут и запросы к нейросети. Сказать честно и предложить запустить и вернуться к результату в конце.</p></div>
+</div>
+
+<script>
+(function(){
+var fr=document.getElementById('fr'),hl=document.getElementById('hl'),cur='',ti=-1;
+function url(c,h){return '/out/'+c+'/course/index.html'+(h||'#/')}
+function load(c,h,cb){[].forEach.call(document.querySelectorAll('[data-c]'),function(b){b.classList.toggle('on',b.dataset.c==c)});
+  if(cur==c){try{fr.contentWindow.location.hash=(h||'#/').slice(1)}catch(e){}setTimeout(cb||function(){},350);return}
+  cur=c;fr.onload=function(){try{fr.contentWindow.addEventListener('scroll',place,true)}catch(e){}setTimeout(cb||function(){},700)};fr.src=url(c,h)}
+function q(sel){try{return fr.contentDocument.querySelector(sel)}catch(e){return null}}
+function place(){if(ti<0)return;var el=q(T[ti][2]);if(!el){hl.style.display='none';return}var r=el.getBoundingClientRect(),f=fr.getBoundingClientRect();
+  var top=Math.max(f.top,f.top+r.top-6),bot=Math.min(f.bottom,f.top+r.bottom+6);if(bot-top<10){hl.style.display='none';return}
+  hl.style.display='block';hl.style.left=(f.left+r.left-6)+'px';hl.style.top=top+'px';hl.style.width=(r.width+12)+'px';hl.style.height=(bot-top)+'px'}
+var T=[
+ ['lat-v','#/','#side','Ничего не нажимать.','«Это готовый курс по главе Латышовой. Его собрала программа: 70 уроков в шести разделах, в том порядке, в котором новичку понятно. Слева путь по курсу и прогресс».'],
+ ['lat-v','#/','nav.side-sec','Ничего не нажимать.','«Кроме уроков здесь 164 упражнения, карточки для повторения, конспект с печатью и карта связей между уроками. Всё это требует ТЗ, и всё собрано из одного источника».'],
+ ['lat-v','#/step/lat-v.n-092-fe1183','#b-media','Запустите ролик на 10 секунд и остановите.','«Урок про то, как по показаниям приборов узнать породу. Ролик собрала программа: кривые нарисованы по таблице из книги, а не нейросетью. Голос синтезирован, субтитры есть».'],
+ ['lat-v','#/step/lat-v.n-092-fe1183','#b-summary','Нажмите кнопку «по книге, стр. 92».','«Главное. У каждого абзаца кнопка со страницей. Нажимаю — вижу слова автора, на которых этот абзац стоит. Так проверяется любая фраза курса».'],
+ ['lat-v','#/step/lat-v.n-092-fe1183','.marks-btn','Нажмите «Показать источники и метки».','«Здесь видно, что написал автор, что пояснила нейросеть, а что ещё ждёт проверки специалиста. Мы не выдаём пояснение нейросети за слова книги».'],
+ ['lat-v','#/step/lat-v.n-092-fe1183','#b-tasks','Выберите ответ и нажмите «Проверить».','«Вопросы прямо в уроке. Проверка сразу, с разбором. Правильные ответы программа сверила с утверждениями из книги».'],
+ ['lat-v','#/tasks','#main','Пролистайте чуть вниз.','«Все 164 упражнения главы в одном месте: выбор ответа, порядок, пропуск в тексте, расчёт».'],
+ ['lat-v','#/cards','#main','Переверните одну карточку.','«Карточки для повторения по каждому уроку, с отметкой “знаю” или “повторить”».'],
+ ['lat-v','#/map','#main','Ничего не нажимать.','«Карта связей: какой урок на какой опирается. Порядок уроков программа выстроила так, чтобы термин не встречался раньше своего объяснения».'],
+ ['lat-v','#/step/lat-v.n-092-fe1183','#main','Нажмите вверху «Телефон 390».','«Тот же курс на телефоне: 390 пикселей, без горизонтальной прокрутки. После показа верните кнопкой обратно».',function(){document.body.classList.add('phone');document.getElementById('ph').classList.add('on')}],
+ ['slatt-9','#/','#main','Ничего не нажимать.','«А это курс по главе, которую мы увидели сегодня в 10:30. Английский учебник про речные дельты. Программу после заморозки не меняли, человек не правил ни минуты».',function(){document.body.classList.remove('phone');document.getElementById('ph').classList.remove('on')}],
+ ['slatt-9','#/step/slatt-9.n-411-4724e1-b','#b-summary','Нажмите кнопку «по книге, стр. …».','«Тот же принцип на незнакомой главе: книга на английском, урок на русском, цитата автора и страница на месте. В курс попало 93 процента главы».'],
+ ['bas-4','#/','#main','Ничего не нажимать.','«И другая область — бурение, тоже сегодня. Мы не меняли программу: дополнили папку с терминами и правилами за три с половиной минуты. В курс попало 98 процентов главы».'],
+ ['lat-v','#/step/lat-v.n-098-edce90','#b-summary','Откройте «Команды» → пункт 3. После команды нажмите «Обновить курс».','«Пересборка. В этом уроке у автора сопротивление двадцать. Назовите другое число. Меняю его в одном файле, запускаю одну команду — через секунду оно на странице. Нейросеть для этого не нужна».']];
+function tour(i){if(i<0||i>=T.length)return;ti=i;var s=T[i];document.body.classList.add('demo');document.getElementById('cmd').classList.remove('on');
+  document.getElementById('tpn').textContent='Шаг '+(i+1)+' из '+T.length;document.getElementById('tpa').textContent=s[3];document.getElementById('tps').textContent=s[4];hl.style.display='none';
+  if(s[5])s[5]();
+  load(s[0],s[1],function(){var n=0;(function w(){var el=q(s[2]);if(!el&&n++<20)return setTimeout(w,150);if(el){el.scrollIntoView({block:s[2]=='#main'||s[2]=='#side'?'start':'center'});setTimeout(place,250);setTimeout(place,700)}})()})}
+function end(){ti=-1;document.body.classList.remove('demo');hl.style.display='none'}
+document.getElementById('start').onclick=function(){tour(0)};
+document.getElementById('nx').onclick=function(){ti<T.length-1?tour(ti+1):end()};
+document.getElementById('pv').onclick=function(){tour(ti-1)};
+document.getElementById('ex').onclick=end;
+document.getElementById('ph').onclick=function(){this.classList.toggle('on');document.body.classList.toggle('phone');setTimeout(place,450)};
+document.getElementById('rl').onclick=function(){var c=cur,h='#/';try{h=fr.contentWindow.location.hash||'#/'}catch(e){}cur='';load(c,h,function(){setTimeout(place,300)})};
+document.getElementById('cb').onclick=function(){document.getElementById('cmd').classList.toggle('on')};
+[].forEach.call(document.querySelectorAll('[data-c]'),function(b){b.onclick=function(){end();load(b.dataset.c,'#/')}});
+[].forEach.call(document.querySelectorAll('.cp'),function(b){b.onclick=function(){var t=b.previousElementSibling.textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Скопировано';setTimeout(function(){b.textContent='Скопировать'},1200)},function(){var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r)})}});
+addEventListener('resize',place);
+addEventListener('keydown',function(e){if(ti<0)return;if(e.key=='ArrowRight'){e.preventDefault();document.getElementById('nx').click()}if(e.key=='ArrowLeft'){e.preventDefault();tour(ti-1)}if(e.key=='Escape')end()});
+load('lat-v','#/');
+})();
+</script></body></html>
