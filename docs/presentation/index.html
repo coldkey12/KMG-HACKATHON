@@ -5,83 +5,112 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Глава → курс: защита</title>
 <style>
-:root{--bg:#0E1420;--panel:#172033;--ink:#EEF2F8;--muted:#9FB0C8;--line:#2A3852;--acc:#6C7CFF;--ok:#3FCF8E;--warn:#F2B84B;--bad:#FF7B72}
+:root{--bg:#000;--ink:#fff;--muted:#8C8C8C;--line:#2B2B2B;--soft:#0D0D0D}
 *{box-sizing:border-box}
 html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 22px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-section{min-height:100vh;scroll-snap-align:start;padding:6vh 7vw;display:flex;flex-direction:column;justify-content:center;gap:22px;border-bottom:1px solid var(--line)}
-h1{font-size:clamp(40px,6vw,76px);line-height:1.05;margin:0;letter-spacing:-.02em;text-wrap:balance}
-h2{font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0;text-wrap:balance}
-p{margin:0;max-width:62ch}
-.k{font:600 15px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
-.lede{font-size:26px;color:var(--muted)}
-.grid{display:grid;gap:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 21px/1.45 "Helvetica Neue",Helvetica,Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+section{position:relative;min-height:calc(100vh / var(--z,1));scroll-snap-align:start;padding:11vh 6vw 9vh;display:flex;flex-direction:column;justify-content:center;gap:28px;border-bottom:1px solid var(--line)}
+section::before{content:"ГЛАВА → КУРС";position:absolute;left:6vw;top:4vh;font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:var(--muted)}
+section::after{content:attr(data-n);position:absolute;right:6vw;top:4vh;font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:var(--muted)}
+h1{font-weight:400;font-size:clamp(44px,7vw,104px);line-height:.98;margin:0;letter-spacing:-.035em;text-wrap:balance;max-width:14ch}
+h2{font-weight:400;font-size:clamp(32px,4.2vw,60px);line-height:1.02;margin:0;letter-spacing:-.03em;text-wrap:balance;max-width:20ch}
+p{margin:0;max-width:58ch}
+.k{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:25px;line-height:1.35;color:#D0D0D0;max-width:46ch}
+.muted{color:var(--muted);font-size:17px;max-width:80ch}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:5vw;align-items:center}
+.split.r{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.tight{gap:18px;padding-top:9vh;padding-bottom:6vh}
+.tight td,.tight th{padding-top:7px;padding-bottom:7px}
+.tight li{padding-top:7px;padding-bottom:7px;font-size:17px}
+.tight ul{max-width:none}
+.col{display:flex;flex-direction:column;gap:26px}
+.grid{display:grid;gap:0;border-top:1px solid var(--line)}
 .g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media (max-width:900px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}body{font-size:18px}}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
-.card b{display:block;margin-bottom:6px}
-.card small,.muted{color:var(--muted);font-size:18px}
-.num{font:700 clamp(36px,4.4vw,60px)/1 system-ui;font-variant-numeric:tabular-nums;color:var(--ink)}
-.num.ok{color:var(--ok)}.num.warn{color:var(--warn)}
-.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
-.flow div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;flex:1 1 150px;font-size:18px}
-.flow div b{display:block;font-size:20px;margin-bottom:4px}
-.flow div.hl{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
-.flow i{align-self:center;color:var(--acc);font-style:normal;font-weight:700}
-table{border-collapse:collapse;width:100%;font-size:19px;font-variant-numeric:tabular-nums}
-th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:right}
+.cell{padding:20px 24px 4px 0;font-size:18px;line-height:1.4;color:#C8C8C8}
+.cell+.cell{padding-left:24px;border-left:1px solid var(--line)}
+.cell b{display:block;color:var(--ink);font-weight:500;font-size:21px;margin-bottom:8px;letter-spacing:-.01em}
+.cell .i{display:block;font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.16em;color:var(--muted);margin-bottom:14px}
+.num{font-weight:400;font-size:clamp(40px,5vw,76px);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:var(--ink);margin-bottom:12px}
+figure{margin:0;border:1px solid var(--line);background:var(--soft)}
+figure img{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--line);font:500 12px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.shots{display:grid;grid-template-columns:minmax(0,3.2fr) minmax(0,1fr);gap:16px;align-items:start}
+.vids{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,3fr);gap:16px;align-items:start}
+.crop{aspect-ratio:9/13.2;overflow:hidden}
+.crop img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.cropw{aspect-ratio:16/8.3;overflow:hidden}
+.cropw img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.hero{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero img{position:absolute;right:0;top:0;width:62%;height:135%;object-fit:cover;object-position:0 50%;opacity:.5;filter:grayscale(1) contrast(1.15)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000 38%,rgba(0,0,0,.55) 70%,rgba(0,0,0,.2))}
+.over{position:relative;z-index:1;display:flex;flex-direction:column;gap:28px}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.flow.f5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.flow div{padding:16px 16px 18px 0;font-size:16px;line-height:1.35;color:var(--muted)}
+.flow div+div{padding-left:16px;border-left:1px solid var(--line)}
+.flow div b{display:block;font-weight:500;font-size:19px;color:var(--ink);margin-bottom:6px}
+.flow div.hl{background:#fff;color:#333;padding-left:16px}
+.flow div.hl b{color:#000}
+table{border-collapse:collapse;width:100%;font-size:18px;font-variant-numeric:tabular-nums}
+th,td{padding:11px 14px 11px 0;border-bottom:1px solid var(--line);text-align:right}
 th:first-child,td:first-child{text-align:left}
-th{color:var(--muted);font-weight:600;font-size:16px}
+th{color:var(--muted);font:500 12px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;vertical-align:bottom}
 .scroll{overflow-x:auto}
-code{font:500 19px/1.4 ui-monospace,Menlo,monospace;background:#0A0F18;border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:block;overflow-x:auto;white-space:pre}
-ul{margin:0;padding-left:1.1em;display:grid;gap:8px;max-width:64ch}
-.todo{border:2px dashed var(--warn);color:var(--warn);border-radius:10px;padding:10px 14px;font-size:18px}
-.pg{position:fixed;right:18px;bottom:14px;font:500 14px ui-monospace,Menlo,monospace;color:var(--muted)}
+code{font:500 19px/1.4 ui-monospace,Menlo,monospace;border:1px solid var(--ink);padding:16px 18px;display:block;overflow-x:auto;white-space:pre}
+ul{margin:0;padding:0;list-style:none;display:grid;gap:0;max-width:74ch;border-top:1px solid var(--line)}
+li{padding:11px 0 11px 30px;border-bottom:1px solid var(--line);position:relative;font-size:18px;color:#D0D0D0}
+li::before{content:"—";position:absolute;left:0;color:var(--muted)}
+.pg{position:fixed;right:6vw;bottom:3vh;font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:var(--muted);z-index:5}
+@media (max-width:900px){body{font-size:18px}.split,.split.r,.g2,.g3,.g4,.shots,.vids,.flow,.flow.f5{grid-template-columns:minmax(0,1fr)}.cell+.cell,.flow div+div{border-left:0;padding-left:0;border-top:1px solid var(--line)}.hero img{width:100%;opacity:.25}}
 </style>
 </head>
 <body>
 
-<section>
-  <div class="k">Хакатон «Глава → курс» · защита</div>
-  <h1>Конвейер, который не выдумывает за автора</h1>
-  <p class="lede">Глава книги → учебный слой → курс, задания, сцены и ролики. Каждое утверждение привязано к странице и дословной цитате, и это проверяет код, а не модель.</p>
-  <p class="muted">Листать: стрелки ↓ ↑ или пробел.</p>
+<section data-n="00">
+  <div class="hero"><img src="img/v_lat.jpg" alt=""></div>
+  <div class="over">
+    <div class="k">Хакатон КМГ · защита</div>
+    <h1>Конвейер, который не выдумывает за автора</h1>
+    <p class="lede">Глава книги → учебный слой → курс, задания, сцены и ролики. Каждое утверждение привязано к странице и дословной цитате, и это проверяет код, а не модель.</p>
+    <p class="muted">Листать: стрелки ↓ ↑ или пробел.</p>
+  </div>
 </section>
 
-<section>
-  <div class="k">01 · Принцип</div>
+<section data-n="01">
+  <div class="k">01 / Принцип</div>
   <h2>Модель предлагает, код решает</h2>
   <div class="grid g3">
-    <div class="card"><b>Один источник правды</b>Курс, задания, сцены и ролики собираются только из учебного слоя, не из книги напрямую. Правка факта в слое меняет всё, что на нём стоит.</div>
-    <div class="card"><b>Проверка без модели</b>Цитата находится на указанной странице. Каждое число есть в исходной единице главы. Термин не встречается раньше своего узла. Таблица покрытия без дыр.</div>
-    <div class="card"><b>Спорное не идёт дальше</b>Утверждение, которое не подтвердилось, помечается и не попадает в ключи заданий, сценарии и ролики.</div>
+    <div class="cell"><span class="i">A</span><b>Один источник правды</b>Курс, задания, сцены и ролики собираются только из учебного слоя, не из книги напрямую. Правка факта в слое меняет всё, что на нём стоит.</div>
+    <div class="cell"><span class="i">B</span><b>Проверка без модели</b>Цитата находится на указанной странице. Каждое число есть в исходной единице главы. Термин не встречается раньше своего узла. Таблица покрытия без дыр.</div>
+    <div class="cell"><span class="i">C</span><b>Спорное не идёт дальше</b>Утверждение, которое не подтвердилось, помечается и не попадает в ключи заданий, сценарии и ролики.</div>
   </div>
 </section>
 
-<section>
-  <div class="k">02 · Под капотом</div>
+<section data-n="02">
+  <div class="k">02 / Под капотом</div>
   <h2>Одна команда на главу</h2>
   <div class="flow">
-    <div><b>Глава</b>md со страницами</div><i>→</i>
-    <div><b>Единицы</b>абзац, формула, таблица, рисунок, пример, задача</div><i>→</i>
-    <div><b>План</b>сильная модель, один вызов</div><i>→</i>
-    <div><b>Узлы</b>дешёвая модель, параллельно</div><i>→</i>
-    <div class="hl"><b>Проверки</b>код: цитаты, числа, термины, покрытие, схемы</div><i>→</i>
+    <div><b>Глава</b>md со страницами</div>
+    <div><b>Единицы</b>абзац, формула, таблица, рисунок, пример, задача</div>
+    <div><b>План</b>сильная модель, один вызов</div>
+    <div><b>Узлы</b>дешёвая модель, параллельно</div>
+    <div class="hl"><b>Проверки</b>код: цитаты, числа, термины, покрытие, схемы</div>
     <div><b>Доработка</b>дыры покрытия и ошибки чинятся сами</div>
   </div>
-  <div class="flow">
-    <div class="hl"><b>Учебный слой</b>в схеме организаторов</div><i>→</i>
-    <div><b>Маршрутизация</b>формат каждого узла</div><i>→</i>
-    <div><b>Курс</b>шаги, задания, карточки, конспект, карта</div><i>→</i>
-    <div><b>Сцена</b>одна спецификация: интерактив и mp4</div><i>→</i>
+  <div class="flow f5">
+    <div class="hl"><b>Учебный слой</b>в схеме организаторов</div>
+    <div><b>Маршрутизация</b>формат каждого узла</div>
+    <div><b>Курс</b>шаги, задания, карточки, конспект, карта</div>
+    <div><b>Сцена</b>одна спецификация: интерактив и mp4</div>
     <div><b>Модуль проверки</b>чужой пакет: текст и кадры</div>
   </div>
   <p class="muted">Движок не знает геологии. Глоссарий, заблуждения, чек-лист физики, стайлгайд и ударения лежат в доменном пакете; для бурения собран отдельный пакет без правки кода.</p>
 </section>
 
-<section>
-  <div class="k">03 · Обучение и контроль</div>
+<section data-n="03">
+  <div class="k">03 / Обучение и контроль</div>
   <h2>Шесть глав, ноль минут ручных правок</h2>
   <div class="scroll"><table>
     <thead><tr><th>Глава</th><th>Выборка</th><th>Узлов</th><th>Утверждений</th><th>Покрытие предложений автора</th><th>Расчётная стоимость слоя</th><th>Ручные минуты</th></tr></thead>
@@ -97,29 +126,50 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:8px;max-width:64ch}
   <p class="muted">Стоимость — около 3 центов на узел по прайсу. Первый вариант стоил $12,7 на главу; после замера по этапам план остался на сильной модели, узлы ушли на дешёвую. Повторный прогон без изменений берётся из кэша.</p>
 </section>
 
-<section>
-  <div class="k">04 · Курс</div>
-  <h2>Собран сборщиком, открывается двойным щелчком</h2>
-  <div class="grid g4">
-    <div class="card"><div class="num">89–164</div><small>заданий на главу, 4–5 типов; ключи проверены против слоя кодом</small></div>
-    <div class="card"><div class="num">3,3–6,9</div><small>МБ на главу вместе с роликами при лимите 30 МБ без видео</small></div>
-    <div class="card"><div class="num">16 px</div><small>минимальный шрифт, измерен скриптом на 390 и 1280 px в обеих темах</small></div>
-    <div class="card"><div class="num">1 с</div><small>пересборка страницы после правки числа в слое</small></div>
+<section data-n="04" class="tight">
+  <div class="k">04 / Курс</div>
+  <div class="split">
+    <div class="col">
+      <h2>Собран сборщиком, открывается двойным щелчком</h2>
+      <ul>
+        <li>У каждого абзаца кнопка «стр. N» с дословной цитатой автора.</li>
+        <li>Четыре метки происхождения: по книге, пояснение модели, гипотеза, ждёт проверки.</li>
+        <li>Независимый UX-аудит нашёл 9 нарушений ТЗ. Все исправлены до заморозки.</li>
+      </ul>
+    </div>
+    <div class="shots">
+      <figure><div class="cropw"><img src="img/course_step.jpg" alt="Страница урока курса по главе Латышовой: оглавление слева, ролик и интерактивная сцена в уроке"></div><figcaption>Урок · 1280 px</figcaption></figure>
+      <figure><img src="img/course_phone.jpg" alt="Тот же курс на телефоне шириной 390 пикселей"><figcaption>390 px</figcaption></figure>
+    </div>
   </div>
-  <ul>
-    <li>У каждого абзаца кнопка «стр. N» с дословной цитатой автора.</li>
-    <li>Четыре метки происхождения: по книге, пояснение модели, гипотеза, ждёт проверки.</li>
-    <li>Независимый UX-аудит нашёл 9 нарушений ТЗ, включая неработающее перетаскивание пальцем. Все исправлены до заморозки.</li>
-  </ul>
+  <div class="grid g4">
+    <div class="cell"><div class="num">89–164</div>заданий на главу; ключи проверены кодом</div>
+    <div class="cell"><div class="num">3,3–6,9</div>МБ на главу с роликами; лимит 30 МБ</div>
+    <div class="cell"><div class="num">16 px</div>минимальный шрифт на 390 и 1280 px</div>
+    <div class="cell"><div class="num">1 с</div>пересборка страницы после правки числа в слое</div>
+  </div>
 </section>
 
-<section>
-  <div class="k">05 · Ролики</div>
-  <h2>Одна спецификация сцены: интерактив в курсе и mp4</h2>
-  <div class="grid g2">
-    <div class="card"><b>Что вычисляется</b>Волна давления — из решения уравнения пьезопроводности. Каротажный планшет — из таблицы признаков книги. Зона проникновения — по формуле Арчи. Движение считается из модели состояния, генерации изображений нет.</div>
-    <div class="card"><b>Что проверяется до рендера</b>Каждая фраза закадра ссылается на утверждение узла. Инварианты сцены — по чек-листу физики. Готовая дорожка распознаётся и сверяется со сценарием: 2–8% ошибок при пороге 10%.</div>
+<section data-n="05">
+  <div class="k">05 / Ролики</div>
+  <div class="split r">
+    <div class="vids">
+      <figure><div class="crop"><img src="img/v_basniev.jpg" alt="Кадр вертикального ролика: расчётная волна понижения давления в пласте рядом с неверной картиной резкого фронта"></div><figcaption>Басниев · 9:16</figcaption></figure>
+      <figure><img src="img/v_lat.jpg" alt="Кадр горизонтального ролика: каротажный планшет из пяти кривых, по которым различают два пласта"><figcaption>Латышова · 16:9 · уровни из таблицы книги</figcaption></figure>
+    </div>
+    <div class="col">
+      <h2>Одна спецификация сцены: интерактив и mp4</h2>
+      <div class="grid">
+        <div class="cell" style="padding-bottom:16px"><b>Что вычисляется</b>Волна давления — из решения уравнения пьезопроводности. Каротажный планшет — из таблицы признаков книги. Зона проникновения — по формуле Арчи. Генерации изображений нет.</div>
+        <div class="cell" style="padding-left:0;border-left:0;border-top:1px solid var(--line)"><b>Что проверяется до рендера</b>Каждая фраза закадра ссылается на утверждение узла. Инварианты сцены — по чек-листу физики. Готовая дорожка распознаётся и сверяется со сценарием: 2–8% ошибок при пороге 10%.</div>
+      </div>
+    </div>
   </div>
+</section>
+
+<section data-n="06">
+  <div class="k">06 / Покрытие шаблонами</div>
+  <h2>Где сцена считается, а где только схема</h2>
   <div class="scroll"><table>
     <thead><tr><th>Глава</th><th>Видеоёмких узлов</th><th>Специальный шаблон</th><th>Только запасной</th></tr></thead>
     <tbody>
@@ -134,20 +184,20 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:8px;max-width:64ch}
   <p class="muted">Честно: для рифов и дельт специальных шаблонов нет. Запасной шаблон показывает ход рассуждения карточками утверждений и помечен «схема: объект не изображён».</p>
 </section>
 
-<section>
-  <div class="k">06 · Модуль проверки</div>
+<section data-n="07">
+  <div class="k">07 / Модуль проверки</div>
   <h2>Контрольный пакет организаторов, замер до открытия ключа</h2>
   <div class="grid g4">
-    <div class="card"><div class="num ok">19 / 21</div><small>ошибок найдено с исправлением и страницей</small></div>
-    <div class="card"><div class="num ok">95%</div><small>по весу ошибок, скрипт жюри</small></div>
-    <div class="card"><div class="num warn">2</div><small>ложные тревоги; ни одной на верных, но неожиданных утверждениях</small></div>
-    <div class="card"><div class="num">3 мин</div><small>прогон пакета из 90 целей, включая 9 кадров</small></div>
+    <div class="cell"><div class="num">19 / 21</div>ошибок найдено с исправлением и страницей</div>
+    <div class="cell"><div class="num">95%</div>по весу ошибок, скрипт жюри</div>
+    <div class="cell"><div class="num">2</div>ложные тревоги; ни одной на верных, но неожиданных утверждениях</div>
+    <div class="cell"><div class="num">3 мин</div>прогон пакета из 90 целей, включая 9 кадров</div>
   </div>
   <p class="muted">Замечание выдаётся только с основанием в источнике. Ответ был записан и закоммичен до открытия ключа.</p>
 </section>
 
-<section>
-  <div class="k">07 · Тест</div>
+<section data-n="08" class="tight">
+  <div class="k">08 / Тест</div>
   <h2>Что замороженный конвейер сделал сам</h2>
   <div class="scroll"><table>
     <thead><tr><th>Глава (выдана в 10:30)</th><th>Язык</th><th>Узлов</th><th>Покрытие единиц главы</th><th>Заданий в курсе</th><th>Ручные минуты человека</th></tr></thead>
@@ -161,31 +211,36 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:8px;max-width:64ch}
   <ul>
     <li>Код после заморозки не менялся; с API-ключа за тест $0, все вызовы через подписку.</li>
     <li>Доменный пакет бурения дополнен под главу за 3,5 минуты агента, без правки кода.</li>
-    <li>Одна ручная правка: в Slatt сняты 6 утверждений, цитировавших машинное описание рисунка (6 минут агента).</li>
+    <li>В Slatt сняты 6 утверждений, цитировавших машинное описание рисунка: 6 минут агента, 0 минут человека.</li>
     <li>Asquith: 7 ложных срабатываний проверки чисел на одном числе — в md оно записано как «0. 1 4». Оставили как есть и записали в журнал.</li>
-    <li>Ролики по обеим темам — запасным шаблоном: специальных сцен для дельт и бурения у нас нет.</li>
+    <li>Ролики: четыре в сдаче, все запасным шаблоном — сцен для дельт и бурения у нас нет. Пятый исключён: распознавание дало 10,4% ошибок при пороге 10%.</li>
   </ul>
   <p class="muted" id="review-result">Модуль проверки на тестовом пакете (Asquith, 86 элементов и 9 кадров): 20 замечаний, у каждого исправление и страница; прогон 2 мин 40 с, ответ сдан без ручных правок до подсчёта организаторами.</p>
 </section>
 
-<section>
-  <div class="k">08 · Пересборка</div>
-  <h2>Меняем число в слое — оно меняется на странице</h2>
+<section data-n="09">
+  <div class="k">09 / Пересборка</div>
+  <div class="split">
+    <div class="col">
+      <h2>Меняем число в слое — оно меняется на странице</h2>
+      <ul>
+        <li>Страница шага строится из слоя без модели, около 1 секунды.</li>
+        <li>Задания изменённого узла снимаются: их ключ больше не подтверждён слоем.</li>
+        <li>Полная сборка без флага создаёт для узла новые задания; команда <b>refresh</b> пересобирает и ролик.</li>
+      </ul>
+    </div>
+    <figure><div class="cropw"><img src="img/course_bas.jpg" alt="Страница урока курса по главе Басниева с роликом о волне давления"></div><figcaption>Страница шага строится из слоя</figcaption></figure>
+  </div>
   <code>.venv/bin/python -m kmg_course build out/lat-v/layer.json --reuse-tasks</code>
-  <ul>
-    <li>Страница шага строится из слоя без модели, около 1 секунды.</li>
-    <li>Задания изменённого узла снимаются: их ключ больше не подтверждён слоем.</li>
-    <li>Полная сборка без флага создаёт для узла новые задания; команда <b>refresh</b> пересобирает и ролик.</li>
-  </ul>
 </section>
 
-<section>
-  <div class="k">09 · Что забирает компания</div>
+<section data-n="10">
+  <div class="k">10 / Что забирает компания</div>
   <h2>Модули, которые работают по отдельности</h2>
   <div class="grid g3">
-    <div class="card"><b>Глава → слой</b>в схеме организаторов, с таблицей покрытия и маршрутизацией.</div>
-    <div class="card"><b>Модуль проверки</b>принимает чужой пакет: утверждения, сценарии, спецификации, кадры.</div>
-    <div class="card"><b>Слой → курс и ролики</b>шаблоны сцен с моделью состояния, паспорта по схеме.</div>
+    <div class="cell"><span class="i">01</span><b>Глава → слой</b>в схеме организаторов, с таблицей покрытия и маршрутизацией.</div>
+    <div class="cell"><span class="i">02</span><b>Модуль проверки</b>принимает чужой пакет: утверждения, сценарии, спецификации, кадры.</div>
+    <div class="cell"><span class="i">03</span><b>Слой → курс и ролики</b>шаблоны сцен с моделью состояния, паспорта по схеме.</div>
   </div>
   <p class="muted">Ограничения, о которых мы знаем: сверка со сканами страниц не сделана, поэтому часть утверждений помечена «ждёт проверки»; шаблонов сцен для рифов, дельт и бурения нет; запуск проверен на macOS.</p>
 </section>
@@ -194,13 +249,15 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:8px;max-width:64ch}
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('section')),pg=document.getElementById('pg');
-  function cur(){var y=window.scrollY+window.innerHeight/2;for(var i=0;i<s.length;i++){if(s[i].offsetTop+s[i].offsetHeight>y)return i}return s.length-1}
+  function cur(){var y=window.innerHeight/2;for(var i=0;i<s.length;i++){if(s[i].getBoundingClientRect().bottom>y)return i}return s.length-1}
   function go(d){var i=Math.max(0,Math.min(s.length-1,cur()+d));s[i].scrollIntoView()}
-  function upd(){pg.textContent=(cur()+1)+' / '+s.length}
+  function upd(){pg.textContent=('0'+(cur()+1)).slice(-2)+' / '+s.length}
   addEventListener('keydown',function(e){
     if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>=0){e.preventDefault();go(1)}
     if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>=0){e.preventDefault();go(-1)}
   });
+  function fit(){var z=innerWidth<900?1:Math.min(1,innerWidth/1640,innerHeight/940);document.documentElement.style.setProperty('--z',z);document.body.style.zoom=z}
+  addEventListener('resize',fit);fit();
   addEventListener('scroll',upd,{passive:true});upd();
 })();
 </script>
