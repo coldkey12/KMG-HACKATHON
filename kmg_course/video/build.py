@@ -358,7 +358,27 @@ def grounding_errors(node, beats, spec, pack=None):
     return errs
 
 
+def attach_sources(node, beats, spec, pack=None):
+    """Deterministic repair of «right words, missing claim id»: a fact part that uses a specific word of another
+    verified claim gets that claim added to its claim_ids (the source of the word). Nothing in the text changes."""
+    ok = {c["id"] for c in node["claims"] if c["status"] == "ok"}
+    for _ in range(2):
+        errs = grounding_errors(node, beats, spec, pack)
+        if not errs:
+            break
+        for e in errs:
+            m = re.match(r"часть (\d+) .*?утверждении (.+?), но оно не указано", e)
+            if not m:
+                continue
+            b = beats[int(m.group(1)) - 1]
+            for cid in [x.strip() for x in m.group(2).split(",")]:
+                if cid in ok and cid not in (b.get("claim_ids") or []):
+                    b.setdefault("claim_ids", []).append(cid)
+    return beats
+
+
 def check_script(layer, node, beats, story, fmt, pack_terms, spec=None, pack=None):
+    attach_sources(node, beats, spec, pack)
     errs = []
     claims = {c["id"]: c for c in node["claims"]}
     doubtful = doubtful_claims(layer, node)
@@ -917,6 +937,8 @@ def build(layer_path, node_id, fmt="short", template=None, out_dir=None, log=pri
         raise SystemExit("сценарий не прошёл проверку:\n- " + "\n- ".join(errs))
     sp.write_text(json.dumps({"node_id": node["id"], "node_hash": nh, "story": story, "cost_usd": cost, "beats": beats},
                              ensure_ascii=False, indent=1), encoding="utf-8")
+    if rej.exists():
+        rej.unlink()  # the accepted script supersedes an earlier rejected one
 
     spoken, used_all = [], []
     for b in beats:

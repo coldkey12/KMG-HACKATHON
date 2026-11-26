@@ -8,7 +8,7 @@
  "passport": "passport.html",
  "passport_json": "passport.json",
  "subtitles_burned_in": true,
- "title": "Почему давление выравнивается долго",
+ "title": "Почему давление выравнивается медленно",
  "template": "pressure_diffusion",
- "duration_s": 59.071
+ "duration_s": 71.736
 }
