@@ -1,7 +1,7 @@
 # Защита: что говорить и что нажимать (7 минут показа + пересборка)
 
 Открыть заранее в отдельных вкладках:
-1. `docs/presentation/index.html` — слайды (листать стрелками). Запасной вариант: `docs/presentation/KMG_glava_kurs.pdf`.
+1. `docs/presentation/index.html` — слайды (листать стрелками). Запасной вариант: `docs/presentation/Osiris_Deeptech.pdf`.
 2. `out/slatt-9/course/index.html` — курс по тестовой главе (собран сегодня).
 3. `out/lat-v/course/index.html#/step/lat-v.n-092-fe1183` — урок с длинным роликом.
 4. `out/bas-xxiii/course/index.html#/step/bas-xxiii.n-475-e20d95` — урок с коротким роликом про волну давления.
