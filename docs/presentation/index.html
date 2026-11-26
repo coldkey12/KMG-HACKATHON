@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Глава → курс: защита</title>
+<style>
+:root{--bg:#0E1420;--panel:#172033;--ink:#EEF2F8;--muted:#9FB0C8;--line:#2A3852;--acc:#6C7CFF;--ok:#3FCF8E;--warn:#F2B84B;--bad:#FF7B72}
+*{box-sizing:border-box}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 22px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+section{min-height:100vh;scroll-snap-align:start;padding:6vh 7vw;display:flex;flex-direction:column;justify-content:center;gap:22px;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(40px,6vw,76px);line-height:1.05;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(30px,3.6vw,48px);line-height:1.1;margin:0;text-wrap:balance}
+p{margin:0;max-width:62ch}
+.k{font:600 15px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.lede{font-size:26px;color:var(--muted)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}body{font-size:18px}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.card b{display:block;margin-bottom:6px}
+.card small,.muted{color:var(--muted);font-size:18px}
+.num{font:700 clamp(36px,4.4vw,60px)/1 system-ui;font-variant-numeric:tabular-nums;color:var(--ink)}
+.num.ok{color:var(--ok)}.num.warn{color:var(--warn)}
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.flow div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;flex:1 1 150px;font-size:18px}
+.flow div b{display:block;font-size:20px;margin-bottom:4px}
+.flow div.hl{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
+.flow i{align-self:center;color:var(--acc);font-style:normal;font-weight:700}
+table{border-collapse:collapse;width:100%;font-size:19px;font-variant-numeric:tabular-nums}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600;font-size:16px}
+.scroll{overflow-x:auto}
+code{font:500 19px/1.4 ui-monospace,Menlo,monospace;background:#0A0F18;border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:block;overflow-x:auto;white-space:pre}
+ul{margin:0;padding-left:1.1em;display:grid;gap:8px;max-width:64ch}
+.todo{border:2px dashed var(--warn);color:var(--warn);border-radius:10px;padding:10px 14px;font-size:18px}
+.pg{position:fixed;right:18px;bottom:14px;font:500 14px ui-monospace,Menlo,monospace;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<section>
+  <div class="k">Хакатон «Глава → курс» · защита</div>
+  <h1>Конвейер, который не выдумывает за автора</h1>
+  <p class="lede">Глава книги → учебный слой → курс, задания, сцены и ролики. Каждое утверждение привязано к странице и дословной цитате, и это проверяет код, а не модель.</p>
+  <p class="muted">Листать: стрелки ↓ ↑ или пробел.</p>
+</section>
+
+<section>
+  <div class="k">01 · Принцип</div>
+  <h2>Модель предлагает, код решает</h2>
+  <div class="grid g3">
+    <div class="card"><b>Один источник правды</b>Курс, задания, сцены и ролики собираются только из учебного слоя, не из книги напрямую. Правка факта в слое меняет всё, что на нём стоит.</div>
+    <div class="card"><b>Проверка без модели</b>Цитата находится на указанной странице. Каждое число есть в исходной единице главы. Термин не встречается раньше своего узла. Таблица покрытия без дыр.</div>
+    <div class="card"><b>Спорное не идёт дальше</b>Утверждение, которое не подтвердилось, помечается и не попадает в ключи заданий, сценарии и ролики.</div>
+  </div>
+</section>
+
+<section>
+  <div class="k">02 · Под капотом</div>
+  <h2>Одна команда на главу</h2>
+  <div class="flow">
+    <div><b>Глава</b>md со страницами</div><i>→</i>
+    <div><b>Единицы</b>абзац, формула, таблица, рисунок, пример, задача</div><i>→</i>
+    <div><b>План</b>сильная модель, один вызов</div><i>→</i>
+    <div><b>Узлы</b>дешёвая модель, параллельно</div><i>→</i>
+    <div class="hl"><b>Проверки</b>код: цитаты, числа, термины, покрытие, схемы</div><i>→</i>
+    <div><b>Доработка</b>дыры покрытия и ошибки чинятся сами</div>
+  </div>
+  <div class="flow">
+    <div class="hl"><b>Учебный слой</b>в схеме организаторов</div><i>→</i>
+    <div><b>Маршрутизация</b>формат каждого узла</div><i>→</i>
+    <div><b>Курс</b>шаги, задания, карточки, конспект, карта</div><i>→</i>
+    <div><b>Сцена</b>одна спецификация: интерактив и mp4</div><i>→</i>
+    <div><b>Модуль проверки</b>чужой пакет: текст и кадры</div>
+  </div>
+  <p class="muted">Движок не знает геологии. Глоссарий, заблуждения, чек-лист физики, стайлгайд и ударения лежат в доменном пакете; для бурения собран отдельный пакет без правки кода.</p>
+</section>
+
+<section>
+  <div class="k">03 · Обучение и контроль</div>
+  <h2>Шесть глав, ноль минут ручных правок</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Глава</th><th>Выборка</th><th>Узлов</th><th>Утверждений</th><th>Покрытие предложений автора</th><th>Расчётная стоимость слоя</th><th>Ручные минуты</th></tr></thead>
+    <tbody>
+      <tr><td>Латышова, гл. V</td><td>обучающая</td><td>70</td><td>652</td><td>0,91</td><td>$2,58</td><td>0</td></tr>
+      <tr><td>Басниев, гл. XXIII</td><td>обучающая</td><td>71</td><td>558</td><td>0,94</td><td>$2,42</td><td>0</td></tr>
+      <tr><td>Кузнецов, гл. 10</td><td>обучающая</td><td>56</td><td>500</td><td>0,94</td><td>$1,69</td><td>0</td></tr>
+      <tr><td>Вендельштейн, гл. I</td><td>контрольная</td><td>66</td><td>718</td><td>0,90</td><td>$2,51</td><td>0</td></tr>
+      <tr><td>Баренблатт, §4</td><td>контрольная</td><td>42</td><td>337</td><td>0,98</td><td>$1,37</td><td>0</td></tr>
+      <tr><td>Барабошкин, §1.2</td><td>контрольная</td><td>38</td><td>299</td><td>0,92</td><td>$1,05</td><td>0</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Стоимость — около 3 центов на узел по прайсу. Первый вариант стоил $12,7 на главу; после замера по этапам план остался на сильной модели, узлы ушли на дешёвую. Повторный прогон без изменений берётся из кэша.</p>
+</section>
+
+<section>
+  <div class="k">04 · Курс</div>
+  <h2>Собран сборщиком, открывается двойным щелчком</h2>
+  <div class="grid g4">
+    <div class="card"><div class="num">89–164</div><small>заданий на главу, 4–5 типов; ключи проверены против слоя кодом</small></div>
+    <div class="card"><div class="num">3,3–6,9</div><small>МБ на главу вместе с роликами при лимите 30 МБ без видео</small></div>
+    <div class="card"><div class="num">16 px</div><small>минимальный шрифт, измерен скриптом на 390 и 1280 px в обеих темах</small></div>
+    <div class="card"><div class="num">1 с</div><small>пересборка страницы после правки числа в слое</small></div>
+  </div>
+  <ul>
+    <li>У каждого абзаца кнопка «стр. N» с дословной цитатой автора.</li>
+    <li>Четыре метки происхождения: по книге, пояснение модели, гипотеза, ждёт проверки.</li>
+    <li>Независимый UX-аудит нашёл 9 нарушений ТЗ, включая неработающее перетаскивание пальцем. Все исправлены до заморозки.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="k">05 · Ролики</div>
+  <h2>Одна спецификация сцены: интерактив в курсе и mp4</h2>
+  <div class="grid g2">
+    <div class="card"><b>Что вычисляется</b>Волна давления — из решения уравнения пьезопроводности. Каротажный планшет — из таблицы признаков книги. Зона проникновения — по формуле Арчи. Движение считается из модели состояния, генерации изображений нет.</div>
+    <div class="card"><b>Что проверяется до рендера</b>Каждая фраза закадра ссылается на утверждение узла. Инварианты сцены — по чек-листу физики. Готовая дорожка распознаётся и сверяется со сценарием: 2–8% ошибок при пороге 10%.</div>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>Глава</th><th>Видеоёмких узлов</th><th>Специальный шаблон</th><th>Только запасной</th></tr></thead>
+    <tbody>
+      <tr><td>Басниев</td><td>68</td><td>33</td><td>32</td></tr>
+      <tr><td>Латышова</td><td>39</td><td>15</td><td>22</td></tr>
+      <tr><td>Вендельштейн</td><td>48</td><td>15</td><td>33</td></tr>
+      <tr><td>Баренблатт</td><td>39</td><td>18</td><td>19</td></tr>
+      <tr><td>Кузнецов</td><td>40</td><td>0</td><td>39</td></tr>
+      <tr><td>Барабошкин</td><td>36</td><td>0</td><td>34</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Честно: для рифов и дельт специальных шаблонов нет. Запасной шаблон показывает ход рассуждения карточками утверждений и помечен «схема: объект не изображён».</p>
+</section>
+
+<section>
+  <div class="k">06 · Модуль проверки</div>
+  <h2>Контрольный пакет организаторов, замер до открытия ключа</h2>
+  <div class="grid g4">
+    <div class="card"><div class="num ok">19 / 21</div><small>ошибок найдено с исправлением и страницей</small></div>
+    <div class="card"><div class="num ok">95%</div><small>по весу ошибок, скрипт жюри</small></div>
+    <div class="card"><div class="num warn">2</div><small>ложные тревоги; ни одной на верных, но неожиданных утверждениях</small></div>
+    <div class="card"><div class="num">3 мин</div><small>прогон пакета из 90 целей, включая 9 кадров</small></div>
+  </div>
+  <p class="muted">Замечание выдаётся только с основанием в источнике. Ответ был записан и закоммичен до открытия ключа.</p>
+</section>
+
+<section>
+  <div class="k">07 · Тест</div>
+  <h2>Что замороженный конвейер сделал сам</h2>
+  <div class="todo">Заполнить после прогона 26.11: по каждой из четырёх глав — узлы, покрытие, заданий, стоимость, минуты ручных правок; два ролика; балл модуля проверки на тестовом пакете; время сборки доменного пакета для главы из другого домена.</div>
+</section>
+
+<section>
+  <div class="k">08 · Пересборка</div>
+  <h2>Меняем число в слое — оно меняется на странице</h2>
+  <code>.venv/bin/python -m kmg_course build out/lat-v/layer.json --reuse-tasks</code>
+  <ul>
+    <li>Страница шага строится из слоя без модели, около 1 секунды.</li>
+    <li>Задания изменённого узла снимаются: их ключ больше не подтверждён слоем.</li>
+    <li>Полная сборка без флага создаёт для узла новые задания; команда <b>refresh</b> пересобирает и ролик.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="k">09 · Что забирает компания</div>
+  <h2>Модули, которые работают по отдельности</h2>
+  <div class="grid g3">
+    <div class="card"><b>Глава → слой</b>в схеме организаторов, с таблицей покрытия и маршрутизацией.</div>
+    <div class="card"><b>Модуль проверки</b>принимает чужой пакет: утверждения, сценарии, спецификации, кадры.</div>
+    <div class="card"><b>Слой → курс и ролики</b>шаблоны сцен с моделью состояния, паспорта по схеме.</div>
+  </div>
+  <p class="muted">Ограничения, о которых мы знаем: сверка со сканами страниц не сделана, поэтому часть утверждений помечена «ждёт проверки»; шаблонов сцен для рифов, дельт и бурения нет; запуск проверен на macOS.</p>
+</section>
+
+<div class="pg" id="pg"></div>
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('section')),pg=document.getElementById('pg');
+  function cur(){var y=window.scrollY+window.innerHeight/2;for(var i=0;i<s.length;i++){if(s[i].offsetTop+s[i].offsetHeight>y)return i}return s.length-1}
+  function go(d){var i=Math.max(0,Math.min(s.length-1,cur()+d));s[i].scrollIntoView()}
+  function upd(){pg.textContent=(cur()+1)+' / '+s.length}
+  addEventListener('keydown',function(e){
+    if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>=0){e.preventDefault();go(1)}
+    if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>=0){e.preventDefault();go(-1)}
+  });
+  addEventListener('scroll',upd,{passive:true});upd();
+})();
+</script>
+</body>
+</html>
