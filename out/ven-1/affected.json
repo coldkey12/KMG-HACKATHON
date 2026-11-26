@@ -1,12 +1,4 @@
 {
- "affected_nodes": [
-  "ven-1.n-027-3cf341",
-  "ven-1.n-028-55670b",
-  "ven-1.n-029-97efeb"
- ],
- "overrides_applied": [
-  "g06",
-  "g07",
-  "g08"
- ]
+ "affected_nodes": [],
+ "overrides_applied": []
 }

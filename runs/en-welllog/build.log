@@ -1,0 +1,4 @@
+{"llm_calls": 83, "cached_calls": 0, "transport": "claude_code", "paid_usd_this_run": 0.0, "cost_note": "cost_usd_* — расчётная стоимость по токенам и прайсу config/models.yaml; paid_usd — фактически списано с ключа API (через подписку Claude Code — 0)", "cost_usd_this_run": 0.9873, "cost_usd_if_uncached": 0.9873, "cost_usd_per_node": 0.0253, "usage": {"input_tokens": 166, "output_tokens": 854200, "cache_creation_input_tokens": 261887, "cache_read_input_tokens": 641322}, "seconds": 786.3, "nodes": 39, "units": 66, "claims": 252, "manual_minutes": 0.0}
+{"contract": {"errors": 0, "warnings": 0}, "coverage": {"errors": 0, "warnings": 0}, "quote": {"errors": 0, "warnings": 0}, "numbers": {"errors": 0, "warnings": 0}, "term_order": {"errors": 0, "warnings": 51}, "official": {"errors": 0, "warnings": 0}}
+passed: True
+EXIT 0
