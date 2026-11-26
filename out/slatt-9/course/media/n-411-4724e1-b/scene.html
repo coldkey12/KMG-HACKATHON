@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Проградация: дельта шагает в море</title>
+<style>
+  html,body{margin:0;background:#0F1419;color:#E4EBE8;font-family:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:17px}
+  .stage{max-width:960px;margin:0 auto;padding:8px}
+  canvas{display:block;width:100%;height:auto;border-radius:10px;cursor:pointer}
+  .ctl{display:flex;gap:10px;align-items:center;margin:10px 0}
+  button{font:inherit;font-weight:600;min-height:44px;padding:6px 16px;border-radius:8px;border:1px solid #5CC4BE;background:#5CC4BE;color:#0B1A19;cursor:pointer}
+  button:focus-visible,input:focus-visible{outline:3px solid #5CC4BE;outline-offset:2px}
+  input[type=range]{flex:1;min-height:44px}
+  .src{font-size:16px;color:#A9B8F2;border-left:3px solid #A9B8F2;padding:4px 10px;margin:6px 0}
+  /* interactive (course): text lives in HTML, not in the canvas — readable at 390 px (≥16 px) */
+  .hud{display:flex;flex-direction:column;gap:6px;margin:0 0 8px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:16px;font-weight:600;line-height:1.3;padding:3px 10px;border-radius:7px;background:#1A2129;color:#ECEFF4}
+  .chip.pv{color:#fff}.chip.warn{background:#3A2220;color:#FF9E8F}
+  .head{font-size:20px;font-weight:700;line-height:1.3;min-height:1.3em}.head .think{color:#5CC4BE;font-weight:600;margin-left:.5em}
+  .sub{font-size:18px;line-height:1.45;min-height:2.9em;margin:8px 0 0;padding:6px 10px;border-radius:8px;background:rgba(0,0,0,.45)}
+  .sub:empty{background:none}
+  body.record .ctl,body.record #more,body.record .hud,body.record .sub{display:none}
+  body.record .stage{padding:0;max-width:none}
+  body.record canvas{border-radius:0}
+</style>
+</head>
+<body class="interactive">
+<div class="stage">
+  <div class="hud" id="hud"><div class="chips"><span class="chip pv" id="pv"></span><span class="chip" id="pvn"></span><span class="chip warn" id="ex"></span></div>
+    <div class="head" id="head" aria-live="polite"></div></div>
+  <canvas id="cv" role="img" aria-label="Сцена «Проградация: дельта шагает в море»: Карточки — проверенные утверждения узла (status ok, без мест с сомнительным распознаванием) в порядке страниц книги, не больше восьми. Тип карточки — вид утверждения в слое: наблюдение, условие (допущение), вывод. Стрелки идут от наблюдений и условий к выводам. В каждой части подсвечены карточки, на которые ссылается голос (claim_ids этой части); на подсвеченной карточке — первые слова утверждения."></canvas>
+  <div class="sub" id="sub" aria-live="off"></div>
+  <div class="ctl"><button id="play" type="button">Смотреть</button>
+    <input id="seek" type="range" min="0" step="0.01" value="0" aria-label="Время сцены"></div>
+  <div id="more" aria-live="polite"></div>
+  <audio id="voice" src="voice.mp3" preload="auto"></audio>
+</div>
+<script>window.SCENE = {"spec": {"schema": "kmg-scene-spec/0.2.0", "template": "claim_steps", "format": "long", "frame_class": "B", "node_id": "slatt-9.n-411-4724e1-b", "chapter": "slatt-9", "state_model": "Карточки — проверенные утверждения узла (status ok, без мест с сомнительным распознаванием) в порядке страниц книги, не больше восьми. Тип карточки — вид утверждения в слое: наблюдение, условие (допущение), вывод. Стрелки идут от наблюдений и условий к выводам. В каждой части подсвечены карточки, на которые ссылается голос (claim_ids этой части); на подсвеченной карточке — первые слова утверждения.", "objects": ["карточки утверждений узла с номером, видом и страницей", "стрелки «наблюдение / условие → вывод»", "подсветка карточек, о которых говорит голос"], "params": {"max_cards": 8, "words_on_card": 6}, "params_note": "Ничего не вычисляется сверх слоя: число, порядок, тип и страницы карточек — данные узла.", "assumptions": ["схема структуры рассуждения автора, а не изображение объекта: формы, масштабы и пространственное положение не показаны", "вид утверждения (наблюдение, условие, вывод) взят из учебного слоя", "порядок карточек — порядок страниц книги"], "labels": {"kinds": {"observation": "наблюдение", "assumption": "условие", "inference": "вывод"}, "page": "стр.", "hidden": "?", "wrong_tag": "так думают многие — неверно", "flow": "наблюдения и условия → вывод", "legend_title": "из книги, по порядку"}, "exaggeration": "Не в масштабе: схема рассуждения, объект не изображён", "exaggeration_named": null, "true_scale": null, "school": "русская школа ГИС (названа в кадре)", "conventions": {"depth": "глубина на планшете и разрезе растёт вниз", "log_school": "русская школа обозначений (ПС, ГК, КС, НГК, ГГК-П, АК); при западных обозначениях школа называется в кадре", "seismic_polarity": "полярность сейсмики указывается в кадре; по умолчанию нормальная полярность SEG: рост акустического импеданса — положительная амплитуда (пик), закрашивается", "vertical_exaggeration": "вертикальное преувеличение подписывается числом; хотя бы один кадр серии — в истинном масштабе", "uncertainty": "неопределённость — диапазон или штриховка цветом uncertainty, а не одна линия"}, "styleguide": "domain/geology/styleguide_official.json", "palette": {"sand": "#E8C872", "shale": "#6B8E5A", "limestone": "#7FB3D5", "dolomite": "#A98FD1", "anhydrite": "#D98CB3", "salt": "#C9D6DF", "dense": "#8C7B6B", "reef": "#F0A35E", "fluid_oil": "#2E8B57", "fluid_gas": "#E74C3C", "fluid_water": "#3498DB", "fluid_filtrate": "#9BD7F5", "fluid_mud": "#7A6A58", "curve_SP": "#E74C3C", "curve_GR": "#2ECC71", "curve_RES": "#F1C40F", "curve_RES_SHALLOW": "#E67E22", "curve_NEUTRON": "#3498DB", "curve_DENSITY": "#E84393", "curve_SONIC": "#9B59B6", "curve_CALIPER": "#BDC3C7", "curve_PRESSURE": "#00CEC9", "measurement": "#F1C40F", "uncertainty": "#95A5A6"}, "legend_keys": {}, "frame_colors": {"bg": "#0F1419", "panel": "#1A2129", "ink": "#ECEFF4", "muted": "#8A96A3", "paper": "#ECEFF4", "chipBg": "#1A2129", "chipFg": "#ECEFF4", "measurement": "#F1C40F", "uncertainty": "#95A5A6", "pressure": "#00CEC9", "pressureRGB": "0,206,201", "curve": "#00CEC9", "accent": "#5CC4BE", "warnBg": "#3A2220", "warnFg": "#FF9E8F", "steel": "#B9C2C6", "hidden": "#3A4643", "provenance": {"реальные данные": "#27AE60", "симуляция": "#2980B9", "схема": "#8E44AD"}, "font": "Segoe UI, \"Helvetica Neue\", Arial, sans-serif"}, "safe_zone": null, "min_caption_px": 44, "case": {"cards": [{"id": "slatt-9.n-411-4724e1-b.c-01269a", "kind": "observation", "page": 410, "short": "В примере показаны две корреляции по…"}, {"id": "slatt-9.n-411-4724e1-b.c-432a86", "kind": "inference", "page": 411, "short": "Дельта выдвигается в море если со…"}, {"id": "slatt-9.n-411-4724e1-b.c-417cc8", "kind": "inference", "page": 411, "short": "Если со временем есть достаточно пространства…"}, {"id": "slatt-9.n-411-4724e1-b.c-34e21d", "kind": "inference", "page": 411, "short": "При выдвижении дельты в море если…"}, {"id": "slatt-9.n-411-4724e1-b.c-ea8797", "kind": "observation", "page": 413, "short": "Рукава переключаются из общей вершины в…"}], "facts": {"n_cards": 5, "n_obs": 2, "n_inf": 3, "kinds_line": "наблюдение — 2, вывод — 3"}}}, "timeline": {"beats": [{"id": "b01", "slot": "hook", "text": "Представьте два песка, похожих друг на друга, в разных местах одной дельты. Кажется, они ровесники. А что, если один из них заметно моложе другого?", "on_screen": "Похожие пески — ровесники?", "claim_ids": [], "start": 0.0, "end": 11.529, "voice_start": 0.25, "voice_end": 11.179, "voice_dur": 10.929, "words": [{"w": "Представьте", "start": 0.089, "dur": 0.558}, {"w": "два", "start": 0.647, "dur": 0.156}, {"w": "песка", "start": 0.804, "dur": 0.435}, {"w": "похожих", "start": 1.35, "dur": 0.413}, {"w": "друг", "start": 1.763, "dur": 0.179}, {"w": "на", "start": 1.942, "dur": 0.089}, {"w": "друга", "start": 2.031, "dur": 0.29}, {"w": "в", "start": 2.444, "dur": 0.033}, {"w": "разных", "start": 2.478, "dur": 0.346}, {"w": "местах", "start": 2.824, "dur": 0.48}, {"w": "одной", "start": 3.304, "dur": 0.29}, {"w": "де́льты", "start": 3.594, "dur": 0.435}, {"w": "Кажется", "start": 4.788, "dur": 0.658}, {"w": "они", "start": 5.603, "dur": 0.268}, {"w": "ровесники", "start": 5.871, "dur": 0.725}, {"w": "А", "start": 7.422, "dur": 0.156}, {"w": "что", "start": 7.578, "dur": 0.346}, {"w": "если", "start": 8.036, "dur": 0.257}, {"w": "один", "start": 8.292, "dur": 0.212}, {"w": "из", "start": 8.504, "dur": 0.112}, {"w": "них", "start": 8.616, "dur": 0.201}, {"w": "заметно", "start": 8.817, "dur": 0.424}, {"w": "моложе", "start": 9.241, "dur": 0.335}, {"w": "другого", "start": 9.576, "dur": 0.525}], "display_words": ["Представьте", "два", "песка,", "похожих", "друг", "на", "друга,", "в", "разных", "местах", "одной", "дельты.", "Кажется,", "они", "ровесники.", "А", "что,", "если", "один", "из", "них", "заметно", "моложе", "другого?"], "state": {"view": "cards", "reveal": 0, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/f7eafc30b54cbb83a79e6cf8.mp3", "claims": []}, {"id": "b02", "slot": "misconception", "text": "Многие думают, что дельта растёт на месте и новые пески ложатся ровными слоями. Кажется, будто граница такого слоя везде отмечает один и тот же момент времени.", "on_screen": "Дельта растёт на месте?", "claim_ids": [], "start": 11.529, "end": 22.264, "voice_start": 11.779, "voice_end": 21.914, "voice_dur": 10.136, "words": [{"w": "Многие", "start": 0.089, "dur": 0.491}, {"w": "думают", "start": 0.58, "dur": 0.413}, {"w": "что", "start": 1.161, "dur": 0.19}, {"w": "де́льта", "start": 1.35, "dur": 0.279}, {"w": "растёт", "start": 1.629, "dur": 0.335}, {"w": "на", "start": 1.964, "dur": 0.1}, {"w": "месте", "start": 2.065, "dur": 0.391}, {"w": "и", "start": 2.455, "dur": 0.1}, {"w": "новые", "start": 2.556, "dur": 0.29}, {"w": "пески", "start": 2.846, "dur": 0.268}, {"w": "ложатся", "start": 3.114, "dur": 0.435}, {"w": "ровными", "start": 3.549, "dur": 0.324}, {"w": "слоями", "start": 3.873, "dur": 0.614}, {"w": "Кажется", "start": 5.246, "dur": 0.547}, {"w": "будто", "start": 5.904, "dur": 0.223}, {"w": "граница", "start": 6.127, "dur": 0.391}, {"w": "такого", "start": 6.518, "dur": 0.301}, {"w": "слоя", "start": 6.819, "dur": 0.324}, {"w": "везде", "start": 7.143, "dur": 0.301}, {"w": "отмечает", "start": 7.444, "dur": 0.446}, {"w": "один", "start": 7.891, "dur": 0.268}, {"w": "и", "start": 8.158, "dur": 0.056}, {"w": "тот", "start": 8.214, "dur": 0.19}, {"w": "же", "start": 8.404, "dur": 0.089}, {"w": "момент", "start": 8.493, "dur": 0.357}, {"w": "времени", "start": 8.85, "dur": 0.502}], "display_words": ["Многие", "думают,", "что", "дельта", "растёт", "на", "месте", "и", "новые", "пески", "ложатся", "ровными", "слоями.", "Кажется,", "будто", "граница", "такого", "слоя", "везде", "отмечает", "один", "и", "тот", "же", "момент", "времени."], "state": {"view": "cards", "reveal": 0, "wrong": true, "provenance": {"label": "схема", "note": "распространённое заблуждение — неверно"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/74aad7bced16adccfb5e4f9b.mp3", "claims": []}, {"id": "b03", "slot": "prediction", "text": "Допустим, река долго приносит осадок, и между морем и дном хватает для него места. Что тогда произойдёт с устьем и остальными частями дельты? Останутся ли они там же?", "on_screen": "Куда сместится дельта?", "claim_ids": [], "start": 22.264, "end": 35.279, "voice_start": 22.514, "voice_end": 33.979, "voice_dur": 11.464, "words": [{"w": "Допустим", "start": 0.089, "dur": 0.681}, {"w": "река", "start": 0.882, "dur": 0.268}, {"w": "долго", "start": 1.15, "dur": 0.268}, {"w": "приносит", "start": 1.417, "dur": 0.391}, {"w": "осадок", "start": 1.808, "dur": 0.446}, {"w": "и", "start": 2.511, "dur": 0.078}, {"w": "между", "start": 2.589, "dur": 0.257}, {"w": "морем", "start": 2.846, "dur": 0.324}, {"w": "и", "start": 3.17, "dur": 0.089}, {"w": "дном", "start": 3.259, "dur": 0.246}, {"w": "хватает", "start": 3.504, "dur": 0.424}, {"w": "для", "start": 3.929, "dur": 0.112}, {"w": "него", "start": 4.04, "dur": 0.167}, {"w": "места", "start": 4.208, "dur": 0.435}, {"w": "Что", "start": 5.402, "dur": 0.268}, {"w": "тогда", "start": 5.67, "dur": 0.279}, {"w": "произойдёт", "start": 5.949, "dur": 0.513}, {"w": "с", "start": 6.462, "dur": 0.067}, {"w": "у́стьем", "start": 6.529, "dur": 0.446}, {"w": "и", "start": 6.975, "dur": 0.145}, {"w": "остальными", "start": 7.121, "dur": 0.48}, {"w": "частями", "start": 7.6, "dur": 0.413}, {"w": "де́льты", "start": 8.013, "dur": 0.391}, {"w": "Останутся", "start": 9.241, "dur": 0.603}, {"w": "ли", "start": 9.844, "dur": 0.123}, {"w": "они", "start": 9.967, "dur": 0.19}, {"w": "там", "start": 10.156, "dur": 0.234}, {"w": "же", "start": 10.391, "dur": 0.234}], "display_words": ["Допустим,", "река", "долго", "приносит", "осадок,", "и", "между", "морем", "и", "дном", "хватает", "для", "него", "места.", "Что", "тогда", "произойдёт", "с", "устьем", "и", "остальными", "частями", "дельты?", "Останутся", "ли", "они", "там", "же?"], "state": {"view": "cards", "reveal": 0, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/4c8acd1f4f99ba59dfd5619f.mp3", "claims": []}, {"id": "b04", "slot": "reveal", "text": "В книге дельта выдвигается в море, если со временем хватает пространства для осадка между морем и дном. Тогда в сторону моря смещаются не только устье, но и все зоны дельты.", "on_screen": "Вся дельта шагает в море", "claim_ids": ["slatt-9.n-411-4724e1-b.c-432a86", "slatt-9.n-411-4724e1-b.c-417cc8"], "start": 35.279, "end": 45.971, "voice_start": 35.529, "voice_end": 45.621, "voice_dur": 10.093, "words": [{"w": "В", "start": 0.089, "dur": 0.134}, {"w": "книге", "start": 0.223, "dur": 0.346}, {"w": "де́льта", "start": 0.569, "dur": 0.335}, {"w": "выдвигается", "start": 0.904, "dur": 0.558}, {"w": "в", "start": 1.462, "dur": 0.045}, {"w": "море", "start": 1.507, "dur": 0.312}, {"w": "если", "start": 1.942, "dur": 0.19}, {"w": "со", "start": 2.132, "dur": 0.123}, {"w": "временем", "start": 2.254, "dur": 0.346}, {"w": "хватает", "start": 2.6, "dur": 0.391}, {"w": "пространства", "start": 2.991, "dur": 0.513}, {"w": "для", "start": 3.504, "dur": 0.123}, {"w": "осадка", "start": 3.627, "dur": 0.368}, {"w": "между", "start": 3.996, "dur": 0.257}, {"w": "морем", "start": 4.252, "dur": 0.324}, {"w": "и", "start": 4.576, "dur": 0.112}, {"w": "дном", "start": 4.687, "dur": 0.368}, {"w": "Тогда", "start": 5.815, "dur": 0.324}, {"w": "в", "start": 6.138, "dur": 0.033}, {"w": "сторону", "start": 6.172, "dur": 0.357}, {"w": "моря", "start": 6.529, "dur": 0.257}, {"w": "смещаются", "start": 6.786, "dur": 0.525}, {"w": "не", "start": 7.31, "dur": 0.089}, {"w": "только", "start": 7.4, "dur": 0.268}, {"w": "у́стье", "start": 7.667, "dur": 0.379}, {"w": "но", "start": 8.17, "dur": 0.167}, {"w": "и", "start": 8.337, "dur": 0.033}, {"w": "все", "start": 8.371, "dur": 0.223}, {"w": "зоны", "start": 8.594, "dur": 0.29}, {"w": "де́льты", "start": 8.884, "dur": 0.435}], "display_words": ["В", "книге", "дельта", "выдвигается", "в", "море,", "если", "со", "временем", "хватает", "пространства", "для", "осадка", "между", "морем", "и", "дном.", "Тогда", "в", "сторону", "моря", "смещаются", "не", "только", "устье,", "но", "и", "все", "зоны", "дельты."], "state": {"view": "cards", "reveal": 1, "t0": 0, "t1": 1, "focus": "claims", "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/7caad463ce8d74a2c9700276.mp3", "claims": [{"id": "slatt-9.n-411-4724e1-b.c-432a86", "page": 411, "quote": "With time and sufficient accommodation space between the sea surface and seafloor to accept sediment, such a delta will prograde seaward"}, {"id": "slatt-9.n-411-4724e1-b.c-417cc8", "page": 411, "quote": "With time and sufficient accommodation space between the sea surface and seafloor to accept sediment, such a delta will prograde seaward (Fig. 9.9), as will the delta zones (Fig. 9.7)"}]}, {"id": "b05", "slot": "explain", "text": "Зачем сразу оговаривать место для осадка? Это условие правила: со временем должно быть достаточно пространства между морем и дном. При таком условии дельта выдвигается в море, и это называют проградацией.", "on_screen": "Условие: есть место для осадка", "claim_ids": ["slatt-9.n-411-4724e1-b.c-432a86"], "start": 45.971, "end": 59.686, "voice_start": 46.221, "voice_end": 59.336, "voice_dur": 13.114, "words": [{"w": "Зачем", "start": 0.089, "dur": 0.469}, {"w": "сразу", "start": 0.558, "dur": 0.357}, {"w": "оговаривать", "start": 0.915, "dur": 0.558}, {"w": "место", "start": 1.473, "dur": 0.301}, {"w": "для", "start": 1.775, "dur": 0.134}, {"w": "осадка", "start": 1.908, "dur": 0.536}, {"w": "Это", "start": 3.203, "dur": 0.246}, {"w": "условие", "start": 3.449, "dur": 0.413}, {"w": "правила", "start": 3.862, "dur": 0.391}, {"w": "со", "start": 4.353, "dur": 0.145}, {"w": "временем", "start": 4.498, "dur": 0.368}, {"w": "должно", "start": 4.866, "dur": 0.29}, {"w": "быть", "start": 5.156, "dur": 0.134}, {"w": "достаточно", "start": 5.29, "dur": 0.525}, {"w": "пространства", "start": 5.815, "dur": 0.536}, {"w": "между", "start": 6.35, "dur": 0.257}, {"w": "морем", "start": 6.607, "dur": 0.346}, {"w": "и", "start": 6.953, "dur": 0.112}, {"w": "дном", "start": 7.065, "dur": 0.368}, {"w": "При", "start": 8.203, "dur": 0.167}, {"w": "таком", "start": 8.371, "dur": 0.29}, {"w": "условии", "start": 8.661, "dur": 0.458}, {"w": "де́льта", "start": 9.118, "dur": 0.335}, {"w": "выдвигается", "start": 9.453, "dur": 0.558}, {"w": "в", "start": 10.011, "dur": 0.045}, {"w": "море", "start": 10.056, "dur": 0.324}, {"w": "и", "start": 10.625, "dur": 0.145}, {"w": "это", "start": 10.77, "dur": 0.19}, {"w": "называют", "start": 10.96, "dur": 0.48}, {"w": "програда́цией", "start": 11.44, "dur": 0.893}], "display_words": ["Зачем", "сразу", "оговаривать", "место", "для", "осадка?", "Это", "условие", "правила:", "со", "временем", "должно", "быть", "достаточно", "пространства", "между", "морем", "и", "дном.", "При", "таком", "условии", "дельта", "выдвигается", "в", "море,", "и", "это", "называют", "проградацией."], "state": {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/87b145b9c59ff4879663c1ca.mp3", "claims": [{"id": "slatt-9.n-411-4724e1-b.c-432a86", "page": 411, "quote": "With time and sufficient accommodation space between the sea surface and seafloor to accept sediment, such a delta will prograde seaward"}]}, {"id": "b06", "slot": "explain", "text": "Раз все зоны дельты шагают к морю, нельзя следить за одним лишь устьем. Значит, при достаточном пространстве поверхности одного момента времени режут границы фаций. Иначе говоря, граница фаций и линия одного времени не совпадают.", "on_screen": "Время режет границы фаций", "claim_ids": ["slatt-9.n-411-4724e1-b.c-417cc8", "slatt-9.n-411-4724e1-b.c-34e21d"], "start": 59.686, "end": 75.371, "voice_start": 59.936, "voice_end": 75.021, "voice_dur": 15.086, "words": [{"w": "Раз", "start": 0.089, "dur": 0.346}, {"w": "все", "start": 0.435, "dur": 0.212}, {"w": "зоны", "start": 0.647, "dur": 0.268}, {"w": "де́льты", "start": 0.915, "dur": 0.29}, {"w": "шагают", "start": 1.205, "dur": 0.402}, {"w": "к", "start": 1.607, "dur": 0.067}, {"w": "морю", "start": 1.674, "dur": 0.29}, {"w": "нельзя", "start": 2.21, "dur": 0.268}, {"w": "следить", "start": 2.478, "dur": 0.368}, {"w": "за", "start": 2.846, "dur": 0.112}, {"w": "одним", "start": 2.958, "dur": 0.29}, {"w": "лишь", "start": 3.248, "dur": 0.156}, {"w": "у́стьем", "start": 3.404, "dur": 0.502}, {"w": "Значит", "start": 4.665, "dur": 0.681}, {"w": "при", "start": 5.446, "dur": 0.112}, {"w": "достаточном", "start": 5.558, "dur": 0.547}, {"w": "пространстве", "start": 6.105, "dur": 0.513}, {"w": "поверхности", "start": 6.618, "dur": 0.625}, {"w": "одного", "start": 7.243, "dur": 0.346}, {"w": "момента", "start": 7.589, "dur": 0.391}, {"w": "времени", "start": 7.98, "dur": 0.368}, {"w": "режут", "start": 8.348, "dur": 0.279}, {"w": "границы", "start": 8.627, "dur": 0.424}, {"w": "фа́ций", "start": 9.051, "dur": 0.592}, {"w": "Иначе", "start": 10.402, "dur": 0.446}, {"w": "говоря", "start": 10.848, "dur": 0.368}, {"w": "граница", "start": 11.417, "dur": 0.435}, {"w": "фа́ций", "start": 11.853, "dur": 0.491}, {"w": "и", "start": 12.344, "dur": 0.112}, {"w": "линия", "start": 12.455, "dur": 0.324}, {"w": "одного", "start": 12.779, "dur": 0.346}, {"w": "времени", "start": 13.125, "dur": 0.379}, {"w": "не", "start": 13.504, "dur": 0.089}, {"w": "совпадают", "start": 13.594, "dur": 0.714}], "display_words": ["Раз", "все", "зоны", "дельты", "шагают", "к", "морю,", "нельзя", "следить", "за", "одним", "лишь", "устьем.", "Значит,", "при", "достаточном", "пространстве", "поверхности", "одного", "момента", "времени", "режут", "границы", "фаций.", "Иначе", "говоря,", "граница", "фаций", "и", "линия", "одного", "времени", "не", "совпадают."], "state": {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/8413442f4d92cd96f99dc723.mp3", "claims": [{"id": "slatt-9.n-411-4724e1-b.c-417cc8", "page": 411, "quote": "With time and sufficient accommodation space between the sea surface and seafloor to accept sediment, such a delta will prograde seaward (Fig. 9.9), as will the delta zones (Fig. 9.7)"}, {"id": "slatt-9.n-411-4724e1-b.c-34e21d", "page": 411, "quote": "By that process, surfaces representing instants in geologic time crosscut boundaries between sedimentary facies"}]}, {"id": "b07", "slot": "explain", "text": "Есть и другое движение, которое автор показывает на модели. Рукава реки переключаются из общей вершины в разные направления. Так они оказываются на разных местах дельты.", "on_screen": "Рукава переключаются по модели", "claim_ids": ["slatt-9.n-411-4724e1-b.c-ea8797"], "start": 75.371, "end": 87.779, "voice_start": 75.621, "voice_end": 87.429, "voice_dur": 11.807, "words": [{"w": "Есть", "start": 0.089, "dur": 0.435}, {"w": "и", "start": 0.525, "dur": 0.045}, {"w": "другое", "start": 0.569, "dur": 0.346}, {"w": "движение", "start": 0.915, "dur": 0.558}, {"w": "которое", "start": 1.73, "dur": 0.413}, {"w": "автор", "start": 2.143, "dur": 0.346}, {"w": "показывает", "start": 2.489, "dur": 0.592}, {"w": "на", "start": 3.08, "dur": 0.067}, {"w": "модели", "start": 3.147, "dur": 0.502}, {"w": "Рукава", "start": 4.453, "dur": 0.458}, {"w": "реки", "start": 4.911, "dur": 0.29}, {"w": "переключаются", "start": 5.201, "dur": 0.748}, {"w": "из", "start": 5.949, "dur": 0.123}, {"w": "общей", "start": 6.071, "dur": 0.246}, {"w": "вершины", "start": 6.317, "dur": 0.424}, {"w": "в", "start": 6.741, "dur": 0.033}, {"w": "разные", "start": 6.775, "dur": 0.324}, {"w": "направления", "start": 7.098, "dur": 0.815}, {"w": "Так", "start": 8.705, "dur": 0.201}, {"w": "они", "start": 8.906, "dur": 0.19}, {"w": "оказываются", "start": 9.096, "dur": 0.592}, {"w": "на", "start": 9.687, "dur": 0.123}, {"w": "разных", "start": 9.81, "dur": 0.346}, {"w": "местах", "start": 10.156, "dur": 0.391}, {"w": "де́льты", "start": 10.547, "dur": 0.435}], "display_words": ["Есть", "и", "другое", "движение,", "которое", "автор", "показывает", "на", "модели.", "Рукава", "реки", "переключаются", "из", "общей", "вершины", "в", "разные", "направления.", "Так", "они", "оказываются", "на", "разных", "местах", "дельты."], "state": {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/c8819ff301d562980b24ee01.mp3", "claims": [{"id": "slatt-9.n-411-4724e1-b.c-ea8797", "page": 413, "quote": "Model of delta distributary channel switching from a common apex to different orientations and locations on the delta"}]}, {"id": "b08", "slot": "data", "text": "В книге есть пример с двумя разными корреляциями, то есть сопоставлениями интервалов. Одна объединяет интервалы со сходным откликом каротажа, то есть измерений в скважине. Другая построена по геологическому времени.", "on_screen": "Две корреляции: сходство и время", "claim_ids": ["slatt-9.n-411-4724e1-b.c-01269a"], "start": 87.779, "end": 102.264, "voice_start": 88.029, "voice_end": 101.914, "voice_dur": 13.886, "words": [{"w": "В", "start": 0.089, "dur": 0.145}, {"w": "книге", "start": 0.234, "dur": 0.379}, {"w": "есть", "start": 0.614, "dur": 0.223}, {"w": "пример", "start": 0.837, "dur": 0.301}, {"w": "с", "start": 1.138, "dur": 0.056}, {"w": "двумя", "start": 1.194, "dur": 0.312}, {"w": "разными", "start": 1.507, "dur": 0.379}, {"w": "корреля́циями", "start": 1.886, "dur": 0.714}, {"w": "то", "start": 2.824, "dur": 0.123}, {"w": "есть", "start": 2.946, "dur": 0.201}, {"w": "сопоставлениями", "start": 3.147, "dur": 0.837}, {"w": "интервалов", "start": 3.984, "dur": 0.737}, {"w": "Одна", "start": 5.491, "dur": 0.357}, {"w": "объединяет", "start": 5.848, "dur": 0.513}, {"w": "интервалы", "start": 6.362, "dur": 0.446}, {"w": "со", "start": 6.808, "dur": 0.123}, {"w": "сходным", "start": 6.931, "dur": 0.402}, {"w": "откликом", "start": 7.333, "dur": 0.391}, {"w": "каротажа", "start": 7.723, "dur": 0.513}, {"w": "то", "start": 8.493, "dur": 0.112}, {"w": "есть", "start": 8.605, "dur": 0.201}, {"w": "измерений", "start": 8.806, "dur": 0.458}, {"w": "в", "start": 9.263, "dur": 0.033}, {"w": "сква́жине", "start": 9.297, "dur": 0.569}, {"w": "Другая", "start": 10.636, "dur": 0.558}, {"w": "построена", "start": 11.194, "dur": 0.491}, {"w": "по", "start": 11.685, "dur": 0.123}, {"w": "геологическому", "start": 11.808, "dur": 0.77}, {"w": "времени", "start": 12.578, "dur": 0.48}], "display_words": ["В", "книге", "есть", "пример", "с", "двумя", "разными", "корреляциями,", "то", "есть", "сопоставлениями", "интервалов.", "Одна", "объединяет", "интервалы", "со", "сходным", "откликом", "каротажа,", "то", "есть", "измерений", "в", "скважине.", "Другая", "построена", "по", "геологическому", "времени."], "state": {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/fb6bf3335c8b51a2d8b91ba6.mp3", "claims": [{"id": "slatt-9.n-411-4724e1-b.c-01269a", "page": 410, "quote": "The hypothetical example in Fig. 9.10 shows correlations based upon lithofacies (stratigraphic intervals with similarities in well log response) and upon geological time."}]}, {"id": "b09", "slot": "data", "text": "Зачем различать эти два способа? При выдвижении дельты поверхности одного времени режут границы фаций. Значит, сходство отклика каротажа само по себе не доказывает, что интервалы образовались одновременно.", "on_screen": "Сходный отклик и возраст", "claim_ids": ["slatt-9.n-411-4724e1-b.c-34e21d", "slatt-9.n-411-4724e1-b.c-01269a"], "start": 102.264, "end": 116.707, "voice_start": 102.514, "voice_end": 116.357, "voice_dur": 13.843, "words": [{"w": "Зачем", "start": 0.089, "dur": 0.469}, {"w": "различать", "start": 0.558, "dur": 0.614}, {"w": "эти", "start": 1.172, "dur": 0.19}, {"w": "два", "start": 1.362, "dur": 0.145}, {"w": "способа", "start": 1.507, "dur": 0.636}, {"w": "При", "start": 2.958, "dur": 0.167}, {"w": "выдвижении", "start": 3.125, "dur": 0.536}, {"w": "де́льты", "start": 3.661, "dur": 0.279}, {"w": "поверхности", "start": 3.94, "dur": 0.67}, {"w": "одного", "start": 4.609, "dur": 0.368}, {"w": "времени", "start": 4.978, "dur": 0.368}, {"w": "режут", "start": 5.346, "dur": 0.279}, {"w": "границы", "start": 5.625, "dur": 0.413}, {"w": "фа́ций", "start": 6.038, "dur": 0.592}, {"w": "Значит", "start": 7.388, "dur": 0.603}, {"w": "сходство", "start": 8.08, "dur": 0.558}, {"w": "отклика", "start": 8.638, "dur": 0.446}, {"w": "каротажа", "start": 9.085, "dur": 0.446}, {"w": "само", "start": 9.531, "dur": 0.257}, {"w": "по", "start": 9.788, "dur": 0.089}, {"w": "себе", "start": 9.877, "dur": 0.212}, {"w": "не", "start": 10.089, "dur": 0.078}, {"w": "доказывает", "start": 10.167, "dur": 0.58}, {"w": "что", "start": 10.971, "dur": 0.19}, {"w": "интервалы", "start": 11.161, "dur": 0.469}, {"w": "образовались", "start": 11.629, "dur": 0.658}, {"w": "одновременно", "start": 12.288, "dur": 0.792}], "display_words": ["Зачем", "различать", "эти", "два", "способа?", "При", "выдвижении", "дельты", "поверхности", "одного", "времени", "режут", "границы", "фаций.", "Значит,", "сходство", "отклика", "каротажа", "само", "по", "себе", "не", "доказывает,", "что", "интервалы", "образовались", "одновременно."], "state": {"view": "cards", "reveal": 1, "focus": "claims", "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/80541c31ead58766deead248.mp3", "claims": [{"id": "slatt-9.n-411-4724e1-b.c-34e21d", "page": 411, "quote": "By that process, surfaces representing instants in geologic time crosscut boundaries between sedimentary facies"}, {"id": "slatt-9.n-411-4724e1-b.c-01269a", "page": 410, "quote": "The hypothetical example in Fig. 9.10 shows correlations based upon lithofacies (stratigraphic intervals with similarities in well log response) and upon geological time."}]}, {"id": "b10", "slot": "transfer", "text": "Представьте, что в двух скважинах вы нашли интервалы с очень похожими записями измерений. Дельта в этом месте когда-то выдвигалась в море. Как вы проверите, можно ли соединить эти интервалы линией одного времени?", "on_screen": "Похожие записи: одно время?", "claim_ids": [], "start": 116.707, "end": 131.95, "voice_start": 116.957, "voice_end": 130.35, "voice_dur": 13.393, "words": [{"w": "Представьте", "start": 0.089, "dur": 0.636}, {"w": "что", "start": 0.826, "dur": 0.179}, {"w": "в", "start": 1.004, "dur": 0.033}, {"w": "двух", "start": 1.038, "dur": 0.234}, {"w": "сква́жинах", "start": 1.272, "dur": 0.536}, {"w": "вы", "start": 1.808, "dur": 0.089}, {"w": "нашли", "start": 1.897, "dur": 0.257}, {"w": "интервалы", "start": 2.154, "dur": 0.48}, {"w": "с", "start": 2.634, "dur": 0.089}, {"w": "очень", "start": 2.723, "dur": 0.246}, {"w": "похожими", "start": 2.969, "dur": 0.458}, {"w": "записями", "start": 3.426, "dur": 0.513}, {"w": "измерений", "start": 3.94, "dur": 0.714}, {"w": "Де́льта", "start": 5.458, "dur": 0.48}, {"w": "в", "start": 5.938, "dur": 0.056}, {"w": "этом", "start": 5.993, "dur": 0.212}, {"w": "месте", "start": 6.205, "dur": 0.335}, {"w": "когда-то", "start": 6.54, "dur": 0.402}, {"w": "выдвигалась", "start": 6.942, "dur": 0.558}, {"w": "в", "start": 7.5, "dur": 0.078}, {"w": "море", "start": 7.578, "dur": 0.424}, {"w": "Как", "start": 8.772, "dur": 0.223}, {"w": "вы", "start": 8.996, "dur": 0.1}, {"w": "проверите", "start": 9.096, "dur": 0.558}, {"w": "можно", "start": 9.766, "dur": 0.223}, {"w": "ли", "start": 9.989, "dur": 0.067}, {"w": "соединить", "start": 10.056, "dur": 0.547}, {"w": "эти", "start": 10.603, "dur": 0.179}, {"w": "интервалы", "start": 10.781, "dur": 0.48}, {"w": "линией", "start": 11.261, "dur": 0.368}, {"w": "одного", "start": 11.629, "dur": 0.368}, {"w": "времени", "start": 11.998, "dur": 0.569}], "display_words": ["Представьте,", "что", "в", "двух", "скважинах", "вы", "нашли", "интервалы", "с", "очень", "похожими", "записями", "измерений.", "Дельта", "в", "этом", "месте", "когда-то", "выдвигалась", "в", "море.", "Как", "вы", "проверите,", "можно", "ли", "соединить", "эти", "интервалы", "линией", "одного", "времени?"], "state": {"view": "cards", "reveal": 1, "arrows": true, "provenance": {"label": "схема", "note": "утверждения узла по книге"}}, "mp3": "/Users/coldkey/KMG-HACKATHON/cache/tts/df402ec967bf547d06df708b.mp3", "claims": []}], "duration": 131.95}, "format": {"w": 1920, "h": 1080}, "style": {"colors": {"bg": "#0F1419", "panel": "#1A2129", "ink": "#ECEFF4", "muted": "#8A96A3", "paper": "#ECEFF4", "chipBg": "#1A2129", "chipFg": "#ECEFF4", "measurement": "#F1C40F", "uncertainty": "#95A5A6", "pressure": "#00CEC9", "pressureRGB": "0,206,201", "curve": "#00CEC9", "accent": "#5CC4BE", "warnBg": "#3A2220", "warnFg": "#FF9E8F", "steel": "#B9C2C6", "hidden": "#3A4643", "provenance": {"реальные данные": "#27AE60", "симуляция": "#2980B9", "схема": "#8E44AD"}, "font": "Segoe UI, \"Helvetica Neue\", Arial, sans-serif"}}, "labels": {"provenance": {"label": "схема", "note": "утверждения узла по книге"}, "exaggeration": "Не в масштабе: схема рассуждения, объект не изображён"}, "mode": "interactive"}; window.FONT = window.SCENE.style.colors.font;</script>
+<script>/* Template claim_steps — FALLBACK, label «схема». Draws only the structure of the node's verified claims:
+   numbered cards in book order, typed observation / condition / conclusion with the page, arrows from
+   observations and conditions to conclusions, highlight of the cards the current part cites.
+   No subsurface, fluids, tools or curves: nothing is drawn that the layer does not state.
+   spec.case.cards = [{id, kind, page, short}] (computed in Python). state: {reveal, t0, t1, focus, arrows, wrong} */
+(function () {
+  "use strict";
+  function font(ctx, w, px, U) { ctx.font = w + " " + px * U + "px " + window.FONT; }
+  function kindColor(C, k) { return k === "inference" ? C.accent : (k === "assumption" ? C.measurement : C.ink); }
+
+  function layout(box, n, U, portrait) {
+    var cols = portrait ? 1 : (n > 4 ? 2 : 1), rows = Math.ceil(n / cols), gap = 18 * U;
+    var w = (box.w - (cols - 1) * 60 * U) / cols, h = Math.min(150 * U, (box.h - 60 * U - (rows - 1) * gap) / rows);
+    var out = [];
+    for (var i = 0; i < n; i++) {
+      var c = Math.floor(i / rows), r = i % rows;
+      out.push({ x: box.x + c * (w + 60 * U), y: box.y + 50 * U + r * (h + gap), w: w, h: h });
+    }
+    return out;
+  }
+
+  function draw(ctx, box, st, spec, g) {
+    var C = g.C, U = g.U, K = spec.case, cards = K.cards, Lb = spec.labels;
+    var R = layout(box, cards.length, U, g.portrait);
+    var t = st.tSim == null ? 1 : st.tSim, shown = st.reveal ? Math.ceil(t * cards.length - 1e-9) : 0;
+    if (st.reveal && st.t0 == null) shown = cards.length;
+    var cited = (st.focus === "claims" && st.beat && st.beat.claim_ids) ? st.beat.claim_ids : [];
+    font(ctx, 600, 24, U); ctx.fillStyle = C.muted; ctx.fillText(Lb.legend_title + " · " + Lb.flow, box.x, box.y + 24 * U);
+    // arrows: from every observation / condition card to the next conclusion card below it (book order)
+    if (st.arrows) {
+      cards.forEach(function (cd, i) {
+        if (cd.kind === "inference") return;
+        var j = -1; for (var k = i + 1; k < cards.length; k++) if (cards[k].kind === "inference") { j = k; break; }
+        if (j < 0) return;
+        var a = R[i], b = R[j], x0 = a.x + a.w - 30 * U, y0 = a.y + a.h, x1 = b.x + b.w - 30 * U, y1 = b.y;
+        if (b.x !== a.x) { x0 = a.x + a.w; y0 = a.y + a.h / 2; x1 = b.x; y1 = b.y + b.h / 2; }
+        ctx.strokeStyle = C.muted; ctx.lineWidth = 3 * U; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+        var an = Math.atan2(y1 - y0, x1 - x0); ctx.fillStyle = C.muted; ctx.beginPath();
+        ctx.moveTo(x1, y1); ctx.lineTo(x1 - 16 * U * Math.cos(an - 0.4), y1 - 16 * U * Math.sin(an - 0.4));
+        ctx.lineTo(x1 - 16 * U * Math.cos(an + 0.4), y1 - 16 * U * Math.sin(an + 0.4)); ctx.closePath(); ctx.fill();
+      });
+    }
+    cards.forEach(function (cd, i) {
+      var r = R[i], open = i < shown, hot = open && cited.indexOf(cd.id) >= 0;
+      ctx.fillStyle = open ? C.panel : C.hidden; g.roundRect(r.x, r.y, r.w, r.h, 12 * U); ctx.fill();
+      if (hot) { ctx.strokeStyle = C.accent; ctx.lineWidth = 5 * U; g.roundRect(r.x, r.y, r.w, r.h, 12 * U); ctx.stroke(); }
+      font(ctx, 700, 30, U); ctx.fillStyle = C.ink; ctx.fillText(String(i + 1), r.x + 18 * U, r.y + 42 * U);
+      if (!open) { font(ctx, 700, 40, U); ctx.fillStyle = C.muted; ctx.fillText(Lb.hidden, r.x + r.w / 2, r.y + r.h / 2 + 14 * U); return; }
+      font(ctx, 700, 26, U); ctx.fillStyle = kindColor(C, cd.kind);
+      ctx.fillText(Lb.kinds[cd.kind] || cd.kind, r.x + 60 * U, r.y + 40 * U);
+      font(ctx, 500, 24, U); ctx.fillStyle = C.muted;
+      var pg = Lb.page + " " + cd.page; ctx.fillText(pg, r.x + r.w - ctx.measureText(pg).width - 18 * U, r.y + 40 * U);
+      if (hot || st.focus !== "claims" || !cited.length) {  // words of the claim only where the voice is (≤ 6 words on a card)
+        var f = "600 " + 28 * U + "px " + window.FONT;
+        var nl = r.h >= 120 * U ? 2 : 1, y0 = r.y + Math.min(80 * U, r.h - 16 * U);  // text stays inside the card
+        g.wrap(cd.short, r.w - 80 * U, f).slice(0, nl).forEach(function (ln, k) { ctx.font = f; ctx.fillStyle = hot ? C.ink : C.muted; ctx.fillText(ln, r.x + 60 * U, y0 + k * 34 * U); });
+      }
+    });
+    if (st.wrong) {
+      var yy = box.y + box.h * 0.45;
+      ctx.fillStyle = C.warnBg; g.roundRect(box.x + 20 * U, yy - 40 * U, box.w - 40 * U, 80 * U, 12 * U); ctx.fill();
+      font(ctx, 700, 32, U); ctx.fillStyle = C.warnFg; ctx.fillText("✗ " + Lb.wrong_tag, box.x + 44 * U, yy + 12 * U);
+    }
+  }
+
+  function invariants(spec) {
+    var K = spec.case, out = [];
+    out.push({ id: "cards_from_layer", ok: K.cards.length >= 3 && K.cards.every(function (c) { return c.id && c.page != null; }),
+      text: "каждая карточка — проверенное утверждение узла со страницей книги" });
+    out.push({ id: "kinds_separated", ok: K.cards.every(function (c) { return ["observation", "assumption", "inference"].indexOf(c.kind) >= 0; }),
+      text: "у каждой карточки один вид: наблюдение, условие или вывод" });
+    out.push({ id: "cards_stable", ok: K.cards.every(function (c, i) { return !i || c.page >= K.cards[i - 1].page; }),
+      text: "карточки идут в порядке страниц книги и не меняются между кадрами" });
+    return out;
+  }
+
+  window.TEMPLATES = window.TEMPLATES || {};
+  window.TEMPLATES.claim_steps = { draw: draw, invariants: invariants };
+})();
+</script>
+<script>/* Scene player: draws a scene spec at time t on one canvas.
+   Same code for the interactive in the course (mode=interactive) and for recording video frames (mode=record).
+   window.SCENE = {spec, timeline, format:{w,h}, style, labels}; templates register in window.TEMPLATES. */
+(function () {
+  "use strict";
+  var S = window.SCENE, T = window.TEMPLATES[S.spec.template];
+  var W = S.format.w, H = S.format.h, portrait = H > W;
+  var cv = document.getElementById("cv"); cv.width = W; cv.height = H;
+  var ctx = cv.getContext("2d");
+  var C = S.style.colors;
+  var U = W / 1080; // unit: 1 at 1080 px width (portrait) — fonts scale with frame
+  if (!portrait) U = H / 1080;
+
+  function beatAt(t) {
+    var bs = S.timeline.beats;
+    for (var i = 0; i < bs.length; i++) if (t < bs[i].end) return bs[i];
+    return bs[bs.length - 1];
+  }
+  function lerp(a, b, p) { return a + (b - a) * p; }
+  function stateAt(t) {
+    var b = beatAt(t), st = Object.assign({}, b.state);
+    var p = Math.max(0, Math.min(1, (t - b.start) / Math.max(0.001, b.end - b.start)));
+    p = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // ease
+    if (st.t0 != null) st.tSim = lerp(st.t0, st.t1 != null ? st.t1 : st.t0, p);
+    st.progress = p; st.beat = b;
+    return st;
+  }
+
+  function wrap(text, maxW, font) {
+    ctx.font = font; var words = String(text).split(/\s+/), lines = [], cur = "";
+    words.forEach(function (w) { var t = cur ? cur + " " + w : w; if (ctx.measureText(t).width > maxW && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur); return lines;
+  }
+  function chip(x, y, text, fg, bg) {
+    ctx.font = "600 " + (26 * U) + "px " + window.FONT;
+    var w = ctx.measureText(text).width + 28 * U, h = 46 * U;
+    ctx.fillStyle = bg; roundRect(x, y, w, h, 10 * U); ctx.fill();
+    ctx.fillStyle = fg; ctx.textBaseline = "middle"; ctx.fillText(text, x + 14 * U, y + h / 2); ctx.textBaseline = "alphabetic";
+    return w;
+  }
+  function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+
+  /* subtitles: chunks of ≤8 words timed by word boundaries of the voice */
+  function subtitleAt(t, b) {
+    var ws = b.words || [];
+    if (!ws.length) return b.text;
+    var rel = t - b.voice_start, idx = 0;
+    for (var i = 0; i < ws.length; i++) if (ws[i].start <= rel) idx = i;
+    var chunk = Math.floor(idx / 8) * 8;
+    // show the script's own words (with punctuation) when they align one-to-one with the voice's words
+    var shown = b.display_words && b.display_words.length === ws.length ? b.display_words : ws.map(function (w) { return w.w; });
+    return shown.slice(chunk, chunk + 8).filter(Boolean).join(" ").replace(/\u0301/g, "");
+  }
+
+  var DOM = S.mode === "interactive" && document.getElementById("hud");  // course: text in HTML, canvas = scene only
+  var dom = DOM ? { pv: document.getElementById("pv"), pvn: document.getElementById("pvn"), ex: document.getElementById("ex"),
+                    head: document.getElementById("head"), sub: document.getElementById("sub") } : null, seen = {};
+  function setText(k, v, html) { if (seen[k] === v) return; seen[k] = v; if (html) dom[k].innerHTML = v; else dom[k].textContent = v; }
+  function esc(s) { return String(s).replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; }); }
+
+  function draw(t) {
+    var st = stateAt(t), b = st.beat;
+    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    var pad = 48 * U;
+    // layout boxes. 9:16: every caption inside the styleguide's safe zone (spec.safe_zone: top/bottom/side px at 1080)
+    var sz = S.spec.safe_zone, L;
+    if (DOM) {  // the whole canvas is the scene; headline, plates and subtitles are HTML around it
+      L = { scene: { x: pad, y: 30 * U, w: W - 2 * pad, h: H - 60 * U } };
+    } else if (portrait && sz) {
+      var sx = sz.side * U, top0 = sz.top * U, bot = H - sz.bottom * U;
+      L = { top: { x: sx, y: top0, w: W - 2 * sx, h: 100 * U }, head: { x: sx, y: top0 + 104 * U, w: W - 2 * sx, h: 150 * U },
+            scene: { x: sx, y: top0 + 270 * U, w: W - 2 * sx, h: bot - 214 * U - (top0 + 270 * U) },
+            sub: { x: sx, y: bot - 196 * U, w: W - 2 * sx, h: 196 * U } };
+    } else if (portrait) {
+      L = { top: { x: pad, y: 40 * U, w: W - 2 * pad, h: 100 * U }, head: { x: pad, y: 150 * U, w: W - 2 * pad, h: 250 * U },
+            scene: { x: pad, y: 420 * U, w: W - 2 * pad, h: 1120 * U }, sub: { x: pad, y: 1580 * U, w: W - 2 * pad, h: 260 * U } };
+    } else if (T.layout === "wide") {
+      // 16:9: subtitles end ~110 px above the bottom so the player's control bar does not cover them on pause
+      L = { top: { x: pad, y: 20 * U, w: W - 2 * pad, h: 100 * U }, head: { x: pad, y: 120 * U, w: W - 2 * pad, h: 70 * U },
+            scene: { x: pad, y: 210 * U, w: W - 2 * pad, h: 610 * U }, sub: { x: pad * 4, y: 830 * U, w: W - 8 * pad, h: 140 * U } };
+    } else {
+      L = { top: { x: pad, y: 24 * U, w: W - 2 * pad, h: 100 * U }, head: { x: pad, y: 130 * U, w: 640 * U, h: 680 * U },
+            scene: { x: 760 * U, y: 130 * U, w: W - 760 * U - pad, h: 680 * U }, sub: { x: pad, y: 830 * U, w: W - 2 * pad, h: 140 * U } };
+    }
+    // template scene
+    T.draw(ctx, L.scene, st, S.spec, { C: C, U: U, roundRect: roundRect, wrap: wrap, chip: chip, portrait: portrait });
+    if (DOM) {
+      var pv0 = st.provenance || S.labels.provenance, ex0 = (T.exaggeration ? T.exaggeration(S.spec, st) : null) || S.labels.exaggeration;
+      if (seen.pvl !== pv0.label) { seen.pvl = pv0.label; dom.pv.style.background = (C.provenance || {})[pv0.label] || C.chipBg; }
+      setText("pv", pv0.label); setText("pvn", pv0.note || ""); setText("ex", ex0 || "");
+      setText("head", esc(b.on_screen || "") + (b.slot === "prediction" && t > b.voice_end ? '<span class="think">Подумайте…</span>' : ""), true);
+      setText("sub", t <= b.voice_end + 0.2 ? subtitleAt(t, b) : "");
+      return;
+    }
+    // provenance + exaggeration chips (on every frame)
+    var x = L.top.x, y = L.top.y, pv = st.provenance || S.labels.provenance;
+    // TZ: provenance label on every frame — exactly «реальные данные» / «симуляция» / «схема», legend colour
+    x += chip(x, y, pv.label, "#FFFFFF", (C.provenance || {})[pv.label] || C.chipBg) + 10 * U;
+    if (pv.note) {
+      ctx.font = "600 " + (26 * U) + "px " + window.FONT;
+      if (x + ctx.measureText(pv.note).width + 28 * U > L.top.x + L.top.w) { x = L.top.x; y += 54 * U; }
+      x += chip(x, y, pv.note, C.chipFg, C.chipBg) + 10 * U;
+    }
+    var ex = (T.exaggeration ? T.exaggeration(S.spec, st) : null) || S.labels.exaggeration;
+    if (ex) {
+      ctx.font = "600 " + (26 * U) + "px " + window.FONT;
+      x = L.top.x; y += 54 * U;
+      chip(x, y, ex, C.warnFg, C.warnBg);
+    }
+    // headline (on-screen words ≤ 7–8)
+    if (b.on_screen) {
+      var wide = !portrait && T.layout === "wide";
+      var hp = portrait ? (sz ? 60 : 64) : wide ? 50 : 56, f = "700 " + hp * U + "px " + window.FONT;
+      var ls = wrap(b.on_screen, L.head.w, f); ctx.fillStyle = b.slot === "misconception" ? C.warnFg : C.ink;
+      ls.slice(0, wide ? 1 : (portrait && sz ? 2 : 3)).forEach(function (ln, i) { ctx.fillText(ln, L.head.x, L.head.y + (i + 1) * (wide ? 60 : hp * 1.22) * U); });
+    }
+    if (b.slot === "prediction" && t > b.voice_end) {
+      ctx.fillStyle = C.accent; ctx.font = "600 " + 40 * U + "px " + window.FONT;
+      var py = portrait ? L.head.y + (sz ? 150 : 250) * U : (T.layout === "wide" ? L.head.y + 60 * U : L.head.y + 330 * U);
+      var px = T.layout === "wide" && !portrait ? L.head.x + L.head.w - 260 * U : L.head.x;
+      ctx.fillText("Подумайте…", px, py);
+    }
+    // subtitles in the safe zone
+    var sub = subtitleAt(t, b);
+    if (sub && t <= b.voice_end + 0.2) {
+      var sp = Math.max(S.spec.min_caption_px || 44, 44), sf = "500 " + sp * U + "px " + window.FONT;
+      var sl = wrap(sub, L.sub.w - 40 * U, sf).slice(0, 3);
+      var bh = sl.length * 58 * U + 30 * U;
+      ctx.fillStyle = "rgba(0,0,0,0.62)"; roundRect(L.sub.x, L.sub.y, L.sub.w, bh, 14 * U); ctx.fill();
+      ctx.fillStyle = "#FFFFFF"; ctx.font = sf;
+      sl.forEach(function (ln, i) { ctx.fillText(ln, L.sub.x + 20 * U, L.sub.y + 50 * U + i * 58 * U); });
+    }
+  }
+
+  window.renderAt = function (t) { draw(t); return true; };
+  window.frameData = function (t) { draw(t); return cv.toDataURL("image/png"); };
+
+  if (S.mode !== "interactive") { draw(0); return; }
+
+  /* ---------- interactive mode (course) ---------- */
+  var audio = document.getElementById("voice"), t = 0, playing = false, waitPred = null, last = null;
+  var btn = document.getElementById("play"), bar = document.getElementById("seek"), more = document.getElementById("more");
+  bar.max = S.timeline.duration;
+  function setT(v) { t = Math.max(0, Math.min(S.timeline.duration, v)); bar.value = t; draw(t); showInfo(); }
+  function showInfo() {
+    var b = beatAt(t);
+    more.textContent = "";
+    if (!b.claims || !b.claims.length) return;
+    b.claims.forEach(function (c) {
+      var d = document.createElement("div"); d.className = "src";
+      d.textContent = "стр. " + c.page + " — «" + c.quote + "»"; more.appendChild(d);
+    });
+  }
+  function tick(ts) {
+    if (!playing) return;
+    if (audio && !audio.paused) t = audio.currentTime; else if (last != null) t += (ts - last) / 1000;
+    last = ts;
+    var b = beatAt(t);
+    if (b.slot === "prediction" && t >= b.end - 0.05 && waitPred !== b.id) {
+      waitPred = b.id; pause(); btn.textContent = "Показать ответ"; return;
+    }
+    if (t >= S.timeline.duration) { pause(); setT(S.timeline.duration); return; }
+    bar.value = t; draw(t); showInfo();
+    requestAnimationFrame(tick);
+  }
+  function play() { playing = true; last = null; btn.textContent = "Пауза"; if (audio) { audio.currentTime = t; audio.play().catch(function () {}); } requestAnimationFrame(tick); }
+  function pause() { playing = false; btn.textContent = "Смотреть"; if (audio) audio.pause(); }
+  btn.addEventListener("click", function () { if (playing) pause(); else { if (t >= S.timeline.duration - 0.05) setT(0); play(); } });
+  bar.addEventListener("input", function () { pause(); setT(parseFloat(bar.value)); });
+  cv.addEventListener("click", function () { btn.click(); });
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setT(reduce ? S.timeline.duration : 0);
+})();
+</script>
+</body>
+</html>

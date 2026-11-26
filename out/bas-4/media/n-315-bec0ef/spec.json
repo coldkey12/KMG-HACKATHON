@@ -1,0 +1,164 @@
+{
+ "schema": "kmg-scene-spec/0.2.0",
+ "template": "claim_steps",
+ "format": "short",
+ "frame_class": "B",
+ "node_id": "bas-4.n-315-bec0ef",
+ "chapter": "bas-4",
+ "state_model": "Карточки — проверенные утверждения узла (status ok, без мест с сомнительным распознаванием) в порядке страниц книги, не больше восьми. Тип карточки — вид утверждения в слое: наблюдение, условие (допущение), вывод. Стрелки идут от наблюдений и условий к выводам. В каждой части подсвечены карточки, на которые ссылается голос (claim_ids этой части); на подсвеченной карточке — первые слова утверждения.",
+ "objects": [
+  "карточки утверждений узла с номером, видом и страницей",
+  "стрелки «наблюдение / условие → вывод»",
+  "подсветка карточек, о которых говорит голос"
+ ],
+ "params": {
+  "max_cards": 8,
+  "words_on_card": 6
+ },
+ "params_note": "Ничего не вычисляется сверх слоя: число, порядок, тип и страницы карточек — данные узла.",
+ "assumptions": [
+  "схема структуры рассуждения автора, а не изображение объекта: формы, масштабы и пространственное положение не показаны",
+  "вид утверждения (наблюдение, условие, вывод) взят из учебного слоя",
+  "порядок карточек — порядок страниц книги"
+ ],
+ "labels": {
+  "kinds": {
+   "observation": "наблюдение",
+   "assumption": "условие",
+   "inference": "вывод"
+  },
+  "page": "стр.",
+  "hidden": "?",
+  "wrong_tag": "так думают многие — неверно",
+  "flow": "наблюдения и условия → вывод",
+  "legend_title": "из книги, по порядку"
+ },
+ "exaggeration": "Не в масштабе: схема рассуждения, объект не изображён",
+ "exaggeration_named": null,
+ "true_scale": null,
+ "school": "русская школа ГИС (названа в кадре)",
+ "conventions": {
+  "depth": "глубина на планшете и разрезе растёт вниз",
+  "log_school": "русская школа обозначений (ПС, ГК, КС, НГК, ГГК-П, АК); при западных обозначениях школа называется в кадре",
+  "seismic_polarity": "полярность сейсмики указывается в кадре; по умолчанию нормальная полярность SEG: рост акустического импеданса — положительная амплитуда (пик), закрашивается",
+  "vertical_exaggeration": "вертикальное преувеличение подписывается числом; хотя бы один кадр серии — в истинном масштабе",
+  "uncertainty": "неопределённость — диапазон или штриховка цветом uncertainty, а не одна линия"
+ },
+ "styleguide": "domain/drilling/styleguide_official.json",
+ "palette": {
+  "sand": "#E8C872",
+  "shale": "#6B8E5A",
+  "limestone": "#7FB3D5",
+  "dolomite": "#A98FD1",
+  "anhydrite": "#D98CB3",
+  "salt": "#C9D6DF",
+  "dense": "#8C7B6B",
+  "reef": "#F0A35E",
+  "fluid_oil": "#2E8B57",
+  "fluid_gas": "#E74C3C",
+  "fluid_water": "#3498DB",
+  "fluid_filtrate": "#9BD7F5",
+  "fluid_mud": "#7A6A58",
+  "curve_SP": "#E74C3C",
+  "curve_GR": "#2ECC71",
+  "curve_RES": "#F1C40F",
+  "curve_RES_SHALLOW": "#E67E22",
+  "curve_NEUTRON": "#3498DB",
+  "curve_DENSITY": "#E84393",
+  "curve_SONIC": "#9B59B6",
+  "curve_CALIPER": "#BDC3C7",
+  "curve_PRESSURE": "#00CEC9",
+  "measurement": "#F1C40F",
+  "uncertainty": "#95A5A6"
+ },
+ "legend_keys": {},
+ "frame_colors": {
+  "bg": "#0F1419",
+  "panel": "#1A2129",
+  "ink": "#ECEFF4",
+  "muted": "#8A96A3",
+  "paper": "#ECEFF4",
+  "chipBg": "#1A2129",
+  "chipFg": "#ECEFF4",
+  "measurement": "#F1C40F",
+  "uncertainty": "#95A5A6",
+  "pressure": "#00CEC9",
+  "pressureRGB": "0,206,201",
+  "curve": "#00CEC9",
+  "accent": "#5CC4BE",
+  "warnBg": "#3A2220",
+  "warnFg": "#FF9E8F",
+  "steel": "#B9C2C6",
+  "hidden": "#3A4643",
+  "provenance": {
+   "реальные данные": "#27AE60",
+   "симуляция": "#2980B9",
+   "схема": "#8E44AD"
+  },
+  "font": "Segoe UI, \"Helvetica Neue\", Arial, sans-serif"
+ },
+ "safe_zone": {
+  "top": 220,
+  "bottom": 380,
+  "side": 70
+ },
+ "min_caption_px": 44,
+ "case": {
+  "cards": [
+   {
+    "id": "bas-4.n-315-bec0ef.c-d06515",
+    "kind": "observation",
+    "page": 315,
+    "short": "При перекрытии устьевой арматурой сначала закрывают…"
+   },
+   {
+    "id": "bas-4.n-315-bec0ef.c-c4ed97",
+    "kind": "observation",
+    "page": 315,
+    "short": "При перекрытии устьевой арматурой после этого…"
+   },
+   {
+    "id": "bas-4.n-315-bec0ef.c-b723df",
+    "kind": "observation",
+    "page": 315,
+    "short": "Такое перекрытие делают быстро поэтому проявление…"
+   },
+   {
+    "id": "bas-4.n-315-bec0ef.c-70069a",
+    "kind": "inference",
+    "page": 315,
+    "short": "Благодаря быстрому закрытию объём притока и…"
+   },
+   {
+    "id": "bas-4.n-315-bec0ef.c-88e3fe",
+    "kind": "observation",
+    "page": 315,
+    "short": "При быстром жёстком закрытии в скважине…"
+   },
+   {
+    "id": "bas-4.n-315-bec0ef.c-9ee8e1",
+    "kind": "observation",
+    "page": 315,
+    "short": "Колебания давления могут привести к неправильной…"
+   },
+   {
+    "id": "bas-4.n-315-bec0ef.c-911513",
+    "kind": "observation",
+    "page": 315,
+    "short": "При больших давлениях для открытия задвижки…"
+   },
+   {
+    "id": "bas-4.n-315-bec0ef.c-2db5d7",
+    "kind": "inference",
+    "page": 315,
+    "short": "При больших давлениях перепад давления затрудняет…"
+   }
+  ],
+  "facts": {
+   "n_cards": 8,
+   "n_obs": 6,
+   "n_inf": 2,
+   "kinds_line": "наблюдение — 6, вывод — 2"
+  }
+ }
+}

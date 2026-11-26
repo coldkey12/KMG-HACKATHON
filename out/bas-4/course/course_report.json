@@ -2,59 +2,9 @@
  "tasks": {
   "schema": "kmg-tasks/0.2.0",
   "chapter": "bas-4",
-  "generated": 126,
+  "generated": 119,
   "kept": 119,
-  "rejected": [
-   {
-    "index": 11,
-    "node_id": "bas-4.n-233-f6a3be",
-    "type": "single",
-    "prompt": "По формуле ΔV_min = εS при большей площади поверхности жидкости минимальный объём притока, который уровнемер может зафиксировать, будет...",
-    "why": "символьный ответ не найден в утверждениях/формулах: «Больше»"
-   },
-   {
-    "index": 19,
-    "node_id": "bas-4.n-234-2c4da4",
-    "type": "single",
-    "prompt": "При каком превышении расхода выходящего потока индикатор потока помогает обнаружить проявление?",
-    "why": "символьный ответ не найден в утверждениях/формулах: «При превышении на 10 % и более»"
-   },
-   {
-    "index": 24,
-    "node_id": "bas-4.n-234-c78403",
-    "type": "single",
-    "prompt": "По формуле ΔQ_min = δ·Q_max/100 при большем Q_max минимальный обнаруживаемый прирост расхода будет...",
-    "why": "символьный ответ не найден в утверждениях/формулах: «Больше»"
-   },
-   {
-    "index": 51,
-    "node_id": "bas-4.n-235-d51661",
-    "type": "multiple",
-    "prompt": "Где могут залегать слабопроницаемые непродуктивные коллекторы, дающие газ?",
-    "why": "claim_ids пусты или не из этого узла"
-   },
-   {
-    "index": 53,
-    "node_id": "bas-4.n-235-26de7b",
-    "type": "order",
-    "prompt": null,
-    "why": "нет формулировки задания"
-   },
-   {
-    "index": 70,
-    "node_id": "bas-4.n-237-b00695",
-    "type": "order",
-    "prompt": null,
-    "why": "нет формулировки задания"
-   },
-   {
-    "index": 110,
-    "node_id": "bas-4.n-316-0f69ab",
-    "type": "single",
-    "prompt": "При закрытой скважине давление в кольцевом пространстве на устье выше максимально допустимого. Можно ли применять методы?",
-    "why": "верный вариант не подтверждается утверждениями: «Нельзя: условие применения методов не выполняется»"
-   }
-  ],
+  "rejected": [],
   "types": [
    "gap",
    "multiple",
@@ -70,24 +20,25 @@
   "meets_tz": true,
   "schema_errors": [],
   "schema_ok": true,
-  "cost_usd": 0.095421,
-  "cost_usd_original": 0.095421,
-  "cached": false,
-  "model": "claude-haiku-5-5",
-  "calls": 6
+  "cost_usd": 0.0,
+  "cost_usd_original": 0.0,
+  "cached": true,
+  "model": "reuse:tasks.json",
+  "calls": 0,
+  "changed_nodes_tasks_dropped": []
  },
  "schema": "kmg-course-report/0.2.0",
  "chapter": "bas-4",
- "layer": "/Users/coldkey/KMG-HACKATHON/out/bas-4/layer.json",
+ "layer": "out/bas-4/layer.json",
  "steps": 47,
  "parts": 8,
- "size_mb": 2.9,
+ "size_mb": 4.58,
  "size_ok": true,
  "steps_without_illustration": [],
  "parts_without_ab_illustration": [],
- "illustrations": 77,
+ "illustrations": 79,
  "photos": 9,
  "illustration_schema_errors": [],
  "illustration_schema_ok": true,
- "seconds": 190.3
+ "seconds": 0.5
 }
