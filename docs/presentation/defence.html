@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Osiris Deeptech — защита</title>
+<style>
+:root{--line:#2b2b2b;--mut:#8c8c8c;--acc:#19d3c5;--bad:#ff5a4f}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#000;color:#fff;font:400 22px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+nav{position:fixed;left:0;right:0;top:0;height:64px;display:flex;align-items:center;gap:4px;padding:0 40px;border-bottom:1px solid var(--line);background:#000;z-index:5}
+nav b{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-right:16px;white-space:nowrap}
+nav button{background:none;border:0;color:var(--mut);font:inherit;font-size:15px;padding:10px 10px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+nav button.on{color:#fff;border-color:#fff}
+nav button:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+main{position:absolute;inset:64px 0 0 0;overflow:auto}
+.tab{display:none;padding:44px 56px 60px;max-width:1800px;margin:0 auto;animation:in .35s ease}
+.tab.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tab{animation:none}}
+.k{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+h1{font-weight:400;font-size:clamp(48px,6.4vw,104px);line-height:.98;letter-spacing:-.04em;margin:22px 0 26px;max-width:16ch}
+h2{font-weight:400;font-size:clamp(34px,3.6vw,58px);line-height:1.02;letter-spacing:-.03em;margin:16px 0 26px;max-width:26ch}
+.lede{font-size:28px;color:#d0d0d0;max-width:44ch;line-height:1.3}
+.mut{color:var(--mut)}
+.grid{display:grid;gap:0;border-top:1px solid var(--line)}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cell{padding:22px 26px 22px 0;color:#c8c8c8;font-size:20px;border-bottom:1px solid var(--line)}
+.cell+.cell{padding-left:26px;border-left:1px solid var(--line)}
+.g3 .cell:nth-child(3n+1),.g2 .cell:nth-child(2n+1),.g4 .cell:nth-child(4n+1){padding-left:0;border-left:0}
+.cell b{display:block;color:#fff;font-weight:500;font-size:23px;margin-bottom:8px}
+.num{font-size:clamp(48px,5.4vw,92px);line-height:1;letter-spacing:-.045em;color:#fff;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.btn{display:inline-block;background:#fff;color:#000;border:1px solid #fff;font:inherit;font-size:20px;padding:13px 22px;cursor:pointer;text-decoration:none;margin:0 10px 10px 0}
+.btn.o{background:none;color:#fff}
+.btn:hover{background:var(--acc);border-color:var(--acc);color:#000}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+.box{border:1px solid var(--line);background:#0b0b0b;padding:26px 30px}
+.lab{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
+.big{font-size:32px;line-height:1.3}
+pre{margin:0;font:500 21px/1.6 ui-monospace,Menlo,monospace;white-space:pre-wrap;min-height:150px}
+.r{color:var(--bad)}.g{color:var(--acc)}
+input{background:#000;border:1px solid #fff;color:#fff;font:inherit;font-size:30px;width:120px;padding:6px 12px;text-align:center}
+table{border-collapse:collapse;width:100%;font-size:19px;font-variant-numeric:tabular-nums}
+th,td{padding:10px 14px 10px 0;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--mut);font:500 12px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;vertical-align:bottom}
+tbody tr{cursor:pointer}tbody tr:hover td{background:#111}tbody tr.on td{background:#fff;color:#000}
+tr.sep td{cursor:default;background:none!important;color:var(--mut)!important;font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;padding-top:20px}
+.cmp td,.cmp th{text-align:left;vertical-align:top;font-size:20px;padding:13px 20px 13px 0}
+.cmp tbody tr{cursor:default}.cmp tbody tr:hover td{background:none}
+.cmp td:first-child{color:var(--mut);width:22%}.cmp td:nth-child(2){color:#9a9a9a;width:34%}.cmp td:nth-child(3){color:#fff}
+.dots{display:grid;grid-template-columns:repeat(7,52px);gap:12px}
+.dots i{width:52px;height:52px;border-radius:50%;border:2px solid #555;display:block;transition:background .25s,border-color .25s}
+.dots i.f{background:#fff;border-color:#fff}
+details{border-bottom:1px solid var(--line);padding:12px 0}
+summary{cursor:pointer;font-size:21px;list-style:none;display:flex;gap:16px;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary span{font:500 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--mut);min-width:86px}
+details p{margin:10px 0 4px 102px;font-size:19px;color:#c8c8c8;max-width:80ch}
+details p b{color:var(--acc);font-weight:500}
+video{width:100%;display:block;background:#0b0b0b;border:1px solid var(--line)}
+.vid{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,2fr);gap:24px;align-items:start}
+.flow{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;padding-top:34px}
+.rail{position:absolute;left:0;right:0;top:10px;height:2px;background:#2b2b2b}
+.rail i{position:absolute;left:0;top:0;height:2px;width:0;background:#fff;transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.rail u{position:absolute;top:-7px;left:0;width:16px;height:16px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 6px rgba(25,211,197,.18);transition:left .7s cubic-bezier(.2,.7,.2,1)}
+.st{border:1px solid #2b2b2b;background:#0b0b0b;padding:18px 18px 20px;cursor:pointer;opacity:.28;transform:translateY(10px);transition:opacity .45s,transform .45s,border-color .3s,background .3s}
+.st.lit{opacity:1;transform:none}
+.st.now{border-color:#fff;background:#151515}
+.st em{display:block;font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--mut);margin-bottom:14px}
+.st.ai em{color:#c9a6ff}.st.pr em{color:var(--acc)}
+.st b{display:block;font-weight:500;font-size:23px;line-height:1.15;margin-bottom:8px}
+.st span{font-size:17px;color:#a8a8a8;line-height:1.3;display:block}
+.br{font-size:21px;padding:11px 0;border-bottom:1px solid #2b2b2b;opacity:.25;transition:opacity .4s;color:#c8c8c8}
+.br.lit{opacity:1}.br i{font-style:normal;display:inline-block;width:30px;font-weight:700}.br b{color:#fff;font-weight:500}
+.tab.on .cell{animation:in .5s both;animation-delay:calc(var(--i,0)*70ms)}
+@media (prefers-reduced-motion:reduce){.tab.on .cell{animation:none}.st,.rail i,.rail u,.br{transition:none}}
+@media (max-width:1000px){.flow{grid-template-columns:minmax(0,1fr)}.rail{display:none}}
+.hint{position:fixed;right:40px;bottom:16px;font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#555;z-index:6}
+@media (max-width:1000px){.two,.g3,.g4,.g2,.vid{grid-template-columns:minmax(0,1fr)}.cell+.cell{border-left:0;padding-left:0}nav{overflow-x:auto}}
+</style></head><body>
+<nav id="nav"><b>Osiris Deeptech</b></nav>
+<main>
+
+<section class="tab" data-t="Что мы сделали">
+  <div class="k">Дон Владимир · Темирлан Тойгонбаев</div>
+  <h1>Программа, которая сама делает курс из главы учебника</h1>
+  <p class="lede">Кладём главу — получаем курс для новичка: уроки, задания, ролики. Каждая фраза взята из книги, и это можно проверить одним нажатием.</p>
+  <div class="grid g4" style="margin-top:40px">
+    <div class="cell"><div class="num" data-n="10">10</div>глав обработано, 4 из них программа увидела впервые сегодня в 10:30</div>
+    <div class="cell"><div class="num">0</div>минут человек правил результат на тесте</div>
+    <div class="cell"><div class="num" data-n="4449">4 449</div>утверждений, у каждого цитата автора и страница</div>
+    <div class="cell"><div class="num">$2</div>стоит одна глава вместо недель работы методиста и геолога</div>
+  </div>
+</section>
+
+<section class="tab" data-t="Как это работает">
+  <div class="k">Путь одной главы · нажмите на шаг</div>
+  <h2>Нейросеть пишет. Программа проверяет и собирает</h2>
+  <div class="flow" id="flow">
+    <div class="rail"><i id="railf"></i><u id="tok"></u></div>
+    <div class="st" data-w="вход"><em>вход</em><b>Глава</b><span>40 страниц учебника</span></div>
+    <div class="st ai" data-w="нейросеть"><em>нейросеть</em><b>Делит на темы</b><span>один запрос к сильной нейросети</span></div>
+    <div class="st ai" data-w="нейросеть"><em>нейросеть</em><b>Пишет утверждения</b><span>мысль автора + цитата + страница</span></div>
+    <div class="st pr" data-w="программа"><em>программа</em><b>Сверяет с книгой</b><span>цитаты, числа, пропуски</span></div>
+    <div class="st pr" data-w="программа"><em>программа</em><b>Собирает курс</b><span>уроки, задания, ролики</span></div>
+    <div class="st" data-w="выход"><em>выход</em><b>Готовый курс</b><span>папка с файлами, без интернета</span></div>
+  </div>
+  <div class="two" style="margin-top:26px;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)">
+    <div class="box" style="min-height:190px"><div class="lab" id="hlab">Шаг 1 из 6</div><div class="big" id="htxt" style="font-size:27px"></div></div>
+    <div class="box"><div class="lab">Что происходит с утверждением на проверке</div>
+      <div class="br" id="br1"><i class="g">✓</i> цитата и числа найдены в книге → <b>в курс</b></div>
+      <div class="br" id="br2"><i style="color:#fff">↻</i> не найдены → <b>назад на исправление</b></div>
+      <div class="br" id="br3"><i class="r">?</i> не исправилось → <b>специалисту</b>, в курс не идёт</div>
+    </div>
+  </div>
+  <div style="margin-top:18px"><button class="btn o" id="replay">Показать сначала</button><span class="mut" style="font-size:18px">Около 20 минут и $2 на главу. Человек не участвует.</span></div>
+</section>
+
+<section class="tab" data-t="Проверьте сами">
+  <div class="k">Откуда мы знаем, что в курсе всё верно</div>
+  <h2>Назовите любое число — программа скажет, есть ли оно в книге</h2>
+  <div class="two">
+    <div class="box"><div class="lab">Книга · Латышова, стр. 98, пример 46</div><div class="big">«Определить характер насыщения коллектора… для которого ρn = 20 Ом·м, <b>kn = 25 %</b>»</div></div>
+    <div class="box" id="cbox"><div class="lab">Курс · фраза в уроке</div><div class="big">Точка с сопротивлением 20 Ом·м и пористостью <input id="inp" value="25" inputmode="numeric" aria-label="Пористость в процентах"> % даёт безводную нефть.</div></div>
+  </div>
+  <div style="margin:24px 0 18px"><button class="btn" id="run">Проверить</button><button class="btn o" id="rst">Вернуть как в книге</button><span class="mut" style="font-size:18px">Впишите вместо 25 любое число и нажмите «Проверить».</span></div>
+  <div class="box"><div class="lab">Что отвечает программа проверки</div><pre id="term"><span class="mut">Ждёт запуска.</span></pre></div>
+  <p class="mut" style="font-size:17px;margin-top:16px;max-width:90ch">На этой странице показано правило проверки чисел. Настоящая команда — <span style="font-family:ui-monospace,Menlo,monospace">python -m kmg check out/lat-v/layer.json</span>: мы прогнали её сегодня с подменой 25 на 40, она ответила «число 40 нет в исходных единицах» и не выпустила курс. Проверяет обычная программа, не нейросеть.</p>
+</section>
+
+<section class="tab" data-t="Результаты">
+  <div class="k">Нажмите на главу</div>
+  <h2>Десять глав. Четыре последние программа сделала сегодня сама</h2>
+  <div class="two" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)">
+    <div><table id="tb"><thead><tr><th>Глава</th><th>Тем</th><th>Утверждений</th><th>Попало в курс</th><th>Заданий</th></tr></thead><tbody></tbody></table></div>
+    <div class="box" id="det"></div>
+  </div>
+</section>
+
+<section class="tab" data-t="Под капотом">
+  <div class="k">Почему наш конвейер устроен лучше</div>
+  <h2>Шесть решений внутри, которые дают этот результат</h2>
+  <table class="cmp"><thead><tr><th></th><th>Простой путь</th><th>Как сделано у нас</th></tr></thead><tbody>
+    <tr><td>Кто проверяет текст</td><td>Вторая нейросеть или человек на глаз</td><td>Обычная программа сверяет каждую цитату и каждое число с книгой, буква в букву. Она не может «согласиться из вежливости»</td></tr>
+    <tr><td>Что делают с ошибкой</td><td>Правят руками в готовом курсе</td><td>Ошибка сама возвращается на исправление. Не исправилась — фраза помечается спорной и в задания и ролики не попадает</td></tr>
+    <tr><td>Сколько читает специалист</td><td>Весь курс</td><td>Только спорное: 41 утверждение из 1285 на тесте, это 3%</td></tr>
+    <tr><td>Цена главы</td><td>Одна дорогая нейросеть на всё: $12,7 — так стоил наш первый вариант</td><td>Дорогая нейросеть только делит главу на темы, дешёвая пишет: $2. Повторный запуск бесплатен</td></tr>
+    <tr><td>Новая область знаний</td><td>Переписывать программу</td><td>Заменить папку со словарём и правилами. Бурение подключили за 3,5 минуты</td></tr>
+    <tr><td>Правка факта</td><td>Пересобирать курс целиком</td><td>Страница урока пересобирается за 1 секунду, без нейросети</td></tr>
+  </tbody></table>
+  <p class="mut" style="font-size:18px;margin-top:18px;max-width:90ch">Картинки в роликах тоже считает программа по формулам из главы, а готовую озвучку она распознаёт обратно в текст и сверяет со сценарием.</p>
+</section>
+
+<section class="tab" data-t="Поиск ошибок">
+  <div class="k">Инструмент проверяет не только наши курсы</div>
+  <h2>В чужом курсе спрятали ошибки. Программа нашла 19 из 21</h2>
+  <div class="two" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr)">
+    <div>
+      <div class="dots" id="dots"></div>
+      <p style="margin:22px 0 6px"><span class="num" style="font-size:64px">19 / 21</span></p>
+      <p class="mut" style="font-size:19px">Тренировочный набор организаторов, с исправлением и страницей. Две ложные тревоги. Ответ сохранён до того, как мы открыли правильные ответы.</p>
+      <p style="font-size:19px;margin-top:18px">Для КМГ: этим можно проверить любой курс — от подрядчика, сотрудника или другой команды.</p>
+    </div>
+    <div>
+      <div class="lab">Сегодняшний тест: 20 замечаний за 3 минуты. Шесть примеров</div>
+      <div id="rem"></div>
+      <p class="mut" style="font-size:16px;margin-top:12px">Сколько из двадцати верных, считает жюри: правильных ответов у нас нет.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tab" data-t="Ролики">
+  <div class="k">Картинку рисует программа по формулам, а не нейросеть</div>
+  <h2>Ролики, которые программа собрала сама</h2>
+  <div class="vid">
+    <div><video controls preload="none" poster="img/v_basniev.jpg" src="../../out/bas-xxiii/course/media/n-475-e20d95/n-475-e20d95_short.mp4"></video><p class="mut" style="font-size:17px;margin-top:10px">Басниев: волна давления в пласте. Кривая — решение уравнения из главы.</p></div>
+    <div><video controls preload="none" poster="img/v_lat.jpg" src="../../out/lat-v/course/media/n-092-fe1183/n-092-fe1183_long.mp4"></video><p class="mut" style="font-size:17px;margin-top:10px">Латышова: как по показаниям приборов отличить один пласт от другого. Уровни кривых взяты из таблицы книги.</p></div>
+  </div>
+  <p style="font-size:19px;margin-top:8px;max-width:90ch"><b style="font-weight:500">Наш предел.</b> <span class="mut">Готовые сцены есть для четырёх типов процессов. Для рифов, дельт и бурения их нет: там ролик — схема из карточек с голосом. Сегодняшние тестовые ролики именно такие.</span></p>
+</section>
+
+<section class="tab" data-t="Для КМГ">
+  <div class="k">Что это даёт компании</div>
+  <h2>Не ещё один курс, а способ делать и проверять их сотнями</h2>
+  <div class="grid g3">
+    <div class="cell"><b>Работает в закрытой сети</b>Готовый курс — папка с файлами. Без сервера, учётных записей и интернета. Открывается на компьютере и телефоне.</div>
+    <div class="cell"><b>Не только учебники</b>Знания о предмете лежат отдельной папкой. Так же, как бурение, подключаются регламенты, стандарты и инструкции компании.</div>
+    <div class="cell"><b>Время специалиста</b>Геолог не вычитывает курс. Программа сама показывает ему 3% фраз, в которых сомневается, с вопросом и страницей.</div>
+    <div class="cell"><b>Цена известна заранее</b>Около $2 и 20 минут на главу. Сто глав — $200.</div>
+    <div class="cell"><b>Контроль чужих материалов</b>Тот же инструмент ищет ошибки в курсах, которые сделал кто-то другой.</div>
+    <div class="cell"><b>Что не сделано</b>Рисунки книги со сканами не сверяются. Анимаций для геологии и бурения нет. Запуск проверен только на macOS.</div>
+  </div>
+  <p class="lede" style="margin-top:34px;max-width:60ch;color:#fff">Дайте нам десять глав или один ваш регламент. Вернём курсы и список мест, которые должен посмотреть ваш специалист.</p>
+</section>
+
+</main>
+<div class="hint">← → листать</div>
+<script>
+(function(){
+var CH=[
+ ["known","Латышова","приборы в скважине","lat-v",70,652,96,0.91,164,"RU"],
+ ["known","Басниев","движение жидкости в пласте","bas-xxiii",71,558,53,0.94,144,"RU"],
+ ["known","Кузнецов","рифы","kuz-10",56,500,11,0.94,139,"RU"],
+ ["known","Вендельштейн","признаки нефтяного пласта","ven-1",66,718,81,0.90,161,"RU"],
+ ["known","Баренблатт","движение жидкости, теория","bar-4",42,337,24,0.98,97,"RU"],
+ ["known","Барабошкин","речные дельты","brb-1-2",38,299,5,0.92,89,"RU"],
+ ["test","Asquith","приборы в скважине","asq-7",63,555,17,0.91,127,"EN"],
+ ["test","Dake","приток к скважине","dake-5",37,251,3,0.95,75,"EN"],
+ ["test","Slatt","речные дельты","slatt-9",24,168,12,0.93,59,"EN"],
+ ["test","Басарыгин","бурение, другая область","bas-4",47,311,9,0.98,119,"RU"]];
+var REM=[
+ ["стр. 131","Знак перевёрнут","В чужом курсе: в нефтяных зонах сопротивление ниже. По книге — выше, и расхождение растёт с насыщенностью."],
+ ["стр. 126","Формула искажена","Отношение возведено в степень n. По книге степень 1/n: нужно извлечь корень."],
+ ["стр. 135","Потерян квадрат","В формуле проницаемости всё выражение в квадрате. В чужом курсе квадрат пропал."],
+ ["стр. 136","Выброшено условие","У автора глина искажает результат только при содержании больше 10–15%. В чужом курсе — «при любом»."],
+ ["стр. 129","Неверная причина","Отношение падает из-за роста одного сопротивления, а в чужом курсе назван спад другого."],
+ ["стр. 127","Величины перепутаны","Две насыщенности переставлены местами; пересчёт по числам примера даёт обратное."]];
+var tabs=[].slice.call(document.querySelectorAll('.tab')),nav=document.getElementById('nav'),cur=0;
+tabs.forEach(function(t,i){var b=document.createElement('button');b.textContent=(i+1)+'. '+t.dataset.t;b.onclick=function(){go(i)};nav.appendChild(b)});
+function go(i){cur=Math.max(0,Math.min(tabs.length-1,i));tabs.forEach(function(t,k){t.classList.toggle('on',k==cur)});[].forEach.call(nav.querySelectorAll('button'),function(b,k){b.classList.toggle('on',k==cur)});document.querySelector('main').scrollTop=0;location.hash=cur+1;if(tabs[cur].dataset.t=='Поиск ошибок')dots();if(tabs[cur].dataset.t=='Как это работает')play();count(tabs[cur]);[].forEach.call(document.querySelectorAll('video'),function(v){v.pause()})}
+addEventListener('keydown',function(e){if(e.target.tagName=='INPUT'){if(e.key=='Enter')check();return}
+ if(e.key=='ArrowRight'||e.key=='PageDown'){e.preventDefault();go(cur+1)}if(e.key=='ArrowLeft'||e.key=='PageUp'){e.preventDefault();go(cur-1)}});
+[].forEach.call(document.querySelectorAll('.grid'),function(g){[].forEach.call(g.children,function(c,i){c.style.setProperty('--i',i)})});
+function count(tab){[].forEach.call(tab.querySelectorAll('.num[data-n]'),function(el){var n=+el.dataset.n,t0=performance.now();(function f(){var p=Math.min(1,(performance.now()-t0)/900),v=Math.round(n*(1-Math.pow(1-p,3)));el.textContent=v.toLocaleString('ru-RU').replace(/ /g,' ');if(p<1)requestAnimationFrame(f)})()})}
+/* how it works */
+var ST=[].slice.call(document.querySelectorAll('#flow .st')),HT=[
+ 'На вход идёт глава учебника с номерами страниц. Программа режет её на абзацы, формулы, таблицы, примеры и задачи.',
+ 'Сильная нейросеть читает главу целиком и делит её на темы — будущие уроки. Это один запрос, около доллара.',
+ 'Дешёвая нейросеть по каждой теме пишет утверждения простыми словами. К каждому обязана приложить дословную цитату автора и номер страницы.',
+ 'Здесь нейросети нет. Обычная программа ищет каждую цитату на указанной странице и каждое число в том же абзаце книги. Что не нашлось — возвращается на исправление.',
+ 'Тоже без нейросети. Из проверенных утверждений программа собирает страницы уроков и рисует кадры роликов по формулам из главы. Задания и текст диктора заранее написала нейросеть, их ответы и фразы сверены с утверждениями.',
+ 'На выходе папка с файлами: открывается двойным щелчком на компьютере и телефоне. Внутри готового курса нейросети нет — он ничего не выдумывает на ходу.'],pt=[];
+function step(i){ST.forEach(function(s,k){s.classList.toggle('lit',k<=i);s.classList.toggle('now',k==i)});
+ var f=document.getElementById('flow').getBoundingClientRect(),b=ST[i].getBoundingClientRect(),x=b.left-f.left+b.width/2;
+ document.getElementById('railf').style.width=x+'px';document.getElementById('tok').style.left=(x-8)+'px';
+ document.getElementById('hlab').textContent='Шаг '+(i+1)+' из 6 · '+ST[i].dataset.w;document.getElementById('htxt').textContent=HT[i];
+ ['br1','br2','br3'].forEach(function(id,k){document.getElementById(id).classList.toggle('lit',i>=3)})}
+function play(){pt.forEach(clearTimeout);pt=[];ST.forEach(function(s){s.classList.remove('lit','now')});ST.forEach(function(s,i){pt.push(setTimeout(function(){step(i)},250+i*1500))})}
+ST.forEach(function(s,i){s.onclick=function(){pt.forEach(clearTimeout);step(i)}});document.getElementById('replay').onclick=play;
+/* check */
+var inp=document.getElementById('inp'),term=document.getElementById('term'),cbox=document.getElementById('cbox'),tm=[];
+function check(){tm.forEach(clearTimeout);tm=[];var v=inp.value.trim().replace(',','.'),ok=(v==='25'||v==='20');
+ var L=['<span class="g">$</span> python -m kmg check out/lat-v/layer.json','цитаты: ошибок 0 · пропуски: ошибок 0 · числа: '+(ok?'ошибок 0':'<span class="r">ошибок 1</span>'),
+  ok?'<span class="g">Число '+v+' есть в этом абзаце книги, стр. 98.</span>':'<span class="r">[ошибка] урок «Пример с палеткой»: числа '+(v||'—')+' нет в исходном абзаце книги</span>',
+  ok?'<span class="g">Проверка пройдена — курс выпускается.</span>':'<span class="r">Проверка не пройдена — курс из такого файла не выпускается.</span>'];
+ term.innerHTML='';cbox.style.borderColor='#2b2b2b';L.forEach(function(l,i){tm.push(setTimeout(function(){term.innerHTML+=(i?'\n':'')+l;if(i==3)cbox.style.borderColor=ok?'#19d3c5':'#ff5a4f'},i*450))})}
+document.getElementById('run').onclick=check;
+document.getElementById('rst').onclick=function(){inp.value='25';term.innerHTML='<span class="mut">Ждёт запуска.</span>';cbox.style.borderColor='#2b2b2b'};
+/* results */
+var tb=document.querySelector('#tb tbody'),det=document.getElementById('det'),grp='';
+CH.forEach(function(c,i){if(c[0]!=grp){grp=c[0];var s=document.createElement('tr');s.className='sep';s.innerHTML='<td colspan="5">'+(grp=='known'?'Шесть глав, выданных заранее':'Четыре незнакомые главы · сегодня, программа заморожена')+'</td>';tb.appendChild(s)}
+ var r=document.createElement('tr');r.tabIndex=0;r.innerHTML='<td>'+c[1]+' <span style="opacity:.6">· '+c[2]+'</span></td><td>'+c[4]+'</td><td>'+c[5]+'</td><td>'+Math.round(c[7]*100)+'%</td><td>'+c[8]+'</td>';
+ r.onclick=function(){sel(i)};r.onkeydown=function(e){if(e.key=='Enter')sel(i)};tb.appendChild(r);c.row=r});
+function sel(i){var c=CH[i];CH.forEach(function(x){x.row.classList.toggle('on',x===c)});
+ det.innerHTML='<div class="lab">'+(c[0]=='test'?'Тест · глава выдана сегодня в 10:30':'Известная глава')+' · язык '+c[9]+'</div><div class="big" style="margin-bottom:18px">'+c[1]+' — '+c[2]+'</div>'+
+ '<div class="grid g2"><div class="cell"><div class="num" style="font-size:60px">'+Math.round(c[7]*100)+'%</div>текста главы попало в курс</div><div class="cell"><div class="num" style="font-size:60px">'+c[8]+'</div>заданий, ответы сверены программой</div>'+
+ '<div class="cell"><div class="num" style="font-size:60px">'+c[6]+'</div>из '+c[5]+' утверждений программа отправила человеку</div><div class="cell"><div class="num" style="font-size:60px">0</div>минут человек правил результат</div></div>'+
+ '<div style="margin-top:22px"><a class="btn" target="_blank" rel="noopener" href="../../out/'+c[3]+'/course/index.html">Открыть этот курс</a></div>'}
+sel(6);
+/* dots + remarks */
+var dg=document.getElementById('dots');for(var i=0;i<21;i++)dg.appendChild(document.createElement('i'));
+function dots(){[].forEach.call(dg.children,function(d,i){d.classList.remove('f');if(i<19)setTimeout(function(){d.classList.add('f')},120+i*70)})}
+document.getElementById('rem').innerHTML=REM.map(function(r){return '<details><summary><span>'+r[0]+'</span>'+r[1]+'</summary><p>'+r[2]+' <b>Исправление и страница указаны.</b></p></details>'}).join('');
+go((parseInt(location.hash.slice(1))||1)-1);
+})();
+</script></body></html>
