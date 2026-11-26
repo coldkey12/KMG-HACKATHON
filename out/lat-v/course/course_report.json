@@ -141,9 +141,9 @@
   "meets_tz": true,
   "schema_errors": [],
   "schema_ok": true,
-  "cost_usd": 0.132176,
+  "cost_usd": 0.0,
   "cost_usd_original": 0.132176,
-  "cached": false,
+  "cached": true,
   "model": "claude-haiku-5-5",
   "calls": 9
  },
@@ -152,7 +152,7 @@
  "layer": "out/lat-v/layer.json",
  "steps": 70,
  "parts": 8,
- "size_mb": 6.64,
+ "size_mb": 6.91,
  "size_ok": true,
  "steps_without_illustration": [],
  "parts_without_ab_illustration": [],
@@ -160,5 +160,5 @@
  "photos": 9,
  "illustration_schema_errors": [],
  "illustration_schema_ok": true,
- "seconds": 260.2
+ "seconds": 0.8
 }
