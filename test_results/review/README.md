@@ -13,3 +13,5 @@
 .venv/bin/python -m kmg review-official data/raw/review_test/пакет_для_модуля_проверки/package.json --out eval/test/ответ.json
 ```
 Итог: 20 замечаний (по одному на цель), ответ проходит `review_output.schema.json`, отсеяно фильтром доказательств 0. Ответ сдан как есть, без правок.
+
+Копия ответа под путём из задания: `review/test_asquith_answer.json` (байт в байт = `eval/test/ответ.json`, `package_id: test_asquith`). Ручных правок ответа не было, поэтому в `manual_edits.csv` строк по модулю проверки нет.
