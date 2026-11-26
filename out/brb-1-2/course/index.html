@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Дельты</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233B4CCA'/%3E%3Cpath d='M6 11l10-5 10 5-10 5z M6 16l10 5 10-5 M6 21l10 5 10-5' fill='none' stroke='white' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+<header class="top">
+  <button class="iconbtn menu" id="menu" type="button" aria-label="Открыть навигацию по курсу" aria-expanded="false" aria-controls="side">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+  <a class="brand" href="#/" aria-label="Главная страница курса">
+    <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></span>
+    <span class="brand-tx"><span class="brand-k" id="brand-k">Курс по главе</span><span class="brand-t" id="brand-t"></span></span>
+  </a>
+  <div class="top-prog" id="top-prog" aria-hidden="true"><span id="top-prog-t"></span><div class="pbar"><span id="top-prog-bar"></span></div></div>
+  <button class="iconbtn theme" id="theme" type="button" aria-label="Тёмная тема" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+  </button>
+</header>
+<div class="shell">
+  <aside class="side" id="side" aria-label="Навигация по курсу"></aside>
+  <main class="content" id="main" tabindex="-1"></main>
+</div>
+<noscript><p style="padding:80px 16px">Для курса нужен JavaScript (он работает локально, без сети).</p></noscript>
+<script src="data/course.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

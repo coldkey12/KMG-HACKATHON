@@ -125,11 +125,18 @@ def generate(layer, log_path, min_total=15):
     batches = _batches([n for n, _ in payload])
     by_id = {n["id"]: p for n, p in payload}
     tasks, total = [], {"cost_usd": 0.0, "cost_usd_original": 0.0, "cached": True, "model": None, "calls": 0}
-    for i, b in enumerate(batches):
+    def one(ib):
+        i, b = ib
         want = max(3, -(-min_total * len(b) // len(payload)), len(b))
         system = [{"type": "text", "text": PROMPT.read_text(encoding="utf-8").replace("{min_total}", str(want))}]
         user = "Шаги курса (JSON):\n" + json.dumps([by_id[n["id"]] for n in b], ensure_ascii=False, indent=1)
-        r = llm.call("tasks", system, user, log_path=log_path, tag="tasks:%s:b%d" % (layer["chapter"]["id"], i + 1))
+        return llm.call("tasks", system, user, log_path=log_path, tag="tasks:%s:b%d" % (layer["chapter"]["id"], i + 1))
+    # batches are independent: up to KMG_TASK_WORKERS model calls at once (results kept in batch order, same cache keys)
+    from concurrent.futures import ThreadPoolExecutor
+    import os
+    with ThreadPoolExecutor(max_workers=max(1, int(os.environ.get("KMG_TASK_WORKERS", "4")))) as ex:
+        results = list(ex.map(one, list(enumerate(batches))))
+    for r in results:
         tasks += llm.parse_json(r["text"]).get("tasks", [])
         total["cost_usd"] += r["cost_usd"] or 0
         total["cost_usd_original"] += r["cost_usd_original"] or 0
