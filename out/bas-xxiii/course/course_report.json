@@ -2,8 +2,8 @@
  "tasks": {
   "schema": "kmg-tasks/0.2.0",
   "chapter": "bas-xxiii",
-  "generated": 145,
-  "kept": 145,
+  "generated": 144,
+  "kept": 144,
   "rejected": [],
   "types": [
    "calc",
@@ -33,7 +33,7 @@
  "layer": "out/bas-xxiii/layer.json",
  "steps": 71,
  "parts": 6,
- "size_mb": 5.63,
+ "size_mb": 5.62,
  "size_ok": true,
  "steps_without_illustration": [],
  "parts_without_ab_illustration": [],

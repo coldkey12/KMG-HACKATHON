@@ -21,7 +21,7 @@
  },
  "generator": {
   "pipeline_version": "0.1.0",
-  "created_at": "2026-11-26T08:30:06",
+  "created_at": "2026-11-26T09:03:08",
   "models": [
    {
     "role": "plan",
@@ -12681,7 +12681,7 @@
     },
     {
      "id": "bar-4.n-043-afc2a1.c-a27d96",
-     "text": "Постоянная Эйлера C — константа, используемая в асимптотике (II.104).",
+     "text": "Постоянная Эйлера C, через которую задаётся γ = e^C.",
      "kind": "observation",
      "page": 43,
      "quote": "где $C = 0,7772$ — постоянная Эйлера.",
@@ -12858,7 +12858,7 @@
       "hypothesis": true
      },
      {
-      "text": "Константа C — постоянная Эйлера; через неё задаётся γ = e^C в асимптотике (II.104).",
+      "text": "Постоянная Эйлера C; γ = e^C.",
       "by": "model",
       "claims": [
        "bar-4.n-043-afc2a1.c-a27d96"
@@ -12973,7 +12973,7 @@
     {
      "term": "постоянная Эйлера",
      "definition": {
-      "text": "Постоянная Эйлера C, через неё задаётся γ = e^C в асимптотике (II.104).",
+      "text": "Постоянная Эйлера C. Через неё задают γ = e^C в асимптотике (II.104).",
       "by": "model",
       "claims": [
        "bar-4.n-043-afc2a1.c-a27d96"
@@ -33392,7 +33392,7 @@
    },
    {
     "node": "bar-4.n-041-9a5038",
-    "what": "число 104 найдено в соседней единице u-042-085dc0 — она добавлена в источники узла"
+    "what": "число 10 найдено в соседней единице u-042-085dc0 — она добавлена в источники узла"
    },
    {
     "node": "bar-4.n-042-304385",
@@ -33498,22 +33498,17 @@
     "bar-4.n-041-f8aa68"
    ],
    "manual_minutes": 0.0,
-   "errors": [
-    {
-     "edit": "g09",
-     "error": "не применена: 'bar-4.n-041-e008d9.q-694b75'"
-    }
-   ]
+   "errors": []
   },
   "failed_nodes": []
  },
  "metrics": {
   "llm_calls": 93,
-  "cached_calls": 1,
+  "cached_calls": 93,
   "transport": "claude_code",
   "paid_usd_this_run": 0.0,
   "cost_note": "cost_usd_* — расчётная стоимость по токенам и прайсу config/models.yaml; paid_usd — фактически списано с ключа API (через подписку Claude Code — 0)",
-  "cost_usd_this_run": 1.3694,
+  "cost_usd_this_run": 0.0,
   "cost_usd_if_uncached": 1.3708,
   "cost_usd_per_node": 0.0326,
   "usage": {
@@ -33522,7 +33517,7 @@
    "cache_creation_input_tokens": 567634,
    "cache_read_input_tokens": 2306345
   },
-  "seconds": 28418.0,
+  "seconds": 15.4,
   "nodes": 42,
   "units": 170,
   "claims": 337,

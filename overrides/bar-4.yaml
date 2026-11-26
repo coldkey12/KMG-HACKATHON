@@ -1,15 +1,19 @@
 # Ответ на вопрос kind=geologist — решение модели-координатора по поручению пользователя (геолога нет). Минуты человека: 0.
-- id: g09
-  question: bar-4.n-041-e008d9.q-694b75
-  answered_by: "модель-координатор по поручению пользователя"
-  answer: "а) в интеграле Дюамеля P1 — отклик на единичный скачок (p⁰ = 1), иначе не сходится размерность; автор это не оговаривает — давать как пояснение модели."
-  claims_status: ok
-  minutes: 0
 - id: g09t1
-  add_typo: {unit_id: u-041-dc558e, original: "автомобильно", corrected: "автомодельно", note: "ошибка распознавания", confidence: high}
+  add_typo:
+    unit_id: u-041-dc558e
+    original: автомобильно
+    corrected: автомодельно
+    note: ошибка распознавания
+    confidence: high
   by: model
   minutes: 0
 - id: g09t2
-  add_typo: {unit_id: u-041-dc558e, original: "списывает", corrected: "описывает", note: "ошибка распознавания", confidence: high}
+  add_typo:
+    unit_id: u-041-dc558e
+    original: списывает
+    corrected: описывает
+    note: ошибка распознавания
+    confidence: high
   by: model
   minutes: 0

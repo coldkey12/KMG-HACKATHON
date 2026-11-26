@@ -8,7 +8,7 @@
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
   "manual_share_nodes": 0.024,
-  "machine_seconds": 28418.0,
+  "machine_seconds": 15.4,
   "checks_passed": true,
   "open_questions": 19
  },
@@ -20,10 +20,10 @@
   "cost_per_node": 0.034,
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
-  "manual_share_nodes": 0.014,
-  "machine_seconds": 28913.5,
+  "manual_share_nodes": 0.028,
+  "machine_seconds": 22.1,
   "checks_passed": true,
-  "open_questions": 43
+  "open_questions": 41
  },
  {
   "chapter": "brb-1-2",
@@ -73,9 +73,9 @@
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
   "manual_share_nodes": 0.029,
-  "machine_seconds": 28741.3,
+  "machine_seconds": 8.3,
   "checks_passed": true,
-  "open_questions": 65
+  "open_questions": 64
  },
  {
   "chapter": "ven-1",
@@ -85,9 +85,9 @@
   "cost_per_node": 0.038,
   "manual_minutes": 0.0,
   "manual_min_per_node": 0.0,
-  "manual_share_nodes": 0.0,
-  "machine_seconds": 1956.5,
+  "manual_share_nodes": 0.015,
+  "machine_seconds": 12.4,
   "checks_passed": true,
-  "open_questions": 63
+  "open_questions": 62
  }
 ]

@@ -17393,8 +17393,8 @@
      "quote": "Основными методами разделения нефтеносных и водоносных пластов являются импульсные нейтрон-нейтронный и нейтронный гамма-методы.",
      "source_kind": "text",
      "by_model": true,
-     "needs_scan": true,
-     "status": "disputed"
+     "needs_scan": false,
+     "status": "ok"
     },
     {
      "id": "ven-1.n-028-55670b#c2",
@@ -17548,7 +17548,7 @@
    "book_tasks": [],
    "native": {
     "format": "data_practicum",
-    "status": "has_unverified"
+    "status": "ok"
    }
   },
   {

@@ -1,8 +1,12 @@
 {
  "affected_nodes": [
+  "bas-xxiii.n-476-32ecea",
   "bas-xxiii.n-491-ab6880"
  ],
  "overrides_applied": [
-  "g05t"
+  "g04",
+  "g05",
+  "g05t",
+  "g05b"
  ]
 }

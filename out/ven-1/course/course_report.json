@@ -2,8 +2,8 @@
  "tasks": {
   "schema": "kmg-tasks/0.2.0",
   "chapter": "ven-1",
-  "generated": 163,
-  "kept": 163,
+  "generated": 161,
+  "kept": 161,
   "rejected": [],
   "types": [
    "gap",
@@ -25,14 +25,16 @@
   "cached": true,
   "model": "reuse:tasks.json",
   "calls": 0,
-  "changed_nodes_tasks_dropped": []
+  "changed_nodes_tasks_dropped": [
+   "ven-1.n-028-55670b"
+  ]
  },
  "schema": "kmg-course-report/0.2.0",
  "chapter": "ven-1",
  "layer": "out/ven-1/layer.json",
  "steps": 66,
  "parts": 7,
- "size_mb": 5.1,
+ "size_mb": 5.09,
  "size_ok": true,
  "steps_without_illustration": [],
  "parts_without_ab_illustration": [],
@@ -40,5 +42,5 @@
  "photos": 8,
  "illustration_schema_errors": [],
  "illustration_schema_ok": true,
- "seconds": 0.9
+ "seconds": 0.7
 }

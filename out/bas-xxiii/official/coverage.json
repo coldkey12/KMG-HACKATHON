@@ -22,10 +22,8 @@
    "kind": "heading",
    "page_pdf": 474,
    "excerpt": "§1. Упругий режим пласта и его характерные особенности",
-   "node_ids": [
-    "bas-xxiii.n-474-d10c22"
-   ],
-   "reason": null
+   "node_ids": [],
+   "reason": "заголовок"
   },
   {
    "unit_id": "u-474-d10c22",
@@ -702,8 +700,7 @@
    "page_pdf": 480,
    "excerpt": "m rho = m_0 rho_0 left[ 1 + beta^ (p - p_0)/m_0",
    "node_ids": [
-    "bas-xxiii.n-479-eb237c",
-    "bas-xxiii.n-480-04d2ff"
+    "bas-xxiii.n-479-eb237c"
    ],
    "reason": null
   },
@@ -2051,8 +2048,7 @@
    "page_pdf": 489,
    "excerpt": "frac{ partial P}{ partial t} = - frac{dP}{d xi} frac{ xi}{2t}, quad",
    "node_ids": [
-    "bas-xxiii.n-489-552976",
-    "bas-xxiii.n-489-5cbca3"
+    "bas-xxiii.n-489-552976"
    ],
    "reason": null
   },

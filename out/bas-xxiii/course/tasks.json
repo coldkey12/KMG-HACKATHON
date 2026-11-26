@@ -3463,39 +3463,6 @@
    ]
   },
   {
-   "id": "bas-xxiii.n-491-ab6880.t01",
-   "type": "single",
-   "step_id": "bas-xxiii.n-491-ab6880",
-   "node_id": "bas-xxiii.n-491-ab6880",
-   "claim_ids": [
-    "bas-xxiii.n-491-ab6880.c-420c96",
-    "bas-xxiii.n-491-ab6880.c-f303c4"
-   ],
-   "prompt": "При каком условии погрешность приближения не превосходит 0,25%?",
-   "explanation": "Погрешность 0,25% дана для x ≤ 0,01; при x ≤ 0,1 она составляет 5,7%.",
-   "by": "model",
-   "checked": "auto",
-   "kind": "recall",
-   "options": [
-    {
-     "id": "a",
-     "text": "x = r²/(4κt) ≤ 0,01",
-     "misconception": null
-    },
-    {
-     "id": "b",
-     "text": "x ≤ 0,1",
-     "misconception": null
-    },
-    {
-     "id": "c",
-     "text": "x ≤ 0,14",
-     "misconception": null
-    }
-   ],
-   "answer": "a"
-  },
-  {
    "id": "bas-xxiii.n-492-a4bb1c.t01",
    "type": "gap",
    "step_id": "bas-xxiii.n-492-a4bb1c",

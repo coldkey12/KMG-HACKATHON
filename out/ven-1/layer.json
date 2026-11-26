@@ -21,7 +21,7 @@
  },
  "generator": {
   "pipeline_version": "0.1.0",
-  "created_at": "2026-11-26T00:37:06",
+  "created_at": "2026-11-26T09:03:00",
   "models": [
    {
     "role": "plan",
@@ -42376,7 +42376,7 @@
      "unit_id": "u-028-55670b",
      "by": "model",
      "numbers": [],
-     "status": "disputed",
+     "status": "ok",
      "question_id": "ven-1.n-028-55670b.q-70798b"
     },
     {
@@ -42820,7 +42820,7 @@
    "source_units": [
     "u-028-55670b"
    ],
-   "status": "has_unverified",
+   "status": "ok",
    "format": {
     "format": "data_practicum",
     "rationale": "процедура / правило на данных / примеры с числами → практикум на данных (ведущий формат типа Пр). Тип трудности Р; критерии видеоёмкости: invisible_visible.",
@@ -51977,8 +51977,9 @@
     "Оба метода импульсные; стационарный только ННМ",
     "Опечатка распознавания: нужна сверка со сканом стр. 28"
    ],
-   "status": "open",
-   "kind": "geologist"
+   "status": "answered",
+   "kind": "geologist",
+   "answer": "[модель-координатор по поручению пользователя] а) «импульсные» относится к обоим методам (импульсный ННМ и импульсный НГМ); стационарный НГМ сам по себе импульсным не называть."
   },
   {
    "id": "ven-1.n-029-b96e06.q-838296",
@@ -54500,33 +54501,24 @@
    }
   ],
   "overrides": {
-   "applied": [],
-   "affected_nodes": [],
+   "applied": [
+    "g07"
+   ],
+   "affected_nodes": [
+    "ven-1.n-028-55670b"
+   ],
    "manual_minutes": 0.0,
-   "errors": [
-    {
-     "edit": "g06",
-     "error": "не применена: 'ven-1.n-027-3cf341.q-14cd4c'"
-    },
-    {
-     "edit": "g07",
-     "error": "не применена: 'ven-1.n-028-55670b.q-5e9e3d'"
-    },
-    {
-     "edit": "g08",
-     "error": "не применена: 'ven-1.n-029-97efeb.q-75abb6'"
-    }
-   ]
+   "errors": []
   },
   "failed_nodes": []
  },
  "metrics": {
   "llm_calls": 165,
-  "cached_calls": 0,
+  "cached_calls": 165,
   "transport": "claude_code",
   "paid_usd_this_run": 0.0,
   "cost_note": "cost_usd_* — расчётная стоимость по токенам и прайсу config/models.yaml; paid_usd — фактически списано с ключа API (через подписку Claude Code — 0)",
-  "cost_usd_this_run": 2.5086,
+  "cost_usd_this_run": 0.0,
   "cost_usd_if_uncached": 2.5086,
   "cost_usd_per_node": 0.038,
   "usage": {
@@ -54535,7 +54527,7 @@
    "cache_creation_input_tokens": 845204,
    "cache_read_input_tokens": 3386054
   },
-  "seconds": 1956.5,
+  "seconds": 12.4,
   "nodes": 66,
   "units": 174,
   "claims": 718,

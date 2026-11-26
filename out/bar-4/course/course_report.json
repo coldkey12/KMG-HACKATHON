@@ -2,8 +2,8 @@
  "tasks": {
   "schema": "kmg-tasks/0.2.0",
   "chapter": "bar-4",
-  "generated": 100,
-  "kept": 100,
+  "generated": 97,
+  "kept": 97,
   "rejected": [],
   "types": [
    "gap",
@@ -25,14 +25,16 @@
   "cached": true,
   "model": "reuse:tasks.json",
   "calls": 0,
-  "changed_nodes_tasks_dropped": []
+  "changed_nodes_tasks_dropped": [
+   "bar-4.n-043-afc2a1"
+  ]
  },
  "schema": "kmg-course-report/0.2.0",
  "chapter": "bar-4",
  "layer": "out/bar-4/layer.json",
  "steps": 42,
  "parts": 5,
- "size_mb": 3.5,
+ "size_mb": 3.49,
  "size_ok": true,
  "steps_without_illustration": [],
  "parts_without_ab_illustration": [],
@@ -40,5 +42,5 @@
  "photos": 6,
  "illustration_schema_errors": [],
  "illustration_schema_ok": true,
- "seconds": 0.4
+ "seconds": 0.6
 }

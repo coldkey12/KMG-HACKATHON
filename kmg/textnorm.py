@@ -41,7 +41,8 @@ _LATEX_CMD = re.compile(r"\\[A-Za-z]+")
 
 def numbers(s: str):
     """Canonical numbers in a text: decimal comma -> dot, superscripts -> digits, leading zeros kept off."""
-    s = unicodedata.normalize("NFKC", s or "").translate(_SUP)
+    s = re.sub(r"[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+", lambda m: " ^" + m.group(0), s or "")  # 0,1² -> "0,1 ^²": exponent is not glued to the number
+    s = unicodedata.normalize("NFKC", s).translate(_SUP)
     s = _LATEX_CMD.sub(" ", s)  # \cdot10 -> " 10"
     out = []
     for m in _NUM.finditer(s):
